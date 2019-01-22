@@ -1,0 +1,402 @@
+[
+  {
+    "agency_name": "Alameda",
+    "overall_score": 84.39
+  },
+  {
+    "agency_name": "Alhambra",
+    "overall_score": 55.41
+  },
+  {
+    "agency_name": "Anaheim",
+    "overall_score": 42.64
+  },
+  {
+    "agency_name": "Antioch",
+    "overall_score": 41.44
+  },
+  {
+    "agency_name": "Bakersfield",
+    "overall_score": 25.91
+  },
+  {
+    "agency_name": "Berkeley",
+    "overall_score": 61.50
+  },
+  {
+    "agency_name": "Beverly Hills",
+    "overall_score": 18.03
+  },
+  {
+    "agency_name": "Buena Park",
+    "overall_score": 59.65
+  },
+  {
+    "agency_name": "Burbank",
+    "overall_score": 48.16
+  },
+  {
+    "agency_name": "Carlsbad",
+    "overall_score": 95.78
+  },
+  {
+    "agency_name": "Chico",
+    "overall_score": 38.74
+  },
+  {
+    "agency_name": "Chino",
+    "overall_score": 55.81
+  },
+  {
+    "agency_name": "Chula Vista",
+    "overall_score": 69.06
+  },
+  {
+    "agency_name": "Citrus Heights",
+    "overall_score": 37.02
+  },
+  {
+    "agency_name": "Clovis",
+    "overall_score": 47.38
+  },
+  {
+    "agency_name": "Concord",
+    "overall_score": 54.52
+  },
+  {
+    "agency_name": "Corona",
+    "overall_score": 59.23
+  },
+  {
+    "agency_name": "Costa Mesa",
+    "overall_score": 72.09
+  },
+  {
+    "agency_name": "Culver City",
+    "overall_score": 83.98
+  },
+  {
+    "agency_name": "Daly City",
+    "overall_score": 66.79
+  },
+  {
+    "agency_name": "Downey",
+    "overall_score": 51.47
+  },
+  {
+    "agency_name": "El Cajon",
+    "overall_score": 32.92
+  },
+  {
+    "agency_name": "El Monte",
+    "overall_score": 49.04
+  },
+  {
+    "agency_name": "Elk Grove",
+    "overall_score": 66
+  },
+  {
+    "agency_name": "Escondido",
+    "overall_score": 76.84
+  },
+  {
+    "agency_name": "Fairfield",
+    "overall_score": 62.91
+  },
+  {
+    "agency_name": "Fontana",
+    "overall_score": 50.18
+  },
+  {
+    "agency_name": "Fremont",
+    "overall_score": 50.19
+  },
+  {
+    "agency_name": "Fresno",
+    "overall_score": 45.55
+  },
+  {
+    "agency_name": "Fullerton",
+    "overall_score": 41.30
+  },
+  {
+    "agency_name": "Garden Grove",
+    "overall_score": 86.71
+  },
+  {
+    "agency_name": "Gardena",
+    "overall_score": 45.20
+  },
+  {
+    "agency_name": "Glendale",
+    "overall_score": 48.01
+  },
+  {
+    "agency_name": "Hawthorne",
+    "overall_score": 46.40
+  },
+  {
+    "agency_name": "Hayward",
+    "overall_score": 53.18
+  },
+  {
+    "agency_name": "Huntington Beach",
+    "overall_score": 44.90
+  },
+  {
+    "agency_name": "Inglewood",
+    "overall_score": 54.08
+  },
+  {
+    "agency_name": "Irvine",
+    "overall_score": 67.74
+  },
+  {
+    "agency_name": "Livermore",
+    "overall_score": 65.06
+  },
+  {
+    "agency_name": "Long Beach",
+    "overall_score": 26.21
+  },
+  {
+    "agency_name": "Los Angeles",
+    "overall_score": 41.13
+  },
+  {
+    "agency_name": "Merced",
+    "overall_score": 62.49
+  },
+  {
+    "agency_name": "Milpitas",
+    "overall_score": 42.76
+  },
+  {
+    "agency_name": "Modesto",
+    "overall_score": 41.78
+  },
+  {
+    "agency_name": "Mountain View",
+    "overall_score": 92.91
+  },
+  {
+    "agency_name": "Murrieta",
+    "overall_score": 34.04
+  },
+  {
+    "agency_name": "National City",
+    "overall_score": 60.36
+  },
+  {
+    "agency_name": "Newport Beach",
+    "overall_score": 29.84
+  },
+  {
+    "agency_name": "Oakland",
+    "overall_score": 54.80
+  },
+  {
+    "agency_name": "Oceanside",
+    "overall_score": 57.24
+  },
+  {
+    "agency_name": "Ontario",
+    "overall_score": 42.55
+  },
+  {
+    "agency_name": "Orange",
+    "overall_score": 57.66
+  },
+  {
+    "agency_name": "Oxnard",
+    "overall_score": 69.94
+  },
+  {
+    "agency_name": "Palm Springs",
+    "overall_score": 32.39
+  },
+  {
+    "agency_name": "Palo Alto",
+    "overall_score": 82.32
+  },
+  {
+    "agency_name": "Pasadena",
+    "overall_score": 47.25
+  },
+  {
+    "agency_name": "Pittsburg",
+    "overall_score": 32.34
+  },
+  {
+    "agency_name": "Pleasanton",
+    "overall_score": 55.10
+  },
+  {
+    "agency_name": "Pomona",
+    "overall_score": 53.18
+  },
+  {
+    "agency_name": "Redding",
+    "overall_score": 43.27
+  },
+  {
+    "agency_name": "Redlands",
+    "overall_score": 42.25
+  },
+  {
+    "agency_name": "Redondo Beach",
+    "overall_score": 41.87
+  },
+  {
+    "agency_name": "Redwood City",
+    "overall_score": 67.86
+  },
+  {
+    "agency_name": "Rialto",
+    "overall_score": 62.11
+  },
+  {
+    "agency_name": "Richmond",
+    "overall_score": 54.32
+  },
+  {
+    "agency_name": "Riverside",
+    "overall_score": 28.49
+  },
+  {
+    "agency_name": "Roseville",
+    "overall_score": 66.05
+  },
+  {
+    "agency_name": "Sacramento",
+    "overall_score": 49.27
+  },
+  {
+    "agency_name": "Salinas",
+    "overall_score": 68.82
+  },
+  {
+    "agency_name": "San Bernardino",
+    "overall_score": 36.58
+  },
+  {
+    "agency_name": "San Diego",
+    "overall_score": 52.21
+  },
+  {
+    "agency_name": "San Francisco",
+    "overall_score": 51.83
+  },
+  {
+    "agency_name": "San Jose",
+    "overall_score": 38.43
+  },
+  {
+    "agency_name": "San Leandro",
+    "overall_score": 44.24
+  },
+  {
+    "agency_name": "San Mateo",
+    "overall_score": 91.25
+  },
+  {
+    "agency_name": "Santa Ana",
+    "overall_score": 34.81
+  },
+  {
+    "agency_name": "Santa Barbara",
+    "overall_score": 50.19
+  },
+  {
+    "agency_name": "Santa Clara",
+    "overall_score": 48.37
+  },
+  {
+    "agency_name": "Santa Cruz",
+    "overall_score": 66.36
+  },
+  {
+    "agency_name": "Santa Maria",
+    "overall_score": 61.87
+  },
+  {
+    "agency_name": "Santa Monica",
+    "overall_score": 68.92
+  },
+  {
+    "agency_name": "Santa Rosa",
+    "overall_score": 56.03
+  },
+  {
+    "agency_name": "Simi Valley",
+    "overall_score": 57.96
+  },
+  {
+    "agency_name": "South Gate",
+    "overall_score": 51.34
+  },
+  {
+    "agency_name": "South San Francisco",
+    "overall_score": 51.17
+  },
+  {
+    "agency_name": "Stockton",
+    "overall_score": 35.16
+  },
+  {
+    "agency_name": "Sunnyvale",
+    "overall_score": 62.02
+  },
+  {
+    "agency_name": "Torrance",
+    "overall_score": 44.73
+  },
+  {
+    "agency_name": "Tracy",
+    "overall_score": 74.23
+  },
+  {
+    "agency_name": "Turlock",
+    "overall_score": 48.28
+  },
+  {
+    "agency_name": "Tustin",
+    "overall_score": 69.27
+  },
+  {
+    "agency_name": "Union City",
+    "overall_score": 53.85
+  },
+  {
+    "agency_name": "Vacaville",
+    "overall_score": 25.26
+  },
+  {
+    "agency_name": "Vallejo",
+    "overall_score": 42.91
+  },
+  {
+    "agency_name": "Ventura",
+    "overall_score": 57.43
+  },
+  {
+    "agency_name": "Visalia",
+    "overall_score": 47.35
+  },
+  {
+    "agency_name": "Walnut Creek",
+    "overall_score": 70.94
+  },
+  {
+    "agency_name": "West Covina",
+    "overall_score": 37.65
+  },
+  {
+    "agency_name": "Westminster",
+    "overall_score": 71.23
+  },
+  {
+    "agency_name": "Whittier",
+    "overall_score": 43.39
+  }
+]
