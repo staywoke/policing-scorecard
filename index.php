@@ -75,10 +75,10 @@ $title = "CA Policing Scorecard - {$data['agency_name']} - Grade {$grade}";
         <div class="content">
           <div class="one-third">
             <h1><strong><?= output($data['deadly_force_incidents']) ?></strong> deadly force incident<?= $data['deadly_force_incidents'] !== '1' ? 's' : '' ?></h1>
-            <p>Based on population, a black person is <strong><?= output($data['deadly_force_incidents'], null, 'X') ?> more likely</strong> and a Hispanic person is <strong><?= output($data['hispanic_deadly_force_disparity_per_population'], null, '%') ?> more likely</strong> to have deadly force used on them than a white person in California.</p>
+            <p>Based on population, a black person is <strong><?= output($data['deadly_force_incidents'], null, 'X') ?> more likely</strong> and an Hispanic person is <strong><?= output($data['hispanic_deadly_force_disparity_per_population'], null, '%') ?> more likely</strong> to have deadly force used on them than a white person in California.</p>
           </div>
           <div class="one-third">
-            <h1><strong><?= output($data['criminal_complaints_reported']) ?></strong> civilian complaints of  police misconduct</h1>
+            <h1><strong><?= output($data['civilian_complaints_reported']) ?></strong> civilian complaints of  police misconduct</h1>
             <p>Only <strong>1 in <?= output($data['civilian_complaints_sustained']) ?> complaints</strong> were sustained from 2016-17. Even <strong>fewer</strong> resulted in any discipline against the officers involved.</p>
           </div>
           <div class="one-third">
@@ -114,9 +114,9 @@ $title = "CA Policing Scorecard - {$data['agency_name']} - Grade {$grade}";
         <div class="content">
           <div class="left">
             <div class="stat-wrapper">
-              <h3>Uses of Less Lethal Force per Arrest</h3>
+              <h3>Less Lethal Force per Arrest</h3>
               <p>Ranked <?= output($data['rank_of_less_fethal_force_per_arrest']) ?></p>
-              <p><?= output($data['use_of_less_lethal_force']) ?> perceived to have a gun <span class="divider">&nbsp;|&nbsp;</span> XX found with a gun</p>
+              <p><?= output($data['use_of_less_lethal_force']) ?> Uses <span class="divider">&nbsp;|&nbsp;</span> <?= output($data['less_lethal_force_per_arrest']) ?> per arrest</p>
               <div class="progress-bar-wrapper">
                 <div class="progress-bar" style="width: <?= output(intval($data['percent_of_less_lethal_force_per_arrest']), 0, '%') ?>"></div>
               </div>
@@ -124,15 +124,15 @@ $title = "CA Policing Scorecard - {$data['agency_name']} - Grade {$grade}";
 
             <div class="stat-wrapper">
               <h3>Deadly Force Victims by Armed / Unarmed Status</h3>
-              <p>XX perceived to have a gun <span class="divider">&nbsp;|&nbsp;</span> XX found with a gun</p>
-              <div class="progress-bar-wrapper">
-                <div class="progress-bar"></div>
-              </div>
+              <p><?= output($data['percent_used_against_people_who_were_unarmed']) ?> were Unarmed</p>
+              <p><?= output($data['percent_used_against_people_who_were_not_armed_with_gun']) ?> Did Not Have a Gun</p>
+              <p style="color: red; font-size: 12px; font-weight: bold;">@TODO: ADD CHART</p>
             </div>
 
             <div class="stat-wrapper">
               <h3>Where Police say they perceived a gun but no gun was found</h3>
               <p>XX Guns Perceived <span class="divider">&nbsp;|&nbsp;</span> XX Guns Found</p>
+              <p style="color: red; font-size: 12px; font-weight: bold;">@TODO: MISSING DATA</p>
               <div class="progress-bar-wrapper">
                 <div class="progress-bar" style="width: <?= output(intval($data['percent_police_misperceive_the_person_to_have_gun']), 0, '%') ?>"></div>
               </div>
@@ -152,9 +152,7 @@ $title = "CA Policing Scorecard - {$data['agency_name']} - Grade {$grade}";
               <h3>Deadly force victims by race</h3>
               <p>Ranked 0/100</p>
               <p>XX perceived to have a gun <span class="divider">&nbsp;|&nbsp;</span> XX found with a gun</p>
-              <div class="progress-bar-wrapper">
-                <div class="progress-bar"></div>
-              </div>
+              <p style="color: red; font-size: 12px; font-weight: bold;">@TODO: ADD CHART</p>
             </div>
           </div>
         </div>
@@ -168,30 +166,30 @@ $title = "CA Policing Scorecard - {$data['agency_name']} - Grade {$grade}";
         </div>
         <div class="content">
           <div class="left">
-            <div class="check <?= $data['requires_deescalation'] === 1 ? 'checked' : 'unchecked' ?>">
+            <div class="check <?= $data['requires_deescalation'] === '1' ? 'checked' : 'unchecked' ?>">
               Requires De-Escalation
             </div>
-            <div class="check <?= $data['bans_chokeholds_and_strangleholds'] === 1 ? 'checked' : 'unchecked' ?>">
+            <div class="check <?= $data['bans_chokeholds_and_strangleholds'] === '1' ? 'checked' : 'unchecked' ?>">
               Bans Chokeholds / Strangleholds
             </div>
-            <div class="check <?= $data['duty_to_intervene'] === 1 ? 'checked' : 'unchecked' ?>">
+            <div class="check <?= $data['duty_to_intervene'] === '1' ? 'checked' : 'unchecked' ?>">
               Duty to Intervene
             </div>
-            <div class="check <?= $data['requires_warning_before_shooting'] === 1 ? 'checked' : 'unchecked' ?>">
+            <div class="check <?= $data['requires_warning_before_shooting'] === '1' ? 'checked' : 'unchecked' ?>">
               Requires Warning Before Shooting
             </div>
           </div>
           <div class="right">
-            <div class="check <?= $data['restricts_shooting_at_moving_vehicles'] === 1 ? 'checked' : 'unchecked' ?>">
+            <div class="check <?= $data['restricts_shooting_at_moving_vehicles'] === '1' ? 'checked' : 'unchecked' ?>">
               Restricts Shooting at Moving Vehicles
             </div>
-            <div class="check <?= $data['requires_comprehensive_reporting'] === 1 ? 'checked' : 'unchecked' ?>">
+            <div class="check <?= $data['requires_comprehensive_reporting'] === '1' ? 'checked' : 'unchecked' ?>">
               Requires Comprehensive Reporting
             </div>
-            <div class="check <?= $data['requires_exhaust_all_other_means_before_shooting'] === 1 ? 'checked' : 'unchecked' ?>">
+            <div class="check <?= $data['requires_exhaust_all_other_means_before_shooting'] === '1' ? 'checked' : 'unchecked' ?>">
               Requires Exhaust All Means Before Shooting
             </div>
-            <div class="check <?= $data['has_use_of_force_continuum'] === 1 ? 'checked' : 'unchecked' ?>">
+            <div class="check <?= $data['has_use_of_force_continuum'] === '1' ? 'checked' : 'unchecked' ?>">
               Has Use of Force Continuum
             </div>
           </div>
@@ -253,24 +251,24 @@ $title = "CA Policing Scorecard - {$data['agency_name']} - Grade {$grade}";
         </div>
         <div class="content">
           <div class="left">
-            <div class="check <?= $data['disqualifies_complaints'] === 1 ? 'checked-bad' : 'unchecked' ?>">
+            <div class="check <?= $data['disqualifies_complaints'] === '1' ? 'checked-bad' : 'unchecked' ?>">
               Disqualifies Complaints
             </div>
-            <div class="check <?= $data['restricts_delays_interrogations'] === 1 ? 'checked-bad' : 'unchecked' ?>">
+            <div class="check <?= $data['restricts_delays_interrogations'] === '1' ? 'checked-bad' : 'unchecked' ?>">
               Restricts / Delays Interrogations
             </div>
-            <div class="check <?= $data['gives_officers_unfair_access_to_information'] === 1 ? 'checked-bad' : 'unchecked' ?>">
+            <div class="check <?= $data['gives_officers_unfair_access_to_information'] === '1' ? 'checked-bad' : 'unchecked' ?>">
               Gives officers unfair access to information
             </div>
           </div>
           <div class="right">
-            <div class="check <?= $data['limits_oversight_discipline'] === 1 ? 'checked-bad' : 'unchecked' ?>">
+            <div class="check <?= $data['limits_oversight_discipline'] === '1' ? 'checked-bad' : 'unchecked' ?>">
               Limits or Reverses Disciplinary Decisions
             </div>
-            <div class="check <?= $data['requires_city_pay_for_misconduct'] === 1 ? 'checked-bad' : 'unchecked' ?>">
+            <div class="check <?= $data['requires_city_pay_for_misconduct'] === '1' ? 'checked-bad' : 'unchecked' ?>">
               Requires City Pay for Misconduct
             </div>
-            <div class="check <?= $data['erases_misconduct_records'] === 1 ? 'checked-bad' : 'unchecked' ?>">
+            <div class="check <?= $data['erases_misconduct_records'] === '1' ? 'checked-bad' : 'unchecked' ?>">
               Erases Misconduct Records
             </div>
           </div>
