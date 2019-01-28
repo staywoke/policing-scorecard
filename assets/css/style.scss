@@ -74,6 +74,10 @@ body {
           width: 100%;
           display: block;
           color: $primary-gray;
+
+          &.selected-city {
+            color: $primary-blue;
+          }
         }
 
         &:last-child a {
@@ -341,8 +345,506 @@ body {
         display: block;
         background: url('../img/map-marker.svg') center center no-repeat;
         position: absolute;
-        top: 185px;
-        left: 123px;
+
+        &.alameda {
+          top: 122px;
+          left: 31px;
+        }
+
+        &.alhambra {
+          top: 253px;
+          left: 120px;
+        }
+
+        &.anaheim {
+          top: 265px;
+          left: 140px;
+        }
+
+        &.antioch {
+          top: 115px;
+          left: 37px;
+        }
+
+        &.bakersfield {
+          top: 220px;
+          left: 136px;
+        }
+
+        &.berkeley {
+          top: 120px;
+          left: 30px;
+        }
+
+        &.beverly-hills {
+          top: 255px;
+          left: 140px;
+        }
+
+        &.buena-park {
+          top: 265px;
+          left: 140px;
+        }
+
+        &.burbank {
+          top: 250px;
+          left: 140px;
+        }
+
+        &.carlsbad {
+          top: 280px;
+          left: 167px;
+        }
+
+        &.chico {
+          top: 40px;
+          left: 35px;
+        }
+
+        &.chino {
+          top: 250px;
+          left: 160px;
+        }
+
+        &.chula-vista {
+          top: 300px;
+          left: 175px;
+        }
+
+        &.citrus-heights {
+          top: 83px;
+          left: 55px;
+        }
+
+        &.clovis {
+          top: 160px;
+          left: 106px;
+        }
+
+        &.concord {
+          top: 114px;
+          left: 34px;
+        }
+
+        &.corona {
+          top: 263px;
+          left: 152px;
+        }
+
+        &.costa-mesa {
+          top: 270px;
+          left: 150px;
+        }
+
+        &.culver-city {
+          top: 253px;
+          left: 120px;
+        }
+
+        &.daly-city {
+          top: 134px;
+          left: 25px;
+        }
+
+        &.downey {
+          top: 257px;
+          left: 140px;
+        }
+
+        &.el-cajon {
+          top: 300px;
+          left: 176px;
+        }
+
+        &.el-monte {
+          top: 255px;
+          left: 145px;
+        }
+
+        &.elk-grove {
+          top: 100px;
+          left: 46px;
+        }
+
+        &.escondido {
+          top: 280px;
+          left: 170px;
+        }
+
+        &.fairfield {
+          top: 108px;
+          left: 33px;
+        }
+
+        &.fontana {
+          top: 250px;
+          left: 150px;
+        }
+
+        &.fremont {
+          top: 133px;
+          left: 39px;
+        }
+
+        &.fresno {
+          top: 160px;
+          left: 113px;
+        }
+
+        &.fullerton {
+          top: 264px;
+          left: 145px;
+        }
+
+        &.garden-grove {
+          top: 264px;
+          left: 145px;
+        }
+
+        &.gardena {
+          top: 264px;
+          left: 145px;
+        }
+
+        &.glendale {
+          top: 258px;
+          left: 143px;
+        }
+
+        &.hawthorne {
+          top: 260px;
+          left: 143px;
+        }
+
+        &.hayward {
+          top: 122px;
+          left: 33px;
+        }
+
+        &.huntington-beach {
+          top: 270px;
+          left: 153px;
+        }
+
+        &.inglewood {
+          top: 256px;
+          left: 143px;
+        }
+
+        &.irvine {
+          top: 264px;
+          left: 149px;
+        }
+
+        &.livermore {
+          top: 125px;
+          left: 45px;
+        }
+
+        &.long-beach {
+          top: 263px;
+          left: 143px;
+        }
+
+        &.los-angeles {
+          top: 263px;
+          left: 143px;
+        }
+
+        &.merced {
+          top: 130px;
+          left: 70px;
+        }
+
+        &.milpitas {
+          top: 136px;
+          left: 43px;
+        }
+
+        &.modesto {
+          top: 124px;
+          left: 70px;
+        }
+
+        &.mountain-view {
+          top: 136px;
+          left: 34px;
+        }
+
+        &.murrieta {
+          top: 265px;
+          left: 167px;
+        }
+
+        &.national-city {
+          top: 300px;
+          left: 172px;
+        }
+
+        &.newport-beach {
+          top: 265px;
+          left: 154px;
+        }
+
+        &.oakland {
+          top: 125px;
+          left: 34px;
+        }
+
+        &.oceanside {
+          top: 275px;
+          left: 170px;
+        }
+
+        &.ontario {
+          top: 265px;
+          left: 150px;
+        }
+
+        &.orange {
+          top: 262px;
+          left: 151px;
+        }
+
+        &.oxnard {
+          top: 250px;
+          left: 120px;
+        }
+
+        &.palm-springs {
+          top: 260px;
+          left: 175px;
+        }
+
+        &.palo-alto {
+          top: 138px;
+          left: 34px;
+        }
+
+        &.pasadena {
+          top: 260px;
+          left: 145px;
+        }
+
+        &.pittsburg {
+          top: 114px;
+          left: 38px;
+        }
+
+        &.pleasanton {
+          top: 125px;
+          left: 35px;
+        }
+
+        &.pomona {
+          top: 255px;
+          left: 150px;
+        }
+
+        &.redding {
+          top: 10px;
+          left: 20px;
+        }
+
+        &.redlands {
+          top: 250px;
+          left: 162px;
+        }
+
+        &.redondo-beach {
+          top: 260px;
+          left: 140px;
+        }
+
+        &.redwood-city {
+          top: 135px;
+          left: 30px;
+        }
+
+        &.rialto {
+          top: 255px;
+          left: 160px;
+        }
+
+        &.richmond {
+          top: 118px;
+          left: 32px;
+        }
+
+        &.riverside {
+          top: 253px;
+          left: 155px;
+        }
+
+        &.roseville {
+          top: 80px;
+          left: 40px;
+        }
+
+        &.sacramento {
+          top: 90px;
+          left: 45px;
+        }
+
+        &.salinas {
+          top: 163px;
+          left: 47px;
+        }
+
+        &.san-bernardino {
+          top: 263px;
+          left: 170px;
+        }
+
+        &.san-diego {
+          top: 295px;
+          left: 175px;
+        }
+
+        &.san-francisco {
+          top: 135px;
+          left: 27px;
+        }
+
+        &.san-jose {
+          top: 136px;
+          left: 43px;
+        }
+
+        &.san-leandro {
+          top: 125px;
+          left: 35px;
+        }
+
+        &.san-mateo {
+          top: 140px;
+          left: 30px;
+        }
+
+        &.santa-ana {
+          top: 262px;
+          left: 147px;
+        }
+
+        &.santa-barbara {
+          top: 235px;
+          left: 100px;
+        }
+
+        &.santa-clara {
+          top: 135px;
+          left: 41px;
+        }
+
+        &.santa-cruz {
+          top: 150px;
+          left: 37px;
+        }
+
+        &.santa-maria {
+          top: 224px;
+          left: 82px;
+        }
+
+        &.santa-monica {
+          top: 250px;
+          left: 140px;
+        }
+
+        &.santa-rosa  {
+          top: 110px;
+          left: 17px;
+        }
+
+        &.simi-valley {
+          top: 250px;
+          left: 125px;
+        }
+
+        &.south-gate {
+          top: 257px;
+          left: 140px;
+        }
+
+        &.south-san-francisco {
+          top: 135px;
+          left: 25px;
+        }
+
+        &.stockton {
+          top: 112px;
+          left: 60px;
+        }
+
+        &.sunnyvale {
+          top: 135px;
+          left: 40px;
+        }
+
+        &.torrance {
+          top: 260px;
+          left: 140px;
+        }
+
+        &.tracy {
+          top: 125px;
+          left: 60px;
+        }
+
+        &.turlock {
+          top: 130px;
+          left: 60px;
+        }
+
+        &.tustin {
+          top: 260px;
+          left: 155px;
+        }
+
+        &.union-city {
+          top: 125px;
+          left: 35px;
+        }
+
+        &.vacaville {
+          top: 100px;
+          left: 40px;
+        }
+
+        &.vallejo {
+          top: 110px;
+          left: 30px;
+        }
+
+        &.ventura {
+          top: 234px;
+          left: 105px;
+        }
+
+        &.visalia {
+          top: 170px;
+          left: 110px;
+        }
+
+        &.walnut-creek {
+          top: 122px;
+          left: 33px;
+        }
+
+        &.west-covina {
+          top: 250px;
+          left: 148px;
+        }
+
+        &.westminster {
+          top: 265px;
+          left: 150px;
+        }
+
+        &.whittier {
+          top: 265px;
+          left: 150px;
+        }
       }
     }
   }
@@ -468,6 +970,11 @@ body {
       color: $primary-green;
       background: url(../img/checked.png) left center no-repeat;
     }
+
+    &.checked-bad {
+      color: #ff5e5e;
+      background: url(../img/checked-bad.png) left center no-repeat;
+    }
   }
 }
 
@@ -505,6 +1012,46 @@ body {
     td {
       font-size: 18px;
       font-weight: 300;
+
+      a {
+        text-decoration: none;
+        color: #000;
+      }
+    }
+  }
+
+  .button {
+    margin: 0 auto;
+    width: 120px;
+    background: #8db6dc;
+    text-decoration: none;
+    color: white;
+    padding: 10px 0;
+    border-radius: 4px;
+    text-align: center;
+    margin-top: 30px;
+
+    &.more {
+      display: none;
+    }
+    &.less {
+      display: block;
+    }
+  }
+
+  &.short {
+    .left, .right {
+      max-height: 225px;
+      overflow: hidden;
+    }
+
+    .button {
+      &.more {
+        display: block;
+      }
+      &.less {
+        display: none;
+      }
     }
   }
 
@@ -512,7 +1059,15 @@ body {
     height: 20px;
     width: 75px;
     position: relative;
-    top: 3px;
+    top: -3px;
+    color: #FFF;
+    font-size: 12px;
+    line-height: 20px;
+    vertical-align: middle;
+    text-align: center;
+    font-weight: 400;
+    text-shadow: 0 0 4px rgba(0,0,0,0.75);
+    overflow: hidden;
 
     &.grade-a {
       background: #9ec880;
@@ -524,6 +1079,14 @@ body {
 
     &.grade-c {
       background: #f19975;
+    }
+
+    &.grade-d {
+      background: #d66060;
+    }
+
+    &.grade-f {
+      background: #a72626;
     }
   }
 }

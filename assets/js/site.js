@@ -1,15 +1,18 @@
 (function () {
+  var $heroLocation = document.getElementById('hero-location');
   var $menu = document.getElementById('menu');
   var $menuToggle = document.getElementById('mobile-toggle');
-
   var $modal = document.getElementById('modal-wrapper');
   var $modalClose = document.getElementById('modal-close');
   var $modalContent = document.getElementById('modal-content');
   var $modalOverlay = document.getElementById('overlay');
-
-  var $heroLocation = document.getElementById('hero-location');
+  var $scoreCard = document.getElementById('score-card');
   var $scoreLocation = document.getElementById('score-location');
+  var $selectedCity = document.getElementsByClassName('selected-city');
+  var $showLess = document.getElementById('show-less');
+  var $showMore = document.getElementById('show-more');
 
+  // Event Listeners
   $menuToggle.addEventListener('click', function() {
     $menu.classList.toggle('open')
   });
@@ -57,10 +60,20 @@
   });
 
   $heroLocation.addEventListener('click', function() {
-    $modal.classList.toggle('open')
+    $modal.classList.toggle('open');
+    $selectedCity[0].scrollIntoView();
   });
 
   $scoreLocation.addEventListener('click', function() {
-    $modal.classList.toggle('open')
+    $modal.classList.toggle('open');
+    $selectedCity[0].scrollIntoView();
+  });
+
+  $showLess.addEventListener('click', function() {
+    $scoreCard.classList.toggle('short');
+  });
+
+  $showMore.addEventListener('click', function() {
+    $scoreCard.classList.toggle('short');
   });
 })();
