@@ -123,7 +123,9 @@ function num($string, $decimal = 0, $suffix = '') {
     return "N/A";
   }
 
-  $output = round(floatval($string), $decimal);
+  $string = preg_replace("/[^0-9\.]/", "", trim($string));
+
+  $output = rtrim(number_format(round(floatval($string), $decimal), $decimal), '.0');
 
   return "{$output}{$suffix}";
 }

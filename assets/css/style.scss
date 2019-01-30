@@ -253,9 +253,14 @@ body {
       display: block;
       height: 24px;
       border-radius: 3px;
+      max-width: 100%;
 
       &.always-bad {
         background-color: #a72626;
+      }
+
+      &.dark-grey {
+        background-color: #888;
       }
 
       &.grade-a {

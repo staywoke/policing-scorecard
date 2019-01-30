@@ -306,7 +306,7 @@ $title = "CA Policing Scorecard - {$data['agency_name']} - Grade {$grade}";
               <h3>Murders Unsolved</h3>
               <p><?= output($data['murders']) ?> Reported from 2013-17 <span class="divider">&nbsp;|&nbsp;</span> <?= output(100 - round(floatval($data['percent_of_murders_solved'])), null, '%') ?> Unsolved</p>
               <div class="progress-bar-wrapper">
-                <div class="progress-bar grade grade-<?= strtolower(preg_replace('/[^A-Z]/', '', getInvertedGrade(intval($data['percentile_of_murders_solved'])))) ?>" style="width: <?= output(intval($data['percentile_of_murders_solved']), 0, '%') ?>"></div>
+                <div class="progress-bar grade grade-<?= strtolower(preg_replace('/[^A-Z]/', '', getInvertedGrade(intval($data['rank_of_misdemeanor_arrests_per_population'])))) ?>" style="width: <?= output(intval($data['rank_of_misdemeanor_arrests_per_population']), 0, '%') ?>"></div>
               </div>
               <p class="note">Fewer Murders Solved than <?= output(intval($data['percentile_of_murders_solved']), 0, '%') ?> of Depts</p>
             </div>
@@ -317,17 +317,17 @@ $title = "CA Policing Scorecard - {$data['agency_name']} - Grade {$grade}";
 
               <p>Misdemeanors ( <?= output(intval($data['percent_misdemeanor_arrests']), 0, '%') ?> )</p>
               <div class="progress-bar-wrapper">
-                <div class="progress-bar grade-<?= strtolower(preg_replace('/[^A-Z]/', '', getInvertedGrade(intval($data['percent_misdemeanor_arrests'])))) ?>" style="width: <?= output(intval($data['percent_misdemeanor_arrests']), 0, '%') ?>"></div>
+                <div class="progress-bar dark-grey" style="width: <?= output(intval($data['percent_misdemeanor_arrests']), 0, '%') ?>"></div>
               </div>
 
               <p>Drug Possession ( <?= output(intval($data['percent_drug_possession_arrests']), 0, '%') ?> )</p>
               <div class="progress-bar-wrapper">
-                <div class="progress-bar grade-<?= strtolower(preg_replace('/[^A-Z]/', '', getInvertedGrade(intval($data['percent_drug_possession_arrests'])))) ?>" style="width: <?= output(intval($data['percent_drug_possession_arrests']), 0, '%') ?>"></div>
+                <div class="progress-bar dark-grey" style="width: <?= output(intval($data['percent_drug_possession_arrests']), 0, '%') ?>"></div>
               </div>
 
               <p>Violent Crime ( <?= output(intval($data['percent_violent_crime_arrests']), 0, '%') ?> )</p>
               <div class="progress-bar-wrapper">
-                <div class="progress-bar grade-<?= strtolower(preg_replace('/[^A-Z]/', '', getGrade(intval($data['percent_violent_crime_arrests'])))) ?>" style="width: <?= output(intval($data['percent_violent_crime_arrests']), 0, '%') ?>"></div>
+                <div class="progress-bar dark-grey" style="width: <?= output(intval($data['percent_violent_crime_arrests']), 0, '%') ?>"></div>
               </div>
             </div>
           </div>
