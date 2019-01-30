@@ -19,20 +19,20 @@ function parse_csv() {
     while (($row = fgetcsv($handle, 0, ',')) !== FALSE) {
       if (sizeof($headers) === 0) {
         foreach($row as $index => $cell) {
-          $headers[] = $cell;
+          $headers[] = trim($cell);
         }
       } else {
         $grade = array();
 
         foreach($row as $index => $cell) {
-          $key = $headers[$index];
-          $data[$key] = $cell;
+          $key = $headers[trim($index)];
+          $data[$key] = trim($cell);
 
           if ($key === 'agency_name') {
-            $grade['agency_name'] = $cell;
+            $grade['agency_name'] = trim($cell);
           }
           if ($key === 'overall_score') {
-            $grade['overall_score'] = floatval($cell);
+            $grade['overall_score'] = floatval(trim($cell));
           }
         }
 

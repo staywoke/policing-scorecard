@@ -1,5 +1,4 @@
 (function () {
-  var $heroLocation = document.getElementById('hero-location');
   var $menu = document.getElementById('menu');
   var $menuToggle = document.getElementById('mobile-toggle');
   var $modal = document.getElementById('modal-wrapper');
@@ -57,11 +56,6 @@
   $modalContent.addEventListener('touchmove', function(e) {
     e.stopPropagation();
     e.stopImmediatePropagation();
-  });
-
-  $heroLocation.addEventListener('click', function() {
-    $modal.classList.toggle('open');
-    $selectedCity[0].scrollIntoView();
   });
 
   $scoreLocation.addEventListener('click', function() {

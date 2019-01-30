@@ -51,6 +51,41 @@ function getGrade($score) {
 }
 
 /**
+ * Return Inverted Percent Score to Letter Grade
+ * @param  {String} $score Percent Score
+ * @return {String}
+ */
+function getInvertedGrade($score) {
+  $score = intval($score);
+
+  if ($score > 35) {
+    return 'F';
+  } elseif ($score > 33 && $score <= 35) {
+    return 'D';
+  } elseif ($score > 30 && $score <= 33) {
+    return 'D+';
+  } elseif ($score > 26 && $score <= 30) {
+    return 'C-';
+  } elseif ($score > 23 && $score <= 26) {
+    return 'C';
+  } elseif ($score > 20 && $score <= 23) {
+    return 'C+';
+  } elseif ($score > 16 && $score <= 20) {
+    return 'B-';
+  } elseif ($score > 13 && $score <= 16) {
+    return 'B';
+  } elseif ($score > 10 && $score <= 13) {
+    return 'B+';
+  } elseif ($score > 6 && $score <= 10) {
+    return 'A-';
+  } elseif ($score > 3 && $score <= 6) {
+    return 'A';
+  } elseif ($score <= 3) {
+    return 'A+';
+  }
+}
+
+/**
  * Fetch Data and Sort Scorecard
  * @return {Array}
  */
@@ -75,9 +110,20 @@ function reportCard() {
  * @return {String}
  */
 function output($template, $default = 'N/A', $suffix = '') {
-  if (empty($template)) {
+  $template = strval($template);
+  if (empty($template) && $template !== '0') {
     $template = $default;
   }
 
   return "{$template}{$suffix}";
+}
+
+function num($string, $decimal = 0, $suffix = '') {
+  if (empty($string) && $string !== 0 && $string !== '0') {
+    return "N/A";
+  }
+
+  $output = round(floatval($string), $decimal);
+
+  return "{$output}{$suffix}";
 }
