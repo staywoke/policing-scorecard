@@ -680,14 +680,14 @@ $title = "CA Policing Scorecard - {$data['agency_name']} - Grade {$grade}";
                 <?= (100 - floatval($data['percent_used_against_people_who_were_not_armed_with_gun'])) ?>
               ],
               backgroundColor:[
-                '#58595b',
+                '#f19975',
                 '#f2f4f6',
-                '#f19975'
+                '#58595b'
               ],
               hoverBackgroundColor:[
-                '#58595b',
+                '#f19975',
                 '#f2f4f6',
-                '#f19975'
+                '#58595b'
               ]
             }
           ]

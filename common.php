@@ -85,6 +85,14 @@ function output($template, $default = 'N/A', $suffix = '') {
   return "{$template}{$suffix}";
 }
 
+/**
+ * Output Number for Template
+ * @param  [string] $string String to be converted to Number
+ * @param  integer $decimal Number of Decimal Points
+ * @param  string $suffix Suffix to Add to Output
+ * @param  boolean $invert If this is a percent, and we need to subtract number from total
+ * @return [string] Converted Number
+ */
 function num($string, $decimal = 0, $suffix = '', $invert = false) {
   if (empty($string) && $string !== 0 && $string !== '0') {
     return "N/A";
@@ -105,6 +113,13 @@ function num($string, $decimal = 0, $suffix = '', $invert = false) {
   return "{$output}{$suffix}";
 }
 
+/**
+ * Custom Color for Progress Bar
+ * @param  [string] $score Number
+ * @param  string $color Which Color Pattern to use
+ * @param  string $break Which Break Point to use
+ * @return [type] Color to use
+ */
 function progressBar($score, $color = 'default', $break = 'default') {
   if (empty($score)) {
     return '';
