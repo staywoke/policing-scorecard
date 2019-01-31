@@ -5,6 +5,12 @@ $primary-yellow: #D8BD26;
 $primary-blue: #82ADD7;
 $primary-light-gray: #F2F4F6;
 
+$grade-light-green: #4ec04e;
+$grade-green: #a6c34c;
+$grade-yellow: #ffc84a;
+$grade-orange: #f48847;
+$grade-red: #eb4841;
+
 $text-black: $primary-gray;
 $text-white: #FFFFFF;
 $text-blue: $primary-blue;
@@ -135,23 +141,23 @@ body {
         text-transform: uppercase;
 
         &.grade-a {
-          color: #9ec880;
+          color: $grade-light-green;
         }
 
         &.grade-b {
-          color: #e2cf25;
+          color: $grade-green;
         }
 
         &.grade-c {
-          color: #e29947;
+          color: $grade-yellow;
         }
 
         &.grade-d {
-          color: #d66060;
+          color: $grade-orange;
         }
 
         &.grade-f {
-          color: #a72626;
+          color: $grade-red;
         }
       }
     }
@@ -235,11 +241,78 @@ body {
     text-align: center;
   }
 
+  .canvas-wrapper {
+    position: relative;
+
+    canvas {
+      max-width: 320px;
+    }
+
+    .canvas-label {
+      position: absolute;
+      font-family: 'Barlow Condensed', sans-serif;
+      font-size: 100px;
+      text-align: center;
+      width: 200px;
+      height: 200px;
+      left: calc(50% - 100px);
+      top: 90px;
+      border-radius: 50%;
+      font-weight: 900;
+      padding-top: 50px;
+      line-height: 40px;
+
+      span {
+        font-size: 40px;
+        text-transform: uppercase;
+        font-weight: normal;
+      }
+    }
+  }
+
+  .keys {
+    font-size: 14px;
+
+    .key {
+      display: inline-block;
+      width: 12px;
+      height: 12px;
+      border-radius: 50%;
+      background: #999;
+      margin: 0 4px 0 15px;
+      line-height: 20px;
+
+      &:first-child {
+        margin-left: 0;
+      }
+
+      &.race-black {
+        background-color: $grade-red;
+      }
+
+      &.race-latinx {
+        background-color: #f19975;
+      }
+
+      &.race-asianpacificislander {
+        background-color: #58595b;
+      }
+
+      &.race-other {
+        background-color: #9a9b9f;
+      }
+
+      &.race-white {
+        background-color: #d4d9e4;
+      }
+    }
+  }
+
   .progress-bar-wrapper {
     background-color: $border-color;
     width: 100%;
     height: 24px;
-    display: block;
+    display: flex;
     position: relative;
     border-radius: 3px;
     margin: 24px 0 8px 0;
@@ -255,32 +328,67 @@ body {
       border-radius: 3px;
       max-width: 100%;
 
+      &.grouped {
+        position: relative;
+        display: inline-block;
+        float: left;
+        border-radius: 0;
+        text-align: center;
+
+        span {
+          font-size: 10px;
+          position: relative;
+          top: -18px;
+          color: #999;
+        }
+      }
+
+      &.race-black {
+        background-color: $grade-red;
+      }
+
+      &.race-latinx {
+        background-color: #f19975;
+      }
+
+      &.race-asianpacificislander {
+        background-color: #58595b;
+      }
+
+      &.race-other {
+        background-color: #9a9b9f;
+      }
+
+      &.race-white {
+        background-color: #d4d9e4;
+      }
+
+      &.bright-green {
+        background-color: $grade-light-green;
+      }
+
+      &.green {
+        background-color: $grade-green;
+      }
+
+      &.yellow {
+        background-color: $grade-yellow;
+      }
+
+      &.orange {
+        background-color: $grade-orange;
+      }
+
+      &.red {
+        background-color: $grade-red;
+      }
+
       &.always-bad {
-        background-color: #a72626;
+        background-color: $grade-red;
       }
 
       &.dark-grey {
         background-color: #888;
-      }
-
-      &.grade-a {
-        background-color: #9ec880;
-      }
-
-      &.grade-b {
-        background-color: #e2cf25;
-      }
-
-      &.grade-c {
-        background-color: #e29947;
-      }
-
-      &.grade-d {
-        background-color: #d66060;
-      }
-
-      &.grade-f {
-        background-color: #a72626;
       }
     }
   }
@@ -291,7 +399,7 @@ body {
     }
 
     p {
-      margin-top: 37px;
+      margin-top: 27px;
       line-height: 18px;
       margin-bottom: 0;
     }
@@ -978,9 +1086,20 @@ body {
 }
 
 .section.score {
+  &.animate {
+    .left {
+      left: -500px;
+    }
+    .right {
+      right: -500px;
+    }
+  }
   .left {
     display: inline-block;
     padding: 30px 0;
+    position: relative;
+    left: 0;
+    transition: left 0.5s;
 
     .selected-location a {
       color: #FFF;
@@ -999,8 +1118,10 @@ body {
     text-transform: uppercase;
     font-family: 'Barlow Condensed', sans-serif;
     padding: 0;
-    position: relative;
     line-height: 120px;
+    position: relative;
+    right: 0;
+    transition: right 0.5s;
 
     .grade {
       font-size: 80px;
@@ -1139,23 +1260,23 @@ body {
     overflow: hidden;
 
     &.grade-a {
-      background: #9ec880;
+      background: $grade-light-green;
     }
 
     &.grade-b {
-      background: #e2cf25;
+      background: $grade-green;
     }
 
     &.grade-c {
-      background: #e29947;
+      background: $grade-yellow;
     }
 
     &.grade-d {
-      background: #d66060;
+      background: $grade-orange;
     }
 
     &.grade-f {
-      background: #a72626;
+      background: $grade-red;
     }
   }
 }

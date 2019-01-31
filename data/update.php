@@ -26,7 +26,9 @@ function parse_csv() {
 
         foreach($row as $index => $cell) {
           $key = $headers[trim($index)];
-          $data[$key] = trim($cell);
+          $cell = trim($cell);
+
+          $data[$key] = ($cell !== '') ? $cell : NULL;
 
           if ($key === 'agency_name') {
             $grade['agency_name'] = trim($cell);

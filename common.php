@@ -124,8 +124,37 @@ function num($string, $decimal = 0, $suffix = '') {
   }
 
   $string = preg_replace("/[^0-9\.]/", "", trim($string));
-
-  $output = rtrim(number_format(round(floatval($string), $decimal), $decimal), '.0');
+  $output = floatval($string);
+  if ($output < 0) {
+    $output = 0;
+  }
+  $output = number_format($output, $decimal);
 
   return "{$output}{$suffix}";
+}
+
+function progressBar($score, $color = 'default', $break = 'default') {
+  if (empty($score)) {
+    return '';
+  }
+
+  $breakpoints = array(
+    'default' => array(20, 40, 50, 60, 100)
+  );
+
+  $colors = array(
+    'default' => array('red', 'orange', 'yellow', 'green', 'bright-green'),
+    'reverse' => array('bright-green', 'green', 'yellow', 'orange', 'red')
+  );
+
+  $output = $colors[$color][0];
+  $score = floatval(preg_replace("/[^0-9\.]/", "", trim($score)));
+
+  foreach ($breakpoints[$break] as $index => $breakpoint) {
+    if ($score >= intval($breakpoint)) {
+      $output = ($index < sizeof($colors[$color])) ? $colors[$color][$index + 1] : $colors[$color][$index];
+    }
+  }
+
+  return $output;
 }

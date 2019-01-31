@@ -70,4 +70,6 @@
   $showMore.addEventListener('click', function() {
     $scoreCard.classList.toggle('short');
   });
+
+  document.getElementById('toggle-animate').classList.toggle('animate');
 })();
