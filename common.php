@@ -23,64 +23,31 @@ function getCityData($city = 'los-angeles') {
 function getGrade($score) {
   $score = intval($score);
 
-  if ($score < 65) {
+  if ($score <= 59) {
     return 'F';
-  } elseif ($score < 67 && $score >= 65) {
+  } elseif ($score <= 62 && $score >= 60) {
+    return 'D-';
+  } elseif ($score <= 66 && $score >= 63) {
     return 'D';
-  } elseif ($score < 70 && $score >= 67) {
+  } elseif ($score <= 69 && $score >= 67) {
     return 'D+';
-  } elseif ($score < 74 && $score >= 70) {
+  } elseif ($score <= 72 && $score >= 70) {
     return 'C-';
-  } elseif ($score < 77 && $score >= 74) {
+  } elseif ($score <= 76 && $score >= 73) {
     return 'C';
-  } elseif ($score < 80 && $score >= 77) {
+  } elseif ($score <= 79 && $score >= 77) {
     return 'C+';
-  } elseif ($score < 84 && $score >= 80) {
+  } elseif ($score <= 82 && $score >= 80) {
     return 'B-';
-  } elseif ($score < 87 && $score >= 84) {
+  } elseif ($score <= 86 && $score >= 83) {
     return 'B';
-  } elseif ($score < 90 && $score >= 87) {
+  } elseif ($score <= 89 && $score >= 87) {
     return 'B+';
-  } elseif ($score < 94 && $score >= 90) {
+  } elseif ($score <= 92 && $score >= 90) {
     return 'A-';
-  } elseif ($score < 97 && $score >= 94) {
+  } elseif ($score <= 97 && $score >= 93) {
     return 'A';
-  } elseif ($score >= 97) {
-    return 'A+';
-  }
-}
-
-/**
- * Return Inverted Percent Score to Letter Grade
- * @param  {String} $score Percent Score
- * @return {String}
- */
-function getInvertedGrade($score) {
-  $score = intval($score);
-
-  if ($score > 35) {
-    return 'F';
-  } elseif ($score > 33 && $score <= 35) {
-    return 'D';
-  } elseif ($score > 30 && $score <= 33) {
-    return 'D+';
-  } elseif ($score > 26 && $score <= 30) {
-    return 'C-';
-  } elseif ($score > 23 && $score <= 26) {
-    return 'C';
-  } elseif ($score > 20 && $score <= 23) {
-    return 'C+';
-  } elseif ($score > 16 && $score <= 20) {
-    return 'B-';
-  } elseif ($score > 13 && $score <= 16) {
-    return 'B';
-  } elseif ($score > 10 && $score <= 13) {
-    return 'B+';
-  } elseif ($score > 6 && $score <= 10) {
-    return 'A-';
-  } elseif ($score > 3 && $score <= 6) {
-    return 'A';
-  } elseif ($score <= 3) {
+  } elseif ($score >= 98) {
     return 'A+';
   }
 }
@@ -118,7 +85,7 @@ function output($template, $default = 'N/A', $suffix = '') {
   return "{$template}{$suffix}";
 }
 
-function num($string, $decimal = 0, $suffix = '') {
+function num($string, $decimal = 0, $suffix = '', $invert = false) {
   if (empty($string) && $string !== 0 && $string !== '0') {
     return "N/A";
   }
@@ -128,6 +95,11 @@ function num($string, $decimal = 0, $suffix = '') {
   if ($output < 0) {
     $output = 0;
   }
+
+  if ($invert) {
+    $output = (100 - $output);
+  }
+
   $output = number_format($output, $decimal);
 
   return "{$output}{$suffix}";

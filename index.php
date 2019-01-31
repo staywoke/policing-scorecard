@@ -87,7 +87,7 @@ $title = "CA Policing Scorecard - {$data['agency_name']} - Grade {$grade}";
           <div class="one-third">
             <h1><strong><?= $data['deadly_force_incidents'] ?></strong> deadly force incident<?= $data['deadly_force_incidents'] !== '1' ? 's' : '' ?></h1>
           <?php if(!isset($data['black_deadly_force_disparity_per_population']) || empty($data['hispanic_deadly_force_disparity_per_population'])): ?>
-            <p>That’s higher than <strong><?= output(100 - round(floatval($data['percentile_of_deadly_force_incidents_per_arrest']), 1), null, '%') ?></strong> of California police departments.</p>
+            <p>That’s higher than <strong><?= num($data['percentile_of_deadly_force_incidents_per_arrest'], 0, '%', true) ?></strong> of California police departments.</p>
           <?php else: ?>
             <p>Based on population, a Black person was <strong><?= num($data['black_deadly_force_disparity_per_population'], 1, 'x') ?> more likely</strong> and a Latinx person was <strong><?= num($data['hispanic_deadly_force_disparity_per_population'], 1, 'x') ?> more likely</strong> to have deadly force used on them than a White person in <?= $data['agency_name'] ?> from 2016-17.</p>
           <?php endif; ?>
@@ -130,9 +130,9 @@ $title = "CA Policing Scorecard - {$data['agency_name']} - Grade {$grade}";
                 <p class="note">City Did Not Provide Data</p>
               <?php else: ?>
                 <div class="progress-bar-wrapper">
-                  <div class="progress-bar <?= progressBar(100 - intval($data['percent_of_less_lethal_force_per_arrest']), 'reverse') ?>" style="width: <?= output(100 - intval($data['percent_of_less_lethal_force_per_arrest']), 0, '%') ?>"></div>
+                  <div class="progress-bar <?= progressBar(100 - intval($data['percent_of_less_lethal_force_per_arrest']), 'reverse') ?>" style="width: <?= num($data['percent_of_less_lethal_force_per_arrest'], 0, '%', true) ?>"></div>
                 </div>
-                <p class="note">More Force than <?= output(100 - intval($data['percent_of_less_lethal_force_per_arrest']), 0, '%') ?> of Depts</p>
+                <p class="note">More Force than <?= num($data['percent_of_less_lethal_force_per_arrest'], 0, '%', true) ?> of Depts</p>
               <?php endif; ?>
             </div>
 
@@ -149,13 +149,13 @@ $title = "CA Policing Scorecard - {$data['agency_name']} - Grade {$grade}";
                 <div class="progress-bar-wrapper">
                   <div class="progress-bar <?= progressBar(100 - intval($data['percentile_of_deadly_force_incidents_per_arrest']), 'reverse') ?>" style="width: <?= output(100 - intval($data['percentile_of_deadly_force_incidents_per_arrest']), 0, '%') ?>"></div>
                 </div>
-                <p class="note">More Deadly Force than <?= output(100 - intval($data['percentile_of_deadly_force_incidents_per_arrest']), 0, '%') ?> of Depts</p>
+                <p class="note">More Deadly Force than <?= num($data['percentile_of_deadly_force_incidents_per_arrest'], 0, '%', true) ?> of Depts</p>
               <?php endif; ?>
             </div>
 
             <div class="stat-wrapper">
               <h3>Where Police say they perceived a gun but no gun was found</h3>
-              <p><?= num($data['people_perceived_to_have_gun']) ?> Guns Perceived <span class="divider">&nbsp;|&nbsp;</span> <?= output(round(floatval($data['people_perceived_to_have_gun'])) - round(floatval($data['people_found_to_have_gun']))) ?> Did Not Have a Gun ( <?= output(intval($data['percent_police_misperceive_the_person_to_have_gun']), 0, '%') ?> )</p>
+              <p><?= num($data['people_perceived_to_have_gun']) ?> Guns Perceived <span class="divider">&nbsp;|&nbsp;</span> <?= output(round(floatval($data['people_perceived_to_have_gun'])) - round(floatval($data['people_found_to_have_gun']))) ?> Did Not Have a Gun ( <?= num($data['percent_police_misperceive_the_person_to_have_gun'], 0, '%') ?> )</p>
               <?php if(!isset($data['percent_police_misperceive_the_person_to_have_gun']) || (isset($data['percent_police_misperceive_the_person_to_have_gun']) && empty($data['percent_police_misperceive_the_person_to_have_gun']))): ?>
                 <div class="progress-bar-wrapper">
                   <div class="progress-bar" style="width: 0"></div>
@@ -173,10 +173,14 @@ $title = "CA Policing Scorecard - {$data['agency_name']} - Grade {$grade}";
             <div class="stat-wrapper">
               <h3>Deadly Force Victims by Armed / Unarmed Status</h3>
               <p><?= num($data['percent_used_against_people_who_were_unarmed'], 0, '%') ?> were Unarmed <span class="divider">&nbsp;|&nbsp;</span> <?= num($data['percent_used_against_people_who_were_not_armed_with_gun'], 0, '%') ?> Did Not Have a Gun</p>
+            <?php if(floatval($data['percent_used_against_people_who_were_unarmed']) > 0 && (floatval($data['percent_used_against_people_who_were_not_armed_with_gun']) - floatval($data['percent_used_against_people_who_were_unarmed'])) > 0 && (100 - floatval($data['percent_used_against_people_who_were_not_armed_with_gun'])) > 0): ?>
               <div class="canvas-wrapper">
                 <div class="canvas-label"><?= num($data['deadly_force_incidents'], 0) ?><br><span>Incidents</span></div>
                 <canvas id="deadly-force-chart" width="310" height="350" style="margin: 10px auto 20px auto;"></canvas>
               </div>
+            <?php else: ?>
+              <p>&nbsp;</p>
+            <?php endif; ?>
             </div>
 
             <div class="stat-wrapper grouped">
@@ -302,7 +306,7 @@ $title = "CA Policing Scorecard - {$data['agency_name']} - Grade {$grade}";
           <div class="left">
             <div class="stat-wrapper">
               <h3>Total civilian complaints</h3>
-              <p><?= output($data['civilian_complaints_reported']) ?> Reported <span class="divider">&nbsp;|&nbsp;</span> <?= output(round(floatval($data['percent_of_civilian_complaints_sustained'])), 'N/A', '%') ?> Ruled in Favor of Civilians</p>
+              <p><?= output($data['civilian_complaints_reported']) ?> Reported <span class="divider">&nbsp;|&nbsp;</span> <?= num($data['percent_of_civilian_complaints_sustained'], 0, '%') ?> Ruled in Favor of Civilians</p>
               <?php if(!isset($data['percent_of_civilian_complaints_sustained']) || (isset($data['percent_of_civilian_complaints_sustained']) && empty($data['percent_of_civilian_complaints_sustained']))): ?>
                 <div class="progress-bar-wrapper">
                   <div class="progress-bar" style="width: 0"></div>
@@ -312,13 +316,13 @@ $title = "CA Policing Scorecard - {$data['agency_name']} - Grade {$grade}";
                 <div class="progress-bar-wrapper">
                   <div class="progress-bar <?= progressBar(100 - intval($data['percent_of_civilian_complaints_sustained']), 'reverse') ?>" style="width: <?= output(intval($data['percent_of_civilian_complaints_sustained']), 0, '%') ?>"></div>
                 </div>
-                <p class="note">More Accountable than <?= output(intval($data['percent_of_complaints_sustained']), 0, '%') ?> of Depts</p>
+                <p class="note">More Accountable than <?= num($data['percent_of_complaints_sustained'], 0, '%') ?> of Depts</p>
               <?php endif; ?>
             </div>
 
             <div class="stat-wrapper">
               <h3>Use of Force Complaints</h3>
-              <p><?= output($data['use_of_force_complaints_reported']) ?> Reported <span class="divider">&nbsp;|&nbsp;</span> <?= output(round(floatval($data['percent_use_of_force_complaints_sustained'])), 'N/A', '%') ?> Ruled in Favor of Civilians</p>
+              <p><?= output($data['use_of_force_complaints_reported']) ?> Reported <span class="divider">&nbsp;|&nbsp;</span> <?= num($data['percent_use_of_force_complaints_sustained'], 0, '%') ?> Ruled in Favor of Civilians</p>
               <?php if(!isset($data['percent_use_of_force_complaints_sustained']) || (isset($data['percent_use_of_force_complaints_sustained']) && empty($data['percent_use_of_force_complaints_sustained']))): ?>
                 <div class="progress-bar-wrapper">
                   <div class="progress-bar" style="width: 0"></div>
@@ -335,7 +339,7 @@ $title = "CA Policing Scorecard - {$data['agency_name']} - Grade {$grade}";
           <div class="right">
             <div class="stat-wrapper">
               <h3>Complaints of Police Discrimination</h3>
-              <p><?= output($data['discrimination_complaints_reported']) ?> Reported <span class="divider">&nbsp;|&nbsp;</span> <?= output(round(floatval($data['percent_discrimination_complaints_sustained'])), 'N/A', '%') ?> Ruled in Favor of Civilians</p>
+              <p><?= num($data['discrimination_complaints_reported']) ?> Reported <span class="divider">&nbsp;|&nbsp;</span> <?= num($data['percent_discrimination_complaints_sustained'], 0, '%') ?> Ruled in Favor of Civilians</p>
               <?php if(!isset($data['percent_discrimination_complaints_sustained']) || (isset($data['percent_discrimination_complaints_sustained']) && empty($data['percent_discrimination_complaints_sustained']))): ?>
                 <div class="progress-bar-wrapper">
                   <div class="progress-bar" style="width: 0"></div>
@@ -351,7 +355,7 @@ $title = "CA Policing Scorecard - {$data['agency_name']} - Grade {$grade}";
 
             <div class="stat-wrapper">
               <h3>Alleged Crimes Committed by Police</h3>
-              <p><?= output($data['criminal_complaints_reported']) ?> Reported <span class="divider">&nbsp;|&nbsp;</span> <?= output(round(floatval($data['percent_criminal_complaints_sustained'])), 'N/A', '%') ?> Ruled in Favor of Civilians</p>
+              <p><?= num($data['criminal_complaints_reported']) ?> Reported <span class="divider">&nbsp;|&nbsp;</span> <?= num($data['percent_criminal_complaints_sustained'], 0, '%') ?> Ruled in Favor of Civilians</p>
               <?php if(!isset($data['percent_criminal_complaints_sustained']) || (isset($data['percent_criminal_complaints_sustained']) && empty($data['percent_criminal_complaints_sustained']))): ?>
                 <div class="progress-bar-wrapper">
                   <div class="progress-bar" style="width: 0"></div>
@@ -359,7 +363,7 @@ $title = "CA Policing Scorecard - {$data['agency_name']} - Grade {$grade}";
                 <p class="note">City Did Not Provide Data</p>
               <?php else: ?>
                 <div class="progress-bar-wrapper">
-                  <div class="progress-bar <?= progressBar($data['percent_criminal_complaints_sustained'], 'reverse') ?>" style="width: <?= output(intval($data['percent_criminal_complaints_sustained']), 0, '%') ?>"></div>
+                  <div class="progress-bar <?= progressBar(intval($data['percent_criminal_complaints_sustained'])) ?>" style="width: <?= output(intval($data['percent_criminal_complaints_sustained']), 0, '%') ?>"></div>
                 </div>
                 <p class="note">&nbsp;</p>
               <?php endif; ?>
@@ -423,7 +427,7 @@ $title = "CA Policing Scorecard - {$data['agency_name']} - Grade {$grade}";
                 <div class="progress-bar-wrapper">
                   <div class="progress-bar <?= progressBar(100 - intval($data['percent_of_misdemeanor_arrests_per_population']), 'reverse') ?>" style="width: <?= output(100 - intval($data['percent_of_misdemeanor_arrests_per_population']), 0, '%') ?>"></div>
                 </div>
-                <p class="note">Higher Misdemeanor Arrest Rate than <?= output(100 - intval($data['percent_of_misdemeanor_arrests_per_population']), 0, '%') ?> of Depts</p>
+                <p class="note">Higher Misdemeanor Arrest Rate than <?= num($data['percent_of_misdemeanor_arrests_per_population'], 0, '%', true) ?> of Depts</p>
               <?php endif; ?>
             </div>
 
@@ -439,7 +443,7 @@ $title = "CA Policing Scorecard - {$data['agency_name']} - Grade {$grade}";
                 <div class="progress-bar-wrapper">
                   <div class="progress-bar <?= progressBar(intval($data['percentile_of_murders_solved']), 'reverse') ?>" style="width: <?= output(intval($data['percentile_of_murders_solved']), 0, '%') ?>"></div>
                 </div>
-                <p class="note">Solved Fewer Murders than <?= output(intval($data['percentile_of_murders_solved']), 0, '%') ?> of Depts</p>
+                <p class="note">Solved Fewer Murders than <?= num($data['percentile_of_murders_solved'], 0, '%') ?> of Depts</p>
               <?php endif; ?>
             </div>
           </div>
@@ -447,17 +451,17 @@ $title = "CA Policing Scorecard - {$data['agency_name']} - Grade {$grade}";
             <div class="stat-wrapper grouped">
               <h3>Percent of Total Arrests in 2016</h3>
 
-              <p>All Misdemeanors ( <?= output(intval($data['percent_misdemeanor_arrests']), 0, '%') ?> )</p>
+              <p>All Misdemeanors ( <?= num($data['percent_misdemeanor_arrests'], 0, '%') ?> )</p>
               <div class="progress-bar-wrapper">
                 <div class="progress-bar dark-grey" style="width: <?= output(intval($data['percent_misdemeanor_arrests']), 0, '%') ?>"></div>
               </div>
 
-              <p>Drug Possession ( <?= output(intval($data['percent_drug_possession_arrests']), 0, '%') ?> )</p>
+              <p>Drug Possession ( <?= num($data['percent_drug_possession_arrests'], 0, '%') ?> )</p>
               <div class="progress-bar-wrapper">
                 <div class="progress-bar dark-grey" style="width: <?= output(intval($data['percent_drug_possession_arrests']), 0, '%') ?>"></div>
               </div>
 
-              <p>Violent Crime ( <?= output(intval($data['percent_violent_crime_arrests']), 0, '%') ?> )</p>
+              <p>Violent Crime ( <?= num($data['percent_violent_crime_arrests'], 0, '%') ?> )</p>
               <div class="progress-bar-wrapper">
                 <div class="progress-bar dark-grey" style="width: <?= output(intval($data['percent_violent_crime_arrests']), 0, '%') ?>"></div>
               </div>
@@ -640,8 +644,9 @@ $title = "CA Policing Scorecard - {$data['agency_name']} - Grade {$grade}";
       <div id="overlay"></div>
     </div>
 
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.7.3/Chart.min.js"></script>
     <script src="assets/js/site.js?ac=1.0.0"></script>
+  <?php if(floatval($data['percent_used_against_people_who_were_unarmed']) > 0 && (floatval($data['percent_used_against_people_who_were_not_armed_with_gun']) - floatval($data['percent_used_against_people_who_were_unarmed'])) > 0 && (100 - floatval($data['percent_used_against_people_who_were_not_armed_with_gun'])) > 0): ?>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.7.3/Chart.min.js"></script>
     <script>
     window.onload = function() {
       var chart = new Chart(document.getElementById("deadly-force-chart").getContext('2d'), {
@@ -651,16 +656,24 @@ $title = "CA Policing Scorecard - {$data['agency_name']} - Grade {$grade}";
           animation: {
             animateRotate: false,
             animateScale: false
+          },
+          tooltips: {
+            callbacks: {
+              label: function(tooltip, data) {
+                return ' ' + data['labels'][tooltip.index] + ': ' + data['datasets'][tooltip.datasetIndex]['data'][tooltip.index] + '%';
+              }
+            }
           }
         },
         data: {
           labels: [
-            'Gun',
+            'Unarmed',
             'Knife/Other',
-            'Unarmed'
+            'Gun'
           ],
           datasets: [
             {
+              borderWidth: 0,
               data: [
                 <?= floatval($data['percent_used_against_people_who_were_unarmed']) ?>,
                 <?= (floatval($data['percent_used_against_people_who_were_not_armed_with_gun']) - floatval($data['percent_used_against_people_who_were_unarmed'])) ?>,
@@ -682,5 +695,6 @@ $title = "CA Policing Scorecard - {$data['agency_name']} - Grade {$grade}";
       });
     };
     </script>
+  <?php endif; ?>
   </body>
 </html>
