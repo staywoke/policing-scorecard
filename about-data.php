@@ -13,7 +13,7 @@
 
     <link href="https://fonts.googleapis.com/css?family=Lato:300,400,700,900" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css?family=Barlow+Condensed:300,400,500,700" rel="stylesheet">
-    <link rel="stylesheet" href="assets/css/style.css?ac=1.0.0">
+    <link rel="stylesheet" href="assets/css/style.css?ver=1.0.0">
   </head>
 
   <body>
