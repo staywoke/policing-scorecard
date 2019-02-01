@@ -1305,6 +1305,53 @@ body {
   }
 }
 
+.section.about-data {
+  padding: 40px 60px 80px 40px;
+
+  .content {
+    line-height: 24px;
+
+    h1, h2, h3 {
+      text-transform: uppercase;
+      margin: 14px 0;
+    }
+
+    h1.title {
+      color: $primary-blue;
+      padding: 0;
+      font-size: 46px;
+      line-height: 54px;
+      font-weight: 300;
+    }
+
+    h2.title {
+      color: $primary-gray;
+      padding: 0;
+      font-size: 28px;
+      line-height: 32px;
+      font-weight: 300;
+    }
+
+    h3.title {
+      color: $primary-blue;
+      padding: 0;
+      font-size: 20px;
+      line-height: 24px;
+      font-weight: 400;
+    }
+
+    a {
+      color: $primary-blue;
+      text-decoration: none;
+    }
+
+    ol {
+      list-style: decimal;
+      margin: 14px 16px;
+    }
+  }
+}
+
 /* RESPONSIVE */
 @media screen and (min-width: $bp-max-width) {
   .header {

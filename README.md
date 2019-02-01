@@ -1,4 +1,4 @@
 CA Policing Scorecard
 ===
 
-CURRENTLY IN DEVELOPMENT
+Police Scorecard for the the top 100 cities in State of California.

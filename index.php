@@ -37,9 +37,9 @@ $title = "CA Policing Scorecard - {$data['agency_name']} - Grade {$grade}";
 
           <div id="menu">
             <ul>
-              <li><a href="#">About the Data</a></li>
-              <li><a href="#">Planning Team</a></li>
-              <li><a href="#">More about Campaign Zero</a></li>
+              <li><a href="about-data.php" target="_blank">About the Data</a></li>
+              <li><a href="https://www.joincampaignzero.org/about/" target="_blank">Planning Team</a></li>
+              <li><a href="https://www.joincampaignzero.org/" target="_blank">More about Campaign Zero</a></li>
             </ul>
           </div>
         </div>
@@ -523,7 +523,7 @@ $title = "CA Policing Scorecard - {$data['agency_name']} - Grade {$grade}";
             Why are we only showing you California?
           </h1>
           <p>
-            In 2015 and 2016, California legislators passed Assembly Bill 71 and Assembly Bill 953 to require law enforcement agencies to report an unprecedented amount of data - including information on police use of force, civilian complaints and other aspects of policing. Using these data, combined with information obtained through public records requests, national databases and media reports, we have built the first statewide Policing Scorecard to help communities evaluate their police departments and hold them accountable. This is a living project that will be expanded to include additional data and indicators as they become available. <a href="" target="_blank">Learn more about our methodology</a>.
+            In 2015 and 2016, California legislators passed Assembly Bill 71 and Assembly Bill 953 to require law enforcement agencies to report an unprecedented amount of data - including information on police use of force, civilian complaints and other aspects of policing. Using these data, combined with information obtained through public records requests, national databases and media reports, we have built the first statewide Policing Scorecard to help communities evaluate their police departments and hold them accountable. This is a living project that will be expanded to include additional data and indicators as they become available. <a href="about-data.php" target="_blank">Learn more about our methodology</a>.
           </p>
         </div>
       </div>
