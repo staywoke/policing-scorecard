@@ -7,6 +7,9 @@ $grade = getGrade($data['overall_score']);
 $reportCard = reportCard();
 $title = "CA Policing Scorecard - {$data['agency_name']} - Grade {$grade}";
 $ac = '?ac=' . getHash();
+$socialUrl = rawurlencode('https://policescorecard.org');
+$socialText = rawurlencode('We conducted the first statewide evaluation of police departments in California. See what grade they get at: policescorecard.org');
+$socialSubject = rawurlencode($title);
 ?>
 <!doctype html>
 <html lang="en">
@@ -21,8 +24,9 @@ $ac = '?ac=' . getHash();
     <meta name="description" content="<?= $title ?>">
     <meta name="author" content="StayWoke">
 
-    <link href="https://fonts.googleapis.com/css?family=Lato:300,400,700,900" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css?family=Barlow+Condensed:300,400,500,700" rel="stylesheet">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lato:300,400,700,900">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Barlow+Condensed:300,400,500,700">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <link rel="stylesheet" href="assets/css/style.css<?= $ac ?>">
   </head>
 
@@ -532,12 +536,15 @@ $ac = '?ac=' . getHash();
       <div class="section bg-gray footer">
         <div class="content">
           <div class="left">
-            <a href="#" class="social"></a>
-            <a href="#" class="social"></a>
-            <a href="#" class="social"></a>
-            <a href="#" class="social"></a>
-            <a href="#" class="social"></a>
-            <a href="#" class="social"></a>
+            <a href="https://www.facebook.com/sharer/sharer.php?u=<?= $socialUrl ?>&t=<?= $socialText ?>" class="social">
+              <i class="fa fa-facebook-f"></i>
+            </a>
+            <a href="https://twitter.com/intent/tweet?source=<?= $socialUrl ?>&text=<?= $socialText ?>" class="social">
+              <i class="fa fa-twitter"></i>
+            </a>
+            <a href="mailto:?subject=<?= $socialSubject ?>&body=<?= $socialText ?>" class="social">
+              <i class="fa fa-envelope"></i>
+            </a>
           </div>
           <div class="right">
             <a href="https://staywoke.typeform.com/to/jBvCkB" class="get-involved" target="_blank">Get Involved</a>

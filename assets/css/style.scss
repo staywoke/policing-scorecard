@@ -1368,6 +1368,9 @@ body {
     border-radius: 50%;
     margin-right: 8px;
     transition: background-color 0.25s;
+    text-align: center;
+    line-height: 30px;
+    color: $primary-gray;
 
     &:hover {
       background: #FFF;
