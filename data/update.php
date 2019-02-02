@@ -41,11 +41,14 @@ function parse_csv() {
           }
         }
 
-        $filename = 'json/' . str_replace(' ', '-', strtolower($row[0])) . '.json';
-        $json = json_encode($data);
-        $grades[] = $grade;
+        if (!empty($row[0])) {
+          $filename = 'json/' . str_replace(' ', '-', strtolower($row[0])) . '.json';
+          $json = json_encode($data);
+          $grades[] = $grade;
 
-        file_put_contents($filename, $json);
+          unlink($filename);
+          file_put_contents($filename, $json);
+        }
       }
     }
 
@@ -54,6 +57,7 @@ function parse_csv() {
     $filename = 'json/_grades.json';
     $json = json_encode($grades);
 
+    unlink($filename);
     file_put_contents($filename, $json);
   }
 }
@@ -85,6 +89,7 @@ function update_file($file, $name) {
   } elseif (!$result) {
     $output .= "<p><span class=\"label label-danger\">ERROR</span>&nbsp; Failed to Download <b>{$name}.csv</b> CSV File</p>";
   } else {
+    unlink("{$name}.csv");
     file_put_contents("{$name}.csv", $result);
     $output .= "<p><span class=\"label label-success\">SUCCESS</span>&nbsp; <a class='download-link' href='{$name}.csv' target='_blank'>{$name}.csv</a> downloaded &amp; application updated</p>";
   }
