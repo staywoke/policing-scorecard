@@ -145,3 +145,16 @@ function progressBar($score, $color = 'default', $break = 'default') {
 
   return $output;
 }
+
+/**
+ * Get the hash of the current git HEAD
+ * @param str $branch The git branch to check
+ * @return mixed Either the hash or a boolean false
+ */
+function getHash( $branch='master' ) {
+  if ( $hash = file_get_contents( sprintf( '.git/refs/heads/%s', $branch ) ) ) {
+    return $hash;
+  } else {
+    return false;
+  }
+}

@@ -6,6 +6,7 @@ $data = getCityData($city);
 $grade = getGrade($data['overall_score']);
 $reportCard = reportCard();
 $title = "CA Policing Scorecard - {$data['agency_name']} - Grade {$grade}";
+$ac = '?ac=' . getHash();
 ?>
 <!doctype html>
 <html lang="en">
@@ -22,7 +23,7 @@ $title = "CA Policing Scorecard - {$data['agency_name']} - Grade {$grade}";
 
     <link href="https://fonts.googleapis.com/css?family=Lato:300,400,700,900" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css?family=Barlow+Condensed:300,400,500,700" rel="stylesheet">
-    <link rel="stylesheet" href="assets/css/style.css?ver=1.0.0">
+    <link rel="stylesheet" href="assets/css/style.css<?= $ac ?>">
   </head>
 
   <body>
@@ -112,7 +113,7 @@ $title = "CA Policing Scorecard - {$data['agency_name']} - Grade {$grade}";
           <h1 class="title">
             Police violence
           </h1>
-          <strong class="grade grade-<?= strtolower(preg_replace('/[^A-Z]/', '', getGrade($data['police_violence_score']))) ?>">Grade: <?= getGrade($data['police_violence_score']) ?></strong>
+          <strong class="grade grade-<?= strtolower(preg_replace('/[^A-Z]/', '', getGrade($data['police_violence_score']))) ?>"><span>Grade: </span><?= getGrade($data['police_violence_score']) ?></strong>
           <span class="divider">&nbsp;|&nbsp;</span>
           <?= num($data['police_violence_score'], 0, '%') ?>
         </div>
@@ -156,11 +157,12 @@ $title = "CA Policing Scorecard - {$data['agency_name']} - Grade {$grade}";
             <div class="stat-wrapper">
               <h3>Where Police say they perceived a gun but no gun was found</h3>
               <p><?= num($data['people_perceived_to_have_gun']) ?> Guns Perceived <span class="divider">&nbsp;|&nbsp;</span> <?= output(round(floatval($data['people_perceived_to_have_gun'])) - round(floatval($data['people_found_to_have_gun']))) ?> Did Not Have a Gun ( <?= num($data['percent_police_misperceive_the_person_to_have_gun'], 0, '%') ?> )</p>
+              <?= var_dump(isset($data['percent_police_misperceive_the_person_to_have_gun'])); ?>
               <?php if(!isset($data['percent_police_misperceive_the_person_to_have_gun']) || (isset($data['percent_police_misperceive_the_person_to_have_gun']) && empty($data['percent_police_misperceive_the_person_to_have_gun']))): ?>
                 <div class="progress-bar-wrapper">
                   <div class="progress-bar" style="width: 0"></div>
                 </div>
-                <p class="note">City Did Not Provide Data</p>
+                <p class="note">&nbsp;</p>
               <?php else: ?>
                 <div class="progress-bar-wrapper">
                   <div class="progress-bar always-bad" style="width: <?= output(intval($data['percent_police_misperceive_the_person_to_have_gun']), 0, '%') ?>"></div>
@@ -175,7 +177,7 @@ $title = "CA Policing Scorecard - {$data['agency_name']} - Grade {$grade}";
               <p><?= num($data['percent_used_against_people_who_were_unarmed'], 0, '%') ?> were Unarmed <span class="divider">&nbsp;|&nbsp;</span> <?= num($data['percent_used_against_people_who_were_not_armed_with_gun'], 0, '%') ?> Did Not Have a Gun</p>
             <?php if(floatval($data['percent_used_against_people_who_were_unarmed']) > 0 && (floatval($data['percent_used_against_people_who_were_not_armed_with_gun']) - floatval($data['percent_used_against_people_who_were_unarmed'])) > 0 && (100 - floatval($data['percent_used_against_people_who_were_not_armed_with_gun'])) > 0): ?>
               <div class="canvas-wrapper">
-                <div class="canvas-label"><?= num($data['deadly_force_incidents'], 0) ?><br><span>Incidents</span></div>
+                <div class="canvas-label"><?= num($data['deadly_force_incidents'], 0) ?><br><span>People Impacted</span></div>
                 <canvas id="deadly-force-chart" width="310" height="350" style="margin: 10px auto 20px auto;"></canvas>
               </div>
             <?php else: ?>
@@ -298,7 +300,7 @@ $title = "CA Policing Scorecard - {$data['agency_name']} - Grade {$grade}";
           <h1 class="title">
             Police Accountability
           </h1>
-          <strong class="grade grade-<?= strtolower(preg_replace('/[^A-Z]/', '', getGrade($data['police_accountability_score']))) ?>">Grade: <?= getGrade($data['police_accountability_score']) ?></strong>
+          <strong class="grade grade-<?= strtolower(preg_replace('/[^A-Z]/', '', getGrade($data['police_accountability_score']))) ?>"><span>Grade: </span><?= getGrade($data['police_accountability_score']) ?></strong>
           <span class="divider">&nbsp;|&nbsp;</span>
           <?= num($data['police_accountability_score'], 0, '%') ?>
         </div>
@@ -409,7 +411,7 @@ $title = "CA Policing Scorecard - {$data['agency_name']} - Grade {$grade}";
           <h1 class="title">
             Approach to Policing
           </h1>
-          <strong class="grade grade-<?= strtolower(preg_replace('/[^A-Z]/', '', getGrade($data['approach_to_policing_score']))) ?>">Grade: <?= getGrade($data['approach_to_policing_score']) ?></strong>
+          <strong class="grade grade-<?= strtolower(preg_replace('/[^A-Z]/', '', getGrade($data['approach_to_policing_score']))) ?>"><span>Grade: </span><?= getGrade($data['approach_to_policing_score']) ?></strong>
           <span class="divider">&nbsp;|&nbsp;</span>
           <?= num($data['approach_to_policing_score'], 0, '%') ?>
         </div>
@@ -644,7 +646,7 @@ $title = "CA Policing Scorecard - {$data['agency_name']} - Grade {$grade}";
       <div id="overlay"></div>
     </div>
 
-    <script src="assets/js/site.js?ver=1.0.0"></script>
+    <script src="assets/js/site.js<?= $ac ?>"></script>
   <?php if(floatval($data['percent_used_against_people_who_were_unarmed']) > 0 && (floatval($data['percent_used_against_people_who_were_not_armed_with_gun']) - floatval($data['percent_used_against_people_who_were_unarmed'])) > 0 && (100 - floatval($data['percent_used_against_people_who_were_not_armed_with_gun'])) > 0): ?>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.7.3/Chart.min.js"></script>
     <script>

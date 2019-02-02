@@ -159,6 +159,10 @@ body {
         &.grade-f {
           color: $grade-red;
         }
+
+        &.grade span {
+          color: $primary-gray !important;
+        }
       }
     }
 
@@ -260,12 +264,12 @@ body {
       border-radius: 50%;
       font-weight: 900;
       padding-top: 50px;
-      line-height: 40px;
+      line-height: 50px;
 
       span {
-        font-size: 40px;
+        font-size: 26px;
         text-transform: uppercase;
-        font-weight: normal;
+        font-weight: 500;
       }
     }
   }
@@ -327,6 +331,7 @@ body {
       height: 24px;
       border-radius: 3px;
       max-width: 100%;
+      //min-width: 1%;
 
       &.grouped {
         position: relative;
@@ -1643,6 +1648,16 @@ body {
     p {
       font-size: 16px;
       line-height: 20px;
+    }
+  }
+
+  .canvas-wrapper {
+    .canvas-label {
+      line-height: 30px !important;
+
+      span {
+        font-size: 26px !important;
+      }
     }
   }
 }
