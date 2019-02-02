@@ -157,7 +157,6 @@ $ac = '?ac=' . getHash();
             <div class="stat-wrapper">
               <h3>Where Police say they perceived a gun but no gun was found</h3>
               <p><?= num($data['people_perceived_to_have_gun']) ?> Guns Perceived <span class="divider">&nbsp;|&nbsp;</span> <?= output(round(floatval($data['people_perceived_to_have_gun'])) - round(floatval($data['people_found_to_have_gun']))) ?> Did Not Have a Gun ( <?= num($data['percent_police_misperceive_the_person_to_have_gun'], 0, '%') ?> )</p>
-              <?= var_dump(isset($data['percent_police_misperceive_the_person_to_have_gun'])); ?>
               <?php if(!isset($data['percent_police_misperceive_the_person_to_have_gun']) || (isset($data['percent_police_misperceive_the_person_to_have_gun']) && empty($data['percent_police_misperceive_the_person_to_have_gun']))): ?>
                 <div class="progress-bar-wrapper">
                   <div class="progress-bar" style="width: 0"></div>
@@ -177,7 +176,7 @@ $ac = '?ac=' . getHash();
               <p><?= num($data['percent_used_against_people_who_were_unarmed'], 0, '%') ?> were Unarmed <span class="divider">&nbsp;|&nbsp;</span> <?= num($data['percent_used_against_people_who_were_not_armed_with_gun'], 0, '%') ?> Did Not Have a Gun</p>
             <?php if(floatval($data['percent_used_against_people_who_were_unarmed']) > 0 && (floatval($data['percent_used_against_people_who_were_not_armed_with_gun']) - floatval($data['percent_used_against_people_who_were_unarmed'])) > 0 && (100 - floatval($data['percent_used_against_people_who_were_not_armed_with_gun'])) > 0): ?>
               <div class="canvas-wrapper">
-                <div class="canvas-label"><?= num($data['deadly_force_incidents'], 0) ?><br><span>People Impacted</span></div>
+                <div class="canvas-label"><?= num($data['number_of_people_impacted_by_deadly_force'], 0) ?><br><span>People Impacted</span></div>
                 <canvas id="deadly-force-chart" width="310" height="350" style="margin: 10px auto 20px auto;"></canvas>
               </div>
             <?php else: ?>
@@ -531,7 +530,24 @@ $ac = '?ac=' . getHash();
       </div>
 
       <div class="section bg-gray footer">
-        <div class="content"></div>
+        <div class="content">
+          <div class="left">
+            <a href="#" class="social"></a>
+            <a href="#" class="social"></a>
+            <a href="#" class="social"></a>
+            <a href="#" class="social"></a>
+            <a href="#" class="social"></a>
+            <a href="#" class="social"></a>
+          </div>
+          <div class="right">
+            <a href="https://staywoke.typeform.com/to/jBvCkB" class="get-involved" target="_blank">Get Involved</a>
+            <a href="https://www.paypal.com/donate/?token=yuTJUAowtak27p94zvf3kwqPQh95niKtApTfg-LkMWAcuBUK4aE6rhKepVVcQna0tfSt5m&country.x=US&locale.x=US" class="donate" target="_blank">Donate</a>
+          </div>
+        </div>
+        <div class="content bt">
+          This is a project of
+          <a href="https://www.joincampaignzero.org/" class="title" target="_blank">Campaign Zero</a>
+        </div>
       </div>
     </div>
 
