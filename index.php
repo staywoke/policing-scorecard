@@ -316,12 +316,12 @@ $socialSubject = rawurlencode($title);
                 <div class="progress-bar-wrapper">
                   <div class="progress-bar" style="width: 0"></div>
                 </div>
-                <p class="note">City Did Not Provide Data</p>
+                <p class="note">&nbsp;</p>
               <?php else: ?>
                 <div class="progress-bar-wrapper">
                   <div class="progress-bar <?= progressBar(100 - intval($data['percent_of_civilian_complaints_sustained']), 'reverse') ?>" style="width: <?= output(intval($data['percent_of_civilian_complaints_sustained']), 0, '%') ?>"></div>
                 </div>
-                <p class="note">More Accountable than <?= num($data['percent_of_complaints_sustained'], 0, '%') ?> of Depts</p>
+                <p class="note">&nbsp;</p>
               <?php endif; ?>
             </div>
 
