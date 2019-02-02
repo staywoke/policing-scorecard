@@ -1358,7 +1358,7 @@ body {
 }
 
 .section.footer {
-  padding: 24px 0;
+  padding: 20px 0;
 
   a.social {
     display: inline-block;
@@ -1371,6 +1371,7 @@ body {
     text-align: center;
     line-height: 30px;
     color: $primary-gray;
+    margin-top: 8px;
 
     &:hover {
       background: #FFF;
@@ -1384,10 +1385,19 @@ body {
       text-decoration: none;
       display: inline-block;
       font-size: 22px;
-      line-height: 30px;
+      line-height: 45px;
       font-weight: 300;
       text-transform: uppercase;
       margin-right: 40px;
+      padding-left: 52px;
+
+      &.get-involved {
+        background: url(../img/hand.png) left center no-repeat;
+      }
+
+      &.donate {
+        background: url(../img/donate.png) left center no-repeat;
+      }
     }
   }
 
@@ -1714,6 +1724,28 @@ body {
       span {
         font-size: 26px !important;
       }
+    }
+  }
+
+  .section.footer {
+    padding: 0;
+
+    .left {
+      background: rgba(255, 255, 255, 0.15);
+      text-align: center;
+      height: 45px;
+    }
+
+    .right {
+      padding-top: 14px;
+
+      a {
+        line-height: 55px;
+      }
+    }
+
+    .content.bt {
+      margin-top: 10px;
     }
   }
 }
