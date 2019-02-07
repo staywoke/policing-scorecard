@@ -284,14 +284,14 @@ $socialSubject = rawurlencode($title);
         </div>
         <div class="content">
           <?php if(
-            $data['requires_deescalation'] !== '1' &&
-            $data['bans_chokeholds_and_strangleholds'] !== '1' &&
-            $data['duty_to_intervene'] !== '1' &&
-            $data['requires_warning_before_shooting'] !== '1' &&
-            $data['restricts_shooting_at_moving_vehicles'] !== '1' &&
-            $data['requires_comprehensive_reporting'] !== '1' &&
-            $data['requires_exhaust_all_other_means_before_shooting'] !== '1' &&
-            $data['has_use_of_force_continuum'] !== '1'
+            output($data['requires_deescalation'], 0) === '0' &&
+            output($data['bans_chokeholds_and_strangleholds'], 0) === '0' &&
+            output($data['duty_to_intervene'], 0) === '0' &&
+            output($data['requires_warning_before_shooting'], 0) === '0' &&
+            output($data['restricts_shooting_at_moving_vehicles'], 0) === '0' &&
+            output($data['requires_comprehensive_reporting'], 0) === '0' &&
+            output($data['requires_exhaust_all_other_means_before_shooting'], 0) === '0' &&
+            output($data['has_use_of_force_continuum'], 0) === '0'
           ): ?>
           <div class="error">City has not adopted any of the following policies:</div>
           <?php endif; ?>
