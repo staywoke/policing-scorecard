@@ -42,7 +42,7 @@ $socialSubject = rawurlencode($title);
 
           <div id="menu">
             <ul>
-              <li><a href="about-data.php" target="_blank">About the Data</a></li>
+              <li><a href="https://docs.google.com/document/d/1YVv68k7fp5u2OOaNT9MqBHn-_itEh4tIa7TZkHRIe1s/edit?usp=sharing" target="_blank">About the Data</a></li>
               <li><a href="https://www.joincampaignzero.org/about/" target="_blank">Planning Team</a></li>
               <li><a href="https://www.joincampaignzero.org/" target="_blank">More about Campaign Zero</a></li>
             </ul>
@@ -61,7 +61,7 @@ $socialSubject = rawurlencode($title);
       <div class="section hero">
         <div class="content">
           <div class="right">
-            <h1>We evaluated every police dept in CA.</h1>
+            <h1>The 100 largest CA police depts.</h1>
             <h2>See what grade they get.</h2>
           </div>
           <div class="left">
@@ -91,7 +91,9 @@ $socialSubject = rawurlencode($title);
         <div class="content">
           <div class="one-third">
             <h1><strong><?= $data['deadly_force_incidents'] ?></strong> deadly force incident<?= $data['deadly_force_incidents'] !== '1' ? 's' : '' ?></h1>
-          <?php if(!isset($data['black_deadly_force_disparity_per_population']) || empty($data['hispanic_deadly_force_disparity_per_population'])): ?>
+          <?php if(num($data['deadly_force_incidents']) === '0'): ?>
+            <p><?= $data['agency_name'] ?> was <strong>1 of only 15 departments</strong> in our analysis that did not use deadly force from 2016-17.</p>
+          <?php elseif(!isset($data['black_deadly_force_disparity_per_population']) || !isset($data['hispanic_deadly_force_disparity_per_population'])): ?>
             <p>That’s higher than <strong><?= num($data['percentile_of_deadly_force_incidents_per_arrest'], 0, '%', true) ?></strong> of California police departments.</p>
           <?php else: ?>
             <p>Based on population, a Black person was <strong><?= num($data['black_deadly_force_disparity_per_population'], 1, 'x') ?> more likely</strong> and a Latinx person was <strong><?= num($data['hispanic_deadly_force_disparity_per_population'], 1, 'x') ?> more likely</strong> to have deadly force used on them than a White person in <?= $data['agency_name'] ?> from 2016-17.</p>
@@ -101,6 +103,8 @@ $socialSubject = rawurlencode($title);
             <h1><strong><?= num($data['civilian_complaints_reported']) ?></strong> civilian complaints of  police misconduct</h1>
           <?php if(num($data['civilian_complaints_sustained']) === '0'): ?>
             <p> <strong>0 complaints </strong> were ruled in favor of civilians from 2016-17.</p>
+          <?php elseif(num($data['civilian_complaints_sustained']) === '1'): ?>
+            <p>Only <strong>1 in every <?= num($data['civilian_complaints_reported']) ?> complaints</strong> were sustained from 2016-17.</p>
           <?php else: ?>
             <p>Only <strong>1 in every <?= num($data['civilian_complaints_sustained']) ?> complaints</strong> were sustained from 2016-17. Even <strong>fewer</strong> resulted in any discipline against the officers involved.</p>
           <?php endif; ?>
@@ -125,8 +129,8 @@ $socialSubject = rawurlencode($title);
           <div class="left">
             <div class="stat-wrapper">
               <h3>Less Lethal Force</h3>
-              <p>Use of batons, tasers &amp; other weapons</p>
-              <p><?= output($data['use_of_less_lethal_force']) ?> Uses of Force <span class="divider">&nbsp;|&nbsp;</span> <?= output($data['less_lethal_force_per_arrest']) ?> per arrest</p>
+              <p>Using batons, strangleholds, tasers &amp; other weapons</p>
+              <p><?= output($data['use_of_less_lethal_force']) ?> Uses of Force <span class="divider">&nbsp;|&nbsp;</span> <?= output($data['less_lethal_force_per_arrest']) ?> per 10k arrests</p>
 
               <?php if(!isset($data['percent_of_less_lethal_force_per_arrest']) || (isset($data['percent_of_less_lethal_force_per_arrest']) && empty($data['percent_of_less_lethal_force_per_arrest']))): ?>
                 <div class="progress-bar-wrapper">
@@ -137,30 +141,38 @@ $socialSubject = rawurlencode($title);
                 <div class="progress-bar-wrapper">
                   <div class="progress-bar <?= progressBar(100 - intval($data['percent_of_less_lethal_force_per_arrest']), 'reverse') ?>" style="width: <?= num($data['percent_of_less_lethal_force_per_arrest'], 0, '%', true) ?>"></div>
                 </div>
-                <p class="note">More Force than <?= num($data['percent_of_less_lethal_force_per_arrest'], 0, '%', true) ?> of Depts</p>
+                <p class="note">^&nbsp; Used More Force per Arrest than <?= num($data['percent_of_less_lethal_force_per_arrest'], 0, '%', true) ?> of Depts &nbsp;&nbsp;</p>
               <?php endif; ?>
             </div>
 
             <div class="stat-wrapper">
               <h3>Deadly Force</h3>
-              <p>Force causing death or serious injury</p>
+              <p>Using force causing death or serious injury</p>
+              <?php if(output($data['deadly_force_incidents']) === '0'): ?>
+              <p class="good-job">Did Not Report Using Deadly Force in 2016-17</p>
+              <?php else: ?>
               <p><?= output($data['deadly_force_incidents']) ?> Incidents <span class="divider">&nbsp;|&nbsp;</span> <?= output($data['deadly_force_incidents_per_arrest']) ?> per 10k arrests <span class="divider">&nbsp;|&nbsp;</span> <?= output(round((floatval($data['fatality_rate']) / 100) * intval($data['number_of_people_impacted_by_deadly_force']))) ?> deaths</p>
+              <?php endif; ?>
+
               <?php if(!isset($data['percentile_of_deadly_force_incidents_per_arrest']) || (isset($data['percentile_of_deadly_force_incidents_per_arrest']) && empty($data['percentile_of_deadly_force_incidents_per_arrest']))): ?>
                 <div class="progress-bar-wrapper">
                   <div class="progress-bar" style="width: 0"></div>
                 </div>
                 <p class="note">City Did Not Provide Data</p>
+              <?php elseif(output($data['deadly_force_incidents']) === '0'): ?>
+                &nbsp;
               <?php else: ?>
                 <div class="progress-bar-wrapper">
                   <div class="progress-bar <?= progressBar(100 - intval($data['percentile_of_deadly_force_incidents_per_arrest']), 'reverse') ?>" style="width: <?= output(100 - intval($data['percentile_of_deadly_force_incidents_per_arrest']), 0, '%') ?>"></div>
                 </div>
-                <p class="note">More Deadly Force than <?= num($data['percentile_of_deadly_force_incidents_per_arrest'], 0, '%', true) ?> of Depts</p>
+                <p class="note">^&nbsp; Used More Deadly Force per Arrest than <?= num($data['percentile_of_deadly_force_incidents_per_arrest'], 0, '%', true) ?> of Depts &nbsp;&nbsp;</p>
               <?php endif; ?>
             </div>
 
+            <?php if(output($data['deadly_force_incidents']) !== '0'): ?>
             <div class="stat-wrapper">
               <h3>Where Police say they perceived a gun but no gun was found</h3>
-              <p><?= num($data['people_perceived_to_have_gun']) ?> Guns Perceived <span class="divider">&nbsp;|&nbsp;</span> <?= output(round(floatval($data['people_perceived_to_have_gun'])) - round(floatval($data['people_found_to_have_gun']))) ?> Did Not Have a Gun ( <?= num($data['percent_police_misperceive_the_person_to_have_gun'], 0, '%') ?> )</p>
+              <p><?= num($data['percent_police_misperceive_the_person_to_have_gun'], 0, '%') ?> ( <?= output(round(floatval($data['people_perceived_to_have_gun'])) - round(floatval($data['people_found_to_have_gun']))) ?> / <?= num($data['people_perceived_to_have_gun']) ?> ) of alleged Guns were Never Found</p>
               <?php if(!isset($data['percent_police_misperceive_the_person_to_have_gun']) || (isset($data['percent_police_misperceive_the_person_to_have_gun']) && empty($data['percent_police_misperceive_the_person_to_have_gun']))): ?>
                 <div class="progress-bar-wrapper">
                   <div class="progress-bar" style="width: 0"></div>
@@ -173,8 +185,11 @@ $socialSubject = rawurlencode($title);
                 <p class="note">&nbsp;</p>
               <?php endif; ?>
             </div>
+            <?php endif; ?>
+
           </div>
           <div class="right">
+            <?php if(output($data['deadly_force_incidents']) !== '0'): ?>
             <div class="stat-wrapper">
               <h3>Deadly Force Victims by Armed / Unarmed Status</h3>
               <p><?= num($data['percent_used_against_people_who_were_unarmed'], 0, '%') ?> were Unarmed <span class="divider">&nbsp;|&nbsp;</span> <?= num($data['percent_used_against_people_who_were_not_armed_with_gun'], 0, '%') ?> Did Not Have a Gun</p>
@@ -187,6 +202,7 @@ $socialSubject = rawurlencode($title);
               <p>&nbsp;</p>
             <?php endif; ?>
             </div>
+            <?php endif; ?>
 
             <div class="stat-wrapper grouped">
               <h3>Deadly force victims by race</h3>
@@ -267,6 +283,18 @@ $socialSubject = rawurlencode($title);
           </h1>
         </div>
         <div class="content">
+          <?php if(
+            $data['requires_deescalation'] !== '1' &&
+            $data['bans_chokeholds_and_strangleholds'] !== '1' &&
+            $data['duty_to_intervene'] !== '1' &&
+            $data['requires_warning_before_shooting'] !== '1' &&
+            $data['restricts_shooting_at_moving_vehicles'] !== '1' &&
+            $data['requires_comprehensive_reporting'] !== '1' &&
+            $data['requires_exhaust_all_other_means_before_shooting'] !== '1' &&
+            $data['has_use_of_force_continuum'] !== '1'
+          ): ?>
+          <div class="error">City has not adopted any of the following policies:</div>
+          <?php endif; ?>
           <div class="left">
             <div class="check <?= $data['requires_deescalation'] === '1' ? 'checked' : 'unchecked' ?>">
               Requires De-Escalation
@@ -360,8 +388,8 @@ $socialSubject = rawurlencode($title);
 
             <div class="stat-wrapper">
               <h3>Alleged Crimes Committed by Police</h3>
-              <p><?= num($data['criminal_complaints_reported']) ?> Reported <span class="divider">&nbsp;|&nbsp;</span> <?= num($data['percent_criminal_complaints_sustained'], 0, '%') ?> Ruled in Favor of Civilians</p>
-              <?php if(!isset($data['percent_criminal_complaints_sustained']) || (isset($data['percent_criminal_complaints_sustained']) && empty($data['percent_criminal_complaints_sustained']))): ?>
+              <p><?= num($data['criminal_complaints_reported']) ?> Reported <span class="divider">&nbsp;|&nbsp;</span> <?= output($data['percent_criminal_complaints_sustained'], 0, '') ?> Ruled in Favor of Civilians</p>
+              <?php if(num($data['criminal_complaints_reported']) !== '0' && (!isset($data['percent_criminal_complaints_sustained']) || (isset($data['percent_criminal_complaints_sustained']) && empty($data['percent_criminal_complaints_sustained'])))): ?>
                 <div class="progress-bar-wrapper">
                   <div class="progress-bar" style="width: 0"></div>
                 </div>
@@ -432,13 +460,13 @@ $socialSubject = rawurlencode($title);
                 <div class="progress-bar-wrapper">
                   <div class="progress-bar <?= progressBar(100 - intval($data['percent_of_misdemeanor_arrests_per_population']), 'reverse') ?>" style="width: <?= output(100 - intval($data['percent_of_misdemeanor_arrests_per_population']), 0, '%') ?>"></div>
                 </div>
-                <p class="note">Higher Misdemeanor Arrest Rate than <?= num($data['percent_of_misdemeanor_arrests_per_population'], 0, '%', true) ?> of Depts</p>
+                <p class="note">^&nbsp; Higher Misdemeanor Arrest Rate than <?= num($data['percent_of_misdemeanor_arrests_per_population'], 0, '%', true) ?> of Depts &nbsp;&nbsp;</p>
               <?php endif; ?>
             </div>
 
             <div class="stat-wrapper">
               <h3>Murders Unsolved</h3>
-              <p><?= output($data['murders']) ?> Murders from 2013-17 <span class="divider">&nbsp;|&nbsp;</span> <?= output(100 - round(floatval($data['percent_of_murders_solved'])), null, '%') ?> Unsolved</p>
+              <p><?= output($data['murders']) ?> Murders from 2013-17 <span class="divider">&nbsp;|&nbsp;</span> <?= (intval(str_replace(',', '', $data['murders'])) - intval(str_replace(',', '', $data['murders_cleared']))) ?> Unsolved</p>
               <?php if(!isset($data['percentile_of_murders_solved']) || (isset($data['percentile_of_murders_solved']) && empty($data['percentile_of_murders_solved']))): ?>
                 <div class="progress-bar-wrapper">
                   <div class="progress-bar" style="width: 0"></div>
@@ -448,7 +476,7 @@ $socialSubject = rawurlencode($title);
                 <div class="progress-bar-wrapper">
                   <div class="progress-bar <?= progressBar(intval($data['percentile_of_murders_solved']), 'reverse') ?>" style="width: <?= output(intval($data['percentile_of_murders_solved']), 0, '%') ?>"></div>
                 </div>
-                <p class="note">Solved Fewer Murders than <?= num($data['percentile_of_murders_solved'], 0, '%') ?> of Depts</p>
+                <p class="note">^&nbsp; Solved Fewer Murders than <?= num($data['percentile_of_murders_solved'], 0, '%') ?> of Depts &nbsp;&nbsp;</p>
               <?php endif; ?>
             </div>
           </div>
@@ -528,7 +556,7 @@ $socialSubject = rawurlencode($title);
             Why are we only showing you California?
           </h1>
           <p>
-            In 2015 and 2016, California legislators passed Assembly Bill 71 and Assembly Bill 953 to require law enforcement agencies to report an unprecedented amount of data - including information on police use of force, civilian complaints and other aspects of policing. Using these data, combined with information obtained through public records requests, national databases and media reports, we have built the first statewide Policing Scorecard to help communities evaluate their police departments and hold them accountable. This is a living project that will be expanded to include additional data and indicators as they become available. <a href="about-data.php" target="_blank">Learn more about our methodology</a>.
+            In 2015 and 2016, California legislators passed Assembly Bill 71 and Assembly Bill 953 to require law enforcement agencies to report an unprecedented amount of data - including information on police use of force, civilian complaints and other aspects of policing. Using these data, combined with information obtained through public records requests, national databases and media reports, we have built the first statewide Policing Scorecard to help communities evaluate their police departments and hold them accountable. This is a living project that will be expanded to include additional data and indicators as they become available. <a href="https://docs.google.com/document/d/1YVv68k7fp5u2OOaNT9MqBHn-_itEh4tIa7TZkHRIe1s/edit?usp=sharing" target="_blank">Learn more about our methodology</a>.
           </p>
         </div>
       </div>
@@ -548,7 +576,7 @@ $socialSubject = rawurlencode($title);
           </div>
           <div class="right">
             <a href="https://staywoke.typeform.com/to/jBvCkB" class="get-involved" target="_blank">Get Involved</a>
-            <a href="https://www.paypal.com/donate/?token=yuTJUAowtak27p94zvf3kwqPQh95niKtApTfg-LkMWAcuBUK4aE6rhKepVVcQna0tfSt5m&country.x=US&locale.x=US" class="donate" target="_blank">Donate</a>
+            <a href="http://paypal.me/campaignzero" class="donate" target="_blank">Donate</a>
           </div>
         </div>
         <div class="content bt">

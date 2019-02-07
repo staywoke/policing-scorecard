@@ -1,15 +1,15 @@
 $primary-gray: #464648;
 $primary-orange: #F19975;
-$primary-green: #9EC880;
+$primary-green: #a7cc84;
 $primary-yellow: #D8BD26;
 $primary-blue: #82ADD7;
 $primary-light-gray: #F2F4F6;
 
-$grade-light-green: #4ec04e;
-$grade-green: #a6c34c;
-$grade-yellow: #ffc84a;
-$grade-orange: #f48847;
-$grade-red: #eb4841;
+$grade-light-green: #97d89a;
+$grade-green: #c9da98;
+$grade-yellow: #ffdd9a;
+$grade-orange: #ee9978;
+$grade-red: #f67f85;
 
 $text-black: $primary-gray;
 $text-white: #FFFFFF;
@@ -123,6 +123,15 @@ body {
     max-width: $bp-max-width;
     margin: 0 auto;
     overflow: hidden;
+
+    .error {
+      display: block;
+      font-size: 20px;
+      color: #f67f85;
+      text-align: center;
+      padding-bottom: 18px;
+      text-transform: uppercase;
+    }
 
     &.section-header {
       font-size: 24px;
@@ -243,6 +252,12 @@ body {
     line-height: 18px;
     margin-bottom: 30px;
     text-align: center;
+  }
+
+  p.good-job {
+    color: $grade-light-green;
+    text-align: center;
+    padding-top: 10px;
   }
 
   .canvas-wrapper {
@@ -1167,7 +1182,7 @@ body {
     }
 
     &.checked-bad {
-      color: #ff5e5e;
+      color: #f67f85;
       background: url(../img/checked-bad.png) left center no-repeat;
     }
   }
@@ -1512,7 +1527,8 @@ body {
         font-size: 20px;
 
         h1.title {
-          font-size: 26px;
+          font-size: 30px;
+          font-weight: 500;
           margin: 20px 0 10px 0;
         }
       }
