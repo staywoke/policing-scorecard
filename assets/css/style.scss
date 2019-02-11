@@ -257,6 +257,7 @@ body {
     color: $grade-light-green;
     text-align: center;
     padding-top: 10px;
+    font-weight: 600;
   }
 
   .canvas-wrapper {
@@ -1059,7 +1060,7 @@ body {
     }
     h2 {
       font-family: 'Barlow Condensed', sans-serif;
-      font-size: 38px;
+      font-size: 34px;
       font-weight: 500;
       color: $primary-gray;
       font-style: italic;
@@ -1629,7 +1630,7 @@ body {
         padding: 10px 0;
       }
       h2 {
-        font-size: 24px;
+        font-size: 22px;
         margin-bottom: 24px;
       }
     }

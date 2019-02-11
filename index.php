@@ -61,8 +61,8 @@ $socialSubject = rawurlencode($title);
       <div class="section hero">
         <div class="content">
           <div class="right">
-            <h1>The 100 largest CA police depts.</h1>
-            <h2>See what grade they get.</h2>
+            <h1>We evaluated the police in California.</h1>
+            <h2>See the grade for each department.</h2>
           </div>
           <div class="left">
             <div class="map">
@@ -105,8 +105,10 @@ $socialSubject = rawurlencode($title);
             <p> <strong>0 complaints </strong> were ruled in favor of civilians from 2016-17.</p>
           <?php elseif(num($data['civilian_complaints_sustained']) === '1'): ?>
             <p>Only <strong>1 in every <?= num($data['civilian_complaints_reported']) ?> complaints</strong> were sustained from 2016-17.</p>
+          <?php elseif(intval(str_replace(',', '', $data['civilian_complaints_reported'])) / intval(str_replace(',', '', $data['civilian_complaints_sustained'])) <= 3): ?>
+            <p><strong><?= num($data['percent_of_civilian_complaints_sustained'], 0, '%') ?></strong> were sustained from 2016-2017. Even <strong>fewer</strong> likely resulted in any discipline against the officers involved.</p>
           <?php else: ?>
-            <p>Only <strong>1 in every <?= num($data['civilian_complaints_sustained']) ?> complaints</strong> were sustained from 2016-17. Even <strong>fewer</strong> resulted in any discipline against the officers involved.</p>
+            <p>Only <strong>1 in every <?= round(intval(str_replace(',', '', $data['civilian_complaints_reported'])) / intval(str_replace(',', '', $data['civilian_complaints_sustained']))) ?> complaints</strong> were sustained from 2016-17. Even <strong>fewer</strong> likely resulted in any discipline against the officers involved.</p>
           <?php endif; ?>
           </div>
           <div class="one-third">
@@ -130,7 +132,7 @@ $socialSubject = rawurlencode($title);
             <div class="stat-wrapper">
               <h3>Less Lethal Force</h3>
               <p>Using batons, strangleholds, tasers &amp; other weapons</p>
-              <p><?= output($data['use_of_less_lethal_force']) ?> Uses of Force <span class="divider">&nbsp;|&nbsp;</span> <?= output($data['less_lethal_force_per_arrest']) ?> per 10k arrests</p>
+              <p><?= output($data['use_of_less_lethal_force']) ?> Uses of Force <span class="divider">&nbsp;|&nbsp;</span> <?= output($data['less_lethal_force_per_arrest']) ?> uses every 10k arrests</p>
 
               <?php if(!isset($data['percent_of_less_lethal_force_per_arrest']) || (isset($data['percent_of_less_lethal_force_per_arrest']) && empty($data['percent_of_less_lethal_force_per_arrest']))): ?>
                 <div class="progress-bar-wrapper">
@@ -151,7 +153,7 @@ $socialSubject = rawurlencode($title);
               <?php if(output($data['deadly_force_incidents']) === '0'): ?>
               <p class="good-job">Did Not Report Using Deadly Force in 2016-17</p>
               <?php else: ?>
-              <p><?= output($data['deadly_force_incidents']) ?> Incidents <span class="divider">&nbsp;|&nbsp;</span> <?= output($data['deadly_force_incidents_per_arrest']) ?> per 10k arrests <span class="divider">&nbsp;|&nbsp;</span> <?= output(round((floatval($data['fatality_rate']) / 100) * intval($data['number_of_people_impacted_by_deadly_force']))) ?> deaths</p>
+              <p><?= output($data['deadly_force_incidents']) ?> Incidents <span class="divider">&nbsp;|&nbsp;</span> <?= output($data['deadly_force_incidents_per_arrest']) ?> every 10k arrests <span class="divider">&nbsp;|&nbsp;</span> <?= output(round((floatval($data['fatality_rate']) / 100) * intval($data['number_of_people_impacted_by_deadly_force']))) ?> deaths</p>
               <?php endif; ?>
 
               <?php if(!isset($data['percentile_of_deadly_force_incidents_per_arrest']) || (isset($data['percentile_of_deadly_force_incidents_per_arrest']) && empty($data['percentile_of_deadly_force_incidents_per_arrest']))): ?>
@@ -169,10 +171,10 @@ $socialSubject = rawurlencode($title);
               <?php endif; ?>
             </div>
 
-            <?php if(output($data['deadly_force_incidents']) !== '0'): ?>
+            <?php if(output($data['deadly_force_incidents']) !== '0' && num($data['percent_police_misperceive_the_person_to_have_gun'], 0, '%') !== 'N/A'): ?>
             <div class="stat-wrapper">
-              <h3>Where Police say they perceived a gun but no gun was found</h3>
-              <p><?= num($data['percent_police_misperceive_the_person_to_have_gun'], 0, '%') ?> ( <?= output(round(floatval($data['people_perceived_to_have_gun'])) - round(floatval($data['people_found_to_have_gun']))) ?> / <?= num($data['people_perceived_to_have_gun']) ?> ) of alleged Guns were Never Found</p>
+              <h3>Where Police say they saw a gun but no gun was found</h3>
+              <p><?= num($data['percent_police_misperceive_the_person_to_have_gun'], 0, '%') ?> of Guns "Perceived" were Never Found ( <?= output(round(floatval($data['people_perceived_to_have_gun'])) - round(floatval($data['people_found_to_have_gun']))) ?> / <?= num($data['people_perceived_to_have_gun']) ?> )</p>
               <?php if(!isset($data['percent_police_misperceive_the_person_to_have_gun']) || (isset($data['percent_police_misperceive_the_person_to_have_gun']) && empty($data['percent_police_misperceive_the_person_to_have_gun']))): ?>
                 <div class="progress-bar-wrapper">
                   <div class="progress-bar" style="width: 0"></div>
@@ -293,7 +295,7 @@ $socialSubject = rawurlencode($title);
             output($data['requires_exhaust_all_other_means_before_shooting'], 0) === '0' &&
             output($data['has_use_of_force_continuum'], 0) === '0'
           ): ?>
-          <div class="error">City has not adopted any of the following policies:</div>
+          <div class="error">City has not adopted the following policies:</div>
           <?php endif; ?>
           <div class="left">
             <div class="check <?= $data['requires_deescalation'] === '1' ? 'checked' : 'unchecked' ?>">
@@ -467,7 +469,11 @@ $socialSubject = rawurlencode($title);
             <div class="stat-wrapper">
               <h3>Murders Unsolved</h3>
               <p><?= output($data['murders']) ?> Murders from 2013-17 <span class="divider">&nbsp;|&nbsp;</span> <?= (intval(str_replace(',', '', $data['murders'])) - intval(str_replace(',', '', $data['murders_cleared']))) ?> Unsolved</p>
-              <?php if(!isset($data['percentile_of_murders_solved']) || (isset($data['percentile_of_murders_solved']) && empty($data['percentile_of_murders_solved']))): ?>
+              <?php if(intval($data['murders']) === 0): ?>
+                <p class="good-job">No Murders Reported</p>
+              <?php elseif(intval($data['murders']) > 0 && (intval(str_replace(',', '', $data['murders'])) - intval(str_replace(',', '', $data['murders_cleared']))) === 0): ?>
+                <p class="good-job">No Unsolved Murders Reported</p>
+              <?php elseif(!isset($data['percentile_of_murders_solved']) || (isset($data['percentile_of_murders_solved']) && empty($data['percentile_of_murders_solved']))): ?>
                 <div class="progress-bar-wrapper">
                   <div class="progress-bar" style="width: 0"></div>
                 </div>
@@ -734,13 +740,13 @@ $socialSubject = rawurlencode($title);
               ],
               backgroundColor:[
                 '#f19975',
-                '#f2f4f6',
-                '#58595b'
+                '#58595b',
+                '#d4d9e4'
               ],
               hoverBackgroundColor:[
                 '#f19975',
-                '#f2f4f6',
-                '#58595b'
+                '#58595b',
+                '#d4d9e4'
               ]
             }
           ]
