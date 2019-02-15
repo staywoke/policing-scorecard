@@ -27,7 +27,7 @@ $socialSubject = rawurlencode($title);
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lato:300,400,700,900">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Barlow+Condensed:300,400,500,700">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-    <link rel="stylesheet" href="assets/css/style.css<?= $ac ?>">
+    <link rel="stylesheet" href="assets/css/style.css<?= trim($ac) ?>">
   </head>
 
   <body>
@@ -130,13 +130,14 @@ $socialSubject = rawurlencode($title);
         <div class="content">
           <div class="left">
             <div class="stat-wrapper">
+              <a href="javascript:void(0)" data-city="<?= $city ?>" data-more-info="" class="more-info"></a>
               <h3>Less Lethal Force</h3>
               <p>Using batons, strangleholds, tasers &amp; other weapons</p>
               <p><?= output($data['use_of_less_lethal_force']) ?> Uses of Force <span class="divider">&nbsp;|&nbsp;</span> <?= output($data['less_lethal_force_per_arrest']) ?> uses every 10k arrests</p>
 
               <?php if(!isset($data['percent_of_less_lethal_force_per_arrest']) || (isset($data['percent_of_less_lethal_force_per_arrest']) && empty($data['percent_of_less_lethal_force_per_arrest']))): ?>
                 <div class="progress-bar-wrapper">
-                  <div class="progress-bar" style="width: 0"></div>
+                  <div class="progress-bar no-data" style="width: 0"></div>
                 </div>
                 <p class="note">City Did Not Provide Data</p>
               <?php else: ?>
@@ -148,6 +149,7 @@ $socialSubject = rawurlencode($title);
             </div>
 
             <div class="stat-wrapper">
+              <a href="javascript:void(0)" data-city="<?= $city ?>" data-more-info="" class="more-info"></a>
               <h3>Deadly Force</h3>
               <p>Using force causing death or serious injury</p>
               <?php if(output($data['deadly_force_incidents']) === '0'): ?>
@@ -158,7 +160,7 @@ $socialSubject = rawurlencode($title);
 
               <?php if(!isset($data['percentile_of_deadly_force_incidents_per_arrest']) || (isset($data['percentile_of_deadly_force_incidents_per_arrest']) && empty($data['percentile_of_deadly_force_incidents_per_arrest']))): ?>
                 <div class="progress-bar-wrapper">
-                  <div class="progress-bar" style="width: 0"></div>
+                  <div class="progress-bar no-data" style="width: 0"></div>
                 </div>
                 <p class="note">City Did Not Provide Data</p>
               <?php elseif(output($data['deadly_force_incidents']) === '0'): ?>
@@ -173,11 +175,12 @@ $socialSubject = rawurlencode($title);
 
             <?php if(output($data['deadly_force_incidents']) !== '0' && num($data['percent_police_misperceive_the_person_to_have_gun'], 0, '%') !== 'N/A'): ?>
             <div class="stat-wrapper">
+              <a href="javascript:void(0)" data-city="<?= $city ?>" data-more-info="" class="more-info"></a>
               <h3>Where Police say they saw a gun but no gun was found</h3>
               <p><?= num($data['percent_police_misperceive_the_person_to_have_gun'], 0, '%') ?> of Guns "Perceived" were Never Found ( <?= output(round(floatval($data['people_perceived_to_have_gun'])) - round(floatval($data['people_found_to_have_gun']))) ?> / <?= num($data['people_perceived_to_have_gun']) ?> )</p>
               <?php if(!isset($data['percent_police_misperceive_the_person_to_have_gun']) || (isset($data['percent_police_misperceive_the_person_to_have_gun']) && empty($data['percent_police_misperceive_the_person_to_have_gun']))): ?>
                 <div class="progress-bar-wrapper">
-                  <div class="progress-bar" style="width: 0"></div>
+                  <div class="progress-bar no-data" style="width: 0"></div>
                 </div>
                 <p class="note">&nbsp;</p>
               <?php else: ?>
@@ -193,9 +196,10 @@ $socialSubject = rawurlencode($title);
           <div class="right">
             <?php if(output($data['deadly_force_incidents']) !== '0'): ?>
             <div class="stat-wrapper">
+              <a href="javascript:void(0)" data-city="<?= $city ?>" data-more-info="" class="more-info"></a>
               <h3>Deadly Force Victims by Armed / Unarmed Status</h3>
               <p><?= num($data['percent_used_against_people_who_were_unarmed'], 0, '%') ?> were Unarmed <span class="divider">&nbsp;|&nbsp;</span> <?= num($data['percent_used_against_people_who_were_not_armed_with_gun'], 0, '%') ?> Did Not Have a Gun</p>
-            <?php if(floatval($data['percent_used_against_people_who_were_unarmed']) > 0 && (floatval($data['percent_used_against_people_who_were_not_armed_with_gun']) - floatval($data['percent_used_against_people_who_were_unarmed'])) > 0 && (100 - floatval($data['percent_used_against_people_who_were_not_armed_with_gun'])) > 0): ?>
+            <?php if(num($data['number_of_people_impacted_by_deadly_force'], 0) !== '0'): ?>
               <div class="canvas-wrapper">
                 <div class="canvas-label"><?= num($data['number_of_people_impacted_by_deadly_force'], 0) ?><br><span>People Impacted</span></div>
                 <canvas id="deadly-force-chart" width="310" height="350" style="margin: 10px auto 20px auto;"></canvas>
@@ -207,6 +211,7 @@ $socialSubject = rawurlencode($title);
             <?php endif; ?>
 
             <div class="stat-wrapper grouped">
+              <a href="javascript:void(0)" data-city="<?= $city ?>" data-more-info="" class="more-info"></a>
               <h3>Deadly force victims by race</h3>
 
               <div class="keys">
@@ -298,30 +303,30 @@ $socialSubject = rawurlencode($title);
           <div class="error">City has not adopted the following policies:</div>
           <?php endif; ?>
           <div class="left">
-            <div class="check <?= $data['requires_deescalation'] === '1' ? 'checked' : 'unchecked' ?>">
+            <div class="check <?= $data['requires_deescalation'] === '1' ? 'checked' : 'unchecked' ?> more-info" data-city="<?= $city ?>" data-more-info="policy_language_requires_deescalation">
               Requires De-Escalation
             </div>
-            <div class="check <?= $data['bans_chokeholds_and_strangleholds'] === '1' ? 'checked' : 'unchecked' ?>">
+            <div class="check <?= $data['bans_chokeholds_and_strangleholds'] === '1' ? 'checked' : 'unchecked' ?> more-info" data-city="<?= $city ?>" data-more-info="policy_language_bans_chokeholds_and_strangleholds">
               Bans Chokeholds / Strangleholds
             </div>
-            <div class="check <?= $data['duty_to_intervene'] === '1' ? 'checked' : 'unchecked' ?>">
+            <div class="check <?= $data['duty_to_intervene'] === '1' ? 'checked' : 'unchecked' ?> more-info" data-city="<?= $city ?>" data-more-info="policy_language_duty_to_intervene">
               Duty to Intervene
             </div>
-            <div class="check <?= $data['requires_warning_before_shooting'] === '1' ? 'checked' : 'unchecked' ?>">
+            <div class="check <?= $data['requires_warning_before_shooting'] === '1' ? 'checked' : 'unchecked' ?> more-info" data-city="<?= $city ?>" data-more-info="policy_language_requires_warning_before_shooting">
               Requires Warning Before Shooting
             </div>
           </div>
           <div class="right">
-            <div class="check <?= $data['restricts_shooting_at_moving_vehicles'] === '1' ? 'checked' : 'unchecked' ?>">
+            <div class="check <?= $data['restricts_shooting_at_moving_vehicles'] === '1' ? 'checked' : 'unchecked' ?> more-info" data-city="<?= $city ?>" data-more-info="policy_language_restricts_shooting_at_moving_vehicles">
               Restricts Shooting at Moving Vehicles
             </div>
-            <div class="check <?= $data['requires_comprehensive_reporting'] === '1' ? 'checked' : 'unchecked' ?>">
+            <div class="check <?= $data['requires_comprehensive_reporting'] === '1' ? 'checked' : 'unchecked' ?> more-info" data-city="<?= $city ?>" data-more-info="policy_language_requires_comprehensive_reporting">
               Requires Comprehensive Reporting
             </div>
-            <div class="check <?= $data['requires_exhaust_all_other_means_before_shooting'] === '1' ? 'checked' : 'unchecked' ?>">
+            <div class="check <?= $data['requires_exhaust_all_other_means_before_shooting'] === '1' ? 'checked' : 'unchecked' ?> more-info" data-city="<?= $city ?>" data-more-info="policy_language_requires_exhaust_all_other_means_before_shooting">
               Requires Exhaust All Means Before Shooting
             </div>
-            <div class="check <?= $data['has_use_of_force_continuum'] === '1' ? 'checked' : 'unchecked' ?>">
+            <div class="check <?= $data['has_use_of_force_continuum'] === '1' ? 'checked' : 'unchecked' ?> more-info" data-city="<?= $city ?>" data-more-info="policy_language_has_use_of_force_continuum">
               Has Use of Force Continuum
             </div>
           </div>
@@ -340,11 +345,12 @@ $socialSubject = rawurlencode($title);
         <div class="content">
           <div class="left">
             <div class="stat-wrapper">
+              <a href="javascript:void(0)" data-city="<?= $city ?>" data-more-info="" class="more-info"></a>
               <h3>Total civilian complaints</h3>
               <p><?= output($data['civilian_complaints_reported']) ?> Reported <span class="divider">&nbsp;|&nbsp;</span> <?= num($data['percent_of_civilian_complaints_sustained'], 0, '%') ?> Ruled in Favor of Civilians</p>
               <?php if(!isset($data['percent_of_civilian_complaints_sustained']) || (isset($data['percent_of_civilian_complaints_sustained']) && empty($data['percent_of_civilian_complaints_sustained']))): ?>
                 <div class="progress-bar-wrapper">
-                  <div class="progress-bar" style="width: 0"></div>
+                  <div class="progress-bar no-data" style="width: 0"></div>
                 </div>
                 <p class="note">&nbsp;</p>
               <?php else: ?>
@@ -356,11 +362,12 @@ $socialSubject = rawurlencode($title);
             </div>
 
             <div class="stat-wrapper">
+              <a href="javascript:void(0)" data-city="<?= $city ?>" data-more-info="" class="more-info"></a>
               <h3>Use of Force Complaints</h3>
               <p><?= output($data['use_of_force_complaints_reported']) ?> Reported <span class="divider">&nbsp;|&nbsp;</span> <?= num($data['percent_use_of_force_complaints_sustained'], 0, '%') ?> Ruled in Favor of Civilians</p>
               <?php if(!isset($data['percent_use_of_force_complaints_sustained']) || (isset($data['percent_use_of_force_complaints_sustained']) && empty($data['percent_use_of_force_complaints_sustained']))): ?>
                 <div class="progress-bar-wrapper">
-                  <div class="progress-bar" style="width: 0"></div>
+                  <div class="progress-bar no-data" style="width: 0"></div>
                 </div>
                 <p class="note">City Did Not Provide Data</p>
               <?php else: ?>
@@ -373,11 +380,12 @@ $socialSubject = rawurlencode($title);
           </div>
           <div class="right">
             <div class="stat-wrapper">
+              <a href="javascript:void(0)" data-city="<?= $city ?>" data-more-info="" class="more-info"></a>
               <h3>Complaints of Police Discrimination</h3>
               <p><?= num($data['discrimination_complaints_reported']) ?> Reported <span class="divider">&nbsp;|&nbsp;</span> <?= num($data['percent_discrimination_complaints_sustained'], 0, '%') ?> Ruled in Favor of Civilians</p>
               <?php if(!isset($data['percent_discrimination_complaints_sustained']) || (isset($data['percent_discrimination_complaints_sustained']) && empty($data['percent_discrimination_complaints_sustained']))): ?>
                 <div class="progress-bar-wrapper">
-                  <div class="progress-bar" style="width: 0"></div>
+                  <div class="progress-bar no-data" style="width: 0"></div>
                 </div>
                 <p class="note">City Did Not Provide Data</p>
               <?php else: ?>
@@ -389,11 +397,12 @@ $socialSubject = rawurlencode($title);
             </div>
 
             <div class="stat-wrapper">
+              <a href="javascript:void(0)" data-city="<?= $city ?>" data-more-info="" class="more-info"></a>
               <h3>Alleged Crimes Committed by Police</h3>
               <p><?= num($data['criminal_complaints_reported']) ?> Reported <span class="divider">&nbsp;|&nbsp;</span> <?= output($data['percent_criminal_complaints_sustained'], 0, '') ?> Ruled in Favor of Civilians</p>
               <?php if(num($data['criminal_complaints_reported']) !== '0' && (!isset($data['percent_criminal_complaints_sustained']) || (isset($data['percent_criminal_complaints_sustained']) && empty($data['percent_criminal_complaints_sustained'])))): ?>
                 <div class="progress-bar-wrapper">
-                  <div class="progress-bar" style="width: 0"></div>
+                  <div class="progress-bar no-data" style="width: 0"></div>
                 </div>
                 <p class="note">City Did Not Provide Data</p>
               <?php else: ?>
@@ -415,24 +424,24 @@ $socialSubject = rawurlencode($title);
         </div>
         <div class="content">
           <div class="left">
-            <div class="check <?= $data['disqualifies_complaints'] === '1' ? 'checked-bad' : 'unchecked' ?>">
+            <div class="check <?= $data['disqualifies_complaints'] === '1' ? 'checked-bad' : 'unchecked' ?> more-info" data-city="<?= $city ?>" data-more-info="policy_language_disqualifies_complaints">
               Disqualifies Complaints
             </div>
-            <div class="check <?= $data['restricts_delays_interrogations'] === '1' ? 'checked-bad' : 'unchecked' ?>">
+            <div class="check <?= $data['restricts_delays_interrogations'] === '1' ? 'checked-bad' : 'unchecked' ?> more-info" data-city="<?= $city ?>" data-more-info="policy_language_restricts_delays_interrogations">
               Restricts / Delays Interrogations
             </div>
-            <div class="check <?= $data['gives_officers_unfair_access_to_information'] === '1' ? 'checked-bad' : 'unchecked' ?>">
+            <div class="check <?= $data['gives_officers_unfair_access_to_information'] === '1' ? 'checked-bad' : 'unchecked' ?> more-info" data-city="<?= $city ?>" data-more-info="policy_language_gives_officers_unfair_access_to_information">
               Gives Officers Unfair Access to Information
             </div>
           </div>
           <div class="right">
-            <div class="check <?= $data['limits_oversight_discipline'] === '1' ? 'checked-bad' : 'unchecked' ?>">
+            <div class="check <?= $data['limits_oversight_discipline'] === '1' ? 'checked-bad' : 'unchecked' ?> more-info" data-city="<?= $city ?>" data-more-info="policy_language_limits_oversight_discipline">
               Limits Oversight / Discipline
             </div>
-            <div class="check <?= $data['requires_city_pay_for_misconduct'] === '1' ? 'checked-bad' : 'unchecked' ?>">
+            <div class="check <?= $data['requires_city_pay_for_misconduct'] === '1' ? 'checked-bad' : 'unchecked' ?> more-info" data-city="<?= $city ?>" data-more-info="policy_language_requires_city_pay_for_misconduct">
               Requires City Pay for Misconduct
             </div>
-            <div class="check <?= $data['erases_misconduct_records'] === '1' ? 'checked-bad' : 'unchecked' ?>">
+            <div class="check <?= $data['erases_misconduct_records'] === '1' ? 'checked-bad' : 'unchecked' ?> more-info" data-city="<?= $city ?>" data-more-info="policy_language_erases_misconduct_records">
               Erases Misconduct Records
             </div>
           </div>
@@ -451,11 +460,12 @@ $socialSubject = rawurlencode($title);
         <div class="content">
           <div class="left">
             <div class="stat-wrapper">
+              <a href="javascript:void(0)" data-city="<?= $city ?>" data-more-info="" class="more-info"></a>
               <h3>Arrests for Low Level Offenses</h3>
               <p><?= num(round(intval($data['total_arrests']) * intval($data['percent_misdemeanor_arrests']))) ?> Misdemeanor Arrests <span class="divider">&nbsp;|&nbsp;</span> <?= output($data['misdemeanor_arrests_per_population']) ?> per 1k residents</p>
               <?php if(!isset($data['percent_of_misdemeanor_arrests_per_population']) || (isset($data['percent_of_misdemeanor_arrests_per_population']) && empty($data['percent_of_misdemeanor_arrests_per_population']))): ?>
                 <div class="progress-bar-wrapper">
-                  <div class="progress-bar" style="width: 0"></div>
+                  <div class="progress-bar no-data" style="width: 0"></div>
                 </div>
                 <p class="note">City Did Not Provide Data</p>
               <?php else: ?>
@@ -467,6 +477,7 @@ $socialSubject = rawurlencode($title);
             </div>
 
             <div class="stat-wrapper">
+              <a href="javascript:void(0)" data-city="<?= $city ?>" data-more-info="" class="more-info"></a>
               <h3>Murders Unsolved</h3>
               <p><?= output($data['murders']) ?> Murders from 2013-17 <span class="divider">&nbsp;|&nbsp;</span> <?= (intval(str_replace(',', '', $data['murders'])) - intval(str_replace(',', '', $data['murders_cleared']))) ?> Unsolved</p>
               <?php if(intval($data['murders']) === 0): ?>
@@ -475,7 +486,7 @@ $socialSubject = rawurlencode($title);
                 <p class="good-job">No Unsolved Murders Reported</p>
               <?php elseif(!isset($data['percentile_of_murders_solved']) || (isset($data['percentile_of_murders_solved']) && empty($data['percentile_of_murders_solved']))): ?>
                 <div class="progress-bar-wrapper">
-                  <div class="progress-bar" style="width: 0"></div>
+                  <div class="progress-bar no-data" style="width: 0"></div>
                 </div>
                 <p class="note">City Did Not Provide Data</p>
               <?php else: ?>
@@ -488,6 +499,7 @@ $socialSubject = rawurlencode($title);
           </div>
           <div class="right">
             <div class="stat-wrapper grouped">
+              <a href="javascript:void(0)" data-city="<?= $city ?>" data-more-info="" class="more-info"></a>
               <h3>Percent of Total Arrests in 2016</h3>
 
               <p>All Misdemeanors ( <?= num($data['percent_misdemeanor_arrests'], 0, '%') ?> )</p>
@@ -564,6 +576,19 @@ $socialSubject = rawurlencode($title);
           <p>
             In 2015 and 2016, California legislators passed Assembly Bill 71 and Assembly Bill 953 to require law enforcement agencies to report an unprecedented amount of data - including information on police use of force, civilian complaints and other aspects of policing. Using these data, combined with information obtained through public records requests, national databases and media reports, we have built the first statewide Policing Scorecard to help communities evaluate their police departments and hold them accountable. This is a living project that will be expanded to include additional data and indicators as they become available. <a href="https://docs.google.com/document/d/1YVv68k7fp5u2OOaNT9MqBHn-_itEh4tIa7TZkHRIe1s/edit?usp=sharing" target="_blank">Learn more about our methodology</a>.
           </p>
+          <p>&nbsp;</p>
+          <p>
+            Use this Scorecard to identify issues within police departments that require the most urgent interventions and hold officials accountable for implementing solutions to these issues. For example, cities with higher rates of misdemeanor arrests could benefit most from solutions that create alternatives to policing and arrest for these offenses. In cities where police make fewer arrests overall but use more force when making arrests, communities could benefit significantly from policies designed to <a href="http://useofforceproject.org/" target="_blank">limit police use force</a>. And cities where complaints of police misconduct are rarely ruled in favor of civilians could benefit from creating an oversight structure to independently investigate these complaints.
+          </p>
+          <p>&nbsp;</p>
+          <p>Here’s how you can get started pushing for change within your city:</p>
+          <p>&nbsp;</p>
+          <ul>
+            <li>Contact your Mayor and Police Chief, share this scorecard with them and urge them to enact policies to address issues you’ve identified as priorities in your community.</li>
+            <li>Use the <a href="http://embed.joincampaignzero.org/" target="_blank">Campaign Zero Advocacy Tool</a> to find your California State Assembly Member and urge them to support Assembly Bill 392, which would require police to attempt de-escalation and all available alternatives before using deadly force.</li>
+          </ul>
+          <p>&nbsp;</p>
+          <p>If you’d like to join a group of activists and volunteers working to advance equity and justice in California, sign up via the <strong>get involved</strong> link below. If you have further questions or need support with an advocacy campaign, contact us directly at <a href="mailto:info@joincampaignzero.org">info@joincampaignzero.org</a>.</p>
         </div>
       </div>
 
@@ -596,6 +621,7 @@ $socialSubject = rawurlencode($title);
       <div class="modal">
         <a href="javascript:void(0)" id="modal-close">✖</a>
         <div id="modal-content">
+          <div id="more-info-content"></div>
           <ul id="city-select">
             <li><a href="./?city=alameda"<?= ($city === 'alameda') ? ' class="selected-city"' : '' ?>>Alameda</a></li>
             <li><a href="./?city=alhambra"<?= ($city === 'alhambra') ? ' class="selected-city"' : '' ?>>Alhambra</a></li>
@@ -703,8 +729,8 @@ $socialSubject = rawurlencode($title);
       <div id="overlay"></div>
     </div>
 
-    <script src="assets/js/site.js<?= $ac ?>"></script>
-  <?php if(floatval($data['percent_used_against_people_who_were_unarmed']) > 0 && (floatval($data['percent_used_against_people_who_were_not_armed_with_gun']) - floatval($data['percent_used_against_people_who_were_unarmed'])) > 0 && (100 - floatval($data['percent_used_against_people_who_were_not_armed_with_gun'])) > 0): ?>
+    <script src="assets/js/site.js<?= trim($ac) ?>"></script>
+  <?php if(num($data['number_of_people_impacted_by_deadly_force'], 0) !== '0'): ?>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.7.3/Chart.min.js"></script>
     <script>
     window.onload = function() {

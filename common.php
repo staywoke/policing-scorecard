@@ -137,9 +137,17 @@ function progressBar($score, $color = 'default', $break = 'default') {
   $output = $colors[$color][0];
   $score = floatval(preg_replace("/[^0-9\.]/", "", trim($score)));
 
+  if ($score > 100) {
+    $score = 100;
+  }
+
+  if ($score < 0) {
+    $score = 0;
+  }
+
   foreach ($breakpoints[$break] as $index => $breakpoint) {
     if ($score >= intval($breakpoint)) {
-      $output = ($index < sizeof($colors[$color])) ? $colors[$color][$index + 1] : $colors[$color][$index];
+      return ($index < sizeof($colors[$color])) ? $colors[$color][$index + 1] : $colors[$color][$index];
     }
   }
 

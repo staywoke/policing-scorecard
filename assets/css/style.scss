@@ -122,7 +122,6 @@ body {
   .content {
     max-width: $bp-max-width;
     margin: 0 auto;
-    overflow: hidden;
 
     .error {
       display: block;
@@ -228,9 +227,20 @@ body {
 .stat-wrapper {
   border-bottom: 2px solid rgba(0, 0, 0, 0.05);
   margin-top: 30px;
+  position: relative;
 
   &:last-child {
     border-bottom: none;
+  }
+
+  a.more-info {
+    background: url(../img/see-more.png) center center no-repeat;
+    width: 32px;
+    height: 32px;
+    display: block;
+    position: absolute;
+    top: -7px;
+    right: -14px;
   }
 
   h3 {
@@ -238,6 +248,7 @@ body {
     font-weight: 900;
     margin-bottom: 8px;
     font-size: 18px;
+    padding-right: 22px;
   }
 
   p {
@@ -250,7 +261,8 @@ body {
     color: $primary-gray;
     line-height: 18px;
     margin-bottom: 30px;
-    text-align: center;
+    text-align: left;
+    text-indent: 5px;
   }
 
   p.good-job {
@@ -346,7 +358,11 @@ body {
       height: 24px;
       border-radius: 3px;
       max-width: 100%;
-      //min-width: 1%;
+      min-width: 1%;
+
+      &.no-data {
+        min-width: 0;
+      }
 
       &.grouped {
         position: relative;
@@ -354,6 +370,7 @@ body {
         float: left;
         border-radius: 0;
         text-align: center;
+        min-width: 0;
 
         span {
           font-size: 10px;
@@ -1175,6 +1192,7 @@ body {
     line-height: 18px;
     display: flex;
     align-items: center;
+    cursor: pointer;
 
     &.checked {
       color: $primary-green;
@@ -1313,10 +1331,23 @@ body {
     font-weight: 300;
   }
 
-  p {
+  p, ul, li {
     font-size: 24px;
     line-height: 32px;
     color: $primary-gray;
+  }
+
+  ul {
+    margin-left: 24px;
+    list-style: disc;
+
+    li {
+      margin-bottom: 20px;
+
+      &:last-child {
+        margin-bottom: 0;
+      }
+    }
   }
 
   a {
@@ -1521,6 +1552,8 @@ body {
       padding-top: 20px;
     }
     .content {
+      overflow: hidden;
+
       &.section-header {
         padding-left: 20px;
         padding-right: 20px;
@@ -1543,6 +1576,15 @@ body {
           font-size: 14px;
           line-height: 18px;
         }
+      }
+
+      .good-job {
+        padding-bottom: 20px;
+        display: block;
+      }
+
+      p.note {
+        font-size: 12px;
       }
 
       & > div.left {
@@ -1733,7 +1775,7 @@ body {
       padding-bottom: 20px;
     }
 
-    p {
+    p, ul, li {
       font-size: 16px;
       line-height: 20px;
     }
