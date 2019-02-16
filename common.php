@@ -122,7 +122,7 @@ function num($string, $decimal = 0, $suffix = '', $invert = false) {
  */
 function progressBar($score, $color = 'default', $break = 'default') {
   if (empty($score)) {
-    return '';
+    $score = 0;
   }
 
   $breakpoints = array(
@@ -147,7 +147,7 @@ function progressBar($score, $color = 'default', $break = 'default') {
 
   foreach ($breakpoints[$break] as $index => $breakpoint) {
     if ($score >= intval($breakpoint)) {
-      $output = ($index < sizeof($colors[$color])) ? $colors[$color][$index + 1] : $colors[$color][$index];
+      $output = (($index + 1) < sizeof($colors[$color])) ? $colors[$color][$index + 1] : $colors[$color][$index];
     }
   }
 

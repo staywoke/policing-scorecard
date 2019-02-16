@@ -177,7 +177,7 @@ $socialSubject = rawurlencode($title);
             <div class="stat-wrapper">
               <a href="javascript:void(0)" data-city="<?= $city ?>" data-more-info="" class="more-info"></a>
               <h3>Where Police say they saw a gun but no gun was found</h3>
-              <p><?= num($data['percent_police_misperceive_the_person_to_have_gun'], 0, '%') ?> of Guns "Perceived" were Never Found ( <?= output(round(floatval($data['people_perceived_to_have_gun'])) - round(floatval($data['people_found_to_have_gun']))) ?> / <?= num($data['people_perceived_to_have_gun']) ?> )</p>
+              <p><?= num($data['percent_police_misperceive_the_person_to_have_gun'], 0, '%') ?> of Guns "Perceived" were Never Found (<?= output(round(floatval($data['people_perceived_to_have_gun'])) - round(floatval($data['people_found_to_have_gun']))) ?>/<?= num($data['people_perceived_to_have_gun']) ?>)</p>
               <?php if(!isset($data['percent_police_misperceive_the_person_to_have_gun']) || (isset($data['percent_police_misperceive_the_person_to_have_gun']) && empty($data['percent_police_misperceive_the_person_to_have_gun']))): ?>
                 <div class="progress-bar-wrapper">
                   <div class="progress-bar no-data" style="width: 0"></div>
@@ -318,7 +318,7 @@ $socialSubject = rawurlencode($title);
           </div>
           <div class="right">
             <div class="check <?= $data['restricts_shooting_at_moving_vehicles'] === '1' ? 'checked' : 'unchecked' ?> more-info" data-city="<?= $city ?>" data-more-info="policy_language_restricts_shooting_at_moving_vehicles">
-              Restricts Shooting at Moving Vehicles
+              Bans Shooting at Moving Vehicles
             </div>
             <div class="check <?= $data['requires_comprehensive_reporting'] === '1' ? 'checked' : 'unchecked' ?> more-info" data-city="<?= $city ?>" data-more-info="policy_language_requires_comprehensive_reporting">
               Requires Comprehensive Reporting
@@ -571,24 +571,24 @@ $socialSubject = rawurlencode($title);
       <div class="section why">
         <div class="content">
           <h1 class="title">
-            Why are we only showing you California?
+            About This Scorecard
           </h1>
           <p>
-            In 2015 and 2016, California legislators passed Assembly Bill 71 and Assembly Bill 953 to require law enforcement agencies to report an unprecedented amount of data - including information on police use of force, civilian complaints and other aspects of policing. Using these data, combined with information obtained through public records requests, national databases and media reports, we have built the first statewide Policing Scorecard to help communities evaluate their police departments and hold them accountable. This is a living project that will be expanded to include additional data and indicators as they become available. <a href="https://docs.google.com/document/d/1YVv68k7fp5u2OOaNT9MqBHn-_itEh4tIa7TZkHRIe1s/edit?usp=sharing" target="_blank">Learn more about our methodology</a>.
+            This is the first statewide Policing Scorecard in the US. We built it using data from California’s <a href="https://openjustice.doj.ca.gov/data" target="_blank">OpenJustice</a> database, public records requests, national databases and media reports. <a href="https://docs.google.com/document/d/1YVv68k7fp5u2OOaNT9MqBHn-_itEh4tIa7TZkHRIe1s/edit" target="_blank">Learn more about our methodology</a>.
           </p>
           <p>&nbsp;</p>
           <p>
-            Use this Scorecard to identify issues within police departments that require the most urgent interventions and hold officials accountable for implementing solutions to these issues. For example, cities with higher rates of misdemeanor arrests could benefit most from solutions that create alternatives to policing and arrest for these offenses. In cities where police make fewer arrests overall but use more force when making arrests, communities could benefit significantly from policies designed to <a href="http://useofforceproject.org/" target="_blank">limit police use force</a>. And cities where complaints of police misconduct are rarely ruled in favor of civilians could benefit from creating an oversight structure to independently investigate these complaints.
+            <strong>Use this Scorecard to identify issues within police departments that require the most urgent interventions and hold officials accountable for implementing solutions.</strong> For example, cities with higher rates of misdemeanor arrests could benefit most from solutions that create alternatives to policing and arrest for these offenses. In cities where police make fewer arrests overall but use more force when making arrests, communities could benefit significantly from policies designed to <a href="http://useofforceproject.org/" target="_blank">limit police use force</a>. And cities where complaints of police misconduct are rarely ruled in favor of civilians could benefit from creating an oversight structure to independently investigate these complaints.
           </p>
           <p>&nbsp;</p>
           <p>Here’s how you can get started pushing for change within your city:</p>
           <p>&nbsp;</p>
           <ul>
-            <li>Contact your Mayor and Police Chief, share this scorecard with them and urge them to enact policies to address issues you’ve identified as priorities in your community.</li>
-            <li>Use the <a href="http://embed.joincampaignzero.org/" target="_blank">Campaign Zero Advocacy Tool</a> to find your California State Assembly Member and urge them to support Assembly Bill 392, which would require police to attempt de-escalation and all available alternatives before using deadly force.</li>
+            <li><strong>Contact your Mayor and Police Chief</strong>, share this scorecard with them and urge them to enact policies to address the issues you’ve identified.</li>
+            <li><strong>Find your California State Assembly Member</strong> using the <a href="http://embed.joincampaignzero.org/" target="_blank">Campaign Zero Advocacy Tool</a> and urge them to support <strong>Assembly Bill 392</strong>, which would require police to attempt de-escalation and all available alternatives before using deadly force.</li>
           </ul>
           <p>&nbsp;</p>
-          <p>If you’d like to join a group of activists and volunteers working to advance equity and justice in California, sign up via the <strong>get involved</strong> link below. If you have further questions or need support with an advocacy campaign, contact us directly at <a href="mailto:info@joincampaignzero.org">info@joincampaignzero.org</a>.</p>
+          <p>If you have feedback, questions about the project, or need support with an advocacy campaign, contact us directly at <a href="mailto:feedback@joincampaignzero.org">feedback@joincampaignzero.org</a>.</p>
         </div>
       </div>
 
