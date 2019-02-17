@@ -1349,11 +1349,24 @@ body {
         margin-bottom: 0;
       }
     }
+
+    ul.contacts {
+      margin-top: 14px;
+
+      li {
+        font-size: 18px;
+        line-height: 18px;
+      }
+    }
   }
 
   a {
     color: $primary-blue;
     text-decoration: none;
+  }
+
+  strong {
+    font-weight: 600;
   }
 }
 

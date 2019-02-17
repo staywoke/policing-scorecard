@@ -574,7 +574,7 @@ $socialSubject = rawurlencode($title);
             About This Scorecard
           </h1>
           <p>
-            This is the first statewide Policing Scorecard in the US. We built it using data from California’s <a href="https://openjustice.doj.ca.gov/data" target="_blank">OpenJustice</a> database, public records requests, national databases and media reports. <a href="https://docs.google.com/document/d/1YVv68k7fp5u2OOaNT9MqBHn-_itEh4tIa7TZkHRIe1s/edit" target="_blank">Learn more about our methodology</a>.
+            <strong>This is the first statewide Policing Scorecard in the US.</strong> We built it using data from California’s <a href="https://openjustice.doj.ca.gov/data" target="_blank">OpenJustice</a> database, public records requests, national databases and media reports. <a href="https://docs.google.com/document/d/1YVv68k7fp5u2OOaNT9MqBHn-_itEh4tIa7TZkHRIe1s/edit" target="_blank">Learn more about our methodology</a>.
           </p>
           <p>&nbsp;</p>
           <p>
@@ -584,7 +584,35 @@ $socialSubject = rawurlencode($title);
           <p>Here’s how you can get started pushing for change within your city:</p>
           <p>&nbsp;</p>
           <ul>
-            <li><strong>Contact your Mayor and Police Chief</strong>, share this scorecard with them and urge them to enact policies to address the issues you’ve identified.</li>
+            <li>
+              <strong>Contact your Mayor and Police Chief</strong>, share this scorecard with them and urge them to enact policies to address the issues you’ve identified:
+              <ul class="contacts">
+                <li>
+                  Mayor <?= $data['mayor_name'] ?>
+                <?php if (!empty($data['mayor_phone'])): ?>
+                  <span class="divider">&nbsp;|&nbsp;</span> Phone:&nbsp; <a href="tel:1-<?= $data['mayor_phone'] ?><?= (!empty($data['mayor_phone_ext'])) ? ';ext=' . $data['mayor_phone_ext'] : '' ?>"><?= $data['mayor_phone'] ?></a>
+                <?php endif; ?>
+                <?php if (!empty($data['mayor_phone_ext'])): ?>
+                  ext <?= $data['mayor_phone_ext'] ?>
+                <?php endif; ?>
+                <?php if (!empty($data['mayor_email'])): ?>
+                  <span class="divider">&nbsp;|&nbsp;</span> Email:&nbsp; <a href="mailto:<?= $data['mayor_email'] ?>"><?= $data['mayor_email'] ?></a>
+                <?php endif; ?>
+                </li>
+                <li>
+                  Police Chief <?= $data['police_chief_name'] ?>
+                <?php if (!empty($data['police_chief_phone'])): ?>
+                  <span class="divider">&nbsp;|&nbsp;</span> Phone:&nbsp; <a href="tel:1-<?= $data['police_chief_phone'] ?><?= (!empty($data['police_chief_phone_ext'])) ? ';ext=' . $data['police_chief_phone_ext'] : '' ?>"><?= $data['police_chief_phone'] ?></a>
+                <?php endif; ?>
+                <?php if (!empty($data['police_chief_phone_ext'])): ?>
+                  ext <?= $data['police_chief_phone_ext'] ?>
+                <?php endif; ?>
+                <?php if (!empty($data['police_chief_email'])): ?>
+                  <span class="divider">&nbsp;|&nbsp;</span> Email:&nbsp; <a href="mailto:<?= $data['police_chief_email'] ?>"><?= $data['police_chief_email'] ?></a>
+                <?php endif; ?>
+                </li>
+              </ul>
+            </li>
             <li><strong>Find your California State Assembly Member</strong> using the <a href="http://embed.joincampaignzero.org/" target="_blank">Campaign Zero Advocacy Tool</a> and urge them to support <strong>Assembly Bill 392</strong>, which would require police to attempt de-escalation and all available alternatives before using deadly force.</li>
           </ul>
           <p>&nbsp;</p>
