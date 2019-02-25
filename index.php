@@ -104,11 +104,11 @@ $socialSubject = rawurlencode($title);
           <?php if(num($data['civilian_complaints_sustained']) === '0'): ?>
             <p> <strong>0 complaints </strong> were ruled in favor of civilians from 2016-17.</p>
           <?php elseif(num($data['civilian_complaints_sustained']) === '1'): ?>
-            <p>Only <strong>1 in every <?= num($data['civilian_complaints_reported']) ?> complaints</strong> were sustained from 2016-17.</p>
+            <p>Only <strong>1 in every <?= num($data['civilian_complaints_reported']) ?> complaints</strong> were ruled in favor of civilians from 2016-17.</p>
           <?php elseif(intval(str_replace(',', '', $data['civilian_complaints_reported'])) / intval(str_replace(',', '', $data['civilian_complaints_sustained'])) <= 3): ?>
-            <p><strong><?= num($data['percent_of_civilian_complaints_sustained'], 0, '%') ?></strong> were sustained from 2016-2017. Even <strong>fewer</strong> likely resulted in any discipline against the officers involved.</p>
+            <p><strong><?= num($data['percent_of_civilian_complaints_sustained'], 0, '%') ?></strong> were ruled in favor of civilians from 2016-2017.</p>
           <?php else: ?>
-            <p>Only <strong>1 in every <?= round(intval(str_replace(',', '', $data['civilian_complaints_reported'])) / intval(str_replace(',', '', $data['civilian_complaints_sustained']))) ?> complaints</strong> were sustained from 2016-17. Even <strong>fewer</strong> likely resulted in any discipline against the officers involved.</p>
+            <p>Only <strong>1 in every <?= round(intval(str_replace(',', '', $data['civilian_complaints_reported'])) / intval(str_replace(',', '', $data['civilian_complaints_sustained']))) ?> complaints</strong> ruled in favor of civilians from 2016-17.</p>
           <?php endif; ?>
           </div>
           <div class="one-third">
@@ -131,7 +131,7 @@ $socialSubject = rawurlencode($title);
           <div class="left">
             <div class="stat-wrapper">
               <a href="javascript:void(0)" data-city="<?= $city ?>" data-more-info="" class="more-info"></a>
-              <h3>Less Lethal Force</h3>
+              <h3>Less-Lethal Force</h3>
               <p>Using batons, strangleholds, tasers &amp; other weapons</p>
               <p><?= output($data['use_of_less_lethal_force']) ?> Uses of Force <span class="divider">&nbsp;|&nbsp;</span> <?= output($data['less_lethal_force_per_arrest']) ?> uses every 10k arrests</p>
 
@@ -151,11 +151,11 @@ $socialSubject = rawurlencode($title);
             <div class="stat-wrapper">
               <a href="javascript:void(0)" data-city="<?= $city ?>" data-more-info="" class="more-info"></a>
               <h3>Deadly Force</h3>
-              <p>Using force causing death or serious injury</p>
+              <p><?= output($data['police_shootings_incidents']) ?> Shootings + <?= intval(output($data['deadly_force_incidents'])) - intval(output($data['police_shootings_incidents'])) ?> other deaths and serious injuries</p>
               <?php if(output($data['deadly_force_incidents']) === '0'): ?>
               <p class="good-job">Did Not Report Using Deadly Force in 2016-17</p>
               <?php else: ?>
-              <p><?= output($data['deadly_force_incidents']) ?> Incidents <span class="divider">&nbsp;|&nbsp;</span> <?= output($data['deadly_force_incidents_per_arrest']) ?> every 10k arrests <span class="divider">&nbsp;|&nbsp;</span> <?= output(round((floatval($data['fatality_rate']) / 100) * intval($data['number_of_people_impacted_by_deadly_force']))) ?> deaths</p>
+              <p><?= output($data['deadly_force_incidents']) ?> Total Incidents <span class="divider">&nbsp;|&nbsp;</span> <?= output($data['deadly_force_incidents_per_arrest']) ?> every 10k arrests</p>
               <?php endif; ?>
 
               <?php if(!isset($data['percentile_of_deadly_force_incidents_per_arrest']) || (isset($data['percentile_of_deadly_force_incidents_per_arrest']) && empty($data['percentile_of_deadly_force_incidents_per_arrest']))): ?>
@@ -185,7 +185,7 @@ $socialSubject = rawurlencode($title);
                 <p class="note">&nbsp;</p>
               <?php else: ?>
                 <div class="progress-bar-wrapper">
-                  <div class="progress-bar always-bad" style="width: <?= output(intval($data['percent_police_misperceive_the_person_to_have_gun']), 0, '%') ?>"></div>
+                  <div class="progress-bar <?= (intval($data['percent_police_misperceive_the_person_to_have_gun']) === 0) ? 'bright-green' : 'always-bad' ?>" style="width: <?= output(intval($data['percent_police_misperceive_the_person_to_have_gun']), 0, '%') ?>"></div>
                 </div>
                 <p class="note">&nbsp;</p>
               <?php endif; ?>
@@ -197,11 +197,12 @@ $socialSubject = rawurlencode($title);
             <?php if(output($data['deadly_force_incidents']) !== '0'): ?>
             <div class="stat-wrapper">
               <a href="javascript:void(0)" data-city="<?= $city ?>" data-more-info="" class="more-info"></a>
-              <h3>Deadly Force Victims by Armed / Unarmed Status</h3>
-              <p><?= num($data['percent_used_against_people_who_were_unarmed'], 0, '%') ?> were Unarmed <span class="divider">&nbsp;|&nbsp;</span> <?= num($data['percent_used_against_people_who_were_not_armed_with_gun'], 0, '%') ?> Did Not Have a Gun</p>
+              <h3>Armed / Unarmed Status of People Killed or Seriously Injured</h3>
+              <p><?= output(round((floatval($data['fatality_rate']) / 100) * intval($data['number_of_people_impacted_by_deadly_force']))) ?> Deaths, <?= intval(num($data['number_of_people_impacted_by_deadly_force'], 0)) - (intval(round((floatval($data['fatality_rate']) / 100) * intval($data['number_of_people_impacted_by_deadly_force'])))) ?> Serious Injuries</p>
+              <p><?= num($data['percent_used_against_people_who_were_unarmed'], 0, '%') ?> were Unarmed <span class="divider">&nbsp;|&nbsp;</span> <?= 100 - intval(num($data['percent_used_against_people_who_were_not_armed_with_gun'], 0)) ?>% had a Gun</p>
             <?php if(num($data['number_of_people_impacted_by_deadly_force'], 0) !== '0'): ?>
               <div class="canvas-wrapper">
-                <div class="canvas-label"><?= num($data['number_of_people_impacted_by_deadly_force'], 0) ?><br><span>People Impacted</span></div>
+                <div class="canvas-label"><?= num($data['number_of_people_impacted_by_deadly_force'], 0) ?><br><span><?= grammar('people', num($data['number_of_people_impacted_by_deadly_force'], 0)) ?> Killed or Seriously Injured</span></div>
                 <canvas id="deadly-force-chart" width="310" height="350" style="margin: 10px auto 20px auto;"></canvas>
               </div>
             <?php else: ?>
@@ -212,7 +213,7 @@ $socialSubject = rawurlencode($title);
 
             <div class="stat-wrapper grouped">
               <a href="javascript:void(0)" data-city="<?= $city ?>" data-more-info="" class="more-info"></a>
-              <h3>Deadly force victims by race</h3>
+              <h3>Police Violence by race</h3>
 
               <div class="keys">
                 <span class="key race-black"></span> Black
@@ -241,7 +242,7 @@ $socialSubject = rawurlencode($title);
                 </div>
               </div>
 
-              <p>Arrested</p>
+              <p>People Arrested</p>
               <div class="progress-bar-wrapper">
                 <div class="progress-bar grouped race-black" style="width: <?= output(floatval($data['percent_black_arrests']), 0, '%') ?>">
                   <span><?= (intval($data['percent_black_arrests']) > 5) ? output(intval($data['percent_black_arrests']), 0, '%') : '' ?></span>
@@ -260,7 +261,7 @@ $socialSubject = rawurlencode($title);
                 </div>
               </div>
 
-              <p>Victims of Deadly Force</p>
+              <p>People Killed or Seriously Injured</p>
               <div class="progress-bar-wrapper">
                 <div class="progress-bar grouped race-black" style="width: <?= output(floatval($data['percent_black_deadly_force']), 0, '%') ?>">
                   <span><?= (intval($data['percent_black_deadly_force']) > 5) ? output(intval($data['percent_black_deadly_force']), 0, '%') : '' ?></span>
@@ -476,28 +477,6 @@ $socialSubject = rawurlencode($title);
               <?php endif; ?>
             </div>
 
-            <div class="stat-wrapper">
-              <a href="javascript:void(0)" data-city="<?= $city ?>" data-more-info="" class="more-info"></a>
-              <h3>Murders Unsolved</h3>
-              <p><?= output($data['murders']) ?> Murders from 2013-17 <span class="divider">&nbsp;|&nbsp;</span> <?= (intval(str_replace(',', '', $data['murders'])) - intval(str_replace(',', '', $data['murders_cleared']))) ?> Unsolved</p>
-              <?php if(intval($data['murders']) === 0): ?>
-                <p class="good-job">No Murders Reported</p>
-              <?php elseif(intval($data['murders']) > 0 && (intval(str_replace(',', '', $data['murders'])) - intval(str_replace(',', '', $data['murders_cleared']))) === 0): ?>
-                <p class="good-job">No Unsolved Murders Reported</p>
-              <?php elseif(!isset($data['percentile_of_murders_solved']) || (isset($data['percentile_of_murders_solved']) && empty($data['percentile_of_murders_solved']))): ?>
-                <div class="progress-bar-wrapper">
-                  <div class="progress-bar no-data" style="width: 0"></div>
-                </div>
-                <p class="note">City Did Not Provide Data</p>
-              <?php else: ?>
-                <div class="progress-bar-wrapper">
-                  <div class="progress-bar <?= progressBar(intval($data['percentile_of_murders_solved']), 'reverse') ?>" style="width: <?= output(intval($data['percentile_of_murders_solved']), 0, '%') ?>"></div>
-                </div>
-                <p class="note">^&nbsp; Solved Fewer Murders than <?= num($data['percentile_of_murders_solved'], 0, '%') ?> of Depts &nbsp;&nbsp;</p>
-              <?php endif; ?>
-            </div>
-          </div>
-          <div class="right">
             <div class="stat-wrapper grouped">
               <a href="javascript:void(0)" data-city="<?= $city ?>" data-more-info="" class="more-info"></a>
               <h3>Percent of Total Arrests in 2016</h3>
@@ -517,6 +496,56 @@ $socialSubject = rawurlencode($title);
                 <div class="progress-bar dark-grey" style="width: <?= output(intval($data['percent_violent_crime_arrests']), 0, '%') ?>"></div>
               </div>
             </div>
+          </div>
+          <div class="right">
+            <div class="stat-wrapper">
+              <a href="javascript:void(0)" data-city="<?= $city ?>" data-more-info="" class="more-info"></a>
+              <h3>Homicides Unsolved</h3>
+              <p><?= output($data['murders']) ?> Homicides from 2013-17 <span class="divider">&nbsp;|&nbsp;</span> <?= (intval(str_replace(',', '', $data['murders'])) - intval(str_replace(',', '', $data['murders_cleared']))) ?> Unsolved</p>
+              <?php if(intval($data['murders']) === 0): ?>
+                <p class="good-job">No Homicides Reported</p>
+              <?php elseif(intval($data['murders']) > 0 && (intval(str_replace(',', '', $data['murders'])) - intval(str_replace(',', '', $data['murders_cleared']))) === 0): ?>
+                <p class="good-job">No Unsolved Homicides Reported</p>
+              <?php elseif(!isset($data['percentile_of_murders_solved']) || (isset($data['percentile_of_murders_solved']) && empty($data['percentile_of_murders_solved']))): ?>
+                <div class="progress-bar-wrapper">
+                  <div class="progress-bar no-data" style="width: 0"></div>
+                </div>
+                <p class="note">City Did Not Provide Data</p>
+              <?php else: ?>
+                <div class="progress-bar-wrapper">
+                  <div class="progress-bar <?= progressBar(intval($data['percentile_of_murders_solved']), 'reverse') ?>" style="width: <?= output(intval($data['percentile_of_murders_solved']), 0, '%') ?>"></div>
+                </div>
+                <p class="note">^&nbsp; Solved Fewer Homicides than <?= num($data['percentile_of_murders_solved'], 0, '%') ?> of Depts &nbsp;&nbsp;</p>
+              <?php endif; ?>
+            </div>
+
+            <?php if(isset($data['black_murder_unsolved_rate']) || isset($data['hispanic_murder_unsolved_rate']) || isset($data['white_murder_unsolved_rate'])): ?>
+            <div class="stat-wrapper grouped">
+              <a href="javascript:void(0)" data-city="<?= $city ?>" data-more-info="" class="more-info"></a>
+              <h3>Percent of Homicides Unsolved by Race</h3>
+
+              <?php if(isset($data['black_murder_unsolved_rate']) && !empty($data['black_murder_unsolved_rate'])): ?>
+              <p>Homicides of Black Victims Unsolved ( <?= num($data['black_murder_unsolved_rate'], 0, '%') ?> )</p>
+              <div class="progress-bar-wrapper">
+                <div class="progress-bar dark-grey" style="width: <?= output(intval($data['black_murder_unsolved_rate']), 0, '%') ?>"></div>
+              </div>
+              <?php endif; ?>
+
+              <?php if(isset($data['hispanic_murder_unsolved_rate']) && !empty($data['hispanic_murder_unsolved_rate'])): ?>
+              <p>Homicides of Latinx Victims Unsolved ( <?= num($data['hispanic_murder_unsolved_rate'], 0, '%') ?> )</p>
+              <div class="progress-bar-wrapper">
+                <div class="progress-bar dark-grey" style="width: <?= output(intval($data['hispanic_murder_unsolved_rate']), 0, '%') ?>"></div>
+              </div>
+              <?php endif; ?>
+
+              <?php if(isset($data['white_murder_unsolved_rate']) && !empty($data['white_murder_unsolved_rate'])): ?>
+              <p>Homicides of White Victims Unsolved ( <?= num($data['white_murder_unsolved_rate'], 0, '%') ?> )</p>
+              <div class="progress-bar-wrapper">
+                <div class="progress-bar dark-grey" style="width: <?= output(intval($data['white_murder_unsolved_rate']), 0, '%') ?>"></div>
+              </div>
+              <?php endif; ?>
+            </div>
+            <?php endif; ?>
           </div>
         </div>
       </div>
@@ -574,14 +603,14 @@ $socialSubject = rawurlencode($title);
             About This Scorecard
           </h1>
           <p>
-            <strong>This is the first statewide Policing Scorecard in the US.</strong> We built it using data from California’s <a href="https://openjustice.doj.ca.gov/data" target="_blank">OpenJustice</a> database, public records requests, national databases and media reports. <a href="https://docs.google.com/document/d/1YVv68k7fp5u2OOaNT9MqBHn-_itEh4tIa7TZkHRIe1s/edit" target="_blank">Learn more about our methodology</a>.
+            <strong>This is the first statewide Policing Scorecard in the United States.</strong> It was built using data from California’s <a href="https://openjustice.doj.ca.gov/data" target="_blank">OpenJustice</a> database, public records requests, national databases and media reports. <a href="https://docs.google.com/document/d/1YVv68k7fp5u2OOaNT9MqBHn-_itEh4tIa7TZkHRIe1s/edit" target="_blank">Learn more about our methodology</a>.
           </p>
           <p>&nbsp;</p>
           <p>
             <strong>Use this Scorecard to identify issues within police departments that require the most urgent interventions and hold officials accountable for implementing solutions.</strong> For example, cities with higher rates of misdemeanor arrests could benefit most from solutions that create alternatives to policing and arrest for these offenses. In cities where police make fewer arrests overall but use more force when making arrests, communities could benefit significantly from policies designed to <a href="http://useofforceproject.org/" target="_blank">limit police use force</a>. And cities where complaints of police misconduct are rarely ruled in favor of civilians could benefit from creating an oversight structure to independently investigate these complaints.
           </p>
           <p>&nbsp;</p>
-          <p>Here’s how you can get started pushing for change within your city:</p>
+          <p class="take-action">Here’s how to start pushing for change:</p>
           <p>&nbsp;</p>
           <ul>
             <li>
