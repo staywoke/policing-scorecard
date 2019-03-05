@@ -1577,6 +1577,9 @@ body {
       padding-bottom: 20px;
       padding-top: 20px;
     }
+    &.bb {
+      border-bottom: 0;
+    }
     .content {
       overflow: hidden;
 
@@ -1593,6 +1596,14 @@ body {
       }
 
       .stat-wrapper {
+        &.no-border-mobile {
+          border-bottom: 0;
+        }
+
+        &.grouped {
+          padding-bottom: 22px;
+        }
+
         h3 {
           font-size: 14px;
           line-height: 18px;
@@ -1804,6 +1815,12 @@ body {
     p, ul, li {
       font-size: 16px;
       line-height: 20px;
+    }
+
+    .take-action {
+      font-size: 16px;
+      line-height: 22px;
+      font-weight: 400;
     }
 
     ul.contacts {

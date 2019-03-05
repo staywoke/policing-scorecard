@@ -110,6 +110,10 @@ function num($string, $decimal = 0, $suffix = '', $invert = false) {
 
   $output = number_format($output, $decimal);
 
+  if ($output === '0.0') {
+    $output = '0';
+  }
+
   return "{$output}{$suffix}";
 }
 

@@ -1,4 +1,5 @@
 (function () {
+  var $mapLayer = document.getElementById('map-layer');
   var $menu = document.getElementById('menu');
   var $menuToggle = document.getElementById('mobile-toggle');
   var $modal = document.getElementById('modal-wrapper');
@@ -63,6 +64,11 @@
   $modalContent.addEventListener('touchmove', function(e) {
     e.stopPropagation();
     e.stopImmediatePropagation();
+  });
+
+  $mapLayer.addEventListener('click', function() {
+    $modal.classList.toggle('open');
+    $selectedCity[0].scrollIntoView();
   });
 
   $scoreLocation.addEventListener('click', function() {
