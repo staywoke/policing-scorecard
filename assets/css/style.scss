@@ -103,6 +103,34 @@ body {
     background: rgba(0, 0, 0, 0.9);
     display: block;
   }
+
+  #results-info-content {
+    font-weight: 300;
+
+    strong {
+      font-weight: 500;
+    }
+
+    p {
+      margin-top: 20px;
+      line-height: 18px;
+
+      &:first-child {
+        margin-top: 0;
+      }
+
+      &.score {
+        font-size: 20px;
+        line-height: 24px;
+      }
+
+      &.instructions {
+        font-size: 20px;
+        line-height: 24px;
+        color: $text-blue;
+      }
+    }
+  }
 }
 
 .wrapper {
@@ -122,6 +150,27 @@ body {
   .content {
     max-width: $bp-max-width;
     margin: 0 auto;
+
+    a.results-info {
+      font-size: 12px;
+      background: #454548;
+      width: 20px;
+      height: 20px;
+      display: inline-block;
+      border-radius: 50%;
+      color: #FFF;
+      text-align: center;
+      line-height: 20px;
+      vertical-align: bottom;
+      margin-left: 14px;
+      text-decoration: none;
+      position: relative;
+      top: -2px;
+
+      &:hover {
+        background-color: $primary-blue;
+      }
+    }
 
     .error {
       display: block;

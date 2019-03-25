@@ -126,6 +126,7 @@ $socialSubject = rawurlencode($title);
           <strong class="grade grade-<?= strtolower(preg_replace('/[^A-Z]/', '', getGrade($data['police_violence_score']))) ?>"><span>Grade: </span><?= getGrade($data['police_violence_score']) ?></strong>
           <span class="divider">&nbsp;|&nbsp;</span>
           <?= num($data['police_violence_score'], 0, '%') ?>
+          <a href="javascript:void(0)" class="results-info" data-city="<?= $city ?>" data-result-info="police-violence">?</a>
         </div>
         <div class="content">
           <div class="left">
@@ -172,6 +173,25 @@ $socialSubject = rawurlencode($title);
                 <p class="note">^&nbsp; Used More Deadly Force per Arrest than <?= num($data['percentile_of_deadly_force_incidents_per_arrest'], 0, '%', true) ?> of Depts &nbsp;&nbsp;</p>
               <?php endif; ?>
             </div>
+
+            <?php if(output($data['deadly_force_incidents']) !== '0' && num($data['percent_shot_first'], 0, '%') !== 'N/A'): ?>
+            <div class="stat-wrapper">
+              <a href="javascript:void(0)" data-city="<?= $city ?>" data-more-info="" class="more-info"></a>
+              <h3>Percent of Police Shootings Where Police Did Not Attempt Non-Lethal Force Before Shooting</h3>
+              <p><?= num($data['percent_shot_first'], 0, '%') ?> Shootings No Other Force Was Attempted First</p>
+              <?php if(!isset($data['percent_shot_first']) || (isset($data['percent_shot_first']) && empty($data['percent_shot_first']))): ?>
+                <div class="progress-bar-wrapper">
+                  <div class="progress-bar no-data" style="width: 0"></div>
+                </div>
+                <p class="note">&nbsp;</p>
+              <?php else: ?>
+                <div class="progress-bar-wrapper">
+                  <div class="progress-bar <?= (intval($data['percent_shot_first']) === 0) ? 'bright-green' : 'always-bad' ?>" style="width: <?= output(intval($data['percent_shot_first']), 0, '%') ?>"></div>
+                </div>
+                <p class="note">&nbsp;</p>
+              <?php endif; ?>
+            </div>
+            <?php endif; ?>
 
             <?php if(output($data['deadly_force_incidents']) !== '0' && num($data['percent_police_misperceive_the_person_to_have_gun'], 0, '%') !== 'N/A'): ?>
             <div class="stat-wrapper">
@@ -342,6 +362,7 @@ $socialSubject = rawurlencode($title);
           <strong class="grade grade-<?= strtolower(preg_replace('/[^A-Z]/', '', getGrade($data['police_accountability_score']))) ?>"><span>Grade: </span><?= getGrade($data['police_accountability_score']) ?></strong>
           <span class="divider">&nbsp;|&nbsp;</span>
           <?= num($data['police_accountability_score'], 0, '%') ?>
+          <a href="javascript:void(0)" class="results-info" data-city="<?= $city ?>" data-result-info="police-accountability">?</a>
         </div>
         <div class="content">
           <div class="left">
@@ -473,6 +494,7 @@ $socialSubject = rawurlencode($title);
           <strong class="grade grade-<?= strtolower(preg_replace('/[^A-Z]/', '', getGrade($data['approach_to_policing_score']))) ?>"><span>Grade: </span><?= getGrade($data['approach_to_policing_score']) ?></strong>
           <span class="divider">&nbsp;|&nbsp;</span>
           <?= num($data['approach_to_policing_score'], 0, '%') ?>
+          <a href="javascript:void(0)" class="results-info" data-city="<?= $city ?>" data-result-info="approach">?</a>
         </div>
         <div class="content">
           <div class="left">
@@ -538,7 +560,7 @@ $socialSubject = rawurlencode($title);
             <?php if(isset($data['black_murder_unsolved_rate']) || isset($data['hispanic_murder_unsolved_rate']) || isset($data['white_murder_unsolved_rate'])): ?>
             <div class="stat-wrapper grouped">
               <a href="javascript:void(0)" data-city="<?= $city ?>" data-more-info="" class="more-info"></a>
-              <h3>Percent of Homicides Unsolved by Race</h3>
+              <h3>Percent of Homicides Unsolved After 5 Months by Race</h3>
 
               <?php if(isset($data['black_murder_unsolved_rate']) && !empty($data['black_murder_unsolved_rate'])): ?>
               <p>Homicides of Black Victims Unsolved ( <?= num($data['black_murder_unsolved_rate'], 0, '%') ?> )</p>
@@ -695,6 +717,7 @@ $socialSubject = rawurlencode($title);
         <a href="javascript:void(0)" id="modal-close">✖</a>
         <div id="modal-content">
           <div id="more-info-content"></div>
+          <div id="results-info-content"></div>
           <ul id="city-select">
             <li><a href="./?city=alameda"<?= ($city === 'alameda') ? ' class="selected-city"' : '' ?>>Alameda</a></li>
             <li><a href="./?city=alhambra"<?= ($city === 'alhambra') ? ' class="selected-city"' : '' ?>>Alhambra</a></li>
