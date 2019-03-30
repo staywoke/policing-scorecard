@@ -174,11 +174,11 @@ $socialSubject = rawurlencode($title);
               <?php endif; ?>
             </div>
 
-            <?php if(output($data['deadly_force_incidents']) !== '0' && num($data['percent_shot_first'], 0, '%') !== 'N/A'): ?>
+            <?php if(output($data['police_shootings_incidents']) !== '0' && num($data['percent_shot_first'], 0, '%') !== 'N/A'): ?>
             <div class="stat-wrapper">
               <a href="javascript:void(0)" data-city="<?= $city ?>" data-more-info="" class="more-info"></a>
               <h3>Police Shootings Where Police Did Not Attempt Non-Lethal Force Before Shooting</h3>
-              <p><?= num($data['percent_shot_first'], 0, '%') ?> of Shootings No Other Force Was Attempted First</p>
+              <p><?= num($data['percent_shot_first'], 0, '%') ?> of Shootings (<?= $data['shot_first'] ?>/<?= $data['police_shootings_incidents'] ?>)</p>
               <?php if(!isset($data['percent_shot_first']) || (isset($data['percent_shot_first']) && empty($data['percent_shot_first']))): ?>
                 <div class="progress-bar-wrapper">
                   <div class="progress-bar no-data" style="width: 0"></div>
