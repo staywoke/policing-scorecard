@@ -177,8 +177,8 @@ $socialSubject = rawurlencode($title);
             <?php if(output($data['deadly_force_incidents']) !== '0' && num($data['percent_shot_first'], 0, '%') !== 'N/A'): ?>
             <div class="stat-wrapper">
               <a href="javascript:void(0)" data-city="<?= $city ?>" data-more-info="" class="more-info"></a>
-              <h3>Percent of Police Shootings Where Police Did Not Attempt Non-Lethal Force Before Shooting</h3>
-              <p><?= num($data['percent_shot_first'], 0, '%') ?> Shootings No Other Force Was Attempted First</p>
+              <h3>Police Shootings Where Police Did Not Attempt Non-Lethal Force Before Shooting</h3>
+              <p><?= num($data['percent_shot_first'], 0, '%') ?> of Shootings No Other Force Was Attempted First</p>
               <?php if(!isset($data['percent_shot_first']) || (isset($data['percent_shot_first']) && empty($data['percent_shot_first']))): ?>
                 <div class="progress-bar-wrapper">
                   <div class="progress-bar no-data" style="width: 0"></div>
@@ -517,7 +517,7 @@ $socialSubject = rawurlencode($title);
 
             <div class="stat-wrapper grouped">
               <a href="javascript:void(0)" data-city="<?= $city ?>" data-more-info="" class="more-info"></a>
-              <h3>Percent of Total Arrests in 2016</h3>
+              <h3 class="minor-pad">Percent of Total Arrests in 2016</h3>
 
               <p>All Misdemeanors ( <?= num($data['percent_misdemeanor_arrests'], 0, '%') ?> )</p>
               <div class="progress-bar-wrapper">
@@ -541,9 +541,9 @@ $socialSubject = rawurlencode($title);
               <h3>Homicides Unsolved</h3>
               <p><?= output($data['murders']) ?> Homicides from 2013-17 <span class="divider">&nbsp;|&nbsp;</span> <?= (intval(str_replace(',', '', $data['murders'])) - intval(str_replace(',', '', $data['murders_cleared']))) ?> Unsolved</p>
               <?php if(intval($data['murders']) === 0): ?>
-                <p class="good-job">No Homicides Reported</p>
+                <p class="good-job pad-bottom">No Homicides Reported</p>
               <?php elseif(intval($data['murders']) > 0 && (intval(str_replace(',', '', $data['murders'])) - intval(str_replace(',', '', $data['murders_cleared']))) === 0): ?>
-                <p class="good-job">No Unsolved Homicides Reported</p>
+                <p class="good-job pad-bottom">No Unsolved Homicides Reported</p>
               <?php elseif(!isset($data['percentile_of_murders_solved']) || (isset($data['percentile_of_murders_solved']) && empty($data['percentile_of_murders_solved']))): ?>
                 <div class="progress-bar-wrapper">
                   <div class="progress-bar no-data" style="width: 0"></div>

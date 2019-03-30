@@ -127,20 +127,20 @@
           if (prop === 'police-violence') {
             html += '<p class="score"><strong>Police Violence Score:</strong>&nbsp; ' + data.police_violence_score + '</p>';
             html += '<p class="instructions"><strong>Factors used to calculate this score:</strong></p>';
-            html += '<p><strong>Percentile of Less-Lethal Force per Arrest:</strong>&nbsp; ' + data.percent_of_less_lethal_force_per_arrest + '</p>';
-            html += '<p><strong>Percentile of Deadly Force per Arrest:</strong>&nbsp; ' + data.percentile_of_deadly_force_incidents_per_arrest + '</p>';
-            html += '<p><strong>Percentile Unarmed Victims of Deadly Force per Arrest:</strong>&nbsp; ' + data.percent_of_deadly_force_against_unarmed_people_per_arrest + '</p>';
-            html += '<p><strong>Percentile of Racial Disparities in Arrests and Deadly Force:</strong>&nbsp; ' + data.percentile_overall_disparity_index + '</p>';
+            html += '<p><strong>Percentile of Less-Lethal Force per Arrest:</strong>&nbsp; ' + ((data.percent_of_less_lethal_force_per_arrest) ? data.percent_of_less_lethal_force_per_arrest : 'Incomplete (0%)') + '</p>';
+            html += '<p><strong>Percentile of Deadly Force per Arrest:</strong>&nbsp; ' + ((data.percentile_of_deadly_force_incidents_per_arrest) ? data.percentile_of_deadly_force_incidents_per_arrest : 'Incomplete (0%)') + '</p>';
+            html += '<p><strong>Percentile Unarmed Victims of Deadly Force per Arrest:</strong>&nbsp; ' + ((data.percent_of_deadly_force_against_unarmed_people_per_arrest) ? data.percent_of_deadly_force_against_unarmed_people_per_arrest : 'Incomplete (0%)') + '</p>';
+            html += '<p><strong>Percentile of Racial Disparities in Arrests and Deadly Force:</strong>&nbsp; ' + ((data.percentile_overall_disparity_index) ? data.percentile_overall_disparity_index : 'Incomplete (0%)') + '</p>';
           } else if (prop === 'police-accountability') {
             html += '<p class="score"><strong>Police Accountability Score:</strong>&nbsp; ' + data.police_accountability_score + '</p>';
             html += '<p class="instructions"><strong>Factors used to calculate this score:</strong></p>';
-            html += '<p><strong>Percentile of Complaints Sustained:</strong>&nbsp; ' + data.percent_of_complaints_sustained + '</p>';
-            html += '<p><strong>Percent of Criminal Allegations Sustained:</strong>&nbsp; ' + data.percent_criminal_complaints_sustained + '</p>';
+            html += '<p><strong>Percentile of Complaints Sustained:</strong>&nbsp; ' + ((data.percent_of_complaints_sustained) ? data.percent_of_complaints_sustained : 'Incomplete (0%)') + '</p>';
+            html += '<p><strong>Percent of Criminal Allegations Sustained:</strong>&nbsp; ' + ((data.percent_criminal_complaints_sustained) ? data.percent_criminal_complaints_sustained : 'Incomplete (0%)') + '</p>';
           } else if (prop === 'approach') {
             html += '<p class="score"><strong>Approach to Policing Score:</strong>&nbsp; ' + data.approach_to_policing_score + '</p>';
             html += '<p class="instructions"><strong>Factors used to calculate this score:</strong></p>';
-            html += '<p><strong>Percentile of Misdemeanor Arrests per Population:</strong>&nbsp; ' + data.percent_of_misdemeanor_arrests_per_population + '</p>';
-            html += '<p><strong>Percent of Homicides Solved:</strong>&nbsp; ' + data.percent_of_murders_solved + '</p>';
+            html += '<p><strong>Percentile of Misdemeanor Arrests per Population:</strong>&nbsp; ' + ((data.percent_of_misdemeanor_arrests_per_population) ? data.percent_of_misdemeanor_arrests_per_population : 'Incomplete (0%)') + '</p>';
+            html += '<p><strong>Percent of Homicides Solved:</strong>&nbsp; ' + ((data.percent_of_murders_solved) ? data.percent_of_murders_solved : 'Incomplete (0%)') + '</p>';
           }
 
           $citySelect.style.display = 'none';

@@ -320,6 +320,14 @@ body {
     text-align: center;
     padding-top: 10px;
     font-weight: 600;
+
+    &.pad-bottom {
+      padding-bottom: 65px;
+    }
+  }
+
+  .minor-pad {
+    padding-bottom: 18px;
   }
 
   .canvas-wrapper {
@@ -1554,6 +1562,14 @@ body {
 }
 
 @media screen and (max-width: $bp-max-width) {
+  p.good-job {
+    &.pad-bottom {
+      padding-bottom: 0 !important;
+    }
+  }
+  .minor-pad {
+    padding-bottom: 0;
+  }
   .header {
     height: 60px;
     position: relative;
