@@ -8,7 +8,7 @@ $reportCard = reportCard();
 $title = "CA Policing Scorecard - {$data['agency_name']} - Grade {$grade}";
 $ac = '?ac=' . getHash();
 $socialUrl = rawurlencode('https://policescorecard.org');
-$socialText = rawurlencode('We conducted the first statewide evaluation of police departments in California. See what grade they get at: policescorecard.org');
+$socialText = rawurlencode('We evaluated the police in California. See the grade for each police department at policescorecard.org');
 $socialSubject = rawurlencode($title);
 ?>
 <!doctype html>
@@ -23,6 +23,29 @@ $socialSubject = rawurlencode($title);
     <meta name="apple-mobile-web-app-status-bar-style" content="black">
     <meta name="description" content="<?= $title ?>">
     <meta name="author" content="StayWoke">
+
+    <!-- Mobile Specific Meta Tags -->
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+
+    <!-- Twitter META Info -->
+    <meta property="twitter:card" content="summary_large_image">
+    <meta property="twitter:site" content="@samswey">
+    <meta property="twitter:title" content="<?= $title ?>">
+    <meta property="twitter:description" content="<?= $socialText ?>">
+    <meta property="twitter:creator" content="@mrmidi">
+    <meta property="twitter:image:src" content="https://policescorecard.org/assets/img/card.png">
+    <meta property="twitter:domain" content="https://policescorecard.org">
+
+    <!-- Open Graph protocol -->
+    <meta property="og:locale" content="en_US">
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="<?= $title ?>">
+    <meta property="og:url" content="https://policescorecard.org">
+    <meta property="og:image" content="https://policescorecard.org/assets/img/card.png">
+    <meta property="og:site_name" content="CA Policing Scorecard">
+    <meta property="og:description" content="<?= $socialText ?>">
 
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lato:300,400,700,900">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Barlow+Condensed:300,400,500,700">
