@@ -29,6 +29,8 @@
     <meta property="og:site_name" content="CA Policing Scorecard">
     <meta property="og:description" content="We evaluated the police in California. See the grade for each police department at policescorecard.org">
 
+    <link href="favicon.ico" rel="shortcut icon">
+
     <link href="https://fonts.googleapis.com/css?family=Lato:300,400,700,900" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css?family=Barlow+Condensed:300,400,500,700" rel="stylesheet">
     <link rel="stylesheet" href="assets/css/style.css?ver=1.0.0">

@@ -42,6 +42,8 @@ $socialSubject = rawurlencode($title);
     <meta property="og:site_name" content="CA Policing Scorecard">
     <meta property="og:description" content="We evaluated the police in California. See the grade for each police department at policescorecard.org">
 
+    <link href="favicon.ico" rel="shortcut icon">
+
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lato:300,400,700,900">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Barlow+Condensed:300,400,500,700">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
