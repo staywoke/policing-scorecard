@@ -6,8 +6,8 @@
   var $modalClose = document.getElementById('modal-close');
   var $modalContent = document.getElementById('modal-content');
   var $modalOverlay = document.getElementById('overlay');
-  var $scoreCard = document.getElementById('score-card');
-  var $scoreLocation = document.getElementById('score-location');
+  var scoreCard = document.getElementById('score-card');
+  var scoreLocation = document.getElementById('score-location');
   var $selectedCity = document.getElementsByClassName('selected-city');
   var $showLess = document.getElementById('show-less');
   var $showMore = document.getElementById('show-more');
@@ -77,17 +77,17 @@
     $selectedCity[0].scrollIntoView();
   });
 
-  $scoreLocation.addEventListener('click', function() {
+  scoreLocation.addEventListener('click', function() {
     $modal.classList.toggle('open');
     $selectedCity[0].scrollIntoView();
   });
 
   $showLess.addEventListener('click', function() {
-    $scoreCard.classList.toggle('short');
+    scoreCard.classList.toggle('short');
   });
 
   $showMore.addEventListener('click', function() {
-    $scoreCard.classList.toggle('short');
+    scoreCard.classList.toggle('short');
   });
 
   function loadMoreInfo(city, prop) {
@@ -117,6 +117,38 @@
     request.send();
   }
 
+  function getGrade(score) {
+    score = parseInt(score);
+
+    if (score <= 59) {
+      return 'F';
+    } else if (score <= 62 && score >= 60) {
+      return 'D-';
+    } else if (score <= 66 && score >= 63) {
+      return 'D';
+    } else if (score <= 69 && score >= 67) {
+      return 'D+';
+    } else if (score <= 72 && score >= 70) {
+      return 'C-';
+    } else if (score <= 76 && score >= 73) {
+      return 'C';
+    } else if (score <= 79 && score >= 77) {
+      return 'C+';
+    } else if (score <= 82 && score >= 80) {
+      return 'B-';
+    } else if (score <= 86 && score >= 83) {
+      return 'B';
+    } else if (score <= 89 && score >= 87) {
+      return 'B+';
+    } else if (score <= 92 && score >= 90) {
+      return 'A-';
+    } else if (score <= 97 && score >= 93) {
+      return 'A';
+    } else if (score >= 98) {
+      return 'A+';
+    }
+  }
+
   function loadResultsInfo(city, prop) {
     var request = new XMLHttpRequest();
     var file = 'data/json/' + city + '.json';
@@ -125,18 +157,18 @@
       if (request.status >= 200 && request.status < 400) {
         var data = JSON.parse(request.responseText);
         if (data) {
-          var class_a = (data.percent_of_less_lethal_force_per_arrest) ? 'key percent-' + data.percent_of_less_lethal_force_per_arrest.replace('%', '') : 'incomplete';
-          var class_b = (data.percentile_of_deadly_force_incidents_per_arrest) ? 'key percent-' + data.percentile_of_deadly_force_incidents_per_arrest.replace('%', '') : 'incomplete';
-          var class_c = (data.percent_of_deadly_force_against_unarmed_people_per_arrest) ? 'key percent-' + data.percent_of_deadly_force_against_unarmed_people_per_arrest.replace('%', '') : 'incomplete';
-          var class_d = (data.percentile_overall_disparity_index) ? 'key percent-' + data.percentile_overall_disparity_index.replace('%', '') : 'incomplete';
-          var class_e = (data.percent_of_complaints_sustained) ? 'key percent-' + data.percent_of_complaints_sustained.replace('%', '') : 'incomplete';
-          var class_f = (data.percent_criminal_complaints_sustained) ? 'key percent-' + data.percent_criminal_complaints_sustained.replace('%', '') : 'incomplete';
-          var class_g = (data.percent_of_misdemeanor_arrests_per_population) ? 'key percent-' + data.percent_of_misdemeanor_arrests_per_population.replace('%', '') : 'incomplete';
-          var class_h = (data.percent_of_murders_solved) ? 'key percent-' + data.percent_of_murders_solved.replace('%', '') : 'incomplete';
+          var class_a = (data.percent_of_less_lethal_force_per_arrest) ? 'key percent-' + parseInt(data.percent_of_less_lethal_force_per_arrest.replace('%', '')) : 'incomplete';
+          var class_b = (data.percentile_of_deadly_force_incidents_per_arrest) ? 'key percent-' + parseInt(data.percentile_of_deadly_force_incidents_per_arrest.replace('%', '')) : 'incomplete';
+          var class_c = (data.percent_of_deadly_force_against_unarmed_people_per_arrest) ? 'key percent-' + parseInt(data.percent_of_deadly_force_against_unarmed_people_per_arrest.replace('%', '')) : 'incomplete';
+          var class_d = (data.percentile_overall_disparity_index) ? 'key percent-' + parseInt(data.percentile_overall_disparity_index.replace('%', '')) : 'incomplete';
+          var class_e = (data.percent_of_complaints_sustained && data.percent_of_complaints_sustained.replace('%', '') !== '0') ? 'key percent-' + parseInt(data.percent_of_complaints_sustained.replace('%', '')) : 'no-complaints';
+          var class_f = (data.percent_criminal_complaints_sustained && data.percent_of_complaints_sustained.replace('%', '') !== '0') ? 'key percent-' + parseInt(data.percent_criminal_complaints_sustained.replace('%', '')) : 'no-complaints';
+          var class_g = (data.percent_of_misdemeanor_arrests_per_population) ? 'key percent-' + parseInt(data.percent_of_misdemeanor_arrests_per_population.replace('%', '')) : 'incomplete';
+          var class_h = (data.percent_of_murders_solved) ? 'key percent-' + parseInt(data.percent_of_murders_solved.replace('%', '')) : 'incomplete';
 
           var html = '';
 
-          html += '<div class="modal-header"><div class="results-header">Average from All 3 Sections: ' + data.overall_score + '</div><div class="keys"><span class="key key-bad"></span> BAD <span class="key key-avg"></span> AVG <span class="key key-good"></span> GOOD</div></div>';
+          html += '<div class="modal-header"><div class="results-header"><strong>' + data.agency_name + '</strong><br/>Grade:&nbsp; ' + getGrade(data.overall_score.replace('%', '')) + ' (' + data.overall_score + ')</div><div class="keys"><span class="key key-bad"></span> BAD <span class="key key-avg"></span> AVG <span class="key key-good"></span> GOOD</div></div>';
           html += '<div class="section-header no-border"><div class="label">&nbsp;</div><div class="percentile"><strong>PERCENTILE</strong></div></div>';
 
           html += '<div class="section-header"><div class="label">Police Violence:&nbsp; ' + data.police_violence_score + '</div><div class="percentile">50TH</div></div>';
@@ -158,6 +190,8 @@
           html += '<tr class="double ' + class_g + '"><td>Misdemeanor Arrests per Population</td><td width="25px">&nbsp;</td><td width="25px" class="divider">&nbsp;</td><td width="25px">&nbsp;</td><td width="25px">&nbsp;</td></tr>';
           html += '<tr class="' + class_h + '"><td>Homicides Solved</td><td width="25px">&nbsp;</td><td width="25px" class="divider">&nbsp;</td><td width="25px">&nbsp;</td><td width="25px">&nbsp;</td></tr>';
           html += '</table>';
+
+          html += '<div class="summary"><strong>Average from All 3 Sections:&nbsp; ' + data.overall_score + '</strong></div>';
 
           $citySelect.style.display = 'none';
           $resultsInfoContent.style.display = 'block';
