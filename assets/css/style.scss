@@ -333,7 +333,7 @@ body {
 
     .summary {
       text-align: center;
-      margin-top: 6px;
+      margin-top: 14px;
     }
 
     .results-header {
@@ -344,9 +344,9 @@ body {
 
     .keys {
       display: inline-block;
-      font-size: 10px;
+      font-size: 9px;
       font-weight: 400;
-      width: 49%;
+      width: 50%;
       text-align: right;
 
       .key {
@@ -354,7 +354,7 @@ body {
         height: 8px;
         border-radius: 50%;
         display: inline-block;
-        margin: 0 3px;
+        margin: 0 2px;
 
         &.key-bad {
           background-color: $grade-red;
