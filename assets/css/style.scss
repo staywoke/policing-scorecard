@@ -178,9 +178,10 @@ body {
             margin-top: 12px;
           }
 
-          &.percent-1::before { right: 115px; color: $grade-red; }
-          &.percent-2::before { right: 114px; color: $grade-red; }
-          &.percent-3::before { right: 113px; color: $grade-red; }
+          &.percent-0::before { right: 115px; color: $grade-red; }
+          &.percent-1::before { right: 114px; color: $grade-red; }
+          &.percent-2::before { right: 113px; color: $grade-red; }
+          &.percent-3::before { right: 112px; color: $grade-red; }
           &.percent-4::before { right: 111px; color: $grade-red; }
           &.percent-5::before { right: 110px; color: $grade-red; }
           &.percent-6::before { right: 109px; color: $grade-red; }
