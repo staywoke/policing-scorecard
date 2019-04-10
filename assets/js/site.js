@@ -26,14 +26,16 @@
     $moreInfoContent.style.display = 'none';
     $resultsInfoContent.style.display = 'none';
     $citySelect.style.display = 'block';
-    $modal.classList.toggle('open')
+    $modal.classList.toggle('open');
+    $modal.classList.remove('large');
   });
 
   $modalOverlay.addEventListener('click', function() {
     $moreInfoContent.style.display = 'none';
     $resultsInfoContent.style.display = 'none';
     $citySelect.style.display = 'block';
-    $modal.classList.toggle('open')
+    $modal.classList.toggle('open');
+    $modal.classList.remove('large');
   });
 
   $modalOverlay.addEventListener('mousewheel', function(e) {
@@ -123,30 +125,45 @@
       if (request.status >= 200 && request.status < 400) {
         var data = JSON.parse(request.responseText);
         if (data) {
+          var class_a = (data.percent_of_less_lethal_force_per_arrest) ? 'key percent-' + data.percent_of_less_lethal_force_per_arrest.replace('%', '') : 'incomplete';
+          var class_b = (data.percentile_of_deadly_force_incidents_per_arrest) ? 'key percent-' + data.percentile_of_deadly_force_incidents_per_arrest.replace('%', '') : 'incomplete';
+          var class_c = (data.percent_of_deadly_force_against_unarmed_people_per_arrest) ? 'key percent-' + data.percent_of_deadly_force_against_unarmed_people_per_arrest.replace('%', '') : 'incomplete';
+          var class_d = (data.percentile_overall_disparity_index) ? 'key percent-' + data.percentile_overall_disparity_index.replace('%', '') : 'incomplete';
+          var class_e = (data.percent_of_complaints_sustained) ? 'key percent-' + data.percent_of_complaints_sustained.replace('%', '') : 'incomplete';
+          var class_f = (data.percent_criminal_complaints_sustained) ? 'key percent-' + data.percent_criminal_complaints_sustained.replace('%', '') : 'incomplete';
+          var class_g = (data.percent_of_misdemeanor_arrests_per_population) ? 'key percent-' + data.percent_of_misdemeanor_arrests_per_population.replace('%', '') : 'incomplete';
+          var class_h = (data.percent_of_murders_solved) ? 'key percent-' + data.percent_of_murders_solved.replace('%', '') : 'incomplete';
+
           var html = '';
-          if (prop === 'police-violence') {
-            html += '<p class="score"><strong>Police Violence Score:</strong>&nbsp; ' + data.police_violence_score + '</p>';
-            html += '<p class="instructions"><strong>Factors used to calculate this score:</strong></p>';
-            html += '<p><strong>Percentile of Less-Lethal Force per Arrest:</strong>&nbsp; ' + ((data.percent_of_less_lethal_force_per_arrest) ? data.percent_of_less_lethal_force_per_arrest : 'Incomplete (0%)') + '</p>';
-            html += '<p><strong>Percentile of Deadly Force per Arrest:</strong>&nbsp; ' + ((data.percentile_of_deadly_force_incidents_per_arrest) ? data.percentile_of_deadly_force_incidents_per_arrest : 'Incomplete (0%)') + '</p>';
-            html += '<p><strong>Percentile Unarmed Victims of Deadly Force per Arrest:</strong>&nbsp; ' + ((data.percent_of_deadly_force_against_unarmed_people_per_arrest) ? data.percent_of_deadly_force_against_unarmed_people_per_arrest : 'Incomplete (0%)') + '</p>';
-            html += '<p><strong>Percentile of Racial Disparities in Arrests and Deadly Force:</strong>&nbsp; ' + ((data.percentile_overall_disparity_index) ? data.percentile_overall_disparity_index : 'Incomplete (0%)') + '</p>';
-          } else if (prop === 'police-accountability') {
-            html += '<p class="score"><strong>Police Accountability Score:</strong>&nbsp; ' + data.police_accountability_score + '</p>';
-            html += '<p class="instructions"><strong>Factors used to calculate this score:</strong></p>';
-            html += '<p><strong>Percentile of Complaints Sustained:</strong>&nbsp; ' + ((data.percent_of_complaints_sustained) ? data.percent_of_complaints_sustained : 'Incomplete (0%)') + '</p>';
-            html += '<p><strong>Percent of Criminal Allegations Sustained:</strong>&nbsp; ' + ((data.percent_criminal_complaints_sustained) ? data.percent_criminal_complaints_sustained : 'Incomplete (0%)') + '</p>';
-          } else if (prop === 'approach') {
-            html += '<p class="score"><strong>Approach to Policing Score:</strong>&nbsp; ' + data.approach_to_policing_score + '</p>';
-            html += '<p class="instructions"><strong>Factors used to calculate this score:</strong></p>';
-            html += '<p><strong>Percentile of Misdemeanor Arrests per Population:</strong>&nbsp; ' + ((data.percent_of_misdemeanor_arrests_per_population) ? data.percent_of_misdemeanor_arrests_per_population : 'Incomplete (0%)') + '</p>';
-            html += '<p><strong>Percent of Homicides Solved:</strong>&nbsp; ' + ((data.percent_of_murders_solved) ? data.percent_of_murders_solved : 'Incomplete (0%)') + '</p>';
-          }
+
+          html += '<div class="modal-header"><div class="results-header">Average from All 3 Sections: ' + data.overall_score + '</div><div class="keys"><span class="key key-bad"></span> BAD <span class="key key-avg"></span> AVG <span class="key key-good"></span> GOOD</div></div>';
+          html += '<div class="section-header no-border"><div class="label">&nbsp;</div><div class="percentile"><strong>PERCENTILE</strong></div></div>';
+
+          html += '<div class="section-header"><div class="label">Police Violence:&nbsp; ' + data.police_violence_score + '</div><div class="percentile">50TH</div></div>';
+          html += '<table>';
+          html += '<tr class="' + class_a + '"><td>Less-Lethal Force per Arrest</td><td width="25px">&nbsp;</td><td width="25px" class="divider">&nbsp;</td><td width="25px">&nbsp;</td><td width="25px">&nbsp;</td></tr>';
+          html += '<tr class="' + class_b + '"><td>Deadly Force per Arrest</td><td>&nbsp;</td><td class="divider">&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td></tr>';
+          html += '<tr class="double ' + class_c + '"><td>Unarmed Victims of Deadly Force per Arrest</td><td>&nbsp;</td><td class="divider">&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td></tr>';
+          html += '<tr class="double ' + class_d + '"><td>Racial Disparities in Arrests and Deadly Force</td><td>&nbsp;</td><td class="divider">&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td></tr>';
+          html += '</table>';
+
+          html += '<div class="section-header"><div class="label">Police Accountability:&nbsp; ' + data.police_accountability_score + '</div><div class="percentile">&nbsp;</div></div>';
+          html += '<table>';
+          html += '<tr class="' + class_e + '"><td>Complaints Sustained</td><td width="25px">&nbsp;</td><td width="25px" class="divider">&nbsp;</td><td width="25px">&nbsp;</td><td width="25px">&nbsp;</td></tr>';
+          html += '<tr class="double ' + class_f + '"><td>Criminal Allegations Sustained</td><td width="25px">&nbsp;</td><td width="25px" class="divider">&nbsp;</td><td width="25px">&nbsp;</td><td width="25px">&nbsp;</td></tr>';
+          html += '</table>';
+
+          html += '<div class="section-header"><div class="label">Approach to Policing:&nbsp; ' + data.approach_to_policing_score + '</div><div class="percentile">&nbsp;</div></div>';
+          html += '<table>';
+          html += '<tr class="double ' + class_g + '"><td>Misdemeanor Arrests per Population</td><td width="25px">&nbsp;</td><td width="25px" class="divider">&nbsp;</td><td width="25px">&nbsp;</td><td width="25px">&nbsp;</td></tr>';
+          html += '<tr class="' + class_h + '"><td>Homicides Solved</td><td width="25px">&nbsp;</td><td width="25px" class="divider">&nbsp;</td><td width="25px">&nbsp;</td><td width="25px">&nbsp;</td></tr>';
+          html += '</table>';
 
           $citySelect.style.display = 'none';
           $resultsInfoContent.style.display = 'block';
           $resultsInfoContent.innerHTML = html.replace(/(?:\r\n|\r|\n)/g, '<br><br>');
           $modal.classList.toggle('open');
+          $modal.classList.add('large');
         } else {
           console.error('Empty Prop', prop);
         }

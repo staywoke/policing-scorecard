@@ -93,6 +93,17 @@ body {
     }
   }
 
+  &.large {
+    .modal {
+      height: 420px;
+      top: calc(50% - 210px);
+
+      #modal-content {
+        height: 380px;
+      }
+    }
+  }
+
   #overlay {
     position: absolute;
     top: 0;
@@ -106,6 +117,231 @@ body {
 
   #results-info-content {
     font-weight: 300;
+
+    .modal-header {
+      height: 40px;
+    }
+
+    .percentile-header {
+      height: 30px;
+    }
+
+    .section-header {
+      height: 20px;
+      font-size: 12px;
+      font-weight: 700;
+      border-bottom: 2px solid #000;
+      margin-top: 20px;
+
+      &:nth-child(2), &:nth-child(3) {
+        margin-top: 0;
+      }
+
+      &.no-border {
+        border-bottom: none;
+      }
+
+      .label {
+        width: 61%;
+        display: inline-block;
+      }
+
+      .percentile {
+        width: 39%;
+        display: inline-block;
+        text-align: center;
+      }
+
+      strong {
+        display: block;
+        width: 100%;
+        text-align: center;
+        font-weight: 700;
+        font-size: 12px;
+      }
+    }
+
+    table {
+      font-size: 12px;
+      font-weight: 400;
+
+      tr {
+        &.key {
+          &::before {
+            content: '⬤';
+            position: absolute;
+            margin-top: 6px;
+            font-size: 8px;
+          }
+
+          &.double::before {
+            margin-top: 12px;
+          }
+
+          &.percent-1::before { right: 115px; color: $grade-red; }
+          &.percent-2::before { right: 114px; color: $grade-red; }
+          &.percent-3::before { right: 113px; color: $grade-red; }
+          &.percent-4::before { right: 111px; color: $grade-red; }
+          &.percent-5::before { right: 110px; color: $grade-red; }
+          &.percent-6::before { right: 109px; color: $grade-red; }
+          &.percent-7::before { right: 108px; color: $grade-red; }
+          &.percent-8::before { right: 107px; color: $grade-red; }
+          &.percent-9::before { right: 106px; color: $grade-red; }
+          &.percent-10::before { right: 105px; color: $grade-red; }
+          &.percent-11::before { right: 104px; color: $grade-red; }
+          &.percent-12::before { right: 103px; color: $grade-red; }
+          &.percent-13::before { right: 102px; color: $grade-red; }
+          &.percent-14::before { right: 101px; color: $grade-red; }
+          &.percent-15::before { right: 100px; color: $grade-red; }
+          &.percent-16::before { right: 99px; color: $grade-red; }
+          &.percent-17::before { right: 98px; color: $grade-red; }
+          &.percent-18::before { right: 97px; color: $grade-red; }
+          &.percent-19::before { right: 96px; color: $grade-red; }
+          &.percent-20::before { right: 95px; color: $grade-red; }
+          &.percent-21::before { right: 94px; color: $grade-red; }
+          &.percent-22::before { right: 93px; color: $grade-red; }
+          &.percent-23::before { right: 92px; color: $grade-red; }
+          &.percent-24::before { right: 91px; color: $grade-red; }
+          &.percent-25::before { right: 90px; color: $grade-red; }
+          &.percent-26::before { right: 89px; color: $grade-red; }
+          &.percent-27::before { right: 88px; color: $grade-red; }
+          &.percent-28::before { right: 87px; color: $grade-red; }
+          &.percent-29::before { right: 86px; color: $grade-red; }
+          &.percent-30::before { right: 85px; color: $grade-red; }
+          &.percent-31::before { right: 84px; color: $grade-red; }
+          &.percent-32::before { right: 83px; color: $grade-red; }
+          &.percent-33::before { right: 82px; color: $grade-red; }
+          &.percent-34::before { right: 81px; color: #AAA; }
+          &.percent-35::before { right: 80px; color: #AAA; }
+          &.percent-36::before { right: 79px; color: #AAA; }
+          &.percent-37::before { right: 78px; color: #AAA; }
+          &.percent-38::before { right: 77px; color: #AAA; }
+          &.percent-39::before { right: 76px; color: #AAA; }
+          &.percent-40::before { right: 75px; color: #AAA; }
+          &.percent-41::before { right: 74px; color: #AAA; }
+          &.percent-42::before { right: 73px; color: #AAA; }
+          &.percent-43::before { right: 72px; color: #AAA; }
+          &.percent-44::before { right: 71px; color: #AAA; }
+          &.percent-45::before { right: 70px; color: #AAA; }
+          &.percent-46::before { right: 69px; color: #AAA; }
+          &.percent-47::before { right: 68px; color: #AAA; }
+          &.percent-48::before { right: 67px; color: #AAA; }
+          &.percent-49::before { right: 66px; color: #AAA; }
+          &.percent-50::before { right: 65px; color: #AAA; }
+          &.percent-51::before { right: 64px; color: #AAA; }
+          &.percent-52::before { right: 63px; color: #AAA; }
+          &.percent-53::before { right: 62px; color: #AAA; }
+          &.percent-54::before { right: 61px; color: #AAA; }
+          &.percent-55::before { right: 60px; color: #AAA; }
+          &.percent-56::before { right: 59px; color: #AAA; }
+          &.percent-57::before { right: 58px; color: #AAA; }
+          &.percent-58::before { right: 57px; color: #AAA; }
+          &.percent-59::before { right: 56px; color: #AAA; }
+          &.percent-60::before { right: 55px; color: #AAA; }
+          &.percent-61::before { right: 54px; color: #AAA; }
+          &.percent-62::before { right: 53px; color: #AAA; }
+          &.percent-63::before { right: 52px; color: #AAA; }
+          &.percent-64::before { right: 51px; color: #AAA; }
+          &.percent-65::before { right: 50px; color: #AAA; }
+          &.percent-66::before { right: 49px; color: #AAA; }
+          &.percent-67::before { right: 48px; color: $grade-light-green; }
+          &.percent-68::before { right: 47px; color: $grade-light-green; }
+          &.percent-69::before { right: 46px; color: $grade-light-green; }
+          &.percent-70::before { right: 45px; color: $grade-light-green; }
+          &.percent-71::before { right: 44px; color: $grade-light-green; }
+          &.percent-72::before { right: 43px; color: $grade-light-green; }
+          &.percent-70::before { right: 42px; color: $grade-light-green; }
+          &.percent-74::before { right: 41px; color: $grade-light-green; }
+          &.percent-75::before { right: 40px; color: $grade-light-green; }
+          &.percent-76::before { right: 39px; color: $grade-light-green; }
+          &.percent-77::before { right: 38px; color: $grade-light-green; }
+          &.percent-78::before { right: 37px; color: $grade-light-green; }
+          &.percent-79::before { right: 36px; color: $grade-light-green; }
+          &.percent-80::before { right: 35px; color: $grade-light-green; }
+          &.percent-81::before { right: 34px; color: $grade-light-green; }
+          &.percent-82::before { right: 33px; color: $grade-light-green; }
+          &.percent-83::before { right: 32px; color: $grade-light-green; }
+          &.percent-84::before { right: 31px; color: $grade-light-green; }
+          &.percent-85::before { right: 30px; color: $grade-light-green; }
+          &.percent-86::before { right: 29px; color: $grade-light-green; }
+          &.percent-87::before { right: 28px; color: $grade-light-green; }
+          &.percent-88::before { right: 27px; color: $grade-light-green; }
+          &.percent-89::before { right: 26px; color: $grade-light-green; }
+          &.percent-90::before { right: 25px; color: $grade-light-green; }
+          &.percent-91::before { right: 24px; color: $grade-light-green; }
+          &.percent-92::before { right: 23px; color: $grade-light-green; }
+          &.percent-93::before { right: 22px; color: $grade-light-green; }
+          &.percent-94::before { right: 21px; color: $grade-light-green; }
+          &.percent-95::before { right: 20px; color: $grade-light-green; }
+          &.percent-96::before { right: 19px; color: $grade-light-green; }
+          &.percent-97::before { right: 18px; color: $grade-light-green; }
+          &.percent-98::before { right: 17px; color: $grade-light-green; }
+          &.percent-99::before { right: 16px; color: $grade-light-green; }
+          &.percent-100::before { right: 15px; color: $grade-light-green; }
+        }
+
+        &.incomplete {
+          background: repeating-linear-gradient(-55deg, #FFF, #FFF 2px, rgba(0, 0, 0, 0.1) 2px, rgba(0, 0, 0, 0.1) 4px);
+
+          &::before {
+            content: 'INCOMPLETE';
+            position: absolute;
+            right: 37px;
+            margin-top: 6px;
+            color: $grade-red;
+            font-size: 10px;
+            font-weight: 700;
+            background: #FFF;
+          }
+
+          &.double::before {
+            margin-top: 12px;
+          }
+        }
+      }
+
+      td {
+        border-right: 1px solid $border-color;
+        border-top: 1px solid $border-color;
+        padding: 4px 0;
+
+        &.divider {
+          border-right: 1px solid #000;
+        }
+      }
+    }
+
+    .results-header {
+      display: inline-block;
+      font-weight: 400;
+      width: 49%;
+    }
+
+    .keys {
+      display: inline-block;
+      font-size: 10px;
+      font-weight: 400;
+      width: 49%;
+      text-align: right;
+
+      .key {
+        width: 8px;
+        height: 8px;
+        border-radius: 50%;
+        display: inline-block;
+        margin: 0 3px;
+
+        &.key-bad {
+          background-color: $grade-red;
+        }
+        &.key-avg {
+          background-color: #AAA;
+        }
+        &.key-good {
+          background-color: $grade-light-green;
+        }
+      }
+    }
 
     strong {
       font-weight: 500;
