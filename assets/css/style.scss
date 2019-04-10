@@ -339,15 +339,19 @@ body {
     .results-header {
       display: inline-block;
       font-weight: 400;
-      width: 49%;
+      width: 48%;
+      white-space: nowrap;
+      overflow: visible;
     }
 
     .keys {
       display: inline-block;
       font-size: 9px;
       font-weight: 400;
-      width: 50%;
+      width: 52%;
       text-align: right;
+      white-space: nowrap;
+      overflow: visible;
 
       .key {
         width: 8px;
