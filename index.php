@@ -100,7 +100,7 @@ $socialSubject = rawurlencode($title);
               <a href="javascript:void(0);" id="score-location"><?= $data['agency_name'] ?></a>
             </div>
           </div>
-          <div class="right v-center">
+          <div class="right v-center view-score" onclick="SCORECARD.loadResultsInfo('<?= $city ?>')">
             <span class="label">Overall Grade:</span>
             <span class="grade"><?= $grade ?></span>
           </div>
@@ -237,7 +237,7 @@ $socialSubject = rawurlencode($title);
             <?php if(output($data['deadly_force_incidents']) !== '0'): ?>
             <div class="stat-wrapper">
               <a href="javascript:void(0)" data-city="<?= $city ?>" data-more-info="" class="more-info"></a>
-              <h3>Armed / Unarmed Status of People Killed or Seriously Injured</h3>
+              <h3>People Killed or Seriously Injured</h3>
               <p><?= output(round((floatval($data['fatality_rate']) / 100) * intval($data['number_of_people_impacted_by_deadly_force']))) ?> Deaths, <?= intval(num($data['number_of_people_impacted_by_deadly_force'], 0)) - (intval(round((floatval($data['fatality_rate']) / 100) * intval($data['number_of_people_impacted_by_deadly_force'])))) ?> Serious Injuries</p>
               <p><?= num($data['percent_used_against_people_who_were_unarmed'], 0, '%') ?> were Unarmed <span class="divider">&nbsp;|&nbsp;</span> <?= 100 - intval(num($data['percent_used_against_people_who_were_not_armed_with_gun'], 0)) ?>% had a Gun</p>
             <?php if(num($data['number_of_people_impacted_by_deadly_force'], 0) !== '0'): ?>
@@ -521,7 +521,7 @@ $socialSubject = rawurlencode($title);
             <div class="stat-wrapper no-border-mobile">
               <a href="javascript:void(0)" data-city="<?= $city ?>" data-more-info="" class="more-info"></a>
               <h3>Arrests for Low Level Offenses</h3>
-              <p><?= num(round(intval($data['total_arrests']) * intval($data['percent_misdemeanor_arrests']))) ?> Misdemeanor Arrests <span class="divider">&nbsp;|&nbsp;</span> <?= output($data['misdemeanor_arrests_per_population']) ?> per 1k residents</p>
+              <p><?= num(round(intval(str_replace(',', '', $data['total_arrests'])) * (intval($data['percent_misdemeanor_arrests']) / 100))) ?> Misdemeanor Arrests <span class="divider">&nbsp;|&nbsp;</span> <?= output($data['misdemeanor_arrests_per_population']) ?> per 1k residents</p>
               <?php if(!isset($data['percent_of_misdemeanor_arrests_per_population']) || (isset($data['percent_of_misdemeanor_arrests_per_population']) && empty($data['percent_of_misdemeanor_arrests_per_population']))): ?>
                 <div class="progress-bar-wrapper">
                   <div class="progress-bar no-data" style="width: 0"></div>
@@ -626,8 +626,8 @@ $socialSubject = rawurlencode($title);
             <?php foreach($reportCard as $index => $card): if ($index < 50): ?>
               <tr>
                 <td width="175"><a href="./?city=<?= strtolower(preg_replace('/ /', '-', $card['agency_name'])) ?>"><?= $card['agency_name'] ?></a></td>
-                <td width="50"><?= getGrade($card['overall_score']) ?></td>
-                <td><div class="grade grade-<?= strtolower(preg_replace('/[^A-Z]/', '', getGrade($card['overall_score']))) ?>"><?= intval($card['overall_score']) ?>%</div></td>
+                <td width="50"><a href="./?city=<?= strtolower(preg_replace('/ /', '-', $card['agency_name'])) ?>"><?= getGrade($card['overall_score']) ?></a></td>
+                <td><a href="./?city=<?= strtolower(preg_replace('/ /', '-', $card['agency_name'])) ?>"><div class="grade grade-<?= strtolower(preg_replace('/[^A-Z]/', '', getGrade($card['overall_score']))) ?>"><?= intval($card['overall_score']) ?>%</div></a></td>
               </tr>
             <?php endif; endforeach; ?>
             </table>
@@ -661,7 +661,10 @@ $socialSubject = rawurlencode($title);
             About This Scorecard
           </h1>
           <p>
-            <strong>This is the first statewide Policing Scorecard in the United States.</strong> It was built using data from California’s <a href="https://openjustice.doj.ca.gov/data" target="_blank">OpenJustice</a> database, public records requests, national databases and media reports. <a href="https://docs.google.com/document/d/1YVv68k7fp5u2OOaNT9MqBHn-_itEh4tIa7TZkHRIe1s/edit" target="_blank">Learn more about our methodology</a>.
+            <strong>This is the first statewide Policing Scorecard in the United States.</strong> It was built using data from California’s <a href="https://openjustice.doj.ca.gov/data" target="_blank">OpenJustice</a> database, public records requests, national databases and media reports.
+          </p>
+          <p>
+            <a href="https://docs.google.com/document/d/1YVv68k7fp5u2OOaNT9MqBHn-_itEh4tIa7TZkHRIe1s/edit" class="button">methodology</a>
           </p>
           <p>&nbsp;</p>
           <p>
@@ -669,39 +672,57 @@ $socialSubject = rawurlencode($title);
           </p>
           <p>&nbsp;</p>
           <p class="take-action">Here’s how to start pushing for change:</p>
+        </div>
+        <div class="content">
           <p>&nbsp;</p>
-          <ul>
-            <li>
-              <strong>Contact your Mayor and Police Chief</strong>, share this scorecard with them and urge them to enact policies to address the issues you’ve identified:
-              <ul class="contacts">
-                <li>
-                  Mayor <?= $data['mayor_name'] ?>
-                <?php if (!empty($data['mayor_phone'])): ?>
-                  <span class="divider">&nbsp;|&nbsp;</span> Phone:&nbsp; <a href="tel:1-<?= $data['mayor_phone'] ?><?= (!empty($data['mayor_phone_ext'])) ? ';ext=' . $data['mayor_phone_ext'] : '' ?>"><?= $data['mayor_phone'] ?></a>
-                <?php endif; ?>
-                <?php if (!empty($data['mayor_phone_ext'])): ?>
-                  ext <?= $data['mayor_phone_ext'] ?>
-                <?php endif; ?>
-                <?php if (!empty($data['mayor_email'])): ?>
-                  <span class="divider">&nbsp;|&nbsp;</span> Email:&nbsp; <a href="mailto:<?= $data['mayor_email'] ?>"><?= $data['mayor_email'] ?></a>
-                <?php endif; ?>
-                </li>
-                <li>
-                  Police Chief <?= $data['police_chief_name'] ?>
-                <?php if (!empty($data['police_chief_phone'])): ?>
-                  <span class="divider">&nbsp;|&nbsp;</span> Phone:&nbsp; <a href="tel:1-<?= $data['police_chief_phone'] ?><?= (!empty($data['police_chief_phone_ext'])) ? ';ext=' . $data['police_chief_phone_ext'] : '' ?>"><?= $data['police_chief_phone'] ?></a>
-                <?php endif; ?>
-                <?php if (!empty($data['police_chief_phone_ext'])): ?>
-                  ext <?= $data['police_chief_phone_ext'] ?>
-                <?php endif; ?>
-                <?php if (!empty($data['police_chief_email'])): ?>
-                  <span class="divider">&nbsp;|&nbsp;</span> Email:&nbsp; <a href="mailto:<?= $data['police_chief_email'] ?>"><?= $data['police_chief_email'] ?></a>
-                <?php endif; ?>
-                </li>
-              </ul>
-            </li>
-            <li><strong>Find your California State Assembly Member</strong> using the <a href="http://embed.joincampaignzero.org/" target="_blank">Campaign Zero Advocacy Tool</a> and urge them to support <strong>Assembly Bill 392</strong>, which would require police to attempt de-escalation and all available alternatives before using deadly force.</li>
-          </ul>
+        </div>
+        <div class="content">
+          <div class="left number number-1">
+            <ul>
+              <li>
+                <strong>Contact your Mayor and Police Chief</strong>, share this scorecard with them and urge them to enact policies to address the issues you’ve identified:
+                <ul class="contacts">
+                  <li>
+                    <strong>Mayor <?= $data['mayor_name'] ?></strong>
+                  <?php if (!empty($data['mayor_phone'])): ?>
+                    <br>
+                    Phone:&nbsp; <a href="tel:1-<?= $data['mayor_phone'] ?><?= (!empty($data['mayor_phone_ext'])) ? ';ext=' . $data['mayor_phone_ext'] : '' ?>"><?= $data['mayor_phone'] ?></a>
+                  <?php endif; ?>
+                  <?php if (!empty($data['mayor_phone_ext'])): ?>
+                    ext <?= $data['mayor_phone_ext'] ?>
+                  <?php endif; ?>
+                  <?php if (!empty($data['mayor_email'])): ?>
+                    <br>
+                    Email:&nbsp; <a href="mailto:<?= $data['mayor_email'] ?>"><?= $data['mayor_email'] ?></a>
+                  <?php endif; ?>
+                  </li>
+                  <li>
+                    <strong>Police Chief <?= $data['police_chief_name'] ?></strong>
+                  <?php if (!empty($data['police_chief_phone'])): ?>
+                    <br>
+                    Phone:&nbsp; <a href="tel:1-<?= $data['police_chief_phone'] ?><?= (!empty($data['police_chief_phone_ext'])) ? ';ext=' . $data['police_chief_phone_ext'] : '' ?>"><?= $data['police_chief_phone'] ?></a>
+                  <?php endif; ?>
+                  <?php if (!empty($data['police_chief_phone_ext'])): ?>
+                    ext <?= $data['police_chief_phone_ext'] ?>
+                  <?php endif; ?>
+                  <?php if (!empty($data['police_chief_email'])): ?>
+                    <br>
+                    Email:&nbsp; <a href="mailto:<?= $data['police_chief_email'] ?>"><?= $data['police_chief_email'] ?></a>
+                  <?php endif; ?>
+                  </li>
+                </ul>
+              </li>
+            </ul>
+          </div>
+          <div class="right number number-2">
+            <ul>
+              <li><strong>Find your California State Assembly Member</strong> using the Campaign Zero Advocacy Tool and urge them to support <strong>Assembly Bill 392</strong>, which would require police to attempt de-escalation and all available alternatives before using deadly force.
+                <br />
+              <a href="https://www.joincampaignzero.org/advocacy" class="button" target="_blank">Campaign Zero Advocacy Tool</a></li>
+            </ul>
+          </div>
+        </div>
+        <div class="content">
           <p>&nbsp;</p>
           <p>If you have feedback, questions about the project, or need support with an advocacy campaign, contact us directly at <a href="mailto:feedback@joincampaignzero.org">feedback@joincampaignzero.org</a>.</p>
         </div>

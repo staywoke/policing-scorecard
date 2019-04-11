@@ -95,11 +95,11 @@ body {
 
   &.large {
     .modal {
-      height: 440px;
-      top: calc(50% - 220px);
+      height: 480px;
+      top: calc(50% - 240px);
 
       #modal-content {
-        height: 400px;
+        height: 440px;
       }
     }
   }
@@ -158,6 +158,23 @@ body {
         text-align: center;
         font-weight: 700;
         font-size: 12px;
+      }
+    }
+
+    .button-wrapper {
+      text-align: center;
+      margin-top: 6px;
+
+      .button {
+        background: #8db6dc;
+        text-decoration: none;
+        color: white;
+        padding: 10px 0;
+        border-radius: 4px;
+        text-align: center;
+        font-weight: 500;
+        display: block;
+        text-transform: uppercase;
       }
     }
 
@@ -333,7 +350,7 @@ body {
 
     .summary {
       text-align: center;
-      margin-top: 14px;
+      margin-top: 6px;
     }
 
     .results-header {
@@ -350,8 +367,6 @@ body {
       font-weight: 400;
       width: 52%;
       text-align: right;
-      white-space: nowrap;
-      overflow: visible;
 
       .key {
         width: 8px;
@@ -374,6 +389,30 @@ body {
 
     strong {
       font-weight: 700;
+
+      &.grade-a {
+        color: $grade-light-green;
+      }
+
+      &.grade-b {
+        color: $grade-green;
+      }
+
+      &.grade-c {
+        color: $grade-yellow;
+      }
+
+      &.grade-d {
+        color: $grade-orange;
+      }
+
+      &.grade-f {
+        color: $grade-red;
+      }
+
+      &.grade span {
+        color: $primary-gray !important;
+      }
     }
 
     p {
@@ -412,6 +451,11 @@ body {
     padding-bottom: 80px;
     padding-top: 20px;
   }
+
+  .view-score {
+    cursor: pointer;
+  }
+
   .content {
     max-width: $bp-max-width;
     margin: 0 auto;
@@ -1658,8 +1702,8 @@ body {
   }
 
   p, ul, li {
-    font-size: 24px;
-    line-height: 32px;
+    font-size: 20px;
+    line-height: 24px;
     color: $primary-gray;
   }
 
@@ -1672,9 +1716,6 @@ body {
   }
 
   ul {
-    margin-left: 24px;
-    list-style: disc;
-
     li {
       margin-bottom: 20px;
 
@@ -1686,17 +1727,54 @@ body {
     ul.contacts {
       margin-top: 14px;
       list-style: none;
+      margin-left: 0;
 
       li {
         font-size: 18px;
-        line-height: 18px;
+        line-height: 24px;
       }
+    }
+  }
+
+  .number {
+    ul {
+      list-style: none;
+      margin-left: 40px;
+    }
+
+    &::before {
+      font-family: 'Barlow Condensed', sans-serif;
+      position: absolute;
+      font-weight: 700;
+      font-size: 40px;
+    }
+
+    &.number-1::before {
+      content: '1.';
+    }
+
+    &.number-2::before {
+      content: '2.';
     }
   }
 
   a {
     color: $primary-blue;
     text-decoration: none;
+
+    &.button {
+      background: #8db6dc;
+      text-decoration: none;
+      color: white;
+      padding: 0 20px;
+      border-radius: 4px;
+      text-align: center;
+      font-weight: 500;
+      text-transform: uppercase;
+      font-size: 14px;
+      margin-top: 20px;
+      display: inline-block;
+    }
   }
 
   strong {

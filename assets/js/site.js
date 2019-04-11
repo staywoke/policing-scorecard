@@ -1,4 +1,4 @@
-(function () {
+var SCORECARD = (function () {
   var $mapLayer = document.getElementById('map-layer');
   var $menu = document.getElementById('menu');
   var $menuToggle = document.getElementById('mobile-toggle');
@@ -166,9 +166,10 @@
           var class_g = (data.percent_of_misdemeanor_arrests_per_population) ? 'key percent-' + parseInt(data.percent_of_misdemeanor_arrests_per_population.replace('%', '')) : 'incomplete';
           var class_h = (data.percent_of_murders_solved) ? 'key percent-' + parseInt(data.percent_of_murders_solved.replace('%', '')) : 'incomplete';
 
+          var grade = getGrade(data.overall_score.replace('%', ''));
           var html = '';
 
-          html += '<div class="modal-header"><div class="results-header"><strong>' + data.agency_name + '</strong><br/>Grade:&nbsp; ' + getGrade(data.overall_score.replace('%', '')) + ' (' + data.overall_score + ')</div><div class="keys"><span class="key key-bad"></span> WORSE <span class="key key-avg"></span> AVG <span class="key key-good"></span> BETTER</div></div>';
+          html += '<div class="modal-header"><div class="results-header"><strong>' + data.agency_name + '</strong><br/>Grade:&nbsp; <strong class="grade grade-' + grade.replace(/[^A-Z]/, '').toLowerCase() + '">' + grade + '</strong> (' + data.overall_score + ')</div><div class="keys"><span class="key key-bad"></span> WORSE <span class="key key-avg"></span> AVG <span class="key key-good"></span> BETTER</div></div>';
           html += '<div class="section-header no-border"><div class="label">&nbsp;</div><div class="percentile"><strong>PERCENTILE</strong></div></div>';
 
           html += '<div class="section-header"><div class="label">Police Violence:&nbsp; ' + data.police_violence_score + '</div><div class="percentile">50TH</div></div>';
@@ -187,11 +188,12 @@
 
           html += '<div class="section-header"><div class="label">Approach to Policing:&nbsp; ' + data.approach_to_policing_score + '</div><div class="percentile">&nbsp;</div></div>';
           html += '<table>';
-          html += '<tr class="' + class_g + '"><td width="160px">Misdemeanor Arrest Rate</td><td width="25px">&nbsp;</td><td width="25px" class="divider">&nbsp;</td><td width="25px">&nbsp;</td><td width="25px">&nbsp;</td></tr>';
+          html += '<tr class="double ' + class_g + '"><td width="160px">Over-Policing (Misdemeanor Arrest Rate)</td><td width="25px">&nbsp;</td><td width="25px" class="divider">&nbsp;</td><td width="25px">&nbsp;</td><td width="25px">&nbsp;</td></tr>';
           html += '<tr class="' + class_h + '"><td width="160px">Homicides Solved</td><td width="25px">&nbsp;</td><td width="25px" class="divider">&nbsp;</td><td width="25px">&nbsp;</td><td width="25px">&nbsp;</td></tr>';
           html += '</table>';
 
           html += '<div class="summary"><strong>Average from All 3 Sections:&nbsp; ' + data.overall_score + '</strong></div>';
+          html += '<div class="button-wrapper"><a href="https://docs.google.com/document/d/1YVv68k7fp5u2OOaNT9MqBHn-_itEh4tIa7TZkHRIe1s/edit" class="button" target="_blank">About Our Methodology</a></div>';
 
           $citySelect.style.display = 'none';
           $resultsInfoContent.style.display = 'block';
@@ -238,4 +240,8 @@
   });
 
   document.getElementById('toggle-animate').classList.toggle('animate');
+
+  return {
+    loadResultsInfo: loadResultsInfo
+  }
 })();
