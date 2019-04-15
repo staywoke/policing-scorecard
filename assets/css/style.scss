@@ -163,18 +163,19 @@ body {
 
     .button-wrapper {
       text-align: center;
-      margin-top: 6px;
+      margin-top: 12px;
 
       .button {
         background: #8db6dc;
         text-decoration: none;
         color: white;
-        padding: 10px 0;
+        padding: 6px 0;
         border-radius: 4px;
         text-align: center;
         font-weight: 500;
         display: block;
         text-transform: uppercase;
+        font-size: 12px;
       }
     }
 
@@ -349,8 +350,8 @@ body {
     }
 
     .summary {
-      text-align: center;
-      margin-top: 6px;
+      text-align: left;
+      margin-top: 12px;
     }
 
     .results-header {
@@ -1740,6 +1741,11 @@ body {
     ul {
       list-style: none;
       margin-left: 40px;
+
+      a.button {
+        white-space: nowrap;
+        padding: 4px 20px;
+      }
     }
 
     &::before {
@@ -1756,6 +1762,8 @@ body {
     &.number-2::before {
       content: '2.';
     }
+
+
   }
 
   a {
@@ -1908,6 +1916,11 @@ body {
   p.good-job {
     &.pad-bottom {
       padding-bottom: 0 !important;
+    }
+  }
+  .number {
+    &.number-2 {
+      margin-top: 20px;
     }
   }
   .minor-pad {

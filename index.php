@@ -24,13 +24,16 @@ $socialSubject = rawurlencode($title);
     <meta name="description" content="<?= $title ?>">
     <meta name="author" content="StayWoke">
 
+    <meta name="apple-mobile-web-app-title" content="Police Scorecard">
+    <meta name="application-name" content="Police Scorecard">
+
     <!-- Twitter META Info -->
     <meta property="twitter:card" content="summary_large_image">
     <meta property="twitter:site" content="@samswey">
     <meta property="twitter:title" content="<?= $title ?>">
     <meta property="twitter:description" content="We evaluated the police in California. See the grade for each police department at policescorecard.org">
     <meta property="twitter:creator" content="@mrmidi">
-    <meta property="twitter:image:src" content="https://policescorecard.org/assets/img/card.png">
+    <meta property="twitter:image:src" content="https://policescorecard.org/assets/img/card.png<?= trim($ac) ?>">
     <meta property="twitter:domain" content="https://policescorecard.org">
 
     <!-- Open Graph protocol -->
@@ -38,7 +41,7 @@ $socialSubject = rawurlencode($title);
     <meta property="og:type" content="website">
     <meta property="og:title" content="<?= $title ?>">
     <meta property="og:url" content="https://policescorecard.org">
-    <meta property="og:image" content="https://policescorecard.org/assets/img/card.png">
+    <meta property="og:image" content="https://policescorecard.org/assets/img/card.png<?= trim($ac) ?>">
     <meta property="og:site_name" content="CA Policing Scorecard">
     <meta property="og:description" content="We evaluated the police in California. See the grade for each police department at policescorecard.org">
 

@@ -193,7 +193,7 @@ var SCORECARD = (function () {
           html += '</table>';
 
           html += '<div class="summary"><strong>Average from All 3 Sections:&nbsp; ' + data.overall_score + '</strong></div>';
-          html += '<div class="button-wrapper"><a href="https://docs.google.com/document/d/1YVv68k7fp5u2OOaNT9MqBHn-_itEh4tIa7TZkHRIe1s/edit" class="button" target="_blank">About Our Methodology</a></div>';
+          html += '<div class="button-wrapper"><a href="https://docs.google.com/document/d/1YVv68k7fp5u2OOaNT9MqBHn-_itEh4tIa7TZkHRIe1s/edit" class="button" target="_blank">Read Our Methodology</a></div>';
 
           $citySelect.style.display = 'none';
           $resultsInfoContent.style.display = 'block';
