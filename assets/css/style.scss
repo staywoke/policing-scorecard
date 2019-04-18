@@ -68,7 +68,7 @@ body {
 
     #modal-content {
       height: 260px;
-      overflow: scroll;
+      overflow: auto;
 
       ul li {
         width: 100%;
@@ -89,6 +89,20 @@ body {
         &:last-child a {
           border-bottom: none;
         }
+      }
+
+      em, i {
+        font-style: italic;
+      }
+
+      strong, b {
+        font-style: normal;
+        font-weight: bold;
+      }
+
+      a {
+        text-decoration: none;
+        color: $primary-blue;
       }
     }
   }

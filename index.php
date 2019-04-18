@@ -123,7 +123,7 @@ $socialSubject = rawurlencode($title);
           <?php endif; ?>
           </div>
           <div class="one-third">
-            <h1><strong><?= num($data['civilian_complaints_reported']) ?></strong> civilian complaints of  police misconduct</h1>
+            <h1><strong><?= num($data['civilian_complaints_reported']) ?></strong> civilian complaints of police misconduct</h1>
           <?php if(num($data['civilian_complaints_sustained']) === '0'): ?>
             <p> <strong>0 complaints </strong> were ruled in favor of civilians from 2016-17.</p>
           <?php elseif(num($data['civilian_complaints_sustained']) === '1'): ?>
@@ -428,7 +428,7 @@ $socialSubject = rawurlencode($title);
               <a href="javascript:void(0)" data-city="<?= $city ?>" data-more-info="" class="more-info"></a>
               <h3>Complaints of Police Discrimination</h3>
               <?php if (num($data['discrimination_complaints_reported']) === '0'): ?>
-                <p>0 Compaints Reported</p>
+                <p>0 Complaints Reported</p>
                 <div class="progress-bar-wrapper">
                   <div class="progress-bar bright-green" style="width: 0"></div>
                 </div>
@@ -453,7 +453,7 @@ $socialSubject = rawurlencode($title);
               <a href="javascript:void(0)" data-city="<?= $city ?>" data-more-info="" class="more-info"></a>
               <h3>Alleged Crimes Committed by Police</h3>
               <?php if (num($data['criminal_complaints_reported']) === '0'): ?>
-                <p>0 Compaints Reported</p>
+                <p>0 Complaints Reported</p>
                 <div class="progress-bar-wrapper">
                   <div class="progress-bar bright-green" style="width: 0"></div>
                 </div>
@@ -667,7 +667,7 @@ $socialSubject = rawurlencode($title);
             <strong>This is the first statewide Policing Scorecard in the United States.</strong> It was built using data from California’s <a href="https://openjustice.doj.ca.gov/data" target="_blank">OpenJustice</a> database, public records requests, national databases and media reports.
           </p>
           <p>
-            <a href="https://docs.google.com/document/d/1YVv68k7fp5u2OOaNT9MqBHn-_itEh4tIa7TZkHRIe1s/edit" class="button">methodology</a>
+            <a href="/about-data.php" class="button">methodology</a>
           </p>
           <p>&nbsp;</p>
           <p>
