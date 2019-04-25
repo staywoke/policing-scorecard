@@ -56,6 +56,78 @@
       font-family: 'Barlow Condensed', sans-serif;
       display: block;
     }
+    /* Foot Notes */
+    sup a {
+      font-size: 10px;
+      vertical-align: super;
+      font-weight: bold;
+    }
+    .c8 {
+      font-size: 12px;
+      line-height: 14px;
+      margin-bottom: 10px;
+    }
+
+    /* Formula's */
+    .c16 {
+      margin: 30px 0;
+      display: block;
+      width: 100%;
+      white-space: nowrap;
+    }
+    .c16 .large {
+      color: #82add7;
+      padding: 0 6px;
+      line-height: 24px;
+      font-weight: 500;
+      text-transform: uppercase;
+      font-family: 'Barlow Condensed', sans-serif;
+      display: inline-block;
+      font-size: 40px;
+    }
+    .c16 .wrap {
+      max-width: 18%;
+      white-space: normal;
+      display: inline-block;
+      vertical-align: top;
+      text-align: center;
+    }
+    .c16.two .wrap {
+      max-width: 40%;
+    }
+    @media only screen and (max-width: 600px) {
+      .c16 .large {
+        padding: 0 2px;
+        font-size: 20px;
+      }
+      .c16 .wrap {
+        max-width: 15%;
+        font-size: 10px;
+        line-height: 12px;
+      }
+
+      .c16.two .wrap {
+        max-width: 30%;
+      }
+    }
+    @media only screen and (min-width: 601px) and (max-width: 800px) {
+      .c16 .large {
+        padding: 0 4px;
+        font-size: 28px;
+        vertical-align: middle;
+      }
+      .c16 .wrap {
+        max-width: 18%;
+        font-size: 12px;
+        line-height: 14px;
+        vertical-align: middle;
+      }
+
+      .c16.two .wrap {
+        max-width: 40%;
+        vertical-align: middle;
+      }
+    }
     </style>
   </head>
 
@@ -111,7 +183,19 @@
               four factors determining each department&rsquo;s</span><span class="c9">&nbsp;police violence score</span><span>. Each police department&rsquo;s racial disparities and resulting racial bias scores are listed in Appendix D below. In summary,
               the following formula was used to calculate each department&rsquo;s </span><span class="c9">police violence score</span><span class="c1">:</span></p>
           <p class="c2 c5"><span class="c1"></span></p>
-          <p class="c16"><span class="c13 c14">(Percentile Less Lethal Force Used per Arrest + Percentile Deadly Force Used per Arrest + Percentile Unarmed Civilians Killed or Seriously Injured + Percentile Racial Bias in Arrests and Deadly Force) / 4</span></p>
+          <p class="c16 four">
+            <span class="c13 c14">
+              <span class="large">(</span>
+              <span class="wrap">Percentile Less Lethal Force Used per Arrest</span>
+              <span class="large">+</span>
+              <span class="wrap">Percentile Deadly Force Used per Arrest</span>
+              <span class="large">+</span>
+              <span class="wrap">Percentile Unarmed Civilians Killed or Seriously Injured</span>
+              <span class="large">+</span>
+              <span class="wrap">Percentile Racial Bias in Arrests and Deadly Force</span>
+              <span class="large">) / 4</span>
+            </span>
+          </p>
           <p class="c2 c5"><span class="c13 c6"></span></p>
           <p class="c2"><span class="c7">Police Accountability Score</span></p>
           <p class="c2"><span class="c1">The police accountability score evaluates the extent to which investigations into civilian complaints of police misconduct result in a sustained finding of misconduct against the officers involved, which is usually
@@ -119,7 +203,15 @@
               severity of the misconduct allegations that were sustained against officers (for example, complaints alleging police committed a criminal offense were weighted more heavily than vs non-criminal allegations). The following formula was used to
               calculate this score:</span></p>
           <p class="c2 c5"><span class="c1"></span></p>
-          <p class="c16"><span class="c14">(Percentile Civilian Complaints Sustained + Percent Criminal Complaints Sustained) / 2</span></p>
+          <p class="c16 two">
+            <span class="c14">
+              <span class="large">(</span>
+              <span class="wrap">Percentile Civilian Complaints Sustained</span>
+              <span class="large">+</span>
+              <span class="wrap">Percent Criminal Complaints Sustained</span>
+              <span class="large">) / 2</span>
+            </span>
+          </p>
           <p class="c2 c5"><span class="c1"></span></p>
           <p class="c2"><span class="c7">Approach to Policing Score</span></p>
           <p class="c2"><span>The approach to policing score evaluates the extent to which police departments focus on arresting people for low-level offenses or focusing on solving serious crimes. The score accounts for the proportion of the most serious
@@ -131,7 +223,15 @@
             </span><span class="c0"><a class="c11" href="https://www.nature.com/articles/s41562-017-0211-5&amp;sa=D&amp;ust=1553928833130000">here</a></span><span class="c1">). The following formula was used to calculate this
               score:</span></p>
           <p class="c2 c5"><span class="c1"></span></p>
-          <p class="c16"><span class="c14">(Percentile Misdemeanor Arrests per Population + Percent Homicides Cleared) / 2</span></p>
+          <p class="c16 two">
+            <span class="c14">
+              <span class="large">(</span>
+              <span class="wrap">Percentile Misdemeanor Arrests per Population</span>
+              <span class="large">+</span>
+              <span class="wrap">Percent Homicides Cleared</span>
+              <span class="large">) / 2</span>
+            </span>
+          </p>
           <p class="c2 c5"><span class="c1"></span></p>
           <p class="c2"><span class="c7">Review of Police Department Policies and Police Union Contracts</span></p>
           <p class="c2"><span class="c1">In addition to collecting data on police outcomes (use of force, accountability, arrests), this project also includes information on public policies that have been shown in the research literature to impact these
