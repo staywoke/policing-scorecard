@@ -17,6 +17,9 @@ var SCORECARD = (function () {
   var $resultsInfoContent = document.getElementById('results-info-content');
   var $citySelect = document.getElementById('city-select');
 
+  // Debounce Scroll Animations
+  var debounce = false;
+
   // Event Listeners
   $menuToggle.addEventListener('click', function() {
     $menu.classList.toggle('open')
@@ -89,6 +92,43 @@ var SCORECARD = (function () {
   $showMore.addEventListener('click', function() {
     scoreCard.classList.toggle('short');
   });
+
+  function isScrolledIntoView(el) {
+    var bounding = el.getBoundingClientRect();
+
+    return (
+      bounding.top >= 0 &&
+      bounding.bottom <= (window.innerHeight || document.documentElement.clientHeight)
+    );
+  }
+
+  function animateProgressBars() {
+    var $progressBars = document.getElementsByClassName('animate-bar');
+
+    Array.prototype.forEach.call($progressBars, function(el) {
+      if (isScrolledIntoView(el)) {
+        var percent = el.getAttribute('data-percent');
+        el.style.width = percent;
+        el.classList.remove('animate-bar');
+      }
+    });
+  }
+
+  function animateCheckMarks() {
+    var $checks = document.getElementsByClassName('animate-check');
+
+    Array.prototype.forEach.call($checks, function(el) {
+      if (isScrolledIntoView(el)) {
+        el.style.backgroundPosition = '0 center';
+        el.classList.remove('animate-check');
+      }
+    });
+  }
+
+  function animate () {
+    animateProgressBars();
+    animateCheckMarks()
+  }
 
   function loadMoreInfo(city, prop) {
     var request = new XMLHttpRequest();
@@ -240,9 +280,21 @@ var SCORECARD = (function () {
     });
   });
 
+  // Handle Progress Bars
+  window.onscroll = function() {
+    clearTimeout(debounce);
+    debounce = setTimeout(animate, 10);
+  };
+
+  // Fix bug where if user is already on middle of page, and hits refresh, they will still see animation correctly
+  setTimeout(animate, 250);
+  setTimeout(animate, 500);
+  setTimeout(animate, 1000);
+
   document.getElementById('toggle-animate').classList.toggle('animate');
 
   return {
+    animate: animate,
     loadResultsInfo: loadResultsInfo
   }
 })();

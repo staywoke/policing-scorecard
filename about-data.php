@@ -45,6 +45,15 @@
       margin: 14px 0;
       font-family: 'Barlow Condensed', sans-serif;
     }
+    .c3 {
+      margin-bottom: 10px;
+      display: block;
+      color: #464648;
+      font-size: 18px;
+      font-weight: 400;
+      text-transform: uppercase;
+      font-family: 'Barlow Condensed', sans-serif;
+    }
     .c7 {
       color: #82add7;
       padding: 0;
@@ -52,7 +61,7 @@
       line-height: 24px;
       font-weight: 400;
       text-transform: uppercase;
-      margin: 14px 0;
+      margin: 14px 0 0 0;
       font-family: 'Barlow Condensed', sans-serif;
       display: block;
     }
@@ -95,6 +104,11 @@
     .c16.two .wrap {
       max-width: 40%;
     }
+
+    p {
+      margin-bottom: 14px;
+    }
+
     @media only screen and (max-width: 600px) {
       .c16 .large {
         padding: 0 2px;

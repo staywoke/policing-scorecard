@@ -166,7 +166,7 @@ $socialSubject = rawurlencode($title);
                 <p class="note">City Did Not Provide Data</p>
               <?php else: ?>
                 <div class="progress-bar-wrapper">
-                  <div class="progress-bar <?= progressBar(100 - intval($data['percent_of_less_lethal_force_per_arrest']), 'reverse') ?>" style="width: <?= num($data['percent_of_less_lethal_force_per_arrest'], 0, '%', true) ?>"></div>
+                  <div class="progress-bar animate-bar <?= progressBar(100 - intval($data['percent_of_less_lethal_force_per_arrest']), 'reverse') ?>" data-percent="<?= num($data['percent_of_less_lethal_force_per_arrest'], 0, '%', true) ?>"></div>
                 </div>
                 <p class="note">^&nbsp; Used More Force per Arrest than <?= num($data['percent_of_less_lethal_force_per_arrest'], 0, '%', true) ?> of Depts &nbsp;&nbsp;</p>
               <?php endif; ?>
@@ -191,7 +191,7 @@ $socialSubject = rawurlencode($title);
                 &nbsp;
               <?php else: ?>
                 <div class="progress-bar-wrapper">
-                  <div class="progress-bar <?= progressBar(100 - intval($data['percentile_of_deadly_force_incidents_per_arrest']), 'reverse') ?>" style="width: <?= output(100 - intval($data['percentile_of_deadly_force_incidents_per_arrest']), 0, '%') ?>"></div>
+                  <div class="progress-bar animate-bar <?= progressBar(100 - intval($data['percentile_of_deadly_force_incidents_per_arrest']), 'reverse') ?>" data-percent="<?= output(100 - intval($data['percentile_of_deadly_force_incidents_per_arrest']), 0, '%') ?>"></div>
                 </div>
                 <p class="note">^&nbsp; Used More Deadly Force per Arrest than <?= num($data['percentile_of_deadly_force_incidents_per_arrest'], 0, '%', true) ?> of Depts &nbsp;&nbsp;</p>
               <?php endif; ?>
@@ -209,7 +209,7 @@ $socialSubject = rawurlencode($title);
                 <p class="note">&nbsp;</p>
               <?php else: ?>
                 <div class="progress-bar-wrapper">
-                  <div class="progress-bar <?= (intval($data['percent_shot_first']) === 0) ? 'bright-green' : 'always-bad' ?>" style="width: <?= output(intval($data['percent_shot_first']), 0, '%') ?>"></div>
+                  <div class="progress-bar animate-bar <?= (intval($data['percent_shot_first']) === 0) ? 'bright-green' : 'always-bad' ?>" data-percent="<?= output(intval($data['percent_shot_first']), 0, '%') ?>"></div>
                 </div>
                 <p class="note">&nbsp;</p>
               <?php endif; ?>
@@ -228,7 +228,7 @@ $socialSubject = rawurlencode($title);
                 <p class="note">&nbsp;</p>
               <?php else: ?>
                 <div class="progress-bar-wrapper">
-                  <div class="progress-bar <?= (intval($data['percent_police_misperceive_the_person_to_have_gun']) === 0) ? 'bright-green' : 'always-bad' ?>" style="width: <?= output(intval($data['percent_police_misperceive_the_person_to_have_gun']), 0, '%') ?>"></div>
+                  <div class="progress-bar animate-bar <?= (intval($data['percent_police_misperceive_the_person_to_have_gun']) === 0) ? 'bright-green' : 'always-bad' ?>" data-percent="<?= output(intval($data['percent_police_misperceive_the_person_to_have_gun']), 0, '%') ?>"></div>
                 </div>
                 <p class="note">&nbsp;</p>
               <?php endif; ?>
@@ -268,57 +268,57 @@ $socialSubject = rawurlencode($title);
 
               <p>City Population</p>
               <div class="progress-bar-wrapper">
-                <div class="progress-bar grouped race-black" style="width: <?= output(floatval($data['percent_black_population']), 0, '%') ?>">
+                <div class="progress-bar animate-bar grouped race-black" data-percent="<?= output(floatval($data['percent_black_population']), 0, '%') ?>">
                   <span><?= (intval($data['percent_black_population']) > 5) ? output(intval($data['percent_black_population']), 0, '%') : '' ?></span>
                 </div>
-                <div class="progress-bar grouped race-latinx" style="width: <?= output(floatval($data['percent_hispanic_population']), 0, '%') ?>">
+                <div class="progress-bar animate-bar grouped race-latinx" data-percent="<?= output(floatval($data['percent_hispanic_population']), 0, '%') ?>">
                   <span><?= (intval($data['percent_hispanic_population']) > 5) ? output(intval($data['percent_hispanic_population']), 0, '%') : '' ?></span>
                 </div>
-                <div class="progress-bar grouped race-asianpacificislander" style="width: <?= output(floatval($data['percent_asianpacificislander_population']), 0, '%') ?>">
+                <div class="progress-bar animate-bar grouped race-asianpacificislander" data-percent="<?= output(floatval($data['percent_asianpacificislander_population']), 0, '%') ?>">
                   <span><?= (intval($data['percent_asianpacificislander_population']) > 5) ? output(intval($data['percent_asianpacificislander_population']), 0, '%') : '' ?></span>
                 </div>
-                <div class="progress-bar grouped race-other" style="width: <?= output(floatval($data['percent_other_population']), 0, '%') ?>">
+                <div class="progress-bar animate-bar grouped race-other" data-percent="<?= output(floatval($data['percent_other_population']), 0, '%') ?>">
                   <span><?= (intval($data['percent_other_population']) > 5) ? output(intval($data['percent_other_population']), 0, '%') : '' ?></span>
                 </div>
-                <div class="progress-bar grouped race-white" style="width: <?= output(floatval($data['percent_white_population']), 0, '%') ?>">
+                <div class="progress-bar animate-bar grouped race-white" data-percent="<?= output(floatval($data['percent_white_population']), 0, '%') ?>">
                   <span><?= (intval($data['percent_white_population']) > 5) ? output(intval($data['percent_white_population']), 0, '%') : '' ?></span>
                 </div>
               </div>
 
               <p>People Arrested</p>
               <div class="progress-bar-wrapper">
-                <div class="progress-bar grouped race-black" style="width: <?= output(floatval($data['percent_black_arrests']), 0, '%') ?>">
+                <div class="progress-bar animate-bar grouped race-black" data-percent="<?= output(floatval($data['percent_black_arrests']), 0, '%') ?>">
                   <span><?= (intval($data['percent_black_arrests']) > 5) ? output(intval($data['percent_black_arrests']), 0, '%') : '' ?></span>
                 </div>
-                <div class="progress-bar grouped race-latinx" style="width: <?= output(floatval($data['percent_hispanic_arrests']), 0, '%') ?>">
+                <div class="progress-bar animate-bar grouped race-latinx" data-percent="<?= output(floatval($data['percent_hispanic_arrests']), 0, '%') ?>">
                   <span><?= (intval($data['percent_hispanic_arrests']) > 5) ? output(intval($data['percent_hispanic_arrests']), 0, '%') : '' ?></span>
                 </div>
-                <div class="progress-bar grouped race-asianpacificislander" style="width: <?= output(floatval($data['percent_asianpacificislander_arrests']), 0, '%') ?>">
+                <div class="progress-bar animate-bar grouped race-asianpacificislander" data-percent="<?= output(floatval($data['percent_asianpacificislander_arrests']), 0, '%') ?>">
                   <span><?= (intval($data['percent_asianpacificislander_arrests']) > 5) ? output(intval($data['percent_asianpacificislander_arrests']), 0, '%') : '' ?></span>
                 </div>
-                <div class="progress-bar grouped race-other" style="width: <?= output(floatval($data['percent_other_arrests']), 0, '%') ?>">
+                <div class="progress-bar animate-bar grouped race-other" data-percent="<?= output(floatval($data['percent_other_arrests']), 0, '%') ?>">
                   <span><?= (intval($data['percent_other_arrests']) > 5) ? output(intval($data['percent_other_arrests']), 0, '%') : '' ?></span>
                 </div>
-                <div class="progress-bar grouped race-white" style="width: <?= output(floatval($data['percent_white_arrests']), 0, '%') ?>">
+                <div class="progress-bar animate-bar grouped race-white" data-percent="<?= output(floatval($data['percent_white_arrests']), 0, '%') ?>">
                   <span><?= (intval($data['percent_white_arrests']) > 5) ? output(intval($data['percent_white_arrests']), 0, '%') : '' ?></span>
                 </div>
               </div>
 
               <p>People Killed or Seriously Injured</p>
               <div class="progress-bar-wrapper">
-                <div class="progress-bar grouped race-black" style="width: <?= output(floatval($data['percent_black_deadly_force']), 0, '%') ?>">
+                <div class="progress-bar animate-bar grouped race-black" data-percent="<?= output(floatval($data['percent_black_deadly_force']), 0, '%') ?>">
                   <span><?= (intval($data['percent_black_deadly_force']) > 5) ? output(intval($data['percent_black_deadly_force']), 0, '%') : '' ?></span>
                 </div>
-                <div class="progress-bar grouped race-latinx" style="width: <?= output(floatval($data['percent_hispanic_deadly_force']), 0, '%') ?>">
+                <div class="progress-bar animate-bar grouped race-latinx" data-percent="<?= output(floatval($data['percent_hispanic_deadly_force']), 0, '%') ?>">
                   <span><?= (intval($data['percent_hispanic_deadly_force']) > 5) ? output(intval($data['percent_hispanic_deadly_force']), 0, '%') : '' ?></span>
                 </div>
-                <div class="progress-bar grouped race-asianpacificislander" style="width: <?= output(floatval($data['percent_asianpacificislander_deadly_force']), 0, '%') ?>">
+                <div class="progress-bar animate-bar grouped race-asianpacificislander" data-percent="<?= output(floatval($data['percent_asianpacificislander_deadly_force']), 0, '%') ?>">
                   <span><?= (intval($data['percent_asianpacificislander_deadly_force']) > 5) ? output(intval($data['percent_asianpacificislander_deadly_force']), 0, '%') : '' ?></span>
                 </div>
-                <div class="progress-bar grouped race-other" style="width: <?= output(floatval($data['percent_other_deadly_force']), 0, '%') ?>">
+                <div class="progress-bar animate-bar grouped race-other" data-percent="<?= output(floatval($data['percent_other_deadly_force']), 0, '%') ?>">
                   <span><?= (intval($data['percent_other_deadly_force']) > 5) ? output(intval($data['percent_other_deadly_force']), 0, '%') : '' ?></span>
                 </div>
-                <div class="progress-bar grouped race-white" style="width: <?= output(floatval($data['percent_white_deadly_force']), 0, '%') ?>">
+                <div class="progress-bar animate-bar grouped race-white" data-percent="<?= output(floatval($data['percent_white_deadly_force']), 0, '%') ?>">
                   <span><?= (intval($data['percent_white_deadly_force']) > 5) ? output(intval($data['percent_white_deadly_force']), 0, '%') : '' ?></span>
                 </div>
               </div>
@@ -347,30 +347,30 @@ $socialSubject = rawurlencode($title);
           <div class="error">City has not adopted the following policies:</div>
           <?php endif; ?>
           <div class="left">
-            <div class="check <?= $data['requires_deescalation'] === '1' ? 'checked' : 'unchecked' ?> more-info" data-city="<?= $city ?>" data-more-info="policy_language_requires_deescalation">
+            <div class="check animate-check <?= $data['requires_deescalation'] === '1' ? 'checked' : 'unchecked' ?> more-info" data-city="<?= $city ?>" data-more-info="policy_language_requires_deescalation">
               Requires De-Escalation
             </div>
-            <div class="check <?= $data['bans_chokeholds_and_strangleholds'] === '1' ? 'checked' : 'unchecked' ?> more-info" data-city="<?= $city ?>" data-more-info="policy_language_bans_chokeholds_and_strangleholds">
+            <div class="check animate-check <?= $data['bans_chokeholds_and_strangleholds'] === '1' ? 'checked' : 'unchecked' ?> more-info" data-city="<?= $city ?>" data-more-info="policy_language_bans_chokeholds_and_strangleholds">
               Bans Chokeholds / Strangleholds
             </div>
-            <div class="check <?= $data['duty_to_intervene'] === '1' ? 'checked' : 'unchecked' ?> more-info" data-city="<?= $city ?>" data-more-info="policy_language_duty_to_intervene">
+            <div class="check animate-check <?= $data['duty_to_intervene'] === '1' ? 'checked' : 'unchecked' ?> more-info" data-city="<?= $city ?>" data-more-info="policy_language_duty_to_intervene">
               Duty to Intervene
             </div>
-            <div class="check <?= $data['requires_warning_before_shooting'] === '1' ? 'checked' : 'unchecked' ?> more-info" data-city="<?= $city ?>" data-more-info="policy_language_requires_warning_before_shooting">
+            <div class="check animate-check <?= $data['requires_warning_before_shooting'] === '1' ? 'checked' : 'unchecked' ?> more-info" data-city="<?= $city ?>" data-more-info="policy_language_requires_warning_before_shooting">
               Requires Warning Before Shooting
             </div>
           </div>
           <div class="right">
-            <div class="check <?= $data['restricts_shooting_at_moving_vehicles'] === '1' ? 'checked' : 'unchecked' ?> more-info" data-city="<?= $city ?>" data-more-info="policy_language_restricts_shooting_at_moving_vehicles">
+            <div class="check animate-check <?= $data['restricts_shooting_at_moving_vehicles'] === '1' ? 'checked' : 'unchecked' ?> more-info" data-city="<?= $city ?>" data-more-info="policy_language_restricts_shooting_at_moving_vehicles">
               Bans Shooting at Moving Vehicles
             </div>
-            <div class="check <?= $data['requires_comprehensive_reporting'] === '1' ? 'checked' : 'unchecked' ?> more-info" data-city="<?= $city ?>" data-more-info="policy_language_requires_comprehensive_reporting">
+            <div class="check animate-check <?= $data['requires_comprehensive_reporting'] === '1' ? 'checked' : 'unchecked' ?> more-info" data-city="<?= $city ?>" data-more-info="policy_language_requires_comprehensive_reporting">
               Requires Comprehensive Reporting
             </div>
-            <div class="check <?= $data['requires_exhaust_all_other_means_before_shooting'] === '1' ? 'checked' : 'unchecked' ?> more-info" data-city="<?= $city ?>" data-more-info="policy_language_requires_exhaust_all_other_means_before_shooting">
+            <div class="check animate-check <?= $data['requires_exhaust_all_other_means_before_shooting'] === '1' ? 'checked' : 'unchecked' ?> more-info" data-city="<?= $city ?>" data-more-info="policy_language_requires_exhaust_all_other_means_before_shooting">
               Requires Exhaust All Means Before Shooting
             </div>
-            <div class="check <?= $data['has_use_of_force_continuum'] === '1' ? 'checked' : 'unchecked' ?> more-info" data-city="<?= $city ?>" data-more-info="policy_language_has_use_of_force_continuum">
+            <div class="check animate-check <?= $data['has_use_of_force_continuum'] === '1' ? 'checked' : 'unchecked' ?> more-info" data-city="<?= $city ?>" data-more-info="policy_language_has_use_of_force_continuum">
               Has Use of Force Continuum
             </div>
           </div>
@@ -400,7 +400,7 @@ $socialSubject = rawurlencode($title);
                 <p class="note">&nbsp;</p>
               <?php else: ?>
                 <div class="progress-bar-wrapper">
-                  <div class="progress-bar <?= progressBar(100 - intval($data['percent_of_civilian_complaints_sustained']), 'reverse') ?>" style="width: <?= output(intval($data['percent_of_civilian_complaints_sustained']), 0, '%') ?>"></div>
+                  <div class="progress-bar animate-bar <?= progressBar(100 - intval($data['percent_of_civilian_complaints_sustained']), 'reverse') ?>" data-percent="<?= output(intval($data['percent_of_civilian_complaints_sustained']), 0, '%') ?>"></div>
                 </div>
                 <p class="note">&nbsp;</p>
               <?php endif; ?>
@@ -417,7 +417,7 @@ $socialSubject = rawurlencode($title);
                 <p class="note">City Did Not Provide Data</p>
               <?php else: ?>
                 <div class="progress-bar-wrapper">
-                  <div class="progress-bar <?= progressBar(100 - intval($data['percent_use_of_force_complaints_sustained']), 'reverse') ?>" style="width: <?= output(intval($data['percent_use_of_force_complaints_sustained']), 0, '%') ?>"></div>
+                  <div class="progress-bar animate-bar <?= progressBar(100 - intval($data['percent_use_of_force_complaints_sustained']), 'reverse') ?>" data-percent="<?= output(intval($data['percent_use_of_force_complaints_sustained']), 0, '%') ?>"></div>
                 </div>
                 <p class="note">&nbsp;</p>
               <?php endif; ?>
@@ -442,7 +442,7 @@ $socialSubject = rawurlencode($title);
                   <p class="note">City Did Not Provide Data</p>
                 <?php else: ?>
                   <div class="progress-bar-wrapper">
-                    <div class="progress-bar <?= progressBar(100 - intval($data['percent_discrimination_complaints_sustained']), 'reverse') ?>" style="width: <?= output(intval($data['percent_discrimination_complaints_sustained']), 0, '%') ?>"></div>
+                    <div class="progress-bar animate-bar <?= progressBar(100 - intval($data['percent_discrimination_complaints_sustained']), 'reverse') ?>" data-percent="<?= output(intval($data['percent_discrimination_complaints_sustained']), 0, '%') ?>"></div>
                   </div>
                   <p class="note">&nbsp;</p>
                 <?php endif; ?>
@@ -467,7 +467,7 @@ $socialSubject = rawurlencode($title);
                   <p class="note">City Did Not Provide Data</p>
                 <?php else: ?>
                   <div class="progress-bar-wrapper">
-                    <div class="progress-bar <?= progressBar(intval($data['percent_criminal_complaints_sustained'])) ?>" style="width: <?= output(intval($data['percent_criminal_complaints_sustained']), 0, '%') ?>"></div>
+                    <div class="progress-bar animate-bar <?= progressBar(intval($data['percent_criminal_complaints_sustained'])) ?>" data-percent="<?= output(intval($data['percent_criminal_complaints_sustained']), 0, '%') ?>"></div>
                   </div>
                   <p class="note">&nbsp;</p>
                 <?php endif; ?>
@@ -485,24 +485,24 @@ $socialSubject = rawurlencode($title);
         </div>
         <div class="content">
           <div class="left">
-            <div class="check <?= $data['disqualifies_complaints'] === '1' ? 'checked-bad' : 'unchecked' ?> more-info" data-city="<?= $city ?>" data-more-info="policy_language_disqualifies_complaints">
+            <div class="check animate-check <?= $data['disqualifies_complaints'] === '1' ? 'checked-bad' : 'unchecked' ?> more-info" data-city="<?= $city ?>" data-more-info="policy_language_disqualifies_complaints">
               Disqualifies Complaints
             </div>
-            <div class="check <?= $data['restricts_delays_interrogations'] === '1' ? 'checked-bad' : 'unchecked' ?> more-info" data-city="<?= $city ?>" data-more-info="policy_language_restricts_delays_interrogations">
+            <div class="check animate-check <?= $data['restricts_delays_interrogations'] === '1' ? 'checked-bad' : 'unchecked' ?> more-info" data-city="<?= $city ?>" data-more-info="policy_language_restricts_delays_interrogations">
               Restricts / Delays Interrogations
             </div>
-            <div class="check <?= $data['gives_officers_unfair_access_to_information'] === '1' ? 'checked-bad' : 'unchecked' ?> more-info" data-city="<?= $city ?>" data-more-info="policy_language_gives_officers_unfair_access_to_information">
+            <div class="check animate-check <?= $data['gives_officers_unfair_access_to_information'] === '1' ? 'checked-bad' : 'unchecked' ?> more-info" data-city="<?= $city ?>" data-more-info="policy_language_gives_officers_unfair_access_to_information">
               Gives Officers Unfair Access to Information
             </div>
           </div>
           <div class="right">
-            <div class="check <?= $data['limits_oversight_discipline'] === '1' ? 'checked-bad' : 'unchecked' ?> more-info" data-city="<?= $city ?>" data-more-info="policy_language_limits_oversight_discipline">
+            <div class="check animate-check <?= $data['limits_oversight_discipline'] === '1' ? 'checked-bad' : 'unchecked' ?> more-info" data-city="<?= $city ?>" data-more-info="policy_language_limits_oversight_discipline">
               Limits Oversight / Discipline
             </div>
-            <div class="check <?= $data['requires_city_pay_for_misconduct'] === '1' ? 'checked-bad' : 'unchecked' ?> more-info" data-city="<?= $city ?>" data-more-info="policy_language_requires_city_pay_for_misconduct">
+            <div class="check animate-check <?= $data['requires_city_pay_for_misconduct'] === '1' ? 'checked-bad' : 'unchecked' ?> more-info" data-city="<?= $city ?>" data-more-info="policy_language_requires_city_pay_for_misconduct">
               Requires City Pay for Misconduct
             </div>
-            <div class="check <?= $data['erases_misconduct_records'] === '1' ? 'checked-bad' : 'unchecked' ?> more-info" data-city="<?= $city ?>" data-more-info="policy_language_erases_misconduct_records">
+            <div class="check animate-check <?= $data['erases_misconduct_records'] === '1' ? 'checked-bad' : 'unchecked' ?> more-info" data-city="<?= $city ?>" data-more-info="policy_language_erases_misconduct_records">
               Erases Misconduct Records
             </div>
           </div>
@@ -532,7 +532,7 @@ $socialSubject = rawurlencode($title);
                 <p class="note">City Did Not Provide Data</p>
               <?php else: ?>
                 <div class="progress-bar-wrapper">
-                  <div class="progress-bar <?= progressBar(100 - intval($data['percent_of_misdemeanor_arrests_per_population']), 'reverse') ?>" style="width: <?= output(100 - intval($data['percent_of_misdemeanor_arrests_per_population']), 0, '%') ?>"></div>
+                  <div class="progress-bar animate-bar <?= progressBar(100 - intval($data['percent_of_misdemeanor_arrests_per_population']), 'reverse') ?>" data-percent="<?= output(100 - intval($data['percent_of_misdemeanor_arrests_per_population']), 0, '%') ?>"></div>
                 </div>
                 <p class="note">^&nbsp; Higher Misdemeanor Arrest Rate than <?= num($data['percent_of_misdemeanor_arrests_per_population'], 0, '%', true) ?> of Depts &nbsp;&nbsp;</p>
               <?php endif; ?>
@@ -544,17 +544,17 @@ $socialSubject = rawurlencode($title);
 
               <p>All Misdemeanors ( <?= num($data['percent_misdemeanor_arrests'], 0, '%') ?> )</p>
               <div class="progress-bar-wrapper">
-                <div class="progress-bar dark-grey" style="width: <?= output(intval($data['percent_misdemeanor_arrests']), 0, '%') ?>"></div>
+                <div class="progress-bar animate-bar dark-grey" data-percent="<?= output(intval($data['percent_misdemeanor_arrests']), 0, '%') ?>"></div>
               </div>
 
               <p>Drug Possession ( <?= num($data['percent_drug_possession_arrests'], 0, '%') ?> )</p>
               <div class="progress-bar-wrapper">
-                <div class="progress-bar dark-grey" style="width: <?= output(intval($data['percent_drug_possession_arrests']), 0, '%') ?>"></div>
+                <div class="progress-bar animate-bar dark-grey" data-percent="<?= output(intval($data['percent_drug_possession_arrests']), 0, '%') ?>"></div>
               </div>
 
               <p>Violent Crime ( <?= num($data['percent_violent_crime_arrests'], 0, '%') ?> )</p>
               <div class="progress-bar-wrapper">
-                <div class="progress-bar dark-grey" style="width: <?= output(intval($data['percent_violent_crime_arrests']), 0, '%') ?>"></div>
+                <div class="progress-bar animate-bar dark-grey" data-percent="<?= output(intval($data['percent_violent_crime_arrests']), 0, '%') ?>"></div>
               </div>
             </div>
           </div>
@@ -574,7 +574,7 @@ $socialSubject = rawurlencode($title);
                 <p class="note">City Did Not Provide Data</p>
               <?php else: ?>
                 <div class="progress-bar-wrapper">
-                  <div class="progress-bar <?= progressBar(intval($data['percentile_of_murders_solved']), 'reverse') ?>" style="width: <?= output(intval($data['percentile_of_murders_solved']), 0, '%') ?>"></div>
+                  <div class="progress-bar animate-bar <?= progressBar(intval($data['percentile_of_murders_solved']), 'reverse') ?>" data-percent="<?= output(intval($data['percentile_of_murders_solved']), 0, '%') ?>"></div>
                 </div>
                 <p class="note">^&nbsp; Solved Fewer Homicides than <?= num($data['percentile_of_murders_solved'], 0, '%') ?> of Depts &nbsp;&nbsp;</p>
               <?php endif; ?>
@@ -588,21 +588,21 @@ $socialSubject = rawurlencode($title);
               <?php if(isset($data['black_murder_unsolved_rate']) && !empty($data['black_murder_unsolved_rate'])): ?>
               <p>Homicides of Black Victims Unsolved ( <?= num($data['black_murder_unsolved_rate'], 0, '%') ?> )</p>
               <div class="progress-bar-wrapper">
-                <div class="progress-bar dark-grey" style="width: <?= output(intval($data['black_murder_unsolved_rate']), 0, '%') ?>"></div>
+                <div class="progress-bar animate-bar dark-grey" data-percent="<?= output(intval($data['black_murder_unsolved_rate']), 0, '%') ?>"></div>
               </div>
               <?php endif; ?>
 
               <?php if(isset($data['hispanic_murder_unsolved_rate']) && !empty($data['hispanic_murder_unsolved_rate'])): ?>
               <p>Homicides of Latinx Victims Unsolved ( <?= num($data['hispanic_murder_unsolved_rate'], 0, '%') ?> )</p>
               <div class="progress-bar-wrapper">
-                <div class="progress-bar dark-grey" style="width: <?= output(intval($data['hispanic_murder_unsolved_rate']), 0, '%') ?>"></div>
+                <div class="progress-bar animate-bar dark-grey" data-percent="<?= output(intval($data['hispanic_murder_unsolved_rate']), 0, '%') ?>"></div>
               </div>
               <?php endif; ?>
 
               <?php if(isset($data['white_murder_unsolved_rate']) && !empty($data['white_murder_unsolved_rate'])): ?>
               <p>Homicides of White Victims Unsolved ( <?= num($data['white_murder_unsolved_rate'], 0, '%') ?> )</p>
               <div class="progress-bar-wrapper">
-                <div class="progress-bar dark-grey" style="width: <?= output(intval($data['white_murder_unsolved_rate']), 0, '%') ?>"></div>
+                <div class="progress-bar animate-bar dark-grey" data-percent="<?= output(intval($data['white_murder_unsolved_rate']), 0, '%') ?>"></div>
               </div>
               <?php endif; ?>
             </div>
@@ -645,8 +645,8 @@ $socialSubject = rawurlencode($title);
               <?php foreach($reportCard as $index => $card): if ($index >= 50): ?>
                 <tr>
                   <td width="175"><a href="./?city=<?= strtolower(preg_replace('/ /', '-', $card['agency_name'])) ?>"><?= $card['agency_name'] ?></a></td>
-                  <td width="50"><?= getGrade($card['overall_score']) ?></td>
-                  <td><div class="grade grade-<?= strtolower(preg_replace('/[^A-Z]/', '', getGrade($card['overall_score']))) ?>"><?= intval($card['overall_score']) ?>%</div></td>
+                  <td width="50"><a href="./?city=<?= strtolower(preg_replace('/ /', '-', $card['agency_name'])) ?>"><?= getGrade($card['overall_score']) ?></a></td>
+                  <td><a href="./?city=<?= strtolower(preg_replace('/ /', '-', $card['agency_name'])) ?>"><div class="grade grade-<?= strtolower(preg_replace('/[^A-Z]/', '', getGrade($card['overall_score']))) ?>"><?= intval($card['overall_score']) ?>%</div></a></td>
                 </tr>
               <?php endif; endforeach; ?>
             </table>
@@ -879,7 +879,7 @@ $socialSubject = rawurlencode($title);
         options: {
           cutoutPercentage: 75,
           animation: {
-            animateRotate: false,
+            animateRotate: true,
             animateScale: false
           },
           tooltips: {
@@ -918,6 +918,8 @@ $socialSubject = rawurlencode($title);
           ]
         }
       });
+
+      setTimeout(SCORECARD.animate, 250);
     };
     </script>
   <?php endif; ?>

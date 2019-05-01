@@ -738,12 +738,13 @@ body {
       position: absolute;
       top: 0;
       left: 0;
-      width: 50%;
+      width: 1%;
       display: block;
       height: 24px;
       border-radius: 3px;
       max-width: 100%;
       min-width: 1%;
+      transition: width 1s;
 
       &.no-data {
         min-width: 0;
@@ -944,6 +945,10 @@ body {
         display: block;
         background: url('../img/map-marker.svg') center center no-repeat;
         position: absolute;
+
+        animation-name: pulse;
+        animation-duration: 2s;
+        animation-iteration-count: 3;
 
         &.alameda {
           top: 122px;
@@ -1572,21 +1577,24 @@ body {
     height: 48px;
     color: #FFF;
     font-size: 18px;
-    background: url(../img/unchecked.png) left center no-repeat;
+    background-image: url(../img/unchecked.png);
     padding-left: 48px;
     line-height: 18px;
     display: flex;
     align-items: center;
     cursor: pointer;
+    background-position: -100px center;
+    background-repeat: no-repeat;
+    transition: background-position 0.5s;
 
     &.checked {
       color: $primary-green;
-      background: url(../img/checked.png) left center no-repeat;
+      background-image: url(../img/checked.png);
     }
 
     &.checked-bad {
       color: #f67f85;
-      background: url(../img/checked-bad.png) left center no-repeat;
+      background-image: url(../img/checked-bad.png);
     }
   }
 }
@@ -2307,4 +2315,10 @@ body {
       margin-top: 10px;
     }
   }
+}
+
+@keyframes pulse {
+  from { transform: scale(1); }
+  50% { transform: scale(0.5); }
+  to { transform: scale(1); }
 }
