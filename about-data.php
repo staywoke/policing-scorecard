@@ -17,7 +17,7 @@
     <meta property="twitter:title" content="About the Data">
     <meta property="twitter:description" content="We evaluated the police in California. See the grade for each police department at policescorecard.org">
     <meta property="twitter:creator" content="@mrmidi">
-    <meta property="twitter:image:src" content="https://policescorecard.org/assets/img/card.png">
+    <meta property="twitter:image:src" content="https://policescorecard.org/assets/img/card.jpg">
     <meta property="twitter:domain" content="https://policescorecard.org">
 
     <!-- Open Graph protocol -->
@@ -25,7 +25,7 @@
     <meta property="og:type" content="website">
     <meta property="og:title" content="About the Data">
     <meta property="og:url" content="https://policescorecard.org">
-    <meta property="og:image" content="https://policescorecard.org/assets/img/card.png">
+    <meta property="og:image" content="https://policescorecard.org/assets/img/card.jpg">
     <meta property="og:site_name" content="CA Policing Scorecard">
     <meta property="og:description" content="We evaluated the police in California. See the grade for each police department at policescorecard.org">
 
@@ -166,7 +166,7 @@
           <p class="c2"><span>The California Police Scorecard integrates data on police deadly force, civilian complaints and arrests that were obtained from official databases including the California Department of Justice&rsquo;s </span><span class="c0"><a
                 class="c11" href="https://openjustice.doj.ca.gov/data">OpenJustice</a></span><span>&nbsp;database, UCR and the California Monthly Arrests and Citation Register. Data on police
               use of force, use of force complaints, and police policy manuals were obtained directly from police agencies via public records requests. The full list and descriptions of each data source used in this project can be found in Appendix A below.
-              We&rsquo;ve also uploaded to Github the source data used for the scorecard, including additional columns of data that could be the subject of future research, at </span><span class="c0"><a class="c11" href="https://github.com/campaignzero">https://github.com/campaignzero</a></span><span>.</span><span
+              We&rsquo;ve also uploaded to Github the source data used for the scorecard, including additional columns of data that could be the subject of future research, </span><span class="c0"><a class="c11" href="https://drive.google.com/drive/folders/1XAT1uFPXj5AsvNTzFeNeeTXGLP09HEIh">here</a></span><span>.</span><span
               class="c1">&nbsp;</span></p>
           <p class="c2 c5"><span class="c7"></span></p>
           <p class="c2"><span>This project will be updated over time to include additional data on policing as these data are made available by law enforcement agencies, including data on police stops and searches, police personnel, civil asset forfeiture,
