@@ -15,7 +15,7 @@
     <meta property="twitter:card" content="summary_large_image">
     <meta property="twitter:site" content="@samswey">
     <meta property="twitter:title" content="About the Data">
-    <meta property="twitter:description" content="We evaluated the police in California. See the grade for each police department at policescorecard.org">
+    <meta property="twitter:description" content="Comprehensive evaluations of police violence and police accountability in California's police departments. See the grade for each department here.">
     <meta property="twitter:creator" content="@mrmidi">
     <meta property="twitter:image:src" content="https://policescorecard.org/assets/img/card.jpg">
     <meta property="twitter:domain" content="https://policescorecard.org">
@@ -26,8 +26,8 @@
     <meta property="og:title" content="About the Data">
     <meta property="og:url" content="https://policescorecard.org">
     <meta property="og:image" content="https://policescorecard.org/assets/img/card.jpg">
-    <meta property="og:site_name" content="CA Policing Scorecard">
-    <meta property="og:description" content="We evaluated the police in California. See the grade for each police department at policescorecard.org">
+    <meta property="og:site_name" content="CA Police Scorecard">
+    <meta property="og:description" content="Comprehensive evaluations of police violence and police accountability in California's police departments. See the grade for each department here.">
 
     <link href="favicon.ico" rel="shortcut icon">
 
@@ -227,7 +227,7 @@
             </span>
           </p>
           <p class="c2 c5"><span class="c1"></span></p>
-          <p class="c2"><span class="c7">Approach to Policing Score</span></p>
+          <p class="c2"><span class="c7">Approach to Police Score</span></p>
           <p class="c2"><span>The approach to policing score evaluates the extent to which police departments focus on arresting people for low-level offenses or focusing on solving serious crimes. The score accounts for the proportion of the most serious
               crimes - homicide - that an agency solves as well as how each agency compares in terms of its approach to the lowest level offenses, measured by misdemeanor arrest rates per population. Misdemeanor arrest rates per population have been cited
               in </span><span class="c0"><a class="c11" href="https://chicagounbound.uchicago.edu/cgi/viewcontent.cgi?article%3D2473%26context%3Djournal_articles&amp;sa=D&amp;ust=1553928833129000">previous research</a></span><span>&nbsp;as
