@@ -200,7 +200,7 @@ body {
       tr {
         &.key {
           &::before {
-            content: '⬤';
+            content: '\002B24';
             position: absolute;
             margin-top: 6px;
             font-size: 8px;
@@ -873,7 +873,7 @@ body {
         padding: 20px 0;
         transition: color 0.25s;
 
-        &:hover {
+        &:hover, &.active {
           color: $primary-blue;
         }
       }
@@ -910,7 +910,7 @@ body {
   display: inline-block;
 
   &::after {
-    content: '◢';
+    content: '\0025E2';
     font-size: 20px;
     color: $primary-orange;
     position: absolute;
@@ -1812,6 +1812,115 @@ body {
   }
 }
 
+.section.next {
+  padding-bottom: 60px;
+
+  h1.title {
+    color: $primary-orange;
+    padding: 40px 0;
+    font-size: 46px;
+    line-height: 54px;
+    text-transform: uppercase;
+    font-weight: 300;
+    position: relative;
+
+    &::before {
+      content: '';
+      width: 100%;
+      position: absolute;
+      height: 4px;
+      bottom: -54px;
+      background: #fedc9e;
+      background: -moz-linear-gradient(left,  #fedc9e 0%, #c9d99b 50%, #99d79c 100%);
+      background: -webkit-linear-gradient(left,  #fedc9e 0%,#c9d99b 50%,#99d79c 100%);
+      background: linear-gradient(to right,  #fedc9e 0%,#c9d99b 50%,#99d79c 100%);
+      filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#fedc9e', endColorstr='#99d79c',GradientType=1 );
+    }
+
+    &::after {
+      content: '';
+      position: absolute;
+      width: 14px;
+      height: 14px;
+      background: transparent;
+      border-top: 4px solid #99D79C;
+      border-right: 4px solid #99D79C;
+      transform: translate3d(0, -50%, 0) rotate(45deg);
+      right: 0;
+      bottom: -66px;
+    }
+  }
+
+  .step {
+    width: 33%;
+    display: inline-block;
+    vertical-align: top;
+    padding-right: 60px;
+
+    & > div {
+      padding-top: 40px;
+    }
+
+    img {
+      height: auto;
+      display: inline-block;
+      float: left;
+      width: 70px;
+      shape-margin: 20px;
+      margin-right: 20px;
+      margin-bottom: 20px;
+    }
+
+    p {
+      font-size: 20px;
+      line-height: 24px;
+      color: #464648;
+    }
+
+    h2 {
+      font-family: 'Barlow Condensed', sans-serif;
+      font-size: 32px;
+      line-height: 36px;
+      text-transform: uppercase;
+      font-weight: 300;
+    }
+
+    strong {
+      font-weight: 600;
+    }
+  }
+
+  .step-1 {
+    h2 {
+      color: #FEDC9E;
+    }
+
+    img {
+      shape-outside: url(../img/next/step1.svg);
+    }
+  }
+
+  .step-2 {
+    h2 {
+      color: #C9D99B;
+    }
+
+    img {
+      shape-outside: url(../img/next/step2.svg);
+    }
+  }
+
+  .step-3 {
+    h2 {
+      color: #99D79C;
+    }
+
+    img {
+      shape-outside: url(../img/next/step3.svg);
+    }
+  }
+}
+
 .section.about-data {
   padding: 40px 60px 80px 40px;
 
@@ -2152,7 +2261,7 @@ body {
         padding: 10px 0;
       }
       h2 {
-        font-size: 22px;
+        font-size: 18px;
         margin-bottom: 24px;
       }
     }
@@ -2277,6 +2386,121 @@ body {
           height: 0;
           clear: both;
           overflow: hidden;
+        }
+      }
+    }
+  }
+
+  .section.next {
+    .content {
+      padding-left: 20px;
+      padding-right: 20px;
+    }
+    .step {
+      width: 100%;
+    }
+
+    h1.title {
+      &::before {
+        display: none;
+      }
+
+      &::after {
+        display: none;
+      }
+    }
+
+    .step {
+      margin-bottom: 40px;
+      position: relative;
+    }
+
+    .step-1 {
+      h2 {
+        &::before {
+          content: '';
+          width: 100%;
+          position: absolute;
+          height: 4px;
+          top: 50px;
+          background: #FEDC9E;
+          background: -moz-linear-gradient(left,  #f3f2e7 0%, #FEDC9E 100%);
+          background: -webkit-linear-gradient(left,  #f3f2e7 0%, #FEDC9E 100%);
+          background: linear-gradient(to right, #f3f2e7 0%, #FEDC9E 100%);
+          filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#f3f2e7', endColorstr='#FEDC9E',GradientType=1 );
+        }
+
+        &::after {
+          content: '';
+          position: absolute;
+          width: 14px;
+          height: 14px;
+          background: transparent;
+          border-top: 4px solid #FEDC9E;
+          border-right: 4px solid #FEDC9E;
+          transform: translate3d(0, -50%, 0) rotate(45deg);
+          right: 0;
+          top: 52px;
+        }
+      }
+    }
+
+    .step-2 {
+      h2 {
+        &::before {
+          content: '';
+          width: 100%;
+          position: absolute;
+          height: 4px;
+          top: 50px;
+          background: #C9D99B;
+          background: -moz-linear-gradient(left,  #FEDC9E 0%, #C9D99B 100%);
+          background: -webkit-linear-gradient(left,  #FEDC9E 0%, #C9D99B 100%);
+          background: linear-gradient(to right, #FEDC9E 0%, #C9D99B 100%);
+          filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#FEDC9E', endColorstr='#C9D99B',GradientType=1 );
+        }
+
+        &::after {
+          content: '';
+          position: absolute;
+          width: 14px;
+          height: 14px;
+          background: transparent;
+          border-top: 4px solid #C9D99B;
+          border-right: 4px solid #C9D99B;
+          transform: translate3d(0, -50%, 0) rotate(45deg);
+          right: 0;
+          top: 52px;
+        }
+      }
+    }
+
+    .step-3 {
+      h2 {
+        &::before {
+          content: '';
+          width: 100%;
+          position: absolute;
+          height: 4px;
+          top: 50px;
+          background: #C9D99B;
+          background: -moz-linear-gradient(left,  #C9D99B 0%, #99D79C 100%);
+          background: -webkit-linear-gradient(left,  #C9D99B 0%, #99D79C 100%);
+          background: linear-gradient(to right, #C9D99B 0%, #99D79C 100%);
+          filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#fedc9e', endColorstr='#99D79C',GradientType=1 );
+        }
+
+        &::after {
+          content: '';
+          position: absolute;
+          width: 14px;
+          height: 14px;
+          background: transparent;
+          border-top: 4px solid #99D79C;
+          border-right: 4px solid #99D79C;
+          transform: translate3d(0, -50%, 0) rotate(45deg);
+          right: 0;
+          top: 52px;
         }
       }
     }

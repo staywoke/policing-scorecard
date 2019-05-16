@@ -65,7 +65,8 @@ $socialSubject = rawurlencode($title);
 
           <div id="menu">
             <ul>
-              <li><a href="about-data.php" target="_blank">About the Data</a></li>
+              <li><a href="about-data.php">About the Data</a></li>
+              <li><a href="findings.php">Key Findings</a></li>
               <li><a href="https://www.joincampaignzero.org/about/" target="_blank">Planning Team</a></li>
               <li><a href="https://www.joincampaignzero.org/" target="_blank">More about Campaign Zero</a></li>
             </ul>
@@ -85,8 +86,7 @@ $socialSubject = rawurlencode($title);
         <div class="content">
           <div class="right">
             <h1>We evaluated the police in California.</h1>
-            <h2 style="margin-bottom: 16px;"><a href="./findings.php" target="_blank" style="color: #82add7; text-decoration: none; font-style: normal; font-weight: 500;">Read our findings.</a></h2>
-            <h2>See the grade for each department below.</h2>
+            <h2><a href="./findings.php" target="_blank" style="color: #82add7; text-decoration: none; font-style: normal; font-weight: 500;">Read The Findings.</a> See the Grade for Each Department.</h2>
           </div>
           <div class="left">
             <div class="map" id="map-layer">
@@ -729,6 +729,44 @@ $socialSubject = rawurlencode($title);
         <div class="content">
           <p>&nbsp;</p>
           <p>If you have feedback, questions about the project, or need support with an advocacy campaign, contact us directly at <a href="mailto:feedback@joincampaignzero.org">feedback@joincampaignzero.org</a>.</p>
+        </div>
+      </div>
+
+      <div class="section next">
+        <div class="content">
+          <h1 class="title">
+            What's Next
+          </h1>
+
+          <div class="step step-1">
+            <h2>Step 1</h2>
+
+            <div>
+              <img src="assets/img/next/step1.svg" alt="Step 1" />
+
+              <p><strong>Inform</strong> data-driven interventions in California’s 100 largest cities. Update scores and track progress over time.</p>
+            </div>
+          </div>
+
+          <div class="step step-2">
+            <h2>Step 2</h2>
+
+            <div>
+              <img src="assets/img/next/step2.svg" alt="Step 2" />
+
+              <p><strong>Expand</strong> to every law enforcement agency in CA and include additional indicators such as police profiling and disciplinary outcomes.</p>
+            </div>
+          </div>
+
+          <div class="step step-3">
+            <h2>Step 3</h2>
+
+            <div>
+              <img src="assets/img/next/step3.svg" alt="Step 3" />
+
+              <p><strong>Work towards a national</strong> police scorecard as more data are made available by federal, states, and local agencies. Create the foundation for a National Early Intervention system to improve policing outcomes nationwide.</p>
+            </div>
+          </div>
         </div>
       </div>
 

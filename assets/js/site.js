@@ -16,82 +16,87 @@ var SCORECARD = (function () {
   var $resultsInfo = document.getElementsByClassName('results-info');
   var $resultsInfoContent = document.getElementById('results-info-content');
   var $citySelect = document.getElementById('city-select');
+  var $toggleAnimate = document.getElementById('toggle-animate');
 
   // Debounce Scroll Animations
   var debounce = false;
 
   // Event Listeners
-  $menuToggle.addEventListener('click', function() {
-    $menu.classList.toggle('open')
-  });
+  if ($menuToggle) {
+    $menuToggle.addEventListener('click', function() {
+      $menu.classList.toggle('open')
+    });
+  }
 
-  $modalClose.addEventListener('click', function() {
-    $moreInfoContent.style.display = 'none';
-    $resultsInfoContent.style.display = 'none';
-    $citySelect.style.display = 'block';
-    $modal.classList.toggle('open');
-    $modal.classList.remove('large');
-  });
+  if ($modal) {
+    $modalClose.addEventListener('click', function() {
+      $moreInfoContent.style.display = 'none';
+      $resultsInfoContent.style.display = 'none';
+      $citySelect.style.display = 'block';
+      $modal.classList.toggle('open');
+      $modal.classList.remove('large');
+    });
 
-  $modalOverlay.addEventListener('click', function() {
-    $moreInfoContent.style.display = 'none';
-    $resultsInfoContent.style.display = 'none';
-    $citySelect.style.display = 'block';
-    $modal.classList.toggle('open');
-    $modal.classList.remove('large');
-  });
+    $modalOverlay.addEventListener('click', function() {
+      $moreInfoContent.style.display = 'none';
+      $resultsInfoContent.style.display = 'none';
+      $citySelect.style.display = 'block';
+      $modal.classList.toggle('open');
+      $modal.classList.remove('large');
+    });
 
-  $modalOverlay.addEventListener('mousewheel', function(e) {
-    e.preventDefault();
-    e.stopPropagation();
-    e.stopImmediatePropagation();
-  });
+    $modalOverlay.addEventListener('mousewheel', function(e) {
+      e.preventDefault();
+      e.stopPropagation();
+      e.stopImmediatePropagation();
+    });
 
-  $modalOverlay.addEventListener('touchmove', function(e) {
-    e.preventDefault();
-    e.stopPropagation();
-    e.stopImmediatePropagation();
-  });
+    $modalOverlay.addEventListener('touchmove', function(e) {
+      e.preventDefault();
+      e.stopPropagation();
+      e.stopImmediatePropagation();
+    });
 
-  $modal.addEventListener('mousewheel', function(e) {
-    e.preventDefault();
-    e.stopPropagation();
-    e.stopImmediatePropagation();
-  });
+    $modal.addEventListener('mousewheel', function(e) {
+      e.preventDefault();
+      e.stopPropagation();
+      e.stopImmediatePropagation();
+    });
 
-  $modal.addEventListener('touchmove', function(e) {
-    e.preventDefault();
-    e.stopPropagation();
-    e.stopImmediatePropagation();
-  });
+    $modal.addEventListener('touchmove', function(e) {
+      e.preventDefault();
+      e.stopPropagation();
+      e.stopImmediatePropagation();
+    });
 
-  $modalContent.addEventListener('mousewheel', function(e) {
-    e.stopPropagation();
-    e.stopImmediatePropagation();
-  });
+    $modalContent.addEventListener('mousewheel', function(e) {
+      e.stopPropagation();
+      e.stopImmediatePropagation();
+    });
 
-  $modalContent.addEventListener('touchmove', function(e) {
-    e.stopPropagation();
-    e.stopImmediatePropagation();
-  });
+    $modalContent.addEventListener('touchmove', function(e) {
+      e.stopPropagation();
+      e.stopImmediatePropagation();
+    });
 
-  $mapLayer.addEventListener('click', function() {
-    $modal.classList.toggle('open');
-    $selectedCity[0].scrollIntoView();
-  });
+    $mapLayer.addEventListener('click', function() {
+      $modal.classList.toggle('open');
+      $selectedCity[0].scrollIntoView();
+    });
 
-  scoreLocation.addEventListener('click', function() {
-    $modal.classList.toggle('open');
-    $selectedCity[0].scrollIntoView();
-  });
+    scoreLocation.addEventListener('click', function() {
+      $modal.classList.toggle('open');
+      $selectedCity[0].scrollIntoView();
+    });
 
-  $showLess.addEventListener('click', function() {
-    scoreCard.classList.toggle('short');
-  });
+    $showLess.addEventListener('click', function() {
+      scoreCard.classList.toggle('short');
+    });
 
-  $showMore.addEventListener('click', function() {
-    scoreCard.classList.toggle('short');
-  });
+    $showMore.addEventListener('click', function() {
+      scoreCard.classList.toggle('short');
+    });
+  }
 
   function isScrolledIntoView(el) {
     var bounding = el.getBoundingClientRect();
@@ -291,7 +296,9 @@ var SCORECARD = (function () {
   setTimeout(animate, 500);
   setTimeout(animate, 1000);
 
-  document.getElementById('toggle-animate').classList.toggle('animate');
+  if ($toggleAnimate) {
+    $toggleAnimate.classList.toggle('animate');
+  }
 
   return {
     animate: animate,
