@@ -86,7 +86,7 @@ $socialSubject = rawurlencode($title);
         <div class="content">
           <div class="right">
             <h1>We evaluated the police in California.</h1>
-            <h2>Read the <a href="./findings.php" style="color: #82add7; text-decoration: none; font-style: normal; font-weight: 500;">Findings.</a> See the Grade for Each Department.</h2>
+            <h2>Read the <a href="./findings.php" style="color: #82add7; text-decoration: underline; font-weight: 500;">Findings.</a> See the Grade for Each Department.</h2>
           </div>
           <div class="left">
             <div class="map" id="map-layer">

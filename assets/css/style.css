@@ -1499,7 +1499,8 @@ body {
 .section.about-data {
   padding: 20px; }
   .section.about-data .content {
-    line-height: 24px; }
+    line-height: 24px;
+    overflow: visible; }
     .section.about-data .content img {
       max-width: 100%;
       width: auto;
