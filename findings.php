@@ -20,7 +20,7 @@ $ac = '?ac=' . getHash();
     <meta property="twitter:card" content="summary_large_image">
     <meta property="twitter:site" content="@samswey">
     <meta property="twitter:title" content="Findings">
-    <meta property="twitter:description" content="Comprehensive evaluations of police violence and police accountability in California's police departments. See the grade for each department here.">
+    <meta property="twitter:description" content="Get the facts about police violence and accountability in California. Evaluate each police department and hold them accountable here.">
     <meta property="twitter:creator" content="@mrmidi">
     <meta property="twitter:image:src" content="https://policescorecard.org/assets/img/card.jpg">
     <meta property="twitter:domain" content="https://policescorecard.org">
@@ -32,7 +32,7 @@ $ac = '?ac=' . getHash();
     <meta property="og:url" content="https://policescorecard.org">
     <meta property="og:image" content="https://policescorecard.org/assets/img/card.jpg">
     <meta property="og:site_name" content="CA Police Scorecard">
-    <meta property="og:description" content="Comprehensive evaluations of police violence and police accountability in California's police departments. See the grade for each department here.">
+    <meta property="og:description" content="Get the facts about police violence and accountability in California. Evaluate each police department and hold them accountable here.">
 
     <link href="favicon.ico" rel="shortcut icon">
 
@@ -539,7 +539,8 @@ $ac = '?ac=' . getHash();
     }
 
     .c6 {
-      margin-left: 36pt
+      margin-left: 0;
+      margin-bottom: 8px;
     }
 
     .c4 {
@@ -609,23 +610,23 @@ $ac = '?ac=' . getHash();
           <ol class="c7 lst-kix_fckzbmam001m-0 start" start="1">
             <li class="c3 c8 c6"><span>Most people arrested in California are arrested for low level offenses.</span><span class="c4">&nbsp;</span><span>Of 1,354,769 reported arrests made in 2016, 70% </span><span>were for misdemeanor offenses. Police made </span><span class="c4">1.8x </span><span>as many</span><span class="c4">&nbsp;</span><span>arrests for </span><span class="c4">drug possession</span><span>&nbsp;alone as they did for </span><span class="c4">all violent crimes combined.</span><sup class="c4"><a href="#ftnt1" id="ftnt_ref1">[1]</a></sup><span class="c11 c4">&nbsp;</span></li>
           </ol>
-          <p class="c3 c6"><span style="overflow: hidden; display: inline-block; margin: 0.00px 0.00px; border: 0.00px solid #000000; transform: rotate(0.00rad) translateZ(0px); -webkit-transform: rotate(0.00rad) translateZ(0px); width: 373.50px; height: 172.98px;"><a href="assets/img/findings/image5.png" target="_"><img alt="" src="assets/img/findings/image5.png" style="width: 373.50px; height: 172.98px; margin-left: 0.00px; margin-top: 0.00px; transform: rotate(0.00rad) translateZ(0px); -webkit-transform: rotate(0.00rad) translateZ(0px);" title=""></a></span></p>
+          <p class="c3 c6"><span><a href="assets/img/findings/image5.png" target="_"><img alt="" src="assets/img/findings/image5.png" title=""></a></span></p>
           <ol class="c7 lst-kix_fckzbmam001m-0" start="2">
             <li class="c3 c8 c6"><span>Police discharged their firearms or otherwise used force causing death or </span><span>serious bodily injury</span><sup><a href="#ftnt2" id="ftnt_ref2">[2]</a></sup><span>&nbsp;in </span><span class="c4">1,276 incidents</span><span>&nbsp;from 2016-2017, killing 328 people and seriously injuring an additional 824 people. 647 of these incidents were police shootings, while the other half were other forms of police use of force that caused death or serious injury. </span><span class="c4">Overall</span><span>, </span><span class="c11 c4">half of people killed or seriously injured by police (49%) were unarmed. </span></li>
           </ol>
           <p class="c3 c9 c6"><span class="c1"></span></p>
           <p class="c3 c6"><span>Police in San Bernardino, Riverside, Stockton, Long Beach, Fremont and Bakersfield used deadly force at </span><span class="c4">substantially higher rates </span><span>than other major cities in California. San Jose and Los Angeles police used deadly force at 3x the rate of police in </span><span>San Francisco and San Diego</span><span>. </span><span>And Oakland police had one of the lowest rates of deadly force, reflecting the substantial decline in use of force incidents that has followed </span><span class="c10"><a class="c12" href="https://www.google.com/url?q=http://www.oaklandmagazine.com/April-2017/The-Year-of-No-Shootings/&amp;sa=D&amp;ust=1557708223515000">DOJ mandated reforms </a></span><span>to their use of force policies. </span></p>
-          <p class="c3 c6"><span style="overflow: hidden; display: inline-block; margin: 0.00px 0.00px; border: 0.00px solid #000000; transform: rotate(0.00rad) translateZ(0px); -webkit-transform: rotate(0.00rad) translateZ(0px); width: 470.50px; height: 334.02px;"><a href="assets/img/findings/image1.png" target="_"><img alt="" src="assets/img/findings/image1.png" style="width: 470.50px; height: 334.02px; margin-left: 0.00px; margin-top: 0.00px; transform: rotate(0.00rad) translateZ(0px); -webkit-transform: rotate(0.00rad) translateZ(0px);" title=""></a></span></p>
+          <p class="c3 c6"><span><a href="assets/img/findings/image1.png" target="_"><img alt="" src="assets/img/findings/image1.png" title=""></a></span></p>
           <p class="c3 c9 c6"><span class="c1"></span></p>
           <ol class="c7 lst-kix_fckzbmam001m-0" start="3">
             <li class="c3 c6 c8"><span>In reviewing the policy manuals of 90 of the 100 California police departments, we find </span><span class="c4">California police have more permissive use of force standards than the national average.</span><span>&nbsp;Only 16 departments (18%) required officers to use de-escalation when possible prior to using force and only 7 departments (8%) required officers to use all available means of apprehension, including non-lethal force, prior to using </span><span>deadly</span><span class="c15">&nbsp;</span><span>force. This is significantly lower than the 42% and 43%, respectively, of the big city police departments nationwide that </span><span class="c10"><a class="c12" href="https://www.google.com/url?q=http://useofforceproject.org&amp;sa=D&amp;ust=1557708223516000">have such policies in place</a></span><span>. In some places, that is beginning to change. We identified four departments that adopted new use of force policies requiring de-escalation during the 2016-2017 period - Stockton, Sacramento, San Francisco, and Los Angeles. </span><span class="c4">All four departments had </span><span class="c10 c4"><a class="c12" href="https://www.google.com/url?q=https://drive.google.com/open?id%3D1YNEIO19C4X-6tkU5ZhlXsj_MaVlkM7pp&amp;sa=D&amp;ust=1557708223516000">fewer police shootings</a></span><span class="c4">&nbsp;in 2018, after these policies were enacted, than their average shootings rate during the years prior to this policy&rsquo;s enactment.</span></li>
           </ol>
-          <p class="c3 c6"><span style="overflow: hidden; display: inline-block; margin: 0.00px 0.00px; border: 0.00px solid #000000; transform: rotate(0.00rad) translateZ(0px); -webkit-transform: rotate(0.00rad) translateZ(0px); width: 326.47px; height: 580.50px;"><a href="assets/img/findings/image6.png" target="_"><img alt="" src="assets/img/findings/image6.png" style="width: 326.47px; height: 580.50px; margin-left: 0.00px; margin-top: 0.00px; transform: rotate(0.00rad) translateZ(0px); -webkit-transform: rotate(0.00rad) translateZ(0px);" title=""></a></span></p>
+          <p class="c3 c6"><span><a href="assets/img/findings/image6.png" target="_"><img alt="" src="assets/img/findings/image6.png" title=""></a></span></p>
           <p class="c3 c9 c6"><span class="c1"></span></p>
           <ol class="c7 lst-kix_fckzbmam001m-0" start="4">
             <li class="c3 c8 c6"><span class="c4">When people come forward to report police misconduct in California, it rarely leads to accountability</span><span>. Statewide, </span><span class="c4">only 1 in every 14 civilian complaints </span><span>of police misconduct was ruled in favor of civilians in 2016-2017. In 81% of jurisdictions, civilians reporting misconduct had less than a 1 in 5 chance of the complaint being ruled in their favor by police investigators. Complaints concerning police violence and racial/identity discrimination almost never resulted in accountability. Civilians reporting police </span><span class="c4">racial discrimination </span><span>had only a </span><span class="c4">1 in 64 chance of their complaint being upheld</span><span>&nbsp;and </span><span>civilians reporting </span><span class="c4">use of force complaints </span><span>had only a </span><span class="c4">1 in 78 chance of being upheld. This lack of administrative accountability for police violence mirrors the criminal justice system&rsquo;s approach towards police violence. </span><span>Of 647 police shootings statewide between 2016-2017</span><span class="c4">, </span><span>only </span><span class="c10"><a class="c12" href="https://www.google.com/url?q=http://mappingpoliceviolence.org&amp;sa=D&amp;ust=1557708223518000">one</a></span><span>&nbsp;of these incidents has</span><span>&nbsp;resulted in an officer being prosecuted for breaking the law.</span></li>
           </ol>
-          <p class="c3 c6"><span style="overflow: hidden; display: inline-block; margin: 0.00px 0.00px; border: 0.00px solid #000000; transform: rotate(0.00rad) translateZ(0px); -webkit-transform: rotate(0.00rad) translateZ(0px); width: 378.50px; height: 335.43px;"><a href="assets/img/findings/image2.png" target="_"><img alt="" src="assets/img/findings/image2.png" style="width: 378.50px; height: 335.43px; margin-left: 0.00px; margin-top: 0.00px; transform: rotate(0.00rad) translateZ(0px); -webkit-transform: rotate(0.00rad) translateZ(0px);" title=""></a></span></p>
+          <p class="c3 c6"><span><a href="assets/img/findings/image2.png" target="_"><img alt="" src="assets/img/findings/image2.png" title=""></a></span></p>
           <ol class="c7 lst-kix_fckzbmam001m-0" start="5">
             <li class="c3 c8 c6"><span class="c4">There&rsquo;s evidence of police racial bias in California, especially against black people. </span><span>Statewide, black people were arrested for misdemeanor offenses at </span><span class="c4">2.2x higher rate</span><span>&nbsp;per population than white people. </span><span class="c4">89 of California&rsquo;s 100 largest city police departments arrested black people for drug possession at higher rates than whites</span><span>, despite research showing similar rates of drug use and selling between the groups. And while police were more likely to arrest black people for low-level offenses, they were less </span><span>likely to find someone responsible for the most serious offense - homicide - when the victim was black</span><span class="c1">. California police reported finding a suspect in 76% of homicides of white victims from 2016-2017 compared to only 48% of Latinx victims and 48% of black victims.</span>
 
@@ -635,7 +636,7 @@ $ac = '?ac=' . getHash();
 
               <br /></br>
 
-              <span style="overflow: hidden; display: inline-block; margin: 0.00px 0.00px; border: 0.00px solid #000000; transform: rotate(0.00rad) translateZ(0px); -webkit-transform: rotate(0.00rad) translateZ(0px); width: 262.50px; height: 273.05px;"><a href="assets/img/findings/image4.png" target="_"><img alt="" src="assets/img/findings/image4.png" style="width: 262.50px; height: 273.05px; margin-left: 0.00px; margin-top: 0.00px; transform: rotate(0.00rad) translateZ(0px); -webkit-transform: rotate(0.00rad) translateZ(0px);" title=""></a></span>
+              <span><a href="assets/img/findings/image4.png" target="_"><img alt="" src="assets/img/findings/image4.png" title=""></a></span>
 
               <br /></br>
 
@@ -643,7 +644,7 @@ $ac = '?ac=' . getHash();
 
               <br /></br>
 
-              <span style="overflow: hidden; display: inline-block; margin: 0.00px 0.00px; border: 0.00px solid #000000; transform: rotate(0.00rad) translateZ(0px); -webkit-transform: rotate(0.00rad) translateZ(0px); width: 624.00px; height: 176.00px;"><a href="assets/img/findings/image3.png" target="_"><img alt="" src="assets/img/findings/image3.png" style="width: 624.00px; height: 176.00px; margin-left: 0.00px; margin-top: 0.00px; transform: rotate(0.00rad) translateZ(0px); -webkit-transform: rotate(0.00rad) translateZ(0px);" title=""></a></span>
+              <span><a href="assets/img/findings/image3.png" target="_"><img alt="" src="assets/img/findings/image3.png" title=""></a></span>
 
             </li>
 

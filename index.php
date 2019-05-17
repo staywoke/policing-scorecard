@@ -31,7 +31,7 @@ $socialSubject = rawurlencode($title);
     <meta property="twitter:card" content="summary_large_image">
     <meta property="twitter:site" content="@samswey">
     <meta property="twitter:title" content="<?= $title ?>">
-    <meta property="twitter:description" content="Comprehensive evaluations of police violence and police accountability in California's police departments. See the grade for each department here.">
+    <meta property="twitter:description" content="Get the facts about police violence and accountability in California. Evaluate each police department and hold them accountable here.">
     <meta property="twitter:creator" content="@mrmidi">
     <meta property="twitter:image:src" content="https://policescorecard.org/assets/img/card.jpg<?= trim($ac) ?>">
     <meta property="twitter:domain" content="https://policescorecard.org">
@@ -43,7 +43,7 @@ $socialSubject = rawurlencode($title);
     <meta property="og:url" content="https://policescorecard.org">
     <meta property="og:image" content="https://policescorecard.org/assets/img/card.jpg<?= trim($ac) ?>">
     <meta property="og:site_name" content="CA Police Scorecard">
-    <meta property="og:description" content="Comprehensive evaluations of police violence and police accountability in California's police departments. See the grade for each department here.">
+    <meta property="og:description" content="Get the facts about police violence and accountability in California. Evaluate each police department and hold them accountable here.">
 
     <link href="favicon.ico" rel="shortcut icon">
 
@@ -86,7 +86,7 @@ $socialSubject = rawurlencode($title);
         <div class="content">
           <div class="right">
             <h1>We evaluated the police in California.</h1>
-            <h2><a href="./findings.php" target="_blank" style="color: #82add7; text-decoration: none; font-style: normal; font-weight: 500;">Read The Findings.</a> See the Grade for Each Department.</h2>
+            <h2>Read the <a href="./findings.php" style="color: #82add7; text-decoration: none; font-style: normal; font-weight: 500;">Findings.</a> See the Grade for Each Department.</h2>
           </div>
           <div class="left">
             <div class="map" id="map-layer">
@@ -754,7 +754,7 @@ $socialSubject = rawurlencode($title);
             <div>
               <img src="assets/img/next/step2.svg" alt="Step 2" />
 
-              <p><strong>Expand</strong> to every law enforcement agency in CA and include additional indicators such as police profiling and disciplinary outcomes.</p>
+              <p><strong>Expand</strong> to every law enforcement agency in CA and include additional indicators such as police budgets and disciplinary outcomes.</p>
             </div>
           </div>
 
@@ -764,7 +764,7 @@ $socialSubject = rawurlencode($title);
             <div>
               <img src="assets/img/next/step3.svg" alt="Step 3" />
 
-              <p><strong>Work towards a national</strong> police scorecard as more data are made available by federal, states, and local agencies. Create the foundation for a National Early Intervention system to improve policing outcomes nationwide.</p>
+              <p><strong>Work towards a national</strong> police scorecard as more data are made available by federal, states, and local agencies. Create the foundation for a National Policing Intervention System to improve policing outcomes nationwide.</p>
             </div>
           </div>
         </div>

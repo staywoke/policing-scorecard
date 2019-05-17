@@ -20,7 +20,7 @@ $ac = '?ac=' . getHash();
     <meta property="twitter:card" content="summary_large_image">
     <meta property="twitter:site" content="@samswey">
     <meta property="twitter:title" content="About the Data">
-    <meta property="twitter:description" content="Comprehensive evaluations of police violence and police accountability in California's police departments. See the grade for each department here.">
+    <meta property="twitter:description" content="Get the facts about police violence and accountability in California. Evaluate each police department and hold them accountable here.">
     <meta property="twitter:creator" content="@mrmidi">
     <meta property="twitter:image:src" content="https://policescorecard.org/assets/img/card.jpg">
     <meta property="twitter:domain" content="https://policescorecard.org">
@@ -32,7 +32,7 @@ $ac = '?ac=' . getHash();
     <meta property="og:url" content="https://policescorecard.org">
     <meta property="og:image" content="https://policescorecard.org/assets/img/card.jpg">
     <meta property="og:site_name" content="CA Police Scorecard">
-    <meta property="og:description" content="Comprehensive evaluations of police violence and police accountability in California's police departments. See the grade for each department here.">
+    <meta property="og:description" content="Get the facts about police violence and accountability in California. Evaluate each police department and hold them accountable here.">
 
     <link href="favicon.ico" rel="shortcut icon">
 
@@ -190,7 +190,7 @@ $ac = '?ac=' . getHash();
           <p class="c2"><span>The California Police Scorecard integrates data on police deadly force, civilian complaints and arrests that were obtained from official databases including the California Department of Justice&rsquo;s </span><span class="c0"><a
                 class="c11" href="https://openjustice.doj.ca.gov/data">OpenJustice</a></span><span>&nbsp;database, UCR and the California Monthly Arrests and Citation Register. Data on police
               use of force, use of force complaints, and police policy manuals were obtained directly from police agencies via public records requests. The full list and descriptions of each data source used in this project can be found in Appendix A below.
-              We&rsquo;ve also uploaded to Github the source data used for the scorecard, including additional columns of data that could be the subject of future research, </span><span class="c0"><a class="c11" href="https://drive.google.com/drive/folders/1XAT1uFPXj5AsvNTzFeNeeTXGLP09HEIh">here</a></span><span>.</span><span
+              We&rsquo;ve also uploaded the source data used for the scorecard, including additional columns of data that could be the subject of future research, </span><span class="c0"><a class="c11" href="https://drive.google.com/drive/folders/1XAT1uFPXj5AsvNTzFeNeeTXGLP09HEIh">here</a></span><span>.</span><span
               class="c1">&nbsp;</span></p>
           <p class="c2 c5"><span class="c7"></span></p>
           <p class="c2"><span>This project will be updated over time to include additional data on policing as these data are made available by law enforcement agencies, including data on police stops and searches, police personnel, civil asset forfeiture,
@@ -369,21 +369,21 @@ $ac = '?ac=' . getHash();
           </p>
           <p class="c2"><span class="c7">Appendix B:</span></p>
           <p class="c2"><span class="c1">Use of Force Incidents Excluded from the Analysis of the 100 Largest CA City Police Departments:</span></p>
-          <p class="c2"><span style="overflow: hidden; display: inline-block; margin: 0.00px 0.00px; border: 0.00px solid #000000; transform: rotate(0.00rad) translateZ(0px); -webkit-transform: rotate(0.00rad) translateZ(0px); width: 214.50px; height: 735.92px;"><a href="assets/img/figure3.png" target="_blank"><img
-                alt="" src="assets/img/figure3.png" style="width: 214.50px; height: 735.92px; margin-left: 0.00px; margin-top: 0.00px; transform: rotate(0.00rad) translateZ(0px); -webkit-transform: rotate(0.00rad) translateZ(0px);" title=""></a></span></p>
+          <p class="c2"><span><a href="assets/img/figure3.png" target="_blank"><img
+                alt="" src="assets/img/figure3.png" title=""></a></span></p>
           <p class="c2 c5"><span class="c7"></span></p>
           <p class="c2 c5"><span class="c7"></span></p>
           <p class="c2 c5"><span class="c7"></span></p>
           <p class="c2"><span class="c7">Appendix C:</span></p>
           <p class="c2"><span class="c1">Deadly Force Incidents Benchmarked on Population, All Arrests and Violent Crime Arrests:</span></p>
-          <p class="c2"><span style="overflow: hidden; display: inline-block; margin: 0.00px 0.00px; border: 0.00px solid #000000; transform: rotate(0.00rad) translateZ(0px); -webkit-transform: rotate(0.00rad) translateZ(0px); width: 208.52px; height: 715.50px;"><a href="assets/img/figure2.png" target="_blank"><img
-                alt="" src="assets/img/figure2.png" style="width: 208.52px; height: 715.50px; margin-left: 0.00px; margin-top: 0.00px; transform: rotate(0.00rad) translateZ(0px); -webkit-transform: rotate(0.00rad) translateZ(0px);" title=""></a></span></p>
+          <p class="c2"><span><a href="assets/img/figure2.png" target="_blank"><img
+                alt="" src="assets/img/figure2.png" title=""></a></span></p>
           <p class="c2 c5"><span class="c1"></span></p>
           <hr style="page-break-before:always;display:none;">
           <p class="c2 c5"><span class="c7"></span></p>
           <p class="c2"><span class="c7">Appendix D:</span></p>
-          <p class="c2"><span>Calculations of Racial Disparities and Racial Bias Scores for Each Police Department:</span><span style="overflow: hidden; display: inline-block; margin: 0.00px 0.00px; border: 0.00px solid #000000; transform: rotate(0.00rad) translateZ(0px); -webkit-transform: rotate(0.00rad) translateZ(0px); width: 443.81px; height: 805.50px;"><a href="assets/img/figure1.png" target="_blank"><img
-                alt="" src="assets/img/figure1.png" style="width: 443.81px; height: 805.50px; margin-left: 0.00px; margin-top: 0.00px; transform: rotate(0.00rad) translateZ(0px); -webkit-transform: rotate(0.00rad) translateZ(0px);" title=""></a></span></p>
+          <p class="c2"><span>Calculations of Racial Disparities and Racial Bias Scores for Each Police Department:</span><span><a href="assets/img/figure1.png" target="_blank"><img
+                alt="" src="assets/img/figure1.png" title=""></a></span></p>
           <hr class="c17">
           <div>
             <p class="c8"><a href="#ftnt_ref1" id="ftnt1">[1]</a><span class="c6">&nbsp;13 police departments reported that either they do not collect or possess data specifying the number of uses of less lethal force or that they would not provide us with
