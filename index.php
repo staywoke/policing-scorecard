@@ -8,7 +8,7 @@ $reportCard = reportCard();
 $title = "California Police Scorecard";
 $ac = '?ac=' . getHash();
 $socialUrl = rawurlencode('https://policescorecard.org');
-$socialText = rawurlencode('Comprehensive evaluations of police violence and police accountability in California\'s police departments. See the grade for each department here.');
+$socialText = rawurlencode('Get the facts about police violence and accountability in California. Evaluate each department and hold them accountable at policescorecard.org');
 $socialSubject = rawurlencode($title);
 ?>
 <!doctype html>
@@ -623,13 +623,13 @@ $socialSubject = rawurlencode($title);
           <div class="left">
             <table>
               <tr>
-                <th width="175">City</th>
+                <th width="200">City</th>
                 <th width="50">Grade</th>
                 <th>&nbsp;</th>
               </tr>
             <?php foreach($reportCard as $index => $card): if ($index < 50): ?>
               <tr>
-                <td width="175"><a href="./?city=<?= strtolower(preg_replace('/ /', '-', $card['agency_name'])) ?>"><?= $card['agency_name'] ?></a></td>
+                <td width="200"><a href="./?city=<?= strtolower(preg_replace('/ /', '-', $card['agency_name'])) ?>"><?= $index + 1 ?>. <?= $card['agency_name'] ?></a></td>
                 <td width="50"><a href="./?city=<?= strtolower(preg_replace('/ /', '-', $card['agency_name'])) ?>"><?= getGrade($card['overall_score']) ?></a></td>
                 <td><a href="./?city=<?= strtolower(preg_replace('/ /', '-', $card['agency_name'])) ?>"><div class="grade grade-<?= strtolower(preg_replace('/[^A-Z]/', '', getGrade($card['overall_score']))) ?>"><?= intval($card['overall_score']) ?>%</div></a></td>
               </tr>
@@ -639,13 +639,13 @@ $socialSubject = rawurlencode($title);
           <div class="right">
             <table>
               <tr class="hide-mobile">
-                <th width="175">City</th>
+                <th width="200">City</th>
                 <th width="50">Grade</th>
                 <th>&nbsp;</th>
               </tr>
               <?php foreach($reportCard as $index => $card): if ($index >= 50): ?>
                 <tr>
-                  <td width="175"><a href="./?city=<?= strtolower(preg_replace('/ /', '-', $card['agency_name'])) ?>"><?= $card['agency_name'] ?></a></td>
+                  <td width="200"><a href="./?city=<?= strtolower(preg_replace('/ /', '-', $card['agency_name'])) ?>"><?= $index + 1 ?>. <?= $card['agency_name'] ?></a></td>
                   <td width="50"><a href="./?city=<?= strtolower(preg_replace('/ /', '-', $card['agency_name'])) ?>"><?= getGrade($card['overall_score']) ?></a></td>
                   <td><a href="./?city=<?= strtolower(preg_replace('/ /', '-', $card['agency_name'])) ?>"><div class="grade grade-<?= strtolower(preg_replace('/[^A-Z]/', '', getGrade($card['overall_score']))) ?>"><?= intval($card['overall_score']) ?>%</div></a></td>
                 </tr>
@@ -764,7 +764,7 @@ $socialSubject = rawurlencode($title);
             <div>
               <img src="assets/img/next/step3.svg" alt="Step 3" />
 
-              <p><strong>Work towards a national</strong> police scorecard as more data are made available by federal, states, and local agencies. Create the foundation for a National Policing Intervention System to improve policing outcomes nationwide.</p>
+              <p><strong>Work towards a national</strong> police scorecard as more data are made available by federal, state, and local agencies. Create the foundation for a National Policing Intervention System to improve policing outcomes nationwide.</p>
             </div>
           </div>
         </div>
