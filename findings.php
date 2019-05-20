@@ -576,8 +576,8 @@ $ac = '?ac=' . getHash();
 
           <div id="menu">
             <ul>
-              <li><a href="about-data.php">About the Data</a></li>
-              <li><a href="findings.php" class="active">Key Findings</a></li>
+              <li><a href="about-data">About the Data</a></li>
+              <li><a href="findings" class="active">Key Findings</a></li>
               <li><a href="https://www.joincampaignzero.org/about/" target="_blank">Planning Team</a></li>
               <li><a href="https://www.joincampaignzero.org/" target="_blank">More about Campaign Zero</a></li>
             </ul>
@@ -612,11 +612,13 @@ $ac = '?ac=' . getHash();
           </ol>
           <p class="c3 c6"><span><a href="assets/img/findings/image5.png" target="_"><img alt="" src="assets/img/findings/image5.png" title=""></a></span></p>
           <ol class="c7 lst-kix_fckzbmam001m-0" start="2">
-            <li class="c3 c8 c6"><span>Police discharged their firearms or otherwise used force causing death or </span><span>serious bodily injury</span><sup><a href="#ftnt2" id="ftnt_ref2">[2]</a></sup><span>&nbsp;in </span><span class="c4">1,276 incidents</span><span>&nbsp;from 2016-2017, killing 328 people and seriously injuring an additional 824 people. 647 of these incidents were police shootings, while the other half were other forms of police use of force that caused death or serious injury. </span><span class="c4">Overall</span><span>, </span><span class="c11 c4">half of people killed or seriously injured by police (49%) were unarmed. </span></li>
+            <li class="c3 c8 c6"><span>Police discharged their firearms or otherwise used force causing death or </span><span>serious bodily injury</span><sup><a href="#ftnt2" id="ftnt_ref2">[2]</a></sup><span>&nbsp;in </span><span class="c4">1,276 incidents</span><span>&nbsp;from 2016-2017, killing 328 people and seriously injuring an additional 824 people. 647 of these incidents were police shootings, while the other half were other forms of police use of force that caused death or serious injury. </span><span class="c4">Overall</span><span>, </span><span class="c11 c4">half of people killed or seriously injured by police (49%) were unarmed. </span>
+
+            <br /><br />
+
+            <span>Police in San Bernardino, Riverside, Stockton, Long Beach, Fremont and Bakersfield used deadly force at </span><span class="c4">substantially higher rates </span><span>than other major cities in California. San Jose and Los Angeles police used deadly force at 3x the rate of police in </span><span>San Francisco and San Diego</span><span>. </span><span>And Oakland police had one of the lowest rates of deadly force, reflecting the substantial decline in use of force incidents that has followed </span><span class="c10"><a class="c12" href="http://www.oaklandmagazine.com/April-2017/The-Year-of-No-Shootings/">DOJ mandated reforms </a></span><span>to their use of force policies. </span></p>
+            <p class="c3 c6"><span><a href="assets/img/findings/image1.png" target="_"><img alt="" src="assets/img/findings/image1.png" title=""></a></span></li>
           </ol>
-          <p class="c3 c9 c6"><span class="c1"></span></p>
-          <p class="c3 c6"><span>Police in San Bernardino, Riverside, Stockton, Long Beach, Fremont and Bakersfield used deadly force at </span><span class="c4">substantially higher rates </span><span>than other major cities in California. San Jose and Los Angeles police used deadly force at 3x the rate of police in </span><span>San Francisco and San Diego</span><span>. </span><span>And Oakland police had one of the lowest rates of deadly force, reflecting the substantial decline in use of force incidents that has followed </span><span class="c10"><a class="c12" href="http://www.oaklandmagazine.com/April-2017/The-Year-of-No-Shootings/">DOJ mandated reforms </a></span><span>to their use of force policies. </span></p>
-          <p class="c3 c6"><span><a href="assets/img/findings/image1.png" target="_"><img alt="" src="assets/img/findings/image1.png" title=""></a></span></p>
           <p class="c3 c9 c6"><span class="c1"></span></p>
           <ol class="c7 lst-kix_fckzbmam001m-0" start="3">
             <li class="c3 c6 c8"><span>In reviewing the policy manuals of 90 of the 100 California police departments, we find </span><span class="c4">California police have more permissive use of force standards than the national average.</span><span>&nbsp;Only 16 departments (18%) required officers to use de-escalation when possible prior to using force and only 7 departments (8%) required officers to use all available means of apprehension, including non-lethal force, prior to using </span><span>deadly</span><span class="c15">&nbsp;</span><span>force. This is significantly lower than the 42% and 43%, respectively, of the big city police departments nationwide that </span><span class="c10"><a class="c12" href="http://useofforceproject.org">have such policies in place</a></span><span>. In some places, that is beginning to change. We identified four departments that adopted new use of force policies requiring de-escalation during the 2016-2017 period - Stockton, Sacramento, San Francisco, and Los Angeles. </span><span class="c4">All four departments had </span><span class="c10 c4"><a class="c12" href="https://drive.google.com/open?id%3D1YNEIO19C4X-6tkU5ZhlXsj_MaVlkM7pp">fewer police shootings</a></span><span class="c4">&nbsp;in 2018, after these policies were enacted, than their average shootings rate during the years prior to this policy&rsquo;s enactment.</span></li>

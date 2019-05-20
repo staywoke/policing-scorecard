@@ -65,8 +65,8 @@ $socialSubject = rawurlencode($title);
 
           <div id="menu">
             <ul>
-              <li><a href="about-data.php">About the Data</a></li>
-              <li><a href="findings.php">Key Findings</a></li>
+              <li><a href="about-data">About the Data</a></li>
+              <li><a href="findings">Key Findings</a></li>
               <li><a href="https://www.joincampaignzero.org/about/" target="_blank">Planning Team</a></li>
               <li><a href="https://www.joincampaignzero.org/" target="_blank">More about Campaign Zero</a></li>
             </ul>
@@ -86,7 +86,7 @@ $socialSubject = rawurlencode($title);
         <div class="content">
           <div class="right">
             <h1>We evaluated the police in California.</h1>
-            <h2>Read the <a href="./findings.php" style="color: #82add7; text-decoration: underline; font-weight: 500;">Findings.</a> See the Grade for Each Department.</h2>
+            <h2>Read the <a href="./findings" style="color: #82add7; text-decoration: underline; font-weight: 500;">Findings.</a> See the Grade for Each Department.</h2>
           </div>
           <div class="left">
             <div class="map" id="map-layer">
@@ -668,7 +668,7 @@ $socialSubject = rawurlencode($title);
             <strong>This is the first statewide Police Scorecard in the United States.</strong> It was built using data from California’s <a href="https://openjustice.doj.ca.gov/data" target="_blank">OpenJustice</a> database, public records requests, national databases and media reports.
           </p>
           <p>
-            <a href="/about-data.php" class="button">methodology</a>
+            <a href="/about-data" class="button">methodology</a>
           </p>
           <p>&nbsp;</p>
           <p>

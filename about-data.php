@@ -162,8 +162,8 @@ $ac = '?ac=' . getHash();
 
           <div id="menu">
             <ul>
-              <li><a href="about-data.php" class="active">About the Data</a></li>
-              <li><a href="findings.php">Key Findings</a></li>
+              <li><a href="about-data" class="active">About the Data</a></li>
+              <li><a href="findings">Key Findings</a></li>
               <li><a href="https://www.joincampaignzero.org/about/" target="_blank">Planning Team</a></li>
               <li><a href="https://www.joincampaignzero.org/" target="_blank">More about Campaign Zero</a></li>
             </ul>

@@ -1929,9 +1929,7 @@ body {
     overflow: visible;
 
     img {
-      max-width: 100%;
-      width: auto;
-      height: auto;
+      max-width: 500px;
     }
 
     h1, h2, h3 {
@@ -1970,7 +1968,7 @@ body {
 
     ol {
       list-style: decimal;
-      margin: 14px 16px;
+      margin: 14px 22px;
     }
   }
 }
@@ -2138,6 +2136,15 @@ body {
     }
     &.bb {
       border-bottom: 0;
+    }
+    &.about-data {
+      .content {
+        img {
+          max-width: 100%;
+          width: auto;
+          height: auto;
+        }
+      }
     }
     .content {
       overflow: hidden;
