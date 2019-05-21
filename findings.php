@@ -576,7 +576,7 @@ $ac = '?ac=' . getHash();
 
           <div id="menu">
             <ul>
-              <li><a href="about-data">About the Data</a></li>
+              <li><a href="about">About the Data</a></li>
               <li><a href="findings" class="active">Key Findings</a></li>
               <li><a href="https://www.joincampaignzero.org/about/" target="_blank">Planning Team</a></li>
               <li><a href="https://www.joincampaignzero.org/" target="_blank">More about Campaign Zero</a></li>
@@ -585,7 +585,7 @@ $ac = '?ac=' . getHash();
         </div>
       </div>
 
-      <div class="section about-data">
+      <div class="section about">
         <div class="content">
           <h1 class="title">
             Key Findings
@@ -621,9 +621,9 @@ $ac = '?ac=' . getHash();
           </ol>
           <p class="c3 c9 c6"><span class="c1"></span></p>
           <ol class="c7 lst-kix_fckzbmam001m-0" start="3">
-            <li class="c3 c6 c8"><span>In reviewing the policy manuals of 90 of the 100 California police departments, we find </span><span class="c4">California police have more permissive use of force standards than the national average.</span><span>&nbsp;Only 16 departments (18%) required officers to use de-escalation when possible prior to using force and only 7 departments (8%) required officers to use all available means of apprehension, including non-lethal force, prior to using </span><span>deadly</span><span class="c15">&nbsp;</span><span>force. This is significantly lower than the 42% and 43%, respectively, of the big city police departments nationwide that </span><span class="c10"><a class="c12" href="http://useofforceproject.org">have such policies in place</a></span><span>. In some places, that is beginning to change. We identified four departments that adopted new use of force policies requiring de-escalation during the 2016-2017 period - Stockton, Sacramento, San Francisco, and Los Angeles. </span><span class="c4">All four departments had </span><span class="c10 c4"><a class="c12" href="https://drive.google.com/open?id%3D1YNEIO19C4X-6tkU5ZhlXsj_MaVlkM7pp">fewer police shootings</a></span><span class="c4">&nbsp;in 2018, after these policies were enacted, than their average shootings rate during the years prior to this policy&rsquo;s enactment.</span></li>
+            <li class="c3 c6 c8"><span>In reviewing the policy manuals of 90 of the 100 California police departments, we find </span><span class="c4">California police have more permissive use of force standards than the national average.</span><span>&nbsp;Only 16 departments (18%) required officers to use de-escalation when possible prior to using force and only 7 departments (8%) required officers to use all available means of apprehension, including non-lethal force, prior to using </span><span>deadly</span><span class="c15">&nbsp;</span><span>force. This is significantly lower than the 42% and 43%, respectively, of the big city police departments nationwide that </span><span class="c10"><a class="c12" href="http://useofforceproject.org">have such policies in place</a></span><span>. In some places, that is beginning to change. We identified four departments that adopted new use of force policies requiring de-escalation during the 2016-2017 period - Stockton, Sacramento, San Francisco, and Los Angeles. </span><span class="c4">All four departments had </span><span class="c10 c4"><a class="c12" href="https://drive.google.com/file/d/1YNEIO19C4X-6tkU5ZhlXsj_MaVlkM7pp/view">fewer police shootings</a></span><span class="c4">&nbsp;in 2018, after these policies were enacted, than their average shootings rate during the years prior to this policy&rsquo;s enactment.</span></li>
           </ol>
-          <p class="c3 c6"><span><a href="assets/img/findings/image6.png" target="_"><img alt="" src="assets/img/findings/image6.png" title=""></a></span></p>
+          <p class="c3 c6"><span><a href="assets/img/findings/image6.png" target="_"><img alt="" class="narrow" src="assets/img/findings/image6.png" title=""></a></span></p>
           <p class="c3 c9 c6"><span class="c1"></span></p>
           <ol class="c7 lst-kix_fckzbmam001m-0" start="4">
             <li class="c3 c8 c6"><span class="c4">When people come forward to report police misconduct in California, it rarely leads to accountability</span><span>. Statewide, </span><span class="c4">only 1 in every 14 civilian complaints </span><span>of police misconduct was ruled in favor of civilians in 2016-2017. In 81% of jurisdictions, civilians reporting misconduct had less than a 1 in 5 chance of the complaint being ruled in their favor by police investigators. Complaints concerning police violence and racial/identity discrimination almost never resulted in accountability. Civilians reporting police </span><span class="c4">racial discrimination </span><span>had only a </span><span class="c4">1 in 64 chance of their complaint being upheld</span><span>&nbsp;and </span><span>civilians reporting </span><span class="c4">use of force complaints </span><span>had only a </span><span class="c4">1 in 78 chance of being upheld. This lack of administrative accountability for police violence mirrors the criminal justice system&rsquo;s approach towards police violence. </span><span>Of 647 police shootings statewide between 2016-2017</span><span class="c4">, </span><span>only </span><span class="c10"><a class="c12" href="http://mappingpoliceviolence.org">one</a></span><span>&nbsp;of these incidents has</span><span>&nbsp;resulted in an officer being prosecuted for breaking the law.</span></li>
@@ -638,7 +638,7 @@ $ac = '?ac=' . getHash();
 
               <br /></br>
 
-              <span><a href="assets/img/findings/image4.png" target="_"><img alt="" src="assets/img/findings/image4.png" title=""></a></span>
+              <span><a href="assets/img/findings/image4.png" target="_"><img alt="" src="assets/img/findings/image4.png" class="narrow" title=""></a></span>
 
               <br /></br>
 

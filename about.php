@@ -162,7 +162,7 @@ $ac = '?ac=' . getHash();
 
           <div id="menu">
             <ul>
-              <li><a href="about-data" class="active">About the Data</a></li>
+              <li><a href="about" class="active">About the Data</a></li>
               <li><a href="findings">Key Findings</a></li>
               <li><a href="https://www.joincampaignzero.org/about/" target="_blank">Planning Team</a></li>
               <li><a href="https://www.joincampaignzero.org/" target="_blank">More about Campaign Zero</a></li>
@@ -171,7 +171,7 @@ $ac = '?ac=' . getHash();
         </div>
       </div>
 
-      <div class="section about-data">
+      <div class="section about">
         <div class="content">
           <h1 class="title">
             About the Data
@@ -369,21 +369,23 @@ $ac = '?ac=' . getHash();
           </p>
           <p class="c2"><span class="c7">Appendix B:</span></p>
           <p class="c2"><span class="c1">Use of Force Incidents Excluded from the Analysis of the 100 Largest CA City Police Departments:</span></p>
-          <p class="c2"><span><a href="assets/img/figure3.png" target="_blank"><img
-                alt="" src="assets/img/figure3.png" title=""></a></span></p>
+          <p class="c2">
+            <iframe title="Incidents Excluded from Analysis of Deadly Force" aria-label="Table" id="datawrapper-chart-HgwLb" src="//datawrapper.dwcdn.net/HgwLb/5/" scrolling="no" frameborder="0" style="width: 0; min-width: 100% !important; border: none;" height="1453"></iframe><script type="text/javascript">!function(){"use strict";window.addEventListener("message",function(a){if(void 0!==a.data["datawrapper-height"])for(var e in a.data["datawrapper-height"]){var t=document.getElementById("datawrapper-chart-"+e)||document.querySelector("iframe[src*='"+e+"']");t&&(t.style.height=a.data["datawrapper-height"][e]+"px")}})}();</script>
+          </p>
           <p class="c2 c5"><span class="c7"></span></p>
           <p class="c2 c5"><span class="c7"></span></p>
           <p class="c2 c5"><span class="c7"></span></p>
           <p class="c2"><span class="c7">Appendix C:</span></p>
           <p class="c2"><span class="c1">Deadly Force Incidents Benchmarked on Population, All Arrests and Violent Crime Arrests:</span></p>
-          <p class="c2"><span><a href="assets/img/figure2.png" target="_blank"><img
-                alt="" src="assets/img/figure2.png" title=""></a></span></p>
+          <p class="c2">
+            <iframe title="Comparison of Deadly Force Rates per Arrest, Population, and Violent Crime Arrests" aria-label="Table" id="datawrapper-chart-KyHxg" src="//datawrapper.dwcdn.net/KyHxg/2/" scrolling="no" frameborder="0" style="width: 0; min-width: 100% !important; border: none;" height="2443"></iframe><script type="text/javascript">!function(){"use strict";window.addEventListener("message",function(a){if(void 0!==a.data["datawrapper-height"])for(var e in a.data["datawrapper-height"]){var t=document.getElementById("datawrapper-chart-"+e)||document.querySelector("iframe[src*='"+e+"']");t&&(t.style.height=a.data["datawrapper-height"][e]+"px")}})}();</script>
+          </p>
           <p class="c2 c5"><span class="c1"></span></p>
           <hr style="page-break-before:always;display:none;">
           <p class="c2 c5"><span class="c7"></span></p>
           <p class="c2"><span class="c7">Appendix D:</span></p>
-          <p class="c2"><span>Calculations of Racial Disparities and Racial Bias Scores for Each Police Department:</span><span><a href="assets/img/figure1.png" target="_blank"><img
-                alt="" src="assets/img/figure1.png" title=""></a></span></p>
+          <p class="c2"><span>Calculations of Racial Disparities and Racial Bias Scores for Each Police Department:</span></p>
+          <p class="c2"><iframe title="Calculation of Racial Bias Scores for Each Police Agency" aria-label="Table" id="datawrapper-chart-ZuSNF" src="//datawrapper.dwcdn.net/ZuSNF/1/" scrolling="no" frameborder="0" style="width: 0; min-width: 100% !important; border: none;" height="999"></iframe><script type="text/javascript">!function(){"use strict";window.addEventListener("message",function(a){if(void 0!==a.data["datawrapper-height"])for(var e in a.data["datawrapper-height"]){var t=document.getElementById("datawrapper-chart-"+e)||document.querySelector("iframe[src*='"+e+"']");t&&(t.style.height=a.data["datawrapper-height"][e]+"px")}})}();</script></p>
           <hr class="c17">
           <div>
             <p class="c8"><a href="#ftnt_ref1" id="ftnt1">[1]</a><span class="c6">&nbsp;13 police departments reported that either they do not collect or possess data specifying the number of uses of less lethal force or that they would not provide us with

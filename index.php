@@ -65,7 +65,7 @@ $socialSubject = rawurlencode($title);
 
           <div id="menu">
             <ul>
-              <li><a href="about-data">About the Data</a></li>
+              <li><a href="about">About the Data</a></li>
               <li><a href="findings">Key Findings</a></li>
               <li><a href="https://www.joincampaignzero.org/about/" target="_blank">Planning Team</a></li>
               <li><a href="https://www.joincampaignzero.org/" target="_blank">More about Campaign Zero</a></li>
@@ -668,7 +668,7 @@ $socialSubject = rawurlencode($title);
             <strong>This is the first statewide Police Scorecard in the United States.</strong> It was built using data from California’s <a href="https://openjustice.doj.ca.gov/data" target="_blank">OpenJustice</a> database, public records requests, national databases and media reports.
           </p>
           <p>
-            <a href="/about-data" class="button">methodology</a>
+            <a href="/about" class="button">methodology</a>
           </p>
           <p>&nbsp;</p>
           <p>

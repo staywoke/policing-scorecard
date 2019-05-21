@@ -1921,7 +1921,7 @@ body {
   }
 }
 
-.section.about-data {
+.section.about {
   padding: 20px;
 
   .content {
@@ -1930,6 +1930,10 @@ body {
 
     img {
       max-width: 500px;
+
+      &.narrow {
+        max-width: 300px;
+      }
     }
 
     h1, h2, h3 {
@@ -2137,7 +2141,7 @@ body {
     &.bb {
       border-bottom: 0;
     }
-    &.about-data {
+    &.about {
       .content {
         img {
           max-width: 100%;

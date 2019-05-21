@@ -1496,38 +1496,40 @@ body {
   .section.next .step-3 img {
     shape-outside: url(../img/next/step3.svg); }
 
-.section.about-data {
+.section.about {
   padding: 20px; }
-  .section.about-data .content {
+  .section.about .content {
     line-height: 24px;
     overflow: visible; }
-    .section.about-data .content img {
+    .section.about .content img {
       max-width: 500px; }
-    .section.about-data .content h1, .section.about-data .content h2, .section.about-data .content h3 {
+      .section.about .content img.narrow {
+        max-width: 300px; }
+    .section.about .content h1, .section.about .content h2, .section.about .content h3 {
       text-transform: uppercase;
       margin: 14px 0; }
-    .section.about-data .content h1.title {
+    .section.about .content h1.title {
       color: #82ADD7;
       padding: 0;
       font-size: 46px;
       line-height: 54px;
       font-weight: 300; }
-    .section.about-data .content h2.title {
+    .section.about .content h2.title {
       color: #464648;
       padding: 0;
       font-size: 28px;
       line-height: 32px;
       font-weight: 300; }
-    .section.about-data .content h3.title {
+    .section.about .content h3.title {
       color: #82ADD7;
       padding: 0;
       font-size: 20px;
       line-height: 24px;
       font-weight: 400; }
-    .section.about-data .content a {
+    .section.about .content a {
       color: #82ADD7;
       text-decoration: none; }
-    .section.about-data .content ol {
+    .section.about .content ol {
       list-style: decimal;
       margin: 14px 22px; }
 
@@ -1648,7 +1650,7 @@ body {
     padding-top: 20px; }
   .section.bb {
     border-bottom: 0; }
-  .section.about-data .content img {
+  .section.about .content img {
     max-width: 100%;
     width: auto;
     height: auto; }
