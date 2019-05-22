@@ -331,7 +331,7 @@ $socialSubject = rawurlencode($title);
       <div class="section bg-gray checklist">
         <div class="content">
           <h1 class="title">
-            Policies Adopted to Limit Use of Force
+            Policies Adopted to <span class="good">Limit</span> Use of Force
           </h1>
         </div>
         <div class="content">
@@ -481,7 +481,7 @@ $socialSubject = rawurlencode($title);
       <div class="section bg-gray checklist">
         <div class="content">
           <h1 class="title">
-            Policies Making It Harder to Hold Police Accountable
+            Policies Making It <span class="bad">Harder</span> to Hold Police Accountable
           </h1>
         </div>
         <div class="content">

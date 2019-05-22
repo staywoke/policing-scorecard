@@ -1571,6 +1571,14 @@ body {
     line-height: 54px;
     text-transform: uppercase;
     font-weight: 300;
+
+    span.good {
+      color: $primary-green;
+    }
+
+    span.bad {
+      color: #f67f85;
+    }
   }
 
   .check {

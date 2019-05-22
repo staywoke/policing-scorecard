@@ -642,7 +642,7 @@ $ac = '?ac=' . getHash();
 
               <br /></br>
 
-              <span>Finally, p</span><span class="c1">olice also appear to be more likely to shoot black and Latinx people as a first response rather than first attempting non-lethal force to resolve the situation. Police shot first, rather than first attempting a lower level of force, in 93% of police shootings of black people and 87% of Latinx people compared to 84% of police shootings of white people.</span>
+              <span>Finally, p</span><span class="c1">olice also appear to be more likely to shoot black and Latinx people as a first response rather than first attempting non-lethal force to resolve the situation. Police shot first, rather than first attempting a lower level of force, in 87% of police shootings of black people and 84% of Latinx people compared to 81% of police shootings of white people.</span>
 
               <br /></br>
 

@@ -1269,6 +1269,10 @@ body {
     line-height: 54px;
     text-transform: uppercase;
     font-weight: 300; }
+    .section.checklist h1.title span.good {
+      color: #a7cc84; }
+    .section.checklist h1.title span.bad {
+      color: #f67f85; }
   .section.checklist .check {
     height: 48px;
     color: #FFF;
