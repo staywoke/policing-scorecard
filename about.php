@@ -290,7 +290,7 @@ $ac = '?ac=' . getHash();
           <p class="c2"><span class="c7">Data Sources:</span></p>
           <p class="c2 c5"><span class="c7"></span></p>
           <p class="c2"><span class="c7">Deadly Force Incidents</span></p>
-          <p class="c2"><span class="c3">Definition: All Use of Force Incidents resulting in the Death or Serious Injury of a Civilian in 2016 and 2017</span></p>
+          <p class="c2"><span class="c3">DEFINITION: ALL FIREARMS DISCHARGES AND ALL USE OF FORCE INCIDENTS RESULTING IN THE DEATH OR SERIOUS INJURY OF A CIVILIAN IN 2016 AND 2017</span></p>
           <p class="c2 c5"><span class="c3"></span></p>
           <p class="c2"><span class="c0"><a class="c11" href="https://codes.findlaw.com/ca/government-code/gov-sect-12525-2.html&amp;sa=D&amp;ust=1553928833133000">Government Code section 12525.2</a></span><span class="c1">&nbsp;mandates
               law enforcement agencies in California to report annually on all:</span></p>
@@ -303,9 +303,8 @@ $ac = '?ac=' . getHash();
           <p class="c2"><span class="c1">&nbsp;</span></p>
           <p class="c2"><span>The two years of data currently available under this reporting program, 2016 and 2017, were combined for the purposes of this analysis. In order to evaluate levels of police use of deadly force and ensure consistency across
               departments in terms of how deadly force was defined</span><span>, we excluded the incidents in the database that either were not firearms discharges or that were not other uses of force that did not cause the death or serious injury of a
-              civilian (for example, incidents involving the use of deadly force against a police officer but not a civilian and incidents where police </span><span class="c1">caused an injury that was not categorized as serious). 55 of the 100 largest CA
-              city police departments reported at least one incident that either solely involved the use of deadly force by a civilian against an officer or that involved a use of force that did not result in death or serious injury. In total, of the 1,573
-              deadly force incidents in the statewide database, 436 (28%) were excluded for these reasons (see Appendix B for the list of incidents excluded). </span></p>
+              civilian (for example, incidents involving the use of deadly force against a police officer but not a civilian and incidents where police </span><span class="c1">caused an injury that was not categorized as serious). 38 of the 100 largest CA city police departments reported at least one incident that either solely involved the use of deadly force by a civilian against an officer or that involved a use of force that did not result in death or serious injury. In total, of the 1,489
+              deadly force incidents in the statewide database, 213 (14%) were excluded for these reasons (see Appendix B for the list of incidents excluded). </span></p>
           <p class="c2 c5"><span class="c1"></span></p>
           <p class="c2"><span>Importantly, deadly force as defined in this scorecard and as collected under California&rsquo;s URSUS program is broader than fatal police shootings or the killings by police data commonly cited in media or crowdsourced
               databases. Deadly force includes </span><span class="c9 c15">all use of force incidents </span><span>resulting in death </span><span class="c9 c15">or serious injury</span><span class="c1">&nbsp;of a civilian or that involved a firearms
@@ -313,6 +312,7 @@ $ac = '?ac=' . getHash();
           <p class="c2 c5"><span class="c1"></span></p>
           <p class="c2"><span>Since the URSUS program includes information about the circumstances of each deadly force incident - in particular which types of force were used in each incident - we were able to determine the proportion of each
               department&rsquo;s police shootings where officers did not attempt to use another type of force prior to discharging their firearms.</span><sup><a href="#ftnt7" id="ftnt_ref7">[7]</a></sup><span class="c1">&nbsp;</span></p>
+          <p class="c2"><span>Finally, in reviewing the URSUS data, we found that some incidents coded as "no confirmed weapon" were incidents where the person was alleged to be using a vehicle as a weapon when force was used against them. To address this, we compiled articles and DA statements for each incident to determine whether or not the person was in a moving vehicle and to confirm other details provided to URSUS. Through this process, we identified a total of 121 vehicle incidents, 56 of which were coded as "no confirmed weapon." These incidents were reclassified in our analysis from "no confirmed weapon" to "other object."</span></p>
           <p class="c2 c5"><span class="c7"></span></p>
           <p class="c2 c5"><span class="c7"></span></p>
           <p class="c2"><span class="c7">Less Lethal Force</span></p>

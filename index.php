@@ -136,8 +136,12 @@ $socialSubject = rawurlencode($title);
           <?php endif; ?>
           </div>
           <div class="one-third">
-            <h1><strong><?= num($data['total_arrests']) ?></strong> arrests made</h1>
+            <h1><strong><?= num($data['total_arrests']) ?></strong> arrests made <?= intval($data['percent_of_misdemeanor_arrests_per_population']) ?></h1>
+          <?php if (intval($data['percent_of_misdemeanor_arrests_per_population']) <= 75): ?>
             <p>Police made <strong><?= num($data['times_more_misdemeanor_arrests_than_violent_crime'], 1, 'x') ?> as many arrests for low level offenses</strong> as for violent crimes in 2016.</p>
+          <?php else: ?>
+            <p><?= $data['agency_name'] ?> had a lower misdemeanor arrest rate than <strong><?= num($data['percent_of_misdemeanor_arrests_per_population'], 1, '%') ?></strong> of departments.</p>
+          <?php endif; ?>
           </div>
         </div>
       </div>
@@ -932,8 +936,9 @@ $socialSubject = rawurlencode($title);
         data: {
           labels: [
             'Unarmed',
-            'Knife/Other',
-            'Gun'
+            'Knife/Other       ',
+            'Gun',
+            'Vehicle      '
           ],
           datasets: [
             {
@@ -941,17 +946,20 @@ $socialSubject = rawurlencode($title);
               data: [
                 <?= floatval($data['percent_used_against_people_who_were_unarmed']) ?>,
                 <?= (floatval($data['percent_used_against_people_who_were_not_armed_with_gun']) - floatval($data['percent_used_against_people_who_were_unarmed'])) ?>,
-                <?= (100 - floatval($data['percent_used_against_people_who_were_not_armed_with_gun'])) ?>
+                <?= (100 - floatval($data['percent_used_against_people_who_were_not_armed_with_gun'])) ?>,
+                <?= floatval($data['vehicle_incidents']) ?>
               ],
               backgroundColor:[
                 '#f19975',
                 '#58595b',
-                '#d4d9e4'
+                '#d4d9e4',
+                '#9a9b9f'
               ],
               hoverBackgroundColor:[
                 '#f19975',
                 '#58595b',
-                '#d4d9e4'
+                '#d4d9e4',
+                '#9a9b9f'
               ]
             }
           ]
