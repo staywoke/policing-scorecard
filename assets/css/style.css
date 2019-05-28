@@ -1879,12 +1879,10 @@ body {
     margin-bottom: 40px;
     position: relative; }
 
-  .canvas-wrapper .canvas-label {
-    line-height: 30px !important; }
-    .canvas-wrapper .canvas-label span {
-      font-size: 20px !important;
-      line-height: 20px !important;
-      margin-top: 32px !important; }
+  .canvas-wrapper .canvas-label span {
+    font-size: 20px !important;
+    line-height: 20px !important;
+    margin-top: 32px !important; }
 
   .section.footer {
     padding: 0; }

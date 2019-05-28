@@ -931,14 +931,20 @@ $socialSubject = rawurlencode($title);
                 return ' ' + data['labels'][tooltip.index] + ': ' + data['datasets'][tooltip.datasetIndex]['data'][tooltip.index] + '%';
               }
             }
+          },
+          legend: {
+            display: true,
+            labels: {
+              boxWidth: 20
+            }
           }
         },
         data: {
           labels: [
             'Unarmed',
-            'Knife/Other       ',
+            'Other',
             'Gun',
-            'Vehicle      '
+            'Vehicle'
           ],
           datasets: [
             {
