@@ -114,6 +114,10 @@ function num($string, $decimal = 0, $suffix = '', $invert = false) {
     $output = '0';
   }
 
+  if (substr($output, -2) === '.0') {
+    $output = intval($string);
+  }
+
   return "{$output}{$suffix}";
 }
 
