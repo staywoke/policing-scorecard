@@ -136,7 +136,7 @@ $socialSubject = rawurlencode($title);
           <?php endif; ?>
           </div>
           <div class="one-third">
-            <h1><strong><?= num($data['total_arrests']) ?></strong> arrests made <?= intval($data['percent_of_misdemeanor_arrests_per_population']) ?></h1>
+            <h1><strong><?= num($data['total_arrests']) ?></strong> arrests made in 2016</h1>
           <?php if (intval($data['percent_of_misdemeanor_arrests_per_population']) <= 75): ?>
             <p>Police made <strong><?= num($data['times_more_misdemeanor_arrests_than_violent_crime'], 1, 'x') ?> as many arrests for low level offenses</strong> as for violent crimes in 2016.</p>
           <?php else: ?>
