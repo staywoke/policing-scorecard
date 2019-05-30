@@ -724,7 +724,7 @@ $socialSubject = rawurlencode($title);
           </div>
           <div class="right number number-2">
             <ul>
-              <li><strong>Find your California State Senate Member</strong> using the Campaign Zero Advocacy Tool and urge them to support <strong>Assembly Bill 392</strong>, which would limit deadly force to be legally authorized only when necessary, a change that can reduce police shootings statewide.
+              <li><strong>Find your California State Senator</strong> using the Campaign Zero Advocacy Tool and urge them to support <strong>Assembly Bill 392</strong>, which would limit deadly force to be legally authorized only when necessary, a change that can reduce police shootings statewide.
                 <br />
               <a href="https://www.joincampaignzero.org/advocacy" class="button" target="_blank">Campaign Zero Advocacy Tool</a></li>
             </ul>
