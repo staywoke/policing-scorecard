@@ -21,7 +21,7 @@ $socialSubject = rawurlencode($title);
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-status-bar-style" content="black">
-    <meta name="description" content="<?= $title ?>">
+    <meta name="description" content="The Police Scorecard evaluates police departments based on quantitative data on arrests, use of force, accountability and other policing issues to make progress towards more just and equitable policing outcomes.">
     <meta name="author" content="StayWoke">
 
     <meta name="apple-mobile-web-app-title" content="Police Scorecard">
@@ -373,7 +373,7 @@ $socialSubject = rawurlencode($title);
               Requires Comprehensive Reporting
             </div>
             <div class="check animate-check <?= $data['requires_exhaust_all_other_means_before_shooting'] === '1' ? 'checked' : 'unchecked' ?> more-info" data-city="<?= $city ?>" data-more-info="policy_language_requires_exhaust_all_other_means_before_shooting">
-              Requires Exhaust All Means Before Shooting
+              Requires Exhaust Alternatives Before Shooting
             </div>
             <div class="check animate-check <?= $data['has_use_of_force_continuum'] === '1' ? 'checked' : 'unchecked' ?> more-info" data-city="<?= $city ?>" data-more-info="policy_language_has_use_of_force_continuum">
               Has Use of Force Continuum
@@ -941,10 +941,10 @@ $socialSubject = rawurlencode($title);
         },
         data: {
           labels: [
-            'Unarmed',
-            'Other',
-            'Gun',
-            'Vehicle'
+            'Unarmed <?= floatval($data['percent_used_against_people_who_were_unarmed']) ?>',
+            'Other <?= (floatval($data['percent_used_against_people_who_were_not_armed_with_gun']) - floatval($data['percent_used_against_people_who_were_unarmed'])) ?>',
+            'Gun <?= (100 - floatval($data['percent_used_against_people_who_were_not_armed_with_gun'])) ?>',
+            'Vehicle <?= floatval($data['vehicle_incidents']) ?>'
           ],
           datasets: [
             {
