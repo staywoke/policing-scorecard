@@ -5,6 +5,7 @@ var SCORECARD = (function () {
   var $modal = document.getElementById('modal-wrapper');
   var $modalClose = document.getElementById('modal-close');
   var $modalContent = document.getElementById('modal-content');
+  var $modalLabel = document.getElementById('modal-label');
   var $modalOverlay = document.getElementById('overlay');
   var scoreCard = document.getElementById('score-card');
   var scoreLocation = document.getElementById('score-location');
@@ -80,11 +81,13 @@ var SCORECARD = (function () {
     });
 
     $mapLayer.addEventListener('click', function() {
+      $modalLabel.innerHTML = 'Select City Police Department';
       $modal.classList.toggle('open');
       $selectedCity[0].scrollIntoView();
     });
 
     scoreLocation.addEventListener('click', function() {
+      $modalLabel.innerHTML = 'Select City Police Department';
       $modal.classList.toggle('open');
       $selectedCity[0].scrollIntoView();
     });
@@ -136,6 +139,8 @@ var SCORECARD = (function () {
   }
 
   function loadMoreInfo(city, prop) {
+    $modalLabel.innerHTML = '';
+
     var request = new XMLHttpRequest();
     var file = 'data/json/' + city + '.json';
     request.open('GET', file, true);
@@ -196,6 +201,8 @@ var SCORECARD = (function () {
   }
 
   function loadResultsInfo(city, prop) {
+    $modalLabel.innerHTML = '';
+
     var request = new XMLHttpRequest();
     var file = 'data/json/' + city + '.json';
     request.open('GET', file, true);

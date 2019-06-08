@@ -66,6 +66,19 @@ body {
 
     }
 
+    #modal-label {
+      color: #FFF;
+      text-align: center;
+      display: block;
+      height: 30px;
+      width: 100%;
+      z-index: 5000;
+      position: absolute;
+      top: -30px;
+      left: 0;
+      line-height: 30px;
+    }
+
     #modal-content {
       height: 260px;
       overflow: auto;
@@ -601,6 +614,11 @@ body {
   border-bottom: 2px solid rgba(0, 0, 0, 0.05);
   margin-top: 30px;
   position: relative;
+
+  a {
+    color: #000;
+    text-decoration: none;
+  }
 
   &:last-child {
     border-bottom: none;

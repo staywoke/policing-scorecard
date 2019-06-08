@@ -373,7 +373,7 @@ $socialSubject = rawurlencode($title);
               Requires Comprehensive Reporting
             </div>
             <div class="check animate-check <?= $data['requires_exhaust_all_other_means_before_shooting'] === '1' ? 'checked' : 'unchecked' ?> more-info" data-city="<?= $city ?>" data-more-info="policy_language_requires_exhaust_all_other_means_before_shooting">
-              Requires Exhaust Alternatives Before Shooting
+              Exhaust Alternatives Before Shooting
             </div>
             <div class="check animate-check <?= $data['has_use_of_force_continuum'] === '1' ? 'checked' : 'unchecked' ?> more-info" data-city="<?= $city ?>" data-more-info="policy_language_has_use_of_force_continuum">
               Has Use of Force Continuum
@@ -803,6 +803,7 @@ $socialSubject = rawurlencode($title);
       <div class="modal">
         <a href="javascript:void(0)" id="modal-close">✖</a>
         <div id="modal-content">
+          <div id="modal-label">Select City Police Department</div>
           <div id="more-info-content"></div>
           <div id="results-info-content"></div>
           <ul id="city-select">
@@ -941,10 +942,10 @@ $socialSubject = rawurlencode($title);
         },
         data: {
           labels: [
-            'Unarmed <?= floatval($data['percent_used_against_people_who_were_unarmed']) ?>',
-            'Other <?= (floatval($data['percent_used_against_people_who_were_not_armed_with_gun']) - floatval($data['percent_used_against_people_who_were_unarmed'])) ?>',
-            'Gun <?= (100 - floatval($data['percent_used_against_people_who_were_not_armed_with_gun'])) ?>',
-            'Vehicle <?= floatval($data['vehicle_incidents']) ?>'
+            'Unarmed',
+            'Other',
+            'Gun',
+            'Vehicle'
           ],
           datasets: [
             {
