@@ -373,7 +373,7 @@ $socialSubject = rawurlencode($title);
               Requires Comprehensive Reporting
             </div>
             <div class="check animate-check <?= $data['requires_exhaust_all_other_means_before_shooting'] === '1' ? 'checked' : 'unchecked' ?> more-info" data-city="<?= $city ?>" data-more-info="policy_language_requires_exhaust_all_other_means_before_shooting">
-              Exhaust Alternatives Before Shooting
+              Requires Exhaust Alternatives Before Shooting
             </div>
             <div class="check animate-check <?= $data['has_use_of_force_continuum'] === '1' ? 'checked' : 'unchecked' ?> more-info" data-city="<?= $city ?>" data-more-info="policy_language_has_use_of_force_continuum">
               Has Use of Force Continuum
