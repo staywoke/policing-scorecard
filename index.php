@@ -442,6 +442,7 @@ $socialSubject = rawurlencode($title);
                 </div>
                 <p class="note">City Did Not Provide Data</p>
               <?php else: ?>
+                <p><?= output($data['use_of_force_complaints_reported']) ?> Reported <span class="divider">&nbsp;|&nbsp;</span> <?= num($data['percent_use_of_force_complaints_sustained'], 0, '%') ?> Ruled in Favor of Civilians</p>
                 <div class="progress-bar-wrapper">
                   <div class="progress-bar animate-bar <?= progressBar(100 - intval($data['percent_use_of_force_complaints_sustained']), 'reverse') ?>" data-percent="<?= output(intval($data['percent_use_of_force_complaints_sustained']), 0, '%') ?>"></div>
                 </div>
