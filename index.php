@@ -429,13 +429,14 @@ $socialSubject = rawurlencode($title);
             <div class="stat-wrapper">
               <a href="javascript:void(0)" data-city="<?= $city ?>" data-more-info="" class="more-info"></a>
               <h3>Use of Force Complaints</h3>
-              <p><?= output($data['use_of_force_complaints_reported']) ?> Reported <span class="divider">&nbsp;|&nbsp;</span> <?= num($data['percent_use_of_force_complaints_sustained'], 0, '%') ?> Ruled in Favor of Civilians</p>
               <?php if (output($data['use_of_force_complaints_reported']) === '0'): ?>
+                <p>0 Complaints Reported</p>
                 <div class="progress-bar-wrapper">
                   <div class="progress-bar bright-green" style="width: 0"></div>
                 </div>
                 <p class="note">&nbsp;</p>
               <?php elseif(!isset($data['percent_use_of_force_complaints_sustained']) || (isset($data['percent_use_of_force_complaints_sustained']) && empty($data['percent_use_of_force_complaints_sustained']))): ?>
+                <p><?= output($data['use_of_force_complaints_reported']) ?> Reported <span class="divider">&nbsp;|&nbsp;</span> <?= num($data['percent_use_of_force_complaints_sustained'], 0, '%') ?> Ruled in Favor of Civilians</p>
                 <div class="progress-bar-wrapper">
                   <div class="progress-bar no-data" style="width: 0"></div>
                 </div>
