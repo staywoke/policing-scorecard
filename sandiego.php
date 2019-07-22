@@ -4,7 +4,7 @@ require('common.php');
 $title = "San Diego Police Scorecard";
 $ac = '?ac=' . getHash();
 $socialUrl = rawurlencode('https://policescorecard.org');
-$socialText = rawurlencode('Campaign Zero evaluated the policing practices of San Diego Police Department and San Diego Sheriff\'s Department from 2016-2018.');
+$socialText = rawurlencode('Campaign Zero evaluated the policing practices of San Diego Police Department and San Diego Sheriff’s Department from 2016-2018.');
 $socialSubject = rawurlencode($title);
 ?>
 <!doctype html>
@@ -17,7 +17,7 @@ $socialSubject = rawurlencode($title);
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-status-bar-style" content="black">
-    <meta name="description" content="Campaign Zero evaluated the policing practices of San Diego Police Department and San Diego Sheriff\'s Department from 2016-2018.">
+    <meta name="description" content="Campaign Zero evaluated the policing practices of San Diego Police Department and San Diego Sheriff’s Department from 2016-2018.">
     <meta name="author" content="StayWoke">
 
     <meta name="apple-mobile-web-app-title" content="Police Scorecard">
@@ -27,7 +27,7 @@ $socialSubject = rawurlencode($title);
     <meta property="twitter:card" content="summary_large_image">
     <meta property="twitter:site" content="@samswey">
     <meta property="twitter:title" content="<?= $title ?>">
-    <meta property="twitter:description" content="Campaign Zero evaluated the policing practices of San Diego Police Department and San Diego Sheriff\'s Department from 2016-2018..">
+    <meta property="twitter:description" content="Campaign Zero evaluated the policing practices of San Diego Police Department and San Diego Sheriff’s Department from 2016-2018..">
     <meta property="twitter:creator" content="@mrmidi">
     <meta property="twitter:image:src" content="https://policescorecard.org/assets/img/card-san-diego.jpg<?= trim($ac) ?>">
     <meta property="twitter:domain" content="https://policescorecard.org">
@@ -39,7 +39,7 @@ $socialSubject = rawurlencode($title);
     <meta property="og:url" content="https://policescorecard.org">
     <meta property="og:image" content="https://policescorecard.org/assets/img/card-san-diego.jpg<?= trim($ac) ?>">
     <meta property="og:site_name" content="San Diego Police Scorecard">
-    <meta property="og:description" content="Campaign Zero evaluated the policing practices of San Diego Police Department and San Diego Sheriff\'s Department from 2016-2018.">
+    <meta property="og:description" content="Campaign Zero evaluated the policing practices of San Diego Police Department and San Diego Sheriff’s Department from 2016-2018.">
 
     <link href="favicon.ico" rel="shortcut icon">
 
