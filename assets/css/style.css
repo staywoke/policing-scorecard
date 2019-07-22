@@ -578,7 +578,8 @@ body {
     line-height: 30px; }
     .section .content.chart-summary a {
       color: #82ADD7;
-      text-decoration: none; }
+      text-decoration: none;
+      font-weight: 600; }
     .section .content.chart-summary blockquote {
       padding-left: 40px;
       font-style: italic;
@@ -590,15 +591,20 @@ body {
     .section .content.chart-summary ul {
       list-style: disc;
       margin-left: 22px;
-      margin-bottom: 16px; }
+      margin-bottom: 16px;
+      font-weight: 300; }
     .section .content.chart-summary iframe {
       background: #FFF;
       padding: 8px 16px;
-      display: block; }
+      display: block;
+      box-shadow: 0 0 3px rgba(0, 0, 0, 0.5); }
     .section .content.chart-summary img {
-      max-width: 100%; }
+      max-width: 100%;
+      box-shadow: 0 0 3px rgba(0, 0, 0, 0.5);
+      padding: 10px; }
     .section .content.chart-summary p {
-      margin-bottom: 20px; }
+      margin-bottom: 20px;
+      font-weight: 300; }
       .section .content.chart-summary p strong {
         font-weight: 600; }
       .section .content.chart-summary p:last-child {
@@ -710,18 +716,29 @@ body {
   opacity: 0.15; }
 .section.bg-gray {
   background-color: #464648; }
+  .section.bg-gray .content.chart-summary h1.title {
+    color: white; }
+  .section.bg-gray .content.chart-summary a {
+    color: #FFF; }
+  .section.bg-gray .content.chart-summary p {
+    color: #FFF;
+    font-weight: 300; }
 .section.bg-orange {
   background-color: #F19975; }
   .section.bg-orange .content.chart-summary h1.title {
     color: white; }
   .section.bg-orange .content.chart-summary a {
     color: #FFF; }
+  .section.bg-orange .content.chart-summary p {
+    font-weight: 300; }
 .section.bg-blue {
   background-color: #82ADD7; }
   .section.bg-blue .content.chart-summary h1.title {
     color: white; }
   .section.bg-blue .content.chart-summary a {
     color: #FFF; }
+  .section.bg-blue .content.chart-summary p {
+    font-weight: 300; }
 .section.bg-light-gray {
   background-color: #F2F4F6; }
 .section.bg-dotted {

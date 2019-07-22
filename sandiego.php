@@ -104,7 +104,7 @@ $socialSubject = rawurlencode($title);
         <div class="content padded text-white">
           <p>Campaign Zero evaluated the policing practices of San Diego Police Department and San Diego Sheriff's Department from 2016-2018.</p>
 
-          <p>Our results show that both departments used force more often than other large California police agencies - with San Diego Sheriff's Department <strong>using more force than the 37 California police departments</strong> that make these data public. Both departments were also more likely to <strong>stop, search</strong> and <strong>use force against</strong> black people and people with disabilities. Moreover, when civilians report excessive force or police discrimination, fewer than 1% of these allegations are upheld. See the findings of our analysis and recommendations below.</p>
+          <p><strong>Our results show that both departments used force more often than other large California police agencies</strong> - with San Diego Sheriff's Department using more force than the 37 California police departments that make these data public. Both departments were also more likely to <strong>stop, search</strong> and <strong>use force against black people</strong> and <strong>people with disabilities</strong>. Moreover, when civilians report excessive force or police discrimination, <strong>fewer than 1%</strong> of these allegations are upheld. See the findings of our analysis and recommendations below.</p>
 
           <p><a href="https://docs.google.com/document/d/1apryMIJqMlRDlFra53F2ykVedB6Er2qKd3CUcXVaSiM/edit?usp=sharing" target="_blank" class="read-methodology">Read Our Methodology</a></p>
         </div>
@@ -211,7 +211,7 @@ $socialSubject = rawurlencode($title);
       </div>
 
       <!-- POLICE USE OF FORCE -->
-      <div class="section bg-orange">
+      <div class="section bg-gray">
         <div class="content chart-summary padded">
           <h1 class="title">
             POLICE USE OF FORCE
@@ -237,7 +237,7 @@ $socialSubject = rawurlencode($title);
       </div>
 
       <!-- USE OF FORCE DISPARITIES -->
-      <div class="section bg-blue">
+      <div class="section bg-orange">
         <div class="content chart-summary no-pad-bottom">
           <div class="left">
             <h1 class="title">
@@ -285,7 +285,7 @@ $socialSubject = rawurlencode($title);
       </div>
 
       <!-- USE OF FORCE SEVERITY BY ALLEGED RESISTANCE LEVEL AND WEAPON TYPE -->
-      <div class="section bg-orange">
+      <div class="section bg-blue">
         <div class="content chart-summary">
           <div class="left">
             <h1 class="title">
@@ -339,7 +339,7 @@ $socialSubject = rawurlencode($title);
       </div>
 
       <!-- DEATHS IN SAN DIEGO COUNTY JAIL -->
-      <div class="section bg-blue">
+      <div class="section bg-gray">
         <div class="content chart-summary">
           <div class="left">
             <h1 class="title">

@@ -496,6 +496,7 @@ body {
       a {
         color: #82ADD7;
         text-decoration: none;
+        font-weight: 600;
       }
 
       blockquote {
@@ -515,20 +516,25 @@ body {
         list-style: disc;
         margin-left: 22px;
         margin-bottom: 16px;
+        font-weight: 300;
       }
 
       iframe {
         background: #FFF;
         padding: 8px 16px;
         display: block;
+        box-shadow: 0 0 3px rgba(0, 0, 0, 0.5);
       }
 
       img {
         max-width: 100%;
+        box-shadow: 0 0 3px rgba(0, 0, 0, 0.5);
+        padding: 10px;
       }
 
       p {
         margin-bottom: 20px;
+        font-weight: 300;
 
         strong {
           font-weight: 600;
@@ -698,6 +704,21 @@ body {
 
   &.bg-gray {
     background-color: $primary-gray;
+
+    .content.chart-summary {
+      h1.title {
+        color: white;
+      }
+
+      a {
+        color: #FFF;
+      }
+
+      p {
+        color: #FFF;
+        font-weight: 300;
+      }
+    }
   }
 
   &.bg-orange {
@@ -710,6 +731,10 @@ body {
 
       a {
         color: #FFF;
+      }
+
+      p {
+        font-weight: 300;
       }
     }
   }
@@ -724,6 +749,10 @@ body {
 
       a {
         color: #FFF;
+      }
+
+      p {
+        font-weight: 300;
       }
     }
   }
