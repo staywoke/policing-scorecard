@@ -2,14 +2,27 @@
 require('common.php');
 
 $city = (!empty($_REQUEST['city'])) ? $_REQUEST['city'] : 'los-angeles';
-$data = getCityData($city);
-$grade = getGrade($data['overall_score']);
-$reportCard = reportCard();
-$title = "California Police Scorecard";
-$ac = '?ac=' . getHash();
-$socialUrl = rawurlencode('https://policescorecard.org');
-$socialText = rawurlencode('Get the facts about police violence and accountability in California. Evaluate each department and hold them accountable at policescorecard.org');
-$socialSubject = rawurlencode($title);
+$sheriff = (!empty($_REQUEST['sheriff'])) ? $_REQUEST['sheriff'] : null;
+
+if (empty($sheriff)) {
+  $data = getCityData($city);
+  $grade = getGrade($data['overall_score']);
+  $reportCard = reportCard();
+  $title = "California Police Scorecard";
+  $ac = '?ac=' . getHash();
+  $socialUrl = rawurlencode('https://policescorecard.org');
+  $socialText = rawurlencode('Get the facts about police violence and accountability in California. Evaluate each department and hold them accountable at policescorecard.org');
+  $socialSubject = rawurlencode($title);
+} else {
+  $data = getSheriffData($sheriff);
+  $grade = getGrade($data['overall_score']);
+  $reportCard = reportCard();
+  $title = "California Sheriff Scorecard";
+  $ac = '?ac=' . getHash();
+  $socialUrl = rawurlencode('https://policescorecard.org');
+  $socialText = rawurlencode('Get the facts about police violence and accountability in California. Evaluate each department and hold them accountable at policescorecard.org');
+  $socialSubject = rawurlencode($title);
+}
 ?>
 <!doctype html>
 <html lang="en">
@@ -826,110 +839,157 @@ $socialSubject = rawurlencode($title);
       <div class="modal">
         <a href="javascript:void(0)" id="modal-close">✖</a>
         <div id="modal-content">
-          <div id="modal-label">Select City Police Department</div>
+          <div id="modal-label">Select Department</div>
           <div id="more-info-content"></div>
           <div id="results-info-content"></div>
           <ul id="city-select">
-            <li><a href="./?city=alameda"<?= ($city === 'alameda') ? ' class="selected-city"' : '' ?>>Alameda</a></li>
-            <li><a href="./?city=alhambra"<?= ($city === 'alhambra') ? ' class="selected-city"' : '' ?>>Alhambra</a></li>
-            <li><a href="./?city=anaheim"<?= ($city === 'anaheim') ? ' class="selected-city"' : '' ?>>Anaheim</a></li>
-            <li><a href="./?city=antioch"<?= ($city === 'antioch') ? ' class="selected-city"' : '' ?>>Antioch</a></li>
-            <li><a href="./?city=bakersfield"<?= ($city === 'bakersfield') ? ' class="selected-city"' : '' ?>>Bakersfield</a></li>
-            <li><a href="./?city=berkeley"<?= ($city === 'berkeley') ? ' class="selected-city"' : '' ?>>Berkeley</a></li>
-            <li><a href="./?city=beverly-hills"<?= ($city === 'beverly-hills') ? ' class="selected-city"' : '' ?>>Beverly Hills</a></li>
-            <li><a href="./?city=buena-park"<?= ($city === 'buena-park') ? ' class="selected-city"' : '' ?>>Buena Park</a></li>
-            <li><a href="./?city=burbank"<?= ($city === 'burbank') ? ' class="selected-city"' : '' ?>>Burbank</a></li>
-            <li><a href="./?city=carlsbad"<?= ($city === 'carlsbad') ? ' class="selected-city"' : '' ?>>Carlsbad</a></li>
-            <li><a href="./?city=chico"<?= ($city === 'chico') ? ' class="selected-city"' : '' ?>>Chico</a></li>
-            <li><a href="./?city=chino"<?= ($city === 'chino') ? ' class="selected-city"' : '' ?>>Chino</a></li>
-            <li><a href="./?city=chula-vista"<?= ($city === 'chula-vista') ? ' class="selected-city"' : '' ?>>Chula Vista</a></li>
-            <li><a href="./?city=citrus-heights"<?= ($city === 'citrus-heights') ? ' class="selected-city"' : '' ?>>Citrus Heights</a></li>
-            <li><a href="./?city=clovis"<?= ($city === 'clovis') ? ' class="selected-city"' : '' ?>>Clovis</a></li>
-            <li><a href="./?city=concord"<?= ($city === 'concord') ? ' class="selected-city"' : '' ?>>Concord</a></li>
-            <li><a href="./?city=corona"<?= ($city === 'corona') ? ' class="selected-city"' : '' ?>>Corona</a></li>
-            <li><a href="./?city=costa-mesa"<?= ($city === 'costa-mesa') ? ' class="selected-city"' : '' ?>>Costa Mesa</a></li>
-            <li><a href="./?city=culver-city"<?= ($city === 'culver-city') ? ' class="selected-city"' : '' ?>>Culver City</a></li>
-            <li><a href="./?city=daly-city"<?= ($city === 'daly-city') ? ' class="selected-city"' : '' ?>>Daly City</a></li>
-            <li><a href="./?city=downey"<?= ($city === 'downey') ? ' class="selected-city"' : '' ?>>Downey</a></li>
-            <li><a href="./?city=el-cajon"<?= ($city === 'el-cajon') ? ' class="selected-city"' : '' ?>>El Cajon</a></li>
-            <li><a href="./?city=el-monte"<?= ($city === 'el-monte') ? ' class="selected-city"' : '' ?>>El Monte</a></li>
-            <li><a href="./?city=elk-grove"<?= ($city === 'elk-grove') ? ' class="selected-city"' : '' ?>>Elk Grove</a></li>
-            <li><a href="./?city=escondido"<?= ($city === 'escondido') ? ' class="selected-city"' : '' ?>>Escondido</a></li>
-            <li><a href="./?city=fairfield"<?= ($city === 'fairfield') ? ' class="selected-city"' : '' ?>>Fairfield</a></li>
-            <li><a href="./?city=fontana"<?= ($city === 'fontana') ? ' class="selected-city"' : '' ?>>Fontana</a></li>
-            <li><a href="./?city=fremont"<?= ($city === 'fremont') ? ' class="selected-city"' : '' ?>>Fremont</a></li>
-            <li><a href="./?city=fresno"<?= ($city === 'fresno') ? ' class="selected-city"' : '' ?>>Fresno</a></li>
-            <li><a href="./?city=fullerton"<?= ($city === 'fullerton') ? ' class="selected-city"' : '' ?>>Fullerton</a></li>
-            <li><a href="./?city=garden-grove"<?= ($city === 'garden-grove') ? ' class="selected-city"' : '' ?>>Garden Grove</a></li>
-            <li><a href="./?city=gardena"<?= ($city === 'gardena') ? ' class="selected-city"' : '' ?>>Gardena</a></li>
-            <li><a href="./?city=glendale"<?= ($city === 'glendale') ? ' class="selected-city"' : '' ?>>Glendale</a></li>
-            <li><a href="./?city=hawthorne"<?= ($city === 'hawthorne') ? ' class="selected-city"' : '' ?>>Hawthorne</a></li>
-            <li><a href="./?city=hayward"<?= ($city === 'hayward') ? ' class="selected-city"' : '' ?>>Hayward</a></li>
-            <li><a href="./?city=huntington-beach"<?= ($city === 'huntington-beach') ? ' class="selected-city"' : '' ?>>Huntington Beach</a></li>
-            <li><a href="./?city=inglewood"<?= ($city === 'inglewood') ? ' class="selected-city"' : '' ?>>Inglewood</a></li>
-            <li><a href="./?city=irvine"<?= ($city === 'irvine') ? ' class="selected-city"' : '' ?>>Irvine</a></li>
-            <li><a href="./?city=livermore"<?= ($city === 'livermore') ? ' class="selected-city"' : '' ?>>Livermore</a></li>
-            <li><a href="./?city=long-beach"<?= ($city === 'long-beach') ? ' class="selected-city"' : '' ?>>Long Beach</a></li>
-            <li><a href="./?city=los-angeles"<?= ($city === 'los-angeles') ? ' class="selected-city"' : '' ?>>Los Angeles</a></li>
-            <li><a href="./?city=merced"<?= ($city === 'merced') ? ' class="selected-city"' : '' ?>>Merced</a></li>
-            <li><a href="./?city=milpitas"<?= ($city === 'milpitas') ? ' class="selected-city"' : '' ?>>Milpitas</a></li>
-            <li><a href="./?city=modesto"<?= ($city === 'modesto') ? ' class="selected-city"' : '' ?>>Modesto</a></li>
-            <li><a href="./?city=mountain-view"<?= ($city === 'mountain-view') ? ' class="selected-city"' : '' ?>>Mountain View</a></li>
-            <li><a href="./?city=murrieta"<?= ($city === 'murrieta') ? ' class="selected-city"' : '' ?>>Murrieta</a></li>
-            <li><a href="./?city=national-city"<?= ($city === 'national-city') ? ' class="selected-city"' : '' ?>>National City</a></li>
-            <li><a href="./?city=newport-beach"<?= ($city === 'newport-beach') ? ' class="selected-city"' : '' ?>>Newport Beach</a></li>
-            <li><a href="./?city=oakland"<?= ($city === 'oakland') ? ' class="selected-city"' : '' ?>>Oakland</a></li>
-            <li><a href="./?city=oceanside"<?= ($city === 'oceanside') ? ' class="selected-city"' : '' ?>>Oceanside</a></li>
-            <li><a href="./?city=ontario"<?= ($city === 'ontario') ? ' class="selected-city"' : '' ?>>Ontario</a></li>
-            <li><a href="./?city=orange"<?= ($city === 'orange') ? ' class="selected-city"' : '' ?>>Orange</a></li>
-            <li><a href="./?city=oxnard"<?= ($city === 'oxnard') ? ' class="selected-city"' : '' ?>>Oxnard</a></li>
-            <li><a href="./?city=palm-springs"<?= ($city === 'palm-springs') ? ' class="selected-city"' : '' ?>>Palm Springs</a></li>
-            <li><a href="./?city=palo-alto"<?= ($city === 'palo-alto') ? ' class="selected-city"' : '' ?>>Palo Alto</a></li>
-            <li><a href="./?city=pasadena"<?= ($city === 'pasadena') ? ' class="selected-city"' : '' ?>>Pasadena</a></li>
-            <li><a href="./?city=pittsburg"<?= ($city === 'pittsburg') ? ' class="selected-city"' : '' ?>>Pittsburg</a></li>
-            <li><a href="./?city=pleasanton"<?= ($city === 'pleasanton') ? ' class="selected-city"' : '' ?>>Pleasanton</a></li>
-            <li><a href="./?city=pomona"<?= ($city === 'pomona') ? ' class="selected-city"' : '' ?>>Pomona</a></li>
-            <li><a href="./?city=redding"<?= ($city === 'redding') ? ' class="selected-city"' : '' ?>>Redding</a></li>
-            <li><a href="./?city=redlands"<?= ($city === 'redlands') ? ' class="selected-city"' : '' ?>>Redlands</a></li>
-            <li><a href="./?city=redondo-beach"<?= ($city === 'redondo-beach') ? ' class="selected-city"' : '' ?>>Redondo Beach</a></li>
-            <li><a href="./?city=redwood-city"<?= ($city === 'redwood-city') ? ' class="selected-city"' : '' ?>>Redwood City</a></li>
-            <li><a href="./?city=rialto"<?= ($city === 'rialto') ? ' class="selected-city"' : '' ?>>Rialto</a></li>
-            <li><a href="./?city=richmond"<?= ($city === 'richmond') ? ' class="selected-city"' : '' ?>>Richmond</a></li>
-            <li><a href="./?city=riverside"<?= ($city === 'riverside') ? ' class="selected-city"' : '' ?>>Riverside</a></li>
-            <li><a href="./?city=roseville"<?= ($city === 'roseville') ? ' class="selected-city"' : '' ?>>Roseville</a></li>
-            <li><a href="./?city=sacramento"<?= ($city === 'sacramento') ? ' class="selected-city"' : '' ?>>Sacramento</a></li>
-            <li><a href="./?city=salinas"<?= ($city === 'salinas') ? ' class="selected-city"' : '' ?>>Salinas</a></li>
-            <li><a href="./?city=san-bernardino"<?= ($city === 'san-bernardino') ? ' class="selected-city"' : '' ?>>San Bernardino</a></li>
-            <li><a href="./?city=san-diego"<?= ($city === 'san-diego') ? ' class="selected-city"' : '' ?>>San Diego</a></li>
-            <li><a href="./?city=san-francisco"<?= ($city === 'san-francisco') ? ' class="selected-city"' : '' ?>>San Francisco</a></li>
-            <li><a href="./?city=san-jose"<?= ($city === 'san-jose') ? ' class="selected-city"' : '' ?>>San Jose</a></li>
-            <li><a href="./?city=san-leandro"<?= ($city === 'san-leandro') ? ' class="selected-city"' : '' ?>>San Leandro</a></li>
-            <li><a href="./?city=san-mateo"<?= ($city === 'san-mateo') ? ' class="selected-city"' : '' ?>>San Mateo</a></li>
-            <li><a href="./?city=santa-ana"<?= ($city === 'santa-ana') ? ' class="selected-city"' : '' ?>>Santa Ana</a></li>
-            <li><a href="./?city=santa-barbara"<?= ($city === 'santa-barbara') ? ' class="selected-city"' : '' ?>>Santa Barbara</a></li>
-            <li><a href="./?city=santa-clara"<?= ($city === 'santa-clara') ? ' class="selected-city"' : '' ?>>Santa Clara</a></li>
-            <li><a href="./?city=santa-cruz"<?= ($city === 'santa-cruz') ? ' class="selected-city"' : '' ?>>Santa Cruz</a></li>
-            <li><a href="./?city=santa-maria"<?= ($city === 'santa-maria') ? ' class="selected-city"' : '' ?>>Santa Maria</a></li>
-            <li><a href="./?city=santa-monica"<?= ($city === 'santa-monica') ? ' class="selected-city"' : '' ?>>Santa Monica</a></li>
-            <li><a href="./?city=santa-rosa"<?= ($city === 'santa-rosa') ? ' class="selected-city"' : '' ?>>Santa Rosa</a></li>
-            <li><a href="./?city=simi-valley"<?= ($city === 'simi-valley') ? ' class="selected-city"' : '' ?>>Simi Valley</a></li>
-            <li><a href="./?city=south-gate"<?= ($city === 'south-gate') ? ' class="selected-city"' : '' ?>>South Gate</a></li>
-            <li><a href="./?city=south-san-francisco"<?= ($city === 'south-san-francisco') ? ' class="selected-city"' : '' ?>>South San Francisco</a></li>
-            <li><a href="./?city=stockton"<?= ($city === 'stockton') ? ' class="selected-city"' : '' ?>>Stockton</a></li>
-            <li><a href="./?city=sunnyvale"<?= ($city === 'sunnyvale') ? ' class="selected-city"' : '' ?>>Sunnyvale</a></li>
-            <li><a href="./?city=torrance"<?= ($city === 'torrance') ? ' class="selected-city"' : '' ?>>Torrance</a></li>
-            <li><a href="./?city=tracy"<?= ($city === 'tracy') ? ' class="selected-city"' : '' ?>>Tracy</a></li>
-            <li><a href="./?city=turlock"<?= ($city === 'turlock') ? ' class="selected-city"' : '' ?>>Turlock</a></li>
-            <li><a href="./?city=tustin"<?= ($city === 'tustin') ? ' class="selected-city"' : '' ?>>Tustin</a></li>
-            <li><a href="./?city=union-city"<?= ($city === 'union-city') ? ' class="selected-city"' : '' ?>>Union City</a></li>
-            <li><a href="./?city=vacaville"<?= ($city === 'vacaville') ? ' class="selected-city"' : '' ?>>Vacaville</a></li>
-            <li><a href="./?city=vallejo"<?= ($city === 'vallejo') ? ' class="selected-city"' : '' ?>>Vallejo</a></li>
-            <li><a href="./?city=ventura"<?= ($city === 'ventura') ? ' class="selected-city"' : '' ?>>Ventura</a></li>
-            <li><a href="./?city=visalia"<?= ($city === 'visalia') ? ' class="selected-city"' : '' ?>>Visalia</a></li>
-            <li><a href="./?city=walnut-creek"<?= ($city === 'walnut-creek') ? ' class="selected-city"' : '' ?>>Walnut Creek</a></li>
-            <li><a href="./?city=west-covina"<?= ($city === 'west-covina') ? ' class="selected-city"' : '' ?>>West Covina</a></li>
-            <li><a href="./?city=westminster"<?= ($city === 'westminster') ? ' class="selected-city"' : '' ?>>Westminster</a></li>
-            <li><a href="./?city=whittier"<?= ($city === 'whittier') ? ' class="selected-city"' : '' ?>>Whittier</a></li>
+            <li class="section-header">City Police Departments</li>
+            <li><a href="./?city=alameda"<?= ($city === 'alameda') ? ' class="selected-city"' : '' ?>>Alameda Police</a></li>
+            <li><a href="./?city=alhambra"<?= ($city === 'alhambra') ? ' class="selected-city"' : '' ?>>Alhambra Police</a></li>
+            <li><a href="./?city=anaheim"<?= ($city === 'anaheim') ? ' class="selected-city"' : '' ?>>Anaheim Police</a></li>
+            <li><a href="./?city=antioch"<?= ($city === 'antioch') ? ' class="selected-city"' : '' ?>>Antioch Police</a></li>
+            <li><a href="./?city=bakersfield"<?= ($city === 'bakersfield') ? ' class="selected-city"' : '' ?>>Bakersfield Police</a></li>
+            <li><a href="./?city=berkeley"<?= ($city === 'berkeley') ? ' class="selected-city"' : '' ?>>Berkeley Police</a></li>
+            <li><a href="./?city=beverly-hills"<?= ($city === 'beverly-hills') ? ' class="selected-city"' : '' ?>>Beverly Hills Police</a></li>
+            <li><a href="./?city=buena-park"<?= ($city === 'buena-park') ? ' class="selected-city"' : '' ?>>Buena Park Police</a></li>
+            <li><a href="./?city=burbank"<?= ($city === 'burbank') ? ' class="selected-city"' : '' ?>>Burbank Police</a></li>
+            <li><a href="./?city=carlsbad"<?= ($city === 'carlsbad') ? ' class="selected-city"' : '' ?>>Carlsbad Police</a></li>
+            <li><a href="./?city=chico"<?= ($city === 'chico') ? ' class="selected-city"' : '' ?>>Chico Police</a></li>
+            <li><a href="./?city=chino"<?= ($city === 'chino') ? ' class="selected-city"' : '' ?>>Chino Police</a></li>
+            <li><a href="./?city=chula-vista"<?= ($city === 'chula-vista') ? ' class="selected-city"' : '' ?>>Chula Vista Police</a></li>
+            <li><a href="./?city=citrus-heights"<?= ($city === 'citrus-heights') ? ' class="selected-city"' : '' ?>>Citrus Heights Police</a></li>
+            <li><a href="./?city=clovis"<?= ($city === 'clovis') ? ' class="selected-city"' : '' ?>>Clovis Police</a></li>
+            <li><a href="./?city=concord"<?= ($city === 'concord') ? ' class="selected-city"' : '' ?>>Concord Police</a></li>
+            <li><a href="./?city=corona"<?= ($city === 'corona') ? ' class="selected-city"' : '' ?>>Corona Police</a></li>
+            <li><a href="./?city=costa-mesa"<?= ($city === 'costa-mesa') ? ' class="selected-city"' : '' ?>>Costa Mesa Police</a></li>
+            <li><a href="./?city=culver-city"<?= ($city === 'culver-city') ? ' class="selected-city"' : '' ?>>Culver City Police</a></li>
+            <li><a href="./?city=daly-city"<?= ($city === 'daly-city') ? ' class="selected-city"' : '' ?>>Daly City Police</a></li>
+            <li><a href="./?city=downey"<?= ($city === 'downey') ? ' class="selected-city"' : '' ?>>Downey Police</a></li>
+            <li><a href="./?city=el-cajon"<?= ($city === 'el-cajon') ? ' class="selected-city"' : '' ?>>El Cajon Police</a></li>
+            <li><a href="./?city=el-monte"<?= ($city === 'el-monte') ? ' class="selected-city"' : '' ?>>El Monte Police</a></li>
+            <li><a href="./?city=elk-grove"<?= ($city === 'elk-grove') ? ' class="selected-city"' : '' ?>>Elk Grove Police</a></li>
+            <li><a href="./?city=escondido"<?= ($city === 'escondido') ? ' class="selected-city"' : '' ?>>Escondido Police</a></li>
+            <li><a href="./?city=fairfield"<?= ($city === 'fairfield') ? ' class="selected-city"' : '' ?>>Fairfield Police</a></li>
+            <li><a href="./?city=fontana"<?= ($city === 'fontana') ? ' class="selected-city"' : '' ?>>Fontana Police</a></li>
+            <li><a href="./?city=fremont"<?= ($city === 'fremont') ? ' class="selected-city"' : '' ?>>Fremont Police</a></li>
+            <li><a href="./?city=fresno"<?= ($city === 'fresno') ? ' class="selected-city"' : '' ?>>Fresno Police</a></li>
+            <li><a href="./?city=fullerton"<?= ($city === 'fullerton') ? ' class="selected-city"' : '' ?>>Fullerton Police</a></li>
+            <li><a href="./?city=garden-grove"<?= ($city === 'garden-grove') ? ' class="selected-city"' : '' ?>>Garden Grove Police</a></li>
+            <li><a href="./?city=gardena"<?= ($city === 'gardena') ? ' class="selected-city"' : '' ?>>Gardena Police</a></li>
+            <li><a href="./?city=glendale"<?= ($city === 'glendale') ? ' class="selected-city"' : '' ?>>Glendale Police</a></li>
+            <li><a href="./?city=hawthorne"<?= ($city === 'hawthorne') ? ' class="selected-city"' : '' ?>>Hawthorne Police</a></li>
+            <li><a href="./?city=hayward"<?= ($city === 'hayward') ? ' class="selected-city"' : '' ?>>Hayward Police</a></li>
+            <li><a href="./?city=huntington-beach"<?= ($city === 'huntington-beach') ? ' class="selected-city"' : '' ?>>Huntington Beach Police</a></li>
+            <li><a href="./?city=inglewood"<?= ($city === 'inglewood') ? ' class="selected-city"' : '' ?>>Inglewood Police</a></li>
+            <li><a href="./?city=irvine"<?= ($city === 'irvine') ? ' class="selected-city"' : '' ?>>Irvine Police</a></li>
+            <li><a href="./?city=livermore"<?= ($city === 'livermore') ? ' class="selected-city"' : '' ?>>Livermore Police</a></li>
+            <li><a href="./?city=long-beach"<?= ($city === 'long-beach') ? ' class="selected-city"' : '' ?>>Long Beach Police</a></li>
+            <li><a href="./?city=los-angeles"<?= ($city === 'los-angeles') ? ' class="selected-city"' : '' ?>>Los Angeles Police</a></li>
+            <li><a href="./?city=merced"<?= ($city === 'merced') ? ' class="selected-city"' : '' ?>>Merced Police</a></li>
+            <li><a href="./?city=milpitas"<?= ($city === 'milpitas') ? ' class="selected-city"' : '' ?>>Milpitas Police</a></li>
+            <li><a href="./?city=modesto"<?= ($city === 'modesto') ? ' class="selected-city"' : '' ?>>Modesto Police</a></li>
+            <li><a href="./?city=mountain-view"<?= ($city === 'mountain-view') ? ' class="selected-city"' : '' ?>>Mountain View Police</a></li>
+            <li><a href="./?city=murrieta"<?= ($city === 'murrieta') ? ' class="selected-city"' : '' ?>>Murrieta Police</a></li>
+            <li><a href="./?city=national-city"<?= ($city === 'national-city') ? ' class="selected-city"' : '' ?>>National City Police</a></li>
+            <li><a href="./?city=newport-beach"<?= ($city === 'newport-beach') ? ' class="selected-city"' : '' ?>>Newport Beach Police</a></li>
+            <li><a href="./?city=oakland"<?= ($city === 'oakland') ? ' class="selected-city"' : '' ?>>Oakland Police</a></li>
+            <li><a href="./?city=oceanside"<?= ($city === 'oceanside') ? ' class="selected-city"' : '' ?>>Oceanside Police</a></li>
+            <li><a href="./?city=ontario"<?= ($city === 'ontario') ? ' class="selected-city"' : '' ?>>Ontario Police</a></li>
+            <li><a href="./?city=orange"<?= ($city === 'orange') ? ' class="selected-city"' : '' ?>>Orange Police</a></li>
+            <li><a href="./?city=oxnard"<?= ($city === 'oxnard') ? ' class="selected-city"' : '' ?>>Oxnard Police</a></li>
+            <li><a href="./?city=palm-springs"<?= ($city === 'palm-springs') ? ' class="selected-city"' : '' ?>>Palm Springs Police</a></li>
+            <li><a href="./?city=palo-alto"<?= ($city === 'palo-alto') ? ' class="selected-city"' : '' ?>>Palo Alto Police</a></li>
+            <li><a href="./?city=pasadena"<?= ($city === 'pasadena') ? ' class="selected-city"' : '' ?>>Pasadena Police</a></li>
+            <li><a href="./?city=pittsburg"<?= ($city === 'pittsburg') ? ' class="selected-city"' : '' ?>>Pittsburg Police</a></li>
+            <li><a href="./?city=pleasanton"<?= ($city === 'pleasanton') ? ' class="selected-city"' : '' ?>>Pleasanton Police</a></li>
+            <li><a href="./?city=pomona"<?= ($city === 'pomona') ? ' class="selected-city"' : '' ?>>Pomona Police</a></li>
+            <li><a href="./?city=redding"<?= ($city === 'redding') ? ' class="selected-city"' : '' ?>>Redding Police</a></li>
+            <li><a href="./?city=redlands"<?= ($city === 'redlands') ? ' class="selected-city"' : '' ?>>Redlands Police</a></li>
+            <li><a href="./?city=redondo-beach"<?= ($city === 'redondo-beach') ? ' class="selected-city"' : '' ?>>Redondo Beach Police</a></li>
+            <li><a href="./?city=redwood-city"<?= ($city === 'redwood-city') ? ' class="selected-city"' : '' ?>>Redwood City Police</a></li>
+            <li><a href="./?city=rialto"<?= ($city === 'rialto') ? ' class="selected-city"' : '' ?>>Rialto Police</a></li>
+            <li><a href="./?city=richmond"<?= ($city === 'richmond') ? ' class="selected-city"' : '' ?>>Richmond Police</a></li>
+            <li><a href="./?city=riverside"<?= ($city === 'riverside') ? ' class="selected-city"' : '' ?>>Riverside Police</a></li>
+            <li><a href="./?city=roseville"<?= ($city === 'roseville') ? ' class="selected-city"' : '' ?>>Roseville Police</a></li>
+            <li><a href="./?city=sacramento"<?= ($city === 'sacramento') ? ' class="selected-city"' : '' ?>>Sacramento Police</a></li>
+            <li><a href="./?city=salinas"<?= ($city === 'salinas') ? ' class="selected-city"' : '' ?>>Salinas Police</a></li>
+            <li><a href="./?city=san-bernardino"<?= ($city === 'san-bernardino') ? ' class="selected-city"' : '' ?>>San Bernardino Police</a></li>
+            <li><a href="./?city=san-diego"<?= ($city === 'san-diego') ? ' class="selected-city"' : '' ?>>San Diego Police</a></li>
+            <li><a href="./?city=san-francisco"<?= ($city === 'san-francisco') ? ' class="selected-city"' : '' ?>>San Francisco Police</a></li>
+            <li><a href="./?city=san-jose"<?= ($city === 'san-jose') ? ' class="selected-city"' : '' ?>>San Jose Police</a></li>
+            <li><a href="./?city=san-leandro"<?= ($city === 'san-leandro') ? ' class="selected-city"' : '' ?>>San Leandro Police</a></li>
+            <li><a href="./?city=san-mateo"<?= ($city === 'san-mateo') ? ' class="selected-city"' : '' ?>>San Mateo Police</a></li>
+            <li><a href="./?city=santa-ana"<?= ($city === 'santa-ana') ? ' class="selected-city"' : '' ?>>Santa Ana Police</a></li>
+            <li><a href="./?city=santa-barbara"<?= ($city === 'santa-barbara') ? ' class="selected-city"' : '' ?>>Santa Barbara Police</a></li>
+            <li><a href="./?city=santa-clara"<?= ($city === 'santa-clara') ? ' class="selected-city"' : '' ?>>Santa Clara Police</a></li>
+            <li><a href="./?city=santa-cruz"<?= ($city === 'santa-cruz') ? ' class="selected-city"' : '' ?>>Santa Cruz Police</a></li>
+            <li><a href="./?city=santa-maria"<?= ($city === 'santa-maria') ? ' class="selected-city"' : '' ?>>Santa Maria Police</a></li>
+            <li><a href="./?city=santa-monica"<?= ($city === 'santa-monica') ? ' class="selected-city"' : '' ?>>Santa Monica Police</a></li>
+            <li><a href="./?city=santa-rosa"<?= ($city === 'santa-rosa') ? ' class="selected-city"' : '' ?>>Santa Rosa Police</a></li>
+            <li><a href="./?city=simi-valley"<?= ($city === 'simi-valley') ? ' class="selected-city"' : '' ?>>Simi Valley Police</a></li>
+            <li><a href="./?city=south-gate"<?= ($city === 'south-gate') ? ' class="selected-city"' : '' ?>>South Gate Police</a></li>
+            <li><a href="./?city=south-san-francisco"<?= ($city === 'south-san-francisco') ? ' class="selected-city"' : '' ?>>South San Francisco Police</a></li>
+            <li><a href="./?city=stockton"<?= ($city === 'stockton') ? ' class="selected-city"' : '' ?>>Stockton Police</a></li>
+            <li><a href="./?city=sunnyvale"<?= ($city === 'sunnyvale') ? ' class="selected-city"' : '' ?>>Sunnyvale Police</a></li>
+            <li><a href="./?city=torrance"<?= ($city === 'torrance') ? ' class="selected-city"' : '' ?>>Torrance Police</a></li>
+            <li><a href="./?city=tracy"<?= ($city === 'tracy') ? ' class="selected-city"' : '' ?>>Tracy Police</a></li>
+            <li><a href="./?city=turlock"<?= ($city === 'turlock') ? ' class="selected-city"' : '' ?>>Turlock Police</a></li>
+            <li><a href="./?city=tustin"<?= ($city === 'tustin') ? ' class="selected-city"' : '' ?>>Tustin Police</a></li>
+            <li><a href="./?city=union-city"<?= ($city === 'union-city') ? ' class="selected-city"' : '' ?>>Union City Police</a></li>
+            <li><a href="./?city=vacaville"<?= ($city === 'vacaville') ? ' class="selected-city"' : '' ?>>Vacaville Police</a></li>
+            <li><a href="./?city=vallejo"<?= ($city === 'vallejo') ? ' class="selected-city"' : '' ?>>Vallejo Police</a></li>
+            <li><a href="./?city=ventura"<?= ($city === 'ventura') ? ' class="selected-city"' : '' ?>>Ventura Police</a></li>
+            <li><a href="./?city=visalia"<?= ($city === 'visalia') ? ' class="selected-city"' : '' ?>>Visalia Police</a></li>
+            <li><a href="./?city=walnut-creek"<?= ($city === 'walnut-creek') ? ' class="selected-city"' : '' ?>>Walnut Creek Police</a></li>
+            <li><a href="./?city=west-covina"<?= ($city === 'west-covina') ? ' class="selected-city"' : '' ?>>West Covina Police</a></li>
+            <li><a href="./?city=westminster"<?= ($city === 'westminster') ? ' class="selected-city"' : '' ?>>Westminster Police</a></li>
+            <li><a href="./?city=whittier"<?= ($city === 'whittier') ? ' class="selected-city"' : '' ?>>Whittier Police</a></li>
+
+            <li class="section-header">Sheriff Departments</li>
+
+            <li><a href="./?sheriff=alameda"<?= ($sheriff === 'alameda') ? ' class="selected-city"' : '' ?>>Alameda Sheriff</a></li>
+            <li><a href="./?sheriff=butte"<?= ($sheriff === 'butte') ? ' class="selected-city"' : '' ?>>Butte Sheriff</a></li>
+            <li><a href="./?sheriff=calaveras"<?= ($sheriff === 'calaveras') ? ' class="selected-city"' : '' ?>>Calaveras Sheriff</a></li>
+            <li><a href="./?sheriff=contra-costa"<?= ($sheriff === 'contra-costa') ? ' class="selected-city"' : '' ?>>Contra Costa Sheriff</a></li>
+            <li><a href="./?sheriff=el-dorado"<?= ($sheriff === 'el-dorado') ? ' class="selected-city"' : '' ?>>El Dorado Sheriff</a></li>
+            <li><a href="./?sheriff=fresno"<?= ($sheriff === 'fresno') ? ' class="selected-city"' : '' ?>>Fresno Sheriff</a></li>
+            <li><a href="./?sheriff=humboldt"<?= ($sheriff === 'humboldt') ? ' class="selected-city"' : '' ?>>Humboldt Sheriff</a></li>
+            <li><a href="./?sheriff=imperial"<?= ($sheriff === 'imperial') ? ' class="selected-city"' : '' ?>>Imperial Sheriff</a></li>
+            <li><a href="./?sheriff=kern"<?= ($sheriff === 'kern') ? ' class="selected-city"' : '' ?>>Kern Sheriff</a></li>
+            <li><a href="./?sheriff=kings"<?= ($sheriff === 'kings') ? ' class="selected-city"' : '' ?>>Kings Sheriff</a></li>
+            <li><a href="./?sheriff=lake"<?= ($sheriff === 'lake') ? ' class="selected-city"' : '' ?>>Lake Sheriff</a></li>
+            <li><a href="./?sheriff=los-angeles"<?= ($sheriff === 'los-angeles') ? ' class="selected-city"' : '' ?>>Los Angeles Sheriff</a></li>
+            <li><a href="./?sheriff=madera"<?= ($sheriff === 'madera') ? ' class="selected-city"' : '' ?>>Madera Sheriff</a></li>
+            <li><a href="./?sheriff=marin"<?= ($sheriff === 'marin') ? ' class="selected-city"' : '' ?>>Marin Sheriff</a></li>
+            <li><a href="./?sheriff=mendocino"<?= ($sheriff === 'mendocino') ? ' class="selected-city"' : '' ?>>Mendocino Sheriff</a></li>
+            <li><a href="./?sheriff=merced"<?= ($sheriff === 'merced') ? ' class="selected-city"' : '' ?>>Merced Sheriff</a></li>
+            <li><a href="./?sheriff=monterey"<?= ($sheriff === 'monterey') ? ' class="selected-city"' : '' ?>>Monterey Sheriff</a></li>
+            <li><a href="./?sheriff=napa"<?= ($sheriff === 'napa') ? ' class="selected-city"' : '' ?>>Napa Sheriff</a></li>
+            <li><a href="./?sheriff=nevada"<?= ($sheriff === 'nevada') ? ' class="selected-city"' : '' ?>>Nevada Sheriff</a></li>
+            <li><a href="./?sheriff=orange"<?= ($sheriff === 'orange') ? ' class="selected-city"' : '' ?>>Orange Sheriff</a></li>
+            <li><a href="./?sheriff=placer"<?= ($sheriff === 'placer') ? ' class="selected-city"' : '' ?>>Placer Sheriff</a></li>
+            <li><a href="./?sheriff=riverside"<?= ($sheriff === 'riverside') ? ' class="selected-city"' : '' ?>>Riverside Sheriff</a></li>
+            <li><a href="./?sheriff=sacramento"<?= ($sheriff === 'sacramento') ? ' class="selected-city"' : '' ?>>Sacramento Sheriff</a></li>
+            <li><a href="./?sheriff=san-bernardino"<?= ($sheriff === 'san-bernardino') ? ' class="selected-city"' : '' ?>>San Bernardino Sheriff</a></li>
+            <li><a href="./?sheriff=san-diego"<?= ($sheriff === 'san-diego') ? ' class="selected-city"' : '' ?>>San Diego Sheriff</a></li>
+            <li><a href="./?sheriff=san-joaquin"<?= ($sheriff === 'san-joaquin') ? ' class="selected-city"' : '' ?>>San Joaquin Sheriff</a></li>
+            <li><a href="./?sheriff=san-luis-obispo"<?= ($sheriff === 'san-luis-obispo') ? ' class="selected-city"' : '' ?>>San Luis Obispo Sheriff</a></li>
+            <li><a href="./?sheriff=san-mateo"<?= ($sheriff === 'san-mateo') ? ' class="selected-city"' : '' ?>>San Mateo Sheriff</a></li>
+            <li><a href="./?sheriff=santa-barbara"<?= ($sheriff === 'santa-barbara') ? ' class="selected-city"' : '' ?>>Santa Barbara Sheriff</a></li>
+            <li><a href="./?sheriff=santa-clara"<?= ($sheriff === 'santa-clara') ? ' class="selected-city"' : '' ?>>Santa Clara Sheriff</a></li>
+            <li><a href="./?sheriff=santa-cruz"<?= ($sheriff === 'santa-cruz') ? ' class="selected-city"' : '' ?>>Santa Cruz Sheriff</a></li>
+            <li><a href="./?sheriff=shasta"<?= ($sheriff === 'shasta') ? ' class="selected-city"' : '' ?>>Shasta Sheriff</a></li>
+            <li><a href="./?sheriff=siskiyou"<?= ($sheriff === 'siskiyou') ? ' class="selected-city"' : '' ?>>Siskiyou Sheriff</a></li>
+            <li><a href="./?sheriff=solano"<?= ($sheriff === 'solano') ? ' class="selected-city"' : '' ?>>Solano Sheriff</a></li>
+            <li><a href="./?sheriff=sonoma"<?= ($sheriff === 'sonoma') ? ' class="selected-city"' : '' ?>>Sonoma Sheriff</a></li>
+            <li><a href="./?sheriff=stanislaus"<?= ($sheriff === 'stanislaus') ? ' class="selected-city"' : '' ?>>Stanislaus Sheriff</a></li>
+            <li><a href="./?sheriff=suttercoroner"<?= ($sheriff === 'suttercoroner') ? ' class="selected-city"' : '' ?>>Sutter / Coroner Sheriff</a></li>
+            <li><a href="./?sheriff=tehama"<?= ($sheriff === 'tehama') ? ' class="selected-city"' : '' ?>>Tehama Sheriff</a></li>
+            <li><a href="./?sheriff=tulare"<?= ($sheriff === 'tulare') ? ' class="selected-city"' : '' ?>>Tulare Sheriff</a></li>
+            <li><a href="./?sheriff=tuolumne"<?= ($sheriff === 'tuolumne') ? ' class="selected-city"' : '' ?>>Tuolumne Sheriff</a></li>
+            <li><a href="./?sheriff=ventura"<?= ($sheriff === 'ventura') ? ' class="selected-city"' : '' ?>>Ventura Sheriff</a></li>
+            <li><a href="./?sheriff=yolo"<?= ($sheriff === 'yolo') ? ' class="selected-city"' : '' ?>>Yolo Sheriff</a></li>
+            <li><a href="./?sheriff=yuba"<?= ($sheriff === 'yuba') ? ' class="selected-city"' : '' ?>>Yuba Sheriff</a></li>
           </ul>
         </div>
       </div>

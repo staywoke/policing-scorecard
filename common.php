@@ -6,7 +6,7 @@
  * @return {Array}
  */
 function getCityData($city = 'los-angeles') {
-  $file = @file_get_contents("data/json/{$city}.json");
+  $file = @file_get_contents("data/json/data-{$city}.json");
   if (!$file) throw new Exception("Unable to Load {$city}");
 
   $data = json_decode($file, true);
@@ -14,6 +14,17 @@ function getCityData($city = 'los-angeles') {
 
   return $data;
 }
+
+function getSheriffData($sheriff = 'los-angeles') {
+  $file = @file_get_contents("data/json/sheriff-{$sheriff}.json");
+  if (!$file) throw new Exception("Unable to Load {$sheriff}");
+
+  $data = json_decode($file, true);
+  if (!$data) throw new Exception("Unable to Parse {$sheriff}");
+
+  return $data;
+}
+
 
 /**
  * Return Percent Score to Letter Grade

@@ -102,6 +102,18 @@ body {
         &:last-child a {
           border-bottom: none;
         }
+
+        &.section-header {
+          background: #222;
+          color: white;
+          text-align: center;
+          padding: 8px;
+          margin: 12px 0 3px;
+
+          &:first-child {
+            margin-top: 0;
+          }
+        }
       }
 
       em, i {

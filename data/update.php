@@ -10,15 +10,16 @@ $valid_token = (md5($token) === '5d0f91a00d76444b843046b7c15eb5c2');
  * URLs for Widget Data
  */
 $data_url = 'https://docs.google.com/spreadsheets/d/1IuNh-y2kHQkOdXywp9Rnwl4IOnON4WQla5_XhPWeAQM/export?format=csv&id=1IuNh-y2kHQkOdXywp9Rnwl4IOnON4WQla5_XhPWeAQM&gid=1005611362';
+$sheriff_url = 'https://docs.google.com/spreadsheets/d/1Nek1JLMGt_hdxEMPkPIRNdqjhjN8JsRCE_TxYYjpxEM/export?format=csv&id=1Nek1JLMGt_hdxEMPkPIRNdqjhjN8JsRCE_TxYYjpxEM&gid=878259683';
 
 /**
  * Parse CSV File
  */
-function parse_csv() {
+function parse_csv($name) {
   $data = array();
   $grades = array();
   $headers = array();
-  if (($handle = fopen('data.csv', 'r')) !== FALSE) {
+  if (($handle = fopen($name . '.csv', 'r')) !== FALSE) {
     while (($row = fgetcsv($handle, 0, ',')) !== FALSE) {
       if (sizeof($headers) === 0) {
         foreach($row as $index => $cell) {
@@ -42,7 +43,8 @@ function parse_csv() {
         }
 
         if (!empty($row[0])) {
-          $filename = 'json/' . str_replace(' ', '-', strtolower($row[0])) . '.json';
+          $key = trim(preg_replace("/[^A-Za-z0-9- ]/", '', strtolower($row[0])));
+          $filename = 'json/' . $name . '-' . str_replace(' ', '-', $key) . '.json';
           $json = json_encode($data);
           $grades[] = $grade;
 
@@ -54,11 +56,13 @@ function parse_csv() {
 
     fclose($handle);
 
-    $filename = 'json/_grades.json';
-    $json = json_encode($grades);
+    if ($name === 'data') {
+      $filename = 'json/_grades.json';
+      $json = json_encode($grades);
 
-    unlink($filename);
-    file_put_contents($filename, $json);
+      unlink($filename);
+      file_put_contents($filename, $json);
+    }
   }
 }
 
@@ -98,7 +102,7 @@ function update_file($file, $name) {
 
   curl_close($ch);
 
-  parse_csv();
+  parse_csv($name);
 
   return $output;
 }
@@ -169,6 +173,7 @@ function update_file($file, $name) {
         </div>
 
         <p><span class="label label-info">CURRENT</span>&nbsp; <a class='download-link' href='data.csv' target='_blank'>data.csv</a> downloaded</p>
+        <p><span class="label label-info">CURRENT</span>&nbsp; <a class='download-link' href='sheriff.csv' target='_blank'>sheriff.csv</a> downloaded</p>
         <p>&nbsp;</p>
         <p><a href="update.php?update=true&token=<?= $_REQUEST['token']; ?>" type="button" class="btn btn-primary" onclick="return updateData()">Get Latest Spreadsheet</a></p>
       <?php elseif ($update && $valid_token): ?>
@@ -176,6 +181,7 @@ function update_file($file, $name) {
           <h1>Downloaded Data</h1>
         </div>
         <?= update_file($data_url, 'data'); ?>
+        <?= update_file($sheriff_url, 'sheriff'); ?>
         <p>&nbsp;</p>
         <p><a href="update.php?update=true&token=<?= $_REQUEST['token']; ?>" type="button" class="btn btn-primary" onclick="return updateData()">Get Latest Spreadsheet</a></p>
       <?php else: ?>

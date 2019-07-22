@@ -81,13 +81,13 @@ var SCORECARD = (function () {
     });
 
     $mapLayer.addEventListener('click', function() {
-      $modalLabel.innerHTML = 'Select City Police Department';
+      $modalLabel.innerHTML = 'Select a Department';
       $modal.classList.toggle('open');
       $selectedCity[0].scrollIntoView();
     });
 
     scoreLocation.addEventListener('click', function() {
-      $modalLabel.innerHTML = 'Select City Police Department';
+      $modalLabel.innerHTML = 'Select a Department';
       $modal.classList.toggle('open');
       $selectedCity[0].scrollIntoView();
     });
