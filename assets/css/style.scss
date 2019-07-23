@@ -493,6 +493,69 @@ body {
       font-size: 20px;
       line-height: 30px;
 
+      div.left.number-list {
+        padding-left: 60px;
+        position: relative;
+      }
+
+      &.number-list {
+        padding-left: 80px;
+        position: relative;
+      }
+
+      p.number-list {
+        position: relative;
+
+        &::after {
+          content: '';
+          position: absolute;
+          background: #a7cc84;
+          width: 40px;
+          height: 40px;
+          border-radius: 50%;
+          left: -60px;
+          display: block;
+          top: 0;
+          line-height: 40px;
+          text-align: center;
+          font-weight: 600;
+          font-family: 'Barlow Condensed', sans-serif;
+          color: #FFF;
+        }
+
+        &.n1::after {
+          content: '1';
+        }
+
+        &.n2::after {
+          content: '2';
+        }
+
+        &.n3::after {
+          content: '3';
+        }
+
+        &.n4::after {
+          content: '4';
+        }
+
+        &.n5::after {
+          content: '5';
+        }
+
+        &.n6::after {
+          content: '6';
+        }
+
+        &.n7::after {
+          content: '7';
+        }
+
+        &.n8::after {
+          content: '8';
+        }
+      }
+
       a {
         color: #82ADD7;
         text-decoration: none;
@@ -506,10 +569,10 @@ body {
       }
 
       &.no-pad-bottom {
-        padding-bottom: 10px;
+        padding-bottom: 10px !important;
       }
       &.no-pad-top {
-        padding-top: 10px;
+        padding-top: 10px !important;
       }
 
       ul {
@@ -723,6 +786,16 @@ body {
 
   &.bg-orange {
     background-color: $primary-orange;
+
+    p.number-list {
+      position: relative;
+
+      &::after {
+        content: '';
+        background: #FFF !important;
+        color: #222 !important;
+      }
+    }
 
     .content.chart-summary {
       h1.title {
@@ -2297,6 +2370,27 @@ body {
 
     iframe, img {
       margin-top: 20px;
+    }
+
+    div.left.number-list {
+      padding-left: 60px;
+      position: relative;
+    }
+
+    &.number-list {
+      padding-left: 60px;
+      position: relative;
+    }
+
+    p.number-list {
+      &::after {
+        content: '';
+        left: -40px;
+        width: 30px;
+        height: 30px;
+        line-height: 30px;
+        top: 6px;
+      }
     }
   }
 

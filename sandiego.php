@@ -380,8 +380,8 @@ $socialSubject = rawurlencode($title);
         </div>
 
         <div class="content chart-summary no-pad-top no-pad-bottom">
-          <div class="left">
-            <p><strong>1. Expand Alternatives to Arrest for Low-Level Offenses</strong></p>
+          <div class="left number-list">
+            <p class="number-list n1"><strong>Expand Alternatives to Arrest for Low-Level Offenses</strong></p>
 
             <p>San Diego police currently make arrests for activities such as drug possession and quality of life offenses that pose no threat to public safety. Alternative responses should be created or expanded that send substance abuse counselors, mental health professionals and other civilian responders to the scene instead of armed police officers. In these cases, subjects should not be arrested or incarcerated but rather provided with community-based services and supports. In addition to impacting arrest rates, decriminalizing or deprioritizing drug possession enforcement should also substantially reduce the number of police searches, since drugs and drug paraphernalia were the most common type of contraband cited as the basis for searching people.</p>
           </div>
@@ -390,20 +390,32 @@ $socialSubject = rawurlencode($title);
           </div>
         </div>
 
-        <div class="content chart-summary padded no-pad-top">
-          <p><strong>2. Require Officers to Use De-Escalation</strong></p>
+        <div class="content chart-summary padded no-pad-top number-list">
+          <p class="number-list n2"><strong>Require Officers to Use De-Escalation</strong></p>
 
           <p>Our analysis found San Diego police used more force during arrest than most CA police departments. Unlike <a href="http://useofforceproject.org"><span >43 of the nation's 100 largest departments</span></a>, <strong>San Diego police department's </strong><a href="https://s3.amazonaws.com/themis.datasd.org/policies_procedures/Procedures/1.0%20Administration/104.pdf"><span ><strong>use of force procedures</strong></span></a><strong> do not require officers to use de-escalation</strong> when feasible prior to using force. Instead, the policy states that de-escalation or disengagement "may" be used and cautions officers that this tactic "may not be possible" in some situations.</p>
 
-          <blockquote><p><em>"Disengagement or de-escalation is a tactic that an officer </em><strong><em>may</em></strong><em> employ in an attempt to resolve the situation. If an officer does not have adequate recourses to safely control a situation, or if disengagement or deescalation would assist in resolving a situation with a lower force level, an officer </em><strong><em>may</em></strong><em> disengage from the incident or de-escalate the force option. Disengagement or de-escalation </em><strong><em>may</em></strong><em> require an officer to move to a tactically sound position and wait for additional resources. Disengagement or deescalation </em><strong><em>may not be possible</em></strong><em>."</em></p></blockquote>
+          <blockquote>
+            <p><em>"Disengagement or de-escalation is a tactic that an officer </em><strong><em>may</em></strong><em> employ in an attempt to resolve the situation. If an officer does not have adequate recourses to safely control a situation, or if disengagement or deescalation would assist in resolving a situation with a lower force level, an officer </em><strong><em>may</em></strong><em> disengage from the incident or de-escalate the force option. Disengagement or de-escalation </em><strong><em>may</em></strong><em> require an officer to move to a tactically sound position and wait for additional resources. Disengagement or deescalation </em><strong><em>may not be possible</em></strong><em>."</em></p>
+          </blockquote>
 
-          <p>De-escalation requirements have been shown to <a href="http://useofforceproject.org"><span >significantly reduce</span></a> the use of force. San Diego police department should revise their use of force procedure to <strong>clarify that using de-escalation is a requirement for all officers</strong> whenever feasible.</p><p><strong>3. Ban Shooting at Moving Vehicles</strong></p><p>San Diego police department's use of force procedure allows officers to shoot at moving vehicles even if the vehicle is considered the only threat:&nbsp;</p>
+          <p>De-escalation requirements have been shown to <a href="http://useofforceproject.org"><span >significantly reduce</span></a> the use of force. San Diego police department should revise their use of force procedure to <strong>clarify that using de-escalation is a requirement for all officers</strong> whenever feasible.</p>
 
-          <blockquote><p><em>"H.6. Officers shall not discharge a firearm at an occupant of a vehicle unless:</em></p><p><em>1. The officer has probable cause to believe that the subject or the vehicle poses an immediate threat of death or serious physical harm to the officer and there is no reasonable alternative for the officer to avoid the harm; or,</em></p><p><em>2. The officer has probable cause to believe that the subject or the vehicle poses an immediate threat of death or serious physical harm to other persons."</em></p></blockquote>
+          <p class="number-list n3"><strong>Ban Shooting at Moving Vehicles</strong></p>
+
+          <p>San Diego police department's use of force procedure allows officers to shoot at moving vehicles even if the vehicle is considered the only threat:&nbsp;</p>
+
+          <blockquote>
+            <p><em>"H.6. Officers shall not discharge a firearm at an occupant of a vehicle unless:</em></p>
+            <p><em>1. The officer has probable cause to believe that the subject or the vehicle poses an immediate threat of death or serious physical harm to the officer and there is no reasonable alternative for the officer to avoid the harm; or,</em></p>
+            <p><em>2. The officer has probable cause to believe that the subject or the vehicle poses an immediate threat of death or serious physical harm to other persons."</em></p>
+          </blockquote>
 
           <p>This policy is inconsistent with the recommendations of the US Department of Justice and law enforcement groups such as the Police Executive Research Forum, which have recommended that police departments ban shooting at moving vehicles unless an occupant of the vehicle is using deadly force by means other than the vehicle. If such a policy was implemented in San Diego, it would likely have <strong>prohibited officers from shooting</strong> <strong>in 21% of all San Diego police shootings</strong> from 2016-2018.</p>
 
-          <p><strong>4. Remove Language in the San Diego Police Union Contract to Strengthen Investigations and Accountability</strong></p><p>A review of San Diego's police union contract identified contract language that imposes unfair and unnecessary limits on the department's ability to investigate and adjudicate allegations of officer misconduct. For example, Section 41.D.1 imposes a 3 business day delay in interrogations of officers - a period that can only be reduced on a case-by-case basis by the Assistant Chief:</p>
+          <p class="number-list n4"><strong>Remove Language in the San Diego Police Union Contract to Strengthen Investigations and Accountability</strong></p>
+
+          <p>A review of San Diego's police union contract identified contract language that imposes unfair and unnecessary limits on the department's ability to investigate and adjudicate allegations of officer misconduct. For example, Section 41.D.1 imposes a 3 business day delay in interrogations of officers - a period that can only be reduced on a case-by-case basis by the Assistant Chief:</p>
 
           <blockquote><p><em>"Any officer or officers under investigation will receive at least three (3) working days notice prior to an interrogation except where a delay will hamper the gathering of evidence as determined by an Assistant Chief."</em></p></blockquote>
 
@@ -411,7 +423,7 @@ $socialSubject = rawurlencode($title);
 
           <blockquote><p><em>"Where an employee can reasonably expect discipline to result from an investigatory interview, or the employee is the target of an administrative investigation conducted by the Employer, at the request of the employee, questioning shall be delayed for </em><strong><em>no longer than two hours</em></strong><em> in order to give the employee an opportunity to consult with a Union representative."</em></p></blockquote>
 
-          <p><strong>5. Strengthen Community Oversight to Ensure Accountability</strong></p>
+          <p class="number-list n5"><strong>Strengthen Community Oversight to Ensure Accountability</strong></p>
 
           <p>San Diego Police Department's low sustain rate for complaints suggest changes to existing investigatory and oversight structures are warranted to ensure complaints are fairly investigated and adjudicated. For example, the current San Diego's Community Review Board on Police Practices has the power to review internal affairs investigations but cannot independently investigate complaints of misconduct or subpoena witnesses. This board should either be strengthened or replaced with an independent community structure that has the power to <strong>conduct independent investigations, subpoena witnesses and documents, and impose discipline as a result of their findings.</strong> For example, San Francisco's Department of Police Accountability has these powers and, in combination with the city's police commission, gives civilians the power to impose discipline on officers in cases where the police department fails to do so.</p>
         </div>
@@ -419,18 +431,20 @@ $socialSubject = rawurlencode($title);
 
       <!-- RECOMMENDATIONS FOR SAN DIEGO SHERIFF'S DEPARTMENT -->
       <div class="section">
-        <div class="content chart-summary padded">
+        <div class="content chart-summary padded no-pad-bottom">
           <h1 class="title">
             RECOMMENDATIONS FOR SAN DIEGO SHERIFF'S DEPARTMENT
           </h1>
 
           <p>We reviewed San Diego Sheriff's Department's policy manual, <a href="https://drive.google.com/drive/u/0/folders/1Pv86g4FRLRYkk-hIFCzWLF0-4IHQroNX"><span >use of force guidelines</span></a> and police union contract to determine where new policies could contribute towards addressing the outcomes described in this report.&nbsp;</p>
+        </div>
 
-          <p><strong>1. Reduce SDSD Arrests by One-Third by scaling up Alternatives to Arrest for Drug Possession, Quality of Life Offenses and Other Low-Level Offenses:</strong></p>
+        <div class="content chart-summary padded no-pad-top number-list">
+          <p class="number-list n1"><strong>Reduce SDSD Arrests by One-Third by scaling up Alternatives to Arrest for Drug Possession, Quality of Life Offenses and Other Low-Level Offenses:</strong></p>
 
           <p>34% of all San Diego Sheriff's Department arrests were reportedly for drug possession, status offenses and quality of life offenses that pose no threat to public safety. Compared to San Diego Police Department, San Diego Sheriff's Department would see an even greater impact on reducing arrest rates by expanding the use of alternative, community-based responses to these activities.</p>
 
-          <p><strong>2. Strengthen the Department's De-Escalation Policy&nbsp;</strong></p>
+          <p class="number-list n2"><strong>Strengthen the Department's De-Escalation Policy&nbsp;</strong></p>
 
           <p>The San Diego Sheriff's Department Use of Force guidelines require deputies to "attempt to de-escalate confrontations by using verbalization techniques" prior to using force:</p>
 
@@ -438,11 +452,11 @@ $socialSubject = rawurlencode($title);
 
           <p>While this limited de-escalation requirement is important, it is not as robust or comprehensive as the de-escalation policies adopted by other police departments such as in San Francisco, Seattle, New Orleans or Las Vegas. For example, Seattle Police Department's De-escalation policy includes <a href="https://www.seattle.gov/police-manual/title-8---use-of-force/8100---de-escalation"><span >four approaches</span></a> to de-escalating situations that officers are required to consider when possible: using communication, slowing down or stabilizing the situation, increasing distance, and shielding/utilizing cover and concealment. Of these, San Diego deputies are only required to consider using communication (i.e. "verbalization techniques").</p>
 
-          <p><strong>3. Restrict the Use of Tasers</strong></p>
+          <p class="number-list n3"><strong>Restrict the Use of Tasers</strong></p>
 
           <p><strong>San Diego Sheriff's Department killed 3 people with tasers from 2016-2018 - representing 17% of all taser deaths statewide during this period. </strong>San Diego Sheriff's Department used tasers in 582 incidents during this time, 2.2x more often per arrest than San Diego Police Department. As such, the department should impose new restrictions on the use of tasers and emphasize using de-escalation tactics and lesser forms of physical force in these situations instead. If these reforms fail to curb deaths and serious injuries from taser use, SDSD should consider banning the use of tasers entirely. </p>
 
-          <p><strong>4. Ban the use of Carotid Restraints (i.e. Strangleholds):</strong></p>
+          <p class="number-list n4"><strong>Ban the use of Carotid Restraints (i.e. Strangleholds):</strong></p>
 
           <p>San Diego Sheriff Department reported seriously injuring 28 people through the use of carotid restraints - a form of stranglehold - from 2016-2018. <strong>This represents 21% of all people seriously injured by this tactic statewide during this period - more than any other police agency.</strong> SDSD's use of force guidelines state that:</p>
 
@@ -452,7 +466,7 @@ $socialSubject = rawurlencode($title);
 
           <p>Banning the use of carotid restraints by SDSD or limiting this tactic to be authorized only as deadly force can help prevent further injuries. Police departments in San Jose, Los Angeles, San Francisco, Berkeley and Corona have either banned or limited the use of carotid restraints to deadly force situations where there is a threat of imminent death or serious injury.&nbsp;San Diego Sheriff's Department should do the same.</p>
 
-          <p><strong>5. Ban Shooting at Moving Vehicles</strong></p>
+          <p class="number-list n5"><strong>Ban Shooting at Moving Vehicles</strong></p>
 
           <p><strong>4 of the 22 people shot by San Diego Sheriff's Department were in a moving vehicle when police fired at them. </strong>The use of force guidelines of the San Diego Sheriff's Department provide confusing and contradictory instructions to officers regarding shooting at moving vehicles:&nbsp;</p>
 
@@ -460,11 +474,11 @@ $socialSubject = rawurlencode($title);
 
           <p>While this policy bans shooting at vehicles "<em>for the purpose of disabling that vehicle</em>" it includes an exception that authorizes shooting at or from vehicles "<em> when immediately necessary to protect persons from death or serious bodily injury." </em>This loophole authorizes deputies to use deadly force against someone in a moving vehicle under similar circumstances (an imminent threat of death or serious injury) as someone who is not in a vehicle. This policy should be updated to reflect best-practices in the field by banning police departments from shooting at moving vehicles unless an occupant of the vehicle is using deadly force <em>by means other than the vehicle</em>.&nbsp;<strong>At least 3 of the 4 vehicle-related shootings from 2016-2018 - representing 14% of all SDSD shootings during this period - would have been prohibited by this policy</strong> because the subjects in these cases did not use force other than a vehicle against deputies or members of the public.</p>
 
-          <p><strong>6. Improve Jail Conditions and Strengthen Oversight</strong></p>
+          <p class="number-list n6"><strong>Improve Jail Conditions and Strengthen Oversight</strong></p>
 
           <p>Our analysis found San Diego County jails have higher rates of in-custody deaths than most jails in the state - including a relatively large number of deaths due to suicide and at least one death due to homicide by another inmate. While we did not have access to more detailed records describing the conditions within these facilities, the data we do have suggests the need for independent oversight and policy and practice interventions to change the conditions contributing to these outcomes.&nbsp;</p>
 
-          <p><strong>7. Strengthen Enforcement of the Racial Profiling Ban and Use Data to Inform Interventions to Hold Deputies Accountable</strong></p>
+          <p class="number-list n7"><strong>Strengthen Enforcement of the Racial Profiling Ban and Use Data to Inform Interventions to Hold Deputies Accountable</strong></p>
 
           <p>Section 2.55 of the SDSD <a href="https://www.sdsheriff.net/documents/pp/pp-20160321.pdf"><span >Policy Manual</span></a> states that:</p>
 
@@ -472,7 +486,7 @@ $socialSubject = rawurlencode($title);
 
           <p><strong>Despite this policy, we find substantial evidence of racial bias and bias against people with disabilities in SDSD stops, searches and use of force.</strong> Since SDSD redacted information from the data they provided us that could have been used to identify individual officers, we cannot determine which officers are responsible for producing these inequities. However, SDSD already has the data needed to begin enforcing this policy effectively. SDSD or an independent oversight agency should use these data to identify, intervene and hold accountable those officers who's records indicate a pattern of biased policing.</p>
 
-          <p><strong>8. Repeal the One-Year Statute of Limitations on Police Misconduct Investigations</strong></p>
+          <p class="number-list n8"><strong>Repeal the One-Year Statute of Limitations on Police Misconduct Investigations</strong></p>
 
           <p>Section 3304(d)(1) of the <a href="https://leginfo.legislature.ca.gov/faces/codes_displaySection.xhtml?lawCode=GOV&amp;sectionNum=3304." target="_blank">California Peace Officer Bill of Rights </a>states that:</p>
 
