@@ -173,7 +173,9 @@ $socialSubject = rawurlencode($title);
               TESTING FOR DISCRIMINATION
             </h1>
 
-            <p>The "outcome test" evaluates whether disparities in police searches are due to police discrimination. If police are found to be more likely to search one group despite that group being less likely to have contraband (illegal weapons, drugs, etc), it suggests police are acting based on bias and not based on reasonable suspicion. Applying this test, we find <strong>San Diego police officers discriminate against people with disabilities, Asians and Native Americans </strong>when deciding to conduct searches, searching these groups more often despite being substantially less likely to find contraband as a result. <strong>San Diego sheriff's deputies demonstrated a broader pattern of discriminatory policing - </strong>discriminating against black people, Latinx people, Asians and Pacific Islanders in addition to people with disabilities and Native Americans when conducting searches.</p>
+            <p>The "outcome test" evaluates whether disparities in police searches are due to police discrimination. If police are found to be more likely to search one group despite that group being less likely to have contraband (illegal weapons, drugs, etc), it suggests police are acting based on bias and not based on reasonable suspicion. </p>
+
+            <p>Applying this test, we find <strong>San Diego police officers discriminate against people with disabilities, Asians and Native Americans </strong>when deciding to conduct searches, searching these groups more often despite being substantially less likely to find contraband as a result. <strong>San Diego sheriff's deputies demonstrated a broader pattern of discriminatory policing - </strong>discriminating against black people, Latinx people, Asians and Pacific Islanders in addition to people with disabilities and Native Americans when conducting searches.</p>
 
             <p>Even for groups where bias could not be established as the cause of search disparities, the fact the vast majority of searches found no contraband (and where contraband <em>was</em> found, it was overwhelmingly drugs/drug paraphernalia) suggests <strong>both agencies are generally "over-searching" the people they stop.</strong></p>
           </div>
@@ -217,9 +219,7 @@ $socialSubject = rawurlencode($title);
             POLICE USE OF FORCE
           </h1>
 
-          <p><strong>1% of stops resulted in police using force. </strong></p>
-
-          <p>To investigate use of force more extensively, we obtained additional individualized use of force data from both agencies spanning the 2016-2018 period. This includes 8,660 use of force incidents reported by San Diego Police Department and 9,543 use of force incidents reported by San Diego Sheriff's Department.</p>
+          <p>To investigate use of force more extensively, we obtained additional individualized use of force data from both agencies spanning the 2016-2018 period. This includes <strong>8,660 use of force incidents</strong> reported by San Diego Police Department and <strong>9,543 use of force incidents</strong> reported by San Diego Sheriff's Department.</p>
         </div>
       </div>
 
