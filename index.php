@@ -3,7 +3,7 @@ require('common.php');
 
 $city = (!empty($_REQUEST['city'])) ? $_REQUEST['city'] : 'los-angeles';
 $sheriff = (!empty($_REQUEST['sheriff'])) ? $_REQUEST['sheriff'] : null;
-$link = (!empty($_REQUEST['sheriff'])) ? 'sheriff' : 'sheriff';
+$link = (!empty($_REQUEST['sheriff'])) ? 'sheriff' : 'city';
 
 if (empty($sheriff)) {
   $data = getCityData($city);
@@ -597,6 +597,22 @@ if (empty($sheriff)) {
               <div class="progress-bar-wrapper">
                 <div class="progress-bar animate-bar dark-grey" data-percent="<?= output(intval($data['percent_violent_crime_arrests']), 0, '%') ?>"></div>
               </div>
+            </div>
+
+            <div class="stat-wrapper no-border-mobile">
+              <h3>Jail Incarceration rate</h3>
+              <p><?= num(round(intval(str_replace(',', '', $data['total_arrests'])) * (intval($data['percent_misdemeanor_arrests']) / 100))) ?> Misdemeanor Arrests <span class="divider">&nbsp;|&nbsp;</span> <?= output($data['misdemeanor_arrests_per_population']) ?> per 1k residents</p>
+              <?php if(!isset($data['percent_of_misdemeanor_arrests_per_population']) || (isset($data['percent_of_misdemeanor_arrests_per_population']) && empty($data['percent_of_misdemeanor_arrests_per_population']))): ?>
+                <div class="progress-bar-wrapper">
+                  <div class="progress-bar no-data" style="width: 0"></div>
+                </div>
+                <p class="note">City Did Not Provide Data</p>
+              <?php else: ?>
+                <div class="progress-bar-wrapper">
+                  <div class="progress-bar animate-bar <?= progressBar(100 - intval($data['percent_of_misdemeanor_arrests_per_population']), 'reverse') ?>" data-percent="<?= output(100 - intval($data['percent_of_misdemeanor_arrests_per_population']), 0, '%') ?>"></div>
+                </div>
+                <p class="note">^&nbsp; Higher Misdemeanor Arrest Rate than <?= num($data['percent_of_misdemeanor_arrests_per_population'], 0, '%', true) ?> of Depts &nbsp;&nbsp;</p>
+              <?php endif; ?>
             </div>
           </div>
           <div class="right">
