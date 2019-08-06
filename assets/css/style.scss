@@ -79,9 +79,47 @@ body {
       line-height: 30px;
     }
 
+    .modal-header {
+      width: 100%;
+      display: block;
+      position: absolute;
+      top: 0;
+      left: 0;
+      padding: 8px;
+
+      a.show-button {
+        background: #222;
+        color: white;
+        text-align: center;
+        padding: 4px 8px;
+        margin: 0;
+        text-decoration: none;
+        font-size: 12px;
+        width: 46%;
+        display: inline-block;
+
+        &.active {
+          background: $primary-blue;
+        }
+      }
+    }
+
     #modal-content {
-      height: 260px;
+      height: 250px;
       overflow: auto;
+      margin-top: 14px;
+
+      #city-select.sheriff {
+        li.city {
+          display: none;
+        }
+      }
+
+      #city-select.city {
+        li.sheriff {
+          display: none;
+        }
+      }
 
       ul li {
         width: 100%;
@@ -138,7 +176,7 @@ body {
       top: calc(50% - 240px);
 
       #modal-content {
-        height: 440px;
+        height: 430px;
       }
     }
   }

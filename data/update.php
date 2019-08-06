@@ -56,13 +56,11 @@ function parse_csv($name) {
 
     fclose($handle);
 
-    if ($name === 'data') {
-      $filename = 'json/_grades.json';
-      $json = json_encode($grades);
+    $grades_filename = 'json/_' . $name . '_grades.json';
+    $grades_json = json_encode($grades);
 
-      unlink($filename);
-      file_put_contents($filename, $json);
-    }
+    unlink($grades_filename);
+    file_put_contents($grades_filename, $grades_json);
   }
 }
 

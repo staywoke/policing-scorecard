@@ -18,6 +18,8 @@ var SCORECARD = (function () {
   var $resultsInfoContent = document.getElementById('results-info-content');
   var $citySelect = document.getElementById('city-select');
   var $toggleAnimate = document.getElementById('toggle-animate');
+  var $showPolice = document.getElementById('show-police');
+  var $showSheriff = document.getElementById('show-sheriff');
 
   // Debounce Scroll Animations
   var debounce = false;
@@ -98,6 +100,26 @@ var SCORECARD = (function () {
 
     $showMore.addEventListener('click', function() {
       scoreCard.classList.toggle('short');
+    });
+
+    $showPolice.addEventListener('click', function() {
+      $showPolice.classList.add('active');
+      $showSheriff.classList.remove('active');
+
+      $citySelect.classList.add('city');
+      $citySelect.classList.remove('sheriff');
+
+      $modalContent.scrollTop = 0;
+    });
+
+    $showSheriff.addEventListener('click', function() {
+      $showSheriff.classList.add('active');
+      $showPolice.classList.remove('active');
+
+      $citySelect.classList.add('sheriff');
+      $citySelect.classList.remove('city');
+
+      $modalContent.scrollTop = 0;
     });
   }
 

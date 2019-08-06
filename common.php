@@ -67,8 +67,8 @@ function getGrade($score) {
  * Fetch Data and Sort Scorecard
  * @return {Array}
  */
-function reportCard() {
-  $file = @file_get_contents("data/json/_grades.json");
+function reportCard($type = 'data') {
+  $file = @file_get_contents("data/json/_{$type}_grades.json");
   if (!$file) throw new Exception("Unable to Load {$city}");
 
   $data = json_decode($file, true);
