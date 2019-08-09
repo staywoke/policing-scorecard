@@ -293,66 +293,66 @@ if (empty($sheriff)) {
               <h3>Police Violence by race</h3>
 
               <div class="keys">
-                <span class="key race-black"></span> Black
-                <span class="key race-latinx"></span> Latinx
-                <span class="key race-asianpacificislander"></span> API
-                <span class="key race-other"></span> Other
-                <span class="key race-white"></span> White
+                <span class="key key-red"></span> Black
+                <span class="key key-orange"></span> Latinx
+                <span class="key key-black"></span> API
+                <span class="key key-grey"></span> Other
+                <span class="key key-white"></span> White
               </div>
 
               <p>City Population</p>
               <div class="progress-bar-wrapper">
-                <div class="progress-bar animate-bar grouped race-black" data-percent="<?= output(floatval($data['percent_black_population']), 0, '%') ?>">
+                <div class="progress-bar animate-bar grouped key-red" data-percent="<?= output(floatval($data['percent_black_population']), 0, '%') ?>">
                   <span><?= (intval($data['percent_black_population']) > 5) ? output(intval($data['percent_black_population']), 0, '%') : '' ?></span>
                 </div>
-                <div class="progress-bar animate-bar grouped race-latinx" data-percent="<?= output(floatval($data['percent_hispanic_population']), 0, '%') ?>">
+                <div class="progress-bar animate-bar grouped key-orange" data-percent="<?= output(floatval($data['percent_hispanic_population']), 0, '%') ?>">
                   <span><?= (intval($data['percent_hispanic_population']) > 5) ? output(intval($data['percent_hispanic_population']), 0, '%') : '' ?></span>
                 </div>
-                <div class="progress-bar animate-bar grouped race-asianpacificislander" data-percent="<?= output(floatval($data['percent_asianpacificislander_population']), 0, '%') ?>">
+                <div class="progress-bar animate-bar grouped key-black" data-percent="<?= output(floatval($data['percent_asianpacificislander_population']), 0, '%') ?>">
                   <span><?= (intval($data['percent_asianpacificislander_population']) > 5) ? output(intval($data['percent_asianpacificislander_population']), 0, '%') : '' ?></span>
                 </div>
-                <div class="progress-bar animate-bar grouped race-other" data-percent="<?= output(floatval($data['percent_other_population']), 0, '%') ?>">
+                <div class="progress-bar animate-bar grouped key-grey" data-percent="<?= output(floatval($data['percent_other_population']), 0, '%') ?>">
                   <span><?= (intval($data['percent_other_population']) > 5) ? output(intval($data['percent_other_population']), 0, '%') : '' ?></span>
                 </div>
-                <div class="progress-bar animate-bar grouped race-white" data-percent="<?= output(floatval($data['percent_white_population']), 0, '%') ?>">
+                <div class="progress-bar animate-bar grouped key-white" data-percent="<?= output(floatval($data['percent_white_population']), 0, '%') ?>">
                   <span><?= (intval($data['percent_white_population']) > 5) ? output(intval($data['percent_white_population']), 0, '%') : '' ?></span>
                 </div>
               </div>
 
               <p>People Arrested</p>
               <div class="progress-bar-wrapper">
-                <div class="progress-bar animate-bar grouped race-black" data-percent="<?= output(floatval($data['percent_black_arrests']), 0, '%') ?>">
+                <div class="progress-bar animate-bar grouped key-red" data-percent="<?= output(floatval($data['percent_black_arrests']), 0, '%') ?>">
                   <span><?= (intval($data['percent_black_arrests']) > 5) ? output(intval($data['percent_black_arrests']), 0, '%') : '' ?></span>
                 </div>
-                <div class="progress-bar animate-bar grouped race-latinx" data-percent="<?= output(floatval($data['percent_hispanic_arrests']), 0, '%') ?>">
+                <div class="progress-bar animate-bar grouped key-orange" data-percent="<?= output(floatval($data['percent_hispanic_arrests']), 0, '%') ?>">
                   <span><?= (intval($data['percent_hispanic_arrests']) > 5) ? output(intval($data['percent_hispanic_arrests']), 0, '%') : '' ?></span>
                 </div>
-                <div class="progress-bar animate-bar grouped race-asianpacificislander" data-percent="<?= output(floatval($data['percent_asianpacificislander_arrests']), 0, '%') ?>">
+                <div class="progress-bar animate-bar grouped key-black" data-percent="<?= output(floatval($data['percent_asianpacificislander_arrests']), 0, '%') ?>">
                   <span><?= (intval($data['percent_asianpacificislander_arrests']) > 5) ? output(intval($data['percent_asianpacificislander_arrests']), 0, '%') : '' ?></span>
                 </div>
-                <div class="progress-bar animate-bar grouped race-other" data-percent="<?= output(floatval($data['percent_other_arrests']), 0, '%') ?>">
+                <div class="progress-bar animate-bar grouped key-grey" data-percent="<?= output(floatval($data['percent_other_arrests']), 0, '%') ?>">
                   <span><?= (intval($data['percent_other_arrests']) > 5) ? output(intval($data['percent_other_arrests']), 0, '%') : '' ?></span>
                 </div>
-                <div class="progress-bar animate-bar grouped race-white" data-percent="<?= output(floatval($data['percent_white_arrests']), 0, '%') ?>">
+                <div class="progress-bar animate-bar grouped key-white" data-percent="<?= output(floatval($data['percent_white_arrests']), 0, '%') ?>">
                   <span><?= (intval($data['percent_white_arrests']) > 5) ? output(intval($data['percent_white_arrests']), 0, '%') : '' ?></span>
                 </div>
               </div>
 
               <p>People Killed or Seriously Injured</p>
               <div class="progress-bar-wrapper">
-                <div class="progress-bar animate-bar grouped race-black" data-percent="<?= output(floatval($data['percent_black_deadly_force']), 0, '%') ?>">
+                <div class="progress-bar animate-bar grouped key-red" data-percent="<?= output(floatval($data['percent_black_deadly_force']), 0, '%') ?>">
                   <span><?= (intval($data['percent_black_deadly_force']) > 5) ? output(intval($data['percent_black_deadly_force']), 0, '%') : '' ?></span>
                 </div>
-                <div class="progress-bar animate-bar grouped race-latinx" data-percent="<?= output(floatval($data['percent_hispanic_deadly_force']), 0, '%') ?>">
+                <div class="progress-bar animate-bar grouped key-orange" data-percent="<?= output(floatval($data['percent_hispanic_deadly_force']), 0, '%') ?>">
                   <span><?= (intval($data['percent_hispanic_deadly_force']) > 5) ? output(intval($data['percent_hispanic_deadly_force']), 0, '%') : '' ?></span>
                 </div>
-                <div class="progress-bar animate-bar grouped race-asianpacificislander" data-percent="<?= output(floatval($data['percent_asianpacificislander_deadly_force']), 0, '%') ?>">
+                <div class="progress-bar animate-bar grouped key-black" data-percent="<?= output(floatval($data['percent_asianpacificislander_deadly_force']), 0, '%') ?>">
                   <span><?= (intval($data['percent_asianpacificislander_deadly_force']) > 5) ? output(intval($data['percent_asianpacificislander_deadly_force']), 0, '%') : '' ?></span>
                 </div>
-                <div class="progress-bar animate-bar grouped race-other" data-percent="<?= output(floatval($data['percent_other_deadly_force']), 0, '%') ?>">
+                <div class="progress-bar animate-bar grouped key-grey" data-percent="<?= output(floatval($data['percent_other_deadly_force']), 0, '%') ?>">
                   <span><?= (intval($data['percent_other_deadly_force']) > 5) ? output(intval($data['percent_other_deadly_force']), 0, '%') : '' ?></span>
                 </div>
-                <div class="progress-bar animate-bar grouped race-white" data-percent="<?= output(floatval($data['percent_white_deadly_force']), 0, '%') ?>">
+                <div class="progress-bar animate-bar grouped key-white" data-percent="<?= output(floatval($data['percent_white_deadly_force']), 0, '%') ?>">
                   <span><?= (intval($data['percent_white_deadly_force']) > 5) ? output(intval($data['percent_white_deadly_force']), 0, '%') : '' ?></span>
                 </div>
               </div>
@@ -598,23 +598,8 @@ if (empty($sheriff)) {
                 <div class="progress-bar animate-bar dark-grey" data-percent="<?= output(intval($data['percent_violent_crime_arrests']), 0, '%') ?>"></div>
               </div>
             </div>
-
-            <div class="stat-wrapper no-border-mobile">
-              <h3>Jail Incarceration rate</h3>
-              <p><?= num(round(intval(str_replace(',', '', $data['adult_jail_population'])))) ?> Avg Daily Jail Population <span class="divider">&nbsp;|&nbsp;</span> <?= output($data['jail_population_per_1k']) ?> per 1k residents</p>
-              <?php if(!isset($data['percent_jail_deaths_per_1000_jail_population_table']) || (isset($data['percent_jail_deaths_per_1000_jail_population_table']) && empty($data['percent_jail_deaths_per_1000_jail_population_table']))): ?>
-                <div class="progress-bar-wrapper">
-                  <div class="progress-bar no-data" style="width: 0"></div>
-                </div>
-                <p class="note">City Did Not Provide Data</p>
-              <?php else: ?>
-                <div class="progress-bar-wrapper">
-                  <div class="progress-bar animate-bar <?= progressBar(100 - intval($data['percent_jail_deaths_per_1000_jail_population_table']), 'reverse') ?>" data-percent="<?= output(100 - intval($data['percent_jail_deaths_per_1000_jail_population_table']), 0, '%') ?>"></div>
-                </div>
-                <p class="note">^&nbsp; More than <?= num($data['percent_jail_deaths_per_1000_jail_population_table'], 0, '%', true) ?> of sheriff's Depts &nbsp;&nbsp;</p>
-              <?php endif; ?>
-            </div>
           </div>
+
           <div class="right">
             <div class="stat-wrapper no-border-mobile">
               <a href="javascript:void(0)" data-city="<?= $city ?>" data-more-info="" class="more-info"></a>
@@ -665,32 +650,54 @@ if (empty($sheriff)) {
             </div>
             <?php endif; ?>
 
-            <?php if(isset($data['total_jail_deaths_2016_2017'])): ?>
+            <?php if($link === 'sheriff' && isset($data['adult_jail_population'])): ?>
+            <div class="stat-wrapper no-border-mobile">
+              <h3>Jail Incarceration rate</h3>
+              <p><?= num(round(intval(str_replace(',', '', $data['adult_jail_population'])))) ?> Avg Daily Jail Population <span class="divider">&nbsp;|&nbsp;</span> <?= output($data['jail_population_per_1k']) ?> per 1k residents</p>
+              <?php if(!isset($data['percent_jail_deaths_per_1000_jail_population_table']) || (isset($data['percent_jail_deaths_per_1000_jail_population_table']) && empty($data['percent_jail_deaths_per_1000_jail_population_table']))): ?>
+                <div class="progress-bar-wrapper">
+                  <div class="progress-bar no-data" style="width: 0"></div>
+                </div>
+                <p class="note">City Did Not Provide Data</p>
+              <?php else: ?>
+                <div class="progress-bar-wrapper">
+                  <div class="progress-bar animate-bar <?= progressBar(100 - intval($data['percent_jail_deaths_per_1000_jail_population_table']), 'reverse') ?>" data-percent="<?= output(100 - intval($data['percent_jail_deaths_per_1000_jail_population_table']), 0, '%') ?>"></div>
+                </div>
+                <p class="note">^&nbsp; More than <?= num($data['percent_jail_deaths_per_1000_jail_population_table'], 0, '%', true) ?> of sheriff's Depts &nbsp;&nbsp;</p>
+              <?php endif; ?>
+            </div>
+            <?php endif; ?>
+
+            <?php if($link === 'sheriff' && isset($data['total_jail_deaths_2016_2017'])): ?>
             <div class="stat-wrapper grouped">
               <a href="javascript:void(0)" data-city="<?= $city ?>" data-more-info="" class="more-info"></a>
               <h3>Deaths in Jail</h3>
 
               <div class="keys">
-                <span class="key race-black"></span> Homicides
-                <span class="key race-latinx"></span> Suicide
-                <span class="key race-asianpacificislander"></span> Natural
-                <span class="key race-other"></span> Unknown
+                <span class="key key-red"></span> Homicides
+                <span class="key key-orange"></span> Suicide
+                <span class="key key-black"></span> Natural
+                <span class="key key-grey"></span> Investigating
+                <span class="key key-white"></span> Unknown
               </div>
 
               <p><?= num(round(intval(str_replace(',', '', $data['total_jail_deaths_2016_2017'])))) ?> Deaths <span class="divider">&nbsp;|&nbsp;</span> <?= output($data['jail_deaths_per_1000_jail_population']) ?> per 1k residents</p>
 
               <div class="progress-bar-wrapper">
-                <div class="progress-bar animate-bar grouped race-black" data-percent="<?= output(floatval($data['jail_death_homicide_willful']), 0, '%') ?>">
-                  <span><?= (intval($data['jail_death_homicide_willful']) > 5) ? output(intval($data['jail_death_homicide_willful']), 0, '%') : '' ?></span>
+                <div class="progress-bar animate-bar grouped key-red" data-percent="<?= output(floatval(round((intval($data['jail_death_homicide_willful']) / intval($data['total_jail_deaths_2016_2017'])) * 100)), 0, '%') ?>">
+                  <span><?= (intval(round((intval($data['jail_death_homicide_willful']) / intval($data['total_jail_deaths_2016_2017'])) * 100)) > 5) ? output(round((intval($data['jail_death_homicide_willful']) / intval($data['total_jail_deaths_2016_2017'])) * 100), 0, '%') : '' ?></span>
                 </div>
-                <div class="progress-bar animate-bar grouped race-latinx" data-percent="<?= output(floatval($data['jail_death_suicide']), 0, '%') ?>">
-                  <span><?= (intval($data['jail_death_suicide']) > 5) ? output(intval($data['jail_death_suicide']), 0, '%') : '' ?></span>
+                <div class="progress-bar animate-bar grouped key-orange" data-percent="<?= output(floatval(round((intval($data['jail_death_suicide']) / intval($data['total_jail_deaths_2016_2017'])) * 100)), 0, '%') ?>">
+                  <span><?= (intval(round((intval($data['jail_death_suicide']) / intval($data['total_jail_deaths_2016_2017'])) * 100)) > 5) ? output(round((intval($data['jail_death_suicide']) / intval($data['total_jail_deaths_2016_2017'])) * 100), 0, '%') : '' ?></span>
                 </div>
-                <div class="progress-bar animate-bar grouped race-asianpacificislander" data-percent="<?= output(floatval($data['jail_death_natural']), 0, '%') ?>">
-                  <span><?= (intval($data['jail_death_natural']) > 5) ? output(intval($data['jail_death_natural']), 0, '%') : '' ?></span>
+                <div class="progress-bar animate-bar grouped key-black" data-percent="<?= output(floatval(round((intval($data['jail_death_natural']) / intval($data['total_jail_deaths_2016_2017'])) * 100)), 0, '%') ?>">
+                  <span><?= (intval(round((intval($data['jail_death_natural']) / intval($data['total_jail_deaths_2016_2017'])) * 100)) > 5) ? output(round((intval($data['jail_death_natural']) / intval($data['total_jail_deaths_2016_2017'])) * 100), 0, '%') : '' ?></span>
                 </div>
-                <div class="progress-bar animate-bar grouped race-other" data-percent="<?= output(floatval($data['jail_death_cannot_be_determined']), 0, '%') ?>">
-                  <span><?= (intval($data['jail_death_cannot_be_determined']) > 5) ? output(intval($data['jail_death_cannot_be_determined']), 0, '%') : '' ?></span>
+                <div class="progress-bar animate-bar grouped key-grey" data-percent="<?= output(floatval(round((intval($data['jail_death_pending_investigation']) / intval($data['total_jail_deaths_2016_2017'])) * 100)), 0, '%') ?>">
+                  <span><?= (intval(round((intval($data['jail_death_pending_investigation']) / intval($data['total_jail_deaths_2016_2017'])) * 100)) > 5) ? output(round((intval($data['jail_death_pending_investigation']) / intval($data['total_jail_deaths_2016_2017'])) * 100), 0, '%') : '' ?></span>
+                </div>
+                <div class="progress-bar animate-bar grouped key-white" data-percent="<?= output(floatval(round(((intval($data['jail_death_accidental']) + intval($data['jail_death_cannot_be_determined'])) / intval($data['total_jail_deaths_2016_2017'])) * 100)), 0, '%') ?>">
+                  <span><?= (intval(round(((intval($data['jail_death_accidental']) + intval($data['jail_death_cannot_be_determined'])) / intval($data['total_jail_deaths_2016_2017'])) * 100)) > 5) ? output(round(((intval($data['jail_death_accidental']) + intval($data['jail_death_cannot_be_determined'])) / intval($data['total_jail_deaths_2016_2017'])) * 100), 0, '%') : '' ?></span>
                 </div>
               </div>
 
@@ -699,27 +706,27 @@ if (empty($sheriff)) {
             </div>
             <?php endif; ?>
 
-            <?php if(isset($data['total_ice_transfers']) && isset($data['percent_violent_transfers']) && isset($data['percent_drug_transfers']) && isset($data['percent_other_transfers'])): ?>
+            <?php if($link === 'sheriff' && isset($data['total_ice_transfers']) && isset($data['percent_violent_transfers']) && isset($data['percent_drug_transfers']) && isset($data['percent_other_transfers'])): ?>
             <div class="stat-wrapper grouped">
               <a href="javascript:void(0)" data-city="<?= $city ?>" data-more-info="" class="more-info"></a>
               <h3>People Transferred to ICE in 2018</h3>
 
               <div class="keys">
-                <span class="key race-black"></span> Violent Crime
-                <span class="key race-latinx"></span> Drug Offenses
-                <span class="key race-asianpacificislander"></span> Other Offenses
+                <span class="key key-red"></span> Violent Crime
+                <span class="key key-orange"></span> Drug Offenses
+                <span class="key key-black"></span> Other Offenses
               </div>
 
               <p><?= num(round(intval(str_replace(',', '', $data['total_ice_transfers'])))) ?> people were transferred to immigration authorities</p>
 
               <div class="progress-bar-wrapper">
-                <div class="progress-bar animate-bar grouped race-black" data-percent="<?= output(floatval($data['percent_violent_transfers']), 0, '%') ?>">
+                <div class="progress-bar animate-bar grouped key-red" data-percent="<?= output(floatval($data['percent_violent_transfers']), 0, '%') ?>">
                   <span><?= (intval($data['percent_violent_transfers']) > 5) ? output(intval($data['percent_violent_transfers']), 0, '%') : '' ?></span>
                 </div>
-                <div class="progress-bar animate-bar grouped race-latinx" data-percent="<?= output(floatval($data['percent_drug_transfers']), 0, '%') ?>">
+                <div class="progress-bar animate-bar grouped key-orange" data-percent="<?= output(floatval($data['percent_drug_transfers']), 0, '%') ?>">
                   <span><?= (intval($data['percent_drug_transfers']) > 5) ? output(intval($data['percent_drug_transfers']), 0, '%') : '' ?></span>
                 </div>
-                <div class="progress-bar animate-bar grouped race-asianpacificislander" data-percent="<?= output(floatval($data['percent_other_transfers']), 0, '%') ?>">
+                <div class="progress-bar animate-bar grouped key-black" data-percent="<?= output(floatval($data['percent_other_transfers']), 0, '%') ?>">
                   <span><?= (intval($data['percent_other_transfers']) > 5) ? output(intval($data['percent_other_transfers']), 0, '%') : '' ?></span>
                 </div>
               </div>
@@ -733,7 +740,7 @@ if (empty($sheriff)) {
         <div class="content">
           <h1 class="title">
             2016-2017 California<br/>
-            Police Department Grades
+            <?= ($link === 'sheriff') ? "Sheriff's" : "Police" ?> Department Grades
           </h1>
         </div>
         <div class="content">
@@ -1077,7 +1084,7 @@ if (empty($sheriff)) {
     </div>
 
     <script src="assets/js/site.js<?= trim($ac) ?>"></script>
-  <?php if($link === 'city' && num($data['number_of_people_impacted_by_deadly_force'], 0) !== '0'): ?>
+  <?php if(output($data['deadly_force_incidents']) !== '0' && num($data['number_of_people_impacted_by_deadly_force'], 0) !== '0'): ?>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.7.3/Chart.min.js"></script>
     <script>
     window.onload = function() {
