@@ -663,7 +663,7 @@ if (empty($sheriff)) {
                 <div class="progress-bar-wrapper">
                   <div class="progress-bar animate-bar <?= progressBar(100 - intval($data['percent_jail_deaths_per_1000_jail_population_table']), 'reverse') ?>" data-percent="<?= output(100 - intval($data['percent_jail_deaths_per_1000_jail_population_table']), 0, '%') ?>"></div>
                 </div>
-                <p class="note">^&nbsp; More than <?= num($data['percent_jail_deaths_per_1000_jail_population_table'], 0, '%', true) ?> of sheriff's Depts &nbsp;&nbsp;</p>
+                <p class="note">^&nbsp; More than <?= num($data['percent_jail_deaths_per_1000_jail_population_table'], 0, '%', true) ?> of Sheriff's Depts &nbsp;&nbsp;</p>
               <?php endif; ?>
             </div>
             <?php endif; ?>
@@ -673,15 +673,14 @@ if (empty($sheriff)) {
               <a href="javascript:void(0)" data-city="<?= $city ?>" data-more-info="" class="more-info"></a>
               <h3>Deaths in Jail</h3>
 
-              <div class="keys">
-                <span class="key key-red"></span> Homicides
-                <span class="key key-orange"></span> Suicide
-                <span class="key key-black"></span> Natural
-                <span class="key key-grey"></span> Investigating
-                <span class="key key-white"></span> Unknown
-              </div>
-
               <p><?= num(round(intval(str_replace(',', '', $data['total_jail_deaths_2016_2017'])))) ?> Deaths <span class="divider">&nbsp;|&nbsp;</span> <?= output($data['jail_deaths_per_1000_jail_population']) ?> per 1k residents</p>
+
+              <p class="keys">
+                <span class="key key-red"></span> Homicide
+                <span class="key key-orange"></span> Suicide
+                <span class="key key-black"></span> Other
+                <span class="key key-grey"></span> Investigating
+              </p>
 
               <div class="progress-bar-wrapper">
                 <div class="progress-bar animate-bar grouped key-red" data-percent="<?= output(floatval(round((intval($data['jail_death_homicide_willful']) / intval($data['total_jail_deaths_2016_2017'])) * 100)), 0, '%') ?>">
@@ -690,19 +689,15 @@ if (empty($sheriff)) {
                 <div class="progress-bar animate-bar grouped key-orange" data-percent="<?= output(floatval(round((intval($data['jail_death_suicide']) / intval($data['total_jail_deaths_2016_2017'])) * 100)), 0, '%') ?>">
                   <span><?= (intval(round((intval($data['jail_death_suicide']) / intval($data['total_jail_deaths_2016_2017'])) * 100)) > 5) ? output(round((intval($data['jail_death_suicide']) / intval($data['total_jail_deaths_2016_2017'])) * 100), 0, '%') : '' ?></span>
                 </div>
-                <div class="progress-bar animate-bar grouped key-black" data-percent="<?= output(floatval(round((intval($data['jail_death_natural']) / intval($data['total_jail_deaths_2016_2017'])) * 100)), 0, '%') ?>">
-                  <span><?= (intval(round((intval($data['jail_death_natural']) / intval($data['total_jail_deaths_2016_2017'])) * 100)) > 5) ? output(round((intval($data['jail_death_natural']) / intval($data['total_jail_deaths_2016_2017'])) * 100), 0, '%') : '' ?></span>
-                </div>
                 <div class="progress-bar animate-bar grouped key-grey" data-percent="<?= output(floatval(round((intval($data['jail_death_pending_investigation']) / intval($data['total_jail_deaths_2016_2017'])) * 100)), 0, '%') ?>">
                   <span><?= (intval(round((intval($data['jail_death_pending_investigation']) / intval($data['total_jail_deaths_2016_2017'])) * 100)) > 5) ? output(round((intval($data['jail_death_pending_investigation']) / intval($data['total_jail_deaths_2016_2017'])) * 100), 0, '%') : '' ?></span>
                 </div>
-                <div class="progress-bar animate-bar grouped key-white" data-percent="<?= output(floatval(round(((intval($data['jail_death_accidental']) + intval($data['jail_death_cannot_be_determined'])) / intval($data['total_jail_deaths_2016_2017'])) * 100)), 0, '%') ?>">
-                  <span><?= (intval(round(((intval($data['jail_death_accidental']) + intval($data['jail_death_cannot_be_determined'])) / intval($data['total_jail_deaths_2016_2017'])) * 100)) > 5) ? output(round(((intval($data['jail_death_accidental']) + intval($data['jail_death_cannot_be_determined'])) / intval($data['total_jail_deaths_2016_2017'])) * 100), 0, '%') : '' ?></span>
+                <div class="progress-bar animate-bar grouped key-white" data-percent="<?= output(floatval(round(((intval($data['jail_death_natural']) + intval($data['jail_death_accidental']) + intval($data['jail_death_cannot_be_determined'])) / intval($data['total_jail_deaths_2016_2017'])) * 100)), 0, '%') ?>">
+                  <span><?= (intval(round(((intval($data['jail_death_natural']) + intval($data['jail_death_accidental']) + intval($data['jail_death_cannot_be_determined'])) / intval($data['total_jail_deaths_2016_2017'])) * 100)) > 5) ? output(round(((intval($data['jail_death_natural']) + intval($data['jail_death_accidental']) + intval($data['jail_death_cannot_be_determined'])) / intval($data['total_jail_deaths_2016_2017'])) * 100), 0, '%') : '' ?></span>
                 </div>
               </div>
 
-              <p class="note">^&nbsp; More than <?= num($data['percent_jail_deaths_per_1000_jail_population_table'], 0, '%', true) ?> of sheriff's Depts &nbsp;&nbsp;</p>
-
+              <p class="note" style="margin: 0">^&nbsp; More than <?= num($data['percent_jail_deaths_per_1000_jail_population_table'], 0, '%', true) ?> of Sheriff's Depts &nbsp;&nbsp;<br /><br /></p>
             </div>
             <?php endif; ?>
 
@@ -711,13 +706,13 @@ if (empty($sheriff)) {
               <a href="javascript:void(0)" data-city="<?= $city ?>" data-more-info="" class="more-info"></a>
               <h3>People Transferred to ICE in 2018</h3>
 
-              <div class="keys">
+              <p><?= num(round(intval(str_replace(',', '', $data['total_ice_transfers'])))) ?> people were transferred to immigration authorities</p>
+
+              <p class="keys">
                 <span class="key key-red"></span> Violent Crime
                 <span class="key key-orange"></span> Drug Offenses
-                <span class="key key-black"></span> Other Offenses
-              </div>
-
-              <p><?= num(round(intval(str_replace(',', '', $data['total_ice_transfers'])))) ?> people were transferred to immigration authorities</p>
+                <span class="key key-black"></span> Other
+              </p>
 
               <div class="progress-bar-wrapper">
                 <div class="progress-bar animate-bar grouped key-red" data-percent="<?= output(floatval($data['percent_violent_transfers']), 0, '%') ?>">
@@ -809,7 +804,9 @@ if (empty($sheriff)) {
           <div class="left number number-1">
             <ul>
               <li>
-                <strong>Contact your Mayor and Police Chief</strong>, share this scorecard with them and urge them to enact policies to address the issues you’ve identified:
+                <?php if ($link === 'sheriff'): ?>
+                <strong>Contact Your County Sheriff</strong>, share this scorecard with them and urge them to enact policies to address the issues you’ve identified:
+
                 <ul class="contacts">
                   <li>
                     <strong>Mayor <?= $data['mayor_name'] ?></strong>
@@ -840,6 +837,41 @@ if (empty($sheriff)) {
                   <?php endif; ?>
                   </li>
                 </ul>
+
+                <?php else: ?>
+                <strong>Contact your Mayor and Police Chief</strong>, share this scorecard with them and urge them to enact policies to address the issues you’ve identified:
+
+                <ul class="contacts">
+                  <li>
+                    <strong>Mayor <?= $data['mayor_name'] ?></strong>
+                  <?php if (!empty($data['mayor_phone'])): ?>
+                    <br>
+                    Phone:&nbsp; <a href="tel:1-<?= $data['mayor_phone'] ?><?= (!empty($data['mayor_phone_ext'])) ? ';ext=' . $data['mayor_phone_ext'] : '' ?>"><?= $data['mayor_phone'] ?></a>
+                  <?php endif; ?>
+                  <?php if (!empty($data['mayor_phone_ext'])): ?>
+                    ext <?= $data['mayor_phone_ext'] ?>
+                  <?php endif; ?>
+                  <?php if (!empty($data['mayor_email'])): ?>
+                    <br>
+                    Email:&nbsp; <a href="mailto:<?= $data['mayor_email'] ?>"><?= $data['mayor_email'] ?></a>
+                  <?php endif; ?>
+                  </li>
+                  <li>
+                    <strong>Police Chief <?= $data['police_chief_name'] ?></strong>
+                  <?php if (!empty($data['police_chief_phone'])): ?>
+                    <br>
+                    Phone:&nbsp; <a href="tel:1-<?= $data['police_chief_phone'] ?><?= (!empty($data['police_chief_phone_ext'])) ? ';ext=' . $data['police_chief_phone_ext'] : '' ?>"><?= $data['police_chief_phone'] ?></a>
+                  <?php endif; ?>
+                  <?php if (!empty($data['police_chief_phone_ext'])): ?>
+                    ext <?= $data['police_chief_phone_ext'] ?>
+                  <?php endif; ?>
+                  <?php if (!empty($data['police_chief_email'])): ?>
+                    <br>
+                    Email:&nbsp; <a href="mailto:<?= $data['police_chief_email'] ?>"><?= $data['police_chief_email'] ?></a>
+                  <?php endif; ?>
+                  </li>
+                </ul>
+                <?php endif; ?>
               </li>
             </ul>
           </div>
