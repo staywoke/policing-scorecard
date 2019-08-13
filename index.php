@@ -653,10 +653,11 @@ if (empty($sheriff)) {
         </div>
       </div>
 
+      <?php if($link === 'sheriff' && num(round(intval(str_replace(',', '', $data['total_jail_deaths_2016_2017'])))) !== 'N/A'): ?>
       <div class="section pad jail">
         <div class="content">
           <div class="left">
-          <?php if($link === 'sheriff' && isset($data['adult_jail_population'])): ?>
+          <?php if(isset($data['adult_jail_population'])): ?>
             <div class="stat-wrapper no-border-mobile">
               <h3>Jail Incarceration rate</h3>
               <p><?= num(round(intval(str_replace(',', '', $data['adult_jail_population'])))) ?> Avg Daily Jail Population <span class="divider">&nbsp;|&nbsp;</span> <?= output($data['jail_population_per_1k']) ?> per 1k residents</p>
@@ -675,7 +676,7 @@ if (empty($sheriff)) {
             <?php endif; ?>
           </div>
           <div class="right">
-          <?php if($link === 'sheriff' && num(round(intval(str_replace(',', '', $data['total_jail_deaths_2016_2017'])))) !== 'N/A'): ?>
+          <?php if(num(round(intval(str_replace(',', '', $data['total_jail_deaths_2016_2017'])))) !== 'N/A'): ?>
             <div class="stat-wrapper">
               <a href="javascript:void(0)" data-city="<?= $city ?>" data-more-info="" class="more-info"></a>
               <h3>Deaths in Jail</h3>
@@ -706,7 +707,7 @@ if (empty($sheriff)) {
             </div>
             <?php endif; ?>
 
-            <?php if($link === 'sheriff' && isset($data['total_ice_transfers']) && isset($data['percent_violent_transfers']) && isset($data['percent_drug_transfers']) && isset($data['percent_other_transfers'])): ?>
+            <?php if(isset($data['total_ice_transfers']) && isset($data['percent_violent_transfers']) && isset($data['percent_drug_transfers']) && isset($data['percent_other_transfers'])): ?>
             <div class="stat-wrapper">
               <a href="javascript:void(0)" data-city="<?= $city ?>" data-more-info="" class="more-info"></a>
               <h3>People Transferred to ICE in 2018</h3>
@@ -735,6 +736,7 @@ if (empty($sheriff)) {
           </div>
         </div>
       </div>
+      <?php endif; ?>
 
       <div class="section bg-light-gray grades short" id="score-card">
         <div class="content">
