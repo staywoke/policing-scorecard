@@ -534,6 +534,16 @@ body {
     cursor: pointer;
   }
 
+  &.jail {
+    background: #464648;
+    color: #fff;
+    padding-bottom: 40px;
+
+    p.note, .progress-bar.grouped span {
+      color: #bbbbbb;
+    }
+  }
+
   .content {
     max-width: $bp-max-width;
     margin: 0 auto;

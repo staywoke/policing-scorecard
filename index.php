@@ -649,8 +649,14 @@ if (empty($sheriff)) {
               <?php endif; ?>
             </div>
             <?php endif; ?>
+          </div>
+        </div>
+      </div>
 
-            <?php if($link === 'sheriff' && isset($data['adult_jail_population'])): ?>
+      <div class="section pad jail">
+        <div class="content">
+          <div class="left">
+          <?php if($link === 'sheriff' && isset($data['adult_jail_population'])): ?>
             <div class="stat-wrapper no-border-mobile">
               <h3>Jail Incarceration rate</h3>
               <p><?= num(round(intval(str_replace(',', '', $data['adult_jail_population'])))) ?> Avg Daily Jail Population <span class="divider">&nbsp;|&nbsp;</span> <?= output($data['jail_population_per_1k']) ?> per 1k residents</p>
@@ -667,9 +673,10 @@ if (empty($sheriff)) {
               <?php endif; ?>
             </div>
             <?php endif; ?>
-
-            <?php if($link === 'sheriff' && isset($data['total_jail_deaths_2016_2017'])): ?>
-            <div class="stat-wrapper grouped">
+          </div>
+          <div class="right">
+          <?php if($link === 'sheriff' && num(round(intval(str_replace(',', '', $data['total_jail_deaths_2016_2017'])))) !== 'N/A'): ?>
+            <div class="stat-wrapper">
               <a href="javascript:void(0)" data-city="<?= $city ?>" data-more-info="" class="more-info"></a>
               <h3>Deaths in Jail</h3>
 
@@ -696,13 +703,11 @@ if (empty($sheriff)) {
                   <span><?= (intval(round(((intval($data['jail_death_natural']) + intval($data['jail_death_accidental']) + intval($data['jail_death_cannot_be_determined'])) / intval($data['total_jail_deaths_2016_2017'])) * 100)) > 5) ? output(round(((intval($data['jail_death_natural']) + intval($data['jail_death_accidental']) + intval($data['jail_death_cannot_be_determined'])) / intval($data['total_jail_deaths_2016_2017'])) * 100), 0, '%') : '' ?></span>
                 </div>
               </div>
-
-              <p class="note" style="margin: 0">^&nbsp; More than <?= num($data['percent_jail_deaths_per_1000_jail_population_table'], 0, '%', true) ?> of Sheriff's Depts &nbsp;&nbsp;<br /><br /></p>
             </div>
             <?php endif; ?>
 
             <?php if($link === 'sheriff' && isset($data['total_ice_transfers']) && isset($data['percent_violent_transfers']) && isset($data['percent_drug_transfers']) && isset($data['percent_other_transfers'])): ?>
-            <div class="stat-wrapper grouped">
+            <div class="stat-wrapper">
               <a href="javascript:void(0)" data-city="<?= $city ?>" data-more-info="" class="more-info"></a>
               <h3>People Transferred to ICE in 2018</h3>
 
@@ -806,42 +811,12 @@ if (empty($sheriff)) {
               <li>
                 <?php if ($link === 'sheriff'): ?>
                 <strong>Contact Your County Sheriff</strong>, share this scorecard with them and urge them to enact policies to address the issues you’ve identified:
-
-                <ul class="contacts">
-                  <li>
-                    <strong>Mayor <?= $data['mayor_name'] ?></strong>
-                  <?php if (!empty($data['mayor_phone'])): ?>
-                    <br>
-                    Phone:&nbsp; <a href="tel:1-<?= $data['mayor_phone'] ?><?= (!empty($data['mayor_phone_ext'])) ? ';ext=' . $data['mayor_phone_ext'] : '' ?>"><?= $data['mayor_phone'] ?></a>
-                  <?php endif; ?>
-                  <?php if (!empty($data['mayor_phone_ext'])): ?>
-                    ext <?= $data['mayor_phone_ext'] ?>
-                  <?php endif; ?>
-                  <?php if (!empty($data['mayor_email'])): ?>
-                    <br>
-                    Email:&nbsp; <a href="mailto:<?= $data['mayor_email'] ?>"><?= $data['mayor_email'] ?></a>
-                  <?php endif; ?>
-                  </li>
-                  <li>
-                    <strong>Police Chief <?= $data['police_chief_name'] ?></strong>
-                  <?php if (!empty($data['police_chief_phone'])): ?>
-                    <br>
-                    Phone:&nbsp; <a href="tel:1-<?= $data['police_chief_phone'] ?><?= (!empty($data['police_chief_phone_ext'])) ? ';ext=' . $data['police_chief_phone_ext'] : '' ?>"><?= $data['police_chief_phone'] ?></a>
-                  <?php endif; ?>
-                  <?php if (!empty($data['police_chief_phone_ext'])): ?>
-                    ext <?= $data['police_chief_phone_ext'] ?>
-                  <?php endif; ?>
-                  <?php if (!empty($data['police_chief_email'])): ?>
-                    <br>
-                    Email:&nbsp; <a href="mailto:<?= $data['police_chief_email'] ?>"><?= $data['police_chief_email'] ?></a>
-                  <?php endif; ?>
-                  </li>
-                </ul>
-
                 <?php else: ?>
                 <strong>Contact your Mayor and Police Chief</strong>, share this scorecard with them and urge them to enact policies to address the issues you’ve identified:
+                <?php endif; ?>
 
                 <ul class="contacts">
+                <?php if (!empty($data['mayor_name'])): ?>
                   <li>
                     <strong>Mayor <?= $data['mayor_name'] ?></strong>
                   <?php if (!empty($data['mayor_phone'])): ?>
@@ -856,6 +831,8 @@ if (empty($sheriff)) {
                     Email:&nbsp; <a href="mailto:<?= $data['mayor_email'] ?>"><?= $data['mayor_email'] ?></a>
                   <?php endif; ?>
                   </li>
+                <?php endif; ?>
+                <?php if (!empty($data['police_chief_name'])): ?>
                   <li>
                     <strong>Police Chief <?= $data['police_chief_name'] ?></strong>
                   <?php if (!empty($data['police_chief_phone'])): ?>
@@ -870,14 +847,14 @@ if (empty($sheriff)) {
                     Email:&nbsp; <a href="mailto:<?= $data['police_chief_email'] ?>"><?= $data['police_chief_email'] ?></a>
                   <?php endif; ?>
                   </li>
-                </ul>
                 <?php endif; ?>
+                </ul>
               </li>
             </ul>
           </div>
           <div class="right number number-2">
             <ul>
-              <li><strong>Find your California State Senator</strong> using the Campaign Zero Advocacy Tool and urge them to support <strong>Assembly Bill 392</strong>, which would limit deadly force to be legally authorized only when necessary, a change that can reduce police shootings statewide.
+              <li><strong>Find your US Senator and US Representative</strong> using the Campaign Zero Advocacy Tool and urge them to support the <strong>PEACE Act</strong>, which would require police departments to adopt policies requiring de-escalation and alternatives to deadly force, a change that would reduce police shootings nationwide.
                 <br />
               <a href="https://www.joincampaignzero.org/advocacy" class="button" target="_blank">Campaign Zero Advocacy Tool</a></li>
             </ul>
