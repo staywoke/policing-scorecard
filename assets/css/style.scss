@@ -542,6 +542,10 @@ body {
     p.note, .progress-bar.grouped span {
       color: #bbbbbb;
     }
+
+    .stat-wrapper .keys .key.key-black, .stat-wrapper .progress-bar-wrapper .progress-bar.key-black {
+      background-color: #737373;
+    }
   }
 
   .content {
