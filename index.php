@@ -4,6 +4,8 @@ require('common.php');
 $city = (!empty($_REQUEST['city'])) ? $_REQUEST['city'] : 'los-angeles';
 $sheriff = (!empty($_REQUEST['sheriff'])) ? $_REQUEST['sheriff'] : null;
 $link = (!empty($_REQUEST['sheriff'])) ? 'sheriff' : 'city';
+$map = file_get_contents('assets/img/map.svg');
+$marker = $link === 'city' ? $city : $sheriff;
 
 if (empty($sheriff)) {
   $data = getCityData($city);
@@ -119,7 +121,8 @@ if (empty($sheriff)) {
           </div>
           <div class="left">
             <div class="map" id="map-layer">
-              <div class="map-marker <?= $city ?>"></div>
+              <?= str_replace($marker, 'active', $map) ?>
+              <div class="map-marker <?= $marker ?>"></div>
             </div>
           </div>
           <div class="clear">&nbsp;</div>
