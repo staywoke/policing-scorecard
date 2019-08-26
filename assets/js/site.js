@@ -290,6 +290,122 @@ var SCORECARD = (function () {
     request.send();
   }
 
+  function loadMap(){
+    // Create the chart
+    Highcharts.mapChart('state-map', {
+      chart: {
+        backgroundColor: 'transparent',
+        margin: 0,
+        zoomType: false
+      },
+      title: {
+        text: '',
+        style: {
+          display: 'none'
+        }
+      },
+      legend: {
+        enabled: false
+      },
+      mapNavigation: {
+        enabled: false
+      },
+      colorAxis: {
+        dataClasses: [
+          {
+            from: 0,
+            to: 59.99,
+            color: '#f67f85',
+            name: 'Grade F'
+          }, {
+            from: 60,
+            to: 62.99,
+            color: '#ee9978',
+            name: 'Grade D-'
+          }, {
+            from: 63,
+            to: 66.99,
+            color: '#ee9978',
+            name: 'Grade D'
+          }, {
+            from: 67,
+            to: 69.99,
+            color: '#ee9978',
+            name: 'Grade D+'
+          }, {
+            from: 70,
+            to: 72.99,
+            color: '#ffdd9a',
+            name: 'Grade C-'
+          }, {
+            from: 73,
+            to: 76.99,
+            color: '#ffdd9a',
+            name: 'Grade C'
+          }, {
+            from: 77,
+            to: 79.99,
+            color: '#ffdd9a',
+            name: 'Grade C+'
+          }, {
+            from: 80,
+            to: 82.99,
+            color: '#c9da98',
+            name: 'Grade B-'
+          }, {
+            from: 83,
+            to: 86.99,
+            color: '#c9da98',
+            name: 'Grade B'
+          }, {
+            from: 87,
+            to: 89.99,
+            color: '#c9da98',
+            name: 'Grade B+'
+          }, {
+            from: 90,
+            to: 92.99,
+            color: '#97d89a',
+            name: 'Grade A-'
+          }, {
+            from: 93,
+            to: 97.99,
+            color: '#97d89a',
+            name: 'Grade A'
+          }, {
+            from: 98,
+            to: 100,
+            color: '#97d89a',
+            name: 'Grade A+'
+          }
+        ]
+      },
+      plotOptions: {
+        map: {
+          allAreas: false,
+          mapData: Highcharts.maps['countries/us/us-ca-all'],
+        }
+      },
+      series: [
+        {
+          allAreas: true,
+          showInLegend: true
+        },
+        {
+          data: map_data.sheriff,
+          name: 'Sheriff Department',
+          borderColor: '#f5f5f5'
+        },
+        {
+          type: 'mapbubble',
+          name: 'Police Department',
+          data: map_data.city,
+          maxSize: 2
+        }
+      ]
+    });
+  }
+
   // Click Event for More Info
   Array.prototype.forEach.call($moreInfo, function(el) {
     el.addEventListener('click', function(evt) {
@@ -331,6 +447,7 @@ var SCORECARD = (function () {
 
   return {
     animate: animate,
+    loadMap: loadMap,
     loadResultsInfo: loadResultsInfo
   }
 })();

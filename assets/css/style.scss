@@ -2132,6 +2132,15 @@ body {
   }
 }
 
+#state-map {
+  height: 100%;
+  width: auto;
+}
+
+text.highcharts-credits {
+  display: none;
+}
+
 /* RESPONSIVE */
 @media screen and (min-width: $bp-max-width) {
   .header {

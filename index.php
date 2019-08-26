@@ -121,7 +121,7 @@ if (empty($sheriff)) {
           </div>
           <div class="left">
             <div class="map" id="map-layer">
-              <?= str_replace($marker, 'active', $map) ?>
+              <div id="state-map"></div>
               <div class="map-marker <?= $marker ?>"></div>
             </div>
           </div>
@@ -1097,11 +1097,19 @@ if (empty($sheriff)) {
       <div id="overlay"></div>
     </div>
 
+    <script>
+    var map_data = {
+      city: <?= getMapData('data') ?>,
+      sheriff: <?= getMapData('sheriff') ?>
+    };
+    </script>
+    <script src="assets/js/plugins.js<?= trim($ac) ?>"></script>
     <script src="assets/js/site.js<?= trim($ac) ?>"></script>
   <?php if(output($data['deadly_force_incidents']) !== '0' && num($data['number_of_people_impacted_by_deadly_force'], 0) !== '0'): ?>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.7.3/Chart.min.js"></script>
     <script>
     window.onload = function() {
+      SCORECARD.loadMap();
       var chart = new Chart(document.getElementById("deadly-force-chart").getContext('2d'), {
         type: 'doughnut',
         options: {
