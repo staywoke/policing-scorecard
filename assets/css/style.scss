@@ -2149,43 +2149,61 @@ text.highcharts-credits {
 }
 
 svg.highcharts-root path.highcharts-point {
+  stroke: #cedbe8;
+}
+
+.highcharts-map-series path {
+  fill: #FFF;
   transition: fill 0.25s;
-  stroke: #dadada;
 
-  &.highcharts-color-1 {
-    fill: #444;
-
-    &:hover {
-      fill: $grade-red;
-    }
-  }
-  &.highcharts-color-2 {
-    fill: #666;
-
-    &:hover {
-      fill: $grade-orange;
-    }
-  }
-  &.highcharts-color-3 {
-    fill: #888;
-
-    &:hover {
-      fill: $grade-yellow;
-    }
-  }
-  &.highcharts-color-4 {
-    fill: #AAA;
-
-    &:hover {
-      fill: $grade-green;
-    }
-  }
+  &.highcharts-color-1,
+  &.highcharts-color-2,
+  &.highcharts-color-3,
+  &.highcharts-color-4,
   &.highcharts-color-5 {
-    fill: #CCC;
+    fill: #f4f8fd;
+  }
 
-    &:hover {
-      fill: $grade-light-green;
-    }
+  &.highcharts-color-1:hover {
+    fill: $grade-red;
+    stroke: $grade-red;
+  }
+  &.highcharts-color-2:hover {
+    fill: $grade-orange;
+    stroke: $grade-orange;
+  }
+  &.highcharts-color-3:hover {
+    fill: $grade-yellow;
+    stroke: $grade-yellow;
+  }
+  &.highcharts-color-4:hover {
+    fill: $grade-green;
+    stroke: $grade-green;
+  }
+  &.highcharts-color-5:hover {
+    fill: $grade-light-green;
+    stroke: $grade-light-green;
+  }
+}
+
+.highcharts-mappoint-series path {
+  fill: #277feb;
+  transition: fill 0.25s;
+
+  &.highcharts-color-1:hover {
+    fill: $grade-red;
+  }
+  &.highcharts-color-2:hover {
+    fill: $grade-orange;
+  }
+  &.highcharts-color-3:hover {
+    fill: $grade-yellow;
+  }
+  &.highcharts-color-4:hover {
+    fill: $grade-green;
+  }
+  &.highcharts-color-5:hover {
+    fill: $grade-light-green;
   }
 }
 

@@ -693,6 +693,7 @@ function getMapData($type) {
 
     if ($type === 'data' && !empty($data['latitude']) && !empty($data['longitude'])) {
       $map_data[] = array(
+        'className' => 'location-' . $loc,
         'colorIndex' => getColorIndex($grade['overall_score']),
         'name' => $grade['agency_name'],
         'lat' => $data['latitude'],
@@ -700,8 +701,8 @@ function getMapData($type) {
         'value' => $grade['overall_score']
       );
     } else if ($type === 'sheriff' && !empty($data['district'])) {
-      //$map_data[] = array($data['district'], $grade['overall_score']);
       $map_data[] = array(
+        'className' => 'location-' . $loc,
         'colorIndex' => getColorIndex($grade['overall_score']),
         'name' => $grade['agency_name'],
         'hc-key' => $data['district'],

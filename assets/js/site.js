@@ -359,6 +359,21 @@ var SCORECARD = (function () {
         map: {
           allAreas: false,
           mapData: Highcharts.maps['countries/us/us-ca-all'],
+        },
+        series: {
+          dataLabels: {
+            formatter: function () {
+              return '';
+            }
+          },
+          marker: {
+            width: 0,
+            height: 0,
+            radius: 2,
+            fillColor: '#000',
+            lineWidth: 0,
+            lineColor: null
+          }
         }
       },
       series: [
@@ -368,14 +383,12 @@ var SCORECARD = (function () {
         },
         {
           data: map_data.sheriff,
-          name: 'Sheriff Department',
-          borderColor: '#f5f5f5'
+          name: 'Sheriff Department'
         },
         {
-          type: 'mapbubble',
+          type: 'mappoint',
           name: 'Police Department',
-          data: map_data.city,
-          maxSize: 2
+          data: map_data.city
         }
       ]
     });
