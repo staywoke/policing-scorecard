@@ -693,18 +693,45 @@ function getMapData($type) {
 
     if ($type === 'data' && !empty($data['latitude']) && !empty($data['longitude'])) {
       $map_data[] = array(
+        'colorIndex' => getColorIndex($grade['overall_score']),
         'name' => $grade['agency_name'],
         'lat' => $data['latitude'],
         'lon' => $data['longitude'],
-        'count' => $grade['overall_score'],
-        'z' => $grade['overall_score']
+        'value' => $grade['overall_score']
       );
     } else if ($type === 'sheriff' && !empty($data['district'])) {
-      $map_data[] = array($data['district'], $grade['overall_score']);
+      //$map_data[] = array($data['district'], $grade['overall_score']);
+      $map_data[] = array(
+        'colorIndex' => getColorIndex($grade['overall_score']),
+        'name' => $grade['agency_name'],
+        'hc-key' => $data['district'],
+        'value' => $grade['overall_score']
+      );
     }
   }
 
-  return json_encode($map_data);
+  return json_encode($map_data, JSON_PRETTY_PRINT);
+}
+
+/**
+ * Return Percent Score to Letter Grade
+ * @param  {String} $score Percent Score
+ * @return {String}
+ */
+function getColorIndex($score) {
+  $score = intval($score);
+
+  if ($score <= 59) {
+    return 1;
+  } elseif ($score <= 69 && $score >= 60) {
+    return 2;
+  } elseif ($score <= 79 && $score >= 70) {
+    return 3;
+  } elseif ($score <= 89 && $score >= 80) {
+    return 4;
+  } elseif ($score >= 90) {
+    return 5;
+  }
 }
 
 /**

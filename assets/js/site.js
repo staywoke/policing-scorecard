@@ -290,13 +290,46 @@ var SCORECARD = (function () {
     request.send();
   }
 
+  function getGrade(score) {
+    score = parseInt(score);
+
+    if (score <= 59) {
+      return 'F';
+    } else if (score <= 62 && score >= 60) {
+      return 'D-';
+    } else if (score <= 66 && score >= 63) {
+      return 'D';
+    } else if (score <= 69 && score >= 67) {
+      return 'D+';
+    } else if (score <= 72 && score >= 70) {
+      return 'C-';
+    } else if (score <= 76 && score >= 73) {
+      return 'C';
+    } else if (score <= 79 && score >= 77) {
+      return 'C+';
+    } else if (score <= 82 && score >= 80) {
+      return 'B-';
+    } else if (score <= 86 && score >= 83) {
+      return 'B';
+    } else if (score <= 89 && score >= 87) {
+      return 'B+';
+    } else if (score <= 92 && score >= 90) {
+      return 'A-';
+    } else if (score <= 97 && score >= 93) {
+      return 'A';
+    } else if (score >= 98) {
+      return 'A+';
+    }
+  }
+
   function loadMap(){
     // Create the chart
     Highcharts.mapChart('state-map', {
       chart: {
         backgroundColor: 'transparent',
         margin: 0,
-        zoomType: false
+        zoomType: false,
+        styleMode: true
       },
       title: {
         text: '',
@@ -310,75 +343,17 @@ var SCORECARD = (function () {
       mapNavigation: {
         enabled: false
       },
-      colorAxis: {
-        dataClasses: [
-          {
-            from: 0,
-            to: 59.99,
-            color: '#f67f85',
-            name: 'Grade F'
-          }, {
-            from: 60,
-            to: 62.99,
-            color: '#ee9978',
-            name: 'Grade D-'
-          }, {
-            from: 63,
-            to: 66.99,
-            color: '#ee9978',
-            name: 'Grade D'
-          }, {
-            from: 67,
-            to: 69.99,
-            color: '#ee9978',
-            name: 'Grade D+'
-          }, {
-            from: 70,
-            to: 72.99,
-            color: '#ffdd9a',
-            name: 'Grade C-'
-          }, {
-            from: 73,
-            to: 76.99,
-            color: '#ffdd9a',
-            name: 'Grade C'
-          }, {
-            from: 77,
-            to: 79.99,
-            color: '#ffdd9a',
-            name: 'Grade C+'
-          }, {
-            from: 80,
-            to: 82.99,
-            color: '#c9da98',
-            name: 'Grade B-'
-          }, {
-            from: 83,
-            to: 86.99,
-            color: '#c9da98',
-            name: 'Grade B'
-          }, {
-            from: 87,
-            to: 89.99,
-            color: '#c9da98',
-            name: 'Grade B+'
-          }, {
-            from: 90,
-            to: 92.99,
-            color: '#97d89a',
-            name: 'Grade A-'
-          }, {
-            from: 93,
-            to: 97.99,
-            color: '#97d89a',
-            name: 'Grade A'
-          }, {
-            from: 98,
-            to: 100,
-            color: '#97d89a',
-            name: 'Grade A+'
-          }
-        ]
+      tooltip: {
+        followPointer: false,
+        borderColor: '#444444',
+        formatter: function () {
+          var city = this.point.name;
+          var score = this.point.value;
+          var percent = Math.round(parseFloat(score));
+          var newTooltip = this.series.name + '<br /><strong>' + city + '</strong><br />Grade: ' + getGrade(score) + ' ( ' + percent + '% )';
+
+          return newTooltip;
+        }
       },
       plotOptions: {
         map: {

@@ -1021,11 +1021,14 @@ body {
       position: relative;
 
       .map-marker {
+        opacity: 1;
         width: 60px;
         height: 60px;
         display: block;
         background: url('../img/map-marker.svg') center center no-repeat;
         position: absolute;
+        pointer-events: none;
+        transition: opacity 0.25s;
 
         animation-name: pulse;
         animation-duration: 2s;
@@ -1530,6 +1533,10 @@ body {
           top: 265px;
           left: 150px;
         }
+      }
+
+      &:hover .map-marker {
+        opacity: 0.20;
       }
     }
   }
@@ -2139,6 +2146,47 @@ body {
 
 text.highcharts-credits {
   display: none;
+}
+
+svg.highcharts-root path.highcharts-point {
+  transition: fill 0.25s;
+  stroke: #dadada;
+
+  &.highcharts-color-1 {
+    fill: #444;
+
+    &:hover {
+      fill: $grade-red;
+    }
+  }
+  &.highcharts-color-2 {
+    fill: #666;
+
+    &:hover {
+      fill: $grade-orange;
+    }
+  }
+  &.highcharts-color-3 {
+    fill: #888;
+
+    &:hover {
+      fill: $grade-yellow;
+    }
+  }
+  &.highcharts-color-4 {
+    fill: #AAA;
+
+    &:hover {
+      fill: $grade-green;
+    }
+  }
+  &.highcharts-color-5 {
+    fill: #CCC;
+
+    &:hover {
+      fill: $grade-light-green;
+    }
+  }
 }
 
 /* RESPONSIVE */
