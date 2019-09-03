@@ -79,13 +79,16 @@ body {
       line-height: 30px;
     }
 
-    .modal-header {
+    #modal-header-tabs {
       width: 100%;
       display: block;
       position: absolute;
       top: 0;
       left: 0;
       padding: 8px;
+      z-index: 500;
+      background: #FFF;
+      border-radius: 10px;
 
       a.show-button {
         background: #666;
@@ -105,19 +108,25 @@ body {
     }
 
     #modal-content {
-      height: 250px;
-      overflow: auto;
-      margin-top: 14px;
+      height: 100%;
+      overflow: hidden;
 
-      #city-select.sheriff {
-        li.city {
-          display: none;
+      #city-select {
+        position: relative;
+        top: 14px;
+        max-height: calc(100% - 10px);
+        overflow: scroll;
+
+        &.sheriff {
+          li.city {
+            display: none;
+          }
         }
-      }
 
-      #city-select.city {
-        li.sheriff {
-          display: none;
+        &.city {
+          li.sheriff {
+            display: none;
+          }
         }
       }
 
@@ -176,7 +185,7 @@ body {
       top: calc(50% - 240px);
 
       #modal-content {
-        height: 430px;
+        height: 100%;
       }
     }
   }
@@ -675,7 +684,7 @@ body {
 }
 
 .stat-wrapper {
-  border-bottom: 2px solid rgba(0, 0, 0, 0.05);
+  // border-bottom: 2px solid rgba(0, 0, 0, 0.05);
   margin-top: 30px;
   position: relative;
 
@@ -1019,525 +1028,6 @@ body {
       margin: 20px 0;
       display: block;
       position: relative;
-
-      .map-marker {
-        opacity: 1;
-        width: 60px;
-        height: 60px;
-        display: block;
-        background: url('../img/map-marker.svg') center center no-repeat;
-        position: absolute;
-        pointer-events: none;
-        transition: opacity 0.25s;
-
-        animation-name: pulse;
-        animation-duration: 2s;
-        animation-iteration-count: 3;
-
-        &.alameda {
-          top: 121px;
-          left: 30px;
-        }
-
-        &.alhambra {
-          top: 250px;
-          left: 120px;
-        }
-
-        &.anaheim {
-          top: 261px;
-          left: 141px;
-        }
-
-        &.antioch {
-          top: 116px;
-          left: 36px;
-        }
-
-        &.bakersfield {
-          top: 218px;
-          left: 136px;
-        }
-
-        &.berkeley {
-          top: 121px;
-          left: 30px;
-        }
-
-        &.beverly-hills {
-          top: 251px;
-          left: 141px;
-        }
-
-        &.buena-park {
-          top: 256px;
-          left: 141px;
-        }
-
-        &.burbank {
-          top: 250px;
-          left: 136px;
-        }
-
-        &.carlsbad {
-          top: 276px;
-          left: 166px;
-        }
-
-        &.chico {
-          top: 37px;
-          left: 36px;
-        }
-
-        &.chino {
-          top: 250px;
-          left: 161px;
-        }
-
-        &.chula-vista {
-          top: 298px;
-          left: 172px;
-        }
-
-        &.citrus-heights {
-          top: 83px;
-          left: 56px;
-        }
-
-        &.clovis {
-          top: 163px;
-          left: 106px;
-        }
-
-        &.concord {
-          top: 116px;
-          left: 30px;
-        }
-
-        &.corona {
-          top: 265px;
-          left: 151px;
-        }
-
-        &.costa-mesa {
-          top: 260px;
-          left: 151px;
-        }
-
-        &.culver-city {
-          top: 245px;
-          left: 120px;
-        }
-
-        &.daly-city {
-          top: 134px;
-          left: 25px;
-        }
-
-        &.downey {
-          top: 257px;
-          left: 140px;
-        }
-
-        &.el-cajon {
-          top: 300px;
-          left: 176px;
-        }
-
-        &.el-monte {
-          top: 255px;
-          left: 145px;
-        }
-
-        &.elk-grove {
-          top: 100px;
-          left: 46px;
-        }
-
-        &.escondido {
-          top: 280px;
-          left: 170px;
-        }
-
-        &.fairfield {
-          top: 108px;
-          left: 33px;
-        }
-
-        &.fontana {
-          top: 250px;
-          left: 150px;
-        }
-
-        &.fremont {
-          top: 133px;
-          left: 39px;
-        }
-
-        &.fresno {
-          top: 160px;
-          left: 113px;
-        }
-
-        &.fullerton {
-          top: 264px;
-          left: 145px;
-        }
-
-        &.garden-grove {
-          top: 264px;
-          left: 145px;
-        }
-
-        &.gardena {
-          top: 264px;
-          left: 145px;
-        }
-
-        &.glendale {
-          top: 258px;
-          left: 143px;
-        }
-
-        &.hawthorne {
-          top: 260px;
-          left: 143px;
-        }
-
-        &.hayward {
-          top: 122px;
-          left: 33px;
-        }
-
-        &.huntington-beach {
-          top: 270px;
-          left: 153px;
-        }
-
-        &.inglewood {
-          top: 256px;
-          left: 143px;
-        }
-
-        &.irvine {
-          top: 264px;
-          left: 149px;
-        }
-
-        &.livermore {
-          top: 125px;
-          left: 45px;
-        }
-
-        &.long-beach {
-          top: 263px;
-          left: 143px;
-        }
-
-        &.los-angeles {
-          top: 263px;
-          left: 143px;
-        }
-
-        &.merced {
-          top: 130px;
-          left: 70px;
-        }
-
-        &.milpitas {
-          top: 136px;
-          left: 43px;
-        }
-
-        &.modesto {
-          top: 124px;
-          left: 70px;
-        }
-
-        &.mountain-view {
-          top: 136px;
-          left: 34px;
-        }
-
-        &.murrieta {
-          top: 265px;
-          left: 167px;
-        }
-
-        &.national-city {
-          top: 300px;
-          left: 172px;
-        }
-
-        &.newport-beach {
-          top: 265px;
-          left: 154px;
-        }
-
-        &.oakland {
-          top: 125px;
-          left: 34px;
-        }
-
-        &.oceanside {
-          top: 275px;
-          left: 170px;
-        }
-
-        &.ontario {
-          top: 265px;
-          left: 150px;
-        }
-
-        &.orange {
-          top: 262px;
-          left: 151px;
-        }
-
-        &.oxnard {
-          top: 250px;
-          left: 120px;
-        }
-
-        &.palm-springs {
-          top: 260px;
-          left: 175px;
-        }
-
-        &.palo-alto {
-          top: 138px;
-          left: 34px;
-        }
-
-        &.pasadena {
-          top: 260px;
-          left: 145px;
-        }
-
-        &.pittsburg {
-          top: 114px;
-          left: 38px;
-        }
-
-        &.pleasanton {
-          top: 125px;
-          left: 35px;
-        }
-
-        &.pomona {
-          top: 255px;
-          left: 150px;
-        }
-
-        &.redding {
-          top: 10px;
-          left: 20px;
-        }
-
-        &.redlands {
-          top: 250px;
-          left: 162px;
-        }
-
-        &.redondo-beach {
-          top: 260px;
-          left: 140px;
-        }
-
-        &.redwood-city {
-          top: 135px;
-          left: 30px;
-        }
-
-        &.rialto {
-          top: 255px;
-          left: 160px;
-        }
-
-        &.richmond {
-          top: 118px;
-          left: 32px;
-        }
-
-        &.riverside {
-          top: 253px;
-          left: 155px;
-        }
-
-        &.roseville {
-          top: 80px;
-          left: 40px;
-        }
-
-        &.sacramento {
-          top: 90px;
-          left: 45px;
-        }
-
-        &.salinas {
-          top: 163px;
-          left: 47px;
-        }
-
-        &.san-bernardino {
-          top: 263px;
-          left: 170px;
-        }
-
-        &.san-diego {
-          top: 295px;
-          left: 175px;
-        }
-
-        &.san-francisco {
-          top: 135px;
-          left: 27px;
-        }
-
-        &.san-jose {
-          top: 136px;
-          left: 43px;
-        }
-
-        &.san-leandro {
-          top: 125px;
-          left: 35px;
-        }
-
-        &.san-mateo {
-          top: 140px;
-          left: 30px;
-        }
-
-        &.santa-ana {
-          top: 262px;
-          left: 147px;
-        }
-
-        &.santa-barbara {
-          top: 235px;
-          left: 100px;
-        }
-
-        &.santa-clara {
-          top: 135px;
-          left: 41px;
-        }
-
-        &.santa-cruz {
-          top: 150px;
-          left: 37px;
-        }
-
-        &.santa-maria {
-          top: 224px;
-          left: 82px;
-        }
-
-        &.santa-monica {
-          top: 250px;
-          left: 140px;
-        }
-
-        &.santa-rosa  {
-          top: 110px;
-          left: 17px;
-        }
-
-        &.simi-valley {
-          top: 250px;
-          left: 125px;
-        }
-
-        &.south-gate {
-          top: 257px;
-          left: 140px;
-        }
-
-        &.south-san-francisco {
-          top: 135px;
-          left: 25px;
-        }
-
-        &.stockton {
-          top: 112px;
-          left: 60px;
-        }
-
-        &.sunnyvale {
-          top: 135px;
-          left: 40px;
-        }
-
-        &.torrance {
-          top: 260px;
-          left: 140px;
-        }
-
-        &.tracy {
-          top: 125px;
-          left: 60px;
-        }
-
-        &.turlock {
-          top: 130px;
-          left: 60px;
-        }
-
-        &.tustin {
-          top: 260px;
-          left: 155px;
-        }
-
-        &.union-city {
-          top: 125px;
-          left: 35px;
-        }
-
-        &.vacaville {
-          top: 100px;
-          left: 40px;
-        }
-
-        &.vallejo {
-          top: 110px;
-          left: 30px;
-        }
-
-        &.ventura {
-          top: 234px;
-          left: 105px;
-        }
-
-        &.visalia {
-          top: 170px;
-          left: 110px;
-        }
-
-        &.walnut-creek {
-          top: 122px;
-          left: 33px;
-        }
-
-        &.west-covina {
-          top: 250px;
-          left: 148px;
-        }
-
-        &.westminster {
-          top: 265px;
-          left: 150px;
-        }
-
-        &.whittier {
-          top: 265px;
-          left: 150px;
-        }
-      }
-
-      &:hover .map-marker {
-        opacity: 0.20;
-      }
     }
   }
   .right {
@@ -2149,7 +1639,8 @@ text.highcharts-credits {
 }
 
 svg.highcharts-root path.highcharts-point {
-  stroke: #cedbe8;
+  stroke: #DDDDDD;
+  stroke-width: 0.35px;
 }
 
 .highcharts-map-series path {
@@ -2161,49 +1652,33 @@ svg.highcharts-root path.highcharts-point {
   &.highcharts-color-3,
   &.highcharts-color-4,
   &.highcharts-color-5 {
-    fill: #f4f8fd;
+    fill: #F7F7F7;
   }
 
+  &.highcharts-color-1.active,
   &.highcharts-color-1:hover {
     fill: $grade-red;
     stroke: $grade-red;
   }
+  &.highcharts-color-2.active,
   &.highcharts-color-2:hover {
     fill: $grade-orange;
     stroke: $grade-orange;
   }
+  &.highcharts-color-3.active,
   &.highcharts-color-3:hover {
     fill: $grade-yellow;
     stroke: $grade-yellow;
   }
+  &.highcharts-color-4.active,
   &.highcharts-color-4:hover {
     fill: $grade-green;
     stroke: $grade-green;
   }
+  &.highcharts-color-5.active,
   &.highcharts-color-5:hover {
     fill: $grade-light-green;
     stroke: $grade-light-green;
-  }
-}
-
-.highcharts-mappoint-series path {
-  fill: #277feb;
-  transition: fill 0.25s;
-
-  &.highcharts-color-1:hover {
-    fill: $grade-red;
-  }
-  &.highcharts-color-2:hover {
-    fill: $grade-orange;
-  }
-  &.highcharts-color-3:hover {
-    fill: $grade-yellow;
-  }
-  &.highcharts-color-4:hover {
-    fill: $grade-green;
-  }
-  &.highcharts-color-5:hover {
-    fill: $grade-light-green;
   }
 }
 
@@ -2371,7 +1846,7 @@ svg.highcharts-root path.highcharts-point {
 
         .stat-wrapper {
           &:last-child {
-            border-bottom: 2px solid rgba(0, 0, 0, 0.05);
+            // border-bottom: 2px solid rgba(0, 0, 0, 0.05);
           }
         }
       }

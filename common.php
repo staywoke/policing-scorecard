@@ -682,9 +682,45 @@ function getMapKey($loc) {
   return $keys[$loc];
 }
 
+function getMapLocation($type, $loc) {
+  if ($type === 'city') {
+    $data = getCityData($loc);
+  } else if ($type === 'sheriff') {
+    $data = getSheriffData($loc);
+  }
+
+  $loc_data = getMapKey($loc);
+
+  $map_data = array(
+    'type' => $type,
+    'name' => ($type === 'city') ? 'Police Department' : 'Sheriff Department',
+    'data' => array(),
+    'icon' => getGradeIcon($data['overall_score'])
+  );
+
+  $map_data['data'][] = array(
+      'className' => 'location-' . $loc,
+      'colorIndex' => getColorIndex($data['overall_score']),
+      'name' => $data['agency_name'],
+      'lat' => $loc_data['latitude'],
+      'lon' => $loc_data['longitude'],
+      'value' => intval($data['overall_score']
+    )
+  );
+
+  return json_encode($map_data, JSON_PRETTY_PRINT);
+}
+
 function getMapData($type) {
   $grades = reportCard($type);
   $map_data = array();
+  $map_scores = array(
+    array(),
+    array(),
+    array(),
+    array(),
+    array()
+  );
 
   foreach ($grades as $grade) {
     $loc = preg_replace('/[^A-Za-z ]/', '', strtolower($grade['agency_name']));
@@ -692,7 +728,8 @@ function getMapData($type) {
     $data = getMapKey($loc);
 
     if ($type === 'data' && !empty($data['latitude']) && !empty($data['longitude'])) {
-      $map_data[] = array(
+      $index = getColorIndex($grade['overall_score']);
+      $map_scores[$index-1][] = array(
         'className' => 'location-' . $loc,
         'colorIndex' => getColorIndex($grade['overall_score']),
         'name' => $grade['agency_name'],
@@ -711,7 +748,7 @@ function getMapData($type) {
     }
   }
 
-  return json_encode($map_data, JSON_PRETTY_PRINT);
+  return ($type === 'data') ? json_encode($map_scores, JSON_PRETTY_PRINT) : json_encode($map_data, JSON_PRETTY_PRINT);
 }
 
 /**
@@ -732,6 +769,43 @@ function getColorIndex($score) {
     return 4;
   } elseif ($score >= 90) {
     return 5;
+  }
+}
+
+/**
+ * Get Map Grade Icon
+ * @param  {String} $score Percent Score
+ * @return {String}
+ */
+function getGradeIcon($score) {
+  $score = intval($score);
+
+  if ($score <= 59) {
+    return 'url(assets/img/police-marker-f-active.svg)';
+  } elseif ($score <= 62 && $score >= 60) {
+    return 'url(assets/img/police-marker-d-minus-active.svg)';
+  } elseif ($score <= 66 && $score >= 63) {
+    return 'url(assets/img/police-marker-d-active.svg)';
+  } elseif ($score <= 69 && $score >= 67) {
+    return 'url(assets/img/police-marker-d-plus-active.svg)';
+  } elseif ($score <= 72 && $score >= 70) {
+    return 'url(assets/img/police-marker-c-minus-active.svg)';
+  } elseif ($score <= 76 && $score >= 73) {
+    return 'url(assets/img/police-marker-c-active.svg)';
+  } elseif ($score <= 79 && $score >= 77) {
+    return 'url(assets/img/police-marker-c-plus-active.svg)';
+  } elseif ($score <= 82 && $score >= 80) {
+    return 'url(assets/img/police-marker-b-minus-active.svg)';
+  } elseif ($score <= 86 && $score >= 83) {
+    return 'url(assets/img/police-marker-b-active.svg)';
+  } elseif ($score <= 89 && $score >= 87) {
+    return 'url(assets/img/police-marker-b-plus-active.svg)';
+  } elseif ($score <= 92 && $score >= 90) {
+    return 'url(assets/img/police-marker-a-minus-active.svg)';
+  } elseif ($score <= 97 && $score >= 93) {
+    return 'url(assets/img/police-marker-a-active.svg)';
+  } elseif ($score >= 98) {
+    return 'url(assets/img/police-marker-a-plus-active.svg)';
   }
 }
 
@@ -777,6 +851,10 @@ function getGrade($score) {
  * @return {Array}
  */
 function reportCard($type = 'data') {
+  if ($type === 'city') {
+    $type = 'data';
+  }
+
   $file = @file_get_contents("data/json/_{$type}_grades.json");
   if (!$file) throw new Exception("Unable to Load {$city}");
 

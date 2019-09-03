@@ -1,14 +1,16 @@
+var SCORECARD_MAP;
 var SCORECARD = (function () {
   var $mapLayer = document.getElementById('map-layer');
   var $menu = document.getElementById('menu');
   var $menuToggle = document.getElementById('mobile-toggle');
   var $modal = document.getElementById('modal-wrapper');
+  var $modalTabs = document.getElementById('modal-header-tabs');
   var $modalClose = document.getElementById('modal-close');
   var $modalContent = document.getElementById('modal-content');
   var $modalLabel = document.getElementById('modal-label');
   var $modalOverlay = document.getElementById('overlay');
   var scoreCard = document.getElementById('score-card');
-  var scoreLocation = document.getElementById('score-location');
+  var $scoreLocation = document.getElementById('score-location');
   var $selectedCity = document.getElementsByClassName('selected-city');
   var $showLess = document.getElementById('show-less');
   var $showMore = document.getElementById('show-more');
@@ -20,6 +22,22 @@ var SCORECARD = (function () {
   var $toggleAnimate = document.getElementById('toggle-animate');
   var $showPolice = document.getElementById('show-police');
   var $showSheriff = document.getElementById('show-sheriff');
+
+  // Handle Mouse Clicks for Map
+  var leftMouseClicked = false;
+
+  // Support Mouse Interaction with Mouse Pointer ( Touch events would not work on this map due to close proximity of markers )
+  document.body.onmousedown = function(e) {
+    if (!e) { return; }
+
+    // Track if we have a left mouse key down
+    leftMouseClicked = (typeof e.buttons === 'undefined') ? e.which === 1 : e.buttons === 1;
+  };
+
+  // Clear Mouse Down, but leave it on long enough for Map click event to check it's value
+  document.body.onmouseup = function(){ setTimeout(function(){
+    leftMouseClicked = false;
+  }, 100) };
 
   // Debounce Scroll Animations
   var debounce = false;
@@ -85,12 +103,14 @@ var SCORECARD = (function () {
     $mapLayer.addEventListener('click', function() {
       $modalLabel.innerHTML = 'Select a Department';
       $modal.classList.toggle('open');
+      $modalTabs.style.display = 'block';
       $selectedCity[0].scrollIntoView();
     });
 
-    scoreLocation.addEventListener('click', function() {
+    $scoreLocation.addEventListener('click', function() {
       $modalLabel.innerHTML = 'Select a Department';
       $modal.classList.toggle('open');
+      $modalTabs.style.display = 'block';
       $selectedCity[0].scrollIntoView();
     });
 
@@ -109,7 +129,7 @@ var SCORECARD = (function () {
       $citySelect.classList.add('city');
       $citySelect.classList.remove('sheriff');
 
-      $modalContent.scrollTop = 0;
+      $citySelect.scrollTop = 0;
     });
 
     $showSheriff.addEventListener('click', function() {
@@ -119,7 +139,7 @@ var SCORECARD = (function () {
       $citySelect.classList.add('sheriff');
       $citySelect.classList.remove('city');
 
-      $modalContent.scrollTop = 0;
+      $citySelect.scrollTop = 0;
     });
   }
 
@@ -162,6 +182,7 @@ var SCORECARD = (function () {
 
   function loadMoreInfo(city, prop) {
     $modalLabel.innerHTML = '';
+    $modalTabs.style.display = 'none';
 
     var request = new XMLHttpRequest();
     var file = 'data/json/' + city + '.json';
@@ -224,9 +245,10 @@ var SCORECARD = (function () {
 
   function loadResultsInfo(city, prop) {
     $modalLabel.innerHTML = '';
+    $modalTabs.style.display = 'none';
 
     var request = new XMLHttpRequest();
-    var file = 'data/json/' + city + '.json';
+    var file = 'data/json/data-' + city + '.json';
     request.open('GET', file, true);
     request.onload = function() {
       if (request.status >= 200 && request.status < 400) {
@@ -324,9 +346,11 @@ var SCORECARD = (function () {
 
   function loadMap(){
     // Create the chart
-    Highcharts.mapChart('state-map', {
+    window.SCORECARD_MAP = Highcharts.mapChart('state-map', {
       chart: {
+        animation: false,
         backgroundColor: 'transparent',
+        borderWidth: 0,
         margin: 0,
         zoomType: false,
         styleMode: true
@@ -357,41 +381,249 @@ var SCORECARD = (function () {
       },
       plotOptions: {
         map: {
+          animation: false,
           allAreas: false,
           mapData: Highcharts.maps['countries/us/us-ca-all'],
         },
         series: {
+          animation: false
+        }
+      },
+      series: [
+        {
+          animation: false,
+          allAreas: true,
+          showInLegend: true
+        },
+        {
+          animation: false,
+          data: map_data.sheriff,
+          name: 'Sheriff Department',
+          events: {
+            click: function (e) {
+              var loc = (typeof e.point.className !== 'undefined') ? e.point.className.replace('location-', '') : null;
+
+              if (loc && leftMouseClicked) {
+                window.location = '?sheriff=' + loc;
+                e.preventDefault();
+                e.stopImmediatePropagation();
+              }
+            }
+          }
+        },
+        {
+          animation: false,
+          type: 'mappoint',
+          name: 'Police Department',
+          data: map_data.city[0],
+          marker: {
+            width: 12,
+            height: 12,
+            fillColor: '',
+            symbol: 'url(assets/img/police-marker-f.svg)'
+          },
           dataLabels: {
             formatter: function () {
               return '';
             }
           },
-          marker: {
-            width: 0,
-            height: 0,
-            radius: 2,
-            fillColor: '#000',
-            lineWidth: 0,
-            lineColor: null
+          events: {
+            click: function (e) {
+              var loc = (typeof e.point.className !== 'undefined') ? e.point.className.replace('location-', '') : null;
+
+              if (loc && leftMouseClicked) {
+                window.location = '?city=' + loc
+                e.preventDefault();
+                e.stopImmediatePropagation();
+              }
+            }
           }
-        }
-      },
-      series: [
-        {
-          allAreas: true,
-          showInLegend: true
         },
         {
-          data: map_data.sheriff,
-          name: 'Sheriff Department'
-        },
-        {
+          animation: false,
           type: 'mappoint',
           name: 'Police Department',
-          data: map_data.city
+          data: map_data.city[1],
+          marker: {
+            width: 12,
+            height: 12,
+            fillColor: '',
+            symbol: 'url(assets/img/police-marker-d.svg)'
+          },
+          dataLabels: {
+            formatter: function () {
+              return '';
+            }
+          },
+          events: {
+            click: function (e) {
+              var loc = (typeof e.point.className !== 'undefined') ? e.point.className.replace('location-', '') : null;
+
+              if (loc && leftMouseClicked) {
+                window.location = '?city=' + loc
+                e.preventDefault();
+                e.stopImmediatePropagation();
+              }
+            }
+          }
+        },
+        {
+          animation: false,
+          type: 'mappoint',
+          name: 'Police Department',
+          data: map_data.city[2],
+          marker: {
+            width: 12,
+            height: 12,
+            fillColor: '',
+            symbol: 'url(assets/img/police-marker-c.svg)'
+          },
+          dataLabels: {
+            formatter: function () {
+              return '';
+            }
+          },
+          events: {
+            click: function (e) {
+              var loc = (typeof e.point.className !== 'undefined') ? e.point.className.replace('location-', '') : null;
+
+              if (loc && leftMouseClicked) {
+                window.location = '?city=' + loc
+                e.preventDefault();
+                e.stopImmediatePropagation();
+              }
+            }
+          }
+        },
+        {
+          animation: false,
+          type: 'mappoint',
+          name: 'Police Department',
+          data: map_data.city[3],
+          marker: {
+            width: 12,
+            height: 12,
+            fillColor: '',
+            symbol: 'url(assets/img/police-marker-b.svg)'
+          },
+          dataLabels: {
+            formatter: function () {
+              return '';
+            }
+          },
+          events: {
+            click: function (e) {
+              var loc = (typeof e.point.className !== 'undefined') ? e.point.className.replace('location-', '') : null;
+
+              if (loc && leftMouseClicked) {
+                window.location = '?city=' + loc
+                e.preventDefault();
+                e.stopImmediatePropagation();
+              }
+            }
+          }
+        },
+        {
+          animation: false,
+          type: 'mappoint',
+          name: 'Police Department',
+          data: map_data.city[4],
+          marker: {
+            width: 12,
+            height: 12,
+            symbol: 'url(assets/img/police-marker-a.svg)'
+          },
+          dataLabels: {
+            formatter: function () {
+              return '';
+            }
+          },
+          events: {
+            click: function (e) {
+              var loc = (typeof e.point.className !== 'undefined') ? e.point.className.replace('location-', '') : null;
+
+              if (loc && leftMouseClicked) {
+                window.location = '?city=' + loc
+                e.preventDefault();
+                e.stopImmediatePropagation();
+              }
+            }
+          }
         }
       ]
     });
+
+    if (map_data.selected.type === 'city') {
+      window.SCORECARD_MAP.addSeries({
+        id: 'current',
+        type: 'mappoint',
+        name: map_data.selected.name,
+        data: map_data.selected.data,
+        marker: {
+          width: 30,
+          height: 30,
+          symbol: map_data.selected.icon
+        },
+        dataLabels: {
+          style: {
+            fontSize: '24px',
+          },
+          x: 100,
+          y: 100,
+          formatter: function () {
+            return map_data.selected.name;
+          }
+        }
+      }, true);
+
+      var current = window.SCORECARD_MAP.get('current');
+
+      function animateMarker(current, size, step) {
+        var maxSize = 44;
+        var minSize = 30;
+        var newStep = step;
+        var stepSize = 1;
+        var direction = (step === 0 || step === 2 || step === 4) ? 'up' : 'down';
+
+        if (direction === 'up' && size === maxSize) {
+          direction = 'down';
+          newStep++;
+        } else if (direction === 'down' && size === minSize) {
+          direction = 'up';
+          newStep++;
+        }
+
+        if (newStep === 6) {
+          return;
+        }
+
+        var newSize = (direction === 'up') ? (size + stepSize) : (size - stepSize)
+
+        current.update({ marker: { width: newSize, height: newSize }});
+
+        window.requestAnimationFrame(function () {
+          animateMarker(current, newSize, newStep);
+        });
+      }
+
+      setTimeout(function(){
+        animateMarker(current, 30, 0);
+      }, 250);
+    }
+
+    var type = document.getElementById('state-map').classList[0];
+    var loc = document.getElementById('state-map').classList[1];
+    var elm;
+
+    if (type === 'city') {
+      elm = document.querySelector('.highcharts-mappoint-series .location-' + loc).classList.add('active')
+    } else if (type === 'sheriff') {
+      elm = document.querySelector('.highcharts-map-series .location-' + loc);
+    }
+
+    if (elm) {
+      elm.classList.add('active')
+    }
   }
 
   // Click Event for More Info

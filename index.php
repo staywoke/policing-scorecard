@@ -121,8 +121,7 @@ if (empty($sheriff)) {
           </div>
           <div class="left">
             <div class="map" id="map-layer">
-              <div id="state-map"></div>
-              <div class="map-marker <?= $marker ?>"></div>
+              <div id="state-map" class="<?= $link ?> <?= $marker ?>"></div>
             </div>
           </div>
           <div class="clear">&nbsp;</div>
@@ -936,7 +935,7 @@ if (empty($sheriff)) {
 
     <div id="modal-wrapper">
       <div class="modal">
-        <div class="modal-header">
+        <div id="modal-header-tabs">
           <a href="javascript:void(0)" id="modal-close">✖</a>
           <a href="javascript:void(0)" class="show-button<?= $link === 'city' ? ' active' : '' ?>" id="show-police">Police</a>
           <a href="javascript:void(0)" class="show-button<?= $link === 'sheriff' ? ' active' : '' ?>" id="show-sheriff">Sheriffs</a>
@@ -1100,7 +1099,8 @@ if (empty($sheriff)) {
     <script>
     var map_data = {
       city: <?= getMapData('data') ?>,
-      sheriff: <?= getMapData('sheriff') ?>
+      sheriff: <?= getMapData('sheriff') ?>,
+      selected: <?= getMapLocation($link, $marker) ?>
     };
     </script>
     <script src="assets/js/plugins.js<?= trim($ac) ?>"></script>
@@ -1168,6 +1168,12 @@ if (empty($sheriff)) {
       setTimeout(SCORECARD.animate, 250);
     };
     </script>
+  <?php else: ?>
+  <script>
+    window.onload = function() {
+      SCORECARD.loadMap();
+    };
+  </script>
   <?php endif; ?>
 
   <!-- Global site tag (gtag.js) - Google Analytics -->
