@@ -714,7 +714,7 @@ if (empty($sheriff)) {
               <a href="javascript:void(0)" data-city="<?= $city ?>" data-more-info="" class="more-info"></a>
               <h3>People Transferred to ICE in 2018</h3>
 
-              <p><?= num(round(intval(str_replace(',', '', $data['total_ice_transfers'])))) ?> people were transferred to immigration authorities</p>
+              <p><?= num(round(intval(str_replace(',', '', $data['total_ice_transfers'])))) ?> people were transferred to ICE</p>
 
               <p class="keys">
                 <span class="key key-red"></span> Violent Crime
