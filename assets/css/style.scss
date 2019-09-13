@@ -1644,23 +1644,6 @@ svg.highcharts-root path.highcharts-point {
   stroke-width: 0.35px;
 }
 
-.highcharts-mappoint-series {
-  image {
-    opacity: 0.5;
-    transition: opacity 0.25s;
-  }
-
-  image:hover {
-    opacity: 1;
-  }
-
-  &.highcharts-series-7 {
-    image {
-      opacity: 1;
-    }
-  }
-}
-
 .highcharts-map-series path {
   fill: #FFF;
   transition: fill 0.25s;
@@ -1676,44 +1659,49 @@ svg.highcharts-root path.highcharts-point {
 
   &.highcharts-color-1:hover {
     fill: $grade-red;
+    stroke: $grade-red;
   }
   &.highcharts-color-2:hover {
     fill: $grade-orange;
+    stroke: $grade-orange;
   }
   &.highcharts-color-3:hover {
     fill: $grade-yellow;
+    stroke: $grade-yellow;
   }
   &.highcharts-color-4:hover {
     fill: $grade-green;
+    stroke: $grade-green;
   }
   &.highcharts-color-5:hover {
     fill: $grade-light-green;
+    stroke: $grade-light-green;
   }
 
   &.highcharts-color-1.active,
   &.highcharts-color-1.active:hover {
     fill: $grade-red;
-    filter: url(#drop-shadow);
+    stroke: $grade-red;
   }
   &.highcharts-color-2.active,
   &.highcharts-color-2.active:hover {
     fill: $grade-orange;
-    filter: url(#drop-shadow);
+    stroke: $grade-orange;
   }
   &.highcharts-color-3.active,
   &.highcharts-color-3.active:hover {
     fill: $grade-yellow;
-    filter: url(#drop-shadow);
+    stroke: $grade-yellow;
   }
   &.highcharts-color-4.active,
   &.highcharts-color-4.active:hover {
     fill: $grade-green;
-    filter: url(#drop-shadow);
+    stroke: $grade-green;
   }
   &.highcharts-color-5.active,
   &.highcharts-color-5.active:hover {
     fill: $grade-light-green;
-    filter: url(#drop-shadow);
+    stroke: $grade-light-green;
   }
 }
 
