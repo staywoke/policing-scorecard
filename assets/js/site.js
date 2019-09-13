@@ -184,8 +184,9 @@ var SCORECARD = (function () {
     $modalLabel.innerHTML = '';
     $modalTabs.style.display = 'none';
 
+    var path = (window.location.search.indexOf('sheriff') !== -1) ? 'data/json/sheriff-' : 'data/json/data-';
     var request = new XMLHttpRequest();
-    var file = 'data/json/' + city + '.json';
+    var file = path + city + '.json';
     request.open('GET', file, true);
     request.onload = function() {
       if (request.status >= 200 && request.status < 400) {
@@ -247,8 +248,9 @@ var SCORECARD = (function () {
     $modalLabel.innerHTML = '';
     $modalTabs.style.display = 'none';
 
+    var path = (window.location.search.indexOf('sheriff') !== -1) ? 'data/json/sheriff-' : 'data/json/data-';
     var request = new XMLHttpRequest();
-    var file = 'data/json/data-' + city + '.json';
+    var file = path + city + '.json';
     request.open('GET', file, true);
     request.onload = function() {
       if (request.status >= 200 && request.status < 400) {

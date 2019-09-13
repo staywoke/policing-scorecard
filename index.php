@@ -121,6 +121,7 @@ if (empty($sheriff)) {
           </div>
           <div class="left">
             <div class="map" id="map-layer">
+              <svg style="position: absolute; left: -10000px; top: -10000px;"><defs><filter id="drop-shadow"><feOffset dx='0' dy='0'/><feGaussianBlur stdDeviation='3' result='offset-blur'/><feComposite operator='out' in='SourceGraphic' in2='offset-blur' result='inverse'/><feFlood flood-color='black' flood-opacity='0.75' result='color'/><feComposite operator='in' in='color' in2='inverse' result='shadow'/><feComposite operator='over' in='shadow' in2='SourceGraphic'/></filter></defs></svg>
               <div id="state-map" class="<?= $link ?> <?= $marker ?>"></div>
             </div>
           </div>
@@ -135,7 +136,7 @@ if (empty($sheriff)) {
               <a href="javascript:void(0);" id="score-location"><?= $data['agency_name'] ?></a>
             </div>
           </div>
-          <div class="right v-center view-score" onclick="SCORECARD.loadResultsInfo('<?= $city ?>')">
+          <div class="right v-center view-score" onclick="SCORECARD.loadResultsInfo('<?= $marker ?>')">
             <span class="label">Overall Grade:</span>
             <span class="grade"><?= $grade ?></span>
           </div>
@@ -185,12 +186,12 @@ if (empty($sheriff)) {
           <strong class="grade grade-<?= strtolower(preg_replace('/[^A-Z]/', '', getGrade($data['police_violence_score']))) ?>"><span>Grade: </span><?= getGrade($data['police_violence_score']) ?></strong>
           <span class="divider">&nbsp;|&nbsp;</span>
           <?= num($data['police_violence_score'], 0, '%') ?>
-          <a href="javascript:void(0)" class="results-info" data-city="<?= $city ?>" data-result-info="police-violence">?</a>
+          <a href="javascript:void(0)" class="results-info" data-city="<?= $marker ?>" data-result-info="police-violence">?</a>
         </div>
         <div class="content">
           <div class="left">
             <div class="stat-wrapper">
-              <a href="javascript:void(0)" data-city="<?= $city ?>" data-more-info="" class="more-info"></a>
+              <a href="javascript:void(0)" data-city="<?= $marker ?>" data-more-info="" class="more-info"></a>
               <h3>Less-Lethal Force</h3>
               <p>Using batons, strangleholds, tasers &amp; other weapons</p>
               <p><?= output($data['use_of_less_lethal_force']) ?> Uses of Force <span class="divider">&nbsp;|&nbsp;</span> <?= output($data['less_lethal_force_per_arrest']) ?> uses every 10k arrests</p>
@@ -209,7 +210,7 @@ if (empty($sheriff)) {
             </div>
 
             <div class="stat-wrapper">
-              <a href="javascript:void(0)" data-city="<?= $city ?>" data-more-info="" class="more-info"></a>
+              <a href="javascript:void(0)" data-city="<?= $marker ?>" data-more-info="" class="more-info"></a>
               <h3>Deadly Force</h3>
               <p><?= output($data['police_shootings_incidents']) ?> Shootings + <?= intval(output($data['deadly_force_incidents'])) - intval(output($data['police_shootings_incidents'])) ?> other deaths or serious injuries</p>
               <?php if(output($data['deadly_force_incidents']) === '0'): ?>
@@ -235,7 +236,7 @@ if (empty($sheriff)) {
 
             <?php if(output($data['police_shootings_incidents']) !== '0' && num($data['percent_shot_first'], 0, '%') !== 'N/A'): ?>
             <div class="stat-wrapper">
-              <a href="javascript:void(0)" data-city="<?= $city ?>" data-more-info="" class="more-info"></a>
+              <a href="javascript:void(0)" data-city="<?= $marker ?>" data-more-info="" class="more-info"></a>
               <h3>Police Shootings Where Police Did Not Attempt Non-Lethal Force Before Shooting</h3>
               <p><?= num($data['percent_shot_first'], 0, '%') ?> of Shootings (<?= $data['shot_first'] ?>/<?= $data['police_shootings_incidents'] ?>)</p>
               <?php if(!isset($data['percent_shot_first']) || (isset($data['percent_shot_first']) && empty($data['percent_shot_first']))): ?>
@@ -254,7 +255,7 @@ if (empty($sheriff)) {
 
             <?php if(output($data['deadly_force_incidents']) !== '0' && num($data['percent_police_misperceive_the_person_to_have_gun'], 0, '%') !== 'N/A'): ?>
             <div class="stat-wrapper">
-              <a href="javascript:void(0)" data-city="<?= $city ?>" data-more-info="" class="more-info"></a>
+              <a href="javascript:void(0)" data-city="<?= $marker ?>" data-more-info="" class="more-info"></a>
               <h3>Where Police say they saw a gun but no gun was found</h3>
               <p><?= num($data['percent_police_misperceive_the_person_to_have_gun'], 0, '%') ?> of Guns "Perceived" were Never Found (<?= output(round(floatval($data['people_perceived_to_have_gun'])) - round(floatval($data['people_found_to_have_gun']))) ?>/<?= num($data['people_perceived_to_have_gun']) ?>)</p>
               <?php if(!isset($data['percent_police_misperceive_the_person_to_have_gun']) || (isset($data['percent_police_misperceive_the_person_to_have_gun']) && empty($data['percent_police_misperceive_the_person_to_have_gun']))): ?>
@@ -275,7 +276,7 @@ if (empty($sheriff)) {
           <div class="right">
             <?php if(output($data['deadly_force_incidents']) !== '0'): ?>
             <div class="stat-wrapper">
-              <a href="javascript:void(0)" data-city="<?= $city ?>" data-more-info="" class="more-info"></a>
+              <a href="javascript:void(0)" data-city="<?= $marker ?>" data-more-info="" class="more-info"></a>
               <h3>People Killed or Seriously Injured</h3>
               <p><?= output(round((floatval($data['fatality_rate']) / 100) * intval($data['number_of_people_impacted_by_deadly_force']))) ?> Deaths, <?= intval(num($data['number_of_people_impacted_by_deadly_force'], 0)) - (intval(round((floatval($data['fatality_rate']) / 100) * intval($data['number_of_people_impacted_by_deadly_force'])))) ?> Serious Injuries</p>
               <p><?= num($data['percent_used_against_people_who_were_unarmed'], 0, '%') ?> were Unarmed <span class="divider">&nbsp;|&nbsp;</span> <?= 100 - intval(num($data['percent_used_against_people_who_were_not_armed_with_gun'], 0)) ?>% had a Gun</p>
@@ -291,7 +292,7 @@ if (empty($sheriff)) {
             <?php endif; ?>
 
             <div class="stat-wrapper grouped">
-              <a href="javascript:void(0)" data-city="<?= $city ?>" data-more-info="" class="more-info"></a>
+              <a href="javascript:void(0)" data-city="<?= $marker ?>" data-more-info="" class="more-info"></a>
               <h3>Police Violence by race</h3>
 
               <div class="keys">
@@ -383,30 +384,30 @@ if (empty($sheriff)) {
           <div class="error">City has not adopted the following policies:</div>
           <?php endif; ?>
           <div class="left">
-            <div class="check animate-check <?= $data['requires_deescalation'] === '1' ? 'checked' : 'unchecked' ?> more-info" data-city="<?= $city ?>" data-more-info="policy_language_requires_deescalation">
+            <div class="check animate-check <?= $data['requires_deescalation'] === '1' ? 'checked' : 'unchecked' ?> more-info" data-city="<?= $marker ?>" data-more-info="policy_language_requires_deescalation">
               Requires De-Escalation
             </div>
-            <div class="check animate-check <?= $data['bans_chokeholds_and_strangleholds'] === '1' ? 'checked' : 'unchecked' ?> more-info" data-city="<?= $city ?>" data-more-info="policy_language_bans_chokeholds_and_strangleholds">
+            <div class="check animate-check <?= $data['bans_chokeholds_and_strangleholds'] === '1' ? 'checked' : 'unchecked' ?> more-info" data-city="<?= $marker ?>" data-more-info="policy_language_bans_chokeholds_and_strangleholds">
               Bans Chokeholds / Strangleholds
             </div>
-            <div class="check animate-check <?= $data['duty_to_intervene'] === '1' ? 'checked' : 'unchecked' ?> more-info" data-city="<?= $city ?>" data-more-info="policy_language_duty_to_intervene">
+            <div class="check animate-check <?= $data['duty_to_intervene'] === '1' ? 'checked' : 'unchecked' ?> more-info" data-city="<?= $marker ?>" data-more-info="policy_language_duty_to_intervene">
               Duty to Intervene
             </div>
-            <div class="check animate-check <?= $data['requires_warning_before_shooting'] === '1' ? 'checked' : 'unchecked' ?> more-info" data-city="<?= $city ?>" data-more-info="policy_language_requires_warning_before_shooting">
+            <div class="check animate-check <?= $data['requires_warning_before_shooting'] === '1' ? 'checked' : 'unchecked' ?> more-info" data-city="<?= $marker ?>" data-more-info="policy_language_requires_warning_before_shooting">
               Requires Warning Before Shooting
             </div>
           </div>
           <div class="right">
-            <div class="check animate-check <?= $data['restricts_shooting_at_moving_vehicles'] === '1' ? 'checked' : 'unchecked' ?> more-info" data-city="<?= $city ?>" data-more-info="policy_language_restricts_shooting_at_moving_vehicles">
+            <div class="check animate-check <?= $data['restricts_shooting_at_moving_vehicles'] === '1' ? 'checked' : 'unchecked' ?> more-info" data-city="<?= $marker ?>" data-more-info="policy_language_restricts_shooting_at_moving_vehicles">
               Bans Shooting at Moving Vehicles
             </div>
-            <div class="check animate-check <?= $data['requires_comprehensive_reporting'] === '1' ? 'checked' : 'unchecked' ?> more-info" data-city="<?= $city ?>" data-more-info="policy_language_requires_comprehensive_reporting">
+            <div class="check animate-check <?= $data['requires_comprehensive_reporting'] === '1' ? 'checked' : 'unchecked' ?> more-info" data-city="<?= $marker ?>" data-more-info="policy_language_requires_comprehensive_reporting">
               Requires Comprehensive Reporting
             </div>
-            <div class="check animate-check <?= $data['requires_exhaust_all_other_means_before_shooting'] === '1' ? 'checked' : 'unchecked' ?> more-info" data-city="<?= $city ?>" data-more-info="policy_language_requires_exhaust_all_other_means_before_shooting">
+            <div class="check animate-check <?= $data['requires_exhaust_all_other_means_before_shooting'] === '1' ? 'checked' : 'unchecked' ?> more-info" data-city="<?= $marker ?>" data-more-info="policy_language_requires_exhaust_all_other_means_before_shooting">
               Requires Exhaust Alternatives Before Shooting
             </div>
-            <div class="check animate-check <?= $data['has_use_of_force_continuum'] === '1' ? 'checked' : 'unchecked' ?> more-info" data-city="<?= $city ?>" data-more-info="policy_language_has_use_of_force_continuum">
+            <div class="check animate-check <?= $data['has_use_of_force_continuum'] === '1' ? 'checked' : 'unchecked' ?> more-info" data-city="<?= $marker ?>" data-more-info="policy_language_has_use_of_force_continuum">
               Has Use of Force Continuum
             </div>
           </div>
@@ -421,12 +422,12 @@ if (empty($sheriff)) {
           <strong class="grade grade-<?= strtolower(preg_replace('/[^A-Z]/', '', getGrade($data['police_accountability_score']))) ?>"><span>Grade: </span><?= getGrade($data['police_accountability_score']) ?></strong>
           <span class="divider">&nbsp;|&nbsp;</span>
           <?= num($data['police_accountability_score'], 0, '%') ?>
-          <a href="javascript:void(0)" class="results-info" data-city="<?= $city ?>" data-result-info="police-accountability">?</a>
+          <a href="javascript:void(0)" class="results-info" data-city="<?= $marker ?>" data-result-info="police-accountability">?</a>
         </div>
         <div class="content">
           <div class="left">
             <div class="stat-wrapper">
-              <a href="javascript:void(0)" data-city="<?= $city ?>" data-more-info="" class="more-info"></a>
+              <a href="javascript:void(0)" data-city="<?= $marker ?>" data-more-info="" class="more-info"></a>
               <h3>Total civilian complaints</h3>
               <p><?= output($data['civilian_complaints_reported']) ?> Reported <span class="divider">&nbsp;|&nbsp;</span> <?= num($data['percent_of_civilian_complaints_sustained'], 0, '%') ?> Ruled in Favor of Civilians</p>
               <?php if(!isset($data['percent_of_civilian_complaints_sustained']) || (isset($data['percent_of_civilian_complaints_sustained']) && empty($data['percent_of_civilian_complaints_sustained']))): ?>
@@ -443,7 +444,7 @@ if (empty($sheriff)) {
             </div>
 
             <div class="stat-wrapper">
-              <a href="javascript:void(0)" data-city="<?= $city ?>" data-more-info="" class="more-info"></a>
+              <a href="javascript:void(0)" data-city="<?= $marker ?>" data-more-info="" class="more-info"></a>
               <h3>Use of Force Complaints</h3>
               <?php if (output($data['use_of_force_complaints_reported']) === '0'): ?>
                 <p>0 Complaints Reported</p>
@@ -468,7 +469,7 @@ if (empty($sheriff)) {
           </div>
           <div class="right">
             <div class="stat-wrapper">
-              <a href="javascript:void(0)" data-city="<?= $city ?>" data-more-info="" class="more-info"></a>
+              <a href="javascript:void(0)" data-city="<?= $marker ?>" data-more-info="" class="more-info"></a>
               <h3>Complaints of Police Discrimination</h3>
               <?php if (num($data['discrimination_complaints_reported']) === '0'): ?>
                 <p>0 Complaints Reported</p>
@@ -493,7 +494,7 @@ if (empty($sheriff)) {
             </div>
 
             <div class="stat-wrapper">
-              <a href="javascript:void(0)" data-city="<?= $city ?>" data-more-info="" class="more-info"></a>
+              <a href="javascript:void(0)" data-city="<?= $marker ?>" data-more-info="" class="more-info"></a>
               <h3>Alleged Crimes Committed by Police</h3>
               <?php if (num($data['criminal_complaints_reported']) === '0'): ?>
                 <p>0 Complaints Reported</p>
@@ -528,24 +529,24 @@ if (empty($sheriff)) {
         </div>
         <div class="content">
           <div class="left">
-            <div class="check animate-check <?= $data['disqualifies_complaints'] === '1' ? 'checked-bad' : 'unchecked' ?> more-info" data-city="<?= $city ?>" data-more-info="policy_language_disqualifies_complaints">
+            <div class="check animate-check <?= $data['disqualifies_complaints'] === '1' ? 'checked-bad' : 'unchecked' ?> more-info" data-city="<?= $marker ?>" data-more-info="policy_language_disqualifies_complaints">
               Disqualifies Complaints
             </div>
-            <div class="check animate-check <?= $data['restricts_delays_interrogations'] === '1' ? 'checked-bad' : 'unchecked' ?> more-info" data-city="<?= $city ?>" data-more-info="policy_language_restricts_delays_interrogations">
+            <div class="check animate-check <?= $data['restricts_delays_interrogations'] === '1' ? 'checked-bad' : 'unchecked' ?> more-info" data-city="<?= $marker ?>" data-more-info="policy_language_restricts_delays_interrogations">
               Restricts / Delays Interrogations
             </div>
-            <div class="check animate-check <?= $data['gives_officers_unfair_access_to_information'] === '1' ? 'checked-bad' : 'unchecked' ?> more-info" data-city="<?= $city ?>" data-more-info="policy_language_gives_officers_unfair_access_to_information">
+            <div class="check animate-check <?= $data['gives_officers_unfair_access_to_information'] === '1' ? 'checked-bad' : 'unchecked' ?> more-info" data-city="<?= $marker ?>" data-more-info="policy_language_gives_officers_unfair_access_to_information">
               Gives Officers Unfair Access to Information
             </div>
           </div>
           <div class="right">
-            <div class="check animate-check <?= $data['limits_oversight_discipline'] === '1' ? 'checked-bad' : 'unchecked' ?> more-info" data-city="<?= $city ?>" data-more-info="policy_language_limits_oversight_discipline">
+            <div class="check animate-check <?= $data['limits_oversight_discipline'] === '1' ? 'checked-bad' : 'unchecked' ?> more-info" data-city="<?= $marker ?>" data-more-info="policy_language_limits_oversight_discipline">
               Limits Oversight / Discipline
             </div>
-            <div class="check animate-check <?= $data['requires_city_pay_for_misconduct'] === '1' ? 'checked-bad' : 'unchecked' ?> more-info" data-city="<?= $city ?>" data-more-info="policy_language_requires_city_pay_for_misconduct">
+            <div class="check animate-check <?= $data['requires_city_pay_for_misconduct'] === '1' ? 'checked-bad' : 'unchecked' ?> more-info" data-city="<?= $marker ?>" data-more-info="policy_language_requires_city_pay_for_misconduct">
               Requires City Pay for Misconduct
             </div>
-            <div class="check animate-check <?= $data['erases_misconduct_records'] === '1' ? 'checked-bad' : 'unchecked' ?> more-info" data-city="<?= $city ?>" data-more-info="policy_language_erases_misconduct_records">
+            <div class="check animate-check <?= $data['erases_misconduct_records'] === '1' ? 'checked-bad' : 'unchecked' ?> more-info" data-city="<?= $marker ?>" data-more-info="policy_language_erases_misconduct_records">
               Erases Misconduct Records
             </div>
           </div>
@@ -560,12 +561,12 @@ if (empty($sheriff)) {
           <strong class="grade grade-<?= strtolower(preg_replace('/[^A-Z]/', '', getGrade($data['approach_to_policing_score']))) ?>"><span>Grade: </span><?= getGrade($data['approach_to_policing_score']) ?></strong>
           <span class="divider">&nbsp;|&nbsp;</span>
           <?= num($data['approach_to_policing_score'], 0, '%') ?>
-          <a href="javascript:void(0)" class="results-info" data-city="<?= $city ?>" data-result-info="approach">?</a>
+          <a href="javascript:void(0)" class="results-info" data-city="<?= $marker ?>" data-result-info="approach">?</a>
         </div>
         <div class="content">
           <div class="left">
             <div class="stat-wrapper no-border-mobile">
-              <a href="javascript:void(0)" data-city="<?= $city ?>" data-more-info="" class="more-info"></a>
+              <a href="javascript:void(0)" data-city="<?= $marker ?>" data-more-info="" class="more-info"></a>
               <h3>Arrests for Low Level Offenses</h3>
               <p><?= num(round(intval(str_replace(',', '', $data['total_arrests'])) * (intval($data['percent_misdemeanor_arrests']) / 100))) ?> Misdemeanor Arrests <span class="divider">&nbsp;|&nbsp;</span> <?= output($data['misdemeanor_arrests_per_population']) ?> per 1k residents</p>
               <?php if(!isset($data['percent_of_misdemeanor_arrests_per_population']) || (isset($data['percent_of_misdemeanor_arrests_per_population']) && empty($data['percent_of_misdemeanor_arrests_per_population']))): ?>
@@ -582,7 +583,7 @@ if (empty($sheriff)) {
             </div>
 
             <div class="stat-wrapper grouped">
-              <a href="javascript:void(0)" data-city="<?= $city ?>" data-more-info="" class="more-info"></a>
+              <a href="javascript:void(0)" data-city="<?= $marker ?>" data-more-info="" class="more-info"></a>
               <h3 class="minor-pad">Percent of Total Arrests in 2016</h3>
 
               <p>All Misdemeanors ( <?= num($data['percent_misdemeanor_arrests'], 0, '%') ?> )</p>
@@ -604,7 +605,7 @@ if (empty($sheriff)) {
 
           <div class="right">
             <div class="stat-wrapper no-border-mobile">
-              <a href="javascript:void(0)" data-city="<?= $city ?>" data-more-info="" class="more-info"></a>
+              <a href="javascript:void(0)" data-city="<?= $marker ?>" data-more-info="" class="more-info"></a>
               <h3>Homicides Unsolved</h3>
               <p><?= output($data['murders']) ?> Homicides from 2013-17 <span class="divider">&nbsp;|&nbsp;</span> <?= (intval(str_replace(',', '', $data['murders'])) - intval(str_replace(',', '', $data['murders_cleared']))) ?> Unsolved</p>
               <?php if(intval($data['murders']) === 0): ?>
@@ -626,7 +627,7 @@ if (empty($sheriff)) {
 
             <?php if(isset($data['black_murder_unsolved_rate']) || isset($data['hispanic_murder_unsolved_rate']) || isset($data['white_murder_unsolved_rate'])): ?>
             <div class="stat-wrapper grouped">
-              <a href="javascript:void(0)" data-city="<?= $city ?>" data-more-info="" class="more-info"></a>
+              <a href="javascript:void(0)" data-city="<?= $marker ?>" data-more-info="" class="more-info"></a>
               <h3>Percent of Homicides Unsolved After 5 Months by Race</h3>
 
               <?php if(isset($data['black_murder_unsolved_rate']) && !empty($data['black_murder_unsolved_rate'])): ?>
@@ -680,7 +681,7 @@ if (empty($sheriff)) {
           <div class="right">
           <?php if(num(round(intval(str_replace(',', '', $data['total_jail_deaths_2016_2017'])))) !== 'N/A'): ?>
             <div class="stat-wrapper">
-              <a href="javascript:void(0)" data-city="<?= $city ?>" data-more-info="" class="more-info"></a>
+              <a href="javascript:void(0)" data-city="<?= $marker ?>" data-more-info="" class="more-info"></a>
               <h3>Deaths in Jail</h3>
 
               <p><?= num(round(intval(str_replace(',', '', $data['total_jail_deaths_2016_2017'])))) ?> Deaths <span class="divider">&nbsp;|&nbsp;</span> <?= output($data['jail_deaths_per_1000_jail_population']) ?> per 1k residents</p>
@@ -711,7 +712,7 @@ if (empty($sheriff)) {
 
             <?php if(isset($data['total_ice_transfers']) && isset($data['percent_violent_transfers']) && isset($data['percent_drug_transfers']) && isset($data['percent_other_transfers'])): ?>
             <div class="stat-wrapper">
-              <a href="javascript:void(0)" data-city="<?= $city ?>" data-more-info="" class="more-info"></a>
+              <a href="javascript:void(0)" data-city="<?= $marker ?>" data-more-info="" class="more-info"></a>
               <h3>People Transferred to ICE in 2018</h3>
 
               <p><?= num(round(intval(str_replace(',', '', $data['total_ice_transfers'])))) ?> people were transferred to ICE</p>
