@@ -121,6 +121,19 @@ if (empty($sheriff)) {
           </div>
           <div class="left">
             <div class="map" id="map-layer">
+              <svg style="position: absolute; left: -10000px; top: -10000px;">
+                <defs>
+                  <filter id="drop-shadow">
+                    <feOffset dx='0' dy='0'/>
+                    <feGaussianBlur stdDeviation='2' result='offset-blur'/>
+                    <feComposite operator='out' in='SourceGraphic' in2='offset-blur' result='inverse'/>
+                    <feFlood flood-color='black' flood-opacity='1' result='color'/>
+                    <feComposite operator='in' in='color' in2='inverse' result='shadow'/>
+                    <feComposite operator='over' in='shadow' in2='SourceGraphic'/>
+                  </filter>
+                </defs>
+              </svg>
+
               <div id="state-map" class="<?= $link ?> <?= $marker ?>"></div>
             </div>
           </div>

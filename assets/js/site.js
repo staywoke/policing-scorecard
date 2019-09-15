@@ -264,6 +264,8 @@ var SCORECARD = (function () {
           var class_f = (data.percent_criminal_complaints_sustained && data.percent_of_complaints_sustained.replace('%', '') !== '0') ? 'key percent-' + parseInt(data.percent_criminal_complaints_sustained.replace('%', '')) : 'no-complaints';
           var class_g = (data.percent_of_misdemeanor_arrests_per_population) ? 'key percent-' + parseInt(data.percent_of_misdemeanor_arrests_per_population.replace('%', '')) : 'incomplete';
           var class_h = (data.percent_of_murders_solved) ? 'key percent-' + parseInt(data.percent_of_murders_solved.replace('%', '')) : 'incomplete';
+          var class_i = (data.percentile_jail_population_per_1k) ? 'key percent-' + parseInt(data.percentile_jail_population_per_1k.replace('%', '')) : 'incomplete';
+          var class_j = (data.percent_jail_deaths_per_1000_jail_population_table) ? 'key percent-' + parseInt(data.percent_jail_deaths_per_1000_jail_population_table.replace('%', '')) : 'incomplete';
 
           var grade = getGrade(data.overall_score.replace('%', ''));
           var html = '';
@@ -289,6 +291,12 @@ var SCORECARD = (function () {
           html += '<table>';
           html += '<tr class="double ' + class_g + '"><td width="160px">Over-Policing (Misdemeanor Arrest Rate)</td><td width="25px">&nbsp;</td><td width="25px" class="divider">&nbsp;</td><td width="25px">&nbsp;</td><td width="25px">&nbsp;</td></tr>';
           html += '<tr class="' + class_h + '"><td width="160px">Homicides Solved</td><td width="25px">&nbsp;</td><td width="25px" class="divider">&nbsp;</td><td width="25px">&nbsp;</td><td width="25px">&nbsp;</td></tr>';
+
+          if (data.percent_jail_deaths_per_1000_jail_population_table && data.percentile_jail_population_per_1k) {
+            html += '<tr class="' + class_i + '"><td width="160px">Jail Incarceration Rate</td><td width="25px">&nbsp;</td><td width="25px" class="divider">&nbsp;</td><td width="25px">&nbsp;</td><td width="25px">&nbsp;</td></tr>';
+            html += '<tr class="' + class_j + '"><td width="160px">Jail Deaths per 1,000</td><td width="25px">&nbsp;</td><td width="25px" class="divider">&nbsp;</td><td width="25px">&nbsp;</td><td width="25px">&nbsp;</td></tr>';
+          }
+
           html += '</table>';
 
           html += '<div class="summary"><strong>Average from All 3 Sections:&nbsp; ' + data.overall_score + '</strong></div>';
@@ -420,6 +428,23 @@ var SCORECARD = (function () {
     }
 
     if (map_data.selected.type === 'city') {
+      window.SCORECARD_MAP.addSeries({
+        animation: false,
+        data: map_data.sheriff,
+        name: 'Sheriff Department',
+        events: {
+          click: function (e) {
+            var loc = (typeof e.point.className !== 'undefined') ? e.point.className.replace('location-', '') : null;
+
+            if (loc && leftMouseClicked) {
+              window.location = '?sheriff=' + loc;
+              e.preventDefault();
+              e.stopImmediatePropagation();
+            }
+          }
+        }
+      })
+
       window.SCORECARD_MAP.addSeries({
         animation: false,
         type: 'mappoint',

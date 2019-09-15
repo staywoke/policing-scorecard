@@ -181,7 +181,7 @@ body {
 
   &.large {
     .modal {
-      height: 480px;
+      height: auto;
       top: calc(50% - 240px);
 
       #modal-content {
@@ -1644,6 +1644,14 @@ svg.highcharts-root path.highcharts-point {
   stroke-width: 0.35px;
 }
 
+.highcharts-mappoint-series {
+  &.highcharts-series-7 {
+    image {
+      filter: url(#drop-shadow)
+    }
+  }
+}
+
 .highcharts-map-series path {
   fill: #FFF;
   transition: fill 0.25s;
@@ -1702,6 +1710,39 @@ svg.highcharts-root path.highcharts-point {
   &.highcharts-color-5.active:hover {
     fill: $grade-light-green;
     stroke: $grade-light-green;
+  }
+}
+
+#state-map.city {
+  .highcharts-map-series path {
+    &.highcharts-color-1,
+    &.highcharts-color-2,
+    &.highcharts-color-3,
+    &.highcharts-color-4,
+    &.highcharts-color-5 {
+      fill: #FFF;
+    }
+
+    &.highcharts-color-1:hover {
+      fill: $grade-red;
+      stroke: $grade-red;
+    }
+    &.highcharts-color-2:hover {
+      fill: $grade-orange;
+      stroke: $grade-orange;
+    }
+    &.highcharts-color-3:hover {
+      fill: $grade-yellow;
+      stroke: $grade-yellow;
+    }
+    &.highcharts-color-4:hover {
+      fill: $grade-green;
+      stroke: $grade-green;
+    }
+    &.highcharts-color-5:hover {
+      fill: $grade-light-green;
+      stroke: $grade-light-green;
+    }
   }
 }
 
@@ -1844,6 +1885,19 @@ svg.highcharts-root path.highcharts-point {
         p {
           font-size: 14px;
           line-height: 18px;
+        }
+
+        p.keys {
+          white-space: nowrap;
+          padding-top: 8px;
+
+          .key {
+            margin: 0 4px 0 8px;
+
+            &:first-child {
+              margin-left: 0;
+            }
+          }
         }
       }
 
@@ -2145,6 +2199,10 @@ svg.highcharts-root path.highcharts-point {
       margin-bottom: 40px;
       position: relative;
     }
+  }
+
+  .section.jail {
+    padding-bottom: 50px;
   }
 
   .canvas-wrapper {
