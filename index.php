@@ -118,6 +118,10 @@ if (empty($sheriff)) {
           <div class="right">
             <h1>We evaluated the police in California.</h1>
             <h2>Read the <a href="./findings" style="color: #82add7; text-decoration: underline; font-weight: 500;">Findings.</a> See the Grade for Each Department.</h2>
+            <div class="buttons">
+              <a href="/?city=los-angeles" class="btn <?= $link === 'city' ? 'active' : '' ?>">Police Depts</a>
+              <a href="/?sheriff=los-angeles" class="btn <?= $link === 'sheriff' ? 'active' : '' ?>">Sheriffs Depts</a>
+            </div>
           </div>
           <div class="left">
             <div class="map" id="map-layer">
@@ -174,7 +178,7 @@ if (empty($sheriff)) {
           <?php elseif(num($data['civilian_complaints_sustained']) === '1'): ?>
             <p>Only <strong>1 in every <?= num($data['civilian_complaints_reported']) ?> complaints</strong> were ruled in favor of civilians from 2016-17.</p>
           <?php elseif(intval(str_replace(',', '', $data['civilian_complaints_reported'])) / intval(str_replace(',', '', $data['civilian_complaints_sustained'])) <= 3): ?>
-            <p><strong><?= num($data['percent_of_civilian_complaints_sustained'], 0, '%') ?></strong> were ruled in favor of civilians from 2016-2017.</p>
+            <p><strong><?= num($data['percent_of_civilian_complaints_sustained'], 0, '%') ?></strong> were ruled in favor of civilians from 2016-2018.</p>
           <?php else: ?>
             <p>Only <strong>1 in every <?= round(intval(str_replace(',', '', $data['civilian_complaints_reported'])) / intval(str_replace(',', '', $data['civilian_complaints_sustained']))) ?> complaints</strong> were ruled in favor of civilians from 2016-17.</p>
           <?php endif; ?>
@@ -204,6 +208,7 @@ if (empty($sheriff)) {
           <div class="left">
             <div class="stat-wrapper">
               <a href="javascript:void(0)" data-city="<?= $marker ?>" data-more-info="" class="more-info"></a>
+              <?= getChange($data['less_lethal_force_change']); ?>
               <h3>Less-Lethal Force</h3>
               <p>Using batons, strangleholds, tasers &amp; other weapons</p>
               <p><?= output($data['use_of_less_lethal_force']) ?> Uses of Force <span class="divider">&nbsp;|&nbsp;</span> <?= output($data['less_lethal_force_per_arrest']) ?> uses every 10k arrests</p>
@@ -223,6 +228,7 @@ if (empty($sheriff)) {
 
             <div class="stat-wrapper">
               <a href="javascript:void(0)" data-city="<?= $marker ?>" data-more-info="" class="more-info"></a>
+              <?= getChange($data['deadly_force_change']); ?>
               <h3>Deadly Force</h3>
               <p><?= output($data['police_shootings_incidents']) ?> Shootings + <?= intval(output($data['deadly_force_incidents'])) - intval(output($data['police_shootings_incidents'])) ?> other deaths or serious injuries</p>
               <?php if(output($data['deadly_force_incidents']) === '0'): ?>
@@ -668,12 +674,13 @@ if (empty($sheriff)) {
         </div>
       </div>
 
-      <?php if($link === 'sheriff' && num(round(intval(str_replace(',', '', $data['total_jail_deaths_2016_2017'])))) !== 'N/A'): ?>
+      <?php if($link === 'sheriff' && num(round(intval(str_replace(',', '', $data['total_jail_deaths_2016_2018'])))) !== 'N/A'): ?>
       <div class="section pad jail">
         <div class="content">
           <div class="left">
           <?php if(isset($data['adult_jail_population'])): ?>
             <div class="stat-wrapper no-border-mobile">
+              <?= getChange($data['arrest_rate_change']); ?>
               <h3>Jail Incarceration rate</h3>
               <p><?= num(round(intval(str_replace(',', '', $data['adult_jail_population'])))) ?> Avg Daily Jail Population <span class="divider">&nbsp;|&nbsp;</span> <?= output($data['jail_population_per_1k']) ?> per 1k residents</p>
               <?php if(!isset($data['percent_jail_deaths_per_1000_jail_population_table']) || (isset($data['percent_jail_deaths_per_1000_jail_population_table']) && empty($data['percent_jail_deaths_per_1000_jail_population_table']))): ?>
@@ -691,12 +698,12 @@ if (empty($sheriff)) {
             <?php endif; ?>
           </div>
           <div class="right">
-          <?php if(num(round(intval(str_replace(',', '', $data['total_jail_deaths_2016_2017'])))) !== 'N/A'): ?>
+          <?php if(num(round(intval(str_replace(',', '', $data['total_jail_deaths_2016_2018'])))) !== 'N/A'): ?>
             <div class="stat-wrapper">
               <a href="javascript:void(0)" data-city="<?= $marker ?>" data-more-info="" class="more-info"></a>
               <h3>Deaths in Jail</h3>
 
-              <p><?= num(round(intval(str_replace(',', '', $data['total_jail_deaths_2016_2017'])))) ?> Deaths <span class="divider">&nbsp;|&nbsp;</span> <?= output($data['jail_deaths_per_1000_jail_population']) ?> per 1k residents</p>
+              <p><?= num(round(intval(str_replace(',', '', $data['total_jail_deaths_2016_2018'])))) ?> Deaths <span class="divider">&nbsp;|&nbsp;</span> <?= output($data['jail_deaths_per_1000_jail_population']) ?> per 1k residents</p>
 
               <p class="keys">
                 <span class="key key-red"></span> Homicide
@@ -706,17 +713,17 @@ if (empty($sheriff)) {
               </p>
 
               <div class="progress-bar-wrapper">
-                <div class="progress-bar animate-bar grouped key-red" data-percent="<?= output(floatval(round((intval($data['jail_death_homicide_willful']) / intval($data['total_jail_deaths_2016_2017'])) * 100)), 0, '%') ?>">
-                  <span><?= (intval(round((intval($data['jail_death_homicide_willful']) / intval($data['total_jail_deaths_2016_2017'])) * 100)) > 5) ? output(round((intval($data['jail_death_homicide_willful']) / intval($data['total_jail_deaths_2016_2017'])) * 100), 0, '%') : '' ?></span>
+                <div class="progress-bar animate-bar grouped key-red" data-percent="<?= output(floatval(round((intval($data['jail_death_homicide_willful']) / intval($data['total_jail_deaths_2016_2018'])) * 100)), 0, '%') ?>">
+                  <span><?= (intval(round((intval($data['jail_death_homicide_willful']) / intval($data['total_jail_deaths_2016_2018'])) * 100)) > 5) ? output(round((intval($data['jail_death_homicide_willful']) / intval($data['total_jail_deaths_2016_2018'])) * 100), 0, '%') : '' ?></span>
                 </div>
-                <div class="progress-bar animate-bar grouped key-orange" data-percent="<?= output(floatval(round((intval($data['jail_death_suicide']) / intval($data['total_jail_deaths_2016_2017'])) * 100)), 0, '%') ?>">
-                  <span><?= (intval(round((intval($data['jail_death_suicide']) / intval($data['total_jail_deaths_2016_2017'])) * 100)) > 5) ? output(round((intval($data['jail_death_suicide']) / intval($data['total_jail_deaths_2016_2017'])) * 100), 0, '%') : '' ?></span>
+                <div class="progress-bar animate-bar grouped key-orange" data-percent="<?= output(floatval(round((intval($data['jail_death_suicide']) / intval($data['total_jail_deaths_2016_2018'])) * 100)), 0, '%') ?>">
+                  <span><?= (intval(round((intval($data['jail_death_suicide']) / intval($data['total_jail_deaths_2016_2018'])) * 100)) > 5) ? output(round((intval($data['jail_death_suicide']) / intval($data['total_jail_deaths_2016_2018'])) * 100), 0, '%') : '' ?></span>
                 </div>
-                <div class="progress-bar animate-bar grouped key-grey" data-percent="<?= output(floatval(round((intval($data['jail_death_pending_investigation']) / intval($data['total_jail_deaths_2016_2017'])) * 100)), 0, '%') ?>">
-                  <span><?= (intval(round((intval($data['jail_death_pending_investigation']) / intval($data['total_jail_deaths_2016_2017'])) * 100)) > 5) ? output(round((intval($data['jail_death_pending_investigation']) / intval($data['total_jail_deaths_2016_2017'])) * 100), 0, '%') : '' ?></span>
+                <div class="progress-bar animate-bar grouped key-grey" data-percent="<?= output(floatval(round((intval($data['jail_death_pending_investigation']) / intval($data['total_jail_deaths_2016_2018'])) * 100)), 0, '%') ?>">
+                  <span><?= (intval(round((intval($data['jail_death_pending_investigation']) / intval($data['total_jail_deaths_2016_2018'])) * 100)) > 5) ? output(round((intval($data['jail_death_pending_investigation']) / intval($data['total_jail_deaths_2016_2018'])) * 100), 0, '%') : '' ?></span>
                 </div>
-                <div class="progress-bar animate-bar grouped key-white" data-percent="<?= output(floatval(round(((intval($data['jail_death_natural']) + intval($data['jail_death_accidental']) + intval($data['jail_death_cannot_be_determined'])) / intval($data['total_jail_deaths_2016_2017'])) * 100)), 0, '%') ?>">
-                  <span><?= (intval(round(((intval($data['jail_death_natural']) + intval($data['jail_death_accidental']) + intval($data['jail_death_cannot_be_determined'])) / intval($data['total_jail_deaths_2016_2017'])) * 100)) > 5) ? output(round(((intval($data['jail_death_natural']) + intval($data['jail_death_accidental']) + intval($data['jail_death_cannot_be_determined'])) / intval($data['total_jail_deaths_2016_2017'])) * 100), 0, '%') : '' ?></span>
+                <div class="progress-bar animate-bar grouped key-white" data-percent="<?= output(floatval(round(((intval($data['jail_death_natural']) + intval($data['jail_death_accidental']) + intval($data['jail_death_cannot_be_determined'])) / intval($data['total_jail_deaths_2016_2018'])) * 100)), 0, '%') ?>">
+                  <span><?= (intval(round(((intval($data['jail_death_natural']) + intval($data['jail_death_accidental']) + intval($data['jail_death_cannot_be_determined'])) / intval($data['total_jail_deaths_2016_2018'])) * 100)) > 5) ? output(round(((intval($data['jail_death_natural']) + intval($data['jail_death_accidental']) + intval($data['jail_death_cannot_be_determined'])) / intval($data['total_jail_deaths_2016_2018'])) * 100), 0, '%') : '' ?></span>
                 </div>
               </div>
             </div>
@@ -756,7 +763,7 @@ if (empty($sheriff)) {
       <div class="section bg-light-gray grades short" id="score-card">
         <div class="content">
           <h1 class="title">
-            2016-2017 California<br/>
+            2016-2018 California<br/>
             <?= ($link === 'sheriff') ? "Sheriff's" : "Police" ?> Department Grades
           </h1>
         </div>
@@ -772,7 +779,7 @@ if (empty($sheriff)) {
               <tr>
                 <td width="200"><a href="./?<?= $link ?>=<?= strtolower(preg_replace('/ /', '-', $card['agency_name'])) ?>"><?= $index + 1 ?>. <?= $card['agency_name'] ?></a></td>
                 <td width="50"><a href="./?<?= $link ?>=<?= strtolower(preg_replace('/ /', '-', $card['agency_name'])) ?>"><?= getGrade($card['overall_score']) ?></a></td>
-                <td><a href="./?<?= $link ?>=<?= strtolower(preg_replace('/ /', '-', $card['agency_name'])) ?>"><div class="grade grade-<?= strtolower(preg_replace('/[^A-Z]/', '', getGrade($card['overall_score']))) ?>"><?= intval($card['overall_score']) ?>%</div></a></td>
+                <td><?= getChange($card['change_overall_score']); ?><a href="./?<?= $link ?>=<?= strtolower(preg_replace('/ /', '-', $card['agency_name'])) ?>"><div class="grade grade-<?= strtolower(preg_replace('/[^A-Z]/', '', getGrade($card['overall_score']))) ?>"><?= intval($card['overall_score']) ?>%</div></a></td>
               </tr>
             <?php endif; endforeach; ?>
             </table>
@@ -788,7 +795,7 @@ if (empty($sheriff)) {
                 <tr>
                   <td width="200"><a href="./?<?= $link ?>=<?= strtolower(preg_replace('/ /', '-', $card['agency_name'])) ?>"><?= $index + 1 ?>. <?= $card['agency_name'] ?></a></td>
                   <td width="50"><a href="./?<?= $link ?>=<?= strtolower(preg_replace('/ /', '-', $card['agency_name'])) ?>"><?= getGrade($card['overall_score']) ?></a></td>
-                  <td><a href="./?<?= $link ?>=<?= strtolower(preg_replace('/ /', '-', $card['agency_name'])) ?>"><div class="grade grade-<?= strtolower(preg_replace('/[^A-Z]/', '', getGrade($card['overall_score']))) ?>"><?= intval($card['overall_score']) ?>%</div></a></td>
+                  <td><?= getChange($card['change_overall_score']); ?><a href="./?<?= $link ?>=<?= strtolower(preg_replace('/ /', '-', $card['agency_name'])) ?>"><div class="grade grade-<?= strtolower(preg_replace('/[^A-Z]/', '', getGrade($card['overall_score']))) ?>"><?= intval($card['overall_score']) ?>%</div></a></td>
                 </tr>
               <?php endif; endforeach; ?>
             </table>
@@ -1061,21 +1068,31 @@ if (empty($sheriff)) {
             <li class="city"><a href="./?city=whittier"<?= ($link === 'city' && $city === 'whittier') ? ' class="selected-city"' : '' ?>>Whittier Police</a></li>
 
             <li class="sheriff"><a href="./?sheriff=alameda"<?= ($link === 'sheriff' && $sheriff === 'alameda') ? ' class="selected-city"' : '' ?>>Alameda Sheriff</a></li>
+            <li class="sheriff"><a href="./?sheriff=alpine"<?= ($link === 'sheriff' && $sheriff === 'alpine') ? ' class="selected-city"' : '' ?>>Alpine Sheriff</a></li>
+            <li class="sheriff"><a href="./?sheriff=amador"<?= ($link === 'sheriff' && $sheriff === 'amador') ? ' class="selected-city"' : '' ?>>Amador Sheriff</a></li>
             <li class="sheriff"><a href="./?sheriff=butte"<?= ($link === 'sheriff' && $sheriff === 'butte') ? ' class="selected-city"' : '' ?>>Butte Sheriff</a></li>
             <li class="sheriff"><a href="./?sheriff=calaveras"<?= ($link === 'sheriff' && $sheriff === 'calaveras') ? ' class="selected-city"' : '' ?>>Calaveras Sheriff</a></li>
+            <li class="sheriff"><a href="./?sheriff=colusa"<?= ($link === 'sheriff' && $sheriff === 'colusa') ? ' class="selected-city"' : '' ?>>Colusa Sheriff</a></li>
             <li class="sheriff"><a href="./?sheriff=contra-costa"<?= ($link === 'sheriff' && $sheriff === 'contra-costa') ? ' class="selected-city"' : '' ?>>Contra Costa Sheriff</a></li>
+            <li class="sheriff"><a href="./?sheriff=del-norte"<?= ($link === 'sheriff' && $sheriff === 'del-norte') ? ' class="selected-city"' : '' ?>>Del Norte Sheriff</a></li>
             <li class="sheriff"><a href="./?sheriff=el-dorado"<?= ($link === 'sheriff' && $sheriff === 'el-dorado') ? ' class="selected-city"' : '' ?>>El Dorado Sheriff</a></li>
             <li class="sheriff"><a href="./?sheriff=fresno"<?= ($link === 'sheriff' && $sheriff === 'fresno') ? ' class="selected-city"' : '' ?>>Fresno Sheriff</a></li>
+            <li class="sheriff"><a href="./?sheriff=glenn"<?= ($link === 'sheriff' && $sheriff === 'glenn') ? ' class="selected-city"' : '' ?>>Glenn Sheriff</a></li>
             <li class="sheriff"><a href="./?sheriff=humboldt"<?= ($link === 'sheriff' && $sheriff === 'humboldt') ? ' class="selected-city"' : '' ?>>Humboldt Sheriff</a></li>
             <li class="sheriff"><a href="./?sheriff=imperial"<?= ($link === 'sheriff' && $sheriff === 'imperial') ? ' class="selected-city"' : '' ?>>Imperial Sheriff</a></li>
+            <li class="sheriff"><a href="./?sheriff=inyo"<?= ($link === 'sheriff' && $sheriff === 'inyo') ? ' class="selected-city"' : '' ?>>Inyo Sheriff</a></li>
             <li class="sheriff"><a href="./?sheriff=kern"<?= ($link === 'sheriff' && $sheriff === 'kern') ? ' class="selected-city"' : '' ?>>Kern Sheriff</a></li>
             <li class="sheriff"><a href="./?sheriff=kings"<?= ($link === 'sheriff' && $sheriff === 'kings') ? ' class="selected-city"' : '' ?>>Kings Sheriff</a></li>
             <li class="sheriff"><a href="./?sheriff=lake"<?= ($link === 'sheriff' && $sheriff === 'lake') ? ' class="selected-city"' : '' ?>>Lake Sheriff</a></li>
+            <li class="sheriff"><a href="./?sheriff=lassen"<?= ($link === 'sheriff' && $sheriff === 'lassen') ? ' class="selected-city"' : '' ?>>Lassen Sheriff</a></li>
             <li class="sheriff"><a href="./?sheriff=los-angeles"<?= ($link === 'sheriff' && $sheriff === 'los-angeles') ? ' class="selected-city"' : '' ?>>Los Angeles Sheriff</a></li>
             <li class="sheriff"><a href="./?sheriff=madera"<?= ($link === 'sheriff' && $sheriff === 'madera') ? ' class="selected-city"' : '' ?>>Madera Sheriff</a></li>
             <li class="sheriff"><a href="./?sheriff=marin"<?= ($link === 'sheriff' && $sheriff === 'marin') ? ' class="selected-city"' : '' ?>>Marin Sheriff</a></li>
+            <li class="sheriff"><a href="./?sheriff=mariposa"<?= ($link === 'sheriff' && $sheriff === 'mariposa') ? ' class="selected-city"' : '' ?>>Mariposa Sheriff</a></li>
             <li class="sheriff"><a href="./?sheriff=mendocino"<?= ($link === 'sheriff' && $sheriff === 'mendocino') ? ' class="selected-city"' : '' ?>>Mendocino Sheriff</a></li>
             <li class="sheriff"><a href="./?sheriff=merced"<?= ($link === 'sheriff' && $sheriff === 'merced') ? ' class="selected-city"' : '' ?>>Merced Sheriff</a></li>
+            <li class="sheriff"><a href="./?sheriff=modoc"<?= ($link === 'sheriff' && $sheriff === 'modoc') ? ' class="selected-city"' : '' ?>>Modoc Sheriff</a></li>
+            <li class="sheriff"><a href="./?sheriff=mono"<?= ($link === 'sheriff' && $sheriff === 'mono') ? ' class="selected-city"' : '' ?>>Mono Sheriff</a></li>
             <li class="sheriff"><a href="./?sheriff=monterey"<?= ($link === 'sheriff' && $sheriff === 'monterey') ? ' class="selected-city"' : '' ?>>Monterey Sheriff</a></li>
             <li class="sheriff"><a href="./?sheriff=napa"<?= ($link === 'sheriff' && $sheriff === 'napa') ? ' class="selected-city"' : '' ?>>Napa Sheriff</a></li>
             <li class="sheriff"><a href="./?sheriff=nevada"<?= ($link === 'sheriff' && $sheriff === 'nevada') ? ' class="selected-city"' : '' ?>>Nevada Sheriff</a></li>
@@ -1083,8 +1100,10 @@ if (empty($sheriff)) {
             <li class="sheriff"><a href="./?sheriff=placer"<?= ($link === 'sheriff' && $sheriff === 'placer') ? ' class="selected-city"' : '' ?>>Placer Sheriff</a></li>
             <li class="sheriff"><a href="./?sheriff=riverside"<?= ($link === 'sheriff' && $sheriff === 'riverside') ? ' class="selected-city"' : '' ?>>Riverside Sheriff</a></li>
             <li class="sheriff"><a href="./?sheriff=sacramento"<?= ($link === 'sheriff' && $sheriff === 'sacramento') ? ' class="selected-city"' : '' ?>>Sacramento Sheriff</a></li>
+            <li class="sheriff"><a href="./?sheriff=san-benito"<?= ($link === 'sheriff' && $sheriff === 'san-benito') ? ' class="selected-city"' : '' ?>>San Benito Sheriff</a></li>
             <li class="sheriff"><a href="./?sheriff=san-bernardino"<?= ($link === 'sheriff' && $sheriff === 'san-bernardino') ? ' class="selected-city"' : '' ?>>San Bernardino Sheriff</a></li>
             <li class="sheriff"><a href="./?sheriff=san-diego"<?= ($link === 'sheriff' && $sheriff === 'san-diego') ? ' class="selected-city"' : '' ?>>San Diego Sheriff</a></li>
+            <li class="sheriff"><a href="./?sheriff=san-francisco"<?= ($link === 'sheriff' && $sheriff === 'san-francisco') ? ' class="selected-city"' : '' ?>>San Francisco Sheriff</a></li>
             <li class="sheriff"><a href="./?sheriff=san-joaquin"<?= ($link === 'sheriff' && $sheriff === 'san-joaquin') ? ' class="selected-city"' : '' ?>>San Joaquin Sheriff</a></li>
             <li class="sheriff"><a href="./?sheriff=san-luis-obispo"<?= ($link === 'sheriff' && $sheriff === 'san-luis-obispo') ? ' class="selected-city"' : '' ?>>San Luis Obispo Sheriff</a></li>
             <li class="sheriff"><a href="./?sheriff=san-mateo"<?= ($link === 'sheriff' && $sheriff === 'san-mateo') ? ' class="selected-city"' : '' ?>>San Mateo Sheriff</a></li>
@@ -1092,12 +1111,14 @@ if (empty($sheriff)) {
             <li class="sheriff"><a href="./?sheriff=santa-clara"<?= ($link === 'sheriff' && $sheriff === 'santa-clara') ? ' class="selected-city"' : '' ?>>Santa Clara Sheriff</a></li>
             <li class="sheriff"><a href="./?sheriff=santa-cruz"<?= ($link === 'sheriff' && $sheriff === 'santa-cruz') ? ' class="selected-city"' : '' ?>>Santa Cruz Sheriff</a></li>
             <li class="sheriff"><a href="./?sheriff=shasta"<?= ($link === 'sheriff' && $sheriff === 'shasta') ? ' class="selected-city"' : '' ?>>Shasta Sheriff</a></li>
+            <li class="sheriff"><a href="./?sheriff=sierra"<?= ($link === 'sheriff' && $sheriff === 'sierra') ? ' class="selected-city"' : '' ?>>Sierra Sheriff</a></li>
             <li class="sheriff"><a href="./?sheriff=siskiyou"<?= ($link === 'sheriff' && $sheriff === 'siskiyou') ? ' class="selected-city"' : '' ?>>Siskiyou Sheriff</a></li>
             <li class="sheriff"><a href="./?sheriff=solano"<?= ($link === 'sheriff' && $sheriff === 'solano') ? ' class="selected-city"' : '' ?>>Solano Sheriff</a></li>
             <li class="sheriff"><a href="./?sheriff=sonoma"<?= ($link === 'sheriff' && $sheriff === 'sonoma') ? ' class="selected-city"' : '' ?>>Sonoma Sheriff</a></li>
             <li class="sheriff"><a href="./?sheriff=stanislaus"<?= ($link === 'sheriff' && $sheriff === 'stanislaus') ? ' class="selected-city"' : '' ?>>Stanislaus Sheriff</a></li>
             <li class="sheriff"><a href="./?sheriff=suttercoroner"<?= ($link === 'sheriff' && $sheriff === 'suttercoroner') ? ' class="selected-city"' : '' ?>>Sutter / Coroner Sheriff</a></li>
             <li class="sheriff"><a href="./?sheriff=tehama"<?= ($link === 'sheriff' && $sheriff === 'tehama') ? ' class="selected-city"' : '' ?>>Tehama Sheriff</a></li>
+            <li class="sheriff"><a href="./?sheriff=trinity"<?= ($link === 'sheriff' && $sheriff === 'trinity') ? ' class="selected-city"' : '' ?>>Trinity Sheriff</a></li>
             <li class="sheriff"><a href="./?sheriff=tulare"<?= ($link === 'sheriff' && $sheriff === 'tulare') ? ' class="selected-city"' : '' ?>>Tulare Sheriff</a></li>
             <li class="sheriff"><a href="./?sheriff=tuolumne"<?= ($link === 'sheriff' && $sheriff === 'tuolumne') ? ' class="selected-city"' : '' ?>>Tuolumne Sheriff</a></li>
             <li class="sheriff"><a href="./?sheriff=ventura"<?= ($link === 'sheriff' && $sheriff === 'ventura') ? ' class="selected-city"' : '' ?>>Ventura Sheriff</a></li>

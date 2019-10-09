@@ -40,6 +40,9 @@ function parse_csv($name) {
           if ($key === 'overall_score') {
             $grade['overall_score'] = floatval(trim($cell));
           }
+          if ($key === 'change_overall_score') {
+            $grade['change_overall_score'] = $cell;
+          }
         }
 
         if (!empty($row[0])) {

@@ -1746,6 +1746,83 @@ svg.highcharts-root path.highcharts-point {
   }
 }
 
+.buttons {
+  .btn {
+    background: #f7f7f7;
+    border: 1px solid #CCC;
+    padding: 8px 16px;
+    cursor: pointer;
+    text-decoration: none;
+    color: black;
+    font-size: 12px;
+
+    &.active {
+      background: #FFF;
+      border: 1px solid #666;
+      font-weight: 600;
+    }
+  }
+}
+
+.stats-change {
+  position: absolute;
+  left: -16px;
+}
+
+.tooltip {
+  cursor: default;
+  z-index: 1000;
+  font-size: 16px;
+  font-family: monospace;
+  height: 16px;
+  line-height: 16px;
+  display: inline-block;
+  top: 2px;
+
+  &.bad {
+    color: $grade-red !important;
+  }
+
+  &.good {
+    color: $grade-light-green !important;
+  }
+
+  &::before {
+    content: attr(data-tooltip);
+    display: none;
+    position: absolute;
+    top: -30px;
+    left: auto;
+    background: black;
+    color: white;
+    white-space: nowrap;
+    padding: 8px 12px;
+    border-radius: 4px;
+    font-size: 12px;
+    line-height: 12px;
+    font-family: 'Lato', sans-serif;
+  }
+
+  &:focus, &:hover {
+    color: black !important;
+  }
+
+  &:focus::before, &:hover::before {
+    display: block;
+  }
+}
+
+.grades {
+  td {
+    position: relative;
+
+    .tooltip {
+      top: 9px;
+      left: -22px;
+    }
+  }
+}
+
 /* RESPONSIVE */
 @media screen and (min-width: $bp-max-width) {
   .header {

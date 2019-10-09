@@ -25,6 +25,22 @@ function getSheriffData($sheriff = 'los-angeles') {
   return $data;
 }
 
+function getChange($change) {
+  $change = intval(str_replace('%', '', $change));
+  $label = 'since 2016';
+  $text = '';
+  $tooltip = '';
+  $class = '';
+
+  if ($change && $change !== 0) {
+    $text = ($change > 0) ? '⤒' : '⤓';
+    $class = ($change > 0) ? 'bad' : 'good';
+    $tooltip = ($change > 0) ? "Up {$change}% {$label}" : "Down ". abs($change) ."% {$label}";
+
+    return "<a href=\"javascript:void(0)\" class=\"stats-change tooltip {$class}\" data-tooltip=\"{$tooltip}\">{$text}</a>";
+  }
+}
+
 function getMapKey($loc) {
   $keys = array(
     'alameda' => array(
@@ -36,6 +52,16 @@ function getMapKey($loc) {
       'district' => null,
       'latitude' => 34.0855284,
       'longitude' => -118.1715274
+    ),
+    'alpine' => array(
+      'district' => 'us-ca-003',
+      'latitude' => 39.3551689,
+      'longitude' => -123.5402062
+    ),
+    'amador' => array(
+      'district' => 'us-ca-005',
+      'latitude' => 38.4636889,
+      'longitude' => -120.8308953
     ),
     'anaheim' => array(
       'district' => null,
@@ -102,6 +128,11 @@ function getMapKey($loc) {
       'latitude' => 36.8689607,
       'longitude' => -119.7119341
     ),
+    'colusa' => array(
+      'district' => 'us-ca-011',
+      'latitude' => 39.1694402,
+      'longitude' => -122.5710779
+    ),
     'concord' => array(
       'district' => null,
       'latitude' => 37.9735258,
@@ -126,6 +157,11 @@ function getMapKey($loc) {
       'district' => null,
       'latitude' => 37.6786773,
       'longitude' => -122.4880235
+    ),
+    'del-norte' => array(
+      'district' => 'us-ca-015',
+      'latitude' => 42.1361959,
+      'longitude' => -123.6233801
     ),
     'downey' => array(
       'district' => null,
@@ -187,6 +223,11 @@ function getMapKey($loc) {
       'latitude' => 33.8910063,
       'longitude' => -118.3261795
     ),
+    'glenn' => array(
+      'district' => 'us-ca-021',
+      'latitude' => 39.5914592,
+      'longitude' => -122.9592149
+    ),
     'glendale' => array(
       'district' => null,
       'latitude' => 34.1929915,
@@ -212,10 +253,20 @@ function getMapKey($loc) {
       'latitude' => 33.9540723,
       'longitude' => -118.3636729
     ),
+    'inyo' => array(
+      'district' => 'us-ca-027',
+      'latitude' => 36.6229271,
+      'longitude' => -118.3431371
+    ),
     'irvine' => array(
       'district' => null,
       'latitude' => 33.6865019,
       'longitude' => -117.8435995
+    ),
+    'lassen' => array(
+      'district' => 'us-ca-035',
+      'latitude' => 40.4457714,
+      'longitude' => -121.2257839
     ),
     'livermore' => array(
       'district' => null,
@@ -232,10 +283,25 @@ function getMapKey($loc) {
       'latitude' => 34.0203992,
       'longitude' => -118.5521561
     ),
+    'mariposa' => array(
+      'district' => 'us-ca-043',
+      'latitude' => 37.5433732,
+      'longitude' => -120.4131849
+    ),
     'merced' => array(
       'district' => 'us-ca-047',
       'latitude' => 37.2987237,
       'longitude' => -120.5416012
+    ),
+    'modoc' => array(
+      'district' => 'us-ca-043',
+      'latitude' => 41.5902084,
+      'longitude' => -121.2895633
+    ),
+    'mono' => array(
+      'district' => 'us-ca-051',
+      'latitude' => 38.0876437,
+      'longitude' => -119.3039387
     ),
     'milpitas' => array(
       'district' => null,
@@ -372,6 +438,11 @@ function getMapKey($loc) {
       'latitude' => 36.6866299,
       'longitude' => -121.6763035
     ),
+    'san-benito' => array(
+      'district' => 'us-ca-069',
+      'latitude' => 36.5930693,
+      'longitude' => -121.4011582
+    ),
     'san-bernardino' => array(
       'district' => 'us-ca-071',
       'latitude' => 34.1488564,
@@ -437,6 +508,11 @@ function getMapKey($loc) {
       'latitude' => 38.4355291,
       'longitude' => -122.7737557
     ),
+    'sierra' => array(
+      'district' => 'us-ca-091',
+      'latitude' => 39.5838869,
+      'longitude' => -121.0913294
+    ),
     'simi-valley' => array(
       'district' => null,
       'latitude' => 34.2657275,
@@ -471,6 +547,11 @@ function getMapKey($loc) {
       'district' => null,
       'latitude' => 37.7184716,
       'longitude' => -121.51679
+    ),
+    'trinity' => array(
+      'district' => 'us-ca-105',
+      'latitude' => 40.6722573,
+      'longitude' => -123.5964875
     ),
     'turlock' => array(
       'district' => null,
