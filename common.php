@@ -33,7 +33,7 @@ function getChange($change) {
   $class = '';
 
   if ($change && $change !== 0) {
-    $text = ($change > 0) ? '⤒' : '⤓';
+    $text = ($change > 0) ? "<div class=\"grade-arrow\"><span>▶</span><small>{$change}%</small></div>" : "<div class=\"grade-arrow\"><span>▶</span><small>{$change}%</small></div>";
     $class = ($change > 0) ? 'bad' : 'good';
     $tooltip = ($change > 0) ? "Up {$change}% {$label}" : "Down ". abs($change) ."% {$label}";
 

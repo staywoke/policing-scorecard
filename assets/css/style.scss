@@ -19,6 +19,14 @@ $border-color: #D8D8D8;
 
 $bp-max-width: 940px;
 
+$font-default: 11px;
+$font-header-large: 46px;
+$font-header: 22px;
+$font-large: 18px;
+$font-paragraph: 16px;
+$font-medium: 10px;
+$font-small: 8px;
+
 /* CSS RESET */
 a,abbr,acronym,address,applet,article,aside,audio,b,big,blockquote,body,canvas,caption,center,cite,code,dd,del,details,dfn,div,dl,dt,em,embed,fieldset,figcaption,figure,footer,form,h1,h2,h3,h4,h5,h6,header,hgroup,html,i,iframe,img,ins,kbd,label,legend,li,mark,menu,nav,object,ol,output,p,pre,q,ruby,s,samp,section,small,span,strike,strong,sub,summary,sup,table,tbody,td,tfoot,th,thead,time,tr,tt,u,ul,var,video{margin:0;padding:0;border:0;font:inherit;vertical-align:baseline}article,aside,details,figcaption,figure,footer,header,hgroup,menu,nav,section{display:block}body{line-height:1}ol,ul{list-style:none}blockquote,q{quotes:none}blockquote:after,blockquote:before,q:after,q:before{content:'';content:none}table{border-collapse:collapse;border-spacing:0}html{box-sizing:border-box;}*,*:before,*:after{box-sizing:inherit;}
 
@@ -97,7 +105,7 @@ body {
         padding: 4px 8px;
         margin: 0;
         text-decoration: none;
-        font-size: 12px;
+        font-size: $font-default;
         width: 45%;
         display: inline-block;
 
@@ -214,7 +222,7 @@ body {
 
     .section-header {
       height: 20px;
-      font-size: 12px;
+      font-size: $font-default;
       font-weight: 700;
       border-bottom: 2px solid #000;
       margin-top: 20px;
@@ -244,7 +252,7 @@ body {
         width: 100%;
         text-align: center;
         font-weight: 700;
-        font-size: 12px;
+        font-size: $font-default;
       }
     }
 
@@ -262,12 +270,12 @@ body {
         font-weight: 500;
         display: block;
         text-transform: uppercase;
-        font-size: 12px;
+        font-size: $font-default;
       }
     }
 
     table {
-      font-size: 12px;
+      font-size: $font-default;
       font-weight: 400;
 
       tr {
@@ -276,7 +284,7 @@ body {
             content: '\002B24';
             position: absolute;
             margin-top: 6px;
-            font-size: 8px;
+            font-size: $font-small;
           }
 
           &.double::before {
@@ -395,7 +403,7 @@ body {
             right: 37px;
             margin-top: 6px;
             color: $grade-red;
-            font-size: 10px;
+            font-size: $font-medium;;
             font-weight: 700;
             background: #FFF;
           }
@@ -414,7 +422,7 @@ body {
             right: 30px;
             margin-top: 6px;
             color: $grade-light-green;
-            font-size: 10px;
+            font-size: $font-medium;;
             font-weight: 700;
             background: #FFF;
           }
@@ -451,7 +459,7 @@ body {
 
     .keys {
       display: inline-block;
-      font-size: 9px;
+      font-size: $font-small;;
       font-weight: 400;
       width: 52%;
       text-align: right;
@@ -512,12 +520,12 @@ body {
       }
 
       &.score {
-        font-size: 20px;
+        font-size: $font-large;
         line-height: 24px;
       }
 
       &.instructions {
-        font-size: 20px;
+        font-size: $font-large;
         line-height: 24px;
         color: $text-blue;
       }
@@ -542,6 +550,17 @@ body {
 
   .view-score {
     cursor: pointer;
+
+    .tooltip {
+      position: absolute;
+      top: 53px;
+      left: 20px;
+
+      span, small {
+        color: white !important;
+        font-size: $font-default !important;
+      }
+    }
   }
 
   &.jail {
@@ -563,7 +582,7 @@ body {
     margin: 0 auto;
 
     a.results-info {
-      font-size: 12px;
+      font-size: $font-default;
       background: #454548;
       width: 20px;
       height: 20px;
@@ -585,18 +604,24 @@ body {
 
     .error {
       display: block;
-      font-size: 20px;
+      font-size: $font-large;
       color: #f67f85;
       text-align: center;
       padding-bottom: 18px;
     }
 
     &.section-header {
-      font-size: 24px;
+      font-size: $font-header;
+
+      .tooltip {
+        position: relative !important;
+        margin-left: 4px !important;
+        top: 0 !important;
+      }
 
       h1.title {
         color: $primary-blue;
-        font-size: 48px;
+        font-size: $font-header-large;
         text-transform: uppercase;
         font-weight: 300;
         margin: 40px 0 20px 0;
@@ -713,17 +738,17 @@ body {
     text-transform: uppercase;
     font-weight: 900;
     margin-bottom: 8px;
-    font-size: 18px;
+    font-size: $font-paragraph;
     padding-right: 22px;
   }
 
   p {
-    font-size: 18px;
+    font-size: $font-paragraph;
     line-height: 30px;
   }
 
   p.note {
-    font-size: 12px;
+    font-size: $font-default;
     color: $primary-gray;
     line-height: 18px;
     margin-bottom: 30px;
@@ -768,7 +793,7 @@ body {
       line-height: 50px;
 
       span {
-        font-size: 24px;
+        font-size: $font-header;
         text-transform: uppercase;
         font-weight: 500;
         display: flex;
@@ -851,7 +876,7 @@ body {
         min-width: 0;
 
         span {
-          font-size: 10px;
+          font-size: $font-medium;;
           position: relative;
           top: -18px;
           color: #999;
@@ -960,7 +985,7 @@ body {
         color: #FFF;
         text-transform: uppercase;
         text-decoration: none;
-        font-size: 12px;
+        font-size: $font-default;
         letter-spacing: 1px;
         padding: 20px 0;
         transition: color 0.25s;
@@ -979,7 +1004,7 @@ body {
   font-weight: 500;
   height: 100px;
   line-height: 100px;
-  font-size: 42px;
+  font-size: $font-header-large;
   text-transform: uppercase;
   font-style: italic;
   font-family: 'Barlow Condensed', sans-serif;
@@ -1003,7 +1028,7 @@ body {
 
   &::after {
     content: '\0025E2';
-    font-size: 20px;
+    font-size: $font-large;
     color: $primary-orange;
     position: absolute;
     right: -40px;
@@ -1082,7 +1107,7 @@ body {
       color: #FFF;
       font-weight: 300;
       line-height: 28px;
-      font-size: 17px;
+      font-size: $font-paragraph;
 
       strong {
         font-weight: 500;
@@ -1118,7 +1143,7 @@ body {
   }
   .right {
     display: inline-block;
-    font-size: 40px;
+    font-size: $font-header-large;
     color: #FFF;
     font-weight: 300;
     text-transform: uppercase;
@@ -1146,7 +1171,7 @@ body {
   h1.title {
     color: #FFF;
     padding: 50px 0;
-    font-size: 46px;
+    font-size: $font-header-large;
     line-height: 54px;
     text-transform: uppercase;
     font-weight: 300;
@@ -1163,25 +1188,48 @@ body {
   .check {
     height: 48px;
     color: #FFF;
-    font-size: 18px;
-    background-image: url(../img/unchecked.png);
+    font-size: $font-paragraph;
     padding-left: 48px;
     line-height: 18px;
     display: flex;
     align-items: center;
     cursor: pointer;
-    background-position: -100px center;
-    background-repeat: no-repeat;
-    transition: background-position 0.5s;
+    position: relative;
+
+    &::before {
+      content: '';
+      display: block;
+      background-color: #FFF;
+      border-radius: 50%;
+      transition: all 0.5s;
+      width: 36px;
+      height: 36px;
+      position: absolute;
+      left: 0;
+      opacity: 1;
+    }
+
+    &.animate-check {
+      &::before {
+        left: -30px;
+        opacity: 0;
+      }
+    }
 
     &.checked {
       color: $primary-green;
-      background-image: url(../img/checked.png);
+
+      &::before {
+        background-color: $primary-green;
+      }
     }
 
     &.checked-bad {
       color: #f67f85;
-      background-image: url(../img/checked-bad.png);
+
+      &::before {
+        background-color: #f67f85;
+      }
     }
   }
 }
@@ -1192,7 +1240,7 @@ body {
   h1.title {
     color: $primary-blue;
     padding: 50px 0;
-    font-size: 46px;
+    font-size: $font-header-large;
     line-height: 54px;
     text-transform: uppercase;
     font-weight: 300;
@@ -1218,7 +1266,7 @@ body {
     }
 
     td {
-      font-size: 18px;
+      font-size: $font-paragraph;
       font-weight: 300;
 
       a {
@@ -1269,7 +1317,7 @@ body {
     position: relative;
     top: -3px;
     color: #FFF;
-    font-size: 12px;
+    font-size: $font-default;
     line-height: 20px;
     vertical-align: middle;
     text-align: center;
@@ -1305,21 +1353,21 @@ body {
   h1.title {
     color: $primary-orange;
     padding: 40px 0;
-    font-size: 46px;
+    font-size: $font-header-large;
     line-height: 54px;
     text-transform: uppercase;
     font-weight: 300;
   }
 
   p, ul, li {
-    font-size: 20px;
+    font-size: $font-large;
     line-height: 24px;
     color: $primary-gray;
   }
 
   .take-action {
     color: #f19975;
-    font-size: 24px;
+    font-size: $font-header;
     line-height: 28px;
     text-transform: uppercase;
     font-weight: 500;
@@ -1340,7 +1388,7 @@ body {
       margin-left: 0;
 
       li {
-        font-size: 18px;
+        font-size: $font-paragraph;
         line-height: 24px;
       }
     }
@@ -1361,7 +1409,7 @@ body {
       font-family: 'Barlow Condensed', sans-serif;
       position: absolute;
       font-weight: 700;
-      font-size: 40px;
+      font-size: $font-header-large;
     }
 
     &.number-1::before {
@@ -1405,7 +1453,7 @@ body {
   h1.title {
     color: $primary-orange;
     padding: 40px 0;
-    font-size: 46px;
+    font-size: $font-header-large;
     line-height: 54px;
     text-transform: uppercase;
     font-weight: 300;
@@ -1459,7 +1507,7 @@ body {
     }
 
     p {
-      font-size: 20px;
+      font-size: $font-large;
       line-height: 24px;
       color: #464648;
     }
@@ -1531,7 +1579,7 @@ body {
     h1.title {
       color: $primary-blue;
       padding: 0;
-      font-size: 46px;
+      font-size: $font-header-large;
       line-height: 54px;
       font-weight: 300;
     }
@@ -1547,7 +1595,7 @@ body {
     h3.title {
       color: $primary-blue;
       padding: 0;
-      font-size: 20px;
+      font-size: $font-large;
       line-height: 24px;
       font-weight: 400;
     }
@@ -1617,7 +1665,7 @@ body {
     font-weight: 300;
     font-family: 'Barlow Condensed', sans-serif;
     text-transform: uppercase;
-    font-size: 20px;
+    font-size: $font-large;
 
     a {
       color: #FFF;
@@ -1747,6 +1795,8 @@ svg.highcharts-root path.highcharts-point {
 }
 
 .buttons {
+  height: 40px;
+
   .btn {
     background: #f7f7f7;
     border: 1px solid #CCC;
@@ -1754,7 +1804,7 @@ svg.highcharts-root path.highcharts-point {
     cursor: pointer;
     text-decoration: none;
     color: black;
-    font-size: 12px;
+    font-size: $font-default;
 
     &.active {
       background: #FFF;
@@ -1766,7 +1816,7 @@ svg.highcharts-root path.highcharts-point {
 
 .stats-change {
   position: absolute;
-  left: -16px;
+  right: 0;
 }
 
 .tooltip {
@@ -1778,29 +1828,76 @@ svg.highcharts-root path.highcharts-point {
   line-height: 16px;
   display: inline-block;
   top: 2px;
+  z-index: 50;
+
+  .grade-arrow {
+    position: relative;
+    display: block;
+    width: 20px;
+    height: 24px;
+
+    span {
+      position: absolute;
+      left: 2px;
+      font-size: $font-default;
+      font-family: monospace;
+      display: block;
+      height: 10px;
+      line-height: 12px;
+      width: 10px;
+      top: 0;
+    }
+
+    small {
+      position: absolute;
+      left: 0;
+      font-size: $font-small;
+      font-family: 'Lato', sans-serif;
+      text-align: center;
+      width: 14px;
+      display: block;
+      bottom: 0;
+      color: black;
+    }
+  }
 
   &.bad {
     color: $grade-red !important;
+
+    .grade-arrow {
+      span {
+        bottom: 0;
+        transform: rotate(-90deg);
+      }
+    }
   }
 
   &.good {
     color: $grade-light-green !important;
+
+    .grade-arrow {
+      span {
+        transform: rotate(90deg);
+      }
+    }
   }
 
   &::before {
     content: attr(data-tooltip);
     display: none;
     position: absolute;
-    top: -30px;
-    left: auto;
+    top: -7px;
+    left: -150px;
     background: black;
     color: white;
     white-space: nowrap;
     padding: 8px 12px;
     border-radius: 4px;
-    font-size: 12px;
+    font-size: $font-default;
     line-height: 12px;
     font-family: 'Lato', sans-serif;
+    width: 140px;
+    text-align: center;
   }
 
   &:focus, &:hover {
@@ -1823,6 +1920,16 @@ svg.highcharts-root path.highcharts-point {
   }
 }
 
+.title.white {
+  color: white;
+  margin-top: 20px;
+  display: block;
+  font-size: 14px;
+  line-height: 14px;
+  padding: 0;
+  margin: 0;
+}
+
 /* RESPONSIVE */
 @media screen and (min-width: $bp-max-width) {
   .header {
@@ -1833,6 +1940,13 @@ svg.highcharts-root path.highcharts-point {
 }
 
 @media screen and (max-width: $bp-max-width) {
+  .view-score {
+    .tooltip {
+      left: unset !important;
+      top: 9px !important;
+      right: 0;
+    }
+  }
   p.good-job {
     &.pad-bottom {
       padding-bottom: 0 !important;
@@ -1899,7 +2013,7 @@ svg.highcharts-root path.highcharts-point {
           color: #FFF;
           text-transform: uppercase;
           text-decoration: none;
-          font-size: 12px;
+          font-size: $font-default;
           letter-spacing: 1px;
           padding: 14px 0 14px 14px;
           transition: color 0.25s;
@@ -1936,7 +2050,7 @@ svg.highcharts-root path.highcharts-point {
       &.section-header {
         padding-left: 20px;
         padding-right: 20px;
-        font-size: 20px;
+        font-size: $font-large;
 
         h1.title {
           font-size: 30px;
@@ -1984,7 +2098,7 @@ svg.highcharts-root path.highcharts-point {
       }
 
       p.note {
-        font-size: 12px;
+        font-size: $font-default;
       }
 
       & > div.left {
@@ -2029,7 +2143,7 @@ svg.highcharts-root path.highcharts-point {
       margin-top: 0;
 
       h1 {
-        font-size: 24px;
+        font-size: $font-header;
         margin-bottom: 10px;
         line-height: 28px;
         padding-top: 20px;
@@ -2067,12 +2181,12 @@ svg.highcharts-root path.highcharts-point {
     }
     .right {
       h1 {
-        font-size: 20px;
+        font-size: $font-large;
         margin-top: 20px;
         padding: 10px 0;
       }
       h2 {
-        font-size: 18px;
+        font-size: $font-paragraph;
         margin-bottom: 24px;
       }
     }
@@ -2086,7 +2200,7 @@ svg.highcharts-root path.highcharts-point {
     }
 
     .right {
-      font-size: 20px;
+      font-size: $font-large;
 
       .label {
         width: 49%;
@@ -2098,7 +2212,7 @@ svg.highcharts-root path.highcharts-point {
       }
 
       .grade {
-        font-size: 48px;
+        font-size: $font-header-large;
         width: 49%;
         display: inline-block;
         margin-left: 10px;
@@ -2109,11 +2223,11 @@ svg.highcharts-root path.highcharts-point {
 
   .selected-location {
     a {
-      font-size: 24px;
+      font-size: $font-header;
       padding-bottom: 20px;
 
       &::after {
-        font-size: 8px;
+        font-size: $font-small;
         right: -15px;
         top: 7px;
       }
@@ -2247,7 +2361,7 @@ svg.highcharts-root path.highcharts-point {
       margin-bottom: 20px !important;
 
       h2 {
-        font-size: 24px;
+        font-size: $font-header;
         line-height: 26px;
         font-weight: 400;
       }

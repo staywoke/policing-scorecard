@@ -120,7 +120,7 @@ if (empty($sheriff)) {
             <h2>Read the <a href="./findings" style="color: #82add7; text-decoration: underline; font-weight: 500;">Findings.</a> See the Grade for Each Department.</h2>
             <div class="buttons">
               <a href="/?city=los-angeles" class="btn <?= $link === 'city' ? 'active' : '' ?>">Police Depts</a>
-              <a href="/?sheriff=los-angeles" class="btn <?= $link === 'sheriff' ? 'active' : '' ?>">Sheriffs Depts</a>
+              <a href="/?sheriff=san-diego" class="btn <?= $link === 'sheriff' ? 'active' : '' ?>">Sheriffs Depts</a>
             </div>
           </div>
           <div class="left">
@@ -155,6 +155,7 @@ if (empty($sheriff)) {
           <div class="right v-center view-score" onclick="SCORECARD.loadResultsInfo('<?= $marker ?>')">
             <span class="label">Overall Grade:</span>
             <span class="grade"><?= $grade ?></span>
+            <?= getChange($data['change_overall_score']); ?>
           </div>
         </div>
       </div>
@@ -164,29 +165,29 @@ if (empty($sheriff)) {
           <div class="one-third">
             <h1><strong><?= $data['deadly_force_incidents'] ?></strong> deadly force incident<?= $data['deadly_force_incidents'] !== '1' ? 's' : '' ?></h1>
           <?php if(num($data['deadly_force_incidents']) === '0'): ?>
-            <p><?= $data['agency_name'] ?> was <strong>1 of only 15 departments</strong> in our analysis that did not use deadly force from 2016-17.</p>
+            <p><?= $data['agency_name'] ?> was <strong>1 of only 15 departments</strong> in our analysis that did not use deadly force from 2016-18.</p>
           <?php elseif(!isset($data['black_deadly_force_disparity_per_population']) || !isset($data['hispanic_deadly_force_disparity_per_population'])): ?>
             <p>That’s higher than <strong><?= num($data['percentile_of_deadly_force_incidents_per_arrest'], 0, '%', true) ?></strong> of California police departments.</p>
           <?php else: ?>
-            <p>Based on population, a Black person was <strong><?= num($data['black_deadly_force_disparity_per_population'], 1, 'x') ?> more likely</strong> and a Latinx person was <strong><?= num($data['hispanic_deadly_force_disparity_per_population'], 1, 'x') ?> more likely</strong> to have deadly force used on them than a White person in <?= $data['agency_name'] ?> from 2016-17.</p>
+            <p>Based on population, a Black person was <strong><?= num($data['black_deadly_force_disparity_per_population'], 1, 'x') ?> more likely</strong> and a Latinx person was <strong><?= num($data['hispanic_deadly_force_disparity_per_population'], 1, 'x') ?> more likely</strong> to have deadly force used on them than a White person in <?= $data['agency_name'] ?> from 2016-18.</p>
           <?php endif; ?>
           </div>
           <div class="one-third">
             <h1><strong><?= num($data['civilian_complaints_reported']) ?></strong> civilian complaints of police misconduct</h1>
           <?php if(num($data['civilian_complaints_sustained']) === '0'): ?>
-            <p> <strong>0 complaints </strong> were ruled in favor of civilians from 2016-17.</p>
+            <p> <strong>0 complaints </strong> were ruled in favor of civilians from 2016-18.</p>
           <?php elseif(num($data['civilian_complaints_sustained']) === '1'): ?>
-            <p>Only <strong>1 in every <?= num($data['civilian_complaints_reported']) ?> complaints</strong> were ruled in favor of civilians from 2016-17.</p>
+            <p>Only <strong>1 in every <?= num($data['civilian_complaints_reported']) ?> complaints</strong> were ruled in favor of civilians from 2016-18.</p>
           <?php elseif(intval(str_replace(',', '', $data['civilian_complaints_reported'])) / intval(str_replace(',', '', $data['civilian_complaints_sustained'])) <= 3): ?>
             <p><strong><?= num($data['percent_of_civilian_complaints_sustained'], 0, '%') ?></strong> were ruled in favor of civilians from 2016-2018.</p>
           <?php else: ?>
-            <p>Only <strong>1 in every <?= round(intval(str_replace(',', '', $data['civilian_complaints_reported'])) / intval(str_replace(',', '', $data['civilian_complaints_sustained']))) ?> complaints</strong> were ruled in favor of civilians from 2016-17.</p>
+            <p>Only <strong>1 in every <?= round(intval(str_replace(',', '', $data['civilian_complaints_reported'])) / intval(str_replace(',', '', $data['civilian_complaints_sustained']))) ?> complaints</strong> were ruled in favor of civilians from 2016-18.</p>
           <?php endif; ?>
           </div>
           <div class="one-third">
-            <h1><strong><?= num($data['total_arrests']) ?></strong> arrests made in 2016</h1>
+            <h1><strong><?= num($data['total_arrests']) ?></strong> arrests made</h1>
           <?php if (intval($data['percent_of_misdemeanor_arrests_per_population']) <= 75): ?>
-            <p>Police made <strong><?= num($data['times_more_misdemeanor_arrests_than_violent_crime'], 1, 'x') ?> as many arrests for low level offenses</strong> as for violent crimes in 2016.</p>
+            <p>Police made <strong><?= num($data['times_more_misdemeanor_arrests_than_violent_crime'], 1, 'x') ?> as many arrests for low level offenses</strong> as for violent crimes in 2016-2018.</p>
           <?php else: ?>
             <p><?= $data['agency_name'] ?> had a lower misdemeanor arrest rate than <strong><?= num($data['percent_of_misdemeanor_arrests_per_population'], 1, '%') ?></strong> of departments.</p>
           <?php endif; ?>
@@ -203,6 +204,7 @@ if (empty($sheriff)) {
           <span class="divider">&nbsp;|&nbsp;</span>
           <?= num($data['police_violence_score'], 0, '%') ?>
           <a href="javascript:void(0)" class="results-info" data-city="<?= $marker ?>" data-result-info="police-violence">?</a>
+          <?= getChange($data['change_police_violence_score']); ?>
         </div>
         <div class="content">
           <div class="left">
@@ -211,7 +213,7 @@ if (empty($sheriff)) {
               <?= getChange($data['less_lethal_force_change']); ?>
               <h3>Less-Lethal Force</h3>
               <p>Using batons, strangleholds, tasers &amp; other weapons</p>
-              <p><?= output($data['use_of_less_lethal_force']) ?> Uses of Force <span class="divider">&nbsp;|&nbsp;</span> <?= output($data['less_lethal_force_per_arrest']) ?> uses every 10k arrests</p>
+              <p><?= output($data['use_of_less_lethal_force']) ?> incidents <span class="divider">&nbsp;|&nbsp;</span> <?= output($data['less_lethal_force_per_arrest']) ?> every 10k arrests</p>
 
               <?php if(!isset($data['percent_of_less_lethal_force_per_arrest']) || (isset($data['percent_of_less_lethal_force_per_arrest']) && empty($data['percent_of_less_lethal_force_per_arrest']))): ?>
                 <div class="progress-bar-wrapper">
@@ -232,7 +234,7 @@ if (empty($sheriff)) {
               <h3>Deadly Force</h3>
               <p><?= output($data['police_shootings_incidents']) ?> Shootings + <?= intval(output($data['deadly_force_incidents'])) - intval(output($data['police_shootings_incidents'])) ?> other deaths or serious injuries</p>
               <?php if(output($data['deadly_force_incidents']) === '0'): ?>
-              <p class="good-job">Did Not Report Using Deadly Force in 2016-17</p>
+              <p class="good-job">Did Not Report Using Deadly Force in 2016-18</p>
               <?php else: ?>
               <p><?= output($data['deadly_force_incidents']) ?> Total Incidents <span class="divider">&nbsp;|&nbsp;</span> <?= output($data['deadly_force_incidents_per_arrest']) ?> every 10k arrests</p>
               <?php endif; ?>
@@ -385,7 +387,14 @@ if (empty($sheriff)) {
       <div class="section bg-gray checklist">
         <div class="content">
           <h1 class="title">
-            Policies Adopted to <span class="good">Limit</span> Use of Force
+            Policies Adopted to <span class="good">Limit</span> Use of Force <?php if ($data['currently_updating_use_of_force'] === '1' || $data['currently_updating_union_contract'] === '1'): ?>*<?php endif; ?>
+          <?php if ($data['currently_updating_use_of_force'] === '1' && $data['currently_updating_union_contract'] === '0'): ?>
+            <span class="title white">* Agency Currently Updating Policy</span>
+          <?php elseif ($data['currently_updating_use_of_force'] === '0' || $data['currently_updating_union_contract'] === '1'): ?>
+            <span class="title white">* Agency Currently Negotiating Contract</span>
+          <?php elseif ($data['currently_updating_use_of_force'] === '1' || $data['currently_updating_union_contract'] === '1'): ?>
+            <span class="title white">* Agency Currently Updating Policy and </span>
+          <?php endif; ?>
           </h1>
         </div>
         <div class="content">
@@ -441,6 +450,7 @@ if (empty($sheriff)) {
           <span class="divider">&nbsp;|&nbsp;</span>
           <?= num($data['police_accountability_score'], 0, '%') ?>
           <a href="javascript:void(0)" class="results-info" data-city="<?= $marker ?>" data-result-info="police-accountability">?</a>
+          <?= getChange($data['change_police_accountability_score']); ?>
         </div>
         <div class="content">
           <div class="left">
@@ -580,6 +590,7 @@ if (empty($sheriff)) {
           <span class="divider">&nbsp;|&nbsp;</span>
           <?= num($data['approach_to_policing_score'], 0, '%') ?>
           <a href="javascript:void(0)" class="results-info" data-city="<?= $marker ?>" data-result-info="approach">?</a>
+          <?= getChange($data['change_approach_to_policing_score']); ?>
         </div>
         <div class="content">
           <div class="left">
@@ -680,7 +691,6 @@ if (empty($sheriff)) {
           <div class="left">
           <?php if(isset($data['adult_jail_population'])): ?>
             <div class="stat-wrapper no-border-mobile">
-              <?= getChange($data['arrest_rate_change']); ?>
               <h3>Jail Incarceration rate</h3>
               <p><?= num(round(intval(str_replace(',', '', $data['adult_jail_population'])))) ?> Avg Daily Jail Population <span class="divider">&nbsp;|&nbsp;</span> <?= output($data['jail_population_per_1k']) ?> per 1k residents</p>
               <?php if(!isset($data['percent_jail_deaths_per_1000_jail_population_table']) || (isset($data['percent_jail_deaths_per_1000_jail_population_table']) && empty($data['percent_jail_deaths_per_1000_jail_population_table']))): ?>

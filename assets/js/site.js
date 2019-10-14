@@ -169,7 +169,6 @@ var SCORECARD = (function () {
 
     Array.prototype.forEach.call($checks, function(el) {
       if (isScrolledIntoView(el)) {
-        el.style.backgroundPosition = '0 center';
         el.classList.remove('animate-check');
       }
     });
