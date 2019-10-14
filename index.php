@@ -792,13 +792,13 @@ if (empty($sheriff)) {
           <div class="left">
             <table>
               <tr>
-                <th width="200"><?= $link ?></th>
+                <th width="180"><?= $link ?></th>
                 <th width="50">Grade</th>
                 <th>&nbsp;</th>
               </tr>
             <?php foreach($reportCard as $index => $card): if ($index < (count($reportCard) / 2)): ?>
               <tr>
-                <td width="200"><a href="./?<?= $link ?>=<?= strtolower(preg_replace('/ /', '-', $card['agency_name'])) ?>"><?= $index + 1 ?>. <?= $card['agency_name'] ?></a></td>
+                <td width="180"><a href="./?<?= $link ?>=<?= strtolower(preg_replace('/ /', '-', $card['agency_name'])) ?>"><?= $index + 1 ?>. <?= $card['agency_name'] ?></a></td>
                 <td width="50"><a href="./?<?= $link ?>=<?= strtolower(preg_replace('/ /', '-', $card['agency_name'])) ?>"><?= getGrade($card['overall_score']) ?></a></td>
                 <td>
                   <a class="score" href="./?<?= $link ?>=<?= strtolower(preg_replace('/ /', '-', $card['agency_name'])) ?>">
@@ -813,13 +813,13 @@ if (empty($sheriff)) {
           <div class="right">
             <table>
               <tr class="hide-mobile">
-                <th width="200"><?= $link ?></th>
+                <th width="180"><?= $link ?></th>
                 <th width="50">Grade</th>
                 <th>&nbsp;</th>
               </tr>
               <?php foreach($reportCard as $index => $card): if ($index >= (count($reportCard) / 2)): ?>
                 <tr>
-                  <td width="200"><a href="./?<?= $link ?>=<?= strtolower(preg_replace('/ /', '-', $card['agency_name'])) ?>"><?= $index + 1 ?>. <?= $card['agency_name'] ?></a></td>
+                  <td width="180"><a href="./?<?= $link ?>=<?= strtolower(preg_replace('/ /', '-', $card['agency_name'])) ?>"><?= $index + 1 ?>. <?= $card['agency_name'] ?></a></td>
                   <td width="50"><a href="./?<?= $link ?>=<?= strtolower(preg_replace('/ /', '-', $card['agency_name'])) ?>"><?= getGrade($card['overall_score']) ?></a></td>
                   <td>
                     <a class="score" href="./?<?= $link ?>=<?= strtolower(preg_replace('/ /', '-', $card['agency_name'])) ?>">

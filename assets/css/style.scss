@@ -1331,7 +1331,7 @@ body {
     vertical-align: middle;
     text-align: center;
     font-weight: 400;
-    text-shadow: 0 0 4px rgba(0,0,0,0.75);
+    text-shadow: 0 0 12px rgba(0,0,0,1);
     overflow: hidden;
 
     &.grade-a {
@@ -1923,11 +1923,11 @@ svg.highcharts-root path.highcharts-point {
 .grades {
   td {
     position: relative;
+    white-space: nowrap;
 
     a.score {
       display: inline-block;
-      top: 6px;
-      position: relative;
+      vertical-align: middle;
     }
 
     .tooltip {
