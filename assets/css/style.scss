@@ -559,6 +559,7 @@ body {
       span, small {
         color: white !important;
         font-size: $font-default !important;
+        font-weight: 600;
       }
     }
   }
@@ -717,6 +718,14 @@ body {
   a {
     color: #000;
     text-decoration: none;
+  }
+
+  .stats-change, .tooltip, .grade-arrow {
+    position: relative;
+    top: unset;
+    left: unset;
+    right: unset;
+    display: inline-block;
   }
 
   &:last-child {
@@ -1824,37 +1833,39 @@ svg.highcharts-root path.highcharts-point {
   z-index: 1000;
   font-size: 16px;
   font-family: monospace;
-  height: 16px;
+  height: 17px;
   line-height: 16px;
   display: inline-block;
   top: 2px;
   z-index: 50;
+  width: 22px;
 
   .grade-arrow {
     position: relative;
     display: block;
-    width: 20px;
+    width: 100%;
     height: 24px;
 
     span {
       position: absolute;
-      left: 2px;
-      font-size: $font-default;
+      left: 0;
+      font-size: 14px;
       font-family: monospace;
       display: block;
-      height: 10px;
-      line-height: 12px;
-      width: 10px;
-      top: 0;
+      line-height: 8px;
+      width: 100%;
+      top: 1px;
+      text-align: center;
+      height: 7px;
     }
 
     small {
       position: absolute;
       left: 0;
-      font-size: $font-small;
+      font-size: $font-medium;
       font-family: 'Lato', sans-serif;
       text-align: center;
-      width: 14px;
+      width: 100%;
       display: block;
       bottom: 0;
       color: black;
@@ -1913,21 +1924,31 @@ svg.highcharts-root path.highcharts-point {
   td {
     position: relative;
 
+    a.score {
+      display: inline-block;
+      top: 6px;
+      position: relative;
+    }
+
     .tooltip {
-      top: 9px;
-      left: -22px;
+      position: unset;
+      top: unset;
+      left: unset;
+      display: inline-block;
     }
   }
 }
 
 .title.white {
   color: white;
-  margin-top: 20px;
-  display: block;
+  display: inline-block;
   font-size: 14px;
   line-height: 14px;
-  padding: 0;
   margin: 0;
+  background: $primary-green;
+  clear: both;
+  padding: 8px;
+  font-weight: 600;
 }
 
 /* RESPONSIVE */

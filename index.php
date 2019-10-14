@@ -210,10 +210,15 @@ if (empty($sheriff)) {
           <div class="left">
             <div class="stat-wrapper">
               <a href="javascript:void(0)" data-city="<?= $marker ?>" data-more-info="" class="more-info"></a>
-              <?= getChange($data['less_lethal_force_change']); ?>
               <h3>Less-Lethal Force</h3>
               <p>Using batons, strangleholds, tasers &amp; other weapons</p>
-              <p><?= output($data['use_of_less_lethal_force']) ?> incidents <span class="divider">&nbsp;|&nbsp;</span> <?= output($data['less_lethal_force_per_arrest']) ?> every 10k arrests</p>
+              <p>
+                <?= output($data['use_of_less_lethal_force']) ?> incidents
+                <span class="divider">&nbsp;|&nbsp;</span>
+                <?= output($data['less_lethal_force_per_arrest']) ?> every 10k arrests
+                <span class="divider">&nbsp;|&nbsp;</span>
+                <?= getChange($data['less_lethal_force_change']); ?>
+              </p>
 
               <?php if(!isset($data['percent_of_less_lethal_force_per_arrest']) || (isset($data['percent_of_less_lethal_force_per_arrest']) && empty($data['percent_of_less_lethal_force_per_arrest']))): ?>
                 <div class="progress-bar-wrapper">
@@ -230,13 +235,19 @@ if (empty($sheriff)) {
 
             <div class="stat-wrapper">
               <a href="javascript:void(0)" data-city="<?= $marker ?>" data-more-info="" class="more-info"></a>
-              <?= getChange($data['deadly_force_change']); ?>
               <h3>Deadly Force</h3>
-              <p><?= output($data['police_shootings_incidents']) ?> Shootings + <?= intval(output($data['deadly_force_incidents'])) - intval(output($data['police_shootings_incidents'])) ?> other deaths or serious injuries</p>
+              <p>
+              <?= output($data['police_shootings_incidents']) ?> Shootings + <?= intval(output($data['deadly_force_incidents'])) - intval(output($data['police_shootings_incidents'])) ?> other deaths or serious injuries</p>
               <?php if(output($data['deadly_force_incidents']) === '0'): ?>
               <p class="good-job">Did Not Report Using Deadly Force in 2016-18</p>
               <?php else: ?>
-              <p><?= output($data['deadly_force_incidents']) ?> Total Incidents <span class="divider">&nbsp;|&nbsp;</span> <?= output($data['deadly_force_incidents_per_arrest']) ?> every 10k arrests</p>
+              <p>
+                <?= output($data['deadly_force_incidents']) ?> Total Incidents
+                <span class="divider">&nbsp;|&nbsp;</span>
+                <?= output($data['deadly_force_incidents_per_arrest']) ?> every 10k arrests
+                <span class="divider">&nbsp;|&nbsp;</span>
+                <?= getChange($data['deadly_force_change']); ?>
+              </p>
               <?php endif; ?>
 
               <?php if(!isset($data['percentile_of_deadly_force_incidents_per_arrest']) || (isset($data['percentile_of_deadly_force_incidents_per_arrest']) && empty($data['percentile_of_deadly_force_incidents_per_arrest']))): ?>
@@ -389,11 +400,11 @@ if (empty($sheriff)) {
           <h1 class="title">
             Policies Adopted to <span class="good">Limit</span> Use of Force <?php if ($data['currently_updating_use_of_force'] === '1' || $data['currently_updating_union_contract'] === '1'): ?>*<?php endif; ?>
           <?php if ($data['currently_updating_use_of_force'] === '1' && $data['currently_updating_union_contract'] === '0'): ?>
-            <span class="title white">* Agency Currently Updating Policy</span>
+            <br><span class="title white">* Agency Currently Updating Policy</span>
           <?php elseif ($data['currently_updating_use_of_force'] === '0' || $data['currently_updating_union_contract'] === '1'): ?>
-            <span class="title white">* Agency Currently Negotiating Contract</span>
+            <br><span class="title white">* Agency Currently Negotiating Contract</span>
           <?php elseif ($data['currently_updating_use_of_force'] === '1' || $data['currently_updating_union_contract'] === '1'): ?>
-            <span class="title white">* Agency Currently Updating Policy and </span>
+            <br><span class="title white">* Agency Currently Updating Policy and </span>
           <?php endif; ?>
           </h1>
         </div>
@@ -789,7 +800,12 @@ if (empty($sheriff)) {
               <tr>
                 <td width="200"><a href="./?<?= $link ?>=<?= strtolower(preg_replace('/ /', '-', $card['agency_name'])) ?>"><?= $index + 1 ?>. <?= $card['agency_name'] ?></a></td>
                 <td width="50"><a href="./?<?= $link ?>=<?= strtolower(preg_replace('/ /', '-', $card['agency_name'])) ?>"><?= getGrade($card['overall_score']) ?></a></td>
-                <td><?= getChange($card['change_overall_score']); ?><a href="./?<?= $link ?>=<?= strtolower(preg_replace('/ /', '-', $card['agency_name'])) ?>"><div class="grade grade-<?= strtolower(preg_replace('/[^A-Z]/', '', getGrade($card['overall_score']))) ?>"><?= intval($card['overall_score']) ?>%</div></a></td>
+                <td>
+                  <a class="score" href="./?<?= $link ?>=<?= strtolower(preg_replace('/ /', '-', $card['agency_name'])) ?>">
+                    <div class="grade grade-<?= strtolower(preg_replace('/[^A-Z]/', '', getGrade($card['overall_score']))) ?>"><?= intval($card['overall_score']) ?>%</div>
+                  </a>
+                  <?= getChange($card['change_overall_score']); ?>
+                </td>
               </tr>
             <?php endif; endforeach; ?>
             </table>
@@ -805,7 +821,12 @@ if (empty($sheriff)) {
                 <tr>
                   <td width="200"><a href="./?<?= $link ?>=<?= strtolower(preg_replace('/ /', '-', $card['agency_name'])) ?>"><?= $index + 1 ?>. <?= $card['agency_name'] ?></a></td>
                   <td width="50"><a href="./?<?= $link ?>=<?= strtolower(preg_replace('/ /', '-', $card['agency_name'])) ?>"><?= getGrade($card['overall_score']) ?></a></td>
-                  <td><?= getChange($card['change_overall_score']); ?><a href="./?<?= $link ?>=<?= strtolower(preg_replace('/ /', '-', $card['agency_name'])) ?>"><div class="grade grade-<?= strtolower(preg_replace('/[^A-Z]/', '', getGrade($card['overall_score']))) ?>"><?= intval($card['overall_score']) ?>%</div></a></td>
+                  <td>
+                    <a class="score" href="./?<?= $link ?>=<?= strtolower(preg_replace('/ /', '-', $card['agency_name'])) ?>">
+                      <div class="grade grade-<?= strtolower(preg_replace('/[^A-Z]/', '', getGrade($card['overall_score']))) ?>"><?= intval($card['overall_score']) ?>%</div>
+                    </a>
+                    <?= getChange($card['change_overall_score']); ?>
+                  </td>
                 </tr>
               <?php endif; endforeach; ?>
             </table>
