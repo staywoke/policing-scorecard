@@ -25,7 +25,7 @@ function getSheriffData($sheriff = 'los-angeles') {
   return $data;
 }
 
-function getChange($change) {
+function getChange($change, $reverse = false) {
   $change = intval(str_replace('%', '', $change));
   $label = 'since 2016';
   $text = '';
@@ -33,9 +33,13 @@ function getChange($change) {
   $class = '';
 
   if ($change && $change !== 0) {
-    $text = ($change > 0) ? "<span class=\"grade-arrow\"><span>▶</span><small>{$change}%</small></span>" : "<span class=\"grade-arrow\"><span>▶</span><small>{$change}%</small></span>";
+    $text = ($change > 0) ? "<span class=\"grade-arrow\"><span>▶</span><small>+{$change}%</small></span>" : "<span class=\"grade-arrow\"><span>▶</span><small>{$change}%</small></span>";
     $class = ($change > 0) ? 'bad' : 'good';
     $tooltip = ($change > 0) ? "Up {$change}% {$label}" : "Down ". abs($change) ."% {$label}";
+
+    if ($reverse) {
+      $class = ($change > 0) ? 'good' : 'bad';
+    }
 
     return "<a href=\"javascript:void(0)\" class=\"stats-change tooltip {$class}\" data-tooltip=\"{$tooltip}\">{$text}</a>";
   }

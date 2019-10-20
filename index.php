@@ -155,7 +155,6 @@ if (empty($sheriff)) {
           <div class="right v-center view-score" onclick="SCORECARD.loadResultsInfo('<?= $marker ?>')">
             <span class="label">Overall Grade:</span>
             <span class="grade"><?= $grade ?></span>
-            <?= getChange($data['change_overall_score']); ?>
           </div>
         </div>
       </div>
@@ -165,7 +164,7 @@ if (empty($sheriff)) {
           <div class="one-third">
             <h1><strong><?= $data['deadly_force_incidents'] ?></strong> deadly force incident<?= $data['deadly_force_incidents'] !== '1' ? 's' : '' ?></h1>
           <?php if(num($data['deadly_force_incidents']) === '0'): ?>
-            <p><?= $data['agency_name'] ?> was <strong>1 of only 15 departments</strong> in our analysis that did not use deadly force from 2016-18.</p>
+            <p><?= $data['agency_name'] ?> was <strong>1 of only <?= ($link === 'city') ? '11' : '12' ?> departments</strong> in our analysis that did not use deadly force from 2016-18.</p>
           <?php elseif(!isset($data['black_deadly_force_disparity_per_population']) || !isset($data['hispanic_deadly_force_disparity_per_population'])): ?>
             <p>That’s higher than <strong><?= num($data['percentile_of_deadly_force_incidents_per_arrest'], 0, '%', true) ?></strong> of California police departments.</p>
           <?php else: ?>
@@ -213,7 +212,7 @@ if (empty($sheriff)) {
               <h3>Less-Lethal Force</h3>
               <p>Using batons, strangleholds, tasers &amp; other weapons</p>
               <p>
-                <?= output($data['use_of_less_lethal_force']) ?> incidents
+                <?= output($data['use_of_less_lethal_force']) ?> Incidents
                 <span class="divider">&nbsp;|&nbsp;</span>
                 <?= output($data['less_lethal_force_per_arrest']) ?> every 10k arrests
                 <span class="divider">&nbsp;|&nbsp;</span>
@@ -242,7 +241,7 @@ if (empty($sheriff)) {
               <p class="good-job">Did Not Report Using Deadly Force in 2016-18</p>
               <?php else: ?>
               <p>
-                <?= output($data['deadly_force_incidents']) ?> Total Incidents
+                <?= output($data['deadly_force_incidents']) ?> Incidents
                 <span class="divider">&nbsp;|&nbsp;</span>
                 <?= output($data['deadly_force_incidents_per_arrest']) ?> every 10k arrests
                 <span class="divider">&nbsp;|&nbsp;</span>
@@ -485,7 +484,7 @@ if (empty($sheriff)) {
             <div class="stat-wrapper">
               <a href="javascript:void(0)" data-city="<?= $marker ?>" data-more-info="" class="more-info"></a>
               <h3>Use of Force Complaints</h3>
-              <?php if (output($data['use_of_force_complaints_reported']) === '0'): ?>
+              <?php if (output($data['use_of_force_complaints_reported']) === '0' || output($data['percent_use_of_force_complaints_sustained']) === '0'): ?>
                 <p>0 Complaints Reported</p>
                 <div class="progress-bar-wrapper">
                   <div class="progress-bar bright-green" style="width: 0"></div>
@@ -624,7 +623,7 @@ if (empty($sheriff)) {
 
             <div class="stat-wrapper grouped">
               <a href="javascript:void(0)" data-city="<?= $marker ?>" data-more-info="" class="more-info"></a>
-              <h3 class="minor-pad">Percent of Total Arrests in 2016</h3>
+              <h3 class="minor-pad">Percent of total arrests by type</h3>
 
               <p>All Misdemeanors ( <?= num($data['percent_misdemeanor_arrests'], 0, '%') ?> )</p>
               <div class="progress-bar-wrapper">
@@ -647,7 +646,7 @@ if (empty($sheriff)) {
             <div class="stat-wrapper no-border-mobile">
               <a href="javascript:void(0)" data-city="<?= $marker ?>" data-more-info="" class="more-info"></a>
               <h3>Homicides Unsolved</h3>
-              <p><?= output($data['murders']) ?> Homicides from 2013-17 <span class="divider">&nbsp;|&nbsp;</span> <?= (intval(str_replace(',', '', $data['murders'])) - intval(str_replace(',', '', $data['murders_cleared']))) ?> Unsolved</p>
+              <p><?= output($data['murders']) ?> Homicides from 2013-18 <span class="divider">&nbsp;|&nbsp;</span> <?= (intval(str_replace(',', '', $data['murders'])) - intval(str_replace(',', '', $data['murders_cleared']))) ?> Unsolved</p>
               <?php if(intval($data['murders']) === 0): ?>
                 <p class="good-job pad-bottom">No Homicides Reported</p>
               <?php elseif(intval($data['murders']) > 0 && (intval(str_replace(',', '', $data['murders'])) - intval(str_replace(',', '', $data['murders_cleared']))) === 0): ?>
@@ -804,7 +803,7 @@ if (empty($sheriff)) {
                   <a class="score" href="./?<?= $link ?>=<?= strtolower(preg_replace('/ /', '-', $card['agency_name'])) ?>">
                     <div class="grade grade-<?= strtolower(preg_replace('/[^A-Z]/', '', getGrade($card['overall_score']))) ?>"><?= intval($card['overall_score']) ?>%</div>
                   </a>
-                  <?= getChange($card['change_overall_score']); ?>
+                  <?= getChange($card['change_overall_score'], true); ?>
                 </td>
               </tr>
             <?php endif; endforeach; ?>
@@ -825,7 +824,7 @@ if (empty($sheriff)) {
                     <a class="score" href="./?<?= $link ?>=<?= strtolower(preg_replace('/ /', '-', $card['agency_name'])) ?>">
                       <div class="grade grade-<?= strtolower(preg_replace('/[^A-Z]/', '', getGrade($card['overall_score']))) ?>"><?= intval($card['overall_score']) ?>%</div>
                     </a>
-                    <?= getChange($card['change_overall_score']); ?>
+                    <?= getChange($card['change_overall_score'], true); ?>
                   </td>
                 </tr>
               <?php endif; endforeach; ?>
@@ -889,7 +888,7 @@ if (empty($sheriff)) {
                 <?php endif; ?>
                 <?php if (!empty($data['police_chief_name'])): ?>
                   <li>
-                    <strong>Police Chief <?= $data['police_chief_name'] ?></strong>
+                    <strong><?= ($link === 'city') ? 'Police Chief' : '' ?> <?= $data['police_chief_name'] ?></strong>
                   <?php if (!empty($data['police_chief_phone'])): ?>
                     <br>
                     Phone:&nbsp; <a href="tel:1-<?= $data['police_chief_phone'] ?><?= (!empty($data['police_chief_phone_ext'])) ? ';ext=' . $data['police_chief_phone_ext'] : '' ?>"><?= $data['police_chief_phone'] ?></a>
