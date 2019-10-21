@@ -460,7 +460,7 @@ if (empty($sheriff)) {
           <span class="divider">&nbsp;|&nbsp;</span>
           <?= num($data['police_accountability_score'], 0, '%') ?>
           <a href="javascript:void(0)" class="results-info" data-city="<?= $marker ?>" data-result-info="police-accountability">?</a>
-          <?= getChange($data['change_police_accountability_score']); ?>
+          <?= getChange($data['change_police_accountability_score'], true); ?>
         </div>
         <div class="content">
           <div class="left">
@@ -600,7 +600,7 @@ if (empty($sheriff)) {
           <span class="divider">&nbsp;|&nbsp;</span>
           <?= num($data['approach_to_policing_score'], 0, '%') ?>
           <a href="javascript:void(0)" class="results-info" data-city="<?= $marker ?>" data-result-info="approach">?</a>
-          <?= getChange($data['change_approach_to_policing_score']); ?>
+          <?= getChange($data['change_approach_to_policing_score'], true); ?>
         </div>
         <div class="content">
           <div class="left">
