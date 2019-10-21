@@ -153,8 +153,8 @@ if (empty($sheriff)) {
             </div>
           </div>
           <div class="right v-center view-score" onclick="SCORECARD.loadResultsInfo('<?= $marker ?>')">
-            <span class="label">Overall Grade:</span>
             <span class="grade"><?= $grade ?></span>
+            <span class="label"><?= $data['overall_score'] ?></span>
           </div>
         </div>
       </div>

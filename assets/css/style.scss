@@ -550,6 +550,14 @@ body {
 
   .view-score {
     cursor: pointer;
+    text-align: right;
+    line-height: 80px;
+    vertical-align: middle;
+
+    span {
+      vertical-align: middle;
+      padding: 0 4px;
+    }
 
     .tooltip {
       position: absolute;
@@ -1167,9 +1175,9 @@ body {
       font-size: 80px;
       font-weight: 600;
       font-family: 'Lato', sans-serif;
-      position: absolute;
-      top: -4px;
-      margin-left: 20px;
+      // position: absolute;
+      // top: -4px;
+      // margin-left: 20px;
     }
   }
 }
@@ -2275,20 +2283,12 @@ svg.highcharts-root path.highcharts-point {
     .right {
       font-size: $font-large;
 
-      .label {
-        width: 49%;
-        display: inline-block;
-        line-height: 24px;
-        text-align: right;
-        position: relative;
-        top: -8px;
-      }
-
       .grade {
         font-size: $font-header-large;
-        width: 49%;
-        display: inline-block;
-        margin-left: 10px;
+      }
+
+      span {
+        position: relative;
         top: -20px;
       }
     }
