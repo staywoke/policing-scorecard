@@ -1875,6 +1875,10 @@ svg.highcharts-root path.highcharts-point {
   &.bad {
     color: $grade-red !important;
 
+    &.reverse {
+      color: $grade-light-green !important;
+    }
+
     .grade-arrow {
       span {
         bottom: 0;
@@ -1885,6 +1889,10 @@ svg.highcharts-root path.highcharts-point {
 
   &.good {
     color: $grade-light-green !important;
+
+    &.reverse {
+      color: $grade-red !important;
+    }
 
     .grade-arrow {
       span {
@@ -1949,6 +1957,50 @@ svg.highcharts-root path.highcharts-point {
   clear: both;
   padding: 8px;
   font-weight: 600;
+}
+
+.spending {
+  p.note {
+    margin-top: 8px;
+    text-align: center;
+  }
+
+  .keys {
+    margin-top: 14px;
+  }
+
+  p strong {
+    font-weight: 600;
+    font-size: 12px;
+  }
+}
+.tile-chart {
+  width: 320px;
+  height: 80px;
+  margin: 0 auto;
+  margin-top: 20px;
+
+  .tile {
+    display: inline-block;
+    width: 16px;
+    height: 16px;
+    background-color: #eeeeee;
+    float: left;
+    box-shadow: inset 0 0 0 1px #FFF;
+
+    &.color-1 {
+      background-color: $grade-red;
+    }
+    &.color-2 {
+      background-color: #58595b;
+    }
+    &.color-3 {
+      background-color: #9a9b9f;
+    }
+    &.color-4 {
+      background-color: #d4d9e4;
+    }
+  }
 }
 
 /* RESPONSIVE */

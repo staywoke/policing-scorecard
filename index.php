@@ -691,6 +691,18 @@ if (empty($sheriff)) {
               <?php endif; ?>
             </div>
             <?php endif; ?>
+
+            <?php if(isset($data['percentile_police_spending']) || isset($data['hispanic_murder_unsolved_rate']) || isset($data['white_murder_unsolved_rate'])): ?>
+            <div class="stat-wrapper grouped spending">
+              <h3>Police Funding</h3>
+              <p>$<?= num($data['police_budget']) ?> (<?= $data['percent_police_budget'] ?> of Budget) <span class="divider">&nbsp;|&nbsp;</span> $<?= num($data['police_spending_per_resident']) ?> per Resident</p>
+            </div>
+            <div class="stat-wrapper grouped spending">
+              <h3>Total <?= ($link === 'city') ? 'City' : 'County' ?> Spending in 2017</h3>
+              <?= generateTileChart($data, $link); ?>
+              <p class="note">^&nbsp;More Police Funding than <?= $data['percentile_police_spending'] ?> of Depts &nbsp;&nbsp;</p>
+            </div>
+            <?php endif; ?>
           </div>
         </div>
       </div>
