@@ -203,7 +203,7 @@ if (empty($sheriff)) {
           <span class="divider">&nbsp;|&nbsp;</span>
           <?= num($data['police_violence_score'], 0, '%') ?>
           <a href="javascript:void(0)" class="results-info" data-city="<?= $marker ?>" data-result-info="police-violence">?</a>
-          <?= getChange($data['change_police_violence_score']); ?>
+          <?= getChange($data['change_police_violence_score'], true); ?>
         </div>
         <div class="content">
           <div class="left">
