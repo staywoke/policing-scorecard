@@ -699,7 +699,10 @@ if (empty($sheriff)) {
             </div>
             <div class="stat-wrapper grouped spending">
               <h3>Total <?= ($link === 'city') ? 'City' : 'County' ?> Spending in 2017</h3>
-              <?= generateTileChart($data, $link); ?>
+              <?= generateBarChartHeader($data, $link); ?>
+              <p>
+                <canvas id="bar-chart"></canvas>
+              </p>
               <p class="note">^&nbsp;More Police Funding than <?= $data['percentile_police_spending'] ?> of Depts &nbsp;&nbsp;</p>
             </div>
             <?php endif; ?>
@@ -1181,10 +1184,47 @@ if (empty($sheriff)) {
     </script>
     <script src="assets/js/plugins.js<?= trim($ac) ?>"></script>
     <script src="assets/js/site.js<?= trim($ac) ?>"></script>
-  <?php if(output($data['deadly_force_incidents']) !== '0' && num($data['number_of_people_impacted_by_deadly_force'], 0) !== '0'): ?>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.7.3/Chart.min.js"></script>
+  <?php if(isset($data['percentile_police_spending']) || isset($data['hispanic_murder_unsolved_rate']) || isset($data['white_murder_unsolved_rate'])): ?>
     <script>
-    window.onload = function() {
+    window.addEventListener('load', function() {
+      var barChartData = {
+        datasets: <?= generateBarChart($data, $link); ?>
+      };
+
+      console.log('test');
+      var ctx = document.getElementById('bar-chart').getContext('2d');
+      window.myBar = new Chart(ctx, {
+        type: 'bar',
+        data: barChartData,
+        options: {
+          responsive: true,
+          minBarLength: 2,
+          legend: {
+            display: false,
+            position: 'top',
+          },
+          title: {
+            display: false,
+          },
+          scales: {
+            yAxes: [{
+                ticks: {
+                  stepSize: 25,
+                  beginAtZero: true,
+                  suggestedMax: 100
+                }
+            }]
+          }
+        }
+      });
+    });
+    </script>
+  <?php endif; ?>
+
+  <?php if(output($data['deadly_force_incidents']) !== '0' && num($data['number_of_people_impacted_by_deadly_force'], 0) !== '0'): ?>
+    <script>
+    window.addEventListener('load', function() {
       SCORECARD.loadMap();
       var chart = new Chart(document.getElementById("deadly-force-chart").getContext('2d'), {
         type: 'doughnut',
@@ -1242,7 +1282,7 @@ if (empty($sheriff)) {
       });
 
       setTimeout(SCORECARD.animate, 250);
-    };
+    });
     </script>
   <?php else: ?>
   <script>

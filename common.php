@@ -45,7 +45,7 @@ function getChange($change, $reverse = false) {
   }
 }
 
-function generateTileChart($data, $type) {
+function generateBarChartHeader($data, $type) {
   $percent_police_budget = 0;
   $percent_housing_budget = 0;
   $percent_health_budget = 0;
@@ -93,41 +93,97 @@ function generateTileChart($data, $type) {
   }
 
   $output .= '<span class="key key-white"></span> Other';
-  $output .= '</div><div class="tile-chart">';
-
-
-
-  if ($remainder === 100) {
-    return '';
-  }
-
-  for ($i = 0; $i < $percent_police_budget; $i++) {
-    $output .= '<div class="tile color-1 police"></div>';
-  }
-
-  for ($i = 0; $i < $percent_jail_budget; $i++) {
-    $output .= '<div class="tile color-1 jail"></div>';
-  }
-
-  for ($i = 0; $i < $percent_health_budget; $i++) {
-    $output .= '<div class="tile color-2 health"></div>';
-  }
-
-  for ($i = 0; $i < $percent_housing_budget; $i++) {
-    $output .= '<div class="tile color-3 housing"></div>';
-  }
-
-  for ($i = 0; $i < $percent_education_budget; $i++) {
-    $output .= '<div class="tile color-3 education"></div>';
-  }
-
-  for ($i = 0; $i < $remainder; $i++) {
-    $output .= '<div class="tile color-5 other"></div>';
-  }
-
   $output .= '</div>';
 
   return $output;
+}
+
+function generateBarChart($data, $type) {
+  $percent_police_budget = 0;
+  $percent_housing_budget = 0;
+  $percent_health_budget = 0;
+  $percent_education_budget = 0;
+  $percent_jail_budget = 0;
+  $remainder = 100;
+  $output = array();
+
+  if ($type === 'city') {
+    if (isset($data['percent_police_budget'])) {
+      $percent_police_budget = intval(str_replace('%', '', $data['percent_police_budget']));
+      $output[] = array(
+        'label' => 'Police',
+        'backgroundColor' => '#f67f85',
+        'borderWidth' => 0,
+        'data' => array($percent_police_budget)
+      );
+    }
+
+    if (isset($data['percent_health_budget'])) {
+      $percent_health_budget = intval(str_replace('%', '', $data['percent_health_budget']));
+      $output[] = array(
+        'label' => 'Health',
+        'backgroundColor' => '#58595b',
+        'borderWidth' => 0,
+        'data' => array($percent_health_budget)
+      );
+    }
+
+    if (isset($data['percent_housing_budget'])) {
+      $percent_housing_budget = intval(str_replace('%', '', $data['percent_housing_budget']));
+      $output[] = array(
+        'label' => 'Housing',
+        'backgroundColor' => '#9a9b9f',
+        'borderWidth' => 0,
+        'data' => array($percent_housing_budget)
+      );
+    }
+
+    $remainder = (100 - $percent_police_budget - $percent_health_budget - $percent_housing_budget);
+
+  } else if ($type = 'sheriff') {
+    if (isset($data['percent_police_budget']) || isset($data['percent_jail_budget'])) {
+      $percent_police_budget = intval(str_replace('%', '', $data['percent_police_budget']));
+      $percent_jail_budget = intval(str_replace('%', '', $data['percent_jail_budget']));
+
+      $output[] = array(
+        'label' => 'Police & Jail',
+        'backgroundColor' => '#f67f85',
+        'borderWidth' => 0,
+        'data' => array($percent_police_budget + $percent_jail_budget)
+      );
+    }
+
+    if (isset($data['percent_health_budget'])) {
+      $percent_health_budget = intval(str_replace('%', '', $data['percent_health_budget']));
+      $output[] = array(
+        'label' => 'Health',
+        'backgroundColor' => '#58595b',
+        'borderWidth' => 0,
+        'data' => array($percent_health_budget)
+      );
+    }
+
+    if (isset($data['percent_education_budget'])) {
+      $percent_education_budget = intval(str_replace('%', '', $data['percent_education_budget']));
+      $output[] = array(
+        'label' => 'Education',
+        'backgroundColor' => '#9a9b9f',
+        'borderWidth' => 0,
+        'data' => array($percent_police_budget)
+      );
+    }
+
+    $remainder = (100 - $percent_police_budget - $percent_jail_budget - $percent_health_budget - $percent_education_budget);
+  }
+
+  $output[] = array(
+    'label' => 'Other',
+    'backgroundColor' => '#d4d9e4',
+    'borderWidth' => 0,
+    'data' => array($remainder)
+  );
+
+  return json_encode($output);
 }
 
 function getMapKey($loc) {
