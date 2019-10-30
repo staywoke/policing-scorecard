@@ -623,7 +623,7 @@ if (empty($sheriff)) {
 
             <div class="stat-wrapper grouped">
               <a href="javascript:void(0)" data-city="<?= $marker ?>" data-more-info="" class="more-info"></a>
-              <h3 class="minor-pad">Percent of total arrests by type</h3>
+              <h3>Percent of total arrests by type</h3>
 
               <p>All Misdemeanors ( <?= num($data['percent_misdemeanor_arrests'], 0, '%') ?> )</p>
               <div class="progress-bar-wrapper">
@@ -667,7 +667,7 @@ if (empty($sheriff)) {
             <?php if(isset($data['black_murder_unsolved_rate']) || isset($data['hispanic_murder_unsolved_rate']) || isset($data['white_murder_unsolved_rate'])): ?>
             <div class="stat-wrapper grouped">
               <a href="javascript:void(0)" data-city="<?= $marker ?>" data-more-info="" class="more-info"></a>
-              <h3>Percent of Homicides Unsolved After 5 Months by Race</h3>
+              <h3>Percent of Homicides Unsolved by Race</h3>
 
               <?php if(isset($data['black_murder_unsolved_rate']) && !empty($data['black_murder_unsolved_rate'])): ?>
               <p>Homicides of Black Victims Unsolved ( <?= num($data['black_murder_unsolved_rate'], 0, '%') ?> )</p>
@@ -698,7 +698,7 @@ if (empty($sheriff)) {
               <p>$<?= num($data['police_budget']) ?> (<?= $data['percent_police_budget'] ?> of Budget) <span class="divider">&nbsp;|&nbsp;</span> $<?= num($data['police_spending_per_resident']) ?> per Resident</p>
             </div>
             <div class="stat-wrapper grouped spending">
-              <h3>Total <?= ($link === 'city') ? 'City' : 'County' ?> Spending in 2017</h3>
+              <h3>Total <?= ($link === 'city') ? 'City' : 'County' ?> Spending in 2017 ( <?= nFormatter($data['total_budget']) ?> )</h3>
               <?= generateBarChartHeader($data, $link); ?>
               <p>
                 <canvas id="bar-chart"></canvas>
@@ -714,25 +714,6 @@ if (empty($sheriff)) {
       <div class="section pad jail">
         <div class="content">
           <div class="left">
-          <?php if(isset($data['adult_jail_population'])): ?>
-            <div class="stat-wrapper no-border-mobile">
-              <h3>Jail Incarceration rate</h3>
-              <p><?= num(round(intval(str_replace(',', '', $data['adult_jail_population'])))) ?> Avg Daily Jail Population <span class="divider">&nbsp;|&nbsp;</span> <?= output($data['jail_population_per_1k']) ?> per 1k residents</p>
-              <?php if(!isset($data['percent_jail_deaths_per_1000_jail_population_table']) || (isset($data['percent_jail_deaths_per_1000_jail_population_table']) && empty($data['percent_jail_deaths_per_1000_jail_population_table']))): ?>
-                <div class="progress-bar-wrapper">
-                  <div class="progress-bar no-data" style="width: 0"></div>
-                </div>
-                <p class="note">City Did Not Provide Data</p>
-              <?php else: ?>
-                <div class="progress-bar-wrapper">
-                  <div class="progress-bar animate-bar <?= progressBar(100 - intval($data['percent_jail_deaths_per_1000_jail_population_table']), 'reverse') ?>" data-percent="<?= output(100 - intval($data['percent_jail_deaths_per_1000_jail_population_table']), 0, '%') ?>"></div>
-                </div>
-                <p class="note">^&nbsp; More than <?= num($data['percent_jail_deaths_per_1000_jail_population_table'], 0, '%', true) ?> of Sheriff's Depts &nbsp;&nbsp;</p>
-              <?php endif; ?>
-            </div>
-            <?php endif; ?>
-          </div>
-          <div class="right">
           <?php if(num(round(intval(str_replace(',', '', $data['total_jail_deaths_2016_2018'])))) !== 'N/A'): ?>
             <div class="stat-wrapper">
               <a href="javascript:void(0)" data-city="<?= $marker ?>" data-more-info="" class="more-info"></a>
@@ -763,33 +744,53 @@ if (empty($sheriff)) {
               </div>
             </div>
             <?php endif; ?>
-
-            <?php if(isset($data['total_ice_transfers']) && isset($data['percent_violent_transfers']) && isset($data['percent_drug_transfers']) && isset($data['percent_other_transfers'])): ?>
-            <div class="stat-wrapper">
-              <a href="javascript:void(0)" data-city="<?= $marker ?>" data-more-info="" class="more-info"></a>
-              <h3>People Transferred to ICE in 2018</h3>
-
-              <p><?= num(round(intval(str_replace(',', '', $data['total_ice_transfers'])))) ?> people were transferred to ICE</p>
-
-              <p class="keys">
-                <span class="key key-red"></span> Violent Crime
-                <span class="key key-orange"></span> Drug Offenses
-                <span class="key key-black"></span> Other
-              </p>
-
-              <div class="progress-bar-wrapper">
-                <div class="progress-bar animate-bar grouped key-red" data-percent="<?= output(floatval($data['percent_violent_transfers']), 0, '%') ?>">
-                  <span><?= (intval($data['percent_violent_transfers']) > 5) ? output(intval($data['percent_violent_transfers']), 0, '%') : '' ?></span>
+            <?php if(isset($data['adult_jail_population'])): ?>
+            <div class="stat-wrapper no-border-mobile">
+              <h3>Jail Incarceration rate</h3>
+              <p><?= num(round(intval(str_replace(',', '', $data['adult_jail_population'])))) ?> Avg Daily Jail Population <span class="divider">&nbsp;|&nbsp;</span> <?= output($data['jail_population_per_1k']) ?> per 1k residents</p>
+              <?php if(!isset($data['percent_jail_deaths_per_1000_jail_population_table']) || (isset($data['percent_jail_deaths_per_1000_jail_population_table']) && empty($data['percent_jail_deaths_per_1000_jail_population_table']))): ?>
+                <div class="progress-bar-wrapper">
+                  <div class="progress-bar no-data" style="width: 0"></div>
                 </div>
-                <div class="progress-bar animate-bar grouped key-orange" data-percent="<?= output(floatval($data['percent_drug_transfers']), 0, '%') ?>">
-                  <span><?= (intval($data['percent_drug_transfers']) > 5) ? output(intval($data['percent_drug_transfers']), 0, '%') : '' ?></span>
+                <p class="note">City Did Not Provide Data</p>
+              <?php else: ?>
+                <div class="progress-bar-wrapper">
+                  <div class="progress-bar animate-bar <?= progressBar(100 - intval($data['percent_jail_deaths_per_1000_jail_population_table']), 'reverse') ?>" data-percent="<?= output(100 - intval($data['percent_jail_deaths_per_1000_jail_population_table']), 0, '%') ?>"></div>
                 </div>
-                <div class="progress-bar animate-bar grouped key-black" data-percent="<?= output(floatval($data['percent_other_transfers']), 0, '%') ?>">
-                  <span><?= (intval($data['percent_other_transfers']) > 5) ? output(intval($data['percent_other_transfers']), 0, '%') : '' ?></span>
-                </div>
-              </div>
+                <p class="note">^&nbsp; More than <?= num($data['percent_jail_deaths_per_1000_jail_population_table'], 0, '%', true) ?> of Sheriff's Depts &nbsp;&nbsp;</p>
+              <?php endif; ?>
             </div>
             <?php endif; ?>
+          </div>
+          <div class="right">
+          <?php if(isset($data['total_ice_transfers']) && isset($data['percent_violent_transfers']) && isset($data['percent_drug_transfers']) && isset($data['percent_other_transfers'])): ?>
+          <div class="stat-wrapper">
+            <a href="javascript:void(0)" data-city="<?= $marker ?>" data-more-info="" class="more-info"></a>
+            <h3>People Transferred to ICE in 2018</h3>
+
+            <p><?= num(round(intval(str_replace(',', '', $data['total_ice_transfers'])))) ?> people were transferred to ICE</p>
+
+            <p class="keys">
+              <span class="key key-red"></span> Violent Crime
+              <span class="key key-orange"></span> Drug Offenses
+              <span class="key key-black"></span> Other
+            </p>
+
+            <div class="progress-bar-wrapper">
+              <div class="progress-bar animate-bar grouped key-red" data-percent="<?= output(floatval($data['percent_violent_transfers']), 0, '%') ?>">
+                <span><?= (intval($data['percent_violent_transfers']) > 5) ? output(intval($data['percent_violent_transfers']), 0, '%') : '' ?></span>
+              </div>
+              <div class="progress-bar animate-bar grouped key-orange" data-percent="<?= output(floatval($data['percent_drug_transfers']), 0, '%') ?>">
+                <span><?= (intval($data['percent_drug_transfers']) > 5) ? output(intval($data['percent_drug_transfers']), 0, '%') : '' ?></span>
+              </div>
+              <div class="progress-bar animate-bar grouped key-black" data-percent="<?= output(floatval($data['percent_other_transfers']), 0, '%') ?>">
+                <span><?= (intval($data['percent_other_transfers']) > 5) ? output(intval($data['percent_other_transfers']), 0, '%') : '' ?></span>
+              </div>
+            </div>
+          </div>
+          <?php endif; ?>
+
+
           </div>
         </div>
       </div>
@@ -1187,33 +1188,63 @@ if (empty($sheriff)) {
     <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.7.3/Chart.min.js"></script>
   <?php if(isset($data['percentile_police_spending']) || isset($data['hispanic_murder_unsolved_rate']) || isset($data['white_murder_unsolved_rate'])): ?>
     <script>
+    function nFormatter(num) {
+      num = parseInt(num);
+
+      if (num === 0) {
+        return '$0';
+      }
+
+      var units = ["k", "M", "B", "T"];
+      var order = Math.floor(Math.log(num) / Math.log(1000));
+      var unitname = units[(order - 1)];
+
+      // output number remainder + unitname
+      return '$' + parseFloat(num / 1000 ** order).toFixed(2) + unitname;
+    }
+
     window.addEventListener('load', function() {
       var barChartData = {
         datasets: <?= generateBarChart($data, $link); ?>
       };
 
-      console.log('test');
       var ctx = document.getElementById('bar-chart').getContext('2d');
       window.myBar = new Chart(ctx, {
         type: 'bar',
         data: barChartData,
         options: {
+          tooltips: {
+            callbacks: {
+              label: function(tooltipItem, data) {
+                var label = (data.datasets[tooltipItem.datasetIndex].label) ? ' ' + data.datasets[tooltipItem.datasetIndex].label : '';
+
+                if (label) {
+                  label += ': ';
+                }
+
+                label += nFormatter(tooltipItem.yLabel);
+
+                return label;
+              }
+            },
+          },
           responsive: true,
-          minBarLength: 2,
           legend: {
             display: false,
-            position: 'top',
           },
           title: {
             display: false,
           },
           scales: {
             yAxes: [{
-                ticks: {
-                  stepSize: 25,
-                  beginAtZero: true,
-                  suggestedMax: 100
+              ticks: {
+                // stepSize: 10,
+                beginAtZero: true,
+                suggestedMax: <?= intval(str_replace(',', '', $data['total_budget'])) ?>,
+                callback: function(value, index, values) {
+                  return nFormatter(value);
                 }
+              }
             }]
           }
         }

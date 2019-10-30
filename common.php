@@ -45,143 +45,116 @@ function getChange($change, $reverse = false) {
   }
 }
 
+function nFormatter($num, $decimal = 2) {
+  $num = intval(str_replace(',', '', $num));
+  $units = ["k", "M", "B", "T"];
+  $order = floor(log($num) / log(1000));
+  $unit_name = $units[($order - 1)];
+
+  // output number remainder + unitname
+  return '$' . round(floatval($num / 1000 ** $order), $decimal) . $unit_name;
+}
+
 function generateBarChartHeader($data, $type) {
-  $percent_police_budget = 0;
-  $percent_housing_budget = 0;
-  $percent_health_budget = 0;
-  $percent_education_budget = 0;
-  $percent_jail_budget = 0;
-  $remainder = 100;
   $output = '<div class="keys">';
 
   if ($type === 'city') {
-    if (isset($data['percent_police_budget'])) {
-      $percent_police_budget = intval(str_replace('%', '', $data['percent_police_budget']));
-      $output .= '<span class="key key-red"></span> Police';
+    if (isset($data['police_budget'])) {
+      $output .= '<span class="key key-red"></span> Police ' . nFormatter($data['police_budget'], 0);
     }
 
-    if (isset($data['percent_health_budget'])) {
-      $percent_health_budget = intval(str_replace('%', '', $data['percent_health_budget']));
-      $output .= '<span class="key key-black"></span> Health';
+    if (isset($data['health_budget'])) {
+      $output .= '<span class="key key-black"></span> Health ' . nFormatter($data['health_budget'], 0);
     }
 
-    if (isset($data['percent_housing_budget'])) {
-      $percent_housing_budget = intval(str_replace('%', '', $data['percent_housing_budget']));
-      $output .= '<span class="key key-other"></span> Housing';
+    if (isset($data['housing_budget'])) {
+      $output .= '<span class="key key-other"></span> Housing ' . nFormatter($data['housing_budget'], 0);
     }
-
-    $remainder = (100 - $percent_police_budget - $percent_health_budget - $percent_housing_budget);
-
   } else if ($type = 'sheriff') {
-    if (isset($data['percent_police_budget']) || isset($data['percent_jail_budget'])) {
-      $percent_police_budget = intval(str_replace('%', '', $data['percent_police_budget']));
-      $percent_jail_budget = intval(str_replace('%', '', $data['percent_jail_budget']));
-      $output .= '<span class="key key-red"></span> Police & Jail';
+    if (isset($data['police_budget']) || isset($data['jail_budget'])) {
+      $output .= '<span class="key key-red"></span> Police & Jail ' . nFormatter(intval(str_replace(',', '', $data['police_budget'])) + intval(str_replace(',', '', $data['jail_budget'])), 0);
     }
 
-    if (isset($data['percent_health_budget'])) {
-      $percent_health_budget = intval(str_replace('%', '', $data['percent_health_budget']));
-      $output .= '<span class="key key-black"></span> Health';
+    if (isset($data['health_budget'])) {
+      $output .= '<span class="key key-black"></span> Health ' . nFormatter($data['health_budget'], 0);
     }
 
-    if (isset($data['percent_education_budget'])) {
-      $percent_education_budget = intval(str_replace('%', '', $data['percent_education_budget']));
-      $output .= '<span class="key key-other"></span> Education';
+    if (isset($data['education_budget'])) {
+      $output .= '<span class="key key-other"></span> Education ' . nFormatter($data['education_budget'], 0);
     }
-
-    $remainder = (100 - $percent_police_budget - $percent_jail_budget - $percent_health_budget - $percent_education_budget);
   }
 
-  $output .= '<span class="key key-white"></span> Other';
   $output .= '</div>';
 
   return $output;
 }
 
 function generateBarChart($data, $type) {
-  $percent_police_budget = 0;
-  $percent_housing_budget = 0;
-  $percent_health_budget = 0;
-  $percent_education_budget = 0;
-  $percent_jail_budget = 0;
-  $remainder = 100;
   $output = array();
 
   if ($type === 'city') {
-    if (isset($data['percent_police_budget'])) {
-      $percent_police_budget = intval(str_replace('%', '', $data['percent_police_budget']));
+    if (isset($data['police_budget'])) {
+      $police_budget = intval(str_replace(',', '', $data['police_budget']));
       $output[] = array(
         'label' => 'Police',
         'backgroundColor' => '#f67f85',
         'borderWidth' => 0,
-        'data' => array($percent_police_budget)
+        'data' => array($police_budget)
       );
     }
 
-    if (isset($data['percent_health_budget'])) {
-      $percent_health_budget = intval(str_replace('%', '', $data['percent_health_budget']));
+    if (isset($data['health_budget'])) {
+      $health_budget = intval(str_replace(',', '', $data['health_budget']));
       $output[] = array(
         'label' => 'Health',
         'backgroundColor' => '#58595b',
         'borderWidth' => 0,
-        'data' => array($percent_health_budget)
+        'data' => array($health_budget)
       );
     }
 
-    if (isset($data['percent_housing_budget'])) {
-      $percent_housing_budget = intval(str_replace('%', '', $data['percent_housing_budget']));
+    if (isset($data['housing_budget'])) {
+      $housing_budget = intval(str_replace(',', '', $data['housing_budget']));
       $output[] = array(
         'label' => 'Housing',
         'backgroundColor' => '#9a9b9f',
         'borderWidth' => 0,
-        'data' => array($percent_housing_budget)
+        'data' => array($housing_budget)
       );
     }
-
-    $remainder = (100 - $percent_police_budget - $percent_health_budget - $percent_housing_budget);
-
   } else if ($type = 'sheriff') {
-    if (isset($data['percent_police_budget']) || isset($data['percent_jail_budget'])) {
-      $percent_police_budget = intval(str_replace('%', '', $data['percent_police_budget']));
-      $percent_jail_budget = intval(str_replace('%', '', $data['percent_jail_budget']));
+    if (isset($data['police_budget']) || isset($data['jail_budget'])) {
+      $police_budget = intval(str_replace(',', '', $data['police_budget']));
+      $jail_budget = intval(str_replace(',', '', $data['jail_budget']));
 
       $output[] = array(
         'label' => 'Police & Jail',
         'backgroundColor' => '#f67f85',
         'borderWidth' => 0,
-        'data' => array($percent_police_budget + $percent_jail_budget)
+        'data' => array($police_budget + $jail_budget)
       );
     }
 
-    if (isset($data['percent_health_budget'])) {
-      $percent_health_budget = intval(str_replace('%', '', $data['percent_health_budget']));
+    if (isset($data['health_budget'])) {
+      $health_budget = intval(str_replace(',', '', $data['health_budget']));
       $output[] = array(
         'label' => 'Health',
         'backgroundColor' => '#58595b',
         'borderWidth' => 0,
-        'data' => array($percent_health_budget)
+        'data' => array($health_budget)
       );
     }
 
-    if (isset($data['percent_education_budget'])) {
-      $percent_education_budget = intval(str_replace('%', '', $data['percent_education_budget']));
+    if (isset($data['education_budget'])) {
+      $education_budget = intval(str_replace(',', '', $data['education_budget']));
       $output[] = array(
         'label' => 'Education',
         'backgroundColor' => '#9a9b9f',
         'borderWidth' => 0,
-        'data' => array($percent_police_budget)
+        'data' => array($education_budget)
       );
     }
-
-    $remainder = (100 - $percent_police_budget - $percent_jail_budget - $percent_health_budget - $percent_education_budget);
   }
-
-  $output[] = array(
-    'label' => 'Other',
-    'backgroundColor' => '#d4d9e4',
-    'borderWidth' => 0,
-    'data' => array($remainder)
-  );
 
   return json_encode($output);
 }
@@ -439,7 +412,7 @@ function getMapKey($loc) {
       'longitude' => -120.5416012
     ),
     'modoc' => array(
-      'district' => 'us-ca-043',
+      'district' => 'us-ca-049',
       'latitude' => 41.5902084,
       'longitude' => -121.2895633
     ),
@@ -774,7 +747,7 @@ function getMapKey($loc) {
       'longitude' => -121.071384
     ),
     'humboldt' => array(
-      'district' => null,
+      'district' => 'us-ca-023',
       'latitude' => 40.7321853,
       'longitude' => -124.5057622
     ),
@@ -838,6 +811,11 @@ function getMapKey($loc) {
       'latitude' => 39.012652,
       'longitude' => -121.3051617
     ),
+    'plumas' => array(
+      'district' => 'us-ca-063',
+      'latitude' => 40.0221395,
+      'longitude' => -121.3590453
+    ),
     'san-joaquin' => array(
       'district' => 'us-ca-077',
       'latitude' => 36.6048688,
@@ -874,6 +852,11 @@ function getMapKey($loc) {
       'longitude' => -121.4987972
     ),
     'suttercoroner' => array(
+      'district' => 'us-ca-101',
+      'latitude' => 39.1569036,
+      'longitude' => -121.7682779
+    ),
+    'sutter' => array(
       'district' => 'us-ca-101',
       'latitude' => 39.1569036,
       'longitude' => -121.7682779

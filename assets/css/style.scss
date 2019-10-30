@@ -138,6 +138,11 @@ body {
         }
       }
 
+      #more-info-content {
+        overflow: scroll;
+        height: 100%;
+      }
+
       ul li {
         width: 100%;
 
@@ -1705,8 +1710,8 @@ text.highcharts-credits {
 }
 
 svg.highcharts-root path.highcharts-point {
-  stroke: #BBB;
-  stroke-width: 0.35px;
+  stroke: #444;
+  stroke-width: 0.25px;
 }
 
 .highcharts-mappoint-series {
