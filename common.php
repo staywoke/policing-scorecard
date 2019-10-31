@@ -60,27 +60,27 @@ function generateBarChartHeader($data, $type) {
 
   if ($type === 'city') {
     if (isset($data['police_budget'])) {
-      $output .= '<span class="key key-red"></span> Police ' . nFormatter($data['police_budget'], 0);
+      $output .= '<span class="key key-red"></span> Police ' . nFormatter($data['police_budget'], 1);
     }
 
     if (isset($data['health_budget'])) {
-      $output .= '<span class="key key-black"></span> Health ' . nFormatter($data['health_budget'], 0);
+      $output .= '<span class="key key-black"></span> Health ' . nFormatter($data['health_budget'], 1);
     }
 
     if (isset($data['housing_budget'])) {
-      $output .= '<span class="key key-other"></span> Housing ' . nFormatter($data['housing_budget'], 0);
+      $output .= '<span class="key key-other"></span> Housing ' . nFormatter($data['housing_budget'], 1);
     }
   } else if ($type = 'sheriff') {
     if (isset($data['police_budget']) || isset($data['jail_budget'])) {
-      $output .= '<span class="key key-red"></span> Police & Jail ' . nFormatter(intval(str_replace(',', '', $data['police_budget'])) + intval(str_replace(',', '', $data['jail_budget'])), 0);
+      $output .= '<span class="key key-red"></span> Police & Jail ' . nFormatter(intval(str_replace(',', '', $data['police_budget'])) + intval(str_replace(',', '', $data['jail_budget'])), 1);
     }
 
     if (isset($data['health_budget'])) {
-      $output .= '<span class="key key-black"></span> Health ' . nFormatter($data['health_budget'], 0);
+      $output .= '<span class="key key-black"></span> Health ' . nFormatter($data['health_budget'], 1);
     }
 
     if (isset($data['education_budget'])) {
-      $output .= '<span class="key key-other"></span> Education ' . nFormatter($data['education_budget'], 0);
+      $output .= '<span class="key key-other"></span> Education ' . nFormatter($data['education_budget'], 1);
     }
   }
 

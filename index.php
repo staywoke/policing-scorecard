@@ -698,7 +698,6 @@ if (empty($sheriff)) {
               <p>$<?= num($data['police_budget']) ?> (<?= $data['percent_police_budget'] ?> of Budget) <span class="divider">&nbsp;|&nbsp;</span> $<?= num($data['police_spending_per_resident']) ?> per Resident</p>
             </div>
             <div class="stat-wrapper grouped spending">
-              <h3>Total <?= ($link === 'city') ? 'City' : 'County' ?> Spending in 2017</h3>
               <?= generateBarChartHeader($data, $link); ?>
               <p>
                 <canvas id="bar-chart"></canvas>
