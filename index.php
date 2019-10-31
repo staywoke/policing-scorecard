@@ -698,7 +698,7 @@ if (empty($sheriff)) {
               <p>$<?= num($data['police_budget']) ?> (<?= $data['percent_police_budget'] ?> of Budget) <span class="divider">&nbsp;|&nbsp;</span> $<?= num($data['police_spending_per_resident']) ?> per Resident</p>
             </div>
             <div class="stat-wrapper grouped spending">
-              <h3>Total <?= ($link === 'city') ? 'City' : 'County' ?> Spending in 2017 ( <?= nFormatter($data['total_budget']) ?> )</h3>
+              <h3>Total <?= ($link === 'city') ? 'City' : 'County' ?> Spending in 2017</h3>
               <?= generateBarChartHeader($data, $link); ?>
               <p>
                 <canvas id="bar-chart"></canvas>
@@ -1240,7 +1240,7 @@ if (empty($sheriff)) {
               ticks: {
                 // stepSize: 10,
                 beginAtZero: true,
-                suggestedMax: <?= intval(str_replace(',', '', $data['total_budget'])) ?>,
+                suggestedMax: <?= intval(str_replace(',', '', $data['police_budget'])) ?>,
                 callback: function(value, index, values) {
                   return nFormatter(value);
                 }

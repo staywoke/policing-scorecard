@@ -622,7 +622,41 @@ $ac = '?ac=' . getHash();
           <p class="c3 c9"><span class="c1"></span></p>
           <p class="c3"><span>Based on these principles, </span><span class="c10"><a class="c12" href="http://joincampaignzero.org">Campaign Zero</a></span><span>&nbsp;obtained data from state and local agencies to evaluate California&rsquo;s 100 largest municipal police departments and converted each evaluation (represented by a &ldquo;score&rdquo; from 0-100) into an easy-to-understand letter grade. Using this methodology, a police department received a higher grade if it made </span><span class="c15">fewer arrests</span><span>&nbsp;for low level offenses, </span><span class="c15">used</span><span>&nbsp;</span><span class="c15">less force </span><span>during arrest, had </span><span class="c15">fewer homicides unsolved</span><span>, </span><span class="c15">did not have racial disparities</span><span>&nbsp;in arrests and use of force, and </span><span class="c15">upheld civilian complaints</span><span>&nbsp;of police misconduct more often than other police departments in the state. </span><span class="c4">See the grade each police department received, and the outcomes informing each grade, at </span><span class="c10 c4"><a class="c12" href="http://policescorecard.org">policescorecard.org. </a></span></p>
           <p class="c3 c9"><span class="c1"></span></p>
+
+          <p class="c3"><span class="c4 subtitle">The California Department of Justice recently made available data on policing in 2018.</span></p>
+
+          <p class="c3"><span>We’ve updated the Police Scorecard to include this information, and expanded our analysis to also evaluate every Sheriff’s Department in the state. Here are some of the findings from our analysis:</span></p>
+
+          <p class="c3"><span class="c11 c4">1. California had Fewer Incidents of Police Violence in 2018:</span></p>
+
+          <p class="c3"><span>Police departments in California reported reductions in police violence in 2018 - there were 9% fewer deadly force incidents statewide compared to 2017 and 8% fewer less lethal force incidents in 2018 among the 52 agencies that provided less lethal force data. These reductions in use of force happened despite arrest rates remaining constant at 1.1 million arrests per year.</span></p>
+
+<iframe title="California Policing Data Trends, 2016-2018" aria-label="Table" id="datawrapper-chart-lSQxg" src="//datawrapper.dwcdn.net/lSQxg/1/" scrolling="no" frameborder="0"></iframe><script type="text/javascript">!function(){"use strict";window.addEventListener("message",function(a){if(void 0!==a.data["datawrapper-height"])for(var e in a.data["datawrapper-height"]){var t=document.getElementById("datawrapper-chart-"+e)||document.querySelector("iframe[src*='"+e+"']");t&&(t.style.height=a.data["datawrapper-height"][e]+"px")}})}();</script>
+
+<p class="c3 c9"><span class="c1"></span></p>
+
+<p class="c3"><span class="c11 c4">2. Where Did Policing Outcomes Change Most?</span></p>
+
+<p class="c3"><span>Changes in policing outcomes varied by jurisdiction. Stockton Police Department’s overall score increased by 20% in 2018 - more than any other department in our analysis. This change was due, in part, to substantial reductions in Stockton police shootings in 2018 compared to previous years. Among departments that had 8 or more police shootings from 2016-18, Stockton Police Department had the largest reduction in police shootings in 2018.</span></p>
+
+<iframe title="% Change in Police Shootings, 2018 vs 2016-2017 Average" aria-label="Arrow Plot" id="datawrapper-chart-wzGPf" src="//datawrapper.dwcdn.net/wzGPf/2/" scrolling="no" frameborder="0"></iframe><script type="text/javascript">!function(){"use strict";window.addEventListener("message",function(a){if(void 0!==a.data["datawrapper-height"])for(var e in a.data["datawrapper-height"]){var t=document.getElementById("datawrapper-chart-"+e)||document.querySelector("iframe[src*='"+e+"']");t&&(t.style.height=a.data["datawrapper-height"][e]+"px")}})}();</script>
+
+<p class="c3"><span>Among other large California cities, San Diego and Fresno’s scores improved moderately while policing outcomes in San Francisco, San Jose, Los Angeles and Oakland remained relatively constant. Outcomes worsened in Long Beach which, along with Bakersfield and Riverside, continued to have some of the worst policing outcomes in the state among larger cities.</span></p>
+
+<iframe title="Changes in Police Department Scores from 2016-17 to 2018" aria-label="Column Chart" id="datawrapper-chart-eIG3V" src="//datawrapper.dwcdn.net/eIG3V/1/" scrolling="no" frameborder="0"></iframe><script type="text/javascript">!function(){"use strict";window.addEventListener("message",function(a){if(void 0!==a.data["datawrapper-height"])for(var e in a.data["datawrapper-height"]){var t=document.getElementById("datawrapper-chart-"+e)||document.querySelector("iframe[src*='"+e+"']");t&&(t.style.height=a.data["datawrapper-height"][e]+"px")}})}();</script>
+
+<p class="c3 c9"><span class="c1"></span></p>
+
+<p class="c3"><span class="c11 c4">3. Evaluating California Sheriff’s Departments</span></p>
+
+<p class="c3"><span>To more effectively evaluate Sheriff’s Departments, we added new indicators that reflect the role of sheriffs in running county jails. In addition to the existing framework used to evaluate city police departments, we examined the sheriffs’ jail incarceration rates, jail deaths per jail population, and transfers of immigrants to ICE. Based on this comprehensive evaluation, we found that Los Angeles County Sheriff - the nation’s largest Sheriff’s Department - had the worst score among the 58 CA Sheriff’s Departments. Between 2016-18, Los Angeles County Sheriff’s Department made more misdemeanor arrests per population than 87% of California Sheriff’s Departments, used more deadly force during arrest than 84% of departments and jailed people at a rate higher than 87% of departments. This indicates the need for urgent interventions to hold Los Angeles County Sheriff’s Department accountable for addressing these issues, which could improve policing outcomes in a county that is home to 1 in every 4 Californians.</span></p>
+
+<iframe title="CA County Sheriff's Scores" aria-label="Dot Plot" id="datawrapper-chart-IamVk" src="//datawrapper.dwcdn.net/IamVk/1/" scrolling="no" frameborder="0"></iframe><script type="text/javascript">!function(){"use strict";window.addEventListener("message",function(a){if(void 0!==a.data["datawrapper-height"])for(var e in a.data["datawrapper-height"]){var t=document.getElementById("datawrapper-chart-"+e)||document.querySelector("iframe[src*='"+e+"']");t&&(t.style.height=a.data["datawrapper-height"][e]+"px")}})}();</script>
+
+<p class="c3 c9"><span class="c1"></span></p>
+
           <p class="c3"><span class="c11 c4">Here are some of the major findings of our analysis:</span></p>
+
           <ol class="c7 lst-kix_fckzbmam001m-0 start" start="1">
             <li class="c3 c8 c6"><span>Most people arrested in California are arrested for low level offenses.</span><span class="c4">&nbsp;</span><span>Of 1,354,769 reported arrests made in 2016, 70% </span><span>were for misdemeanor offenses. Police made </span><span class="c4">1.8x </span><span>as many</span><span class="c4">&nbsp;</span><span>arrests for </span><span class="c4">drug possession</span><span>&nbsp;alone as they did for </span><span class="c4">all violent crimes combined.</span><sup class="c4"><a href="#ftnt1" id="ftnt_ref1">[1]</a></sup><span class="c11 c4">&nbsp;</span></li>
           </ol>
