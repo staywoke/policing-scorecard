@@ -397,13 +397,9 @@ if (empty($sheriff)) {
       <div class="section bg-gray checklist">
         <div class="content">
           <h1 class="title">
-            Policies Adopted to <span class="good">Limit</span> Use of Force <?php if ($data['currently_updating_use_of_force'] === '1' || $data['currently_updating_union_contract'] === '1'): ?>*<?php endif; ?>
-          <?php if ($data['currently_updating_use_of_force'] === '1' && $data['currently_updating_union_contract'] === '0'): ?>
+            Policies Adopted to <span class="good">Limit</span> Use of Force <?php if ($data['currently_updating_use_of_force'] === '1'): ?>*<?php endif; ?>
+          <?php if ($data['currently_updating_use_of_force'] === '1'): ?>
             <br><span class="title white">* Agency Currently Updating Policy</span>
-          <?php elseif ($data['currently_updating_use_of_force'] === '0' || $data['currently_updating_union_contract'] === '1'): ?>
-            <br><span class="title white">* Agency Currently Negotiating Contract</span>
-          <?php elseif ($data['currently_updating_use_of_force'] === '1' || $data['currently_updating_union_contract'] === '1'): ?>
-            <br><span class="title white">* Agency Currently Updating Policy and </span>
           <?php endif; ?>
           </h1>
         </div>
@@ -562,7 +558,10 @@ if (empty($sheriff)) {
       <div class="section bg-gray checklist">
         <div class="content">
           <h1 class="title">
-            Policies Making It <span class="bad">Harder</span> to Hold Police Accountable
+            Policies Making It <span class="bad">Harder</span> to Hold Police Accountable <?php if ($data['currently_updating_union_contract'] === '1'): ?>*<?php endif; ?>
+            <?php if ($data['currently_updating_union_contract'] === '1'): ?>
+            <br><span class="title white bad">* Agency Currently Negotiating Contract</span>
+            <?php endif; ?>
           </h1>
         </div>
         <div class="content">
@@ -693,12 +692,11 @@ if (empty($sheriff)) {
             <?php endif; ?>
 
             <?php if(isset($data['percentile_police_spending']) || isset($data['hispanic_murder_unsolved_rate']) || isset($data['white_murder_unsolved_rate'])): ?>
-            <div class="stat-wrapper grouped spending">
-              <h3>Police Funding</h3>
+            <div class="stat-wrapper spending">
+              <h3>Police Funding in 2017</h3>
               <p>$<?= num($data['police_budget']) ?> (<?= $data['percent_police_budget'] ?> of Budget) <span class="divider">&nbsp;|&nbsp;</span> $<?= num($data['police_spending_per_resident']) ?> per Resident</p>
-            </div>
-            <div class="stat-wrapper grouped spending">
               <?= generateBarChartHeader($data, $link); ?>
+              <p>&nbsp;</p>
               <p>
                 <canvas id="bar-chart"></canvas>
               </p>
