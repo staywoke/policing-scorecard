@@ -71,6 +71,10 @@ body {
   display: block;
 }
 
+.iframe {
+  max-width: 100% !important;
+}
+
 #modal-wrapper {
   position: fixed;
   top: 0;
@@ -2601,7 +2605,7 @@ p.number-list.n8::after {
     font-size: 18px;
   }
   .section .content.section-header h1.title {
-    font-size: 30px;
+    font-size: 24px;
     font-weight: 500;
     margin: 20px 0 10px 0;
   }

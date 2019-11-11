@@ -89,6 +89,116 @@ function generateBarChartHeader($data, $type) {
   return $output;
 }
 
+function generateArrestChart($data) {
+  $output = array(
+    'labels' => array(),
+    'datasets' => array(
+      array(
+        'label' => 'Arrests',
+        'backgroundColor' => '#f67f85',
+        'stack' => 'arrests',
+        'data' => array()
+      )
+    )
+  );
+
+  if (isset($data['arrests_2013'])) {
+    $output['labels'][] = '2013';
+    $output['datasets'][0]['data'][] = intval(str_replace(',', '', $data['arrests_2013']));
+  }
+
+  if (isset($data['arrests_2014'])) {
+    $output['labels'][] = '2014';
+    $output['datasets'][0]['data'][] = intval(str_replace(',', '', $data['arrests_2014']));
+  }
+
+  if (isset($data['arrests_2015'])) {
+    $output['labels'][] = '2015';
+    $output['datasets'][0]['data'][] = intval(str_replace(',', '', $data['arrests_2015']));
+  }
+
+  if (isset($data['arrests_2016'])) {
+    $output['labels'][] = '2016';
+    $output['datasets'][0]['data'][] = intval(str_replace(',', '', $data['arrests_2016']));
+  }
+
+  if (isset($data['arrests_2017'])) {
+    $output['labels'][] = '2017';
+    $output['datasets'][0]['data'][] = intval(str_replace(',', '', $data['arrests_2017']));
+  }
+
+  if (isset($data['arrests_2018'])) {
+    $output['labels'][] = '2018';
+    $output['datasets'][0]['data'][] = intval(str_replace(',', '', $data['arrests_2018']));
+  }
+
+  return json_encode($output, JSON_PRETTY_PRINT);
+}
+
+function generateHistoryChart($data) {
+  $output = array(
+    'labels' => array(),
+    'datasets' => array(
+      array(
+        'label' => 'Police Shootings',
+        'backgroundColor' => '#f67f85',
+        'stack' => 'police-violence',
+        'data' => array()
+      ),
+      array(
+        'label' => 'Other Police Weapons',
+        'backgroundColor' => '#58595b',
+        'stack' => 'police-violence',
+        'data' => array()
+      )
+    )
+  );
+
+  if (isset($data['less_lethal_force_2013']) && isset($data['police_shootings_2013'])) {
+    $output['labels'][] = '2013';
+
+    $output['datasets'][0]['data'][] = intval(str_replace(',', '', $data['police_shootings_2013']));
+    $output['datasets'][1]['data'][] = intval(str_replace(',', '', $data['less_lethal_force_2013']));
+  }
+
+  if (isset($data['less_lethal_force_2014']) && isset($data['police_shootings_2014'])) {
+    $output['labels'][] = '2014';
+
+    $output['datasets'][0]['data'][] = intval(str_replace(',', '', $data['police_shootings_2014']));
+    $output['datasets'][1]['data'][] = intval(str_replace(',', '', $data['less_lethal_force_2014']));
+  }
+
+  if (isset($data['less_lethal_force_2015']) && isset($data['police_shootings_2015'])) {
+    $output['labels'][] = '2015';
+
+    $output['datasets'][0]['data'][] = intval(str_replace(',', '', $data['police_shootings_2015']));
+    $output['datasets'][1]['data'][] = intval(str_replace(',', '', $data['less_lethal_force_2015']));
+  }
+
+  if (isset($data['less_lethal_force_2016']) && isset($data['police_shootings_2016'])) {
+    $output['labels'][] = '2016';
+
+    $output['datasets'][0]['data'][] = intval(str_replace(',', '', $data['police_shootings_2016']));
+    $output['datasets'][1]['data'][] = intval(str_replace(',', '', $data['less_lethal_force_2016']));
+  }
+
+  if (isset($data['less_lethal_force_2017']) && isset($data['police_shootings_2017'])) {
+    $output['labels'][] = '2017';
+
+    $output['datasets'][0]['data'][] = intval(str_replace(',', '', $data['police_shootings_2017']));
+    $output['datasets'][1]['data'][] = intval(str_replace(',', '', $data['less_lethal_force_2017']));
+  }
+
+  if (isset($data['less_lethal_force_2018']) && isset($data['police_shootings_2018'])) {
+    $output['labels'][] = '2018';
+
+    $output['datasets'][0]['data'][] = intval(str_replace(',', '', $data['police_shootings_2018']));
+    $output['datasets'][1]['data'][] = intval(str_replace(',', '', $data['less_lethal_force_2018']));
+  }
+
+  return json_encode($output, JSON_PRETTY_PRINT);
+}
+
 function generateBarChart($data, $type) {
   $output = array();
 

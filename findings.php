@@ -80,6 +80,10 @@ $ac = '?ac=' . getHash();
             line-height: 20px;
         }
 
+        iframe {
+            max-width: 100% !important;
+        }
+
         .lst-kix_fckzbmam001m-6>li {
             counter-increment: lst-ctn-kix_fckzbmam001m-6
         }
@@ -657,7 +661,7 @@ $ac = '?ac=' . getHash();
             </div>
         </div>
 
-        <div class="section bg-gray">
+        <div class="section about bg-gray">
             <div class="content text-white" style="padding-bottom: 60px;">
                 <p class="c3"><span class="c4 subtitle">The California Department of Justice recently made available data on policing in 2018.</span></p>
                 <div class="number-list">
@@ -701,7 +705,7 @@ $ac = '?ac=' . getHash();
                             })
                         }();
                     </script>
-
+                    <p>&nbsp;</p>
                     <p class="c3"><span>Among other large California cities, San Diego and Fresno’s scores improved moderately while policing outcomes in San Francisco, San Jose, Los Angeles and Oakland remained relatively constant. Outcomes worsened in Long Beach which, along with Bakersfield and Riverside, continued to have some of the worst policing outcomes in the state among larger cities.</span></p>
 
                     <iframe title="Changes in Police Department Scores from 2016-17 to 2018" aria-label="Column Chart" id="datawrapper-chart-eIG3V" src="https://datawrapper.dwcdn.net/eIG3V/1/" scrolling="no" frameborder="0"></iframe>
@@ -743,7 +747,7 @@ $ac = '?ac=' . getHash();
             </div>
         </div>
 
-        <div class="section bg-white" style="padding: 60px 0;">
+        <div class="section about bg-white" style="padding: 60px 20px;">
             <div class="content">
                 <p class="c3"><span class="c4 subtitle">Key Findings from Analysis of 2016-2017 Policing Data:</span></p>
 

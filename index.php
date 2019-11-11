@@ -168,7 +168,7 @@ if (empty($sheriff)) {
           <?php elseif(!isset($data['black_deadly_force_disparity_per_population']) || !isset($data['hispanic_deadly_force_disparity_per_population'])): ?>
             <p>That’s higher than <strong><?= num($data['percentile_of_deadly_force_incidents_per_arrest'], 0, '%', true) ?></strong> of California police departments.</p>
           <?php else: ?>
-            <p>Based on population, a Black person was <strong><?= num($data['black_deadly_force_disparity_per_population'], 1, 'x') ?> more likely</strong> and a Latinx person was <strong><?= num($data['hispanic_deadly_force_disparity_per_population'], 1, 'x') ?> more likely</strong> to have deadly force used on them than a White person in <?= $data['agency_name'] ?> from 2016-18.</p>
+            <p>Based on population, a Black person was <strong><?= num($data['black_deadly_force_disparity_per_population'], 1, 'x') ?> as likely</strong> and a Latinx person was <strong><?= num($data['hispanic_deadly_force_disparity_per_population'], 1, 'x') ?> as likely</strong> to have deadly force used on them than a White person in <?= $data['agency_name'] ?> from 2016-18.</p>
           <?php endif; ?>
           </div>
           <div class="one-third">
@@ -186,7 +186,7 @@ if (empty($sheriff)) {
           <div class="one-third">
             <h1><strong><?= num($data['total_arrests']) ?></strong> arrests made</h1>
           <?php if (intval($data['percent_of_misdemeanor_arrests_per_population']) <= 75): ?>
-            <p>Police made <strong><?= num($data['times_more_misdemeanor_arrests_than_violent_crime'], 1, 'x') ?> as many arrests for low level offenses</strong> as for violent crimes in 2016-2018.</p>
+            <p>Police made <strong><?= num($data['times_more_misdemeanor_arrests_than_violent_crime'], 1, 'x') ?> as many arrests for misdemeanors</strong> as for violent crimes in 2016-2018.</p>
           <?php else: ?>
             <p><?= $data['agency_name'] ?> had a lower misdemeanor arrest rate than <strong><?= num($data['percent_of_misdemeanor_arrests_per_population'], 1, '%') ?></strong> of departments.</p>
           <?php endif; ?>
@@ -207,6 +207,19 @@ if (empty($sheriff)) {
         </div>
         <div class="content">
           <div class="left">
+          <?php if(isset($data['less_lethal_force_2013'])): ?>
+            <div class="stat-wrapper">
+              <h3>Police Use of Force By Year</h3>
+              <p class="keys">
+                <span class="key key-red"></span> Police Shootings
+                <span class="key key-black"></span> Other Police Weapons
+              </p>
+              <p style="margin-top: 12px;">
+                <canvas id="bar-chart-history"></canvas>
+              </p>
+            </div>
+          <? endif; ?>
+
             <div class="stat-wrapper">
               <a href="javascript:void(0)" data-city="<?= $marker ?>" data-more-info="" class="more-info"></a>
               <h3>Less-Lethal Force</h3>
@@ -603,6 +616,15 @@ if (empty($sheriff)) {
         </div>
         <div class="content">
           <div class="left">
+          <?php if(isset($data['less_lethal_force_2013'])): ?>
+            <div class="stat-wrapper">
+              <h3>Arrests By Year</h3>
+              <p style="margin-top: 18px;">
+                <canvas id="bar-chart-arrests"></canvas>
+              </p>
+            </div>
+          <? endif; ?>
+
             <div class="stat-wrapper no-border-mobile">
               <a href="javascript:void(0)" data-city="<?= $marker ?>" data-more-info="" class="more-info"></a>
               <h3>Arrests for Low Level Offenses</h3>
@@ -1183,6 +1205,111 @@ if (empty($sheriff)) {
     <script src="assets/js/plugins.js<?= trim($ac) ?>"></script>
     <script src="assets/js/site.js<?= trim($ac) ?>"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.7.3/Chart.min.js"></script>
+
+  <?php if(isset($data['arrests_2013'])): ?>
+    <script>
+    function numberWithCommas(x) {
+      return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+    }
+    window.addEventListener('load', function() {
+      var ctx = document.getElementById('bar-chart-arrests').getContext('2d');
+      window.myBarHistory = new Chart(ctx, {
+        type: 'bar',
+        data: <?= generateArrestChart($data, $link); ?>,
+        options: {
+          maintainAspectRatio: false,
+          responsive: true,
+          legend: {
+            display: false,
+          },
+          title: {
+            display: false,
+          },
+          tooltips: {
+						mode: 'index',
+						intersect: false,
+            callbacks: {
+              label: function(tooltipItem, data) {
+                var label = (data.datasets[tooltipItem.datasetIndex].label) ? ' ' + data.datasets[tooltipItem.datasetIndex].label : '';
+
+                if (label) {
+                  label += ': ';
+                }
+
+                label += numberWithCommas(tooltipItem.yLabel);
+
+                return label;
+              }
+            },
+					},
+          scales: {
+            xAxes: [{
+              maxBarThickness: 12,
+              stacked: true,
+              gridLines: {
+                color: "rgba(0, 0, 0, 0)",
+              }
+            }],
+            yAxes: [{
+              stacked: true,
+              gridLines: {
+                color: "rgba(0, 0, 0, 0)",
+              },
+              ticks: {
+                beginAtZero: true,
+                callback: function(value, index, values) {
+                  return numberWithCommas(value);
+                }
+              }
+            }]
+          }
+        }
+      });
+    });
+    </script>
+  <?php endif; ?>
+
+  <?php if(isset($data['less_lethal_force_2013'])): ?>
+    <script>
+    window.addEventListener('load', function() {
+      var ctx = document.getElementById('bar-chart-history').getContext('2d');
+      window.myBarHistory = new Chart(ctx, {
+        type: 'bar',
+        data: <?= generateHistoryChart($data, $link); ?>,
+        options: {
+          maintainAspectRatio: false,
+          responsive: true,
+          legend: {
+            display: false,
+          },
+          title: {
+            display: false,
+          },
+          tooltips: {
+						mode: 'index',
+						intersect: false
+					},
+          scales: {
+            xAxes: [{
+              maxBarThickness: 12,
+              stacked: true,
+              gridLines: {
+                color: "rgba(0, 0, 0, 0)",
+              }
+            }],
+            yAxes: [{
+              stacked: true,
+              gridLines: {
+                color: "rgba(0, 0, 0, 0)",
+              }
+            }]
+          }
+        }
+      });
+    });
+    </script>
+  <?php endif; ?>
+
   <?php if(isset($data['percentile_police_spending']) || isset($data['hispanic_murder_unsolved_rate']) || isset($data['white_murder_unsolved_rate'])): ?>
     <script>
     function nFormatter(num) {
@@ -1210,6 +1337,7 @@ if (empty($sheriff)) {
         type: 'bar',
         data: barChartData,
         options: {
+          maintainAspectRatio: false,
           tooltips: {
             callbacks: {
               label: function(tooltipItem, data) {
@@ -1233,9 +1361,11 @@ if (empty($sheriff)) {
             display: false,
           },
           scales: {
+            xAxes: [{
+              maxBarThickness: 12
+            }],
             yAxes: [{
               ticks: {
-                // stepSize: 10,
                 beginAtZero: true,
                 suggestedMax: <?= intval(str_replace(',', '', $data['police_budget'])) ?>,
                 callback: function(value, index, values) {
