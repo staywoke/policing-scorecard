@@ -218,7 +218,7 @@ if (empty($sheriff)) {
                 <canvas id="bar-chart-history"></canvas>
               </p>
             </div>
-          <? endif; ?>
+          <?php endif; ?>
 
             <div class="stat-wrapper">
               <a href="javascript:void(0)" data-city="<?= $marker ?>" data-more-info="" class="more-info"></a>
@@ -623,7 +623,7 @@ if (empty($sheriff)) {
                 <canvas id="bar-chart-arrests"></canvas>
               </p>
             </div>
-          <? endif; ?>
+          <?php endif; ?>
 
             <div class="stat-wrapper no-border-mobile">
               <a href="javascript:void(0)" data-city="<?= $marker ?>" data-more-info="" class="more-info"></a>
