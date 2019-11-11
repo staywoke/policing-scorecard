@@ -207,7 +207,7 @@ if (empty($sheriff)) {
         </div>
         <div class="content">
           <div class="left">
-          <?php if(isset($data['less_lethal_force_2013'])): ?>
+          <?php if(isset($data['less_lethal_force_2013']) && !empty($data['less_lethal_force_2013'])): ?>
             <div class="stat-wrapper">
               <h3>Police Use of Force By Year</h3>
               <p class="keys">
@@ -616,7 +616,7 @@ if (empty($sheriff)) {
         </div>
         <div class="content">
           <div class="left">
-          <?php if(isset($data['arrests_2013'])): ?>
+          <?php if(isset($data['arrests_2013']) && !empty($data['arrests_2013'])): ?>
             <div class="stat-wrapper">
               <h3>Arrests By Year</h3>
               <p style="margin-top: 18px;">
