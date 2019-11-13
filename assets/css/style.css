@@ -1261,6 +1261,14 @@ body {
   white-space: nowrap;
 }
 
+.stat-wrapper .keys a {
+  opacity: 1;
+}
+
+.stat-wrapper .keys a.inactive {
+  opacity: 0.5;
+}
+
 .stat-wrapper .keys .key {
   display: inline-block;
   width: 12px;
@@ -2727,7 +2735,7 @@ p.number-list.n8::after {
     top: -20px;
   }
   .selected-location a {
-    font-size: 22px;
+    font-size: 24px;
     padding-bottom: 20px;
   }
   .selected-location a::after {

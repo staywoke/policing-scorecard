@@ -852,6 +852,14 @@ body {
     font-size: 14px;
     white-space: nowrap;
 
+    a {
+      opacity: 1;
+    }
+
+    a.inactive {
+      opacity: 0.5;
+    }
+
     .key {
       display: inline-block;
       width: 12px;
@@ -2405,7 +2413,7 @@ p.number-list {
 
   .selected-location {
     a {
-      font-size: $font-header;
+      font-size: 24px;
       padding-bottom: 20px;
 
       &::after {

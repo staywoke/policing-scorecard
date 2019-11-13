@@ -210,12 +210,12 @@ if (empty($sheriff)) {
           <?php if ( isset($data) && isset($data['less_lethal_force_2013']) ): ?>
             <div class="stat-wrapper">
               <h3>Police Use of Force By Year</h3>
-              <p class="keys">
-                <span class="key key-red"></span> Police Shootings
-                <span class="key key-black"></span> Other Police Weapons
-              </p>
-              <p style="margin-top: 12px;">
-                <canvas id="bar-chart-history"></canvas>
+              <div class="buttons" style="text-align: center; margin-top: 18px; display: block;">
+                <a href="#" class="btn history-key-police active" onclick="toggleHistory(0); return false;"><span class="key key-red"></span> Police Shootings</a>
+                <a href="#" class="btn history-key-other" onclick="toggleHistory(1); return false;"><span class="key key-black"></span> Other Police Weapons</a>
+              </div>
+              <p>
+                <canvas id="bar-chart-history" style="margin: 0 auto;"></canvas>
               </p>
             </div>
           <?php endif; ?>
@@ -1213,7 +1213,7 @@ if (empty($sheriff)) {
     }
     window.addEventListener('load', function() {
       var ctx = document.getElementById('bar-chart-arrests').getContext('2d');
-      window.myBarHistory = new Chart(ctx, {
+      window.myBarArrests = new Chart(ctx, {
         type: 'bar',
         data: <?= generateArrestChart($data, $link); ?>,
         options: {
@@ -1271,14 +1271,38 @@ if (empty($sheriff)) {
 
   <?php if(isset($data['less_lethal_force_2013'])): ?>
     <script>
+    function toggleHistory(show) {
+      var police = myBarHistory.getDatasetMeta(0);
+      var other = myBarHistory.getDatasetMeta(1);
+
+      var policeButton = document.querySelector('.history-key-police');
+      var otherButton = document.querySelector('.history-key-other');
+
+      if (show === 0) {
+        police.hidden = false;
+        other.hidden = true;
+      } else if (show === 1) {
+        police.hidden = true;
+        other.hidden = false;
+      }
+
+      policeButton.classList.toggle('active');
+      otherButton.classList.toggle('active');
+
+      myBarHistory.update();
+    }
+
     window.addEventListener('load', function() {
       var ctx = document.getElementById('bar-chart-history').getContext('2d');
       window.myBarHistory = new Chart(ctx, {
         type: 'bar',
         data: <?= generateHistoryChart($data, $link); ?>,
         options: {
+          animation: {
+            duration: 0,
+          },
           maintainAspectRatio: false,
-          responsive: true,
+          responsive: false,
           legend: {
             display: false,
           },

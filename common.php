@@ -143,12 +143,14 @@ function generateHistoryChart($data) {
         'label' => 'Police Shootings',
         'backgroundColor' => '#f67f85',
         'stack' => 'police-violence',
+        'hidden' => false,
         'data' => array()
       ),
       array(
         'label' => 'Other Police Weapons',
         'backgroundColor' => '#58595b',
         'stack' => 'police-violence',
+        'hidden' => true,
         'data' => array()
       )
     )
