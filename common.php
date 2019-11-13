@@ -95,7 +95,7 @@ function generateArrestChart($data) {
     'datasets' => array(
       array(
         'label' => 'Arrests',
-        'backgroundColor' => '#f67f85',
+        'backgroundColor' => '#58595b',
         'stack' => 'arrests',
         'data' => array()
       )
