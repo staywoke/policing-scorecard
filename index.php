@@ -207,7 +207,7 @@ if (empty($sheriff)) {
         </div>
         <div class="content">
           <div class="left">
-          <?php if ( isset($data) && isset($data['less_lethal_force_2013']) ): ?>
+          <?php if (isset($data['less_lethal_force_2016']) && isset($data['less_lethal_force_2017']) && isset($data['less_lethal_force_2018'])): ?>
             <div class="stat-wrapper">
               <h3>Police Use of Force By Year</h3>
               <div class="buttons" style="text-align: center; margin-top: 18px; display: block;">
@@ -616,7 +616,7 @@ if (empty($sheriff)) {
         </div>
         <div class="content">
           <div class="left">
-          <?php if ( isset($data) && isset($data['arrests_2013']) ): ?>
+          <?php if (isset($data['arrests_2016']) && isset($data['arrests_2017']) && isset($data['arrests_2018'])): ?>
             <div class="stat-wrapper">
               <h3>Arrests By Year</h3>
               <p style="margin-top: 18px;">
@@ -1206,7 +1206,7 @@ if (empty($sheriff)) {
     <script src="assets/js/site.js<?= trim($ac) ?>"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.7.3/Chart.min.js"></script>
 
-  <?php if(isset($data['arrests_2013'])): ?>
+  <?php if(isset($data['arrests_2016']) && isset($data['arrests_2017']) && isset($data['arrests_2018'])): ?>
     <script>
     function numberWithCommas(x) {
       return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
@@ -1269,7 +1269,7 @@ if (empty($sheriff)) {
     </script>
   <?php endif; ?>
 
-  <?php if(isset($data['less_lethal_force_2013'])): ?>
+  <?php if(isset($data['less_lethal_force_2016']) && isset($data['less_lethal_force_2017']) && isset($data['less_lethal_force_2018'])): ?>
     <script>
     function toggleHistory(show) {
       var police = myBarHistory.getDatasetMeta(0);
