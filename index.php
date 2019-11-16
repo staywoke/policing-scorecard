@@ -1244,7 +1244,7 @@ if (empty($sheriff)) {
 					},
           scales: {
             xAxes: [{
-              maxBarThickness: 12,
+              maxBarThickness: 20,
               stacked: true,
               gridLines: {
                 color: "rgba(0, 0, 0, 0)",
@@ -1315,7 +1315,7 @@ if (empty($sheriff)) {
 					},
           scales: {
             xAxes: [{
-              maxBarThickness: 12,
+              maxBarThickness: 20,
               stacked: true,
               gridLines: {
                 color: "rgba(0, 0, 0, 0)",
@@ -1386,7 +1386,7 @@ if (empty($sheriff)) {
           },
           scales: {
             xAxes: [{
-              maxBarThickness: 12
+              maxBarThickness: 20
             }],
             yAxes: [{
               ticks: {
