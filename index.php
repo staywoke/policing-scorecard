@@ -166,7 +166,7 @@ if (empty($sheriff)) {
           <?php if(num($data['deadly_force_incidents']) === '0'): ?>
             <p><?= $data['agency_name'] ?> was <strong>1 of only <?= ($link === 'city') ? '11' : '12' ?> departments</strong> in our analysis that did not use deadly force from 2016-18.</p>
           <?php elseif(!isset($data['black_deadly_force_disparity_per_population']) || !isset($data['hispanic_deadly_force_disparity_per_population'])): ?>
-            <p>That’s higher than <strong><?= num($data['percentile_of_deadly_force_incidents_per_arrest'], 0, '%', true) ?></strong> of California police departments.</p>
+            <p>That's higher than <strong><?= num($data['percentile_of_deadly_force_incidents_per_arrest'], 0, '%', true) ?></strong> of California police departments.</p>
           <?php else: ?>
             <p>Based on population, a Black person was <strong><?= num($data['black_deadly_force_disparity_per_population'], 1, 'x') ?> as likely</strong> and a Latinx person was <strong><?= num($data['hispanic_deadly_force_disparity_per_population'], 1, 'x') ?> as likely</strong> to have deadly force used on them than a White person in <?= $data['agency_name'] ?> from 2016-18.</p>
           <?php endif; ?>
@@ -513,6 +513,31 @@ if (empty($sheriff)) {
                 <p class="note">&nbsp;</p>
               <?php endif; ?>
             </div>
+
+            <?php if (isset($data['total_complaints_in_detention_reported']) || isset($data['percent_complaints_in_detention_sustained'])): ?>
+            <div class="stat-wrapper">
+              <h3>Complaints of Misconduct in Jail</h3>
+              <?php if (output($data['total_complaints_in_detention_reported']) === '0' || output($data['percent_complaints_in_detention_sustained']) === '0'): ?>
+                <p>0 Complaints Reported</p>
+                <div class="progress-bar-wrapper">
+                  <div class="progress-bar bright-green" style="width: 0"></div>
+                </div>
+                <p class="note">&nbsp;</p>
+              <?php elseif(!isset($data['percent_complaints_in_detention_sustained']) || (isset($data['percent_complaints_in_detention_sustained']) && empty($data['percent_complaints_in_detention_sustained']))): ?>
+                <p><?= output($data['total_complaints_in_detention_reported']) ?> Reported <span class="divider">&nbsp;|&nbsp;</span> <?= num($data['percent_complaints_in_detention_sustained'], 0, '%') ?> Ruled in Favor of Civilians</p>
+                <div class="progress-bar-wrapper">
+                  <div class="progress-bar no-data" style="width: 0"></div>
+                </div>
+                <p class="note">City Did Not Provide Data</p>
+              <?php else: ?>
+                <p><?= output($data['total_complaints_in_detention_reported']) ?> Reported <span class="divider">&nbsp;|&nbsp;</span> <?= num($data['percent_complaints_in_detention_sustained'], 0, '%') ?> Ruled in Favor of Civilians</p>
+                <div class="progress-bar-wrapper">
+                  <div class="progress-bar animate-bar <?= progressBar(100 - intval($data['percent_complaints_in_detention_sustained']), 'reverse') ?>" data-percent="<?= output(intval($data['percent_complaints_in_detention_sustained']), 0, '%') ?>"></div>
+                </div>
+                <p class="note">&nbsp;</p>
+              <?php endif; ?>
+              </div>
+            <?php endif; ?>
           </div>
           <div class="right">
             <div class="stat-wrapper">
@@ -715,8 +740,11 @@ if (empty($sheriff)) {
 
             <?php if(isset($data['percentile_police_spending']) || isset($data['hispanic_murder_unsolved_rate']) || isset($data['white_murder_unsolved_rate'])): ?>
             <div class="stat-wrapper spending">
+              <a href="<?= $data['police_funding_link']; ?>" target="_blank" class="external-link tooltip" data-tooltip="Open in New Window"></a><!--// https://bythenumbers.sco.ca.gov //-->
               <h3>Police Funding in 2017</h3>
+              <?php if ($data['percent_police_budget']): ?>
               <p>$<?= num($data['police_budget']) ?> (<?= $data['percent_police_budget'] ?> of Budget) <span class="divider">&nbsp;|&nbsp;</span> $<?= num($data['police_spending_per_resident']) ?> per Resident</p>
+              <?php endif; ?>
               <?= generateBarChartHeader($data, $link); ?>
               <p>&nbsp;</p>
               <p>
@@ -761,6 +789,8 @@ if (empty($sheriff)) {
                   <span><?= (intval(round(((intval($data['jail_death_natural']) + intval($data['jail_death_accidental']) + intval($data['jail_death_cannot_be_determined'])) / intval($data['total_jail_deaths_2016_2018'])) * 100)) > 5) ? output(round(((intval($data['jail_death_natural']) + intval($data['jail_death_accidental']) + intval($data['jail_death_cannot_be_determined'])) / intval($data['total_jail_deaths_2016_2018'])) * 100), 0, '%') : '' ?></span>
                 </div>
               </div>
+
+              <p class="note">^&nbsp;Higher Rate of Jail Deaths than <?= num($data['percent_jail_deaths_per_1000_jail_population_table'], 0, '%', true) ?> of Depts &nbsp;&nbsp;</p>
             </div>
             <?php endif; ?>
             <?php if(isset($data['adult_jail_population'])): ?>
@@ -878,7 +908,7 @@ if (empty($sheriff)) {
             About This Scorecard
           </h1>
           <p>
-            <strong>This is the first statewide Police Scorecard in the United States.</strong> It was built using data from California’s <a href="https://openjustice.doj.ca.gov/data" target="_blank">OpenJustice</a> database, public records requests, national databases and media reports.
+            <strong>This is the first statewide Police Scorecard in the United States.</strong> It was built using data from California's <a href="https://openjustice.doj.ca.gov/data" target="_blank">OpenJustice</a> database, public records requests, national databases and media reports.
           </p>
           <p>
             <a href="/about" class="button">methodology</a>
@@ -889,7 +919,7 @@ if (empty($sheriff)) {
             <strong>Use this Scorecard to identify issues within police departments that require the most urgent interventions and hold officials accountable for implementing solutions.</strong> For example, cities with higher rates of misdemeanor arrests could benefit most from solutions that create alternatives to policing and arrest for these offenses. In cities where police make fewer arrests overall but use more force when making arrests, communities could benefit significantly from policies designed to <a href="http://useofforceproject.org/" target="_blank">limit police use force</a>. And cities where complaints of police misconduct are rarely ruled in favor of civilians could benefit from creating an oversight structure to independently investigate these complaints.
           </p>
           <p>&nbsp;</p>
-          <p class="take-action">Here’s how to start pushing for change:</p>
+          <p class="take-action">Here's how to start pushing for change:</p>
         </div>
         <div class="content">
           <p>&nbsp;</p>
@@ -899,9 +929,9 @@ if (empty($sheriff)) {
             <ul>
               <li>
                 <?php if ($link === 'sheriff'): ?>
-                <strong>Contact Your County Sheriff</strong>, share this scorecard with them and urge them to enact policies to address the issues you’ve identified:
+                <strong>Contact Your County Sheriff</strong>, share this scorecard with them and urge them to enact policies to address the issues you've identified:
                 <?php else: ?>
-                <strong>Contact your Mayor and Police Chief</strong>, share this scorecard with them and urge them to enact policies to address the issues you’ve identified:
+                <strong>Contact your Mayor and Police Chief</strong>, share this scorecard with them and urge them to enact policies to address the issues you've identified:
                 <?php endif; ?>
 
                 <ul class="contacts">
@@ -938,6 +968,10 @@ if (empty($sheriff)) {
                   </li>
                 <?php endif; ?>
                 </ul>
+
+                <div class="advocacy-tip">
+                  <strong>Advocacy Tip:</strong>&nbsp; California's new deadly force law goes into effect in January - requiring departments to adopt more restrictive deadly force policies. Tell your <?= ($link === 'sheriff') ? 'Sheriff' : 'Mayor and Police Chief' ?> to adopt a policy that explicitly requires police to exhaust all available alternatives prior to using deadly force.&nbsp; <a href="http://useofforceproject.org/s/Use-of-Force-Study.pdf" target="_blank"><strong>Research</strong></a> shows this policy saves lives.
+                </div>
               </li>
             </ul>
           </div>
@@ -951,7 +985,7 @@ if (empty($sheriff)) {
         </div>
         <div class="content">
           <p>&nbsp;</p>
-          <p>If you have feedback, questions about the project, or need support with an advocacy campaign, contact us directly at <a href="mailto:feedback@joincampaignzero.org">feedback@joincampaignzero.org</a>.</p>
+          <p>If you have feedback, questions about the project, or need support with an advocacy campaign, contact our Project Lead, <a href="mailto:sam@thisisthemovement.org">Samuel Sinyangwe</a>.</p>
         </div>
       </div>
 
@@ -967,7 +1001,7 @@ if (empty($sheriff)) {
             <div>
               <img src="assets/img/next/step1.svg" alt="Step 1" />
 
-              <p><strong>Inform</strong> data-driven interventions in California’s 100 largest cities. Update scores and track progress over time.</p>
+              <p><strong>Inform</strong> data-driven interventions in California's 100 largest cities. Update scores and track progress over time.</p>
             </div>
           </div>
 
@@ -1204,7 +1238,7 @@ if (empty($sheriff)) {
     </script>
     <script src="assets/js/plugins.js<?= trim($ac) ?>"></script>
     <script src="assets/js/site.js<?= trim($ac) ?>"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.7.3/Chart.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.8.0/Chart.js"></script>
 
   <?php if(isset($data['arrests_2016']) && isset($data['arrests_2017']) && isset($data['arrests_2018'])): ?>
     <script>
@@ -1244,6 +1278,7 @@ if (empty($sheriff)) {
 					},
           scales: {
             xAxes: [{
+              minBarLength: 5,
               maxBarThickness: 20,
               stacked: true,
               gridLines: {
@@ -1251,6 +1286,7 @@ if (empty($sheriff)) {
               }
             }],
             yAxes: [{
+              minBarLength: 5,
               stacked: true,
               gridLines: {
                 color: "rgba(0, 0, 0, 0)",
@@ -1315,6 +1351,7 @@ if (empty($sheriff)) {
 					},
           scales: {
             xAxes: [{
+              minBarLength: 5,
               maxBarThickness: 20,
               stacked: true,
               gridLines: {
@@ -1322,6 +1359,7 @@ if (empty($sheriff)) {
               }
             }],
             yAxes: [{
+              minBarLength: 5,
               stacked: true,
               gridLines: {
                 color: "rgba(0, 0, 0, 0)",
@@ -1352,9 +1390,7 @@ if (empty($sheriff)) {
     }
 
     window.addEventListener('load', function() {
-      var barChartData = {
-        datasets: <?= generateBarChart($data, $link); ?>
-      };
+      var barChartData = <?= generateBarChart($data, $link); ?>;
 
       var ctx = document.getElementById('bar-chart').getContext('2d');
       window.myBar = new Chart(ctx, {
@@ -1386,9 +1422,17 @@ if (empty($sheriff)) {
           },
           scales: {
             xAxes: [{
-              maxBarThickness: 20
+              minBarLength: 5,
+              maxBarThickness: 20,
+              gridLines: {
+                color: "rgba(0, 0, 0, 0)",
+              }
             }],
             yAxes: [{
+              minBarLength: 5,
+              gridLines: {
+                color: "rgba(0, 0, 0, 0)",
+              },
               ticks: {
                 beginAtZero: true,
                 suggestedMax: <?= intval(str_replace(',', '', $data['police_budget'])) ?>,

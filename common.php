@@ -51,8 +51,10 @@ function nFormatter($num, $decimal = 2) {
   $order = floor(log($num) / log(1000));
   $unit_name = $units[($order - 1)];
 
+  $val = ($num === 0) ? $num : round(floatval($num / 1000 ** $order), $decimal) . $unit_name;
+
   // output number remainder + unitname
-  return '$' . round(floatval($num / 1000 ** $order), $decimal) . $unit_name;
+  return '$' . $val;
 }
 
 function generateBarChartHeader($data, $type) {
@@ -64,7 +66,7 @@ function generateBarChartHeader($data, $type) {
     }
 
     if (isset($data['health_budget'])) {
-      $output .= '<span class="key key-black"></span> <span class="hide-desktop">Mental</span> Health <span class="hide-mobile">' . nFormatter($data['health_budget'], 1) . '</span>';
+      $output .= '<span class="key key-black"></span> Mental Health <span class="hide-mobile">' . nFormatter($data['health_budget'], 1) . '</span>';
     }
 
     if (isset($data['housing_budget'])) {
@@ -76,7 +78,7 @@ function generateBarChartHeader($data, $type) {
     }
 
     if (isset($data['health_budget'])) {
-      $output .= '<span class="key key-black"></span> <span class="hide-desktop">Mental</span> Health <span class="hide-mobile">' . nFormatter($data['health_budget'], 1) . '</span>';
+      $output .= '<span class="key key-black"></span> Mental Health <span class="hide-mobile">' . nFormatter($data['health_budget'], 1) . '</span>';
     }
 
     if (isset($data['education_budget'])) {
@@ -202,12 +204,15 @@ function generateHistoryChart($data) {
 }
 
 function generateBarChart($data, $type) {
-  $output = array();
+  $output = array(
+    'labels' => array('Police Funding in 2017'),
+    'datasets' => array()
+  );
 
   if ($type === 'city') {
     if (isset($data['police_budget'])) {
       $police_budget = intval(str_replace(',', '', $data['police_budget']));
-      $output[] = array(
+      $output['datasets'][] = array(
         'label' => 'Police',
         'backgroundColor' => '#f67f85',
         'borderWidth' => 0,
@@ -217,7 +222,7 @@ function generateBarChart($data, $type) {
 
     if (isset($data['health_budget'])) {
       $health_budget = intval(str_replace(',', '', $data['health_budget']));
-      $output[] = array(
+      $output['datasets'][] = array(
         'label' => 'Health',
         'backgroundColor' => '#58595b',
         'borderWidth' => 0,
@@ -227,7 +232,7 @@ function generateBarChart($data, $type) {
 
     if (isset($data['housing_budget'])) {
       $housing_budget = intval(str_replace(',', '', $data['housing_budget']));
-      $output[] = array(
+      $output['datasets'][] = array(
         'label' => 'Housing',
         'backgroundColor' => '#9a9b9f',
         'borderWidth' => 0,
@@ -239,7 +244,7 @@ function generateBarChart($data, $type) {
       $police_budget = intval(str_replace(',', '', $data['police_budget']));
       $jail_budget = intval(str_replace(',', '', $data['jail_budget']));
 
-      $output[] = array(
+      $output['datasets'][] = array(
         'label' => 'Police & Jail',
         'backgroundColor' => '#f67f85',
         'borderWidth' => 0,
@@ -249,7 +254,7 @@ function generateBarChart($data, $type) {
 
     if (isset($data['health_budget'])) {
       $health_budget = intval(str_replace(',', '', $data['health_budget']));
-      $output[] = array(
+      $output['datasets'][] = array(
         'label' => 'Health',
         'backgroundColor' => '#58595b',
         'borderWidth' => 0,
@@ -259,7 +264,7 @@ function generateBarChart($data, $type) {
 
     if (isset($data['education_budget'])) {
       $education_budget = intval(str_replace(',', '', $data['education_budget']));
-      $output[] = array(
+      $output['datasets'][] = array(
         'label' => 'Education',
         'backgroundColor' => '#9a9b9f',
         'borderWidth' => 0,

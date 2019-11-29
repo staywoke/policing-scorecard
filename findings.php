@@ -77,7 +77,7 @@ $ac = '?ac=' . getHash();
 
         p {
             margin-bottom: 14px;
-            line-height: 20px;
+            line-height: 28px;
         }
 
         iframe {
@@ -666,7 +666,7 @@ $ac = '?ac=' . getHash();
                 <p class="c3"><span class="c4 subtitle">The California Department of Justice recently made available data on policing in 2018.</span></p>
                 <div class="number-list">
 
-                    <p class="c3"><span>We’ve updated the Police Scorecard to include this information, and expanded our analysis to also evaluate every Sheriff’s Department in the state. Here are some of the findings from our analysis:</span></p>
+                    <p class="c3"><span>We've updated the Police Scorecard to include this information, and expanded our analysis to also evaluate every Sheriff's Department in the state. Here are some of the findings from our analysis:</span></p>
 
                     <p class="c3 number-list n1"><span class="c11 c4">California had Fewer Incidents of Police Violence in 2018:</span></p>
 
@@ -690,7 +690,7 @@ $ac = '?ac=' . getHash();
 
                     <p class="c3 number-list n2"><span class="c11 c4">Where Did Policing Outcomes Change Most?</span></p>
 
-                    <p class="c3"><span>Changes in policing outcomes varied by jurisdiction. Stockton Police Department’s overall score increased by 20% in 2018 - more than any other department in our analysis. This change was due, in part, to substantial reductions in Stockton police shootings in 2018 compared to previous years. Among departments that had 8 or more police shootings from 2016-18, Stockton Police Department had the largest reduction in police shootings in 2018.</span></p>
+                    <p class="c3"><span>Changes in policing outcomes varied by jurisdiction. Stockton Police Department's overall score increased by 20% in 2018 - more than any other department in our analysis. This change was due, in part, to substantial reductions in Stockton police shootings in 2018 compared to previous years. Among departments that had 8 or more police shootings from 2016-18, Stockton Police Department had the largest reduction in police shootings in 2018.</span></p>
 
                     <iframe title="% Change in Police Shootings, 2018 vs 2016-2017 Average" aria-label="Arrow Plot" id="datawrapper-chart-wzGPf" src="https://datawrapper.dwcdn.net/wzGPf/2/" scrolling="no" frameborder="0"></iframe>
                     <script type="text/javascript">
@@ -706,7 +706,7 @@ $ac = '?ac=' . getHash();
                         }();
                     </script>
                     <p>&nbsp;</p>
-                    <p class="c3"><span>Among other large California cities, San Diego and Fresno’s scores improved moderately while policing outcomes in San Francisco, San Jose, Los Angeles and Oakland remained relatively constant. Outcomes worsened in Long Beach which, along with Bakersfield and Riverside, continued to have some of the worst policing outcomes in the state among larger cities.</span></p>
+                    <p class="c3"><span>Among other large California cities, San Diego and Fresno's scores improved moderately while policing outcomes in San Francisco, San Jose, Los Angeles and Oakland remained relatively constant. Outcomes worsened in Long Beach which, along with Bakersfield and Riverside, continued to have some of the worst policing outcomes in the state among larger cities.</span></p>
 
                     <iframe title="Changes in Police Department Scores from 2016-17 to 2018" aria-label="Column Chart" id="datawrapper-chart-eIG3V" src="https://datawrapper.dwcdn.net/eIG3V/1/" scrolling="no" frameborder="0"></iframe>
                     <script type="text/javascript">
@@ -724,9 +724,9 @@ $ac = '?ac=' . getHash();
 
                     <p class="c3 c9"><span class="c1"></span></p>
 
-                    <p class="c3 number-list n3"><span class="c11 c4">Evaluating California Sheriff’s Departments</span></p>
+                    <p class="c3 number-list n3"><span class="c11 c4">Evaluating California Sheriff's Departments</span></p>
 
-                    <p class="c3"><span>To more effectively evaluate Sheriff’s Departments, we added new indicators that reflect the role of sheriffs in running county jails. In addition to the existing framework used to evaluate city police departments, we examined the sheriffs’ jail incarceration rates, jail deaths per jail population, and transfers of immigrants to ICE. Based on this comprehensive evaluation, we found that Los Angeles County Sheriff - the nation’s largest Sheriff’s Department - had the worst score among the 58 CA Sheriff’s Departments. Between 2016-18, Los Angeles County Sheriff’s Department made more misdemeanor arrests per population than 87% of California Sheriff’s Departments, used more deadly force during arrest than 84% of departments and jailed people at a rate higher than 87% of departments. This indicates the need for urgent interventions to hold Los Angeles County Sheriff’s Department accountable for addressing these issues, which could improve policing outcomes in a county that is home to 1 in every 4 Californians.</span></p>
+                    <p class="c3"><span>To more effectively evaluate Sheriff's Departments, we added new indicators that reflect the role of sheriffs in running county jails. In addition to the existing framework used to evaluate city police departments, we examined the sheriffs' jail incarceration rates, jail deaths per jail population, and transfers of immigrants to ICE. Based on this comprehensive evaluation, we found that Los Angeles County Sheriff - the nation's largest Sheriff's Department - had the worst score among the 58 CA Sheriff's Departments. Between 2016-18, Los Angeles County Sheriff's Department made more misdemeanor arrests per population than 87% of California Sheriff's Departments, used more deadly force during arrest than 84% of departments and jailed people at a rate higher than 87% of departments. This indicates the need for urgent interventions to hold Los Angeles County Sheriff's Department accountable for addressing these issues, which could improve policing outcomes in a county that is home to 1 in every 4 Californians.</span></p>
 
                     <iframe title="CA County Sheriff's Scores" aria-label="Dot Plot" id="datawrapper-chart-IamVk" src="https://datawrapper.dwcdn.net/IamVk/1/" scrolling="no" frameborder="0"></iframe>
                     <script type="text/javascript">

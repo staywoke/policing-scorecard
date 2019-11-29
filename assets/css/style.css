@@ -1178,11 +1178,30 @@ body {
   background: url(../img/see-more.png) center center no-repeat;
   width: 32px;
   height: 32px;
-  display: block;
   position: absolute;
   top: -7px;
   right: -14px;
   display: none;
+}
+
+.stat-wrapper a.external-link {
+  width: 32px;
+  height: 32px;
+  display: block;
+  position: absolute;
+  top: 0;
+  right: -10px;
+  cursor: pointer;
+}
+
+.stat-wrapper a.external-link::after {
+  content: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAoAAAAKCAYAAACNMs+9AAAAQElEQVR42qXKwQkAIAxDUUdxtO6/RBQkQZvSi8I/pL4BoGw/XPkh4XigPmsUgh0626AjRsgxHTkUThsG2T/sIlzdTsp52kSS1wAAAABJRU5ErkJggg==);
+  display: block;
+  width: 18px;
+  height: 18px;
+  top: 0;
+  position: absolute;
+  left: 4px;
 }
 
 .stat-wrapper h3 {
@@ -1461,6 +1480,14 @@ body {
 
 .header #menu li a:hover, .header #menu li a.active {
   color: #82ADD7;
+}
+
+.advocacy-tip {
+  font-size: 14px;
+  padding: 20px;
+  margin-top: 20px;
+  background: #F2F4F6;
+  border-radius: 10px;
 }
 
 .current-state {
