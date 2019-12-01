@@ -27,7 +27,7 @@ function getSheriffData($sheriff = 'los-angeles') {
 
 function getChange($change, $reverse = false) {
   $change = intval(str_replace('%', '', $change));
-  $label = 'since 2016';
+  $label = 'since \'16-17';
   $text = '';
   $tooltip = '';
   $class = '';
@@ -205,7 +205,7 @@ function generateHistoryChart($data) {
 
 function generateBarChart($data, $type) {
   $output = array(
-    'labels' => array('Police Funding in 2017'),
+    'labels' => array(' '),
     'datasets' => array()
   );
 
@@ -273,7 +273,7 @@ function generateBarChart($data, $type) {
     }
   }
 
-  return json_encode($output);
+  return json_encode($output, JSON_PRETTY_PRINT);
 }
 
 function getMapKey($loc) {

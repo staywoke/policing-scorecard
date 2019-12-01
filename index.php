@@ -598,7 +598,7 @@ if (empty($sheriff)) {
           <h1 class="title">
             Policies Making It <span class="bad">Harder</span> to Hold Police Accountable <?php if ($data['currently_updating_union_contract'] === '1'): ?>*<?php endif; ?>
             <?php if ($data['currently_updating_union_contract'] === '1'): ?>
-            <br><span class="title white bad">* Agency Currently Negotiating Contract</span>
+            <br><span class="title white bad">* Agency Currently Re-Negotiating Contract</span>
             <?php endif; ?>
           </h1>
         </div>
@@ -740,7 +740,7 @@ if (empty($sheriff)) {
 
             <?php if(isset($data['percentile_police_spending']) || isset($data['hispanic_murder_unsolved_rate']) || isset($data['white_murder_unsolved_rate'])): ?>
             <div class="stat-wrapper spending">
-              <a href="<?= $data['police_funding_link']; ?>" target="_blank" class="external-link tooltip" data-tooltip="Open in New Window"></a><!--// https://bythenumbers.sco.ca.gov //-->
+              <a href="<?= $data['police_funding_link']; ?>" target="_blank" class="external-link" title="Open in New Window"></a><!--// https://bythenumbers.sco.ca.gov //-->
               <h3>Police Funding in 2017</h3>
               <?php if ($data['percent_police_budget']): ?>
               <p>$<?= num($data['police_budget']) ?> (<?= $data['percent_police_budget'] ?> of Budget) <span class="divider">&nbsp;|&nbsp;</span> $<?= num($data['police_spending_per_resident']) ?> per Resident</p>
@@ -1247,9 +1247,10 @@ if (empty($sheriff)) {
     }
     window.addEventListener('load', function() {
       var ctx = document.getElementById('bar-chart-arrests').getContext('2d');
+      var arrestsData = <?= generateArrestChart($data, $link); ?>;
       window.myBarArrests = new Chart(ctx, {
         type: 'bar',
-        data: <?= generateArrestChart($data, $link); ?>,
+        data: arrestsData,
         options: {
           maintainAspectRatio: false,
           responsive: true,
@@ -1293,8 +1294,9 @@ if (empty($sheriff)) {
               },
               ticks: {
                 beginAtZero: true,
+                maxTicksLimit: 2,
                 callback: function(value, index, values) {
-                  return numberWithCommas(value);
+                  return (value === 0) ? '' : numberWithCommas(value);
                 }
               }
             }]
@@ -1330,9 +1332,10 @@ if (empty($sheriff)) {
 
     window.addEventListener('load', function() {
       var ctx = document.getElementById('bar-chart-history').getContext('2d');
+      var historyChartData = <?= generateHistoryChart($data, $link); ?>;
       window.myBarHistory = new Chart(ctx, {
         type: 'bar',
-        data: <?= generateHistoryChart($data, $link); ?>,
+        data: historyChartData,
         options: {
           animation: {
             duration: 0,
@@ -1363,6 +1366,13 @@ if (empty($sheriff)) {
               stacked: true,
               gridLines: {
                 color: "rgba(0, 0, 0, 0)",
+              },
+              ticks: {
+                beginAtZero: true,
+                maxTicksLimit: 2,
+                callback: function(value, index, values) {
+                  return (value === 0) ? '' : Math.round(value);
+                }
               }
             }]
           }
@@ -1435,9 +1445,9 @@ if (empty($sheriff)) {
               },
               ticks: {
                 beginAtZero: true,
-                suggestedMax: <?= intval(str_replace(',', '', $data['police_budget'])) ?>,
+                maxTicksLimit: 2,
                 callback: function(value, index, values) {
-                  return nFormatter(value);
+                  return (value === 0) ? '' : nFormatter(value);
                 }
               }
             }]

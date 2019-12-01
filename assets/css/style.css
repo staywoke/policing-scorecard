@@ -2415,10 +2415,13 @@ svg.highcharts-root path.highcharts-point {
   clear: both;
   padding: 8px;
   font-weight: 600;
+  position: relative;
+  top: 10px;
 }
 
 .title.white.bad {
   background-color: #f67f85;
+  color: #FFF !important;
 }
 
 .spending p.note {
