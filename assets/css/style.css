@@ -2286,6 +2286,20 @@ body {
   font-weight: 600;
 }
 
+.section.next .step span.completed {
+  display: inline-block;
+  color: white;
+  font-size: 12px;
+  line-height: 12px;
+  padding: 6px;
+  border-radius: 3px;
+  background: #85c789;
+  position: relative;
+  top: -6px;
+  margin-left: 6px;
+  font-weight: 500;
+}
+
 .section.next .step-1 h2 {
   color: #FEDC9E;
 }
@@ -3186,6 +3200,9 @@ p.number-list.n8::after {
   }
   .section.next .step > div {
     padding-top: 20px;
+  }
+  .section.next .step span.completed {
+    top: -3px;
   }
   .section.next h1.title {
     font-size: 30px;

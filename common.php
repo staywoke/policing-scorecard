@@ -25,9 +25,8 @@ function getSheriffData($sheriff = 'los-angeles') {
   return $data;
 }
 
-function getChange($change, $reverse = false) {
+function getChange($change, $reverse = false, $label = 'since 2016') {
   $change = intval(str_replace('%', '', $change));
-  $label = 'since \'16-17';
   $text = '';
   $tooltip = '';
   $class = '';
@@ -66,7 +65,7 @@ function generateBarChartHeader($data, $type) {
     }
 
     if (isset($data['health_budget'])) {
-      $output .= '<span class="key key-black"></span> Mental Health <span class="hide-mobile">' . nFormatter($data['health_budget'], 1) . '</span>';
+      $output .= '<span class="key key-black"></span> Health <span class="hide-mobile">' . nFormatter($data['health_budget'], 1) . '</span>';
     }
 
     if (isset($data['housing_budget'])) {
@@ -78,7 +77,7 @@ function generateBarChartHeader($data, $type) {
     }
 
     if (isset($data['health_budget'])) {
-      $output .= '<span class="key key-black"></span> Mental Health <span class="hide-mobile">' . nFormatter($data['health_budget'], 1) . '</span>';
+      $output .= '<span class="key key-black"></span> Health <span class="hide-mobile">' . nFormatter($data['health_budget'], 1) . '</span>';
     }
 
     if (isset($data['education_budget'])) {

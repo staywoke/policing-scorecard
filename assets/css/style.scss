@@ -1881,6 +1881,20 @@ body {
     strong {
       font-weight: 600;
     }
+
+    span.completed {
+      display: inline-block;
+      color: white;
+      font-size: 12px;
+      line-height: 12px;
+      padding: 6px;
+      border-radius: 3px;
+      background: #85c789;
+      position: relative;
+      top: -6px;
+      margin-left: 6px;
+      font-weight: 500;
+    }
   }
 
   .step-1 {
@@ -2904,6 +2918,10 @@ p.number-list {
 
       & > div {
         padding-top: 20px;
+      }
+
+      span.completed {
+        top: -3px;
       }
     }
 
