@@ -618,6 +618,185 @@ body {
     max-width: $bp-max-width;
     margin: 0 auto;
 
+    &.chart-summary {
+      padding: 80px 20px;
+      font-size: 20px;
+      line-height: 30px;
+
+      div.left.number-list {
+        padding-left: 60px;
+        position: relative;
+      }
+
+      &.number-list {
+        padding-left: 80px;
+        position: relative;
+      }
+
+      p.number-list {
+        position: relative;
+
+        &::after {
+          content: '';
+          position: absolute;
+          background: #a7cc84;
+          width: 40px;
+          height: 40px;
+          border-radius: 50%;
+          left: -60px;
+          display: block;
+          top: 0;
+          line-height: 40px;
+          text-align: center;
+          font-weight: 600;
+          font-family: 'Barlow Condensed', sans-serif;
+          color: #FFF;
+        }
+
+        &.n1::after {
+          content: '1';
+        }
+
+        &.n2::after {
+          content: '2';
+        }
+
+        &.n3::after {
+          content: '3';
+        }
+
+        &.n4::after {
+          content: '4';
+        }
+
+        &.n5::after {
+          content: '5';
+        }
+
+        &.n6::after {
+          content: '6';
+        }
+
+        &.n7::after {
+          content: '7';
+        }
+
+        &.n8::after {
+          content: '8';
+        }
+      }
+
+      a {
+        color: #82ADD7;
+        text-decoration: none;
+        font-weight: 600;
+      }
+
+      blockquote {
+        padding-left: 40px;
+        font-style: italic;
+        margin-bottom: 20px;
+      }
+
+      &.no-pad-bottom {
+        padding-bottom: 10px !important;
+      }
+      &.no-pad-top {
+        padding-top: 10px !important;
+      }
+
+      ul {
+        list-style: disc;
+        margin-left: 22px;
+        margin-bottom: 16px;
+        font-weight: 300;
+      }
+
+      iframe {
+        background: #FFF;
+        padding: 8px 16px;
+        display: block;
+        box-shadow: 0 0 3px rgba(0, 0, 0, 0.5);
+      }
+
+      img {
+        max-width: 100%;
+        box-shadow: 0 0 3px rgba(0, 0, 0, 0.5);
+        padding: 10px;
+      }
+
+      p {
+        margin-bottom: 20px;
+        font-weight: 300;
+
+        strong {
+          font-weight: 600;
+        }
+
+        &:last-child {
+          margin-bottom: 0;
+        }
+      }
+
+      h1.title {
+        color: #82ADD7;
+        font-family: 'Barlow Condensed', sans-serif;
+        text-transform: uppercase;
+        font-weight: 400;
+        font-size: 34px;
+        margin-bottom: 20px;
+        line-height: 38px;
+      }
+    }
+
+    &.padded {
+      padding: 80px 20px;
+      font-size: 20px;
+      line-height: 30px;
+
+      p {
+        margin-bottom: 20px;
+
+        &:last-child {
+          margin-bottom: 0;
+        }
+      }
+
+      a.read-methodology {
+        margin: 0 auto;
+        display: block;
+        text-align: left;
+        width: 230px;
+        border: 1px solid #cacaca;
+        color: #fff;
+        white-space: nowrap;
+        font-size: 16px;
+        text-decoration: none;
+        padding: 0 30px 0 18px;
+        font-weight: 500;
+        position: relative;
+
+        &::after {
+          content: '\0025E2';
+          font-size: 14px;
+          color: #82ADD7;
+          position: absolute;
+          right: 16px;
+          top: -4px;
+          transform: rotate(45deg);
+        }
+      }
+    }
+
+    &.text-white {
+      color: #FFF;
+      font-weight: 300;
+
+      strong {
+        font-weight: 600;
+      }
+    }
+
     a.results-info {
       font-size: $font-default;
       background: #454548;
@@ -724,10 +903,67 @@ body {
 
   &.bg-gray {
     background-color: $primary-gray;
+
+    .content.chart-summary {
+      h1.title {
+        color: white;
+      }
+
+      a {
+        color: #FFF;
+      }
+
+      p {
+        color: #FFF;
+        font-weight: 300;
+      }
+    }
   }
 
   &.bg-orange {
     background-color: $primary-orange;
+
+    p.number-list {
+      position: relative;
+
+      &::after {
+        content: '';
+        background: #FFF !important;
+        color: #222 !important;
+      }
+    }
+
+    .content.chart-summary {
+      h1.title {
+        color: white;
+      }
+
+      a {
+        color: #FFF;
+      }
+
+      p {
+        font-weight: 300;
+      }
+    }
+  }
+
+  &.bg-blue {
+    background-color: #82ADD7;
+
+    .content.chart-summary {
+      h1.title {
+        color: white;
+      }
+
+      a {
+        color: #FFF;
+      }
+
+      p {
+        font-weight: 300;
+      }
+    }
   }
 
   &.bg-light-gray {
@@ -1158,6 +1394,46 @@ body {
       color: $primary-gray;
       font-style: italic;
       margin-bottom: 36px;
+    }
+  }
+  &.sandiego {
+    background: url(../img/sandiego.jpg) center center no-repeat;
+    background-size: cover;
+    position: relative;
+
+    &:before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      background: rgba(0, 0, 0, 0.75);
+      width: 100%;
+      height: 100%;
+      z-index: 10;
+    }
+
+    .content {
+      text-align: center;
+      padding: 120px 40px;
+      z-index: 11;
+      position: relative;
+      max-width: 640px;
+
+      h1 {
+        font-size: 34px;
+        font-weight: 300;
+        color: #FFF;
+        line-height: 50px;
+        padding-bottom: 15px;
+      }
+
+      h2 {
+        font-family: 'Barlow Condensed', sans-serif;
+        font-size: 34px;
+        font-weight: 400;
+        color: #FFF;
+        font-style: italic;
+      }
     }
   }
 }
@@ -2175,6 +2451,46 @@ p.number-list {
       right: 0;
     }
   }
+
+  .section .content.chart-summary {
+    padding: 40px 0px;
+    font-size: 16px;
+    line-height: 24px;
+
+    &.padded {
+      padding: 40px 20px;
+    }
+
+    blockquote {
+      padding-left: 20px;
+    }
+
+    iframe, img {
+      margin-top: 20px;
+    }
+
+    div.left.number-list {
+      padding-left: 60px;
+      position: relative;
+    }
+
+    &.number-list {
+      padding-left: 60px;
+      position: relative;
+    }
+
+    p.number-list {
+      &::after {
+        content: '';
+        left: -40px;
+        width: 30px;
+        height: 30px;
+        line-height: 30px;
+        top: 6px;
+      }
+    }
+  }
+
   p.good-job {
     &.pad-bottom {
       padding-bottom: 0 !important;
