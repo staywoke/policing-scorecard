@@ -249,7 +249,7 @@ if (empty($sheriff)) {
               <a href="javascript:void(0)" data-city="<?= $marker ?>" data-more-info="" class="more-info"></a>
               <h3>Deadly Force</h3>
               <p>
-              <?= output($data['police_shootings_incidents']) ?> Shootings + <?= intval(output($data['deadly_force_incidents'])) - intval(output($data['police_shootings_incidents'])) ?> other deaths or serious injuries</p>
+              <?= output($data['police_shootings_incidents']) ?> Shootings &amp; <?= intval(output($data['deadly_force_incidents'])) - intval(output($data['police_shootings_incidents'])) ?> other deaths or serious injuries</p>
               <?php if(output($data['deadly_force_incidents']) === '0'): ?>
               <p class="good-job">Did Not Report Using Deadly Force in 2016-18</p>
               <?php else: ?>
@@ -476,7 +476,12 @@ if (empty($sheriff)) {
             <div class="stat-wrapper">
               <a href="javascript:void(0)" data-city="<?= $marker ?>" data-more-info="" class="more-info"></a>
               <h3>Total civilian complaints</h3>
+              <?php if (output($data['civilian_complaints_reported']) === '0' || output($data['percent_of_civilian_complaints_sustained']) === '0'): ?>
+                <p>0 Complaints Reported</p>
+              <?php else: ?>
               <p><?= output($data['civilian_complaints_reported']) ?> Reported <span class="divider">&nbsp;|&nbsp;</span> <?= num($data['percent_of_civilian_complaints_sustained'], 0, '%') ?> Ruled in Favor of Civilians</p>
+              <?php endif; ?>
+
               <?php if(!isset($data['percent_of_civilian_complaints_sustained']) || (isset($data['percent_of_civilian_complaints_sustained']) && empty($data['percent_of_civilian_complaints_sustained']))): ?>
                 <div class="progress-bar-wrapper">
                   <div class="progress-bar no-data" style="width: 0"></div>
@@ -741,7 +746,7 @@ if (empty($sheriff)) {
             <?php if(isset($data['percentile_police_spending']) || isset($data['hispanic_murder_unsolved_rate']) || isset($data['white_murder_unsolved_rate'])): ?>
             <div class="stat-wrapper spending">
               <a href="<?= $data['police_funding_link']; ?>" target="_blank" class="external-link" title="Open in New Window"></a><!--// https://bythenumbers.sco.ca.gov //-->
-              <h3>Police Funding in 2017</h3>
+              <h3>Police Funding in 2018</h3>
               <?php if ($data['percent_police_budget']): ?>
               <p>$<?= num($data['police_budget']) ?> (<?= $data['percent_police_budget'] ?> of Budget) <span class="divider">&nbsp;|&nbsp;</span> $<?= num($data['police_spending_per_resident']) ?> per Resident</p>
               <?php endif; ?>
