@@ -322,8 +322,8 @@ $socialSubject = rawurlencode($title);
               <p>Our review of San Diego police arrest data identified a number of low-level offenses that could be decriminalized entirely or deprioritized for enforcement. These offenses tended to involve drug possession, status offenses, quality of life offenses and municipal code violations that posed no threat to the public or property. Instead of a policing-based response to these activities, alternative responses should be developed or expanded that send substance abuse counselors, mental health professionals and other civilian responders to the scene instead of armed police officers. For example, the <a href="https://www.wsj.com/articles/when-mental-health-experts-not-police-are-the-first-responders-1543071600" target="_blank">CAHOOTS program</a> in Eugene, OR deploys mental health providers instead of police officers to calls involving a suspected mental health crisis - responding to nearly 1 in 5 calls for service citywide. For example, the following low-level offenses, other than drug possession, result in the largest number of arrests:</p>
             </div>
             <div class="right">
-              <iframe title="SDPD Low Level Charges" aria-label="Table" id="datawrapper-chart-Vu9OV" src="//datawrapper.dwcdn.net/Vu9OV/1/" scrolling="no" frameborder="0" style="width: 0; min-width: 100% !important; border: none;" height="488"></iframe>
-              <script type="text/javascript">! function(){"use strict"; window.addEventListener("message", function(a){if (void 0 !==a.data["datawrapper-height"]) for (var e in a.data["datawrapper-height"]){var t=document.getElementById("datawrapper-chart-" + e) || document.querySelector("iframe[src*='" + e + "']"); t && (t.style.height=a.data["datawrapper-height"][e] + "px")}})}(); </script>
+              <a href="/assets/san-diego/recommendation-1.png" target="_blank"> <img src="/assets/san-diego/recommendation-1.png" alt="Recommendation Grid SDPD.png" /> </a>
+              <a href="/assets/san-diego/recommendation-2.png" target="_blank"> <img src="/assets/san-diego/recommendation-2.png" alt="Recommendation Grid SDSD.png" /> </a>
             </div>
           </div>
           <div class="content chart-summary padded no-pad-top number-list">
@@ -393,6 +393,7 @@ $socialSubject = rawurlencode($title);
             <p>Section 3304(d)(1) of the <a href="https://leginfo.legislature.ca.gov/faces/codes_displaySection.xhtml?lawCode=GOV&sectionNum=3304." target="_blank">California Peace Officer Bill of Rights</a> prevents investigations from resulting in discipline against officers if the police department or other investigating agency takes longer than one year to complete the investigation. According to the San Diego County Citizens Law Enforcement Review Board, <a href="https://www.sandiegocounty.gov/content/dam/sdc/clerb/docs/Annual%20Reports/2017%20Annual%20Report.pdf" target="_blank">15% of all cases in 2017</a> were dismissed because they exceeded this statute of limitations - including 22 cases investigating the deaths of civilians. California is <a href="https://www.checkthepolice.org/#review" target="_blank">one of only 4 states</a> that has a law establishing a statute of limitations of one-year or less on police misconduct investigations. This section should be repealed to enable agencies to effectively investigate and adjudicate complaints of misconduct - especially for cases resulting in death or serious injury.</p>
           </div>
         </div>
+
         <div class="section bg-gray footer">
           <div class="content">
             <div class="left">
