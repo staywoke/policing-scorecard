@@ -2905,18 +2905,7 @@ p.number-list.n15::after {
     display: none;
   }
   a.read-methodology {
-    width: 230px;
-    font-size: 16px;
-    padding: 0 30px 0 18px;
-    border: 1px solid #cacaca;
-    line-height: 24px;
-    margin-top: 0;
-  }
-  a.read-methodology::after {
-    content: '\0025E2';
-    font-size: 14px;
-    right: 16px;
-    top: -4px;
+    margin-top: 40px !important;
   }
   div.number-list {
     padding-left: 40px;
