@@ -1113,6 +1113,34 @@ body {
   content: '8';
 }
 
+.section .content.chart-summary p.number-list.n9::after {
+  content: '9';
+}
+
+.section .content.chart-summary p.number-list.n10::after {
+  content: '10';
+}
+
+.section .content.chart-summary p.number-list.n11::after {
+  content: '11';
+}
+
+.section .content.chart-summary p.number-list.n12::after {
+  content: '12';
+}
+
+.section .content.chart-summary p.number-list.n13::after {
+  content: '13';
+}
+
+.section .content.chart-summary p.number-list.n14::after {
+  content: '15';
+}
+
+.section .content.chart-summary p.number-list.n15::after {
+  content: '15';
+}
+
 .section .content.chart-summary a {
   color: #82ADD7;
   text-decoration: none;
@@ -2834,6 +2862,34 @@ p.number-list.n7::after {
 
 p.number-list.n8::after {
   content: '8';
+}
+
+p.number-list.n9::after {
+  content: '9';
+}
+
+p.number-list.n10::after {
+  content: '10';
+}
+
+p.number-list.n11::after {
+  content: '11';
+}
+
+p.number-list.n12::after {
+  content: '12';
+}
+
+p.number-list.n13::after {
+  content: '13';
+}
+
+p.number-list.n14::after {
+  content: '15';
+}
+
+p.number-list.n15::after {
+  content: '15';
 }
 
 /* RESPONSIVE */

@@ -108,7 +108,7 @@ $socialSubject = rawurlencode($title);
 
       <div class="section hero sandiego">
         <div class="content">
-          <h1>We evaluated the policing in San Diego City and County.</h1>
+          <h1>We evaluated policing in San Diego City and County.</h1>
           <h2>Here's what we found.</h2> </div>
       </div>
 
@@ -186,9 +186,8 @@ $socialSubject = rawurlencode($title);
         <div class="content chart-summary">
           <div class="left">
             <h1 class="title">ARRESTS</h1>
-            <p>We obtained detailed data on 88,372 arrests made from 2016-2018 by San Diego Police Department and 28,119 arrests made in 2016 by San Diego Sheriff’s Department <sup>[1]</sup>. Analyzing these data, we find that misdemeanor offenses comprise the vast majority of arrests - making up 71% of all SDPD arrests and 67% of all SDSD arrests. Of these low-level offenses, drug possession, status offenses and quality of life offenses made up a significant proportion - accounting for 34% of SDPD arrests and 34% of SDSD arrests.</p>
+            <p>We obtained detailed data on 88,372 arrests made from 2016-2018 by San Diego Police Department and 28,119 arrests made in 2016 by San Diego Sheriff’s Department. Analyzing these data, we find that misdemeanor offenses comprise the vast majority of arrests - making up 71% of all SDPD arrests and 67% of all SDSD arrests. Of these low-level offenses, drug possession, status offenses and quality of life offenses made up a significant proportion - accounting for 34% of SDPD arrests and 34% of SDSD arrests.</p>
             <p>This policing approach, which uses arrests as a response to low-level offenses, disproportionately impacts black communities. For example, black people were 4.1x more likely than white people to be arrested by SDPD for drug possession, despite research showing black and white people use and sell drugs at similar rates. Both agencies made as many arrests for drug possession alone as they did for all Part 1 Violent and Property Crimes combined.</p>
-            <p><small><sup>[1]</sup> We requested arrests data for 2017 and 2018 from SDSD as well, but it was not provided. </small></p>
           </div>
           <div class="right">
             <div class="right">
@@ -251,118 +250,70 @@ $socialSubject = rawurlencode($title);
         </div>
       </div>
 
-        <!-- USE OF FORCE SEVERITY BY ALLEGED RESISTANCE LEVEL -->
-        <div class="section">
-          <div class="content chart-summary">
-            <div class="left">
-              <h1 class="title">
-              USE OF FORCE SEVERITY BY ALLEGED RESISTANCE LEVEL
-            </h1>
-              <p>Using a methodology developed by the Center for Policing Equity, we assigned more severe forms of force - like the use of tasers and canines - a higher score than less severe forms of force - like punches and kicks. The results show <strong>both departments not only were more likely to use force against black people but also used higher levels of force during these encounters</strong> compared to other groups. On average, when SDPD uses force against black people they use a level of force <strong>1.3x more severe</strong> than when using force against white people. For SDSD, it was a level of force <strong>2.7x more severe.</strong> Both departments used more severe levels of force against black people than white people even after controlling for the level of resistance officers reported encountering.</p>
-            </div>
-            <div class="right">
-              <iframe title="Use of Force Severity per Arrest" aria-label="Grouped Column Chart" id="datawrapper-chart-z18tY" src="//datawrapper.dwcdn.net/z18tY/10/" scrolling="no" frameborder="0" style="width: 0; min-width: 100% !important; border: none;" height="400"></iframe>
-              <script type="text/javascript">
-              ! function() {
-                "use strict";
-                window.addEventListener("message", function(a) {
-                  if (void 0 !== a.data["datawrapper-height"])
-                    for (var e in a.data["datawrapper-height"]) {
-                      var t = document.getElementById("datawrapper-chart-" + e) || document.querySelector("iframe[src*='" + e + "']");
-                      t && (t.style.height = a.data["datawrapper-height"][e] + "px")
-                    }
-                })
-              }();
-              </script>
-            </div>
-          </div>
-        </div>
+      <!-- DEADLY FORCE -->
+      <div class="section">
+        <div class="content chart-summary padded">
+          <h1 class="title">DEADLY FORCE</h1>
 
-        <!-- DEADLY FORCE -->
-        <div class="section bg-gray">
-          <div class="content chart-summary padded">
-            <h1 class="title">
-            DEADLY FORCE
-          </h1>
-            <p><strong>Deadly Force by San Diego Police Department</strong> </p>
-            <p>San Diego Police Department reported 26 deadly force incidents from 2016-2018, including 19 police shootings and 7 other force incidents causing death or serious injury. <strong>10 people died in these encounters and 9 were seriously injured.</strong> While San Diego police used deadly force at a lower rate than the state average, we identified several issues that suggest<strong> </strong>changes to department policies could <strong>reduce deadly force further</strong>:&nbsp;</p>
-            <ul>
-              <li>In at least 8 of the 26 incidents (31%), the person was <strong>unarmed</strong>.</li>
-              <li>8 of the 26 incidents (31%) involved people who had signs of <strong>mental health issues or drug/alcohol impairment</strong>.</li>
-              <li>4 of the 19 police shootings (21%) involved San Diego police shooting at someone who was in a <strong>moving vehicle</strong>. </li>
-              <li>In 16 of the 19 police shootings (84%), San Diego police officers shot at the person <strong>without first attempting to use non-lethal force</strong> to resolve the situation.</li>
-            </ul>
-            <p>This suggests a need for stronger deadly force policies and better enforcement of these standards to emphasize alternatives to deadly force whenever possible.</p>
-            <p><strong>Deadly Force by San Diego Sheriff's Department</strong> </p>
-            <p>San Diego Sheriff's Department reported 95 deadly force incidents from 2016-2018, including 22 police shootings and 73 other force incidents causing death or serious injury. 12 people were killed in these incidents and 83 were seriously injured. This is <strong>4.6x higher deadly force rate </strong>per arrest than San Diego Police Department during this period and a higher rate than 26 of California's 30 largest policing agencies.</p>
-            <ul>
-              <li>SDSD used force against 96 people during these 95 incidents. 68 of these people (71%) were <strong>unarmed</strong>. Only 8 of the 96 people (8%) were allegedly armed with a gun.</li>
-              <li><strong>Tasers, strangleholds and weaponless physical force made up 67% of incidents</strong> causing death or serious injury.</li>
-              <li>At least 14 people SDSD used deadly force on reportedly had <strong>disabilities</strong> - 13 people had signs of mental illness and one person had physical disabilities.</li>
-              <li>Of 22 people shot by SDSD from 2016-2018, 14 (64%) were Latinx. <strong>Latinx people were 5.5x more likely to be shot</strong> by SDSD than white people per arrest. </li>
-              <li>4 of the 22 police shootings (18%) involved San Diego sheriff's deputies shooting at someone who was in a <strong>moving vehicle</strong>.</li>
-            </ul>
-            <p>This suggests policy interventions should include a focus on addressing the excessive use of tasers, physical force and strangleholds while also addressing racial bias in decisions to use firearms, particularly against Latinx people.</p>
-            <iframe title="San Diego Sheriff's Department uses Deadly Force at Higher Rates than Most Departments" aria-label="Column Chart" id="datawrapper-chart-0J9oL" src="//datawrapper.dwcdn.net/0J9oL/2/" scrolling="no" frameborder="0" style="width: 0; min-width: 100% !important; border: none;" height="400"></iframe>
-            <script type="text/javascript">
-            ! function() {
-              "use strict";
-              window.addEventListener("message", function(a) {
-                if (void 0 !== a.data["datawrapper-height"])
-                  for (var e in a.data["datawrapper-height"]) {
-                    var t = document.getElementById("datawrapper-chart-" + e) || document.querySelector("iframe[src*='" + e + "']");
-                    t && (t.style.height = a.data["datawrapper-height"][e] + "px")
-                  }
-              })
-            }();
-            </script>
-          </div>
-        </div>
+          <p><strong>Deadly Force by San Diego Police Department</strong> </p>
 
-        <!-- DEATHS IN SAN DIEGO COUNTY JAIL -->
-        <div class="section">
-          <div class="content chart-summary">
-            <div class="left">
-              <h1 class="title">
-              DEATHS IN SAN DIEGO COUNTY JAIL
-            </h1>
-              <p>In addition to use of force incidents, San Diego Sheriff's Department reported 44 in-custody deaths attributed to causes other than use of force from 2016-2018. This includes at least 10 deaths reportedly due to suicide, 2 death due to homicide committed by another person in custody, and 4 reportedly due to "accidental" causes. Another 15 deaths are attributed to natural causes and 13 remained under investigation at the time of the report. After accounting for the adult jail population in each county, San Diego Sheriff's Department had a rate of 8.1 jail deaths per 1,000 jail population. As such, <strong>people were more likely to die in jail in San Diego County than 18 of the 25 largest counties in California</strong> - suggesting the need for urgent intervention to address treatment and conditions within jail facilities in San Diego.</p>
-            </div>
-            <div class="right">
-              <iframe title="Jail Deaths" aria-label="Column Chart" id="datawrapper-chart-FlTtW" src="//datawrapper.dwcdn.net/FlTtW/1/" scrolling="no" frameborder="0" style="width: 0; min-width: 100% !important; border: none;" height="500"></iframe>
-              <script type="text/javascript">
-              ! function() {
-                "use strict";
-                window.addEventListener("message", function(a) {
-                  if (void 0 !== a.data["datawrapper-height"])
-                    for (var e in a.data["datawrapper-height"]) {
-                      var t = document.getElementById("datawrapper-chart-" + e) || document.querySelector("iframe[src*='" + e + "']");
-                      t && (t.style.height = a.data["datawrapper-height"][e] + "px")
-                    }
-                })
-              }();
-              </script>
-            </div>
-          </div>
-        </div>
+          <p>San Diego Police Department reported 26 deadly force incidents from 2016-2018, including 19 police shootings and 7 other force incidents causing death or serious injury. <strong>10 people died in these encounters and 9 were seriously injured.</strong> While San Diego police used deadly force at a lower rate than the state average, we identified several issues that suggest<strong> </strong>changes to department policies could <strong>reduce deadly force further</strong>:&nbsp;</p>
 
-        <!-- POLICE ACCOUNTABILITY -->
-        <div class="section bg-blue">
-          <div class="content chart-summary padded">
-            <h1 class="title">
-            POLICE ACCOUNTABILITY
-          </h1>
-            <p><strong>When civilians came forward to report police misconduct, it rarely led to accountability in San Diego. </strong>Of 226 civilian complaints of San Diego Police Department conduct in 2016 and 2017, only 11% were ruled in favor of civilians. Moreover, complaints alleging the most serious misconduct were never sustained. For example, of 21 civilian complaints of police discrimination, 75 use of force complaints and 2 complaints alleging criminal misconduct, <strong>none of these complaints were sustained.</strong> </p>
-            <p><strong>An even lower proportion of civilian complaints were sustained that alleged San Diego Sheriff's Department misconduct</strong>. Of the 417 complaints reported to the San Diego Citizens Law Enforcement Review Board from 2016-2018, the board sustained only 18 complaints. This represents a <strong>4% complaint sustain rate</strong> overall, including a 3% sustain rate for criminal allegations, <strong>0.4% sustain rate</strong> for excessive force and <strong>0% sustain rate</strong> for allegations of police discrimination.</p>
+          <ul>
+            <li>In at least 8 of the 26 incidents (31%), the person was <strong>unarmed</strong>.</li>
+            <li>8 of the 26 incidents (31%) involved people who had signs of <strong>mental health issues or drug/alcohol impairment</strong>.</li>
+            <li>4 of the 19 police shootings (21%) involved San Diego police shooting at someone who was in a <strong>moving vehicle</strong>. </li>
+            <li>In 16 of the 19 police shootings (84%), San Diego police officers shot at the person <strong>without first attempting to use non-lethal force</strong> to resolve the situation.</li>
+          </ul>
+
+          <p>This suggests a need for stronger deadly force policies and better enforcement of these standards to emphasize alternatives to deadly force whenever possible.</p>
+
+          <p><strong>Deadly Force by San Diego Sheriff's Department</strong> </p>
+
+          <p>San Diego Sheriff's Department reported 95 deadly force incidents from 2016-2018, including 22 police shootings and 73 other force incidents causing death or serious injury. 12 people were killed in these incidents and 83 were seriously injured. This is <strong>4.6x higher deadly force rate </strong>per arrest than San Diego Police Department during this period and a higher rate than 26 of California's 30 largest policing agencies.</p>
+
+          <ul>
+            <li>SDSD used force against 96 people during these 95 incidents. 68 of these people (71%) were <strong>unarmed</strong>. Only 8 of the 96 people (8%) were allegedly armed with a gun.</li>
+            <li><strong>Tasers, strangleholds and weaponless physical force made up 67% of incidents</strong> causing death or serious injury.</li>
+            <li>At least 14 people SDSD used deadly force on reportedly had <strong>disabilities</strong> - 13 people had signs of mental illness and one person had physical disabilities.</li>
+            <li>Of 22 people shot by SDSD from 2016-2018, 14 (64%) were Latinx. <strong>Latinx people were 5.5x more likely to be shot</strong> by SDSD than white people per arrest. </li>
+            <li>4 of the 22 police shootings (18%) involved San Diego sheriff's deputies shooting at someone who was in a <strong>moving vehicle</strong>.</li>
+          </ul>
+
+          <p>This suggests policy interventions should include a focus on addressing the excessive use of tasers, physical force and strangleholds while also addressing racial bias in decisions to use firearms, particularly against Latinx people.</p>
+
+          <iframe title="San Diego Sheriff's Department uses Deadly Force at Higher Rates than Most Departments" aria-label="Column Chart" id="datawrapper-chart-0J9oL" src="//datawrapper.dwcdn.net/0J9oL/2/" scrolling="no" frameborder="0" style="width: 0; min-width: 100% !important; border: none;" height="400"></iframe>
+          <script type="text/javascript">! function(){"use strict"; window.addEventListener("message", function(a){if (void 0 !==a.data["datawrapper-height"]) for (var e in a.data["datawrapper-height"]){var t=document.getElementById("datawrapper-chart-" + e) || document.querySelector("iframe[src*='" + e + "']"); t && (t.style.height=a.data["datawrapper-height"][e] + "px")}})}(); </script>
+        </div>
+      </div>
+
+      <!-- DEATHS IN SAN DIEGO COUNTY JAIL -->
+      <div class="section bg-blue">
+        <div class="content chart-summary">
+          <div class="left">
+            <h1 class="title">DEATHS IN SAN DIEGO COUNTY JAIL</h1>
+            <p>In addition to use of force incidents, San Diego Sheriff's Department reported 44 in-custody deaths attributed to causes other than use of force from 2016-2018. This includes at least 10 deaths reportedly due to suicide, 2 death due to homicide committed by another person in custody, and 4 reportedly due to "accidental" causes. Another 15 deaths are attributed to natural causes and 13 remained under investigation at the time of the report. After accounting for the adult jail population in each county, San Diego Sheriff's Department had a rate of 8.1 jail deaths per 1,000 jail population. As such, <strong>people were more likely to die in jail in San Diego County than 18 of the 25 largest counties in California</strong> - suggesting the need for urgent intervention to address treatment and conditions within jail facilities in San Diego.</p>
+          </div>
+          <div class="right">
+            <iframe title="Jail Deaths" aria-label="Column Chart" id="datawrapper-chart-FlTtW" src="//datawrapper.dwcdn.net/FlTtW/1/" scrolling="no" frameborder="0" style="width: 0; min-width: 100% !important; border: none;" height="500"></iframe>
+            <script type="text/javascript">! function(){"use strict"; window.addEventListener("message", function(a){if (void 0 !==a.data["datawrapper-height"]) for (var e in a.data["datawrapper-height"]){var t=document.getElementById("datawrapper-chart-" + e) || document.querySelector("iframe[src*='" + e + "']"); t && (t.style.height=a.data["datawrapper-height"][e] + "px")}})}(); </script>
           </div>
         </div>
+      </div>
+
+      <!-- POLICE ACCOUNTABILITY -->
+      <div class="section">
+        <div class="content chart-summary padded">
+          <h1 class="title">POLICE ACCOUNTABILITY</h1>
+          <p><strong>When civilians came forward to report police misconduct, it rarely led to accountability in San Diego. </strong>Of 226 civilian complaints of San Diego Police Department conduct in 2016 and 2017, only 11% were ruled in favor of civilians. Moreover, complaints alleging the most serious misconduct were never sustained. For example, of 21 civilian complaints of police discrimination, 75 use of force complaints and 2 complaints alleging criminal misconduct, <strong>none of these complaints were sustained.</strong> </p>
+          <p><strong>An even lower proportion of civilian complaints were sustained that alleged San Diego Sheriff's Department misconduct</strong>. Of the 417 complaints reported to the San Diego Citizens Law Enforcement Review Board from 2016-2018, the board sustained only 18 complaints. This represents a <strong>4% complaint sustain rate</strong> overall, including a 3% sustain rate for criminal allegations, <strong>0.4% sustain rate</strong> for excessive force and <strong>0% sustain rate</strong> for allegations of police discrimination.</p>
+        </div>
+      </div>
 
         <!-- POLICY RECOMMENDATIONS FOR SAN DIEGO POLICE DEPARTMENT -->
-        <div class="section bg-orange">
+        <div class="section bg-gray">
           <div class="content chart-summary padded no-pad-bottom">
-            <h1 class="title">
-            POLICY RECOMMENDATIONS FOR SAN DIEGO POLICE DEPARTMENT
-          </h1>
+            <h1 class="title">POLICY RECOMMENDATIONS FOR SAN DIEGO POLICE DEPARTMENT</h1>
             <p>A review of San Diego police and sheriff’s department policy manuals, procedures and police union contracts identified a number of areas where new policies could contribute towards addressing the outcomes described in this report.</p>
           </div>
           <div class="content chart-summary no-pad-top no-pad-bottom">
@@ -372,18 +323,7 @@ $socialSubject = rawurlencode($title);
             </div>
             <div class="right">
               <iframe title="SDPD Low Level Charges" aria-label="Table" id="datawrapper-chart-Vu9OV" src="//datawrapper.dwcdn.net/Vu9OV/1/" scrolling="no" frameborder="0" style="width: 0; min-width: 100% !important; border: none;" height="488"></iframe>
-              <script type="text/javascript">
-              ! function() {
-                "use strict";
-                window.addEventListener("message", function(a) {
-                  if (void 0 !== a.data["datawrapper-height"])
-                    for (var e in a.data["datawrapper-height"]) {
-                      var t = document.getElementById("datawrapper-chart-" + e) || document.querySelector("iframe[src*='" + e + "']");
-                      t && (t.style.height = a.data["datawrapper-height"][e] + "px")
-                    }
-                })
-              }();
-              </script>
+              <script type="text/javascript">! function(){"use strict"; window.addEventListener("message", function(a){if (void 0 !==a.data["datawrapper-height"]) for (var e in a.data["datawrapper-height"]){var t=document.getElementById("datawrapper-chart-" + e) || document.querySelector("iframe[src*='" + e + "']"); t && (t.style.height=a.data["datawrapper-height"][e] + "px")}})}(); </script>
             </div>
           </div>
           <div class="content chart-summary padded no-pad-top number-list">
