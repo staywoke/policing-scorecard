@@ -84,7 +84,7 @@ if (empty($sheriff)) {
   </head>
 
   <body>
-    <a href="/sandiego" id="sticky-top-bar">READ OUR NEW REPORT ON SAN DIEGO</a>
+    <a href="/sandiego" id="sticky-top-bar">Click Here to Read Our San Diego Report</a>
 
     <div class="wrapper">
       <div class="section bg-gray header">
