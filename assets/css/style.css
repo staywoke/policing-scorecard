@@ -1224,26 +1224,24 @@ body {
   margin: 0 auto;
   display: block;
   text-align: left;
-  width: 230px;
-  border: 1px solid #cacaca;
+  width: 100%;
+  border: 2px solid #cacaca;
   color: #fff;
   white-space: nowrap;
-  font-size: 16px;
+  font-size: 22px;
   text-decoration: none;
-  padding: 0 30px 0 18px;
+  padding: 0px 18px;
   font-weight: 500;
   position: relative;
+  line-height: 50px;
+  text-align: center;
 }
 
-.section .content.padded a.read-methodology::after {
-  content: '\0025E2';
-  font-size: 14px;
-  color: #82ADD7;
-  position: absolute;
-  right: 16px;
-  top: -4px;
-  -webkit-transform: rotate(45deg);
-          transform: rotate(45deg);
+.section .content.padded a.read-methodology img {
+  margin: 0 auto;
+  width: 100%;
+  height: auto;
+  max-width: 100%;
 }
 
 .section .content.text-white {
@@ -2905,6 +2903,20 @@ p.number-list.n15::after {
 @media screen and (max-width: 940px) {
   .hide-mobile {
     display: none;
+  }
+  a.read-methodology {
+    width: 230px;
+    font-size: 16px;
+    padding: 0 30px 0 18px;
+    border: 1px solid #cacaca;
+    line-height: 24px;
+    margin-top: 0;
+  }
+  a.read-methodology::after {
+    content: '\0025E2';
+    font-size: 14px;
+    right: 16px;
+    top: -4px;
   }
   div.number-list {
     padding-left: 40px;
