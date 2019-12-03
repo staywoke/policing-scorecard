@@ -53,6 +53,23 @@ body {
   -webkit-tap-highlight-color: transparent;
 }
 
+#sticky-top-bar {
+  position: -webkit-sticky;
+  position: sticky;
+  top: 0;
+  left: 0;
+  text-align: center;
+  color: white;
+  text-transform: uppercase;
+  background-color: #f67f85;
+  font-size: 16px;
+  padding: 6px;
+  width: 100%;
+  text-decoration: none;
+  display: block;
+  z-index: 500;
+}
+
 .text-white {
   color: #FFF;
 }

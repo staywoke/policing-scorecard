@@ -6,13 +6,13 @@ $sheriff = (!empty($_REQUEST['sheriff'])) ? $_REQUEST['sheriff'] : null;
 $link = (!empty($_REQUEST['sheriff'])) ? 'sheriff' : 'city';
 $map = file_get_contents('assets/img/map.svg');
 $marker = $link === 'city' ? $city : $sheriff;
+$ac = '?ac=' . getHash();
 
 if (empty($sheriff)) {
   $data = getCityData($city);
   $grade = getGrade($data['overall_score']);
   $reportCard = reportCard('data');
   $title = "California Police Scorecard";
-  $ac = '?ac=' . getHash();
   $socialUrl = rawurlencode('https://policescorecard.org');
   $socialText = rawurlencode('Get the facts about police violence and accountability in California. Evaluate each department and hold them accountable at policescorecard.org');
   $socialSubject = rawurlencode($title);
@@ -21,7 +21,6 @@ if (empty($sheriff)) {
   $grade = getGrade($data['overall_score']);
   $reportCard = reportCard('sheriff');
   $title = "California Sheriff Scorecard";
-  $ac = '?ac=' . getHash();
   $socialUrl = rawurlencode('https://policescorecard.org');
   $socialText = rawurlencode('Get the facts about police violence and accountability in California. Evaluate each department and hold them accountable at policescorecard.org');
   $socialSubject = rawurlencode($title);
@@ -85,6 +84,8 @@ if (empty($sheriff)) {
   </head>
 
   <body>
+    <a href="/sandiego" id="sticky-top-bar">READ OUR NEW REPORT ON SAN DIEGO</a>
+
     <div class="wrapper">
       <div class="section bg-gray header">
         <div class="content">

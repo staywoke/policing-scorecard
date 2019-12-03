@@ -158,7 +158,7 @@ $socialSubject = rawurlencode($title);
             <p>Among the groups in our analysis, people perceived to have mental disabilities experienced some of the most extreme search disparities - this group was 81% more likely to be searched by San Diego police and 112% more likely to be searched by San Diego sheriff's deputies during a stop than people who were not perceived to have a disability. </p>
           </div>
           <div class="right">
-            
+
             <iframe title="People of Color, People perceived to be LGBT or Gender Non-Conforming, and People with Disabilities were more likely to be searched during a stop. " aria-label="Split Bars" id="datawrapper-chart-YnuFc" src="//datawrapper.dwcdn.net/YnuFc/4/" scrolling="no" frameborder="0" style="width: 0; min-width: 100% !important; border: none;" height="551"></iframe><script type="text/javascript">!function(){"use strict";window.addEventListener("message",function(a){if(void 0!==a.data["datawrapper-height"])for(var e in a.data["datawrapper-height"]){var t=document.getElementById("datawrapper-chart-"+e)||document.querySelector("iframe[src*='"+e+"']");t&&(t.style.height=a.data["datawrapper-height"][e]+"px")}})}();</script>
 
           </div>
