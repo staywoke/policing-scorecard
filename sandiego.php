@@ -49,7 +49,7 @@ $socialSubject = rawurlencode($title);
     <link rel="stylesheet" href="assets/css/style.css<?= trim($ac) ?>">
 
     <!-- Facebook Pixel Code -->
-    <script>! function(f, b, e, v, n, t, s){if (f.fbq) return; n=f.fbq=function(){n.callMethod ? n.callMethod.apply(n, arguments) : n.queue.push(arguments)}; if (!f._fbq) f._fbq=n; n.push=n; n.loaded=!0; n.version='2.0'; n.queue=[]; t=b.createElement(e); t.async=!0; t.src=v; s=b.getElementsByTagName(e)[0]; s.parentNode.insertBefore(t, s)}(window, document, 'script', 'https://connect.facebook.net/en_US/fbevents.js'); fbq('init', '2063073133961763'); </script>
+    <script>!function(e,n,t,o,c,s,a){e.fbq||(c=e.fbq=function(){c.callMethod?c.callMethod.apply(c,arguments):c.queue.push(arguments)},e._fbq||(e._fbq=c),(c.push=c).loaded=!0,c.version="2.0",c.queue=[],(s=n.createElement(t)).async=!0,s.src="https://connect.facebook.net/en_US/fbevents.js",(a=n.getElementsByTagName(t)[0]).parentNode.insertBefore(s,a))}(window,document,"script"),fbq("init","2063073133961763")</script>
     <noscript><img height="1" width="1" style="display:none" src="https://www.facebook.com/tr?id=2063073133961763&ev=PageView&noscript=1" /> </noscript>
     <!-- End Facebook Pixel Code -->
   </head>
@@ -116,7 +116,7 @@ $socialSubject = rawurlencode($title);
         <div class="content padded text-white no-pad-bottom">
           <div class="left">
             <p><strong>Campaign Zero</strong> evaluated the policing practices of San Diego Police Department (SDPD) and San Diego Sheriff's Department (SDSD).</p>
-            <p>Our results show both departments to be engaged in a pattern of discriminatory policing. <strong>Both departments stopped black people at a rate more than 2x higher than white people and were more likely to search, arrest, use force against black people during a stop.</strong> Both departments not only use force more often but also use more severe forms of force against black people than other groups, even after controlling for arrest rates and alleged level of resistance. </p>
+            <p>Our results show both departments to be engaged in a pattern of discriminatory policing. <strong>Both departments stopped black people at a rate more than 2x higher than white people and were more likely to search, arrest, and use force against black people during a stop.</strong> Both departments not only use force more often but also use more severe forms of force against black people than other groups, even after controlling for arrest rates and alleged level of resistance. </p>
             <p>We also found evidence of <strong>anti-Latinx bias, anti-LGBT bias and bias against people with disabilities</strong> in both departments' search practices. Moreover, when communities report police discrimination or excessive force, fewer than 1% of these allegations were upheld. Our summary findings and policy recommendations to reduce police violence, strengthen accountability and make communities safer are presented below.</p>
           </div>
 
