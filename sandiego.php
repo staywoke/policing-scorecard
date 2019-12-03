@@ -221,7 +221,7 @@ $socialSubject = rawurlencode($title);
           <div class="left">
             <h1 class="title">USE OF FORCE DISPARITIES</h1>
             <p>Between 2016-2018, San Diego Police Department and the San Diego Sheriff's Department were more likely to use force against black people, even after controlling for arrest rates. Sheriff's deputies were also more likely to use force against Asians / Pacific Islanders than whites during arrest.</p>
-            <p>Available data on use of force by disability status, which was limited to the period from July 2018 - July 2019, shows San Diego police were 172% more likely to use force against people perceived to have mental disabilities during a stop and San Diego sheriff's deputies were 70% more likely to do so. This suggests there are serious issues regarding both agencies' interactions with black people and people with disabilities.</p>
+            <p>Available data on use of force by disability status, which was limited to the period from July 2018 - July 2019, shows San Diego police were <strong>172% more likely</strong> to use force against people perceived to have mental disabilities during a stop and San Diego sheriff's deputies were <strong>70% more likely</strong> to do so. This suggests there are serious issues regarding both agencies' interactions with black people and people with disabilities.</p>
           </div>
           <div class="right">
             <iframe title="San Diego police were more likely to use weapons and other types of force against Black People" aria-label="Column Chart" id="datawrapper-chart-YUYaD" src="//datawrapper.dwcdn.net/YUYaD/2/" scrolling="no" frameborder="0" style="width: 0; min-width: 100% !important; border: none;" height="450"></iframe>
