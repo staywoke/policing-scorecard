@@ -1338,7 +1338,7 @@ body {
   color: white;
 }
 
-.section.bg-gray .content.chart-summary a {
+.section.bg-gray .content.chart-summary a, .section.bg-gray .content.chart-summary ul, .section.bg-gray .content.chart-summary li {
   color: #FFF;
 }
 
@@ -1365,7 +1365,7 @@ body {
   color: white;
 }
 
-.section.bg-orange .content.chart-summary a {
+.section.bg-orange .content.chart-summary a, .section.bg-orange .content.chart-summary ul, .section.bg-orange .content.chart-summary li {
   color: #FFF;
 }
 
@@ -1381,7 +1381,7 @@ body {
   color: white;
 }
 
-.section.bg-blue .content.chart-summary a {
+.section.bg-blue .content.chart-summary a, .section.bg-blue .content.chart-summary ul, .section.bg-blue .content.chart-summary li {
   color: #FFF;
 }
 

@@ -219,60 +219,37 @@ $socialSubject = rawurlencode($title);
 
       <!-- USE OF FORCE DISPARITIES -->
       <div class="section">
-        <div class="content chart-summary no-pad-bottom">
+        <div class="content chart-summary">
           <div class="left">
             <h1 class="title">USE OF FORCE DISPARITIES</h1>
-            <p>Analyzing these use of force records by race, we find <strong>both San Diego Police Department and the San Diego Sheriff's Department were more likely to use force against black people</strong> even after controlling for arrest rates. Specifically, after controlling for arrest rates, San Diego police were 10% more likely to use force overall against black people than white people, while San Diego sheriff's deputies were 96% more likely to use force against black people. Sheriff's deputies were also 103% more likely to use force against Asians / Pacific Islanders than whites, suggesting a more widespread pattern of racial bias in the use of force by the Sheriff's Department. Racial disparities in the use of force were apparent across the various types of force these departments used.</p>
+            <p>Between 2016-2018, San Diego Police Department and the San Diego Sheriff's Department were more likely to use force against black people, even after controlling for arrest rates. Sheriff's deputies were also more likely to use force against Asians / Pacific Islanders than whites during arrest.</p>
+            <p>Available data on use of force by disability status, which was limited to the period from July 2018 - July 2019, shows San Diego police were 172% more likely to use force against people perceived to have mental disabilities during a stop and San Diego sheriff's deputies were 70% more likely to do so. This suggests there are serious issues regarding both agencies' interactions with black people and people with disabilities.</p>
           </div>
           <div class="right">
             <iframe title="San Diego police were more likely to use weapons and other types of force against Black People" aria-label="Column Chart" id="datawrapper-chart-YUYaD" src="//datawrapper.dwcdn.net/YUYaD/2/" scrolling="no" frameborder="0" style="width: 0; min-width: 100% !important; border: none;" height="450"></iframe>
-            <script type="text/javascript">! function(){"use strict"; window.addEventListener("message", function(a){if (void 0 !==a.data["datawrapper-height"]) for (var e in a.data["datawrapper-height"]){var t=document.getElementById("datawrapper-chart-" + e) || document.querySelector("iframe[src*='" + e + "']"); t && (t.style.height=a.data["datawrapper-height"][e] + "px")}})}(); </script>
-            <iframe title="San Diego deputies were more likely to use nearly every type of force against People of Color" aria-label="Grouped Bars" id="datawrapper-chart-gq7Ze" src="//datawrapper.dwcdn.net/gq7Ze/2/" scrolling="no" frameborder="0" style="width: 0; min-width: 100% !important; border: none;" height="773"></iframe>
-            <script type="text/javascript">! function(){"use strict"; window.addEventListener("message", function(a){if (void 0 !==a.data["datawrapper-height"]) for (var e in a.data["datawrapper-height"]){var t=document.getElementById("datawrapper-chart-" + e) || document.querySelector("iframe[src*='" + e + "']"); t && (t.style.height=a.data["datawrapper-height"][e] + "px")}})}(); </script>
+            <script type="text/javascript">!function(){"use strict";window.addEventListener("message",function(a){if(void 0!==a.data["datawrapper-height"])for(var e in a.data["datawrapper-height"]){var t=document.getElementById("datawrapper-chart-"+e)||document.querySelector("iframe[src*='"+e+"']");t&&(t.style.height=a.data["datawrapper-height"][e]+"px")}})}();</script>
+
+            <p>&nbsp;</p>
+
+            <iframe title="San Diego deputies were more likely to use nearly every type of force against People of Color" aria-label="Grouped Bars" id="datawrapper-chart-gq7Ze" src="//datawrapper.dwcdn.net/gq7Ze/1/" scrolling="no" frameborder="0" style="width: 0; min-width: 100% !important; border: none;" height="783"></iframe>
+            <script type="text/javascript">!function(){"use strict";window.addEventListener("message",function(a){if(void 0!==a.data["datawrapper-height"])for(var e in a.data["datawrapper-height"]){var t=document.getElementById("datawrapper-chart-"+e)||document.querySelector("iframe[src*='"+e+"']");t&&(t.style.height=a.data["datawrapper-height"][e]+"px")}})}();</script>
           </div>
-        </div>
-        <div class="content chart-summary padded no-pad-top">
-          <p>Available data on use of force by disability status, which was limited to the period from July 2018 - July 2019, shows <strong>San Diego police were 172% more likely to use force against people perceived to have mental disabilities during a stop and San Diego sheriff's deputies were 70% more likely to do so.</strong> This suggests there are serious issues regarding both agencies' interactions with black people and people with disabilities.</p>
         </div>
       </div>
 
-        <!-- USE OF FORCE SEVERITY -->
-        <div class="section bg-orange">
-          <div class="content chart-summary padded no-pad-bottom">
-            <h1 class="title">
-            USE OF FORCE SEVERITY
-          </h1>
-            <p>In addition to examining overall use of force rates, we also calculated a weighted severity score to determine the severity of force used against each group. Using a methodology <a href="https://policingequity.org/images/pdfs-doc/CPE_SoJ_Race-Arrests-UoF_2016-07-08-1130.pdf"><span >developed</span></a> by the Center for Policing Equity, we assigned more severe forms of force a higher score than less severe forms of force:</p>
+      <!-- USE OF FORCE SEVERITY -->
+      <div class="section bg-orange">
+        <div class="content chart-summary">
+          <div class="left">
+            <h1 class="title">USE OF FORCE SEVERITY</h1>
+            <p>Using a methodology <a href="https://policingequity.org/images/pdfs-doc/CPE_SoJ_Race-Arrests-UoF_2016-07-08-1130.pdf" target="_blank">developed</a> by the Center for Policing Equity, we assigned more severe forms of force - like the use of tasers and canines - a higher score than less severe forms of force - like punches and kicks. <strong>The results show both departments not only were more likely to use force against black people but also used higher levels of force during these encounters compared to other groups.</strong> On average, when SDPD uses force against black people they use a level of force 1.3x more severe than when using force against white people. For SDSD, it was a level of force 2.7x more severe. Both departments used more severe levels of force against black people than white people even after controlling for the level of resistance officers reported encountering. </p>
           </div>
-          <div class="content chart-summary no-pad-top">
-            <div class="left">
-              <ul>
-                <li>Lethal incidents received a weight of 6.</li>
-                <li>Less lethal and Taser incidents received a weight of 5.</li>
-                <li>Canine incidents received a weight of 4.</li>
-                <li>OC spray incidents received a weight of 3.</li>
-                <li>All other weapon incidents received a weight of 2.</li>
-                <li>Hands and body incidents received a weight of 1.</li>
-              </ul>
-              <p><strong>We find both agencies not only were more likely to use force against black people but also used higher levels of force during these encounters compared to other groups. </strong>On average, when SDPD uses force against black people they use a level of force 1.3x more severe than when using force against white people. For SDSD, it was a level of force 2.7x more severe.</p>
-            </div>
-            <div class="right">
-              <iframe title="San Diego police and Sheriff's deputies used more severe forms of force against black people" aria-label="Grouped Column Chart" id="datawrapper-chart-z18tY" src="//datawrapper.dwcdn.net/z18tY/13/" scrolling="no" frameborder="0" style="width: 0; min-width: 100% !important; border: none;" height="400"></iframe>
-              <script type="text/javascript">
-              ! function() {
-                "use strict";
-                window.addEventListener("message", function(a) {
-                  if (void 0 !== a.data["datawrapper-height"])
-                    for (var e in a.data["datawrapper-height"]) {
-                      var t = document.getElementById("datawrapper-chart-" + e) || document.querySelector("iframe[src*='" + e + "']");
-                      t && (t.style.height = a.data["datawrapper-height"][e] + "px")
-                    }
-                })
-              }();
-              </script>
-            </div>
+          <div class="right">
+            <iframe title="Use of Force Severity per Arrest" aria-label="Grouped Column Chart" id="datawrapper-chart-z18tY" src="//datawrapper.dwcdn.net/z18tY/10/" scrolling="no" frameborder="0" style="width: 0; min-width: 100% !important; border: none;" height="400"></iframe>
+            <script type="text/javascript">!function(){"use strict";window.addEventListener("message",function(a){if(void 0!==a.data["datawrapper-height"])for(var e in a.data["datawrapper-height"]){var t=document.getElementById("datawrapper-chart-"+e)||document.querySelector("iframe[src*='"+e+"']");t&&(t.style.height=a.data["datawrapper-height"][e]+"px")}})}();</script>
           </div>
         </div>
+      </div>
 
         <!-- USE OF FORCE SEVERITY BY ALLEGED RESISTANCE LEVEL -->
         <div class="section">
