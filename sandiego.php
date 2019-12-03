@@ -117,7 +117,7 @@ $socialSubject = rawurlencode($title);
           <div class="left">
             <p><strong>Campaign Zero</strong> evaluated the policing practices of San Diego Police Department (SDPD) and San Diego Sheriff's Department (SDSD).</p>
             <p>Our results show both departments to be engaged in a pattern of discriminatory policing. <strong>Both departments stopped black people at a rate more than 2x higher than white people and were more likely to search, arrest, use force against black people during a stop.</strong> Both departments not only use force more often but also use more severe forms of force against black people than other groups, even after controlling for arrest rates and alleged level of resistance. </p>
-            <p>We also found evidence of <strong>anti-Latinx bias, anti-LGBT bias and bias against people with disabilities</strong> in both departments' search practices. Moreover, when communities report police discrimination or excessive force, fewer than 1% of these allegations were upheld by either department. Our summary findings and policy recommendations to reduce police violence, strengthen accountability and make communities safer are presented below.</p>
+            <p>We also found evidence of <strong>anti-Latinx bias, anti-LGBT bias and bias against people with disabilities</strong> in both departments' search practices. Moreover, when communities report police discrimination or excessive force, fewer than 1% of these allegations were upheld. Our summary findings and policy recommendations to reduce police violence, strengthen accountability and make communities safer are presented below.</p>
           </div>
 
           <div class="right">
@@ -158,7 +158,7 @@ $socialSubject = rawurlencode($title);
             <p>Among the groups in our analysis, people perceived to have mental disabilities experienced some of the most extreme search disparities - this group was 81% more likely to be searched by San Diego police and 112% more likely to be searched by San Diego sheriff's deputies during a stop than people who were not perceived to have a disability. </p>
           </div>
           <div class="right">
-            
+
             <iframe title="People of Color, People perceived to be LGBT or Gender Non-Conforming, and People with Disabilities were more likely to be searched during a stop. " aria-label="Split Bars" id="datawrapper-chart-YnuFc" src="//datawrapper.dwcdn.net/YnuFc/4/" scrolling="no" frameborder="0" style="width: 0; min-width: 100% !important; border: none;" height="551"></iframe><script type="text/javascript">!function(){"use strict";window.addEventListener("message",function(a){if(void 0!==a.data["datawrapper-height"])for(var e in a.data["datawrapper-height"]){var t=document.getElementById("datawrapper-chart-"+e)||document.querySelector("iframe[src*='"+e+"']");t&&(t.style.height=a.data["datawrapper-height"][e]+"px")}})}();</script>
 
           </div>

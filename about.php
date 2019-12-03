@@ -171,6 +171,8 @@ $ac = '?ac=' . getHash();
   </head>
 
   <body>
+     <a href="/sandiego" id="sticky-top-bar">Click Here to Read Our San Diego Report</a>
+
     <div class="wrapper">
       <div class="section bg-gray header">
         <div class="content">

@@ -23,7 +23,7 @@ $ac = '?ac=' . getHash();
     <meta property="twitter:title" content="Findings">
     <meta property="twitter:description" content="Get the facts about police violence and accountability in California. Evaluate each police department and hold them accountable here.">
     <meta property="twitter:creator" content="@mrmidi">
-    <meta property="twitter:image:src" content="https://policescorecard.org/assets/img/card.jpg">
+    <meta property="twitter:image:src" content="https://policescorecard.org/assets/img/card.jpg<?= trim($ac) ?>">
     <meta property="twitter:domain" content="https://policescorecard.org">
 
     <!-- Open Graph protocol -->
@@ -31,7 +31,7 @@ $ac = '?ac=' . getHash();
     <meta property="og:type" content="website">
     <meta property="og:title" content="Findings">
     <meta property="og:url" content="https://policescorecard.org">
-    <meta property="og:image" content="https://policescorecard.org/assets/img/card.jpg">
+    <meta property="og:image" content="https://policescorecard.org/assets/img/card.jpg<?= trim($ac) ?>">
     <meta property="og:site_name" content="CA Police Scorecard">
     <meta property="og:description" content="Get the facts about police violence and accountability in California. Evaluate each police department and hold them accountable here.">
 
@@ -39,7 +39,7 @@ $ac = '?ac=' . getHash();
 
     <link href="https://fonts.googleapis.com/css?family=Lato:300,400,700,900" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css?family=Barlow+Condensed:300,400,500,700" rel="stylesheet">
-    <link rel="stylesheet" href="assets/css/style.css?ver=1.0.0">
+    <link rel="stylesheet" href="assets/css/style.css<?= trim($ac) ?>">
 
     <!-- Facebook Pixel Code -->
     <script>
@@ -597,6 +597,8 @@ $ac = '?ac=' . getHash();
 </head>
 
 <body>
+    <a href="/sandiego" id="sticky-top-bar">Click Here to Read Our San Diego Report</a>
+
     <div class="wrapper">
         <div class="section bg-gray header">
             <div class="content">
@@ -706,7 +708,7 @@ $ac = '?ac=' . getHash();
                         }();
                     </script>
                     <p>&nbsp;</p>
-                    <p class="c3"><span>Among other large California cities, San Diego and Fresno's scores improved moderately while policing outcomes in San Francisco, San Jose, Los Angeles and Oakland remained relatively constant. Outcomes worsened in Long Beach which, along with Bakersfield and Riverside, continued to have some of the worst policing outcomes in the state among larger cities.</span></p>
+                    <p class="c3"><span>Among other large California cities, San Diego, Fresno and Oakland's scores improved moderately while policing outcomes in San Jose, Los Angeles and San Francisco remained relatively constant. Outcomes worsened in Bakersfield which, along with Riverside, continued to have some of the worst policing outcomes in the state among larger cities.</span></p>
 
                     <iframe title="Changes in Police Department Scores from 2016-17 to 2018" aria-label="Column Chart" id="datawrapper-chart-eIG3V" src="https://datawrapper.dwcdn.net/eIG3V/1/" scrolling="no" frameborder="0"></iframe>
                     <script type="text/javascript">
@@ -726,7 +728,7 @@ $ac = '?ac=' . getHash();
 
                     <p class="c3 number-list n3"><span class="c11 c4">Evaluating California Sheriff's Departments</span></p>
 
-                    <p class="c3"><span>To more effectively evaluate Sheriff's Departments, we added new indicators that reflect the role of sheriffs in running county jails. In addition to the existing framework used to evaluate city police departments, we examined the sheriffs' jail incarceration rates, jail deaths per jail population, and transfers of immigrants to ICE. Based on this comprehensive evaluation, we found that Los Angeles County Sheriff - the nation's largest Sheriff's Department - had the worst score among the 58 CA Sheriff's Departments. Between 2016-18, Los Angeles County Sheriff's Department made more misdemeanor arrests per population than 87% of California Sheriff's Departments, used more deadly force during arrest than 84% of departments and jailed people at a rate higher than 87% of departments. This indicates the need for urgent interventions to hold Los Angeles County Sheriff's Department accountable for addressing these issues, which could improve policing outcomes in a county that is home to 1 in every 4 Californians.</span></p>
+                    <p class="c3"><span>To more effectively evaluate Sheriff's Departments, we added new indicators that reflect the role of sheriffs in running county jails. In addition to the existing framework used to evaluate city police departments, we examined the sheriffs' jail incarceration rates, jail deaths per jail population, and transfers of immigrants to ICE. Based on this comprehensive evaluation, we found that Los Angeles County Sheriff - the nation's largest Sheriff's Department - had the worst score among the 58 CA Sheriff's Departments. Between 2016-18, Los Angeles County Sheriff's Department used more deadly force during arrest than 86% of departments and had the worst level of discriminatory policing of any other Sheriff's Department in the state, as determined by our racial bias scoring methodology. This indicates the need for urgent interventions to hold Los Angeles County Sheriff's Department accountable for addressing these issues, which could improve policing outcomes in a county that is home to 1 in every 4 Californians.</span></p>
 
                     <iframe title="CA County Sheriff's Scores" aria-label="Dot Plot" id="datawrapper-chart-IamVk" src="https://datawrapper.dwcdn.net/IamVk/1/" scrolling="no" frameborder="0"></iframe>
                     <script type="text/javascript">
