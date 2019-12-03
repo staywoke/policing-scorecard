@@ -117,7 +117,7 @@ $socialSubject = rawurlencode($title);
           <div class="left">
             <p><strong>Campaign Zero</strong> evaluated the policing practices of San Diego Police Department (SDPD) and San Diego Sheriff's Department (SDSD).</p>
             <p>Our results show both departments to be engaged in a pattern of discriminatory policing. <strong>Both departments stopped black people at a rate more than 2x higher than white people and were more likely to search, arrest, use force against black people during a stop.</strong> Both departments not only use force more often but also use more severe forms of force against black people than other groups, even after controlling for arrest rates and alleged level of resistance. </p>
-            <p>We also found evidence of <strong>anti-Latinx bias, anti-LGBT bias and bias against people with disabilities</strong> in both departments' search practices. Moreover, when communities report police discrimination or excessive force, fewer than 1% of these allegations were upheld by either department. Our summary findings and policy recommendations to reduce police violence, strengthen accountability and make communities safer are presented below.</p>
+            <p>We also found evidence of <strong>anti-Latinx bias, anti-LGBT bias and bias against people with disabilities</strong> in both departments' search practices. Moreover, when communities report police discrimination or excessive force, fewer than 1% of these allegations were upheld. Our summary findings and policy recommendations to reduce police violence, strengthen accountability and make communities safer are presented below.</p>
           </div>
 
           <div class="right">
