@@ -576,6 +576,24 @@ body {
     padding-top: 20px;
   }
 
+  sup {
+    font-size: 12px;
+    position: relative;
+    top: -8px;
+  }
+
+  small {
+    font-size: 12px;
+    line-height: 14px;
+    display: inline-block;
+
+    sup {
+      font-size: 10px;
+      position: relative;
+      top: -2px;
+    }
+  }
+
   .view-score {
     cursor: pointer;
     text-align: right;
