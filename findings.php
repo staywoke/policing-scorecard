@@ -608,12 +608,13 @@ $ac = '?ac=' . getHash();
                 <a href="javascript:void(0);" id="mobile-toggle"></a>
 
                 <div id="menu">
-                    <ul>
-                        <li><a href="about">About the Data</a></li>
-                        <li><a href="findings" class="active">Key Findings</a></li>
-                        <li><a href="https://www.joincampaignzero.org/about/" target="_blank">Planning Team</a></li>
-                        <li><a href="https://www.joincampaignzero.org/" target="_blank">More about Campaign Zero</a></li>
-                    </ul>
+                <ul>
+                    <li><a href="about">About the Data</a></li>
+                    <li><a href="findings" class="active">Key Findings</a></li>
+                    <li><a href="sandiego">Reports</a></li>
+                    <li><a href="https://www.joincampaignzero.org/about/" target="_blank">Planning Team</a></li>
+                    <li><a href="https://www.joincampaignzero.org/" target="_blank">About Campaign Zero</a></li>
+                </ul>
                 </div>
             </div>
         </div>
@@ -708,7 +709,7 @@ $ac = '?ac=' . getHash();
 
                     <p class="c3 number-list n3"><span class="c11 c4">Evaluating California Sheriff's Departments</span></p>
 
-                    <p class="c3"><span>To more effectively evaluate Sheriff's Departments, we added new indicators that reflect the role of sheriffs in running county jails. In addition to the existing framework used to evaluate city police departments, we examined the sheriffs' jail incarceration rates, jail deaths per jail population, and transfers of immigrants to ICE. Based on this comprehensive evaluation, we found that Los Angeles County Sheriff - the nation's largest Sheriff's Department - had the worst score among the 58 CA Sheriff's Departments. Between 2016-18, Los Angeles County Sheriff's Department used more deadly force during arrest than 86% of departments and had the worst level of discriminatory policing of any other Sheriff's Department in the state, as determined by our racial bias scoring methodology. This indicates the need for urgent interventions to hold Los Angeles County Sheriff's Department accountable for addressing these issues, which could improve policing outcomes in a county that is home to 1 in every 4 Californians.</span></p>
+                    <p class="c3"><span>To more effectively evaluate Sheriff's Departments, we added new indicators that reflect the role of sheriffs in running county jails. In addition to the existing framework used to evaluate city police departments, we examined the sheriffs' jail incarceration rates, jail deaths per jail population, and transfers of immigrants to ICE. Based on this comprehensive evaluation, we found that Los Angeles County Sheriff and San Diego County Sheriff - the state's largest Sheriff's Departments - had among the worst scores of the 58 CA Sheriff's Departments. Between 2016-18, Los Angeles County Sheriff's Department used more deadly force during arrest than 86% of departments and had the worst level of discriminatory policing of any other Sheriff's Department in the state, as determined by our racial bias scoring methodology. San Diego Sheriff used more force than 87% of Sheriff's Departments, used more deadly force than 84% of Sheriff's Departments and had more jail deaths than 81% of these departments. This indicates the need for urgent interventions to hold Los Angeles County and San Diego County Sheriff's Departments accountable for addressing these issues, which could improve policing outcomes in counties that are home to 1 in every 3 Californians.</span></p>
 
                     <iframe title="CA County Sheriff's Scores" aria-label="Dot Plot" id="datawrapper-chart-IamVk" src="https://datawrapper.dwcdn.net/IamVk/1/" scrolling="no" frameborder="0"></iframe>
                     <script type="text/javascript">

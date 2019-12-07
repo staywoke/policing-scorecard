@@ -248,6 +248,7 @@ var SCORECARD = (function () {
     $modalTabs.style.display = 'none';
 
     var path = (window.location.search.indexOf('sheriff') !== -1) ? 'data/json/sheriff-' : 'data/json/data-';
+    var label = (window.location.search.indexOf('sheriff') !== -1) ? 'Sheriff Department' : 'Police Department';
     var request = new XMLHttpRequest();
     var file = path + city + '.json';
     request.open('GET', file, true);
@@ -269,7 +270,7 @@ var SCORECARD = (function () {
           var grade = getGrade(data.overall_score.replace('%', ''));
           var html = '';
 
-          html += '<div class="modal-header"><div class="results-header"><strong>' + data.agency_name + '</strong><br/>Grade:&nbsp; <strong class="grade grade-' + grade.replace(/[^A-Z]/, '').toLowerCase() + '">' + grade + '</strong> (' + data.overall_score + ')</div><div class="keys"><span class="key key-bad"></span> WORSE <span class="key key-avg"></span> AVG <span class="key key-good"></span> BETTER</div></div>';
+          html += '<div class="modal-header"><div class="results-header"><strong style="position: relative; top: -2px;">' + data.agency_name + ' ' + label + '</strong><br/>Grade:&nbsp; <strong class="grade grade-' + grade.replace(/[^A-Z]/, '').toLowerCase() + '">' + grade + '</strong> (' + data.overall_score + ')</div><div class="keys"><span class="key key-bad"></span> WORSE <span class="key key-avg"></span> AVG <span class="key key-good"></span> BETTER</div></div>';
           html += '<div class="section-header no-border"><div class="label">&nbsp;</div><div class="percentile"><strong>PERCENTILE</strong></div></div>';
 
           html += '<div class="section-header"><div class="label">Police Violence:&nbsp; ' + data.police_violence_score + '</div><div class="percentile">50TH</div></div>';

@@ -80,10 +80,11 @@ $socialSubject = rawurlencode($title);
           <a href="javascript:void(0);" id="mobile-toggle"></a>
           <div id="menu">
             <ul>
-              <li><a href="about">About the Data</a> </li>
-              <li><a href="findings">Key Findings</a> </li>
-              <li><a href="https://www.joincampaignzero.org/about/" target="_blank">Planning Team</a> </li>
-              <li><a href="https://www.joincampaignzero.org/" target="_blank">More about Campaign Zero</a> </li>
+              <li><a href="about">About the Data</a></li>
+              <li><a href="findings">Key Findings</a></li>
+              <li><a href="sandiego" class="active">Reports</a></li>
+              <li><a href="https://www.joincampaignzero.org/about/" target="_blank">Planning Team</a></li>
+              <li><a href="https://www.joincampaignzero.org/" target="_blank">About Campaign Zero</a></li>
             </ul>
           </div>
         </div>
@@ -121,7 +122,7 @@ $socialSubject = rawurlencode($title);
           </div>
 
           <div class="right">
-            <a href="/assets/san-diego/police-scorecard-san-diego-report.pdf" target="_blank" class="read-methodology">
+            <a href="/assets/san-diego/police-scorecard-san-diego-report.pdf<?= trim($ac) ?>" target="_blank" class="read-methodology">
               Read the Full Report<br>
               <img src="/assets/san-diego/report-screenshot.jpg" />
             </a>
