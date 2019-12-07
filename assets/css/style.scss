@@ -1571,24 +1571,12 @@ body {
     left: 0;
     transition: left 0.5s;
 
-    .selected-location {
+    .selected-location a {
+      color: #FFF;
+      padding: 0;
 
-      .selected-location-label {
-        left: 21px;
-        top: 20px;
-        font-size: 14px;
-        opacity: 0.65;
-        line-height: 14px;
-      }
-
-      a {
-        color: #FFF;
-        padding: 0;
-        top: 6px;
-
-        &::after {
-          color: #000;
-        }
+      &::after {
+        color: #000;
       }
     }
   }
@@ -2897,9 +2885,19 @@ p.number-list {
   }
 
   .selected-location {
+
+    .selected-location-label {
+      left: 21px;
+      top: 20px;
+      font-size: 14px;
+      opacity: 0.65;
+      line-height: 14px;
+    }
+
     a {
       font-size: 24px;
       padding-bottom: 20px;
+      top: 6px;
 
       &::after {
         font-size: $font-small;

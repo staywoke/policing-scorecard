@@ -248,7 +248,7 @@ var SCORECARD = (function () {
     $modalTabs.style.display = 'none';
 
     var path = (window.location.search.indexOf('sheriff') !== -1) ? 'data/json/sheriff-' : 'data/json/data-';
-    var label = (window.location.search.indexOf('sheriff') !== -1) ? 'Sheriff Department' : 'Police Department';
+    var label = (window.location.search.indexOf('sheriff') !== -1) ? 'Sheriff\'s Department' : 'Police Department';
     var request = new XMLHttpRequest();
     var file = path + city + '.json';
     request.open('GET', file, true);
