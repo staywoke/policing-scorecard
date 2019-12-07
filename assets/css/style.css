@@ -1979,18 +1979,9 @@ body {
   transition: left 0.5s;
 }
 
-.section.score .left .selected-location .selected-location-label {
-  left: 21px;
-  top: 20px;
-  font-size: 14px;
-  opacity: 0.65;
-  line-height: 14px;
-}
-
 .section.score .left .selected-location a {
   color: #FFF;
   padding: 0;
-  top: 6px;
 }
 
 .section.score .left .selected-location a::after {
@@ -3202,9 +3193,17 @@ p.number-list.n15::after {
     position: relative;
     top: -20px;
   }
+  .selected-location .selected-location-label {
+    left: 21px;
+    top: 20px;
+    font-size: 14px;
+    opacity: 0.65;
+    line-height: 14px;
+  }
   .selected-location a {
     font-size: 24px;
     padding-bottom: 20px;
+    top: 6px;
   }
   .selected-location a::after {
     font-size: 8px;

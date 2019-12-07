@@ -141,7 +141,7 @@ if (empty($sheriff)) {
         <div class="content">
           <div class="left">
             <div class="selected-location">
-              <span class="selected-location-label"><?= $link === 'city' ? 'Police Department:' : 'Sheriff Department:' ?></span>
+              <span class="selected-location-label"><?= $link === 'city' ? 'Police Department:' : 'Sheriff\'s Department:' ?></span>
               <a href="javascript:void(0);" id="score-location"><?= $data['agency_name'] ?></a>
             </div>
           </div>
