@@ -89,8 +89,9 @@ if (empty($sheriff)) {
             <ul>
               <li><a href="about">About the Data</a></li>
               <li><a href="findings">Key Findings</a></li>
+              <li><a href="sandiego">Reports</a></li>
               <li><a href="https://www.joincampaignzero.org/about/" target="_blank">Planning Team</a></li>
-              <li><a href="https://www.joincampaignzero.org/" target="_blank">More about Campaign Zero</a></li>
+              <li><a href="https://www.joincampaignzero.org/" target="_blank">About Campaign Zero</a></li>
             </ul>
           </div>
         </div>
@@ -140,6 +141,7 @@ if (empty($sheriff)) {
         <div class="content">
           <div class="left">
             <div class="selected-location">
+              <span class="selected-location-label"><?= $link === 'city' ? 'Police Department:' : 'Sheriff Department:' ?></span>
               <a href="javascript:void(0);" id="score-location"><?= $data['agency_name'] ?></a>
             </div>
           </div>
