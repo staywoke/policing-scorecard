@@ -215,6 +215,8 @@ if (empty($sheriff)) {
 
             <div class="stat-wrapper">
               <a href="javascript:void(0)" data-city="<?= $marker ?>" data-more-info="" class="more-info"></a>
+              <a href="https://drive.google.com/open?id=1U-0WykJJLBAqSknaDF3938FI7TtXhB9z" target="_blank" class="external-link" title="Open in New Window"></a>
+
               <h3>Less-Lethal Force</h3>
               <p>Using batons, strangleholds, tasers &amp; other weapons</p>
               <p>
@@ -240,6 +242,7 @@ if (empty($sheriff)) {
 
             <div class="stat-wrapper">
               <a href="javascript:void(0)" data-city="<?= $marker ?>" data-more-info="" class="more-info"></a>
+              <a href="https://drive.google.com/open?id=1U-0WykJJLBAqSknaDF3938FI7TtXhB9z" target="_blank" class="external-link" title="Open in New Window"></a>
               <h3>Deadly Force</h3>
               <p>
               <?= output($data['police_shootings_incidents']) ?> Shootings &amp; <?= intval(output($data['deadly_force_incidents'])) - intval(output($data['police_shootings_incidents'])) ?> other deaths or serious injuries</p>
@@ -738,7 +741,7 @@ if (empty($sheriff)) {
 
             <?php if(isset($data['percentile_police_spending']) || isset($data['hispanic_murder_unsolved_rate']) || isset($data['white_murder_unsolved_rate'])): ?>
             <div class="stat-wrapper spending">
-              <a href="<?= $data['police_funding_link']; ?>" target="_blank" class="external-link" title="Open in New Window"></a><!--// https://bythenumbers.sco.ca.gov //-->
+              <a href="<?= $data['police_funding_link']; ?>" target="_blank" class="external-link" title="Open in New Window"></a>
               <h3>Police Funding in 2018</h3>
               <?php if ($data['percent_police_budget']): ?>
               <p>$<?= num($data['police_budget']) ?> (<?= $data['percent_police_budget'] ?> of Budget) <span class="divider">&nbsp;|&nbsp;</span> $<?= num($data['police_spending_per_resident']) ?> per Resident</p>
@@ -1195,6 +1198,7 @@ if (empty($sheriff)) {
             <li class="sheriff"><a href="./?sheriff=nevada"<?= ($link === 'sheriff' && $sheriff === 'nevada') ? ' class="selected-city"' : '' ?>>Nevada Sheriff</a></li>
             <li class="sheriff"><a href="./?sheriff=orange"<?= ($link === 'sheriff' && $sheriff === 'orange') ? ' class="selected-city"' : '' ?>>Orange Sheriff</a></li>
             <li class="sheriff"><a href="./?sheriff=placer"<?= ($link === 'sheriff' && $sheriff === 'placer') ? ' class="selected-city"' : '' ?>>Placer Sheriff</a></li>
+            <li class="sheriff"><a href="./?sheriff=plumas"<?= ($link === 'sheriff' && $sheriff === 'plumas') ? ' class="selected-city"' : '' ?>>Plumas Sheriff</a></li>
             <li class="sheriff"><a href="./?sheriff=riverside"<?= ($link === 'sheriff' && $sheriff === 'riverside') ? ' class="selected-city"' : '' ?>>Riverside Sheriff</a></li>
             <li class="sheriff"><a href="./?sheriff=sacramento"<?= ($link === 'sheriff' && $sheriff === 'sacramento') ? ' class="selected-city"' : '' ?>>Sacramento Sheriff</a></li>
             <li class="sheriff"><a href="./?sheriff=san-benito"<?= ($link === 'sheriff' && $sheriff === 'san-benito') ? ' class="selected-city"' : '' ?>>San Benito Sheriff</a></li>
