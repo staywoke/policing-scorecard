@@ -471,6 +471,7 @@ if (empty($sheriff)) {
           <div class="left">
             <div class="stat-wrapper">
               <a href="javascript:void(0)" data-city="<?= $marker ?>" data-more-info="" class="more-info"></a>
+              <a href="<?= $data['complaints_data_source']; ?>" target="_blank" class="external-link" title="Open in New Window"></a>
               <h3>Total civilian complaints</h3>
               <?php if (output($data['civilian_complaints_reported']) === '0' || output($data['percent_of_civilian_complaints_sustained']) === '0'): ?>
                 <p>0 Complaints Reported</p>
@@ -645,6 +646,7 @@ if (empty($sheriff)) {
           <?php if (isset($data['arrests_2016']) && isset($data['arrests_2017']) && isset($data['arrests_2018'])): ?>
             <div class="stat-wrapper">
               <h3>Arrests By Year</h3>
+              <a href="<?= $data['arrests_data_source']; ?>" target="_blank" class="external-link" title="Open in New Window"></a>
               <p style="margin-top: 18px;">
                 <canvas id="bar-chart-arrests"></canvas>
               </p>
@@ -692,6 +694,7 @@ if (empty($sheriff)) {
           <div class="right">
             <div class="stat-wrapper no-border-mobile">
               <a href="javascript:void(0)" data-city="<?= $marker ?>" data-more-info="" class="more-info"></a>
+              <a href="http://www.murderdata.org/p/blog-page.html?m=1" target="_blank" class="external-link" title="Open in New Window"></a>
               <h3>Homicides Unsolved</h3>
               <p><?= output($data['murders']) ?> Homicides from 2013-18 <span class="divider">&nbsp;|&nbsp;</span> <?= (intval(str_replace(',', '', $data['murders'])) - intval(str_replace(',', '', $data['murders_cleared']))) ?> Unsolved</p>
               <?php if(intval($data['murders']) === 0): ?>
