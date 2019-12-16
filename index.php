@@ -332,6 +332,7 @@ if (empty($sheriff)) {
 
             <div class="stat-wrapper grouped">
               <a href="javascript:void(0)" data-city="<?= $marker ?>" data-more-info="" class="more-info"></a>
+              <a href="https://github.com/campaignzero/ca-police-scorecard/blob/master/ca_police_scorecard.ipynb" target="_blank" class="external-link" title="Open in New Window"></a>
               <h3>Police Violence by race</h3>
 
               <div class="keys">
