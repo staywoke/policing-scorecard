@@ -398,6 +398,8 @@ if (empty($sheriff)) {
                   <span><?= (intval($data['percent_white_deadly_force']) > 5) ? output(intval($data['percent_white_deadly_force']), 0, '%') : '' ?></span>
                 </div>
               </div>
+
+              <p class="note" style="margin-top: 0">^&nbsp; More Racial Bias in Arrests and Deadly Force than <?= num((1 - intval($data['percentile_overall_disparity_index'])), 0, '%', true) ?> of Depts &nbsp;&nbsp;</p>
             </div>
           </div>
         </div>
