@@ -126,7 +126,7 @@ var SCORECARD = (function () {
       $showPolice.classList.add('active');
       $showSheriff.classList.remove('active');
 
-      $citySelect.classList.add('city');
+      $citySelect.classList.add('police-department');
       $citySelect.classList.remove('sheriff');
 
       $citySelect.scrollTop = 0;
@@ -137,7 +137,7 @@ var SCORECARD = (function () {
       $showPolice.classList.remove('active');
 
       $citySelect.classList.add('sheriff');
-      $citySelect.classList.remove('city');
+      $citySelect.classList.remove('police-department');
 
       $citySelect.scrollTop = 0;
     });
@@ -354,7 +354,7 @@ var SCORECARD = (function () {
     }
   }
 
-  function loadMap(){
+  function loadMap(abbr){
     // Create the chart
     window.SCORECARD_MAP = Highcharts.mapChart('state-map', {
       chart: {
@@ -393,7 +393,7 @@ var SCORECARD = (function () {
         map: {
           animation: false,
           allAreas: false,
-          mapData: Highcharts.maps['countries/us/us-ca-all'],
+          mapData: Highcharts.maps['countries/us/us-' + abbr.toLowerCase() + '-all'],
         },
         series: {
           animation: false
@@ -408,7 +408,7 @@ var SCORECARD = (function () {
       ]
     });
 
-    if (map_data.selected.type === 'sheriff') {
+    if (map_data && map_data.selected && map_data.selected.type === 'sheriff') {
       window.SCORECARD_MAP.addSeries({
         animation: false,
         data: map_data.sheriff,
@@ -427,11 +427,11 @@ var SCORECARD = (function () {
       })
     }
 
-    if (map_data.selected.type === 'city') {
+    if (map_data && map_data.city && map_data.selected && map_data.selected.type === 'police-department') {
       window.SCORECARD_MAP.addSeries({
         animation: false,
         data: map_data.sheriff,
-        name: 'Sheriff Department',
+        name: 'Police Department',
         events: {
           click: function (e) {
             var loc = (typeof e.point.className !== 'undefined') ? e.point.className.replace('location-', '') : null;
@@ -650,9 +650,9 @@ var SCORECARD = (function () {
     var loc = document.getElementById('state-map').classList[1];
     var elm;
 
-    if (type === 'city') {
-      elm = document.querySelector('.highcharts-mappoint-series .location-' + loc).classList.add('active')
-    } else if (type === 'sheriff') {
+    if (loc && type === 'police-department') {
+      elm = document.querySelector('.highcharts-mappoint-series .location-' + loc)
+    } else if (loc && type === 'sheriff') {
       elm = document.querySelector('.highcharts-map-series .location-' + loc);
     }
 

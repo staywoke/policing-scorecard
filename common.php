@@ -1,32 +1,77 @@
 <?php
 
-/**
- * Get City data from JSON file
- * @param  {String} [$city='los-angeles'] Slug of City Name
- * @return {Array}
- */
-function getCityData($city = 'los-angeles') {
-  $file = @file_get_contents("data/json/data-{$city}.json");
-  if (!$file) throw new Exception("Unable to Load {$city}");
-
-  $data = json_decode($file, true);
-  if (!$data) throw new Exception("Unable to Parse {$city}");
-
-  return $data;
+if (!file_exists('config.php')) {
+  exit('Missing config.php');
 }
 
-function getSheriffData($sheriff = 'los-angeles') {
-  $file = @file_get_contents("data/json/sheriff-{$sheriff}.json");
-  if (!$file) throw new Exception("Unable to Load {$sheriff}");
+require('config.php');
 
-  $data = json_decode($file, true);
-  if (!$data) throw new Exception("Unable to Parse {$sheriff}");
+function fetchLocationScorecard($state, $type, $location) {
+  if (!$state) {
+    throw new Exception("Missing required `state` parameter");
+    exit();
+  }
+  if (!$type) {
+    throw new Exception("Missing required `type` parameter");
+    exit();
+  }
+  if (!$location) {
+    throw new Exception("Missing required `location` parameter");
+    exit();
+  }
 
-  return $data;
+  $contents = @file_get_contents(API_BASE . "/scorecard/report/{$state}/{$type}/{$location}?apikey=" . API_KEY);
+  if (!$contents) {
+    throw new Exception("Unable to Load /scorecard/report/{$state}/{$type}/{$location}");
+    exit();
+  }
+
+  $data = json_decode($contents, true);
+  if (!$data) {
+    throw new Exception("Invalid API JSON /scorecard/report/{$state}/{$type}/{$location}");
+    exit();
+  }
+
+  if (count($data['errors']) > 0) {
+    throw new Exception($data['errors'][0]);
+    exit();
+  }
+
+  return $data['data'];
+}
+
+function fetchGrades($state, $type) {
+  if (!$state) {
+    throw new Exception("Missing required `state` parameter");
+    exit();
+  }
+  if (!$type) {
+    throw new Exception("Missing required `type` parameter");
+    exit();
+  }
+
+  $contents = @file_get_contents(API_BASE . "/scorecard/grades/{$state}/{$type}?apikey=" . API_KEY);
+  if (!$contents) {
+    throw new Exception("Unable to Load /scorecard/grades/{$state}/{$type}");
+    exit();
+  }
+
+  $data = json_decode($contents, true);
+  if (!$data) {
+    throw new Exception("Invalid API JSON /scorecard/grades/{$state}/{$type}");
+    exit();
+  }
+
+  if (count($data['errors']) > 0) {
+    throw new Exception($data['errors'][0]);
+    exit();
+  }
+
+  return $data['data'];
 }
 
 function getChange($change, $reverse = false, $label = 'since 2016') {
-  $change = intval(str_replace('%', '', $change));
+  $change = intval($change);
   $text = '';
   $tooltip = '';
   $class = '';
@@ -56,32 +101,32 @@ function nFormatter($num, $decimal = 2) {
   return '$' . $val;
 }
 
-function generateBarChartHeader($data, $type) {
+function generateBarChartHeader($scorecard, $type) {
   $output = '<div class="keys">';
 
-  if ($type === 'city') {
-    if (isset($data['police_budget'])) {
-      $output .= '<span class="key key-red"></span> Police <span class="hide-mobile">' . nFormatter($data['police_budget'], 1) . '</span>';
+  if ($type === 'police-department') {
+    if (isset($scorecard['police_funding']['police_budget'])) {
+      $output .= '<span class="key key-red"></span> Police <span class="hide-mobile">' . nFormatter($scorecard['police_funding']['police_budget'], 1) . '</span>';
     }
 
-    if (isset($data['health_budget'])) {
-      $output .= '<span class="key key-black"></span> Health <span class="hide-mobile">' . nFormatter($data['health_budget'], 1) . '</span>';
+    if (isset($scorecard['police_funding']['health_budget'])) {
+      $output .= '<span class="key key-black"></span> Health <span class="hide-mobile">' . nFormatter($scorecard['police_funding']['health_budget'], 1) . '</span>';
     }
 
-    if (isset($data['housing_budget'])) {
-      $output .= '<span class="key key-other"></span> Housing <span class="hide-mobile">' . nFormatter($data['housing_budget'], 1) . '</span>';
+    if (isset($scorecard['police_funding']['housing_budget'])) {
+      $output .= '<span class="key key-other"></span> Housing <span class="hide-mobile">' . nFormatter($scorecard['police_funding']['housing_budget'], 1) . '</span>';
     }
   } else if ($type = 'sheriff') {
-    if (isset($data['police_budget']) || isset($data['jail_budget'])) {
-      $output .= '<span class="key key-red"></span> Police & Jail <span class="hide-mobile">' . nFormatter(intval(str_replace(',', '', $data['police_budget'])) + intval(str_replace(',', '', $data['jail_budget'])), 1) . '</span>';
+    if (isset($scorecard['police_funding']['police_budget']) || isset($scorecard['police_funding']['jail_budget'])) {
+      $output .= '<span class="key key-red"></span> Police & Jail <span class="hide-mobile">' . nFormatter(intval(str_replace(',', '', $scorecard['police_funding']['police_budget'])) + intval(str_replace(',', '', $scorecard['police_funding']['jail_budget'])), 1) . '</span>';
     }
 
-    if (isset($data['health_budget'])) {
-      $output .= '<span class="key key-black"></span> Health <span class="hide-mobile">' . nFormatter($data['health_budget'], 1) . '</span>';
+    if (isset($scorecard['police_funding']['health_budget'])) {
+      $output .= '<span class="key key-black"></span> Health <span class="hide-mobile">' . nFormatter($scorecard['police_funding']['health_budget'], 1) . '</span>';
     }
 
-    if (isset($data['education_budget'])) {
-      $output .= '<span class="key key-other"></span> Education <span class="hide-mobile">' . nFormatter($data['education_budget'], 1) . '</span>';
+    if (isset($scorecard['police_funding']['education_budget'])) {
+      $output .= '<span class="key key-other"></span> Education <span class="hide-mobile">' . nFormatter($scorecard['police_funding']['education_budget'], 1) . '</span>';
     }
   }
 
@@ -90,7 +135,7 @@ function generateBarChartHeader($data, $type) {
   return $output;
 }
 
-function generateArrestChart($data) {
+function generateArrestChart($scorecard) {
   $output = array(
     'labels' => array(),
     'datasets' => array(
@@ -103,40 +148,40 @@ function generateArrestChart($data) {
     )
   );
 
-  if (isset($data['arrests_2013'])) {
+  if (isset($scorecard['arrests']['arrests_2013'])) {
     $output['labels'][] = '2013';
-    $output['datasets'][0]['data'][] = intval(str_replace(',', '', $data['arrests_2013']));
+    $output['datasets'][0]['data'][] = intval(str_replace(',', '', $scorecard['arrests']['arrests_2013']));
   }
 
-  if (isset($data['arrests_2014'])) {
+  if (isset($scorecard['arrests']['arrests_2014'])) {
     $output['labels'][] = '2014';
-    $output['datasets'][0]['data'][] = intval(str_replace(',', '', $data['arrests_2014']));
+    $output['datasets'][0]['data'][] = intval(str_replace(',', '', $scorecard['arrests']['arrests_2014']));
   }
 
-  if (isset($data['arrests_2015'])) {
+  if (isset($scorecard['arrests']['arrests_2015'])) {
     $output['labels'][] = '2015';
-    $output['datasets'][0]['data'][] = intval(str_replace(',', '', $data['arrests_2015']));
+    $output['datasets'][0]['data'][] = intval(str_replace(',', '', $scorecard['arrests']['arrests_2015']));
   }
 
-  if (isset($data['arrests_2016'])) {
+  if (isset($scorecard['arrests']['arrests_2016'])) {
     $output['labels'][] = '2016';
-    $output['datasets'][0]['data'][] = intval(str_replace(',', '', $data['arrests_2016']));
+    $output['datasets'][0]['data'][] = intval(str_replace(',', '', $scorecard['arrests']['arrests_2016']));
   }
 
-  if (isset($data['arrests_2017'])) {
+  if (isset($scorecard['arrests']['arrests_2017'])) {
     $output['labels'][] = '2017';
-    $output['datasets'][0]['data'][] = intval(str_replace(',', '', $data['arrests_2017']));
+    $output['datasets'][0]['data'][] = intval(str_replace(',', '', $scorecard['arrests']['arrests_2017']));
   }
 
-  if (isset($data['arrests_2018'])) {
+  if (isset($scorecard['arrests']['arrests_2018'])) {
     $output['labels'][] = '2018';
-    $output['datasets'][0]['data'][] = intval(str_replace(',', '', $data['arrests_2018']));
+    $output['datasets'][0]['data'][] = intval(str_replace(',', '', $scorecard['arrests']['arrests_2018']));
   }
 
   return json_encode($output, JSON_PRETTY_PRINT);
 }
 
-function generateHistoryChart($data) {
+function generateHistoryChart($scorecard) {
   $output = array(
     'labels' => array(),
     'datasets' => array(
@@ -157,60 +202,60 @@ function generateHistoryChart($data) {
     )
   );
 
-  if (isset($data['less_lethal_force_2013']) && isset($data['police_shootings_2013'])) {
+  if (isset($scorecard['police_violence']['less_lethal_force_2013']) && isset($scorecard['police_violence']['police_shootings_2013'])) {
     $output['labels'][] = '2013';
 
-    $output['datasets'][0]['data'][] = intval(str_replace(',', '', $data['police_shootings_2013']));
-    $output['datasets'][1]['data'][] = intval(str_replace(',', '', $data['less_lethal_force_2013']));
+    $output['datasets'][0]['data'][] = intval(str_replace(',', '', $scorecard['police_violence']['police_shootings_2013']));
+    $output['datasets'][1]['data'][] = intval(str_replace(',', '', $scorecard['police_violence']['less_lethal_force_2013']));
   }
 
-  if (isset($data['less_lethal_force_2014']) && isset($data['police_shootings_2014'])) {
+  if (isset($scorecard['police_violence']['less_lethal_force_2014']) && isset($scorecard['police_violence']['police_shootings_2014'])) {
     $output['labels'][] = '2014';
 
-    $output['datasets'][0]['data'][] = intval(str_replace(',', '', $data['police_shootings_2014']));
-    $output['datasets'][1]['data'][] = intval(str_replace(',', '', $data['less_lethal_force_2014']));
+    $output['datasets'][0]['data'][] = intval(str_replace(',', '', $scorecard['police_violence']['police_shootings_2014']));
+    $output['datasets'][1]['data'][] = intval(str_replace(',', '', $scorecard['police_violence']['less_lethal_force_2014']));
   }
 
-  if (isset($data['less_lethal_force_2015']) && isset($data['police_shootings_2015'])) {
+  if (isset($scorecard['police_violence']['less_lethal_force_2015']) && isset($scorecard['police_violence']['police_shootings_2015'])) {
     $output['labels'][] = '2015';
 
-    $output['datasets'][0]['data'][] = intval(str_replace(',', '', $data['police_shootings_2015']));
-    $output['datasets'][1]['data'][] = intval(str_replace(',', '', $data['less_lethal_force_2015']));
+    $output['datasets'][0]['data'][] = intval(str_replace(',', '', $scorecard['police_violence']['police_shootings_2015']));
+    $output['datasets'][1]['data'][] = intval(str_replace(',', '', $scorecard['police_violence']['less_lethal_force_2015']));
   }
 
-  if (isset($data['less_lethal_force_2016']) && isset($data['police_shootings_2016'])) {
+  if (isset($scorecard['police_violence']['less_lethal_force_2016']) && isset($scorecard['police_violence']['police_shootings_2016'])) {
     $output['labels'][] = '2016';
 
-    $output['datasets'][0]['data'][] = intval(str_replace(',', '', $data['police_shootings_2016']));
-    $output['datasets'][1]['data'][] = intval(str_replace(',', '', $data['less_lethal_force_2016']));
+    $output['datasets'][0]['data'][] = intval(str_replace(',', '', $scorecard['police_violence']['police_shootings_2016']));
+    $output['datasets'][1]['data'][] = intval(str_replace(',', '', $scorecard['police_violence']['less_lethal_force_2016']));
   }
 
-  if (isset($data['less_lethal_force_2017']) && isset($data['police_shootings_2017'])) {
+  if (isset($scorecard['police_violence']['less_lethal_force_2017']) && isset($scorecard['police_violence']['police_shootings_2017'])) {
     $output['labels'][] = '2017';
 
-    $output['datasets'][0]['data'][] = intval(str_replace(',', '', $data['police_shootings_2017']));
-    $output['datasets'][1]['data'][] = intval(str_replace(',', '', $data['less_lethal_force_2017']));
+    $output['datasets'][0]['data'][] = intval(str_replace(',', '', $scorecard['police_violence']['police_shootings_2017']));
+    $output['datasets'][1]['data'][] = intval(str_replace(',', '', $scorecard['police_violence']['less_lethal_force_2017']));
   }
 
-  if (isset($data['less_lethal_force_2018']) && isset($data['police_shootings_2018'])) {
+  if (isset($scorecard['police_violence']['less_lethal_force_2018']) && isset($scorecard['police_violence']['police_shootings_2018'])) {
     $output['labels'][] = '2018';
 
-    $output['datasets'][0]['data'][] = intval(str_replace(',', '', $data['police_shootings_2018']));
-    $output['datasets'][1]['data'][] = intval(str_replace(',', '', $data['less_lethal_force_2018']));
+    $output['datasets'][0]['data'][] = intval(str_replace(',', '', $scorecard['police_violence']['police_shootings_2018']));
+    $output['datasets'][1]['data'][] = intval(str_replace(',', '', $scorecard['police_violence']['less_lethal_force_2018']));
   }
 
   return json_encode($output, JSON_PRETTY_PRINT);
 }
 
-function generateBarChart($data, $type) {
+function generateBarChart($scorecard, $type) {
   $output = array(
     'labels' => array(' '),
     'datasets' => array()
   );
 
-  if ($type === 'city') {
-    if (isset($data['police_budget'])) {
-      $police_budget = intval(str_replace(',', '', $data['police_budget']));
+  if ($type === 'police-department') {
+    if (isset($scorecard['police_funding']['police_budget'])) {
+      $police_budget = intval(str_replace(',', '', $scorecard['police_funding']['police_budget']));
       $output['datasets'][] = array(
         'label' => 'Police',
         'backgroundColor' => '#f67f85',
@@ -219,8 +264,8 @@ function generateBarChart($data, $type) {
       );
     }
 
-    if (isset($data['health_budget'])) {
-      $health_budget = intval(str_replace(',', '', $data['health_budget']));
+    if (isset($scorecard['police_funding']['health_budget'])) {
+      $health_budget = intval(str_replace(',', '', $scorecard['police_funding']['health_budget']));
       $output['datasets'][] = array(
         'label' => 'Health',
         'backgroundColor' => '#58595b',
@@ -229,8 +274,8 @@ function generateBarChart($data, $type) {
       );
     }
 
-    if (isset($data['housing_budget'])) {
-      $housing_budget = intval(str_replace(',', '', $data['housing_budget']));
+    if (isset($scorecard['police_funding']['housing_budget'])) {
+      $housing_budget = intval(str_replace(',', '', $scorecard['police_funding']['housing_budget']));
       $output['datasets'][] = array(
         'label' => 'Housing',
         'backgroundColor' => '#9a9b9f',
@@ -239,9 +284,9 @@ function generateBarChart($data, $type) {
       );
     }
   } else if ($type = 'sheriff') {
-    if (isset($data['police_budget']) || isset($data['jail_budget'])) {
-      $police_budget = intval(str_replace(',', '', $data['police_budget']));
-      $jail_budget = intval(str_replace(',', '', $data['jail_budget']));
+    if (isset($scorecard['police_funding']['police_budget']) || isset($scorecard['police_funding']['jail_budget'])) {
+      $police_budget = intval(str_replace(',', '', $scorecard['police_funding']['police_budget']));
+      $jail_budget = intval(str_replace(',', '', $scorecard['police_funding']['jail_budget']));
 
       $output['datasets'][] = array(
         'label' => 'Police & Jail',
@@ -251,8 +296,8 @@ function generateBarChart($data, $type) {
       );
     }
 
-    if (isset($data['health_budget'])) {
-      $health_budget = intval(str_replace(',', '', $data['health_budget']));
+    if (isset($scorecard['police_funding']['health_budget'])) {
+      $health_budget = intval(str_replace(',', '', $scorecard['police_funding']['health_budget']));
       $output['datasets'][] = array(
         'label' => 'Health',
         'backgroundColor' => '#58595b',
@@ -261,8 +306,8 @@ function generateBarChart($data, $type) {
       );
     }
 
-    if (isset($data['education_budget'])) {
-      $education_budget = intval(str_replace(',', '', $data['education_budget']));
+    if (isset($scorecard['police_funding']['education_budget'])) {
+      $education_budget = intval(str_replace(',', '', $scorecard['police_funding']['education_budget']));
       $output['datasets'][] = array(
         'label' => 'Education',
         'backgroundColor' => '#9a9b9f',
@@ -1007,37 +1052,28 @@ function getMapKey($loc) {
   return $keys[$loc];
 }
 
-function getMapLocation($type, $loc) {
-  if ($type === 'city') {
-    $data = getCityData($loc);
-  } else if ($type === 'sheriff') {
-    $data = getSheriffData($loc);
-  }
-
-  $loc_data = getMapKey($loc);
-
+function getMapLocation($type, $scorecard, $location) {
   $map_data = array(
     'type' => $type,
-    'name' => ($type === 'city') ? 'Police Department' : 'Sheriff Department',
+    'name' => ($type === 'police-department') ? 'Police Department' : 'Sheriff Department',
     'data' => array(),
-    'icon' => getGradeIcon($data['overall_score'])
+    'icon' => getGradeIcon($scorecard['report']['overall_score'])
   );
 
   $map_data['data'][] = array(
-      'className' => 'location-' . $loc,
-      'colorIndex' => getColorIndex($data['overall_score']),
-      'name' => $data['agency_name'],
-      'lat' => $loc_data['latitude'],
-      'lon' => $loc_data['longitude'],
-      'value' => intval($data['overall_score']
-    )
+    'className' => 'location-' . $location,
+    'colorIndex' => getColorIndex($scorecard['report']['overall_score']),
+    'name' => $scorecard['agency']['name'],
+    'lat' => floatval($scorecard['geo']['city']['latitude']),
+    'lon' => floatval($scorecard['geo']['city']['longitude']),
+    'value' => intval($scorecard['report']['overall_score'])
   );
 
   return json_encode($map_data, JSON_PRETTY_PRINT);
 }
 
-function getMapData($type) {
-  $grades = reportCard($type);
+function getMapData($state, $type) {
+  $grades = fetchGrades($state, $type);
   $map_data = array();
   $map_scores = array(
     array(),
@@ -1048,32 +1084,28 @@ function getMapData($type) {
   );
 
   foreach ($grades as $grade) {
-    $loc = preg_replace('/[^A-Za-z ]/', '', strtolower($grade['agency_name']));
-    $loc = str_replace(' ', '-', $loc);
-    $data = getMapKey($loc);
-
-    if ($type === 'data' && !empty($data['latitude']) && !empty($data['longitude'])) {
+    if ($type === 'police-department' && !empty($grade['latitude']) && !empty($grade['longitude'])) {
       $index = getColorIndex($grade['overall_score']);
       $map_scores[$index-1][] = array(
-        'className' => 'location-' . $loc,
+        'className' => 'location-' . $grade['slug'],
         'colorIndex' => getColorIndex($grade['overall_score']),
         'name' => $grade['agency_name'],
-        'lat' => $data['latitude'],
-        'lon' => $data['longitude'],
+        'lat' => $grade['latitude'],
+        'lon' => $grade['longitude'],
         'value' => $grade['overall_score']
       );
-    } else if ($type === 'sheriff' && !empty($data['district'])) {
+    } else if ($type === 'sheriff' && !empty($grade['district'])) {
       $map_data[] = array(
-        'className' => 'location-' . $loc,
+        'className' => 'location-' . $grade['slug'],
         'colorIndex' => getColorIndex($grade['overall_score']),
         'name' => $grade['agency_name'],
-        'hc-key' => $data['district'],
+        'hc-key' => $grade['district'],
         'value' => $grade['overall_score']
       );
     }
   }
 
-  return ($type === 'data') ? json_encode($map_scores, JSON_PRETTY_PRINT) : json_encode($map_data, JSON_PRETTY_PRINT);
+  return ($type === 'police-department') ? json_encode($map_scores, JSON_PRETTY_PRINT) : json_encode($map_data, JSON_PRETTY_PRINT);
 }
 
 /**
@@ -1169,27 +1201,6 @@ function getGrade($score) {
   } elseif ($score >= 98) {
     return 'A+';
   }
-}
-
-/**
- * Fetch Data and Sort Scorecard
- * @return {Array}
- */
-function reportCard($type = 'data') {
-  if ($type === 'city') {
-    $type = 'data';
-  }
-
-  $file = @file_get_contents("data/json/_{$type}_grades.json");
-  if (!$file) throw new Exception("Unable to Load {$city}");
-
-  $data = json_decode($file, true);
-  if (!$data) throw new Exception("Unable to Parse {$city}");
-
-  $keys = array_column($data, 'overall_score');
-  array_multisort($keys, SORT_ASC, $data);
-
-  return array_reverse($data);
 }
 
 /**
@@ -1308,4 +1319,63 @@ function grammar($key, $value) {
     default:
       return $key;
   }
+}
+
+function getStateIcon($abbr) {
+  $states = array(
+    "AL" => "B",
+    "AK" => "A",
+    "AZ" => "D",
+    "AR" => "C",
+    "CA" => "E",
+    "CO" => "F",
+    "CT" => "G",
+    "DE" => "H",
+    "DC" => "y",
+    "FL" => "I",
+    "GA" => "J",
+    "HI" => "K",
+    "ID" => "M",
+    "IL" => "N",
+    "IN" => "O",
+    "IA" => "L",
+    "KS" => "P",
+    "KY" => "Q",
+    "LA" => "R",
+    "ME" => "U",
+    "MD" => "T",
+    "MA" => "S",
+    "MI" => "V",
+    "MN" => "W",
+    "MS" => "Y",
+    "MO" => "X",
+    "MT" => "Z",
+    "NE" => "c",
+    "NV" => "g",
+    "NH" => "d",
+    "NJ" => "e",
+    "NM" => "f",
+    "NY" => "h",
+    "NC" => "a",
+    "ND" => "b",
+    "OH" => "i",
+    "OK" => "j",
+    "OR" => "k",
+    "PA" => "l",
+    "RI" => "m",
+    "SC" => "n",
+    "SD" => "o",
+    "TN" => "p",
+    "TX" => "q",
+    "UT" => "r",
+    "VT" => "t",
+    "VA" => "s",
+    "WA" => "u",
+    "WV" => "w",
+    "WI" => "v",
+    "WY" => "x",
+    "US" => "z"
+  );
+
+  return $states[$abbr];
 }

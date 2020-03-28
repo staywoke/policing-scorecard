@@ -27,6 +27,18 @@ $font-paragraph: 16px;
 $font-medium: 10px;
 $font-small: 8px;
 
+@font-face {
+  font-family: 'statefaceregular';
+  src: url('../fonts/StateFace-Regular-webfont.eot');
+  src: url('../fonts/StateFace-Regular-webfont.eot?#iefix') format('embedded-opentype'),
+       url('../fonts/StateFace-Regular-webfont.woff') format('woff'),
+       url('../fonts/StateFace-Regular-webfont.ttf') format('truetype'),
+       url('../fonts/StateFace-Regular-webfont.svg#statefaceregular') format('svg');
+  font-weight: normal;
+  font-style: normal;
+
+}
+
 /* CSS RESET */
 a,abbr,acronym,address,applet,article,aside,audio,b,big,blockquote,body,canvas,caption,center,cite,code,dd,del,details,dfn,div,dl,dt,em,embed,fieldset,figcaption,figure,footer,form,h1,h2,h3,h4,h5,h6,header,hgroup,html,i,iframe,img,ins,kbd,label,legend,li,mark,menu,nav,object,ol,output,p,pre,q,ruby,s,samp,section,small,span,strike,strong,sub,summary,sup,table,tbody,td,tfoot,th,thead,time,tr,tt,u,ul,var,video{margin:0;padding:0;border:0;font:inherit;vertical-align:baseline}article,aside,details,figcaption,figure,footer,header,hgroup,menu,nav,section{display:block}body{line-height:1}ol,ul{list-style:none}blockquote,q{quotes:none}blockquote:after,blockquote:before,q:after,q:before{content:'';content:none}table{border-collapse:collapse;border-spacing:0}html{box-sizing:border-box;}*,*:before,*:after{box-sizing:inherit;}
 
@@ -38,6 +50,22 @@ body {
 * {
   -webkit-tap-highlight-color: rgba(0,0,0,0);
   -webkit-tap-highlight-color: transparent;
+}
+
+.state-symbol {
+  font-family: 'statefaceregular', Arial, sans-serif;
+  color: #efefef;
+  background: #626262;
+  width: 42px;
+  height: 42px;
+  display: inline-block;
+  line-height: 44px;
+  border-radius: 50%;
+  text-align: left;
+  padding: 0;
+  margin: 0;
+  text-indent: 8px;
+  margin-right: 5px;
 }
 
 #sticky-top-bar {
@@ -163,12 +191,12 @@ body {
         overflow: scroll;
 
         &.sheriff {
-          li.city {
+          li.police-department {
             display: none;
           }
         }
 
-        &.city {
+        &.police-department {
           li.sheriff {
             display: none;
           }
@@ -2140,9 +2168,21 @@ text.highcharts-credits {
   display: none;
 }
 
-svg.highcharts-root path.highcharts-point {
-  stroke: #444;
-  stroke-width: 0.25px;
+svg.highcharts-root {
+  overflow: visible;
+
+  path.highcharts-point {
+    stroke: #444;
+    stroke-width: 0.25px;
+  }
+}
+
+.highcharts-container  {
+  overflow: visible !important;
+}
+
+.highcharts-label.highcharts-data-label {
+  display: none !important;
 }
 
 .highcharts-mappoint-series {
@@ -2214,7 +2254,8 @@ svg.highcharts-root path.highcharts-point {
   }
 }
 
-#state-map.city {
+
+#state-map.police-department {
   .highcharts-map-series path {
     &.highcharts-color-1,
     &.highcharts-color-2,

@@ -1,3 +1,11 @@
+@font-face {
+  font-family: 'statefaceregular';
+  src: url("../fonts/StateFace-Regular-webfont.eot");
+  src: url("../fonts/StateFace-Regular-webfont.eot?#iefix") format("embedded-opentype"), url("../fonts/StateFace-Regular-webfont.woff") format("woff"), url("../fonts/StateFace-Regular-webfont.ttf") format("truetype"), url("../fonts/StateFace-Regular-webfont.svg#statefaceregular") format("svg");
+  font-weight: normal;
+  font-style: normal;
+}
+
 /* CSS RESET */
 a, abbr, acronym, address, applet, article, aside, audio, b, big, blockquote, body, canvas, caption, center, cite, code, dd, del, details, dfn, div, dl, dt, em, embed, fieldset, figcaption, figure, footer, form, h1, h2, h3, h4, h5, h6, header, hgroup, html, i, iframe, img, ins, kbd, label, legend, li, mark, menu, nav, object, ol, output, p, pre, q, ruby, s, samp, section, small, span, strike, strong, sub, summary, sup, table, tbody, td, tfoot, th, thead, time, tr, tt, u, ul, var, video {
   margin: 0;
@@ -51,6 +59,22 @@ body {
 * {
   -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
   -webkit-tap-highlight-color: transparent;
+}
+
+.state-symbol {
+  font-family: 'statefaceregular', Arial, sans-serif;
+  color: #efefef;
+  background: #626262;
+  width: 42px;
+  height: 42px;
+  display: inline-block;
+  line-height: 44px;
+  border-radius: 50%;
+  text-align: left;
+  padding: 0;
+  margin: 0;
+  text-indent: 8px;
+  margin-right: 5px;
 }
 
 #sticky-top-bar {
@@ -180,11 +204,11 @@ body {
   overflow: scroll;
 }
 
-#modal-wrapper .modal #modal-content #city-select.sheriff li.city {
+#modal-wrapper .modal #modal-content #city-select.sheriff li.police-department {
   display: none;
 }
 
-#modal-wrapper .modal #modal-content #city-select.city li.sheriff {
+#modal-wrapper .modal #modal-content #city-select.police-department li.sheriff {
   display: none;
 }
 
@@ -2533,9 +2557,21 @@ text.highcharts-credits {
   display: none;
 }
 
+svg.highcharts-root {
+  overflow: visible;
+}
+
 svg.highcharts-root path.highcharts-point {
   stroke: #444;
   stroke-width: 0.25px;
+}
+
+.highcharts-container {
+  overflow: visible !important;
+}
+
+.highcharts-label.highcharts-data-label {
+  display: none !important;
 }
 
 .highcharts-mappoint-series.highcharts-series-7 image {
@@ -2604,31 +2640,31 @@ svg.highcharts-root path.highcharts-point {
   stroke: #97d89a;
 }
 
-#state-map.city .highcharts-map-series path.highcharts-color-1, #state-map.city .highcharts-map-series path.highcharts-color-2, #state-map.city .highcharts-map-series path.highcharts-color-3, #state-map.city .highcharts-map-series path.highcharts-color-4, #state-map.city .highcharts-map-series path.highcharts-color-5 {
+#state-map.police-department .highcharts-map-series path.highcharts-color-1, #state-map.police-department .highcharts-map-series path.highcharts-color-2, #state-map.police-department .highcharts-map-series path.highcharts-color-3, #state-map.police-department .highcharts-map-series path.highcharts-color-4, #state-map.police-department .highcharts-map-series path.highcharts-color-5 {
   fill: #FFF;
 }
 
-#state-map.city .highcharts-map-series path.highcharts-color-1:hover {
+#state-map.police-department .highcharts-map-series path.highcharts-color-1:hover {
   fill: #f67f85;
   stroke: #f67f85;
 }
 
-#state-map.city .highcharts-map-series path.highcharts-color-2:hover {
+#state-map.police-department .highcharts-map-series path.highcharts-color-2:hover {
   fill: #ee9978;
   stroke: #ee9978;
 }
 
-#state-map.city .highcharts-map-series path.highcharts-color-3:hover {
+#state-map.police-department .highcharts-map-series path.highcharts-color-3:hover {
   fill: #ffdd9a;
   stroke: #ffdd9a;
 }
 
-#state-map.city .highcharts-map-series path.highcharts-color-4:hover {
+#state-map.police-department .highcharts-map-series path.highcharts-color-4:hover {
   fill: #c9da98;
   stroke: #c9da98;
 }
 
-#state-map.city .highcharts-map-series path.highcharts-color-5:hover {
+#state-map.police-department .highcharts-map-series path.highcharts-color-5:hover {
   fill: #97d89a;
   stroke: #97d89a;
 }

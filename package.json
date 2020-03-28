@@ -11,12 +11,10 @@
   ],
   "license": "MIT",
   "scripts": {
-    "test": "eslint --ext .js ./ --fix && echo '\n【ツ】CODE FORMATTING PERFECTION !!!\n'"
+    "test": "echo '\n【ツ】NO TESTS\n'"
   },
   "dependencies": {},
-  "devDependencies": {
-    "eslint": "^4.19.1"
-  },
+  "devDependencies": {},
   "engines": {
     "node": ">= 6.0.0",
     "npm": ">= 3.0.0"
