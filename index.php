@@ -19,6 +19,7 @@ if (!empty($state) && !empty($type) && !empty($location)) {
   $grade = $scorecard['report']['grade_letter'];
 
   $reportCard = fetchGrades($state, $type);
+  $stateData = fetchStateData($state);
 
   // A placeholder while we swap out static data with API, some props do not exist
   $placeholder = array();
@@ -108,8 +109,8 @@ if (!empty($state) && !empty($type) && !empty($location)) {
             <h1>We evaluated the police in <?= $stateName ?>.</h1>
             <h2>Read the <a href="./findings" style="color: #82add7; text-decoration: underline; font-weight: 500;">Findings.</a> See the Grade for Each Department.</h2>
             <div class="buttons">
-              <a href="/?state=<?= $state ?>&type=police-department" class="btn <?= $type === 'police-department' ? 'active' : '' ?>">Police Depts</a>
-              <a href="/?state=<?= $state ?>&type=sheriff" class="btn <?= $type === 'sheriff' ? 'active' : '' ?>">Sheriffs Depts</a>
+              <a href="<?= $stateData['police-department'][0]['url'] ?>" class="btn <?= $type === 'police-department' ? 'active' : '' ?>">Police Depts</a>
+              <a href="<?= $stateData['sheriff'][0]['url'] ?>" class="btn <?= $type === 'sheriff' ? 'active' : '' ?>">Sheriffs Depts</a>
             </div>
           </div>
           <div class="left">
@@ -152,13 +153,13 @@ if (!empty($state) && !empty($type) && !empty($location)) {
       <div class="section bg-gray stats">
         <div class="content">
           <div class="one-third">
-            <h1><strong><?= $scorecard['police_violence']['all_deadly_force_incidents'] ?></strong> deadly force incident<?= $scorecard['police_violence']['all_deadly_force_incidents'] !== '1' ? 's' : '' ?></h1>
-          <?php if(num($scorecard['police_violence']['all_deadly_force_incidents']) === '0'): ?>
+            <h1><strong><?= $scorecard['report']['total_people_killed'] ?></strong> Killings by Police</h1>
+          <?php if(num($scorecard['report']['total_people_killed']) === '0'): ?>
             <p><?= $scorecard['agency']['name']?> was <strong>1 of only <?= ($type === 'police-department') ? '11' : '12' ?> departments</strong> in our analysis that did not use deadly force from 2016-18.</p>
           <?php elseif(!isset($scorecard['report']['black_deadly_force_disparity_per_population']) || !isset($scorecard['report']['hispanic_deadly_force_disparity_per_population'])): ?>
             <p>That's higher than <strong><?= num($scorecard['report']['percentile_killed_by_police'], 0, '%', true) ?></strong> of <?= $stateName ?> police departments.</p>
           <?php else: ?>
-            <p>Based on population, a Black person was <strong><?= num($scorecard['report']['black_deadly_force_disparity_per_population'], 1, 'x') ?> as likely</strong> and a Latinx person was <strong><?= num($scorecard['report']['hispanic_deadly_force_disparity_per_population'], 1, 'x') ?> as likely</strong> to have deadly force used on them than a White person in <?= $scorecard['agency']['name']?> from 2016-18.</p>
+            <p>Based on population, a Black person was <strong><?= num($scorecard['report']['black_deadly_force_disparity_per_population'], 1, 'x') ?> as likely</strong> and a Latinx person was <strong><?= num($scorecard['report']['hispanic_deadly_force_disparity_per_population'], 1, 'x') ?> as likely</strong> to be killed by police than a White person in <?= $scorecard['agency']['name']?> from 2013-19.</p>
           <?php endif; ?>
           </div>
           <div class="one-third">
@@ -176,7 +177,7 @@ if (!empty($state) && !empty($type) && !empty($location)) {
           <div class="one-third">
             <h1><strong><?= num($scorecard['report']['total_arrests']) ?></strong> arrests made</h1>
           <?php if (intval($scorecard['report']['percentile_low_level_arrests_per_1k_population']) <= 75): ?>
-            <p>Police made <strong><?= num($scorecard['report']['times_more_misdemeanor_arrests_than_violent_crime'], 1, 'x') ?> as many arrests for misdemeanors</strong> as for violent crimes in 2016-2018.</p>
+            <p>Police in <?= $scorecard['agency']['name']?> made <strong><?= num($scorecard['report']['times_more_misdemeanor_arrests_than_violent_crime'], 1, 'x') ?> as many arrests for low level offenses</strong> as for violent crimes in 2013-2018.</p>
           <?php else: ?>
             <p><?= $scorecard['agency']['name']?> had a lower misdemeanor arrest rate than <strong><?= num($scorecard['report']['percentile_low_level_arrests_per_1k_population'], 1, '%') ?></strong> of departments.</p>
           <?php endif; ?>
@@ -197,7 +198,7 @@ if (!empty($state) && !empty($type) && !empty($location)) {
         </div>
         <div class="content">
           <div class="left">
-          <?php if (isset($scorecard['police_violence']['less_lethal_force_2016']) && isset($scorecard['police_violence']['less_lethal_force_2017']) && isset($scorecard['police_violence']['less_lethal_force_2018'])): ?>
+          <?php if (isset($scorecard['police_violence']['police_shootings_2016']) && isset($scorecard['police_violence']['police_shootings_2017']) && isset($scorecard['police_violence']['police_shootings_2018'])): ?>
             <div class="stat-wrapper">
               <h3>Police Use of Force By Year</h3>
               <div class="buttons" style="text-align: center; margin-top: 18px; display: block;">
@@ -242,14 +243,13 @@ if (!empty($state) && !empty($type) && !empty($location)) {
               <a href="https://drive.google.com/open?id=1U-0WykJJLBAqSknaDF3938FI7TtXhB9z" target="_blank" class="external-link" title="Open in New Window"></a>
               <h3>Deadly Force</h3>
               <p>
-              <?= num($scorecard['report']['police_shootings_incidents']) ?> Shootings &amp; <?= $scorecard['police_violence']['all_deadly_force_incidents'] - $scorecard['report']['police_shootings_incidents'] ?> other deaths or serious injuries</p>
               <?php if(output($scorecard['police_violence']['all_deadly_force_incidents']) === '0'): ?>
               <p class="good-job">Did Not Report Using Deadly Force in 2016-18</p>
               <?php else: ?>
               <p>
-                <?= num($scorecard['police_violence']['all_deadly_force_incidents']) ?> Incidents
+                <?= num($scorecard['report']['total_people_killed']) ?> People killed by police
                 <span class="divider">&nbsp;|&nbsp;</span>
-                <?= output($scorecard['report']['deadly_force_incidents_per_arrest_per_10k']) ?> every 10k arrests
+                <?= output($scorecard['report']['killed_by_police_per_10k_arrests']) ?> every 10k arrests
               </p>
               <?php endif; ?>
 
@@ -268,7 +268,7 @@ if (!empty($state) && !empty($type) && !empty($location)) {
               <?php endif; ?>
             </div>
 
-            <?php if(output($scorecard['report']['police_shootings_incidents']) !== '0' && num($scorecard['report']['percent_shot_first'], 0, '%') !== 'N/A'): ?>
+            <?php if($scorecard['report']['police_shootings_incidents'] && $scorecard['report']['percent_shot_first']): ?>
             <div class="stat-wrapper">
               <a href="javascript:void(0)" data-city="<?= $location ?>" data-more-info="" class="more-info"></a>
               <h3>Police Shootings Where Police Did Not Attempt Non-Lethal Force Before Shooting</h3>
@@ -308,15 +308,14 @@ if (!empty($state) && !empty($type) && !empty($location)) {
 
           </div>
           <div class="right">
-            <?php if(output($scorecard['police_violence']['all_deadly_force_incidents']) !== '0'): ?>
+            <?php if(output($scorecard['report']['total_people_killed']) !== '0'): ?>
             <div class="stat-wrapper">
               <a href="javascript:void(0)" data-city="<?= $location ?>" data-more-info="" class="more-info"></a>
-              <h3>People Killed or Seriously Injured</h3>
-              <p><?= output(round((floatval($scorecard['police_violence']['fatality_rate']) / 100) * intval($scorecard['police_violence']['all_deadly_force_incidents']))) ?> Deaths, <?= intval(num($scorecard['police_violence']['all_deadly_force_incidents'], 0)) - (intval(round((floatval($scorecard['police_violence']['fatality_rate']) / 100) * intval($scorecard['police_violence']['all_deadly_force_incidents'])))) ?> Serious Injuries</p>
+              <h3>People Killed by Police, 2013-2019</h3>
               <p><?= num($scorecard['report']['percent_used_against_people_who_were_unarmed'], 0, '%') ?> were Unarmed <span class="divider">&nbsp;|&nbsp;</span> <?= 100 - intval(num($scorecard['report']['percent_used_against_people_who_were_not_armed_with_gun'], 0)) ?>% had a Gun</p>
-            <?php if(num($scorecard['police_violence']['all_deadly_force_incidents'], 0) !== '0'): ?>
+            <?php if(num($scorecard['report']['total_people_killed'], 0) !== '0'): ?>
               <div class="canvas-wrapper">
-                <div class="canvas-label"><?= num($scorecard['police_violence']['all_deadly_force_incidents'], 0) ?><br><span><?= grammar('people', num($scorecard['police_violence']['all_deadly_force_incidents'], 0)) ?> Killed or Seriously Injured</span></div>
+                <div class="canvas-label"><?= num($scorecard['report']['total_people_killed'], 0) ?><br><span><?= grammar('people', num($scorecard['report']['total_people_killed'], 0)) ?> Killed by Police</span></div>
                 <canvas id="deadly-force-chart" width="310" height="350" style="margin: 10px auto 20px auto;"></canvas>
               </div>
             <?php else: ?>
@@ -697,16 +696,16 @@ if (!empty($state) && !empty($type) && !empty($location)) {
                 <p class="good-job pad-bottom">No Homicides Reported</p>
               <?php elseif(intval($scorecard['homicide']['homicides_2013_2018']) > 0 && (intval(str_replace(',', '', $scorecard['homicide']['homicides_2013_2018'])) - intval(str_replace(',', '', $scorecard['homicide']['homicides_2013_2018_solved']))) === 0): ?>
                 <p class="good-job pad-bottom">No Unsolved Homicides Reported</p>
-              <?php elseif(!isset($placeholder['percentile_of_murders_solved']) || (isset($placeholder['percentile_of_murders_solved']) && empty($placeholder['percentile_of_murders_solved']))): ?>
+              <?php elseif(!isset($scorecard['report']['percentile_murders_solved']) || (isset($scorecard['report']['percentile_murders_solved']) && empty($scorecard['report']['percentile_murders_solved']))): ?>
                 <div class="progress-bar-wrapper">
                   <div class="progress-bar no-data" style="width: 0"></div>
                 </div>
                 <p class="note">City Did Not Provide Data</p>
               <?php else: ?>
                 <div class="progress-bar-wrapper">
-                  <div class="progress-bar animate-bar <?= progressBar(intval($placeholder['percentile_of_murders_solved']), 'reverse') ?>" data-percent="<?= output(intval($placeholder['percentile_of_murders_solved']), 0, '%') ?>"></div>
+                  <div class="progress-bar animate-bar <?= progressBar(intval($scorecard['report']['percentile_murders_solved']), 'reverse') ?>" data-percent="<?= output(intval($scorecard['report']['percentile_murders_solved']), 0, '%') ?>"></div>
                 </div>
-                <p class="note">^&nbsp; Solved Fewer Homicides than <?= num($placeholder['percentile_of_murders_solved'], 0, '%') ?> of Depts &nbsp;&nbsp;</p>
+                <p class="note">^&nbsp; Solved Fewer Homicides than <?= num($scorecard['report']['percentile_murders_solved'], 0, '%') ?> of Depts &nbsp;&nbsp;</p>
               <?php endif; ?>
             </div>
 
@@ -741,7 +740,7 @@ if (!empty($state) && !empty($type) && !empty($location)) {
             <?php if(isset($scorecard['report']['percentile_police_spending']) || isset($scorecard['report']['hispanic_murder_unsolved_rate']) || isset($scorecard['report']['white_murder_unsolved_rate'])): ?>
             <div class="stat-wrapper spending">
               <h3>Police Funding in 2018</h3>
-              <?php if ($scorecard['report']['percent_police_budget']): ?>
+              <?php if ($scorecard['report']['percent_police_budget'] > 0): ?>
               <p>$<?= num($scorecard['police_funding']['police_budget']) ?> (<?= $scorecard['report']['percent_police_budget'] ?> of Budget) <span class="divider">&nbsp;|&nbsp;</span> $<?= num($scorecard['report']['police_spending_per_resident']) ?> per Resident</p>
               <?php endif; ?>
               <?= generateBarChartHeader($scorecard, $type); ?>
@@ -1058,165 +1057,12 @@ if (!empty($state) && !empty($type) && !empty($location)) {
           <div id="more-info-content"></div>
           <div id="results-info-content"></div>
           <ul id="city-select" class="<?= $type ?>">
-            <li class="city"><a href="./?city=alameda"<?= ($type === 'police-department' && $city === 'alameda') ? ' class="selected-city"' : '' ?>>Alameda Police</a></li>
-            <li class="city"><a href="./?city=alhambra"<?= ($type === 'police-department' && $city === 'alhambra') ? ' class="selected-city"' : '' ?>>Alhambra Police</a></li>
-            <li class="city"><a href="./?city=anaheim"<?= ($type === 'police-department' && $city === 'anaheim') ? ' class="selected-city"' : '' ?>>Anaheim Police</a></li>
-            <li class="city"><a href="./?city=antioch"<?= ($type === 'police-department' && $city === 'antioch') ? ' class="selected-city"' : '' ?>>Antioch Police</a></li>
-            <li class="city"><a href="./?city=bakersfield"<?= ($type === 'police-department' && $city === 'bakersfield') ? ' class="selected-city"' : '' ?>>Bakersfield Police</a></li>
-            <li class="city"><a href="./?city=berkeley"<?= ($type === 'police-department' && $city === 'berkeley') ? ' class="selected-city"' : '' ?>>Berkeley Police</a></li>
-            <li class="city"><a href="./?city=beverly-hills"<?= ($type === 'police-department' && $city === 'beverly-hills') ? ' class="selected-city"' : '' ?>>Beverly Hills Police</a></li>
-            <li class="city"><a href="./?city=buena-park"<?= ($type === 'police-department' && $city === 'buena-park') ? ' class="selected-city"' : '' ?>>Buena Park Police</a></li>
-            <li class="city"><a href="./?city=burbank"<?= ($type === 'police-department' && $city === 'burbank') ? ' class="selected-city"' : '' ?>>Burbank Police</a></li>
-            <li class="city"><a href="./?city=carlsbad"<?= ($type === 'police-department' && $city === 'carlsbad') ? ' class="selected-city"' : '' ?>>Carlsbad Police</a></li>
-            <li class="city"><a href="./?city=chico"<?= ($type === 'police-department' && $city === 'chico') ? ' class="selected-city"' : '' ?>>Chico Police</a></li>
-            <li class="city"><a href="./?city=chino"<?= ($type === 'police-department' && $city === 'chino') ? ' class="selected-city"' : '' ?>>Chino Police</a></li>
-            <li class="city"><a href="./?city=chula-vista"<?= ($type === 'police-department' && $city === 'chula-vista') ? ' class="selected-city"' : '' ?>>Chula Vista Police</a></li>
-            <li class="city"><a href="./?city=citrus-heights"<?= ($type === 'police-department' && $city === 'citrus-heights') ? ' class="selected-city"' : '' ?>>Citrus Heights Police</a></li>
-            <li class="city"><a href="./?city=clovis"<?= ($type === 'police-department' && $city === 'clovis') ? ' class="selected-city"' : '' ?>>Clovis Police</a></li>
-            <li class="city"><a href="./?city=concord"<?= ($type === 'police-department' && $city === 'concord') ? ' class="selected-city"' : '' ?>>Concord Police</a></li>
-            <li class="city"><a href="./?city=corona"<?= ($type === 'police-department' && $city === 'corona') ? ' class="selected-city"' : '' ?>>Corona Police</a></li>
-            <li class="city"><a href="./?city=costa-mesa"<?= ($type === 'police-department' && $city === 'costa-mesa') ? ' class="selected-city"' : '' ?>>Costa Mesa Police</a></li>
-            <li class="city"><a href="./?city=culver-city"<?= ($type === 'police-department' && $city === 'culver-city') ? ' class="selected-city"' : '' ?>>Culver City Police</a></li>
-            <li class="city"><a href="./?city=daly-city"<?= ($type === 'police-department' && $city === 'daly-city') ? ' class="selected-city"' : '' ?>>Daly City Police</a></li>
-            <li class="city"><a href="./?city=downey"<?= ($type === 'police-department' && $city === 'downey') ? ' class="selected-city"' : '' ?>>Downey Police</a></li>
-            <li class="city"><a href="./?city=el-cajon"<?= ($type === 'police-department' && $city === 'el-cajon') ? ' class="selected-city"' : '' ?>>El Cajon Police</a></li>
-            <li class="city"><a href="./?city=el-monte"<?= ($type === 'police-department' && $city === 'el-monte') ? ' class="selected-city"' : '' ?>>El Monte Police</a></li>
-            <li class="city"><a href="./?city=elk-grove"<?= ($type === 'police-department' && $city === 'elk-grove') ? ' class="selected-city"' : '' ?>>Elk Grove Police</a></li>
-            <li class="city"><a href="./?city=escondido"<?= ($type === 'police-department' && $city === 'escondido') ? ' class="selected-city"' : '' ?>>Escondido Police</a></li>
-            <li class="city"><a href="./?city=fairfield"<?= ($type === 'police-department' && $city === 'fairfield') ? ' class="selected-city"' : '' ?>>Fairfield Police</a></li>
-            <li class="city"><a href="./?city=fontana"<?= ($type === 'police-department' && $city === 'fontana') ? ' class="selected-city"' : '' ?>>Fontana Police</a></li>
-            <li class="city"><a href="./?city=fremont"<?= ($type === 'police-department' && $city === 'fremont') ? ' class="selected-city"' : '' ?>>Fremont Police</a></li>
-            <li class="city"><a href="./?city=fresno"<?= ($type === 'police-department' && $city === 'fresno') ? ' class="selected-city"' : '' ?>>Fresno Police</a></li>
-            <li class="city"><a href="./?city=fullerton"<?= ($type === 'police-department' && $city === 'fullerton') ? ' class="selected-city"' : '' ?>>Fullerton Police</a></li>
-            <li class="city"><a href="./?city=garden-grove"<?= ($type === 'police-department' && $city === 'garden-grove') ? ' class="selected-city"' : '' ?>>Garden Grove Police</a></li>
-            <li class="city"><a href="./?city=gardena"<?= ($type === 'police-department' && $city === 'gardena') ? ' class="selected-city"' : '' ?>>Gardena Police</a></li>
-            <li class="city"><a href="./?city=glendale"<?= ($type === 'police-department' && $city === 'glendale') ? ' class="selected-city"' : '' ?>>Glendale Police</a></li>
-            <li class="city"><a href="./?city=hawthorne"<?= ($type === 'police-department' && $city === 'hawthorne') ? ' class="selected-city"' : '' ?>>Hawthorne Police</a></li>
-            <li class="city"><a href="./?city=hayward"<?= ($type === 'police-department' && $city === 'hayward') ? ' class="selected-city"' : '' ?>>Hayward Police</a></li>
-            <li class="city"><a href="./?city=huntington-beach"<?= ($type === 'police-department' && $city === 'huntington-beach') ? ' class="selected-city"' : '' ?>>Huntington Beach Police</a></li>
-            <li class="city"><a href="./?city=inglewood"<?= ($type === 'police-department' && $city === 'inglewood') ? ' class="selected-city"' : '' ?>>Inglewood Police</a></li>
-            <li class="city"><a href="./?city=irvine"<?= ($type === 'police-department' && $city === 'irvine') ? ' class="selected-city"' : '' ?>>Irvine Police</a></li>
-            <li class="city"><a href="./?city=livermore"<?= ($type === 'police-department' && $city === 'livermore') ? ' class="selected-city"' : '' ?>>Livermore Police</a></li>
-            <li class="city"><a href="./?city=long-beach"<?= ($type === 'police-department' && $city === 'long-beach') ? ' class="selected-city"' : '' ?>>Long Beach Police</a></li>
-            <li class="city"><a href="./?city=los-angeles"<?= ($type === 'police-department' && $city === 'los-angeles') ? ' class="selected-city"' : '' ?>>Los Angeles Police</a></li>
-            <li class="city"><a href="./?city=merced"<?= ($type === 'police-department' && $city === 'merced') ? ' class="selected-city"' : '' ?>>Merced Police</a></li>
-            <li class="city"><a href="./?city=milpitas"<?= ($type === 'police-department' && $city === 'milpitas') ? ' class="selected-city"' : '' ?>>Milpitas Police</a></li>
-            <li class="city"><a href="./?city=modesto"<?= ($type === 'police-department' && $city === 'modesto') ? ' class="selected-city"' : '' ?>>Modesto Police</a></li>
-            <li class="city"><a href="./?city=mountain-view"<?= ($type === 'police-department' && $city === 'mountain-view') ? ' class="selected-city"' : '' ?>>Mountain View Police</a></li>
-            <li class="city"><a href="./?city=murrieta"<?= ($type === 'police-department' && $city === 'murrieta') ? ' class="selected-city"' : '' ?>>Murrieta Police</a></li>
-            <li class="city"><a href="./?city=national-city"<?= ($type === 'police-department' && $city === 'national-city') ? ' class="selected-city"' : '' ?>>National City Police</a></li>
-            <li class="city"><a href="./?city=newport-beach"<?= ($type === 'police-department' && $city === 'newport-beach') ? ' class="selected-city"' : '' ?>>Newport Beach Police</a></li>
-            <li class="city"><a href="./?city=oakland"<?= ($type === 'police-department' && $city === 'oakland') ? ' class="selected-city"' : '' ?>>Oakland Police</a></li>
-            <li class="city"><a href="./?city=oceanside"<?= ($type === 'police-department' && $city === 'oceanside') ? ' class="selected-city"' : '' ?>>Oceanside Police</a></li>
-            <li class="city"><a href="./?city=ontario"<?= ($type === 'police-department' && $city === 'ontario') ? ' class="selected-city"' : '' ?>>Ontario Police</a></li>
-            <li class="city"><a href="./?city=orange"<?= ($type === 'police-department' && $city === 'orange') ? ' class="selected-city"' : '' ?>>Orange Police</a></li>
-            <li class="city"><a href="./?city=oxnard"<?= ($type === 'police-department' && $city === 'oxnard') ? ' class="selected-city"' : '' ?>>Oxnard Police</a></li>
-            <li class="city"><a href="./?city=palm-springs"<?= ($type === 'police-department' && $city === 'palm-springs') ? ' class="selected-city"' : '' ?>>Palm Springs Police</a></li>
-            <li class="city"><a href="./?city=palo-alto"<?= ($type === 'police-department' && $city === 'palo-alto') ? ' class="selected-city"' : '' ?>>Palo Alto Police</a></li>
-            <li class="city"><a href="./?city=pasadena"<?= ($type === 'police-department' && $city === 'pasadena') ? ' class="selected-city"' : '' ?>>Pasadena Police</a></li>
-            <li class="city"><a href="./?city=pittsburg"<?= ($type === 'police-department' && $city === 'pittsburg') ? ' class="selected-city"' : '' ?>>Pittsburg Police</a></li>
-            <li class="city"><a href="./?city=pleasanton"<?= ($type === 'police-department' && $city === 'pleasanton') ? ' class="selected-city"' : '' ?>>Pleasanton Police</a></li>
-            <li class="city"><a href="./?city=pomona"<?= ($type === 'police-department' && $city === 'pomona') ? ' class="selected-city"' : '' ?>>Pomona Police</a></li>
-            <li class="city"><a href="./?city=redding"<?= ($type === 'police-department' && $city === 'redding') ? ' class="selected-city"' : '' ?>>Redding Police</a></li>
-            <li class="city"><a href="./?city=redlands"<?= ($type === 'police-department' && $city === 'redlands') ? ' class="selected-city"' : '' ?>>Redlands Police</a></li>
-            <li class="city"><a href="./?city=redondo-beach"<?= ($type === 'police-department' && $city === 'redondo-beach') ? ' class="selected-city"' : '' ?>>Redondo Beach Police</a></li>
-            <li class="city"><a href="./?city=redwood-city"<?= ($type === 'police-department' && $city === 'redwood-city') ? ' class="selected-city"' : '' ?>>Redwood City Police</a></li>
-            <li class="city"><a href="./?city=rialto"<?= ($type === 'police-department' && $city === 'rialto') ? ' class="selected-city"' : '' ?>>Rialto Police</a></li>
-            <li class="city"><a href="./?city=richmond"<?= ($type === 'police-department' && $city === 'richmond') ? ' class="selected-city"' : '' ?>>Richmond Police</a></li>
-            <li class="city"><a href="./?city=riverside"<?= ($type === 'police-department' && $city === 'riverside') ? ' class="selected-city"' : '' ?>>Riverside Police</a></li>
-            <li class="city"><a href="./?city=roseville"<?= ($type === 'police-department' && $city === 'roseville') ? ' class="selected-city"' : '' ?>>Roseville Police</a></li>
-            <li class="city"><a href="./?city=sacramento"<?= ($type === 'police-department' && $city === 'sacramento') ? ' class="selected-city"' : '' ?>>Sacramento Police</a></li>
-            <li class="city"><a href="./?city=salinas"<?= ($type === 'police-department' && $city === 'salinas') ? ' class="selected-city"' : '' ?>>Salinas Police</a></li>
-            <li class="city"><a href="./?city=san-bernardino"<?= ($type === 'police-department' && $city === 'san-bernardino') ? ' class="selected-city"' : '' ?>>San Bernardino Police</a></li>
-            <li class="city"><a href="./?city=san-diego"<?= ($type === 'police-department' && $city === 'san-diego') ? ' class="selected-city"' : '' ?>>San Diego Police</a></li>
-            <li class="city"><a href="./?city=san-francisco"<?= ($type === 'police-department' && $city === 'san-francisco') ? ' class="selected-city"' : '' ?>>San Francisco Police</a></li>
-            <li class="city"><a href="./?city=san-jose"<?= ($type === 'police-department' && $city === 'san-jose') ? ' class="selected-city"' : '' ?>>San Jose Police</a></li>
-            <li class="city"><a href="./?city=san-leandro"<?= ($type === 'police-department' && $city === 'san-leandro') ? ' class="selected-city"' : '' ?>>San Leandro Police</a></li>
-            <li class="city"><a href="./?city=san-mateo"<?= ($type === 'police-department' && $city === 'san-mateo') ? ' class="selected-city"' : '' ?>>San Mateo Police</a></li>
-            <li class="city"><a href="./?city=santa-ana"<?= ($type === 'police-department' && $city === 'santa-ana') ? ' class="selected-city"' : '' ?>>Santa Ana Police</a></li>
-            <li class="city"><a href="./?city=santa-barbara"<?= ($type === 'police-department' && $city === 'santa-barbara') ? ' class="selected-city"' : '' ?>>Santa Barbara Police</a></li>
-            <li class="city"><a href="./?city=santa-clara"<?= ($type === 'police-department' && $city === 'santa-clara') ? ' class="selected-city"' : '' ?>>Santa Clara Police</a></li>
-            <li class="city"><a href="./?city=santa-cruz"<?= ($type === 'police-department' && $city === 'santa-cruz') ? ' class="selected-city"' : '' ?>>Santa Cruz Police</a></li>
-            <li class="city"><a href="./?city=santa-maria"<?= ($type === 'police-department' && $city === 'santa-maria') ? ' class="selected-city"' : '' ?>>Santa Maria Police</a></li>
-            <li class="city"><a href="./?city=santa-monica"<?= ($type === 'police-department' && $city === 'santa-monica') ? ' class="selected-city"' : '' ?>>Santa Monica Police</a></li>
-            <li class="city"><a href="./?city=santa-rosa"<?= ($type === 'police-department' && $city === 'santa-rosa') ? ' class="selected-city"' : '' ?>>Santa Rosa Police</a></li>
-            <li class="city"><a href="./?city=simi-valley"<?= ($type === 'police-department' && $city === 'simi-valley') ? ' class="selected-city"' : '' ?>>Simi Valley Police</a></li>
-            <li class="city"><a href="./?city=south-gate"<?= ($type === 'police-department' && $city === 'south-gate') ? ' class="selected-city"' : '' ?>>South Gate Police</a></li>
-            <li class="city"><a href="./?city=south-san-francisco"<?= ($type === 'police-department' && $city === 'south-san-francisco') ? ' class="selected-city"' : '' ?>>South San Francisco Police</a></li>
-            <li class="city"><a href="./?city=stockton"<?= ($type === 'police-department' && $city === 'stockton') ? ' class="selected-city"' : '' ?>>Stockton Police</a></li>
-            <li class="city"><a href="./?city=sunnyvale"<?= ($type === 'police-department' && $city === 'sunnyvale') ? ' class="selected-city"' : '' ?>>Sunnyvale Police</a></li>
-            <li class="city"><a href="./?city=torrance"<?= ($type === 'police-department' && $city === 'torrance') ? ' class="selected-city"' : '' ?>>Torrance Police</a></li>
-            <li class="city"><a href="./?city=tracy"<?= ($type === 'police-department' && $city === 'tracy') ? ' class="selected-city"' : '' ?>>Tracy Police</a></li>
-            <li class="city"><a href="./?city=turlock"<?= ($type === 'police-department' && $city === 'turlock') ? ' class="selected-city"' : '' ?>>Turlock Police</a></li>
-            <li class="city"><a href="./?city=tustin"<?= ($type === 'police-department' && $city === 'tustin') ? ' class="selected-city"' : '' ?>>Tustin Police</a></li>
-            <li class="city"><a href="./?city=union-city"<?= ($type === 'police-department' && $city === 'union-city') ? ' class="selected-city"' : '' ?>>Union City Police</a></li>
-            <li class="city"><a href="./?city=vacaville"<?= ($type === 'police-department' && $city === 'vacaville') ? ' class="selected-city"' : '' ?>>Vacaville Police</a></li>
-            <li class="city"><a href="./?city=vallejo"<?= ($type === 'police-department' && $city === 'vallejo') ? ' class="selected-city"' : '' ?>>Vallejo Police</a></li>
-            <li class="city"><a href="./?city=ventura"<?= ($type === 'police-department' && $city === 'ventura') ? ' class="selected-city"' : '' ?>>Ventura Police</a></li>
-            <li class="city"><a href="./?city=visalia"<?= ($type === 'police-department' && $city === 'visalia') ? ' class="selected-city"' : '' ?>>Visalia Police</a></li>
-            <li class="city"><a href="./?city=walnut-creek"<?= ($type === 'police-department' && $city === 'walnut-creek') ? ' class="selected-city"' : '' ?>>Walnut Creek Police</a></li>
-            <li class="city"><a href="./?city=west-covina"<?= ($type === 'police-department' && $city === 'west-covina') ? ' class="selected-city"' : '' ?>>West Covina Police</a></li>
-            <li class="city"><a href="./?city=westminster"<?= ($type === 'police-department' && $city === 'westminster') ? ' class="selected-city"' : '' ?>>Westminster Police</a></li>
-            <li class="city"><a href="./?city=whittier"<?= ($type === 'police-department' && $city === 'whittier') ? ' class="selected-city"' : '' ?>>Whittier Police</a></li>
-
-            <li class="sheriff"><a href="./?sheriff=alameda"<?= ($type === 'sheriff' && $sheriff === 'alameda') ? ' class="selected-city"' : '' ?>>Alameda Sheriff</a></li>
-            <li class="sheriff"><a href="./?sheriff=alpine"<?= ($type === 'sheriff' && $sheriff === 'alpine') ? ' class="selected-city"' : '' ?>>Alpine Sheriff</a></li>
-            <li class="sheriff"><a href="./?sheriff=amador"<?= ($type === 'sheriff' && $sheriff === 'amador') ? ' class="selected-city"' : '' ?>>Amador Sheriff</a></li>
-            <li class="sheriff"><a href="./?sheriff=butte"<?= ($type === 'sheriff' && $sheriff === 'butte') ? ' class="selected-city"' : '' ?>>Butte Sheriff</a></li>
-            <li class="sheriff"><a href="./?sheriff=calaveras"<?= ($type === 'sheriff' && $sheriff === 'calaveras') ? ' class="selected-city"' : '' ?>>Calaveras Sheriff</a></li>
-            <li class="sheriff"><a href="./?sheriff=colusa"<?= ($type === 'sheriff' && $sheriff === 'colusa') ? ' class="selected-city"' : '' ?>>Colusa Sheriff</a></li>
-            <li class="sheriff"><a href="./?sheriff=contra-costa"<?= ($type === 'sheriff' && $sheriff === 'contra-costa') ? ' class="selected-city"' : '' ?>>Contra Costa Sheriff</a></li>
-            <li class="sheriff"><a href="./?sheriff=del-norte"<?= ($type === 'sheriff' && $sheriff === 'del-norte') ? ' class="selected-city"' : '' ?>>Del Norte Sheriff</a></li>
-            <li class="sheriff"><a href="./?sheriff=el-dorado"<?= ($type === 'sheriff' && $sheriff === 'el-dorado') ? ' class="selected-city"' : '' ?>>El Dorado Sheriff</a></li>
-            <li class="sheriff"><a href="./?sheriff=fresno"<?= ($type === 'sheriff' && $sheriff === 'fresno') ? ' class="selected-city"' : '' ?>>Fresno Sheriff</a></li>
-            <li class="sheriff"><a href="./?sheriff=glenn"<?= ($type === 'sheriff' && $sheriff === 'glenn') ? ' class="selected-city"' : '' ?>>Glenn Sheriff</a></li>
-            <li class="sheriff"><a href="./?sheriff=humboldt"<?= ($type === 'sheriff' && $sheriff === 'humboldt') ? ' class="selected-city"' : '' ?>>Humboldt Sheriff</a></li>
-            <li class="sheriff"><a href="./?sheriff=imperial"<?= ($type === 'sheriff' && $sheriff === 'imperial') ? ' class="selected-city"' : '' ?>>Imperial Sheriff</a></li>
-            <li class="sheriff"><a href="./?sheriff=inyo"<?= ($type === 'sheriff' && $sheriff === 'inyo') ? ' class="selected-city"' : '' ?>>Inyo Sheriff</a></li>
-            <li class="sheriff"><a href="./?sheriff=kern"<?= ($type === 'sheriff' && $sheriff === 'kern') ? ' class="selected-city"' : '' ?>>Kern Sheriff</a></li>
-            <li class="sheriff"><a href="./?sheriff=kings"<?= ($type === 'sheriff' && $sheriff === 'kings') ? ' class="selected-city"' : '' ?>>Kings Sheriff</a></li>
-            <li class="sheriff"><a href="./?sheriff=lake"<?= ($type === 'sheriff' && $sheriff === 'lake') ? ' class="selected-city"' : '' ?>>Lake Sheriff</a></li>
-            <li class="sheriff"><a href="./?sheriff=lassen"<?= ($type === 'sheriff' && $sheriff === 'lassen') ? ' class="selected-city"' : '' ?>>Lassen Sheriff</a></li>
-            <li class="sheriff"><a href="./?sheriff=los-angeles"<?= ($type === 'sheriff' && $sheriff === 'los-angeles') ? ' class="selected-city"' : '' ?>>Los Angeles Sheriff</a></li>
-            <li class="sheriff"><a href="./?sheriff=madera"<?= ($type === 'sheriff' && $sheriff === 'madera') ? ' class="selected-city"' : '' ?>>Madera Sheriff</a></li>
-            <li class="sheriff"><a href="./?sheriff=marin"<?= ($type === 'sheriff' && $sheriff === 'marin') ? ' class="selected-city"' : '' ?>>Marin Sheriff</a></li>
-            <li class="sheriff"><a href="./?sheriff=mariposa"<?= ($type === 'sheriff' && $sheriff === 'mariposa') ? ' class="selected-city"' : '' ?>>Mariposa Sheriff</a></li>
-            <li class="sheriff"><a href="./?sheriff=mendocino"<?= ($type === 'sheriff' && $sheriff === 'mendocino') ? ' class="selected-city"' : '' ?>>Mendocino Sheriff</a></li>
-            <li class="sheriff"><a href="./?sheriff=merced"<?= ($type === 'sheriff' && $sheriff === 'merced') ? ' class="selected-city"' : '' ?>>Merced Sheriff</a></li>
-            <li class="sheriff"><a href="./?sheriff=modoc"<?= ($type === 'sheriff' && $sheriff === 'modoc') ? ' class="selected-city"' : '' ?>>Modoc Sheriff</a></li>
-            <li class="sheriff"><a href="./?sheriff=mono"<?= ($type === 'sheriff' && $sheriff === 'mono') ? ' class="selected-city"' : '' ?>>Mono Sheriff</a></li>
-            <li class="sheriff"><a href="./?sheriff=monterey"<?= ($type === 'sheriff' && $sheriff === 'monterey') ? ' class="selected-city"' : '' ?>>Monterey Sheriff</a></li>
-            <li class="sheriff"><a href="./?sheriff=napa"<?= ($type === 'sheriff' && $sheriff === 'napa') ? ' class="selected-city"' : '' ?>>Napa Sheriff</a></li>
-            <li class="sheriff"><a href="./?sheriff=nevada"<?= ($type === 'sheriff' && $sheriff === 'nevada') ? ' class="selected-city"' : '' ?>>Nevada Sheriff</a></li>
-            <li class="sheriff"><a href="./?sheriff=orange"<?= ($type === 'sheriff' && $sheriff === 'orange') ? ' class="selected-city"' : '' ?>>Orange Sheriff</a></li>
-            <li class="sheriff"><a href="./?sheriff=placer"<?= ($type === 'sheriff' && $sheriff === 'placer') ? ' class="selected-city"' : '' ?>>Placer Sheriff</a></li>
-            <li class="sheriff"><a href="./?sheriff=plumas"<?= ($type === 'sheriff' && $sheriff === 'plumas') ? ' class="selected-city"' : '' ?>>Plumas Sheriff</a></li>
-            <li class="sheriff"><a href="./?sheriff=riverside"<?= ($type === 'sheriff' && $sheriff === 'riverside') ? ' class="selected-city"' : '' ?>>Riverside Sheriff</a></li>
-            <li class="sheriff"><a href="./?sheriff=sacramento"<?= ($type === 'sheriff' && $sheriff === 'sacramento') ? ' class="selected-city"' : '' ?>>Sacramento Sheriff</a></li>
-            <li class="sheriff"><a href="./?sheriff=san-benito"<?= ($type === 'sheriff' && $sheriff === 'san-benito') ? ' class="selected-city"' : '' ?>>San Benito Sheriff</a></li>
-            <li class="sheriff"><a href="./?sheriff=san-bernardino"<?= ($type === 'sheriff' && $sheriff === 'san-bernardino') ? ' class="selected-city"' : '' ?>>San Bernardino Sheriff</a></li>
-            <li class="sheriff"><a href="./?sheriff=san-diego"<?= ($type === 'sheriff' && $sheriff === 'san-diego') ? ' class="selected-city"' : '' ?>>San Diego Sheriff</a></li>
-            <li class="sheriff"><a href="./?sheriff=san-francisco"<?= ($type === 'sheriff' && $sheriff === 'san-francisco') ? ' class="selected-city"' : '' ?>>San Francisco Sheriff</a></li>
-            <li class="sheriff"><a href="./?sheriff=san-joaquin"<?= ($type === 'sheriff' && $sheriff === 'san-joaquin') ? ' class="selected-city"' : '' ?>>San Joaquin Sheriff</a></li>
-            <li class="sheriff"><a href="./?sheriff=san-luis-obispo"<?= ($type === 'sheriff' && $sheriff === 'san-luis-obispo') ? ' class="selected-city"' : '' ?>>San Luis Obispo Sheriff</a></li>
-            <li class="sheriff"><a href="./?sheriff=san-mateo"<?= ($type === 'sheriff' && $sheriff === 'san-mateo') ? ' class="selected-city"' : '' ?>>San Mateo Sheriff</a></li>
-            <li class="sheriff"><a href="./?sheriff=santa-barbara"<?= ($type === 'sheriff' && $sheriff === 'santa-barbara') ? ' class="selected-city"' : '' ?>>Santa Barbara Sheriff</a></li>
-            <li class="sheriff"><a href="./?sheriff=santa-clara"<?= ($type === 'sheriff' && $sheriff === 'santa-clara') ? ' class="selected-city"' : '' ?>>Santa Clara Sheriff</a></li>
-            <li class="sheriff"><a href="./?sheriff=santa-cruz"<?= ($type === 'sheriff' && $sheriff === 'santa-cruz') ? ' class="selected-city"' : '' ?>>Santa Cruz Sheriff</a></li>
-            <li class="sheriff"><a href="./?sheriff=shasta"<?= ($type === 'sheriff' && $sheriff === 'shasta') ? ' class="selected-city"' : '' ?>>Shasta Sheriff</a></li>
-            <li class="sheriff"><a href="./?sheriff=sierra"<?= ($type === 'sheriff' && $sheriff === 'sierra') ? ' class="selected-city"' : '' ?>>Sierra Sheriff</a></li>
-            <li class="sheriff"><a href="./?sheriff=siskiyou"<?= ($type === 'sheriff' && $sheriff === 'siskiyou') ? ' class="selected-city"' : '' ?>>Siskiyou Sheriff</a></li>
-            <li class="sheriff"><a href="./?sheriff=solano"<?= ($type === 'sheriff' && $sheriff === 'solano') ? ' class="selected-city"' : '' ?>>Solano Sheriff</a></li>
-            <li class="sheriff"><a href="./?sheriff=sonoma"<?= ($type === 'sheriff' && $sheriff === 'sonoma') ? ' class="selected-city"' : '' ?>>Sonoma Sheriff</a></li>
-            <li class="sheriff"><a href="./?sheriff=stanislaus"<?= ($type === 'sheriff' && $sheriff === 'stanislaus') ? ' class="selected-city"' : '' ?>>Stanislaus Sheriff</a></li>
-            <li class="sheriff"><a href="./?sheriff=sutter"<?= ($type === 'sheriff' && $sheriff === 'sutter') ? ' class="selected-city"' : '' ?>>Sutter Sheriff</a></li>
-            <li class="sheriff"><a href="./?sheriff=tehama"<?= ($type === 'sheriff' && $sheriff === 'tehama') ? ' class="selected-city"' : '' ?>>Tehama Sheriff</a></li>
-            <li class="sheriff"><a href="./?sheriff=trinity"<?= ($type === 'sheriff' && $sheriff === 'trinity') ? ' class="selected-city"' : '' ?>>Trinity Sheriff</a></li>
-            <li class="sheriff"><a href="./?sheriff=tulare"<?= ($type === 'sheriff' && $sheriff === 'tulare') ? ' class="selected-city"' : '' ?>>Tulare Sheriff</a></li>
-            <li class="sheriff"><a href="./?sheriff=tuolumne"<?= ($type === 'sheriff' && $sheriff === 'tuolumne') ? ' class="selected-city"' : '' ?>>Tuolumne Sheriff</a></li>
-            <li class="sheriff"><a href="./?sheriff=ventura"<?= ($type === 'sheriff' && $sheriff === 'ventura') ? ' class="selected-city"' : '' ?>>Ventura Sheriff</a></li>
-            <li class="sheriff"><a href="./?sheriff=yolo"<?= ($type === 'sheriff' && $sheriff === 'yolo') ? ' class="selected-city"' : '' ?>>Yolo Sheriff</a></li>
-            <li class="sheriff"><a href="./?sheriff=yuba"<?= ($type === 'sheriff' && $sheriff === 'yuba') ? ' class="selected-city"' : '' ?>>Yuba Sheriff</a></li>
+<?php foreach($stateData['police-department'] as $index => $department): ?>
+            <li class="police-department"><a href="<?= $department['url'] ?>"<?= ($type === 'police-department' && $location === $department['slug']) ? ' class="selected-city"' : '' ?>><?= $department['agency_name'] ?> Police</a></li>
+<?php endforeach; ?>
+<?php foreach($stateData['sheriff'] as $index => $department): ?>
+            <li class="sheriff"><a href="<?= $department['url'] ?>"<?= ($type === 'sheriff' && $location === $department['slug']) ? ' class="selected-city"' : '' ?>><?= $department['agency_name'] ?> Sheriff</a></li>
+<?php endforeach; ?>
           </ul>
         </div>
       </div>
@@ -1302,7 +1148,7 @@ if (!empty($state) && !empty($type) && !empty($location)) {
     </script>
   <?php endif; ?>
 
-  <?php if(isset($scorecard['police_violence']['less_lethal_force_2016']) && isset($scorecard['police_violence']['less_lethal_force_2017']) && isset($scorecard['police_violence']['less_lethal_force_2018'])): ?>
+  <?php if(isset($scorecard['police_violence']['police_shootings_2016']) && isset($scorecard['police_violence']['police_shootings_2017']) && isset($scorecard['police_violence']['police_shootings_2018'])): ?>
     <script>
     function toggleHistory(show) {
       var police = myBarHistory.getDatasetMeta(0);
@@ -1453,7 +1299,7 @@ if (!empty($state) && !empty($type) && !empty($location)) {
     </script>
   <?php endif; ?>
 
-  <?php if(output($scorecard['police_violence']['all_deadly_force_incidents']) !== '0' && num($scorecard['police_violence']['all_deadly_force_incidents'], 0) !== '0'): ?>
+  <?php if($scorecard['police_violence']['all_deadly_force_incidents']): ?>
     <script>
     window.addEventListener('load', function() {
       SCORECARD.loadMap('<?= $stateCode ?>');
@@ -1490,10 +1336,10 @@ if (!empty($state) && !empty($type) && !empty($location)) {
             {
               borderWidth: 0,
               data: [
-                <?= floatval($scorecard['report']['percent_used_against_people_who_were_unarmed']) ?>,
-                <?= (floatval($scorecard['report']['percent_used_against_people_who_were_not_armed_with_gun']) - floatval($scorecard['report']['percent_used_against_people_who_were_unarmed'])) ?>,
+                <?= $scorecard['report']['percent_used_against_people_who_were_unarmed'] ?>,
+                <?= ($scorecard['report']['percent_used_against_people_who_were_not_armed_with_gun'] - $scorecard['report']['percent_used_against_people_who_were_unarmed']) ?>,
                 <?= (100 - floatval($scorecard['report']['percent_used_against_people_who_were_not_armed_with_gun'])) ?>,
-                <?= floatval($scorecard['police_violence']['vehicle_people_killed']) ?>
+                <?= $scorecard['police_violence']['vehicle_people_killed'] ?>
               ],
               backgroundColor:[
                 '#f19975',
