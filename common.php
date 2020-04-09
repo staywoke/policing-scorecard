@@ -1,10 +1,10 @@
 <?php
 
-if (!file_exists('config.php')) {
+if (!file_exists(__DIR__ . '/config.php')) {
   exit('Missing config.php');
 }
 
-require('config.php');
+require(__DIR__ . '/config.php');
 
 function fetchLocationScorecard($state, $type, $location) {
   if (!$state) {

@@ -52,20 +52,20 @@
 
   <p>People Killed</p>
   <div class="progress-bar-wrapper">
-    <div class="progress-bar animate-bar grouped key-red" data-percent="<?= output(floatval($scorecard['report']['percent_black_deadly_force']), 0, '%') ?>">
-      <span><?= (intval($scorecard['report']['percent_black_deadly_force']) > 5) ? output(intval($scorecard['report']['percent_black_deadly_force']), 0, '%') : '' ?></span>
+    <div class="progress-bar animate-bar grouped key-red" data-percent="<?= output($scorecard['report']['percent_black_deadly_force'], 0, '%') ?>">
+      <span><?= ($scorecard['report']['percent_black_deadly_force'] > 5) ? output($scorecard['report']['percent_black_deadly_force'], 0, '%') : '' ?></span>
     </div>
-    <div class="progress-bar animate-bar grouped key-orange" data-percent="<?= output(floatval($scorecard['report']['percent_hispanic_deadly_force']), 0, '%') ?>">
-      <span><?= (intval($scorecard['report']['percent_hispanic_deadly_force']) > 5) ? output(intval($scorecard['report']['percent_hispanic_deadly_force']), 0, '%') : '' ?></span>
+    <div class="progress-bar animate-bar grouped key-orange" data-percent="<?= output($scorecard['report']['percent_hispanic_deadly_force'], 0, '%') ?>">
+      <span><?= ($scorecard['report']['percent_hispanic_deadly_force'] > 5) ? output($scorecard['report']['percent_hispanic_deadly_force'], 0, '%') : '' ?></span>
     </div>
-    <div class="progress-bar animate-bar grouped key-black" data-percent="<?= output(floatval($scorecard['report']['percent_asianpacificislander_deadly_force']), 0, '%') ?>">
-      <span><?= (intval($scorecard['report']['percent_asianpacificislander_deadly_force']) > 5) ? output(intval($scorecard['report']['percent_asianpacificislander_deadly_force']), 0, '%') : '' ?></span>
+    <div class="progress-bar animate-bar grouped key-black" data-percent="<?= output($scorecard['report']['percent_asian_pacific_islander_deadly_force'], 0, '%') ?>">
+      <span><?= ($scorecard['report']['percent_asian_pacific_islander_deadly_force'] > 5) ? output($scorecard['report']['percent_asian_pacific_islander_deadly_force'], 0, '%') : '' ?></span>
     </div>
-    <div class="progress-bar animate-bar grouped key-grey" data-percent="<?= output(floatval($scorecard['report']['percent_other_deadly_force']), 0, '%') ?>">
-      <span><?= (intval($scorecard['report']['percent_other_deadly_force']) > 5) ? output(intval($scorecard['report']['percent_other_deadly_force']), 0, '%') : '' ?></span>
+    <div class="progress-bar animate-bar grouped key-grey" data-percent="<?= output($scorecard['report']['percent_other_deadly_force'], 0, '%') ?>">
+      <span><?= ($scorecard['report']['percent_other_deadly_force'] > 5) ? output($scorecard['report']['percent_other_deadly_force'], 0, '%') : '' ?></span>
     </div>
-    <div class="progress-bar animate-bar grouped key-white" data-percent="<?= output(floatval($scorecard['report']['percent_white_deadly_force']), 0, '%') ?>">
-      <span><?= (intval($scorecard['report']['percent_white_deadly_force']) > 5) ? output(intval($scorecard['report']['percent_white_deadly_force']), 0, '%') : '' ?></span>
+    <div class="progress-bar animate-bar grouped key-white" data-percent="<?= output($scorecard['report']['percent_white_deadly_force'], 0, '%') ?>">
+      <span><?= ($scorecard['report']['percent_white_deadly_force'] > 5) ? output($scorecard['report']['percent_white_deadly_force'], 0, '%') : '' ?></span>
     </div>
   </div>
 

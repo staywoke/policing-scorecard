@@ -1840,7 +1840,7 @@ body {
   position: absolute;
   text-decoration: none;
   text-transform: uppercase;
-  top: 26px;
+  bottom: 24px;
 }
 
 .selected-location a {
@@ -1852,7 +1852,7 @@ body {
   text-decoration: none;
   position: relative;
   padding-bottom: 30px;
-  top: 10px;
+  top: -12px;
   display: inline-block;
 }
 
@@ -3231,7 +3231,7 @@ p.number-list.n15::after {
   }
   .selected-location .selected-location-label {
     left: 21px;
-    top: 20px;
+    bottom: 20px;
     font-size: 14px;
     opacity: 0.65;
     line-height: 14px;
@@ -3239,7 +3239,7 @@ p.number-list.n15::after {
   .selected-location a {
     font-size: 24px;
     padding-bottom: 20px;
-    top: 6px;
+    top: -10px;
   }
   .selected-location a::after {
     font-size: 8px;
