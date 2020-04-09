@@ -14,7 +14,7 @@
       <span class="divider">&nbsp;|&nbsp;</span>
       <?= num($scorecard['report']['percent_discrimination_complaints_sustained'], 0, '%') ?> Ruled in Favor of Civilians
     </p>
-    <?php if (!isset($scorecard['report']['percent_discrimination_complaints_sustained']) || (isset($scorecard['report']['percent_discrimination_complaints_sustained']) && empty($scorecard['report']['percent_discrimination_complaints_sustained']))): ?>
+    <?php if (!isset($scorecard['report']['percent_discrimination_complaints_sustained']) && !isset($scorecard['police_accountability']['discrimination_complaints_reported']) ): ?>
     <div class="progress-bar-wrapper">
       <div class="progress-bar no-data" style="width: 0"></div>
     </div>
@@ -22,8 +22,8 @@
     <?php else: ?>
     <div class="progress-bar-wrapper">
       <div
-        class="progress-bar animate-bar <?= progressBar(100 - intval($scorecard['report']['percent_discrimination_complaints_sustained']), 'reverse') ?>"
-        data-percent="<?= output(intval($scorecard['report']['percent_discrimination_complaints_sustained']), 0, '%') ?>">
+        class="progress-bar animate-bar <?= progressBar(100 - $scorecard['report']['percent_discrimination_complaints_sustained'], 'reverse') ?>"
+        data-percent="<?= output($scorecard['report']['percent_discrimination_complaints_sustained'], 0, '%') ?>">
       </div>
     </div>
     <p class="note">&nbsp;</p>

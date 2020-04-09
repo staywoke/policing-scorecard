@@ -50,7 +50,7 @@ if (!empty($state) && !empty($type) && !empty($location)) {
     <meta property="twitter:title" content="<?= $title ?>">
     <meta property="twitter:description" content="<?= $description ?>">
     <meta property="twitter:creator" content="@mrmidi">
-    <meta property="twitter:image:src" content="https://policescorecard.org/assets/img/card.jpg<?= trim($ac) ?>">
+    <meta property="twitter:image:src" content="https://<?= $_SERVER['SERVER_NAME'] ?>/assets/img/card.jpg<?= trim($ac) ?>">
     <meta property="twitter:domain" content="https://policescorecard.org">
 
     <!-- Open Graph protocol -->
@@ -58,7 +58,7 @@ if (!empty($state) && !empty($type) && !empty($location)) {
     <meta property="og:type" content="website">
     <meta property="og:title" content="<?= $title ?>">
     <meta property="og:url" content="https://policescorecard.org">
-    <meta property="og:image" content="https://policescorecard.org/assets/img/card.jpg<?= trim($ac) ?>">
+    <meta property="og:image" content="https://<?= $_SERVER['SERVER_NAME'] ?>/assets/img/card.jpg<?= trim($ac) ?>">
     <meta property="og:site_name" content="<?= $title ?>">
     <meta property="og:description" content="<?= $description ?>">
 
