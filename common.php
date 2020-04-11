@@ -432,31 +432,31 @@ function getGradeIcon($score) {
   $score = intval($score);
 
   if ($score <= 59) {
-    return 'url(assets/img/police-marker-f-active.svg)';
+    return 'url(/assets/img/police-marker-f-active.svg)';
   } elseif ($score <= 62 && $score >= 60) {
-    return 'url(assets/img/police-marker-d-minus-active.svg)';
+    return 'url(/assets/img/police-marker-d-minus-active.svg)';
   } elseif ($score <= 66 && $score >= 63) {
-    return 'url(assets/img/police-marker-d-active.svg)';
+    return 'url(/assets/img/police-marker-d-active.svg)';
   } elseif ($score <= 69 && $score >= 67) {
-    return 'url(assets/img/police-marker-d-plus-active.svg)';
+    return 'url(/assets/img/police-marker-d-plus-active.svg)';
   } elseif ($score <= 72 && $score >= 70) {
-    return 'url(assets/img/police-marker-c-minus-active.svg)';
+    return 'url(/assets/img/police-marker-c-minus-active.svg)';
   } elseif ($score <= 76 && $score >= 73) {
-    return 'url(assets/img/police-marker-c-active.svg)';
+    return 'url(/assets/img/police-marker-c-active.svg)';
   } elseif ($score <= 79 && $score >= 77) {
-    return 'url(assets/img/police-marker-c-plus-active.svg)';
+    return 'url(/assets/img/police-marker-c-plus-active.svg)';
   } elseif ($score <= 82 && $score >= 80) {
-    return 'url(assets/img/police-marker-b-minus-active.svg)';
+    return 'url(/assets/img/police-marker-b-minus-active.svg)';
   } elseif ($score <= 86 && $score >= 83) {
-    return 'url(assets/img/police-marker-b-active.svg)';
+    return 'url(/assets/img/police-marker-b-active.svg)';
   } elseif ($score <= 89 && $score >= 87) {
-    return 'url(assets/img/police-marker-b-plus-active.svg)';
+    return 'url(/assets/img/police-marker-b-plus-active.svg)';
   } elseif ($score <= 92 && $score >= 90) {
-    return 'url(assets/img/police-marker-a-minus-active.svg)';
+    return 'url(/assets/img/police-marker-a-minus-active.svg)';
   } elseif ($score <= 97 && $score >= 93) {
-    return 'url(assets/img/police-marker-a-active.svg)';
+    return 'url(/assets/img/police-marker-a-active.svg)';
   } elseif ($score >= 98) {
-    return 'url(assets/img/police-marker-a-plus-active.svg)';
+    return 'url(/assets/img/police-marker-a-plus-active.svg)';
   }
 }
 
