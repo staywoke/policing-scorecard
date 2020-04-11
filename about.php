@@ -501,7 +501,7 @@ $ac = '?ac=' . getHash();
       </div>
     </div>
 
-    <script src="assets/js/site.js<?= trim($ac) ?>"></script>
+    <script src="/assets/js/site.js<?= trim($ac) ?>"></script>
 
     <!-- Global site tag (gtag.js) - Google Analytics -->
     <script async src="https://www.googletagmanager.com/gtag/js?id=UA-141045547-1"></script>

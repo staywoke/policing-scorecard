@@ -7,9 +7,9 @@
   };
 
 </script>
-<script src="assets/js/plugins.js<?= trim($ac) ?>"></script>
-<script src="assets/js/maps/us-<?= strtolower($stateCode) ?>-all.js"></script>
-<script src="assets/js/site.js<?= trim($ac) ?>"></script>
+<script src="/assets/js/plugins.js<?= trim($ac) ?>"></script>
+<script src="/assets/js/maps/us-<?= strtolower($stateCode) ?>-all.js"></script>
+<script src="/assets/js/site.js<?= trim($ac) ?>"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.8.0/Chart.js"></script>
 
 <?php if (isset($scorecard['arrests']['arrests_2016']) && isset($scorecard['arrests']['arrests_2017']) && isset($scorecard['arrests']['arrests_2018'])): ?>
