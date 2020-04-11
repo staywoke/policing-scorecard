@@ -1,7 +1,7 @@
 <div class="section bg-dotted current-state">
   <div class="content">
-    <span class="state-symbol"><?= getStateIcon($stateCode) ?></span>
-    <?= $stateName ?>
+    <span class="state-symbol">z</span>
+    USA
   </div>
 </div>
 
@@ -9,8 +9,8 @@
   <div class="content">
     <div class="right">
       <h1>We evaluated the police in <?= $stateName ?>.</h1>
-      <h2>Read the <a href="/findings" style="color: #82add7; text-decoration: underline; font-weight: 500;">Findings.</a> See the Grade for Each Department.</h2>
-        <div class="buttons">
+      <h2>Read the <a href="./findings" style="color: #82add7; text-decoration: underline; font-weight: 500;">Findings.</a> See the Grade for Each Department.</h2>
+      <div class="buttons">
         <a href="<?= $isProd ? $stateData['police-department'][0]['url_pretty'] : $stateData['police-department'][0]['url'] ?>" class="btn <?= $type === 'police-department' ? 'active' : '' ?>">Police Depts</a>
         <a href="<?= $isProd ? $stateData['sheriff'][0]['url_pretty'] : $stateData['sheriff'][0]['url'] ?>" class="btn <?= $type === 'sheriff' ? 'active' : '' ?>">Sheriffs Depts</a>
       </div>

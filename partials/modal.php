@@ -12,10 +12,10 @@
       <div id="results-info-content"></div>
       <ul id="city-select" class="<?= $type ?>">
 <?php foreach($stateData['police-department'] as $index => $department): ?>
-        <li class="police-department"><a href="<?= $department['url'] ?>"<?= ($type === 'police-department' && $location === $department['slug']) ? ' class="selected-city"' : '' ?>><?= $department['agency_name'] ?> Police</a></li>
+        <li class="police-department"><a href="<?= $isProd ? $$isProd ? $card['url_pretty'] : ['url_pretty'] : $department['url'] ?>"<?= ($type === 'police-department' && $location === $department['slug']) ? ' class="selected-city"' : '' ?>><?= $department['agency_name'] ?> Police</a></li>
 <?php endforeach; ?>
 <?php foreach($stateData['sheriff'] as $index => $department): ?>
-        <li class="sheriff"><a href="<?= $department['url'] ?>"<?= ($type === 'sheriff' && $location === $department['slug']) ? ' class="selected-city"' : '' ?>><?= $department['agency_name'] ?> Sheriff</a></li>
+        <li class="sheriff"><a href="<?= $isProd ? $$isProd ? $card['url_pretty'] : ['url_pretty'] : $department['url'] ?>"<?= ($type === 'sheriff' && $location === $department['slug']) ? ' class="selected-city"' : '' ?>><?= $department['agency_name'] ?> Sheriff</a></li>
 <?php endforeach; ?>
       </ul>
     </div>

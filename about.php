@@ -38,7 +38,7 @@ $ac = '?ac=' . getHash();
 
     <link href="https://fonts.googleapis.com/css?family=Lato:300,400,700,900" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css?family=Barlow+Condensed:300,400,500,700" rel="stylesheet">
-    <link rel="stylesheet" href="assets/css/style.css?ver=1.0.0">
+    <link rel="stylesheet" href="/assets/css/style.css?ver=1.0.0">
 
     <!-- Facebook Pixel Code -->
     <script>!function(e,n,t,o,c,s,a){e.fbq||(c=e.fbq=function(){c.callMethod?c.callMethod.apply(c,arguments):c.queue.push(arguments)},e._fbq||(e._fbq=c),(c.push=c).loaded=!0,c.version="2.0",c.queue=[],(s=n.createElement(t)).async=!0,s.src="https://connect.facebook.net/en_US/fbevents.js",(a=n.getElementsByTagName(t)[0]).parentNode.insertBefore(s,a))}(window,document,"script"),fbq("init","2063073133961763")</script>

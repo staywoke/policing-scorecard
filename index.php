@@ -6,6 +6,7 @@ $type = (!empty($_REQUEST['type'])) ? $_REQUEST['type'] : null;
 $location = (!empty($_REQUEST['location'])) ? $_REQUEST['location'] : null;
 $ac = '?ac=' . getHash();
 $page = 'home';
+$isProd = (strpos($_SERVER['SERVER_NAME'], 'policescorecard.org'));
 
 if (!empty($state) && !empty($type) && !empty($location)) {
   // Fetch External Data
@@ -62,12 +63,12 @@ if (!empty($state) && !empty($type) && !empty($location)) {
     <meta property="og:site_name" content="<?= $title ?>">
     <meta property="og:description" content="<?= $description ?>">
 
-    <link href="favicon.ico" rel="shortcut icon">
+    <link href="/favicon.ico" rel="shortcut icon">
 
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lato:300,400,700,900">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Barlow+Condensed:300,400,500,700">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-    <link rel="stylesheet" href="assets/css/style.css<?= trim($ac) ?>">
+    <link rel="stylesheet" href="/assets/css/style.css<?= trim($ac) ?>">
 
     <!-- Facebook Pixel Code -->
     <script>!function(e,n,t,o,c,s,a){e.fbq||(c=e.fbq=function(){c.callMethod?c.callMethod.apply(c,arguments):c.queue.push(arguments)},e._fbq||(e._fbq=c),(c.push=c).loaded=!0,c.version="2.0",c.queue=[],(s=n.createElement(t)).async=!0,s.src="https://connect.facebook.net/en_US/fbevents.js",(a=n.getElementsByTagName(t)[0]).parentNode.insertBefore(s,a))}(window,document,"script"),fbq("init","2063073133961763")</script>

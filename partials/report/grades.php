@@ -15,10 +15,10 @@
         </tr>
       <?php foreach($reportCard as $index => $card): if ($index < (count($reportCard) / 2)): ?>
         <tr>
-          <td width="180"><a href="<?= $card['url'] ?>"><?= $index + 1 ?>. <?= $card['agency_name'] ?></a></td>
-          <td width="50"><a href="<?= $card['url'] ?>"><?= $card['grade_letter'] ?></a></td>
+          <td width="180"><a href="<?= $isProd ? $card['url_pretty'] : $card['url'] ?>"><?= $index + 1 ?>. <?= $card['agency_name'] ?></a></td>
+          <td width="50"><a href="<?= $isProd ? $card['url_pretty'] : $card['url'] ?>"><?= $card['grade_letter'] ?></a></td>
           <td>
-            <a class="score" href="<?= $card['url'] ?>">
+            <a class="score" href="<?= $isProd ? $card['url_pretty'] : $card['url'] ?>">
               <div class="grade grade-<?= $card['grade_class'] ?>"><?= $card['overall_score'] ?>%</div>
             </a>
             <?= getChange($card['change_overall_score'], true, 'since \'16-17'); ?>
@@ -36,10 +36,10 @@
         </tr>
         <?php foreach($reportCard as $index => $card): if ($index >= (count($reportCard) / 2)): ?>
           <tr>
-            <td width="180"><a href="<?= $card['url'] ?>"><?= $index + 1 ?>. <?= $card['agency_name'] ?></a></td>
-            <td width="50"><a href="<?= $card['url'] ?>"><?= $card['grade_letter'] ?></a></td>
+            <td width="180"><a href="<?= $isProd ? $card['url_pretty'] : $card['url'] ?>"><?= $index + 1 ?>. <?= $card['agency_name'] ?></a></td>
+            <td width="50"><a href="<?= $isProd ? $card['url_pretty'] : $card['url'] ?>"><?= $card['grade_letter'] ?></a></td>
             <td>
-              <a class="score" href="<?= $card['url'] ?>">
+              <a class="score" href="<?= $isProd ? $card['url_pretty'] : $card['url'] ?>">
                 <div class="grade grade-<?= $card['grade_class'] ?>"><?= $card['overall_score'] ?>%</div>
               </a>
               <?= getChange($card['change_overall_score'], true, 'since \'16-17'); ?>
