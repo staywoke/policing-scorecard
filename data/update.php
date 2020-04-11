@@ -52,11 +52,15 @@ $valid_token = (md5($token) === '5d0f91a00d76444b843046b7c15eb5c2');
       width: 100%;
       text-align: left;
     }
+    .card-body {
+      border: 1px solid #ddd;
+      background: #f7f7f7;
+    }
     .accordion {
       margin-top: 10px;
     }
     .accordion ul {
-      margin: 0;
+      margin-left: 12px;
       padding: 10px 16px;
     }
     #results {
@@ -76,13 +80,19 @@ $valid_token = (md5($token) === '5d0f91a00d76444b843046b7c15eb5c2');
             <span class="icon-bar"></span>
             <span class="icon-bar"></span>
           </button>
-          <div class="navbar-brand">Police Scorecard</div>
+          <div class="navbar-brand">
+            <a href="/data/update.php?token=<?= $token ?>" style="color: white;">Police Scorecard</a>
+          </div>
         </div>
 
         <div id="navbar" class="navbar-collapse collapse">
           <ul class="nav navbar-nav">
             <li class="dropdown">
               <a href="https://docs.google.com/spreadsheets/d/14ZrbaHnzb2eTtrwLS2o8CwNC7EJ90ZVHAVksf81Bfo8/edit" target="_blank">Manage Data</a>
+            </li>
+
+            <li class="dropdown">
+              <a href="/data/clear-cache.php?token=<?= $token ?>">Clear Cache</a>
             </li>
           </ul>
         </div><!--/.nav-collapse -->
@@ -291,6 +301,7 @@ $valid_token = (md5($token) === '5d0f91a00d76444b843046b7c15eb5c2');
           },
           dataType: 'json'
         });
+
         return false;
       }
 

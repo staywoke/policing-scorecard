@@ -15,7 +15,7 @@ $text-black: $primary-gray;
 $text-white: #FFFFFF;
 $text-blue: $primary-blue;
 
-$border-color: #D8D8D8;
+$border-color: #EFEFEF;
 
 $bp-max-width: 940px;
 
@@ -54,7 +54,7 @@ body {
 
 .state-symbol {
   font-family: 'statefaceregular', Arial, sans-serif;
-  color: #efefef;
+  color: #F2F4F6;
   background: #626262;
   width: 42px;
   height: 42px;
@@ -1064,7 +1064,7 @@ body {
   &.bg-dotted {
     background: radial-gradient(rgba(0,0,0,.1) 10%, transparent 10%) 0 0, radial-gradient(rgba(0,0,0,.1) 10%, transparent 10%) 8px 8px, radial-gradient(rgba(255,255,252,.1) 10%, transparent 10%) 0 1px, radial-gradient(rgba(255,255,255,.1) 10%, transparent 5%) center center;
     background-size: 16px 16px;
-    background-color: #EFEFEF;
+    background-color: #F2F4F6;
   }
 }
 
@@ -2161,11 +2161,6 @@ body {
   }
 }
 
-#state-map {
-  height: 100%;
-  width: auto;
-}
-
 text.highcharts-credits {
   display: none;
 }
@@ -2204,7 +2199,7 @@ svg.highcharts-root {
   &.highcharts-color-3,
   &.highcharts-color-4,
   &.highcharts-color-5 {
-    fill: #F7F7F7;
+    fill: #dddee0;
     stroke: transparent;
   }
 
@@ -2583,6 +2578,24 @@ p.number-list {
   }
 }
 
+#state-map {
+  height: 100%;
+  width: auto;
+
+  &.police-department {
+    svg.highcharts-root path.highcharts-point {
+      stroke: #F2F4F6;
+      stroke-width: 0;
+    }
+
+    .highcharts-map-series {
+      path, path.highcharts-color-1, path.highcharts-color-2, path.highcharts-color-3, path.highcharts-color-4, path.highcharts-color-5 {
+        fill: #F2F4F6;
+      }
+    }
+  }
+}
+
 /* RESPONSIVE */
 @media screen and (min-width: $bp-max-width) {
   .header {
@@ -2882,7 +2895,7 @@ p.number-list {
   .section.bg-dotted {
     background: radial-gradient(rgba(0,0,0,0.1) 10%, transparent 10%) 0 0,radial-gradient(rgba(0,0,0,0.1) 10%, transparent 10%) 4px 4px,radial-gradient(rgba(255,255,252,0.1) 10%, transparent 10%) 0 1px,radial-gradient(rgba(255,255,255,0.1) 10%, transparent 5%) center center;
     background-size: 10px 10px;
-    background-color: #EFEFEF;
+    background-color: #F2F4F6;
   }
   .section.hero {
     .map {

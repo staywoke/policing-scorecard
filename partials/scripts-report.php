@@ -1,12 +1,11 @@
 <script>
   var map_data = {
     city: <?= getMapData($state, 'police-department') ?> ,
-    city: <?= getMapData($state, 'police-department') ?> ,
     sheriff: <?= getMapData($state, 'sheriff') ?> ,
     selected: <?= getMapLocation($type, $scorecard, $location) ?>
   };
-
 </script>
+
 <script src="/assets/js/plugins.js<?= trim($ac) ?>"></script>
 <script src="/assets/js/maps/us-<?= strtolower($stateCode) ?>-all.js"></script>
 <script src="/assets/js/site.js<?= trim($ac) ?>"></script>
@@ -177,7 +176,13 @@
   window.addEventListener('load', function() {
     var barChartData = <?= generateBarChart($scorecard, $type); ?> ;
 
-    var ctx = document.getElementById('bar-chart').getContext('2d');
+    var $chart = document.getElementById('bar-chart');
+
+    if (!$chart) {
+      return false;
+    }
+
+    var ctx = $chart.getContext('2d');
     window.myBar = new Chart(ctx, {
       type: 'bar',
       data: barChartData,
@@ -186,8 +191,7 @@
         tooltips: {
           callbacks: {
             label: function(tooltipItem, data) {
-              var label = (data.datasets[tooltipItem.datasetIndex].label) ? ' ' + data.datasets[tooltipItem
-                .datasetIndex].label : '';
+              var label = (data.datasets[tooltipItem.datasetIndex].label) ? ' ' + data.datasets[tooltipItem.datasetIndex].label : '';
 
               if (label) {
                 label += ': ';

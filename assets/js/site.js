@@ -393,7 +393,7 @@ var SCORECARD = (function () {
         map: {
           animation: false,
           allAreas: false,
-          mapData: Highcharts.maps['countries/us/us-' + abbr.toLowerCase() + '-all'],
+          mapData: Highcharts.maps['countries/us/us-' + abbr.toLowerCase() + '-all']
         },
         series: {
           animation: false

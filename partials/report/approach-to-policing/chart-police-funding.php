@@ -1,4 +1,4 @@
-<?php if(isset($scorecard['report']['percentile_police_spending']) || isset($scorecard['report']['hispanic_murder_unsolved_rate']) || isset($scorecard['report']['white_murder_unsolved_rate'])): ?>
+<?php if($scorecard['report']['percentile_police_spending']): ?>
 <div class="stat-wrapper spending">
   <h3>Police Funding in 2018</h3>
   <?php if ($scorecard['report']['percent_police_budget'] > 0): ?>

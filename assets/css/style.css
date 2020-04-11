@@ -63,7 +63,7 @@ body {
 
 .state-symbol {
   font-family: 'statefaceregular', Arial, sans-serif;
-  color: #efefef;
+  color: #F2F4F6;
   background: #626262;
   width: 42px;
   height: 42px;
@@ -912,8 +912,8 @@ body {
 }
 
 #modal-wrapper #results-info-content table td {
-  border-right: 1px solid #D8D8D8;
-  border-top: 1px solid #D8D8D8;
+  border-right: 1px solid #EFEFEF;
+  border-top: 1px solid #EFEFEF;
   padding: 4px 0;
 }
 
@@ -1465,7 +1465,7 @@ body {
 .section.bg-dotted {
   background: radial-gradient(rgba(0, 0, 0, 0.1) 10%, transparent 10%) 0 0, radial-gradient(rgba(0, 0, 0, 0.1) 10%, transparent 10%) 8px 8px, radial-gradient(rgba(255, 255, 252, 0.1) 10%, transparent 10%) 0 1px, radial-gradient(rgba(255, 255, 255, 0.1) 10%, transparent 5%) center center;
   background-size: 16px 16px;
-  background-color: #EFEFEF;
+  background-color: #F2F4F6;
 }
 
 /* CONTENT */
@@ -1646,7 +1646,7 @@ body {
 }
 
 .stat-wrapper .progress-bar-wrapper {
-  background-color: #D8D8D8;
+  background-color: #EFEFEF;
   width: 100%;
   height: 11px;
   display: -webkit-box;
@@ -2550,11 +2550,6 @@ body {
   line-height: 34px;
 }
 
-#state-map {
-  height: 100%;
-  width: auto;
-}
-
 text.highcharts-credits {
   display: none;
 }
@@ -2588,7 +2583,7 @@ svg.highcharts-root path.highcharts-point {
 }
 
 .highcharts-map-series path.highcharts-color-1, .highcharts-map-series path.highcharts-color-2, .highcharts-map-series path.highcharts-color-3, .highcharts-map-series path.highcharts-color-4, .highcharts-map-series path.highcharts-color-5 {
-  fill: #F7F7F7;
+  fill: #dddee0;
   stroke: transparent;
 }
 
@@ -2963,6 +2958,20 @@ p.number-list.n15::after {
   content: '15';
 }
 
+#state-map {
+  height: 100%;
+  width: auto;
+}
+
+#state-map.police-department svg.highcharts-root path.highcharts-point {
+  stroke: #F2F4F6;
+  stroke-width: 0;
+}
+
+#state-map.police-department .highcharts-map-series path, #state-map.police-department .highcharts-map-series path.highcharts-color-1, #state-map.police-department .highcharts-map-series path.highcharts-color-2, #state-map.police-department .highcharts-map-series path.highcharts-color-3, #state-map.police-department .highcharts-map-series path.highcharts-color-4, #state-map.police-department .highcharts-map-series path.highcharts-color-5 {
+  fill: #F2F4F6;
+}
+
 /* RESPONSIVE */
 @media screen and (min-width: 940px) {
   .header .logo {
@@ -3197,7 +3206,7 @@ p.number-list.n15::after {
   .section.bg-dotted {
     background: radial-gradient(rgba(0, 0, 0, 0.1) 10%, transparent 10%) 0 0, radial-gradient(rgba(0, 0, 0, 0.1) 10%, transparent 10%) 4px 4px, radial-gradient(rgba(255, 255, 252, 0.1) 10%, transparent 10%) 0 1px, radial-gradient(rgba(255, 255, 255, 0.1) 10%, transparent 5%) center center;
     background-size: 10px 10px;
-    background-color: #EFEFEF;
+    background-color: #F2F4F6;
   }
   .section.hero .map {
     margin: 0 auto !important;

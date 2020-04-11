@@ -6,6 +6,36 @@ if (!file_exists(__DIR__ . '/config.php')) {
 
 require(__DIR__ . '/config.php');
 
+/**
+ * Check if API Call is cached
+ *
+ * @param string $url URL for API Call
+ * @return boolean
+ */
+function isCached($url) {
+  $cache_file = __DIR__ . '/cache/' . md5($url) . '.cache';
+
+  // check if file exists, and was created within the last 24 hours
+  if (file_exists($cache_file)) {
+    if (time() - filemtime($cache_file) < 86400) {
+      return file_get_contents($cache_file);
+    }
+  }
+
+  return false;
+}
+
+/**
+ * Save Cache for URL
+ *
+ * @param string $url URL for API Call
+ * @param string $cache Response from API call
+ */
+function saveCache($url, $cache) {
+  $cache_file = __DIR__ . '/cache/' . md5($url) . '.cache';
+  file_put_contents($cache_file, $cache);
+}
+
 function fetchLocationScorecard($state, $type, $location) {
   if (!$state) {
     throw new Exception("Missing required `state` parameter");
@@ -20,11 +50,21 @@ function fetchLocationScorecard($state, $type, $location) {
     exit();
   }
 
-  $contents = @file_get_contents(API_BASE . "/scorecard/report/{$state}/{$type}/{$location}?apikey=" . API_KEY);
+  $url = API_BASE . "/scorecard/report/{$state}/{$type}/{$location}?apikey=" . API_KEY;
+  $cache = isCached($url);
+
+  if ($cache) {
+    $contents = $cache;
+  } else {
+    $contents = @file_get_contents($url);
+  }
+
   if (!$contents) {
     throw new Exception("Unable to Load /scorecard/report/{$state}/{$type}/{$location}");
     exit();
   }
+
+  saveCache($url, $contents);
 
   $data = json_decode($contents, true);
   if (!$data) {
@@ -46,11 +86,21 @@ function fetchStateData($state) {
     exit();
   }
 
-  $contents = @file_get_contents(API_BASE . "/scorecard/state/{$state}?apikey=" . API_KEY);
+  $url = API_BASE . "/scorecard/state/{$state}?apikey=" . API_KEY;
+  $cache = isCached($url);
+
+  if ($cache) {
+    $contents = $cache;
+  } else {
+    $contents = @file_get_contents($url);
+  }
+
   if (!$contents) {
     throw new Exception("Unable to Load /scorecard/state/{$state}");
     exit();
   }
+
+  saveCache($url, $contents);
 
   $data = json_decode($contents, true);
   if (!$data) {
@@ -76,11 +126,21 @@ function fetchGrades($state, $type) {
     exit();
   }
 
-  $contents = @file_get_contents(API_BASE . "/scorecard/grades/{$state}/{$type}?apikey=" . API_KEY);
+  $url = API_BASE . "/scorecard/grades/{$state}/{$type}?apikey=" . API_KEY;
+  $cache = isCached($url);
+
+  if ($cache) {
+    $contents = $cache;
+  } else {
+    $contents = @file_get_contents($url);
+  }
+
   if (!$contents) {
     throw new Exception("Unable to Load /scorecard/grades/{$state}/{$type}");
     exit();
   }
+
+  saveCache($url, $contents);
 
   $data = json_decode($contents, true);
   if (!$data) {
