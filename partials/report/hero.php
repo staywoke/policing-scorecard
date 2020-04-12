@@ -31,6 +31,7 @@
         </svg>
 
         <div id="state-map" class="<?= $type ?> <?= $location ?>"></div>
+        <div id="state-map-shadow" class="<?= $type ?> <?= $location ?>"></div>
       </div>
     </div>
     <div class="clear">&nbsp;</div>

@@ -1,7 +1,10 @@
 <script>
+  var SCORECARD_ENV = '<?= $isProd ? 'production' : 'development' ?>';
+  var SCORECARD_STATE = '<?= $state ?>';
+  var SCORECARD_DATA = <?= json_encode($scorecard) ?>;
   var map_data = {
-    city: <?= getMapData($state, 'police-department') ?> ,
-    sheriff: <?= getMapData($state, 'sheriff') ?> ,
+    city: <?= $type === 'police-department' ? getMapData($state, 'police-department') : 'null' ?> ,
+    sheriff: <?= $type === 'sheriff' ? getMapData($state, 'sheriff') : 'null' ?>,
     selected: <?= getMapLocation($type, $scorecard, $location) ?>
   };
 </script>
@@ -36,8 +39,7 @@
           intersect: false,
           callbacks: {
             label: function(tooltipItem, data) {
-              var label = (data.datasets[tooltipItem.datasetIndex].label) ? ' ' + data.datasets[tooltipItem
-                .datasetIndex].label : '';
+              var label = (data.datasets[tooltipItem.datasetIndex].label) ? ' ' + data.datasets[tooltipItem.datasetIndex].label : '';
 
               if (label) {
                 label += ': ';

@@ -179,36 +179,17 @@ var SCORECARD = (function () {
     animateCheckMarks()
   }
 
-  function loadMoreInfo(city, prop) {
+  function loadMoreInfo(info) {
     $modalLabel.innerHTML = '';
     $modalTabs.style.display = 'none';
 
-    var path = (window.location.search.indexOf('sheriff') !== -1) ? 'data/json/sheriff-' : 'data/json/data-';
-    var request = new XMLHttpRequest();
-    var file = path + city + '.json';
-    request.open('GET', file, true);
-    request.onload = function() {
-      if (request.status >= 200 && request.status < 400) {
-        var data = JSON.parse(request.responseText);
-        if (data && typeof data[prop] !== 'undefined' && data[prop]) {
-          $citySelect.style.display = 'none';
-          $moreInfoContent.style.display = 'block';
-          $moreInfoContent.innerHTML = data[prop].replace(/(?:\r\n|\r|\n)/g, '<br><br>');
-          $modal.classList.toggle('open');
-          $modalContent.scrollTop = 0;
-        } else {
-          console.error('Empty Prop', prop);
-        }
-      } else {
-        console.error('Error Fetching', file);
-      }
-    };
-
-    request.onerror = function() {
-      console.error('Error Fetching', file);
-    };
-
-    request.send();
+    if (info) {
+      $citySelect.style.display = 'none';
+      $moreInfoContent.style.display = 'block';
+      $moreInfoContent.innerHTML = info.replace(/(?:\r\n|\r|\n)/g, '<br><br>');
+      $modal.classList.toggle('open');
+      $modalContent.scrollTop = 0;
+    }
   }
 
   function getGrade(score) {
@@ -243,83 +224,65 @@ var SCORECARD = (function () {
     }
   }
 
-  function loadResultsInfo(city, prop) {
+  function loadResultsInfo() {
     $modalLabel.innerHTML = '';
     $modalTabs.style.display = 'none';
 
-    var path = (window.location.search.indexOf('sheriff') !== -1) ? 'data/json/sheriff-' : 'data/json/data-';
     var label = (window.location.search.indexOf('sheriff') !== -1) ? 'Sheriff\'s Department' : 'Police Department';
-    var request = new XMLHttpRequest();
-    var file = path + city + '.json';
-    request.open('GET', file, true);
-    request.onload = function() {
-      if (request.status >= 200 && request.status < 400) {
-        var data = JSON.parse(request.responseText);
-        if (data) {
-          var class_a = (data.percent_of_less_lethal_force_per_arrest) ? 'key percent-' + parseInt(data.percent_of_less_lethal_force_per_arrest.replace('%', '')) : 'incomplete';
-          var class_b = (data.percentile_of_deadly_force_incidents_per_arrest) ? 'key percent-' + parseInt(data.percentile_of_deadly_force_incidents_per_arrest.replace('%', '')) : 'incomplete';
-          var class_c = (data.percent_of_deadly_force_against_unarmed_people_per_arrest) ? 'key percent-' + parseInt(data.percent_of_deadly_force_against_unarmed_people_per_arrest.replace('%', '')) : 'incomplete';
-          var class_d = (data.percentile_overall_disparity_index) ? 'key percent-' + parseInt(data.percentile_overall_disparity_index.replace('%', '')) : 'incomplete';
-          var class_e = (data.percent_of_complaints_sustained && data.percent_of_complaints_sustained.replace('%', '') !== '0') ? 'key percent-' + parseInt(data.percent_of_complaints_sustained.replace('%', '')) : 'no-complaints';
-          var class_f = (data.percent_criminal_complaints_sustained && data.percent_of_complaints_sustained.replace('%', '') !== '0') ? 'key percent-' + parseInt(data.percent_criminal_complaints_sustained.replace('%', '')) : 'no-complaints';
-          var class_g = (data.percent_of_misdemeanor_arrests_per_population) ? 'key percent-' + parseInt(data.percent_of_misdemeanor_arrests_per_population.replace('%', '')) : 'incomplete';
-          var class_h = (data.percent_of_murders_solved) ? 'key percent-' + parseInt(data.percent_of_murders_solved.replace('%', '')) : 'incomplete';
-          var class_i = (data.percentile_jail_population_per_1k) ? 'key percent-' + parseInt(data.percentile_jail_population_per_1k.replace('%', '')) : 'incomplete';
-          var class_j = (data.percent_jail_deaths_per_1000_jail_population_table) ? 'key percent-' + parseInt(data.percent_jail_deaths_per_1000_jail_population_table.replace('%', '')) : 'incomplete';
 
-          var grade = getGrade(data.overall_score.replace('%', ''));
-          var html = '';
+    if (SCORECARD_DATA) {
+      var class_a = (SCORECARD_DATA.report.percentile_less_lethal_force) ? 'key percent-' + report.percentile_less_lethal_force : 'incomplete';
+      var class_b = (SCORECARD_DATA.report.percentile_killed_by_police) ? 'key percent-' + SCORECARD_DATA.report.percentile_killed_by_police : 'incomplete';
+      var class_c = (SCORECARD_DATA.report.percentile_unarmed_killed_by_police) ? 'key percent-' + SCORECARD_DATA.report.percentile_unarmed_killed_by_police : 'incomplete';
+      var class_d = (SCORECARD_DATA.report.percentile_overall_disparity_index) ? 'key percent-' + SCORECARD_DATA.report.percentile_overall_disparity_index : 'incomplete';
+      var class_e = (SCORECARD_DATA.report.percentile_complaints_sustained) ? 'key percent-' + SCORECARD_DATA.report.percentile_complaints_sustained : 'no-complaints';
+      var class_f = (SCORECARD_DATA.report.percent_criminal_complaints_sustained) ? 'key percent-' + SCORECARD_DATA.report.percent_criminal_complaints_sustained : 'no-complaints';
+      var class_g = (SCORECARD_DATA.report.percentile_low_level_arrests_per_1k_population) ? 'key percent-' + SCORECARD_DATA.report.percentile_low_level_arrests_per_1k_population : 'incomplete';
+      var class_h = (SCORECARD_DATA.report.percent_murders_solved) ? 'key percent-' + SCORECARD_DATA.report.percent_murders_solved : 'incomplete';
+      var class_i = (SCORECARD_DATA.report.percentile_jail_incarceration_per_1k_population) ? 'key percent-' + SCORECARD_DATA.report.percentile_jail_incarceration_per_1k_population : 'incomplete';
+      var class_j = (SCORECARD_DATA.report.percentile_jail_deaths_per_1k_jail_population) ? 'key percent-' + SCORECARD_DATA.report.percentile_jail_deaths_per_1k_jail_population : 'incomplete';
 
-          html += '<div class="modal-header"><div class="results-header"><strong style="position: relative; top: -2px;">' + data.agency_name + ' ' + label + '</strong><br/>Grade:&nbsp; <strong class="grade grade-' + grade.replace(/[^A-Z]/, '').toLowerCase() + '">' + grade + '</strong> (' + data.overall_score + ')</div><div class="keys"><span class="key key-bad"></span> WORSE <span class="key key-avg"></span> AVG <span class="key key-good"></span> BETTER</div></div>';
-          html += '<div class="section-header no-border"><div class="label">&nbsp;</div><div class="percentile"><strong>PERCENTILE</strong></div></div>';
+      var grade = SCORECARD_DATA.report.grade_letter;
+      var html = '';
 
-          html += '<div class="section-header"><div class="label">Police Violence:&nbsp; ' + data.police_violence_score + '</div><div class="percentile">50TH</div></div>';
-          html += '<table>';
-          html += '<tr class="' + class_a + '"><td width="160px">Less-Lethal Force per Arrest</td><td width="25px">&nbsp;</td><td width="25px" class="divider">&nbsp;</td><td width="25px">&nbsp;</td><td width="25px">&nbsp;</td></tr>';
-          html += '<tr class="' + class_b + '"><td width="160px">Deadly Force per Arrest</td><td>&nbsp;</td><td class="divider">&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td></tr>';
-          html += '<tr class="double ' + class_c + '"><td width="160px">Unarmed Victims of Deadly Force per Arrest</td><td>&nbsp;</td><td class="divider">&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td></tr>';
-          html += '<tr class="double ' + class_d + '"><td width="160px">Racial Disparities in Arrests and Deadly Force</td><td>&nbsp;</td><td class="divider">&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td></tr>';
-          html += '</table>';
+      html += '<div class="modal-header"><div class="results-header"><strong style="position: relative; top: -2px;">' + SCORECARD_DATA.agency.name + ' ' + label + '</strong><br/>Grade:&nbsp; <strong class="grade grade-' + grade.replace(/[^A-Z]/, '').toLowerCase() + '">' + grade + '</strong> (' + SCORECARD_DATA.report.overall_score + ')</div><div class="keys"><span class="key key-bad"></span> WORSE <span class="key key-avg"></span> AVG <span class="key key-good"></span> BETTER</div></div>';
+      html += '<div class="section-header no-border"><div class="label">&nbsp;</div><div class="percentile"><strong>PERCENTILE</strong></div></div>';
 
-          html += '<div class="section-header"><div class="label">Police Accountability:&nbsp; ' + data.police_accountability_score + '</div><div class="percentile">&nbsp;</div></div>';
-          html += '<table>';
-          html += '<tr class="' + class_e + '"><td width="160px">Complaints Sustained</td><td width="25px">&nbsp;</td><td width="25px" class="divider">&nbsp;</td><td width="25px">&nbsp;</td><td width="25px">&nbsp;</td></tr>';
-          html += '<tr class="double ' + class_f + '"><td width="160px">Criminal Allegations Sustained</td><td width="25px">&nbsp;</td><td width="25px" class="divider">&nbsp;</td><td width="25px">&nbsp;</td><td width="25px">&nbsp;</td></tr>';
-          html += '</table>';
+      html += '<div class="section-header"><div class="label">Police Violence:&nbsp; ' + SCORECARD_DATA.report.police_violence_score + '</div><div class="percentile">50TH</div></div>';
+      html += '<table>';
+      html += '<tr class="' + class_a + '"><td width="160px">Less-Lethal Force per Arrest</td><td width="25px">&nbsp;</td><td width="25px" class="divider">&nbsp;</td><td width="25px">&nbsp;</td><td width="25px">&nbsp;</td></tr>';
+      html += '<tr class="' + class_b + '"><td width="160px">Deadly Force per Arrest</td><td>&nbsp;</td><td class="divider">&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td></tr>';
+      html += '<tr class="double ' + class_c + '"><td width="160px">Unarmed Victims of Deadly Force per Arrest</td><td>&nbsp;</td><td class="divider">&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td></tr>';
+      html += '<tr class="double ' + class_d + '"><td width="160px">Racial Disparities in Arrests and Deadly Force</td><td>&nbsp;</td><td class="divider">&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td></tr>';
+      html += '</table>';
 
-          html += '<div class="section-header"><div class="label">Approach to Policing:&nbsp; ' + data.approach_to_policing_score + '</div><div class="percentile">&nbsp;</div></div>';
-          html += '<table>';
-          html += '<tr class="double ' + class_g + '"><td width="160px">Over-Policing (Misdemeanor Arrest Rate)</td><td width="25px">&nbsp;</td><td width="25px" class="divider">&nbsp;</td><td width="25px">&nbsp;</td><td width="25px">&nbsp;</td></tr>';
-          html += '<tr class="' + class_h + '"><td width="160px">Homicides Solved</td><td width="25px">&nbsp;</td><td width="25px" class="divider">&nbsp;</td><td width="25px">&nbsp;</td><td width="25px">&nbsp;</td></tr>';
+      html += '<div class="section-header"><div class="label">Police Accountability:&nbsp; ' + SCORECARD_DATA.report.police_accountability_score + '</div><div class="percentile">&nbsp;</div></div>';
+      html += '<table>';
+      html += '<tr class="' + class_e + '"><td width="160px">Complaints Sustained</td><td width="25px">&nbsp;</td><td width="25px" class="divider">&nbsp;</td><td width="25px">&nbsp;</td><td width="25px">&nbsp;</td></tr>';
+      html += '<tr class="double ' + class_f + '"><td width="160px">Criminal Allegations Sustained</td><td width="25px">&nbsp;</td><td width="25px" class="divider">&nbsp;</td><td width="25px">&nbsp;</td><td width="25px">&nbsp;</td></tr>';
+      html += '</table>';
 
-          if (data.percent_jail_deaths_per_1000_jail_population_table && data.percentile_jail_population_per_1k) {
-            html += '<tr class="' + class_i + '"><td width="160px">Jail Incarceration Rate</td><td width="25px">&nbsp;</td><td width="25px" class="divider">&nbsp;</td><td width="25px">&nbsp;</td><td width="25px">&nbsp;</td></tr>';
-            html += '<tr class="' + class_j + '"><td width="160px">Jail Deaths per 1,000</td><td width="25px">&nbsp;</td><td width="25px" class="divider">&nbsp;</td><td width="25px">&nbsp;</td><td width="25px">&nbsp;</td></tr>';
-          }
+      html += '<div class="section-header"><div class="label">Approach to Policing:&nbsp; ' + SCORECARD_DATA.report.approach_to_policing_score + '</div><div class="percentile">&nbsp;</div></div>';
+      html += '<table>';
+      html += '<tr class="double ' + class_g + '"><td width="160px">Over-Policing (Misdemeanor Arrest Rate)</td><td width="25px">&nbsp;</td><td width="25px" class="divider">&nbsp;</td><td width="25px">&nbsp;</td><td width="25px">&nbsp;</td></tr>';
+      html += '<tr class="' + class_h + '"><td width="160px">Homicides Solved</td><td width="25px">&nbsp;</td><td width="25px" class="divider">&nbsp;</td><td width="25px">&nbsp;</td><td width="25px">&nbsp;</td></tr>';
 
-          html += '</table>';
-
-          html += '<div class="summary"><strong>Average from All 3 Sections:&nbsp; ' + data.overall_score + '</strong></div>';
-          html += '<div class="button-wrapper"><a href="/about" class="button" target="_blank">Read Our Methodology</a></div>';
-
-          $citySelect.style.display = 'none';
-          $resultsInfoContent.style.display = 'block';
-          $resultsInfoContent.innerHTML = html.replace(/(?:\r\n|\r|\n)/g, '<br><br>');
-          $modal.classList.toggle('open');
-          $modal.classList.add('large');
-        } else {
-          console.error('Empty Prop', prop);
-        }
-      } else {
-        console.error('Error Fetching', file);
+      if (SCORECARD_DATA.report.percentile_jail_deaths_per_1k_jail_population && SCORECARD_DATA.report.percentile_jail_incarceration_per_1k_population) {
+        html += '<tr class="' + class_i + '"><td width="160px">Jail Incarceration Rate</td><td width="25px">&nbsp;</td><td width="25px" class="divider">&nbsp;</td><td width="25px">&nbsp;</td><td width="25px">&nbsp;</td></tr>';
+        html += '<tr class="' + class_j + '"><td width="160px">Jail Deaths per 1,000</td><td width="25px">&nbsp;</td><td width="25px" class="divider">&nbsp;</td><td width="25px">&nbsp;</td><td width="25px">&nbsp;</td></tr>';
       }
-    };
 
-    request.onerror = function() {
-      console.error('Error Fetching', file);
-    };
+      html += '</table>';
 
-    request.send();
+      html += '<div class="summary"><strong>Average from All 3 Sections:&nbsp; ' + SCORECARD_DATA.report.overall_score + '</strong></div>';
+      html += '<div class="button-wrapper"><a href="/about" class="button" target="_blank">Read Our Methodology</a></div>';
+
+      $citySelect.style.display = 'none';
+      $resultsInfoContent.style.display = 'block';
+      $resultsInfoContent.innerHTML = html.replace(/(?:\r\n|\r|\n)/g, '<br><br>');
+      $modal.classList.toggle('open');
+      $modal.classList.add('large');
+    }
   }
 
   function getGrade(score) {
@@ -393,10 +356,54 @@ var SCORECARD = (function () {
         map: {
           animation: false,
           allAreas: false,
-          mapData: Highcharts.maps['countries/us/us-' + abbr.toLowerCase() + '-all']
+          mapData: Highcharts.maps['countries/us/us-' + abbr.toLowerCase() + '-all'],
         },
         series: {
-          animation: false
+          animation: false,
+          clip: false
+        }
+      },
+      series: [
+        {
+          animation: false,
+          allAreas: true,
+          showInLegend: true
+        }
+      ]
+    });
+
+    // Add Map Shadow
+    Highcharts.mapChart('state-map-shadow', {
+      chart: {
+        animation: false,
+        backgroundColor: 'transparent',
+        borderWidth: 0,
+        margin: 0,
+        zoomType: false,
+        styleMode: true
+      },
+      title: {
+        text: '',
+        style: {
+          display: 'none'
+        }
+      },
+      legend: {
+        enabled: false
+      },
+      mapNavigation: {
+        enabled: false
+      },
+      plotOptions: {
+        map: {
+          animation: false,
+          allAreas: false,
+          mapData: Highcharts.maps['countries/us/us-' + abbr.toLowerCase() + '-all'],
+        },
+        series: {
+          animation: false,
+          shadow: false,
+          clip: false
         }
       },
       series: [
@@ -415,12 +422,16 @@ var SCORECARD = (function () {
         name: 'Sheriff Department',
         events: {
           click: function (e) {
-            var loc = (typeof e.point.className !== 'undefined') ? e.point.className.replace('location-', '') : null;
+            if (e.point && typeof e.point.className !== 'undefined') {
+              var loc = e.point.className.replace('location-', '');
+              var url = '/?state=' + SCORECARD_STATE + '&type=' + map_data.selected.type + '&location=' + loc;
+              var prettyUrl = '/' + SCORECARD_STATE + '/' + map_data.selected.type + '/' + loc;
 
-            if (loc && leftMouseClicked) {
-              window.location = '?sheriff=' + loc;
-              e.preventDefault();
-              e.stopImmediatePropagation();
+              if (loc && leftMouseClicked) {
+                window.location = (SCORECARD_ENV === 'production') ? prettyUrl : url;
+                e.preventDefault();
+                e.stopImmediatePropagation();
+              }
             }
           }
         }
@@ -434,12 +445,16 @@ var SCORECARD = (function () {
         name: 'Police Department',
         events: {
           click: function (e) {
-            var loc = (typeof e.point.className !== 'undefined') ? e.point.className.replace('location-', '') : null;
+            if (e.point && typeof e.point.className !== 'undefined') {
+              var loc = e.point.className.replace('location-', '');
+              var url = '/?state=' + SCORECARD_STATE + '&type=' + map_data.selected.type + '&location=' + loc;
+              var prettyUrl = '/' + SCORECARD_STATE + '/' + map_data.selected.type + '/' + loc;
 
-            if (loc && leftMouseClicked) {
-              window.location = '?sheriff=' + loc;
-              e.preventDefault();
-              e.stopImmediatePropagation();
+              if (loc && leftMouseClicked) {
+                window.location = (SCORECARD_ENV === 'production') ? prettyUrl : url;
+                e.preventDefault();
+                e.stopImmediatePropagation();
+              }
             }
           }
         }
@@ -454,7 +469,7 @@ var SCORECARD = (function () {
           width: 12,
           height: 12,
           fillColor: '',
-          symbol: 'url(/assets/img/police-marker-f.svg)'
+          symbol: 'url(assets/img/police-marker-f.svg)'
         },
         dataLabels: {
           formatter: function () {
@@ -463,12 +478,16 @@ var SCORECARD = (function () {
         },
         events: {
           click: function (e) {
-            var loc = (typeof e.point.className !== 'undefined') ? e.point.className.replace('location-', '') : null;
+            if (e.point && typeof e.point.className !== 'undefined') {
+              var loc = e.point.className.replace('location-', '');
+              var url = '/?state=' + SCORECARD_STATE + '&type=' + map_data.selected.type + '&location=' + loc;
+              var prettyUrl = '/' + SCORECARD_STATE + '/' + map_data.selected.type + '/' + loc;
 
-            if (loc && leftMouseClicked) {
-              window.location = '?city=' + loc
-              e.preventDefault();
-              e.stopImmediatePropagation();
+              if (loc && leftMouseClicked) {
+                window.location = (SCORECARD_ENV === 'production') ? prettyUrl : url;
+                e.preventDefault();
+                e.stopImmediatePropagation();
+              }
             }
           }
         }
@@ -483,7 +502,7 @@ var SCORECARD = (function () {
           width: 12,
           height: 12,
           fillColor: '',
-          symbol: 'url(/assets/img/police-marker-d.svg)'
+          symbol: 'url(assets/img/police-marker-d.svg)'
         },
         dataLabels: {
           formatter: function () {
@@ -492,12 +511,16 @@ var SCORECARD = (function () {
         },
         events: {
           click: function (e) {
-            var loc = (typeof e.point.className !== 'undefined') ? e.point.className.replace('location-', '') : null;
+            if (e.point && typeof e.point.className !== 'undefined') {
+              var loc = e.point.className.replace('location-', '');
+              var url = '/?state=' + SCORECARD_STATE + '&type=' + map_data.selected.type + '&location=' + loc;
+              var prettyUrl = '/' + SCORECARD_STATE + '/' + map_data.selected.type + '/' + loc;
 
-            if (loc && leftMouseClicked) {
-              window.location = '?city=' + loc
-              e.preventDefault();
-              e.stopImmediatePropagation();
+              if (loc && leftMouseClicked) {
+                window.location = (SCORECARD_ENV === 'production') ? prettyUrl : url;
+                e.preventDefault();
+                e.stopImmediatePropagation();
+              }
             }
           }
         }
@@ -512,7 +535,7 @@ var SCORECARD = (function () {
           width: 12,
           height: 12,
           fillColor: '',
-          symbol: 'url(/assets/img/police-marker-c.svg)'
+          symbol: 'url(assets/img/police-marker-c.svg)'
         },
         dataLabels: {
           formatter: function () {
@@ -521,12 +544,16 @@ var SCORECARD = (function () {
         },
         events: {
           click: function (e) {
-            var loc = (typeof e.point.className !== 'undefined') ? e.point.className.replace('location-', '') : null;
+            if (e.point && typeof e.point.className !== 'undefined') {
+              var loc = e.point.className.replace('location-', '');
+              var url = '/?state=' + SCORECARD_STATE + '&type=' + map_data.selected.type + '&location=' + loc;
+              var prettyUrl = '/' + SCORECARD_STATE + '/' + map_data.selected.type + '/' + loc;
 
-            if (loc && leftMouseClicked) {
-              window.location = '?city=' + loc
-              e.preventDefault();
-              e.stopImmediatePropagation();
+              if (loc && leftMouseClicked) {
+                window.location = (SCORECARD_ENV === 'production') ? prettyUrl : url;
+                e.preventDefault();
+                e.stopImmediatePropagation();
+              }
             }
           }
         }
@@ -541,7 +568,7 @@ var SCORECARD = (function () {
           width: 12,
           height: 12,
           fillColor: '',
-          symbol: 'url(/assets/img/police-marker-b.svg)'
+          symbol: 'url(assets/img/police-marker-b.svg)'
         },
         dataLabels: {
           formatter: function () {
@@ -550,12 +577,16 @@ var SCORECARD = (function () {
         },
         events: {
           click: function (e) {
-            var loc = (typeof e.point.className !== 'undefined') ? e.point.className.replace('location-', '') : null;
+            if (e.point && typeof e.point.className !== 'undefined') {
+              var loc = e.point.className.replace('location-', '');
+              var url = '/?state=' + SCORECARD_STATE + '&type=' + map_data.selected.type + '&location=' + loc;
+              var prettyUrl = '/' + SCORECARD_STATE + '/' + map_data.selected.type + '/' + loc;
 
-            if (loc && leftMouseClicked) {
-              window.location = '?city=' + loc
-              e.preventDefault();
-              e.stopImmediatePropagation();
+              if (loc && leftMouseClicked) {
+                window.location = (SCORECARD_ENV === 'production') ? prettyUrl : url;
+                e.preventDefault();
+                e.stopImmediatePropagation();
+              }
             }
           }
         }
@@ -569,7 +600,7 @@ var SCORECARD = (function () {
         marker: {
           width: 12,
           height: 12,
-          symbol: 'url(/assets/img/police-marker-a.svg)'
+          symbol: 'url(assets/img/police-marker-a.svg)'
         },
         dataLabels: {
           formatter: function () {
@@ -578,12 +609,16 @@ var SCORECARD = (function () {
         },
         events: {
           click: function (e) {
-            var loc = (typeof e.point.className !== 'undefined') ? e.point.className.replace('location-', '') : null;
+            if (e.point && typeof e.point.className !== 'undefined') {
+              var loc = e.point.className.replace('location-', '');
+              var url = '/?state=' + SCORECARD_STATE + '&type=' + map_data.selected.type + '&location=' + loc;
+              var prettyUrl = '/' + SCORECARD_STATE + '/' + map_data.selected.type + '/' + loc;
 
-            if (loc && leftMouseClicked) {
-              window.location = '?city=' + loc
-              e.preventDefault();
-              e.stopImmediatePropagation();
+              if (loc && leftMouseClicked) {
+                window.location = (SCORECARD_ENV === 'production') ? prettyUrl : url;
+                e.preventDefault();
+                e.stopImmediatePropagation();
+              }
             }
           }
         }
@@ -664,24 +699,18 @@ var SCORECARD = (function () {
   // Click Event for More Info
   Array.prototype.forEach.call($moreInfo, function(el) {
     el.addEventListener('click', function(evt) {
-      var city = evt.target.getAttribute('data-city');
-      var prop = evt.target.getAttribute('data-more-info');
+      var info = evt.target.getAttribute('data-more-info');
 
-      if (city && prop) {
-        loadMoreInfo(city, prop);
+      if (info && typeof SCORECARD_DATA.policy[info] !== 'undefined' && SCORECARD_DATA.policy[info]) {
+        loadMoreInfo(SCORECARD_DATA.policy[info]);
       }
     });
   });
 
   // Click Event for Results Info
   Array.prototype.forEach.call($resultsInfo, function(el) {
-    el.addEventListener('click', function(evt) {
-      var city = evt.target.getAttribute('data-city');
-      var prop = evt.target.getAttribute('data-result-info');
-
-      if (city && prop) {
-        loadResultsInfo(city, prop);
-      }
+    el.addEventListener('click', function() {
+      loadResultsInfo();
     });
   });
 

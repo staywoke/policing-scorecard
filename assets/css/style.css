@@ -2588,53 +2588,53 @@ svg.highcharts-root path.highcharts-point {
 }
 
 .highcharts-map-series path.highcharts-color-1:hover {
-  fill: #f67f85;
-  stroke: #f67f85;
+  fill: #f67f85 !important;
+  stroke: #f67f85 !important;
 }
 
 .highcharts-map-series path.highcharts-color-2:hover {
-  fill: #ee9978;
-  stroke: #ee9978;
+  fill: #ee9978 !important;
+  stroke: #ee9978 !important;
 }
 
 .highcharts-map-series path.highcharts-color-3:hover {
-  fill: #ffdd9a;
-  stroke: #ffdd9a;
+  fill: #ffdd9a !important;
+  stroke: #ffdd9a !important;
 }
 
 .highcharts-map-series path.highcharts-color-4:hover {
-  fill: #c9da98;
-  stroke: #c9da98;
+  fill: #c9da98 !important;
+  stroke: #c9da98 !important;
 }
 
 .highcharts-map-series path.highcharts-color-5:hover {
-  fill: #97d89a;
-  stroke: #97d89a;
+  fill: #97d89a !important;
+  stroke: #97d89a !important;
 }
 
 .highcharts-map-series path.highcharts-color-1.active, .highcharts-map-series path.highcharts-color-1.active:hover {
-  fill: #f67f85;
-  stroke: #f67f85;
+  fill: #f67f85 !important;
+  stroke: #f67f85 !important;
 }
 
 .highcharts-map-series path.highcharts-color-2.active, .highcharts-map-series path.highcharts-color-2.active:hover {
-  fill: #ee9978;
-  stroke: #ee9978;
+  fill: #ee9978 !important;
+  stroke: #ee9978 !important;
 }
 
 .highcharts-map-series path.highcharts-color-3.active, .highcharts-map-series path.highcharts-color-3.active:hover {
-  fill: #ffdd9a;
-  stroke: #ffdd9a;
+  fill: #ffdd9a !important;
+  stroke: #ffdd9a !important;
 }
 
 .highcharts-map-series path.highcharts-color-4.active, .highcharts-map-series path.highcharts-color-4.active:hover {
-  fill: #c9da98;
-  stroke: #c9da98;
+  fill: #c9da98 !important;
+  stroke: #c9da98 !important;
 }
 
 .highcharts-map-series path.highcharts-color-5.active, .highcharts-map-series path.highcharts-color-5.active:hover {
-  fill: #97d89a;
-  stroke: #97d89a;
+  fill: #97d89a !important;
+  stroke: #97d89a !important;
 }
 
 #state-map.police-department .highcharts-map-series path.highcharts-color-1, #state-map.police-department .highcharts-map-series path.highcharts-color-2, #state-map.police-department .highcharts-map-series path.highcharts-color-3, #state-map.police-department .highcharts-map-series path.highcharts-color-4, #state-map.police-department .highcharts-map-series path.highcharts-color-5 {
@@ -2642,28 +2642,28 @@ svg.highcharts-root path.highcharts-point {
 }
 
 #state-map.police-department .highcharts-map-series path.highcharts-color-1:hover {
-  fill: #f67f85;
-  stroke: #f67f85;
+  fill: #f67f85 !important;
+  stroke: #f67f85 !important;
 }
 
 #state-map.police-department .highcharts-map-series path.highcharts-color-2:hover {
-  fill: #ee9978;
-  stroke: #ee9978;
+  fill: #ee9978 !important;
+  stroke: #ee9978 !important;
 }
 
 #state-map.police-department .highcharts-map-series path.highcharts-color-3:hover {
-  fill: #ffdd9a;
-  stroke: #ffdd9a;
+  fill: #ffdd9a !important;
+  stroke: #ffdd9a !important;
 }
 
 #state-map.police-department .highcharts-map-series path.highcharts-color-4:hover {
-  fill: #c9da98;
-  stroke: #c9da98;
+  fill: #c9da98 !important;
+  stroke: #c9da98 !important;
 }
 
 #state-map.police-department .highcharts-map-series path.highcharts-color-5:hover {
-  fill: #97d89a;
-  stroke: #97d89a;
+  fill: #97d89a !important;
+  stroke: #97d89a !important;
 }
 
 .buttons {
@@ -2960,16 +2960,48 @@ p.number-list.n15::after {
 
 #state-map {
   height: 100%;
-  width: auto;
+  width: 100%;
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 1;
 }
 
 #state-map.police-department svg.highcharts-root path.highcharts-point {
-  stroke: #F2F4F6;
-  stroke-width: 0;
+  stroke: #444;
+  stroke-width: 0.25px;
 }
 
 #state-map.police-department .highcharts-map-series path, #state-map.police-department .highcharts-map-series path.highcharts-color-1, #state-map.police-department .highcharts-map-series path.highcharts-color-2, #state-map.police-department .highcharts-map-series path.highcharts-color-3, #state-map.police-department .highcharts-map-series path.highcharts-color-4, #state-map.police-department .highcharts-map-series path.highcharts-color-5 {
   fill: #F2F4F6;
+}
+
+#state-map.sheriff svg.highcharts-root path.highcharts-point {
+  stroke: #444;
+  stroke-width: 0.25px;
+}
+
+#state-map.sheriff .highcharts-map-series path {
+  fill: #F2F4F6;
+}
+
+#state-map-shadow {
+  height: 100%;
+  width: 100%;
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 0;
+}
+
+#state-map-shadow.police-department svg.highcharts-root path.highcharts-point {
+  stroke: #AAA;
+  stroke-width: 3;
+}
+
+#state-map-shadow.sheriff svg.highcharts-root path.highcharts-point {
+  stroke: #AAA;
+  stroke-width: 3;
 }
 
 /* RESPONSIVE */

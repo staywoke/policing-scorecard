@@ -2204,50 +2204,50 @@ svg.highcharts-root {
   }
 
   &.highcharts-color-1:hover {
-    fill: $grade-red;
-    stroke: $grade-red;
+    fill: $grade-red !important;
+    stroke: $grade-red !important;
   }
   &.highcharts-color-2:hover {
-    fill: $grade-orange;
-    stroke: $grade-orange;
+    fill: $grade-orange !important;
+    stroke: $grade-orange !important;
   }
   &.highcharts-color-3:hover {
-    fill: $grade-yellow;
-    stroke: $grade-yellow;
+    fill: $grade-yellow !important;
+    stroke: $grade-yellow !important;
   }
   &.highcharts-color-4:hover {
-    fill: $grade-green;
-    stroke: $grade-green;
+    fill: $grade-green !important;
+    stroke: $grade-green !important;
   }
   &.highcharts-color-5:hover {
-    fill: $grade-light-green;
-    stroke: $grade-light-green;
+    fill: $grade-light-green !important;
+    stroke: $grade-light-green !important;
   }
 
   &.highcharts-color-1.active,
   &.highcharts-color-1.active:hover {
-    fill: $grade-red;
-    stroke: $grade-red;
+    fill: $grade-red !important;
+    stroke: $grade-red !important;
   }
   &.highcharts-color-2.active,
   &.highcharts-color-2.active:hover {
-    fill: $grade-orange;
-    stroke: $grade-orange;
+    fill: $grade-orange !important;
+    stroke: $grade-orange !important;
   }
   &.highcharts-color-3.active,
   &.highcharts-color-3.active:hover {
-    fill: $grade-yellow;
-    stroke: $grade-yellow;
+    fill: $grade-yellow !important;
+    stroke: $grade-yellow !important;
   }
   &.highcharts-color-4.active,
   &.highcharts-color-4.active:hover {
-    fill: $grade-green;
-    stroke: $grade-green;
+    fill: $grade-green !important;
+    stroke: $grade-green !important;
   }
   &.highcharts-color-5.active,
   &.highcharts-color-5.active:hover {
-    fill: $grade-light-green;
-    stroke: $grade-light-green;
+    fill: $grade-light-green !important;
+    stroke: $grade-light-green !important;
   }
 }
 
@@ -2263,24 +2263,24 @@ svg.highcharts-root {
     }
 
     &.highcharts-color-1:hover {
-      fill: $grade-red;
-      stroke: $grade-red;
+      fill: $grade-red !important;
+      stroke: $grade-red !important;
     }
     &.highcharts-color-2:hover {
-      fill: $grade-orange;
-      stroke: $grade-orange;
+      fill: $grade-orange !important;
+      stroke: $grade-orange !important;
     }
     &.highcharts-color-3:hover {
-      fill: $grade-yellow;
-      stroke: $grade-yellow;
+      fill: $grade-yellow !important;
+      stroke: $grade-yellow !important;
     }
     &.highcharts-color-4:hover {
-      fill: $grade-green;
-      stroke: $grade-green;
+      fill: $grade-green !important;
+      stroke: $grade-green !important;
     }
     &.highcharts-color-5:hover {
-      fill: $grade-light-green;
-      stroke: $grade-light-green;
+      fill: $grade-light-green !important;
+      stroke: $grade-light-green !important;
     }
   }
 }
@@ -2580,18 +2580,58 @@ p.number-list {
 
 #state-map {
   height: 100%;
-  width: auto;
+  width: 100%;
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 1;
 
   &.police-department {
     svg.highcharts-root path.highcharts-point {
-      stroke: #F2F4F6;
-      stroke-width: 0;
+      stroke: #444;
+      stroke-width: 0.25px;
     }
 
     .highcharts-map-series {
       path, path.highcharts-color-1, path.highcharts-color-2, path.highcharts-color-3, path.highcharts-color-4, path.highcharts-color-5 {
         fill: #F2F4F6;
       }
+    }
+  }
+
+  &.sheriff {
+    svg.highcharts-root path.highcharts-point {
+      stroke: #444;
+      stroke-width: 0.25px;
+    }
+
+    .highcharts-map-series {
+      path {
+        fill: #F2F4F6;
+      }
+    }
+  }
+}
+
+#state-map-shadow {
+  height: 100%;
+  width: 100%;
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 0;
+
+  &.police-department {
+    svg.highcharts-root path.highcharts-point {
+      stroke: #AAA;
+      stroke-width: 3;
+    }
+  }
+
+  &.sheriff {
+    svg.highcharts-root path.highcharts-point {
+      stroke: #AAA;
+      stroke-width: 3;
     }
   }
 }
