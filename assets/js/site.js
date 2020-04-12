@@ -231,7 +231,7 @@ var SCORECARD = (function () {
     var label = (window.location.search.indexOf('sheriff') !== -1) ? 'Sheriff\'s Department' : 'Police Department';
 
     if (SCORECARD_DATA) {
-      var class_a = (SCORECARD_DATA.report.percentile_less_lethal_force) ? 'key percent-' + report.percentile_less_lethal_force : 'incomplete';
+      var class_a = (SCORECARD_DATA.report.percentile_less_lethal_force) ? 'key percent-' + SCORECARD_DATA.report.percentile_less_lethal_force : 'incomplete';
       var class_b = (SCORECARD_DATA.report.percentile_killed_by_police) ? 'key percent-' + SCORECARD_DATA.report.percentile_killed_by_police : 'incomplete';
       var class_c = (SCORECARD_DATA.report.percentile_unarmed_killed_by_police) ? 'key percent-' + SCORECARD_DATA.report.percentile_unarmed_killed_by_police : 'incomplete';
       var class_d = (SCORECARD_DATA.report.percentile_overall_disparity_index) ? 'key percent-' + SCORECARD_DATA.report.percentile_overall_disparity_index : 'incomplete';
@@ -242,10 +242,9 @@ var SCORECARD = (function () {
       var class_i = (SCORECARD_DATA.report.percentile_jail_incarceration_per_1k_population) ? 'key percent-' + SCORECARD_DATA.report.percentile_jail_incarceration_per_1k_population : 'incomplete';
       var class_j = (SCORECARD_DATA.report.percentile_jail_deaths_per_1k_jail_population) ? 'key percent-' + SCORECARD_DATA.report.percentile_jail_deaths_per_1k_jail_population : 'incomplete';
 
-      var grade = SCORECARD_DATA.report.grade_letter;
       var html = '';
 
-      html += '<div class="modal-header"><div class="results-header"><strong style="position: relative; top: -2px;">' + SCORECARD_DATA.agency.name + ' ' + label + '</strong><br/>Grade:&nbsp; <strong class="grade grade-' + grade.replace(/[^A-Z]/, '').toLowerCase() + '">' + grade + '</strong> (' + SCORECARD_DATA.report.overall_score + ')</div><div class="keys"><span class="key key-bad"></span> WORSE <span class="key key-avg"></span> AVG <span class="key key-good"></span> BETTER</div></div>';
+      html += '<div class="modal-header"><div class="results-header"><strong style="position: relative; top: -2px;">' + SCORECARD_DATA.agency.name + ' ' + label + '</strong><br/>Grade:&nbsp; <strong class="grade grade-' + SCORECARD_DATA.report.grade_class + '">' + SCORECARD_DATA.report.grade_letter + '</strong> (' + SCORECARD_DATA.report.overall_score + ')</div><div class="keys"><span class="key key-bad"></span> WORSE <span class="key key-avg"></span> AVG <span class="key key-good"></span> BETTER</div></div>';
       html += '<div class="section-header no-border"><div class="label">&nbsp;</div><div class="percentile"><strong>PERCENTILE</strong></div></div>';
 
       html += '<div class="section-header"><div class="label">Police Violence:&nbsp; ' + SCORECARD_DATA.report.police_violence_score + '</div><div class="percentile">50TH</div></div>';
