@@ -469,7 +469,7 @@ var SCORECARD = (function () {
           width: 12,
           height: 12,
           fillColor: '',
-          symbol: 'url(assets/img/police-marker-f.svg)'
+          symbol: 'url(/assets/img/police-marker-f.svg)'
         },
         dataLabels: {
           formatter: function () {
@@ -502,7 +502,7 @@ var SCORECARD = (function () {
           width: 12,
           height: 12,
           fillColor: '',
-          symbol: 'url(assets/img/police-marker-d.svg)'
+          symbol: 'url(/assets/img/police-marker-d.svg)'
         },
         dataLabels: {
           formatter: function () {
@@ -535,7 +535,7 @@ var SCORECARD = (function () {
           width: 12,
           height: 12,
           fillColor: '',
-          symbol: 'url(assets/img/police-marker-c.svg)'
+          symbol: 'url(/assets/img/police-marker-c.svg)'
         },
         dataLabels: {
           formatter: function () {
@@ -568,7 +568,7 @@ var SCORECARD = (function () {
           width: 12,
           height: 12,
           fillColor: '',
-          symbol: 'url(assets/img/police-marker-b.svg)'
+          symbol: 'url(/assets/img/police-marker-b.svg)'
         },
         dataLabels: {
           formatter: function () {
@@ -600,7 +600,7 @@ var SCORECARD = (function () {
         marker: {
           width: 12,
           height: 12,
-          symbol: 'url(assets/img/police-marker-a.svg)'
+          symbol: 'url(/assets/img/police-marker-a.svg)'
         },
         dataLabels: {
           formatter: function () {
