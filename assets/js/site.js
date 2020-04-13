@@ -12,6 +12,7 @@ var SCORECARD = (function () {
   var scoreCard = document.getElementById('score-card');
   var $scoreLocation = document.getElementById('score-location');
   var $selectedCity = document.getElementsByClassName('selected-city');
+  var $selectedState = document.querySelector('#state-select a.active');
   var $showLess = document.getElementById('show-less');
   var $showMore = document.getElementById('show-more');
   var $moreInfo = document.getElementsByClassName('more-info');
@@ -19,6 +20,8 @@ var SCORECARD = (function () {
   var $resultsInfo = document.getElementsByClassName('results-info');
   var $resultsInfoContent = document.getElementById('results-info-content');
   var $citySelect = document.getElementById('city-select');
+  var $stateSelect = document.getElementById('state-select');
+  var $stateSelection = document.getElementById('state-selection');
   var $toggleAnimate = document.getElementById('toggle-animate');
   var $showPolice = document.getElementById('show-police');
   var $showSheriff = document.getElementById('show-sheriff');
@@ -54,6 +57,7 @@ var SCORECARD = (function () {
       $moreInfoContent.style.display = 'none';
       $resultsInfoContent.style.display = 'none';
       $citySelect.style.display = 'block';
+      $stateSelect.style.display = 'none';
       $modal.classList.toggle('open');
       $modal.classList.remove('large');
     });
@@ -62,6 +66,7 @@ var SCORECARD = (function () {
       $moreInfoContent.style.display = 'none';
       $resultsInfoContent.style.display = 'none';
       $citySelect.style.display = 'block';
+      $stateSelect.style.display = 'none';
       $modal.classList.toggle('open');
       $modal.classList.remove('large');
     });
@@ -100,10 +105,21 @@ var SCORECARD = (function () {
       e.stopImmediatePropagation();
     });
 
+    $stateSelection.addEventListener('click', function() {
+      $modalLabel.innerHTML = 'Select a State';
+      $modal.classList.toggle('open');
+      $modalTabs.style.display = 'none';
+      $citySelect.style.display = 'none';
+      $stateSelect.style.display = 'block';
+      $selectedState.scrollIntoView();
+    });
+
     $mapLayer.addEventListener('click', function() {
       $modalLabel.innerHTML = 'Select a Department';
       $modal.classList.toggle('open');
       $modalTabs.style.display = 'block';
+      $citySelect.style.display = 'block';
+      $stateSelect.style.display = 'none';
       $selectedCity[0].scrollIntoView();
     });
 
@@ -111,6 +127,8 @@ var SCORECARD = (function () {
       $modalLabel.innerHTML = 'Select a Department';
       $modal.classList.toggle('open');
       $modalTabs.style.display = 'block';
+      $citySelect.style.display = 'block';
+      $stateSelect.style.display = 'none';
       $selectedCity[0].scrollIntoView();
     });
 
@@ -185,6 +203,7 @@ var SCORECARD = (function () {
 
     if (info) {
       $citySelect.style.display = 'none';
+      $stateSelect.style.display = 'none';
       $moreInfoContent.style.display = 'block';
       $moreInfoContent.innerHTML = info.replace(/(?:\r\n|\r|\n)/g, '<br><br>');
       $modal.classList.toggle('open');
@@ -277,6 +296,7 @@ var SCORECARD = (function () {
       html += '<div class="button-wrapper"><a href="/about" class="button" target="_blank">Read Our Methodology</a></div>';
 
       $citySelect.style.display = 'none';
+      $stateSelect.style.display = 'none';
       $resultsInfoContent.style.display = 'block';
       $resultsInfoContent.innerHTML = html.replace(/(?:\r\n|\r|\n)/g, '<br><br>');
       $modal.classList.toggle('open');

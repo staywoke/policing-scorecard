@@ -11,12 +11,23 @@
       <div id="more-info-content"></div>
       <div id="results-info-content"></div>
       <ul id="city-select" class="<?= $type ?>">
-<?php foreach($stateData['police-department'] as $index => $department): ?>
+<?php usort($stateData['police-department'], function($a, $b) { return strcmp($a['agency_name'], $b['agency_name']); }); foreach($stateData['police-department'] as $index => $department): ?>
         <li class="police-department"><a href="<?= $isProd ? $department['url_pretty'] : $department['url'] ?>"<?= ($type === 'police-department' && $location === $department['slug']) ? ' class="selected-city"' : '' ?>><?= $department['agency_name'] ?> Police</a></li>
 <?php endforeach; ?>
-<?php foreach($stateData['sheriff'] as $index => $department): ?>
+<?php usort($stateData['sheriff'], function($a, $b) { return strcmp($a['agency_name'], $b['agency_name']); }); foreach($stateData['sheriff'] as $index => $department): ?>
         <li class="sheriff"><a href="<?= $isProd ? $department['url_pretty'] : $department['url'] ?>"<?= ($type === 'sheriff' && $location === $department['slug']) ? ' class="selected-city"' : '' ?>><?= $department['agency_name'] ?> Sheriff</a></li>
 <?php endforeach; ?>
+      </ul>
+
+      <ul id="state-select">
+      <?php
+        foreach ($states as $key => $departments) {
+          $link = generateStateLink($key, $isProd, $state);
+          if (!empty($link)) {
+            echo "<li>${link}</li>\n";
+          }
+        }
+      ?>
       </ul>
     </div>
   </div>

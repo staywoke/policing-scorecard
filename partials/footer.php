@@ -16,6 +16,91 @@
       <a href="https://paypal.me/campaignzero" class="donate" target="_blank">Donate</a>
     </div>
   </div>
+
+  <!-- State Selection -->
+  <div class="content bt state-list-footer">
+    <div class="one-fifth">
+      <?php
+        $stateCount = 0;
+        foreach ($states as $key => $departments) {
+          if ($stateCount < 10) {
+            $link = generateStateLink($key, $isProd, $state);
+            if (!empty($link)) {
+              echo $link;
+            }
+          }
+
+          $stateCount++;
+        }
+      ?>
+    </div>
+
+    <div class="one-fifth">
+      <?php
+        $stateCount = 0;
+        foreach ($states as $key => $departments) {
+          if ($stateCount >= 10 && $stateCount < 20) {
+            $link = generateStateLink($key, $isProd, $state);
+            if (!empty($link)) {
+              echo $link;
+            }
+          }
+
+          $stateCount++;
+        }
+      ?>
+    </div>
+
+    <div class="one-fifth">
+      <?php
+        $stateCount = 0;
+        foreach ($states as $key => $departments) {
+          if ($stateCount >= 20 && $stateCount < 30) {
+            $link = generateStateLink($key, $isProd, $state);
+            if (!empty($link)) {
+              echo $link;
+            }
+          }
+
+          $stateCount++;
+        }
+      ?>
+    </div>
+
+    <div class="one-fifth">
+      <?php
+        $stateCount = 0;
+        foreach ($states as $key => $departments) {
+          if ($stateCount >= 30 && $stateCount < 40) {
+            $link = generateStateLink($key, $isProd, $state);
+            if (!empty($link)) {
+              echo $link;
+            }
+          }
+
+          $stateCount++;
+        }
+      ?>
+    </div>
+
+    <div class="one-fifth">
+      <?php
+        $stateCount = 0;
+        foreach ($states as $key => $departments) {
+          if ($stateCount >= 40) {
+            $link = generateStateLink($key, $isProd, $state);
+            if (!empty($link)) {
+              echo $link;
+            }
+          }
+
+          $stateCount++;
+        }
+      ?>
+    </div>
+  </div>
+
+  <!-- Powered By -->
   <div class="content bt">
     This is a project of
     <a href="https://www.joincampaignzero.org/" class="title" target="_blank">Campaign Zero</a>

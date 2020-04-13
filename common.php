@@ -64,7 +64,10 @@ function fetchLocationScorecard($state, $type, $location) {
     exit();
   }
 
-  saveCache($url, $contents);
+  // If there was no cache, and fetched API content is valid, cache it
+  if (!$cache) {
+    saveCache($url, $contents);
+  }
 
   $data = json_decode($contents, true);
   if (!$data) {
@@ -100,7 +103,10 @@ function fetchStateData($state) {
     exit();
   }
 
-  saveCache($url, $contents);
+  // If there was no cache, and fetched API content is valid, cache it
+  if (!$cache) {
+    saveCache($url, $contents);
+  }
 
   $data = json_decode($contents, true);
   if (!$data) {
@@ -140,11 +146,48 @@ function fetchGrades($state, $type) {
     exit();
   }
 
-  saveCache($url, $contents);
+  // If there was no cache, and fetched API content is valid, cache it
+  if (!$cache) {
+    saveCache($url, $contents);
+  }
 
   $data = json_decode($contents, true);
   if (!$data) {
     throw new Exception("Invalid API JSON /scorecard/grades/{$state}/{$type}");
+    exit();
+  }
+
+  if (count($data['errors']) > 0) {
+    throw new Exception($data['errors'][0]);
+    exit();
+  }
+
+  return $data['data'];
+}
+
+function fetchStates() {
+  $url = API_BASE . "/scorecard/states?apikey=" . API_KEY;
+  $cache = isCached($url);
+
+  if ($cache) {
+    $contents = $cache;
+  } else {
+    $contents = @file_get_contents($url);
+  }
+
+  if (!$contents) {
+    throw new Exception("Unable to Load /scorecard/states");
+    exit();
+  }
+
+  // If there was no cache, and fetched API content is valid, cache it
+  if (!$cache) {
+    saveCache($url, $contents);
+  }
+
+  $data = json_decode($contents, true);
+  if (!$data) {
+    throw new Exception("Invalid API JSON /scorecard/states");
     exit();
   }
 
@@ -732,4 +775,72 @@ function getStateIcon($abbr) {
   );
 
   return $states[$abbr];
+}
+
+function getStateName($abbr) {
+  $states = array(
+    'AL' => 'Alabama',
+    'AK' => 'Alaska',
+    'AZ' => 'Arizona',
+    'AR' => 'Arkansas',
+    'CA' => 'California',
+    'CO' => 'Colorado',
+    'CT' => 'Connecticut',
+    'DE' => 'Delaware',
+    'DC' => 'District of Columbia',
+    'FL' => 'Florida',
+    'GA' => 'Georgia',
+    'HI' => 'Hawaii',
+    'ID' => 'Idaho',
+    'IL' => 'Illinois',
+    'IN' => 'Indiana',
+    'IA' => 'Iowa',
+    'KS' => 'Kansas',
+    'KY' => 'Kentucky',
+    'LA' => 'Louisiana',
+    'ME' => 'Maine',
+    'MD' => 'Maryland',
+    'MA' => 'Massachusetts',
+    'MI' => 'Michigan',
+    'MN' => 'Minnesota',
+    'MS' => 'Mississippi',
+    'MO' => 'Missouri',
+    'MT' => 'Montana',
+    'NE' => 'Nebraska',
+    'NV' => 'Nevada',
+    'NH' => 'New Hampshire',
+    'NJ' => 'New Jersey',
+    'NM' => 'New Mexico',
+    'NY' => 'New York',
+    'NC' => 'North Carolina',
+    'ND' => 'North Dakota',
+    'OH' => 'Ohio',
+    'OK' => 'Oklahoma',
+    'OR' => 'Oregon',
+    'PA' => 'Pennsylvania',
+    'RI' => 'Rhode Island',
+    'SC' => 'South Carolina',
+    'SD' => 'South Dakota',
+    'TN' => 'Tennessee',
+    'TX' => 'Texas',
+    'UT' => 'Utah',
+    'VT' => 'Vermont',
+    'VA' => 'Virginia',
+    'WA' => 'Washington',
+    'WV' => 'West Virginia',
+    'WI' => 'Wisconsin',
+    'WY' => 'Wyoming',
+  );
+
+  return $states[$abbr];
+}
+
+function generateStateLink($key, $isProd, $state) {
+  $stateName = getStateName($key);
+  $activeClass = ($key === strtoupper($state)) ? 'active' : '';
+  $stateCode = strtolower($key);
+
+  $url = $isProd ? "/${stateCode}" : "/?state=${stateCode}";
+
+  return "<a href=\"${url}\" class=\"state-link ${activeClass}\" title=\"View Report for ${stateName}'s Largest Police Department\">${stateName}</a>";
 }

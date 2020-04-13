@@ -200,10 +200,11 @@ body {
 }
 
 #modal-wrapper .modal #modal-content #city-select {
-  position: relative;
-  top: 14px;
-  max-height: calc(100% - 10px);
+  position: absolute;
+  top: 34px;
+  max-height: calc(100% - 50px);
   overflow: scroll;
+  width: calc(100% - 40px);
 }
 
 #modal-wrapper .modal #modal-content #city-select.sheriff li.police-department {
@@ -211,6 +212,15 @@ body {
 }
 
 #modal-wrapper .modal #modal-content #city-select.police-department li.sheriff {
+  display: none;
+}
+
+#modal-wrapper .modal #modal-content #state-select {
+  position: absolute;
+  top: 20px;
+  max-height: calc(100% - 40px);
+  overflow: scroll;
+  width: calc(100% - 40px);
   display: none;
 }
 
@@ -232,7 +242,7 @@ body {
   color: #464648;
 }
 
-#modal-wrapper .modal #modal-content ul li a.selected-city {
+#modal-wrapper .modal #modal-content ul li a.selected-city, #modal-wrapper .modal #modal-content ul li a.active {
   color: #82ADD7;
 }
 
@@ -1829,6 +1839,35 @@ body {
   top: 5px;
 }
 
+#state-selection {
+  text-align: center;
+  color: #82ADD7;
+  font-weight: 500;
+  height: 100px;
+  line-height: 100px;
+  font-size: 24px;
+  text-transform: uppercase;
+  font-style: italic;
+  font-family: 'Barlow Condensed', sans-serif;
+  text-decoration: none;
+  position: relative;
+}
+
+#state-selection::after {
+  content: '\0025E2';
+  font-size: 14px;
+  color: #626262;
+  position: absolute;
+  right: -60px;
+  top: -27px;
+  -webkit-transform: rotate(45deg);
+  transform: rotate(45deg);
+  display: block;
+  width: 20px;
+  height: 20px;
+  font-style: normal;
+}
+
 .selected-location .selected-location-label {
   color: white;
   display: inline-block;
@@ -3004,6 +3043,40 @@ p.number-list.n15::after {
   stroke-width: 3;
 }
 
+.section.footer .state-list-footer {
+  padding: 0 !important;
+}
+
+.section.footer .state-list-footer .one-fifth {
+  width: 19%;
+  display: inline-block;
+  vertical-align: top;
+  margin-top: 16px;
+  margin-bottom: 0;
+}
+
+.section.footer .state-list-footer .one-fifth a.state-link {
+  color: #FFF;
+  text-decoration: none;
+  font-weight: 300;
+  font-family: 'Barlow Condensed', sans-serif;
+  display: block;
+  line-height: 22px;
+  font-size: 16px;
+  text-align: left;
+  letter-spacing: normal;
+  text-transform: none;
+}
+
+.section.footer .state-list-footer .one-fifth a.state-link.active {
+  font-weight: 500;
+  text-decoration: underline;
+}
+
+.section.footer .state-list-footer .one-fifth a.state-link:hover {
+  text-decoration: underline;
+}
+
 /* RESPONSIVE */
 @media screen and (min-width: 940px) {
   .header .logo {
@@ -3204,6 +3277,9 @@ p.number-list.n15::after {
   }
   .section .content > div.right.v-center {
     vertical-align: middle;
+  }
+  .state-list-footer {
+    display: none;
   }
   .section.stats {
     padding: 20px 0 40px 0;

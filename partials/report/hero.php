@@ -1,7 +1,9 @@
 <div class="section bg-dotted current-state">
   <div class="content">
-    <span class="state-symbol"><?= getStateIcon($stateCode) ?></span>
-    <?= $stateName ?>
+    <a href="javascript:void(0);" id="state-selection">
+      <span class="state-symbol"><?= getStateIcon($stateCode) ?></span>
+      <?= $stateName ?>
+    </a>
   </div>
 </div>
 

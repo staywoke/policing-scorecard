@@ -7,6 +7,24 @@ $location = (!empty($_REQUEST['location'])) ? $_REQUEST['location'] : null;
 $ac = '?ac=' . getHash();
 $page = 'home';
 $isProd = (strpos($_SERVER['SERVER_NAME'], 'policescorecard.org'));
+$states = fetchStates();
+
+if (!empty($state) && empty($type) && empty($location)) {
+  $statePolice = $states[strtoupper($state)]['police-department'];
+  $stateSheriff = $states[strtoupper($state)]['sheriff'];
+
+  if (!empty($statePolice)) {
+    $type = 'police-department';
+    $location = $statePolice[0]['slug'];
+  } else if (!empty($stateSheriff)) {
+    $type = 'sheriff';
+    $location = $stateSheriff[0]['slug'];
+  }
+}
+
+if (!empty($state) && !empty($type) && empty($location)) {
+  $location = $states[strtoupper($state)][$type][0]['slug'];
+}
 
 if (!empty($state) && !empty($type) && !empty($location)) {
   // Fetch External Data
@@ -16,17 +34,15 @@ if (!empty($state) && !empty($type) && !empty($location)) {
 
   $page = 'report';
 
+  $agencyName = $scorecard['agency']['name'];
   $stateName = $scorecard['geo']['state']['name'];
   $stateCode = $scorecard['geo']['state']['abbr'];
-  $title = "{$stateName} Police Scorecard";
+  $title = "Police Scorecard: ${agencyName}, ${stateName}";
   $description = "Get the facts about police violence and accountability in {$stateName}. Evaluate each department and hold them accountable at policescorecard.org";
   $socialUrl = rawurlencode('https://policescorecard.org');
   $socialText = rawurlencode($description);
   $socialSubject = rawurlencode($title);
   $grade = $scorecard['report']['grade_letter'];
-
-  // A placeholder while we swap out static data with API, some props do not exist
-  $placeholder = array();
 }
 ?>
 <!doctype html>
@@ -100,7 +116,6 @@ if (!empty($state) && !empty($type) && !empty($location)) {
       window.dataLayer = window.dataLayer || [];
       function gtag(){dataLayer.push(arguments);}
       gtag('js', new Date());
-
       gtag('config', 'UA-141045547-1');
     </script>
   </body>

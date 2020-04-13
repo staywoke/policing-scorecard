@@ -187,10 +187,11 @@ body {
       overflow: hidden;
 
       #city-select {
-        position: relative;
-        top: 14px;
-        max-height: calc(100% - 10px);
+        position: absolute;
+        top: 34px;
+        max-height: calc(100% - 50px);
         overflow: scroll;
+        width: calc(100% - 40px);
 
         &.sheriff {
           li.police-department {
@@ -203,6 +204,15 @@ body {
             display: none;
           }
         }
+      }
+
+      #state-select {
+        position: absolute;
+        top: 20px;
+        max-height: calc(100% - 40px);
+        overflow: scroll;
+        width: calc(100% - 40px);
+        display: none;
       }
 
       #more-info-content {
@@ -221,7 +231,7 @@ body {
           display: block;
           color: $primary-gray;
 
-          &.selected-city {
+          &.selected-city, &.active {
             color: $primary-blue;
           }
         }
@@ -1422,6 +1432,35 @@ body {
   svg {
     position: relative;
     top: 5px;
+  }
+}
+
+#state-selection {
+  text-align: center;
+  color: #82ADD7;
+  font-weight: 500;
+  height: 100px;
+  line-height: 100px;
+  font-size: 24px;
+  text-transform: uppercase;
+  font-style: italic;
+  font-family: 'Barlow Condensed', sans-serif;
+  text-decoration: none;
+  position: relative;
+
+  &::after {
+    content: '\0025E2';
+    font-size: 14px;
+    color: #626262;
+    position: absolute;
+    right: -60px;
+    top: -27px;
+    -webkit-transform: rotate(45deg);
+    transform: rotate(45deg);
+    display: block;
+    width: 20px;
+    height: 20px;
+    font-style: normal;
   }
 }
 
@@ -2636,6 +2675,40 @@ p.number-list {
   }
 }
 
+.section.footer .state-list-footer {
+  padding: 0 !important;
+
+  .one-fifth {
+    width: 19%;
+    display: inline-block;
+    vertical-align: top;
+    margin-top: 16px;
+    margin-bottom: 0;
+
+    a.state-link {
+      color: #FFF;
+      text-decoration: none;
+      font-weight: 300;
+      font-family: 'Barlow Condensed', sans-serif;
+      display: block;
+      line-height: 22px;
+      font-size: 16px;
+      text-align: left;
+      letter-spacing: normal;
+      text-transform: none;
+
+      &.active {
+        font-weight: 500;
+        text-decoration: underline;
+      }
+
+      &:hover {
+        text-decoration: underline;
+      }
+    }
+  }
+}
+
 /* RESPONSIVE */
 @media screen and (min-width: $bp-max-width) {
   .header {
@@ -2897,6 +2970,9 @@ p.number-list {
         }
       }
     }
+  }
+  .state-list-footer {
+    display: none;
   }
   .section.stats {
     padding: 20px 0 40px 0;
