@@ -1518,7 +1518,7 @@ body {
 
     .map {
       width: 283px;
-      height: 340px;
+      height: 310px;
       margin: 20px 0;
       display: block;
       position: relative;
@@ -2724,6 +2724,18 @@ p.number-list {
 @media screen and (max-width: $bp-max-width) {
   .hide-mobile {
     display: none;
+  }
+
+  #state-selection {
+    top: -4px;
+    height: 60px;
+    line-height: 60px;
+    left: -16px;
+
+    &::after {
+      right: -45px;
+      top: -13px;
+    }
   }
 
   a.read-methodology {
