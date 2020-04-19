@@ -4,7 +4,7 @@
 
   <p>
     <?= num(round(intval(str_replace(',', '', $scorecard['report']['total_arrests'])) * (intval($scorecard['report']['percent_misdemeanor_arrests']) / 100))) ?>
-    Misdemeanor Arrests
+    Arrests for Low Level Offenses
     <span class="divider">&nbsp;|&nbsp;</span>
     <?= output($scorecard['report']['low_level_arrests_per_1k_population']) ?> per 1k residents
   </p>
@@ -18,6 +18,6 @@
   <div class="progress-bar-wrapper">
     <div class="progress-bar animate-bar <?= progressBar(100 - intval($scorecard['report']['percentile_low_level_arrests_per_1k_population']), 'reverse') ?>" data-percent="<?= output(100 - intval($scorecard['report']['percentile_low_level_arrests_per_1k_population']), 0, '%') ?>"></div>
   </div>
-  <p class="note">^&nbsp; Higher Misdemeanor Arrest Rate than <?= num($scorecard['report']['percentile_low_level_arrests_per_1k_population'], 0, '%', true) ?> of Depts &nbsp;&nbsp;</p>
+  <p class="note">^&nbsp; Higher Arrest Rate for Low Level Offenses than <?= num($scorecard['report']['percentile_low_level_arrests_per_1k_population'], 0, '%', true) ?> of Depts &nbsp;&nbsp;</p>
   <?php endif; ?>
 </div>

@@ -2,7 +2,7 @@
   <a href="javascript:void(0)" data-city="<?= $location ?>" data-more-info="" class="more-info"></a>
   <h3>Percent of total arrests by type</h3>
 
-  <p>All Misdemeanors ( <?= num($scorecard['report']['percent_misdemeanor_arrests'], 0, '%') ?> )</p>
+  <p>All Arrests for Low Level Offenses ( <?= num($scorecard['report']['percent_misdemeanor_arrests'], 0, '%') ?> )</p>
   <div class="progress-bar-wrapper">
     <div class="progress-bar animate-bar dark-grey" data-percent="<?= output(intval($scorecard['report']['percent_misdemeanor_arrests']), 0, '%') ?>"></div>
   </div>

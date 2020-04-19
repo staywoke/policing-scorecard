@@ -16,9 +16,6 @@
 
 <?php if (isset($scorecard['arrests']['arrests_2016']) && isset($scorecard['arrests']['arrests_2017']) && isset($scorecard['arrests']['arrests_2018'])): ?>
 <script>
-  function numberWithCommas(x) {
-    return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
-  }
   window.addEventListener('load', function() {
     var ctx = document.getElementById('bar-chart-arrests').getContext('2d');
     var arrestsData = <?= generateArrestChart($scorecard, $type); ?> ;
@@ -45,7 +42,7 @@
                 label += ': ';
               }
 
-              label += numberWithCommas(tooltipItem.yLabel);
+              label += SCORECARD.numberWithCommas(tooltipItem.yLabel);
 
               return label;
             }
@@ -70,7 +67,7 @@
               beginAtZero: true,
               maxTicksLimit: 2,
               callback: function(value, index, values) {
-                return (value === 0) ? '' : numberWithCommas(value);
+                return (value === 0) ? '' : SCORECARD.numberWithCommas(value);
               }
             }
           }]
@@ -84,27 +81,6 @@
 
 <?php if(isset($scorecard['police_violence']['police_shootings_2016']) && isset($scorecard['police_violence']['police_shootings_2017']) && isset($scorecard['police_violence']['police_shootings_2018'])): ?>
 <script>
-  function toggleHistory(show) {
-    var police = myBarHistory.getDatasetMeta(0);
-    var other = myBarHistory.getDatasetMeta(1);
-
-    var policeButton = document.querySelector('.history-key-police');
-    var otherButton = document.querySelector('.history-key-other');
-
-    if (show === 0) {
-      police.hidden = false;
-      other.hidden = true;
-    } else if (show === 1) {
-      police.hidden = true;
-      other.hidden = false;
-    }
-
-    policeButton.classList.toggle('active');
-    otherButton.classList.toggle('active');
-
-    myBarHistory.update();
-  }
-
   window.addEventListener('load', function() {
     var ctx = document.getElementById('bar-chart-history').getContext('2d');
     var historyChartData = <?= generateHistoryChart($scorecard, $type); ?> ;
@@ -160,21 +136,6 @@
 
 <?php if(isset($scorecard['report']['percentile_police_spending']) || isset($scorecard['report']['hispanic_murder_unsolved_rate']) || isset($scorecard['report']['white_murder_unsolved_rate'])): ?>
 <script>
-  function nFormatter(num) {
-    num = parseInt(num);
-
-    if (num === 0) {
-      return '$0';
-    }
-
-    var units = ["k", "M", "B", "T"];
-    var order = Math.floor(Math.log(num) / Math.log(1000));
-    var unitname = units[(order - 1)];
-
-    // output number remainder + unitname
-    return '$' + parseFloat(num / 1000 ** order).toFixed(2) + unitname;
-  }
-
   window.addEventListener('load', function() {
     var barChartData = <?= generateBarChart($scorecard, $type); ?> ;
 
@@ -199,7 +160,7 @@
                 label += ': ';
               }
 
-              label += nFormatter(tooltipItem.yLabel);
+              label += SCORECARD.nFormatter(tooltipItem.yLabel);
 
               return label;
             }
@@ -229,7 +190,7 @@
               beginAtZero: true,
               maxTicksLimit: 2,
               callback: function(value, index, values) {
-                return (value === 0) ? '' : nFormatter(value);
+                return (value === 0) ? '' : SCORECARD.nFormatter(value);
               }
             }
           }]

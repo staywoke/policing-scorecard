@@ -1505,6 +1505,14 @@ body {
   }
 }
 
+#state-map-layer, #usa-map-layer {
+  width: 100%;
+  height: 400px;
+  margin: 20px 0;
+  display: block;
+  position: relative;
+}
+
 .section.hero {
   .clear {
     height: 0;
@@ -2609,7 +2617,7 @@ p.number-list {
   }
 
   &.n14::after {
-    content: '15';
+    content: '14';
   }
 
   &.n15::after {
@@ -2617,7 +2625,7 @@ p.number-list {
   }
 }
 
-#state-map {
+#state-map, #usa-map {
   height: 100%;
   width: 100%;
   position: absolute;
@@ -2632,8 +2640,8 @@ p.number-list {
     }
 
     .highcharts-map-series {
-      path, path.highcharts-color-1, path.highcharts-color-2, path.highcharts-color-3, path.highcharts-color-4, path.highcharts-color-5 {
-        fill: #F2F4F6;
+      path.highcharts-color-1, path.highcharts-color-2, path.highcharts-color-3, path.highcharts-color-4, path.highcharts-color-5 {
+        fill: #f7f7f7;
       }
     }
   }
@@ -2643,16 +2651,10 @@ p.number-list {
       stroke: #444;
       stroke-width: 0.25px;
     }
-
-    .highcharts-map-series {
-      path {
-        fill: #F2F4F6;
-      }
-    }
   }
 }
 
-#state-map-shadow {
+#state-map-shadow, #usa-map-shadow {
   height: 100%;
   width: 100%;
   position: absolute;
@@ -2709,6 +2711,10 @@ p.number-list {
   }
 }
 
+.text-center {
+  text-align: center;
+}
+
 /* RESPONSIVE */
 @media screen and (min-width: $bp-max-width) {
   .header {
@@ -2724,6 +2730,11 @@ p.number-list {
 @media screen and (max-width: $bp-max-width) {
   .hide-mobile {
     display: none;
+  }
+
+  #usa-map-layer {
+    max-width: 90%;
+    height: 300px;
   }
 
   #state-selection {

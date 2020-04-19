@@ -505,6 +505,51 @@ function getMapData($state, $type) {
   return ($type === 'police-department') ? json_encode($map_scores, JSON_PRETTY_PRINT) : json_encode($map_data, JSON_PRETTY_PRINT);
 }
 
+function getNationalMapData($states, $type) {
+  $map_data = array();
+  $map_scores = array(
+    array(),
+    array(),
+    array(),
+    array(),
+    array()
+  );
+
+  foreach ($states as $index => $state) {
+    if ($type === 'police-department' && !empty($state['police-department'])) {
+      foreach ($state['police-department'] as $department) {
+        if (!empty($department['latitude']) && !empty($department['longitude'])) {
+          $index = getColorIndex($department['overall_score']);
+          $map_scores[$index-1][] = array(
+            'className' => 'location-' . $department['slug'],
+            'colorIndex' => getColorIndex($department['overall_score']),
+            'name' => $department['agency_name'],
+            'lat' => $department['latitude'],
+            'lon' => $department['longitude'],
+            'value' => $department['overall_score']
+          );
+        }
+      }
+    }
+
+    if ($type === 'sheriff' && !empty($state['sheriff'])) {
+      foreach ($state['sheriff'] as $department) {
+        if (!empty($department['district'])) {
+          $map_data[] = array(
+            'className' => 'location-' . $department['slug'],
+            'colorIndex' => getColorIndex($department['overall_score']),
+            'name' => $department['agency_name'],
+            'hc-key' => $department['district'],
+            'value' => $department['overall_score']
+          );
+        }
+      }
+    }
+  }
+
+  return ($type === 'police-department') ? json_encode($map_scores, JSON_PRETTY_PRINT) : json_encode($map_data, JSON_PRETTY_PRINT);
+}
+
 /**
  * Return Percent Score to Letter Grade
  * @param  {String} $score Percent Score

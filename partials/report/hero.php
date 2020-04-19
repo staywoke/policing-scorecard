@@ -12,13 +12,13 @@
     <div class="right">
       <h1>We evaluated the police in <?= $stateName ?>.</h1>
       <h2>Read the <a href="/findings" style="color: #82add7; text-decoration: underline; font-weight: 500;">Findings.</a> See the Grade for Each Department.</h2>
-        <div class="buttons">
+      <div class="buttons">
         <a href="<?= $isProd ? $stateData['police-department'][0]['url_pretty'] : $stateData['police-department'][0]['url'] ?>" class="btn <?= $type === 'police-department' ? 'active' : '' ?>">Police Depts</a>
         <a href="<?= $isProd ? $stateData['sheriff'][0]['url_pretty'] : $stateData['sheriff'][0]['url'] ?>" class="btn <?= $type === 'sheriff' ? 'active' : '' ?>">Sheriffs Depts</a>
       </div>
     </div>
     <div class="left">
-      <div class="map" id="map-layer">
+      <div class="map" id="state-map-layer">
         <svg style="position: absolute; left: -10000px; top: -10000px;">
           <defs>
             <filter id="drop-shadow">

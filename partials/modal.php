@@ -10,6 +10,7 @@
       <div id="modal-label">Select Department</div>
       <div id="more-info-content"></div>
       <div id="results-info-content"></div>
+<?php if ($stateData): ?>
       <ul id="city-select" class="<?= $type ?>">
 <?php usort($stateData['police-department'], function($a, $b) { return strcmp($a['agency_name'], $b['agency_name']); }); foreach($stateData['police-department'] as $index => $department): ?>
         <li class="police-department"><a href="<?= $isProd ? $department['url_pretty'] : $department['url'] ?>"<?= ($type === 'police-department' && $location === $department['slug']) ? ' class="selected-city"' : '' ?>><?= $department['agency_name'] ?> Police</a></li>
@@ -18,6 +19,7 @@
         <li class="sheriff"><a href="<?= $isProd ? $department['url_pretty'] : $department['url'] ?>"<?= ($type === 'sheriff' && $location === $department['slug']) ? ' class="selected-city"' : '' ?>><?= $department['agency_name'] ?> Sheriff</a></li>
 <?php endforeach; ?>
       </ul>
+<?php endif; ?>
 
       <ul id="state-select">
       <?php

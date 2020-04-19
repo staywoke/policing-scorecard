@@ -9,7 +9,7 @@ $page = 'home';
 $isProd = (strpos($_SERVER['SERVER_NAME'], 'policescorecard.org'));
 $states = fetchStates();
 
-if (!empty($state) && empty($type) && empty($location)) {
+if (!empty($state) && $state !== 'us' && empty($type) && empty($location)) {
   $statePolice = $states[strtoupper($state)]['police-department'];
   $stateSheriff = $states[strtoupper($state)]['sheriff'];
 
@@ -22,11 +22,11 @@ if (!empty($state) && empty($type) && empty($location)) {
   }
 }
 
-if (!empty($state) && !empty($type) && empty($location)) {
+if (!empty($state) && $state !== 'us' && !empty($type) && empty($location)) {
   $location = $states[strtoupper($state)][$type][0]['slug'];
 }
 
-if (!empty($state) && !empty($type) && !empty($location)) {
+if (!empty($state) && $state !== 'us' && !empty($type) && !empty($location)) {
   // Fetch External Data
   $reportCard = fetchGrades($state, $type);
   $scorecard = fetchLocationScorecard($state, $type, $location);
@@ -43,6 +43,24 @@ if (!empty($state) && !empty($type) && !empty($location)) {
   $socialText = rawurlencode($description);
   $socialSubject = rawurlencode($title);
   $grade = $scorecard['report']['grade_letter'];
+}
+
+// Set Defaults if we made it this far
+if (empty($state)) {
+  $state = 'us';
+}
+
+if (empty($type)) {
+  $type = 'police-department';
+}
+
+if ($state === 'us') {
+  $page = 'home';
+  $title = "Police Scorecard";
+  $description = "Get the facts about police violence and accountability. Evaluate each department and hold them accountable at policescorecard.org";
+  $socialUrl = rawurlencode('https://policescorecard.org');
+  $socialText = rawurlencode($description);
+  $socialSubject = rawurlencode($title);
 }
 ?>
 <!doctype html>

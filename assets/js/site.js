@@ -1,6 +1,6 @@
 var SCORECARD_MAP;
 var SCORECARD = (function () {
-  var $mapLayer = document.getElementById('map-layer');
+  var $stateMapLayer = document.getElementById('state-map-layer');
   var $menu = document.getElementById('menu');
   var $menuToggle = document.getElementById('mobile-toggle');
   var $modal = document.getElementById('modal-wrapper');
@@ -25,6 +25,10 @@ var SCORECARD = (function () {
   var $toggleAnimate = document.getElementById('toggle-animate');
   var $showPolice = document.getElementById('show-police');
   var $showSheriff = document.getElementById('show-sheriff');
+  var $stateMap = document.getElementById('state-map');
+  var $stateMapShadow = document.getElementById('state-map-shadow');
+  var $usaMap = document.getElementById('usa-map');
+  var $usaMapShadow = document.getElementById('usa-map-shadow');
 
   // Handle Mouse Clicks for Map
   var leftMouseClicked = false;
@@ -56,19 +60,25 @@ var SCORECARD = (function () {
     $modalClose.addEventListener('click', function() {
       $moreInfoContent.style.display = 'none';
       $resultsInfoContent.style.display = 'none';
-      $citySelect.style.display = 'block';
       $stateSelect.style.display = 'none';
       $modal.classList.toggle('open');
       $modal.classList.remove('large');
+
+      if ($citySelect) {
+        $citySelect.style.display = 'block';
+      }
     });
 
     $modalOverlay.addEventListener('click', function() {
       $moreInfoContent.style.display = 'none';
       $resultsInfoContent.style.display = 'none';
-      $citySelect.style.display = 'block';
       $stateSelect.style.display = 'none';
       $modal.classList.toggle('open');
       $modal.classList.remove('large');
+
+      if ($citySelect) {
+        $citySelect.style.display = 'block';
+      }
     });
 
     $modalOverlay.addEventListener('mousewheel', function(e) {
@@ -104,42 +114,71 @@ var SCORECARD = (function () {
       e.stopPropagation();
       e.stopImmediatePropagation();
     });
+  }
 
-    $stateSelection.addEventListener('click', function() {
-      $modalLabel.innerHTML = 'Select a State';
-      $modal.classList.toggle('open');
-      $modalTabs.style.display = 'none';
+  if ($stateSelection) {}
+  $stateSelection.addEventListener('click', function() {
+    $modalLabel.innerHTML = 'Select a State';
+    $modal.classList.toggle('open');
+    $modalTabs.style.display = 'none';
+    $stateSelect.style.display = 'block';
+
+    if ($citySelect) {
       $citySelect.style.display = 'none';
-      $stateSelect.style.display = 'block';
-      $selectedState.scrollIntoView();
-    });
+    }
 
-    $mapLayer.addEventListener('click', function() {
+    if ($selectedState) {
+      $selectedState.scrollIntoView();
+    }
+  });
+
+  if ($stateMapLayer) {
+    $stateMapLayer.addEventListener('click', function() {
       $modalLabel.innerHTML = 'Select a Department';
       $modal.classList.toggle('open');
       $modalTabs.style.display = 'block';
-      $citySelect.style.display = 'block';
       $stateSelect.style.display = 'none';
-      $selectedCity[0].scrollIntoView();
-    });
 
+      if ($citySelect) {
+        $citySelect.style.display = 'block';
+      }
+
+      if ($selectedCity) {
+        $selectedCity[0].scrollIntoView();
+      }
+    });
+  }
+
+  if ($scoreLocation) {
     $scoreLocation.addEventListener('click', function() {
       $modalLabel.innerHTML = 'Select a Department';
       $modal.classList.toggle('open');
       $modalTabs.style.display = 'block';
-      $citySelect.style.display = 'block';
       $stateSelect.style.display = 'none';
-      $selectedCity[0].scrollIntoView();
-    });
 
+      if ($citySelect) {
+        $citySelect.style.display = 'block';
+      }
+
+      if ($selectedCity) {
+        $selectedCity[0].scrollIntoView();
+      }
+    });
+  }
+
+  if ($showLess) {
     $showLess.addEventListener('click', function() {
       scoreCard.classList.toggle('short');
     });
+  }
 
+  if ($showMore) {
     $showMore.addEventListener('click', function() {
       scoreCard.classList.toggle('short');
     });
+  }
 
+  if ($showPolice) {
     $showPolice.addEventListener('click', function() {
       $showPolice.classList.add('active');
       $showSheriff.classList.remove('active');
@@ -149,7 +188,9 @@ var SCORECARD = (function () {
 
       $citySelect.scrollTop = 0;
     });
+  }
 
+  if ($showSheriff) {
     $showSheriff.addEventListener('click', function() {
       $showSheriff.classList.add('active');
       $showPolice.classList.remove('active');
@@ -304,6 +345,34 @@ var SCORECARD = (function () {
     }
   }
 
+  function animateMarker(current, size, step) {
+    var maxSize = 44;
+    var minSize = 30;
+    var newStep = step;
+    var stepSize = 1;
+    var direction = (step === 0 || step === 2 || step === 4) ? 'up' : 'down';
+
+    if (direction === 'up' && size === maxSize) {
+      direction = 'down';
+      newStep++;
+    } else if (direction === 'down' && size === minSize) {
+      direction = 'up';
+      newStep++;
+    }
+
+    if (newStep === 6) {
+      return;
+    }
+
+    var newSize = (direction === 'up') ? (size + stepSize) : (size - stepSize)
+
+    current.update({ marker: { width: newSize, height: newSize }});
+
+    window.requestAnimationFrame(function () {
+      animateMarker(current, newSize, newStep);
+    });
+  }
+
   function getGrade(score) {
     score = parseInt(score);
 
@@ -338,381 +407,395 @@ var SCORECARD = (function () {
 
   function loadMap(abbr){
     // Create the chart
-    window.SCORECARD_MAP = Highcharts.mapChart('state-map', {
-      chart: {
-        animation: false,
-        backgroundColor: 'transparent',
-        borderWidth: 0,
-        margin: 0,
-        zoomType: false,
-        styleMode: true
-      },
-      title: {
-        text: '',
-        style: {
-          display: 'none'
-        }
-      },
-      legend: {
-        enabled: false
-      },
-      mapNavigation: {
-        enabled: false
-      },
-      tooltip: {
-        followPointer: false,
-        borderColor: '#444444',
-        formatter: function () {
-          var city = this.point.name;
-          var score = this.point.value;
-          var percent = Math.round(parseFloat(score));
-          var newTooltip = this.series.name + '<br /><strong>' + city + '</strong><br />Grade: ' + getGrade(score) + ' ( ' + percent + '% )';
-
-          return newTooltip;
-        }
-      },
-      plotOptions: {
-        map: {
+    if ($stateMap && $stateMapShadow) {
+      window.SCORECARD_MAP = Highcharts.mapChart('state-map', {
+        chart: {
           animation: false,
-          allAreas: false,
-          mapData: Highcharts.maps['countries/us/us-' + abbr.toLowerCase() + '-all'],
+          backgroundColor: 'transparent',
+          borderWidth: 0,
+          margin: 0,
+          zoomType: false,
+          styleMode: true
         },
-        series: {
-          animation: false,
-          clip: false
-        }
-      },
-      series: [
-        {
-          animation: false,
-          allAreas: true,
-          showInLegend: true
-        }
-      ]
-    });
-
-    // Add Map Shadow
-    Highcharts.mapChart('state-map-shadow', {
-      chart: {
-        animation: false,
-        backgroundColor: 'transparent',
-        borderWidth: 0,
-        margin: 0,
-        zoomType: false,
-        styleMode: true
-      },
-      title: {
-        text: '',
-        style: {
-          display: 'none'
-        }
-      },
-      legend: {
-        enabled: false
-      },
-      mapNavigation: {
-        enabled: false
-      },
-      plotOptions: {
-        map: {
-          animation: false,
-          allAreas: false,
-          mapData: Highcharts.maps['countries/us/us-' + abbr.toLowerCase() + '-all'],
-        },
-        series: {
-          animation: false,
-          shadow: false,
-          clip: false
-        }
-      },
-      series: [
-        {
-          animation: false,
-          allAreas: true,
-          showInLegend: true
-        }
-      ]
-    });
-
-    if (map_data && map_data.selected && map_data.selected.type === 'sheriff') {
-      window.SCORECARD_MAP.addSeries({
-        animation: false,
-        data: map_data.sheriff,
-        name: 'Sheriff Department',
-        events: {
-          click: function (e) {
-            if (e.point && typeof e.point.className !== 'undefined') {
-              var loc = e.point.className.replace('location-', '');
-              var url = '/?state=' + SCORECARD_STATE + '&type=' + map_data.selected.type + '&location=' + loc;
-              var prettyUrl = '/' + SCORECARD_STATE + '/' + map_data.selected.type + '/' + loc;
-
-              if (loc && leftMouseClicked) {
-                window.location = (SCORECARD_ENV === 'production') ? prettyUrl : url;
-                e.preventDefault();
-                e.stopImmediatePropagation();
-              }
-            }
-          }
-        }
-      })
-    }
-
-    if (map_data && map_data.city && map_data.selected && map_data.selected.type === 'police-department') {
-      window.SCORECARD_MAP.addSeries({
-        animation: false,
-        data: map_data.sheriff,
-        name: 'Police Department',
-        events: {
-          click: function (e) {
-            if (e.point && typeof e.point.className !== 'undefined') {
-              var loc = e.point.className.replace('location-', '');
-              var url = '/?state=' + SCORECARD_STATE + '&type=' + map_data.selected.type + '&location=' + loc;
-              var prettyUrl = '/' + SCORECARD_STATE + '/' + map_data.selected.type + '/' + loc;
-
-              if (loc && leftMouseClicked) {
-                window.location = (SCORECARD_ENV === 'production') ? prettyUrl : url;
-                e.preventDefault();
-                e.stopImmediatePropagation();
-              }
-            }
-          }
-        }
-      })
-
-      window.SCORECARD_MAP.addSeries({
-        animation: false,
-        type: 'mappoint',
-        name: 'Police Department',
-        data: map_data.city[0],
-        marker: {
-          width: 12,
-          height: 12,
-          fillColor: '',
-          symbol: 'url(/assets/img/police-marker-f.svg)'
-        },
-        dataLabels: {
-          formatter: function () {
-            return '';
-          }
-        },
-        events: {
-          click: function (e) {
-            if (e.point && typeof e.point.className !== 'undefined') {
-              var loc = e.point.className.replace('location-', '');
-              var url = '/?state=' + SCORECARD_STATE + '&type=' + map_data.selected.type + '&location=' + loc;
-              var prettyUrl = '/' + SCORECARD_STATE + '/' + map_data.selected.type + '/' + loc;
-
-              if (loc && leftMouseClicked) {
-                window.location = (SCORECARD_ENV === 'production') ? prettyUrl : url;
-                e.preventDefault();
-                e.stopImmediatePropagation();
-              }
-            }
-          }
-        }
-      });
-
-      window.SCORECARD_MAP.addSeries({
-        animation: false,
-        type: 'mappoint',
-        name: 'Police Department',
-        data: map_data.city[1],
-        marker: {
-          width: 12,
-          height: 12,
-          fillColor: '',
-          symbol: 'url(/assets/img/police-marker-d.svg)'
-        },
-        dataLabels: {
-          formatter: function () {
-            return '';
-          }
-        },
-        events: {
-          click: function (e) {
-            if (e.point && typeof e.point.className !== 'undefined') {
-              var loc = e.point.className.replace('location-', '');
-              var url = '/?state=' + SCORECARD_STATE + '&type=' + map_data.selected.type + '&location=' + loc;
-              var prettyUrl = '/' + SCORECARD_STATE + '/' + map_data.selected.type + '/' + loc;
-
-              if (loc && leftMouseClicked) {
-                window.location = (SCORECARD_ENV === 'production') ? prettyUrl : url;
-                e.preventDefault();
-                e.stopImmediatePropagation();
-              }
-            }
-          }
-        }
-      });
-
-      window.SCORECARD_MAP.addSeries({
-        animation: false,
-        type: 'mappoint',
-        name: 'Police Department',
-        data: map_data.city[2],
-        marker: {
-          width: 12,
-          height: 12,
-          fillColor: '',
-          symbol: 'url(/assets/img/police-marker-c.svg)'
-        },
-        dataLabels: {
-          formatter: function () {
-            return '';
-          }
-        },
-        events: {
-          click: function (e) {
-            if (e.point && typeof e.point.className !== 'undefined') {
-              var loc = e.point.className.replace('location-', '');
-              var url = '/?state=' + SCORECARD_STATE + '&type=' + map_data.selected.type + '&location=' + loc;
-              var prettyUrl = '/' + SCORECARD_STATE + '/' + map_data.selected.type + '/' + loc;
-
-              if (loc && leftMouseClicked) {
-                window.location = (SCORECARD_ENV === 'production') ? prettyUrl : url;
-                e.preventDefault();
-                e.stopImmediatePropagation();
-              }
-            }
-          }
-        }
-      });
-
-      window.SCORECARD_MAP.addSeries({
-        animation: false,
-        type: 'mappoint',
-        name: 'Police Department',
-        data: map_data.city[3],
-        marker: {
-          width: 12,
-          height: 12,
-          fillColor: '',
-          symbol: 'url(/assets/img/police-marker-b.svg)'
-        },
-        dataLabels: {
-          formatter: function () {
-            return '';
-          }
-        },
-        events: {
-          click: function (e) {
-            if (e.point && typeof e.point.className !== 'undefined') {
-              var loc = e.point.className.replace('location-', '');
-              var url = '/?state=' + SCORECARD_STATE + '&type=' + map_data.selected.type + '&location=' + loc;
-              var prettyUrl = '/' + SCORECARD_STATE + '/' + map_data.selected.type + '/' + loc;
-
-              if (loc && leftMouseClicked) {
-                window.location = (SCORECARD_ENV === 'production') ? prettyUrl : url;
-                e.preventDefault();
-                e.stopImmediatePropagation();
-              }
-            }
-          }
-        }
-      });
-
-      window.SCORECARD_MAP.addSeries({
-        animation: false,
-        type: 'mappoint',
-        name: 'Police Department',
-        data: map_data.city[4],
-        marker: {
-          width: 12,
-          height: 12,
-          symbol: 'url(/assets/img/police-marker-a.svg)'
-        },
-        dataLabels: {
-          formatter: function () {
-            return '';
-          }
-        },
-        events: {
-          click: function (e) {
-            if (e.point && typeof e.point.className !== 'undefined') {
-              var loc = e.point.className.replace('location-', '');
-              var url = '/?state=' + SCORECARD_STATE + '&type=' + map_data.selected.type + '&location=' + loc;
-              var prettyUrl = '/' + SCORECARD_STATE + '/' + map_data.selected.type + '/' + loc;
-
-              if (loc && leftMouseClicked) {
-                window.location = (SCORECARD_ENV === 'production') ? prettyUrl : url;
-                e.preventDefault();
-                e.stopImmediatePropagation();
-              }
-            }
-          }
-        }
-      });
-
-      window.SCORECARD_MAP.addSeries({
-        id: 'current',
-        type: 'mappoint',
-        name: map_data.selected.name,
-        data: map_data.selected.data,
-        marker: {
-          width: 30,
-          height: 30,
-          symbol: map_data.selected.icon
-        },
-        dataLabels: {
+        title: {
+          text: '',
           style: {
-            fontSize: '24px',
-          },
-          x: 100,
-          y: 100,
-          formatter: function () {
-            return map_data.selected.name;
+            display: 'none'
           }
-        }
-      }, true);
+        },
+        legend: {
+          enabled: false
+        },
+        mapNavigation: {
+          enabled: false
+        },
+        tooltip: {
+          followPointer: false,
+          borderColor: '#444444',
+          formatter: function () {
+            var city = this.point.name;
+            var score = this.point.value;
+            var percent = Math.round(parseFloat(score));
+            var newTooltip = this.series.name + '<br /><strong>' + city + '</strong><br />Grade: ' + getGrade(score) + ' ( ' + percent + '% )';
 
-      var current = window.SCORECARD_MAP.get('current');
+            return newTooltip;
+          }
+        },
+        plotOptions: {
+          map: {
+            animation: false,
+            allAreas: false,
+            mapData: Highcharts.maps['countries/us/us-' + abbr.toLowerCase() + '-all'],
+          },
+          series: {
+            animation: false,
+            clip: false
+          }
+        },
+        series: [
+          {
+            animation: false,
+            allAreas: true,
+            showInLegend: true
+          }
+        ]
+      });
 
-      function animateMarker(current, size, step) {
-        var maxSize = 44;
-        var minSize = 30;
-        var newStep = step;
-        var stepSize = 1;
-        var direction = (step === 0 || step === 2 || step === 4) ? 'up' : 'down';
+      // Add Map Shadow
+      Highcharts.mapChart('state-map-shadow', {
+        chart: {
+          animation: false,
+          backgroundColor: 'transparent',
+          borderWidth: 0,
+          margin: 0,
+          zoomType: false,
+          styleMode: true
+        },
+        title: {
+          text: '',
+          style: {
+            display: 'none'
+          }
+        },
+        legend: {
+          enabled: false
+        },
+        mapNavigation: {
+          enabled: false
+        },
+        plotOptions: {
+          map: {
+            animation: false,
+            allAreas: false,
+            mapData: Highcharts.maps['countries/us/us-' + abbr.toLowerCase() + '-all'],
+          },
+          series: {
+            animation: false,
+            shadow: false,
+            clip: false
+          }
+        },
+        series: [
+          {
+            animation: false,
+            allAreas: true,
+            showInLegend: true
+          }
+        ]
+      });
 
-        if (direction === 'up' && size === maxSize) {
-          direction = 'down';
-          newStep++;
-        } else if (direction === 'down' && size === minSize) {
-          direction = 'up';
-          newStep++;
-        }
+      if (map_data && map_data.selected && map_data.selected.type === 'sheriff') {
+        window.SCORECARD_MAP.addSeries({
+          animation: false,
+          data: map_data.sheriff,
+          name: 'Sheriff Department',
+          events: {
+            click: function (e) {
+              if (e.point && typeof e.point.className !== 'undefined') {
+                var loc = e.point.className.replace('location-', '');
+                var url = '/?state=' + SCORECARD_STATE + '&type=' + map_data.selected.type + '&location=' + loc;
+                var prettyUrl = '/' + SCORECARD_STATE + '/' + map_data.selected.type + '/' + loc;
 
-        if (newStep === 6) {
-          return;
-        }
-
-        var newSize = (direction === 'up') ? (size + stepSize) : (size - stepSize)
-
-        current.update({ marker: { width: newSize, height: newSize }});
-
-        window.requestAnimationFrame(function () {
-          animateMarker(current, newSize, newStep);
-        });
+                if (loc && leftMouseClicked) {
+                  window.location = (SCORECARD_ENV === 'production') ? prettyUrl : url;
+                  e.preventDefault();
+                  e.stopImmediatePropagation();
+                }
+              }
+            }
+          }
+        })
       }
 
-      setTimeout(function(){
-        animateMarker(current, 30, 0);
-      }, 250);
+      if (map_data && map_data.city && map_data.selected && map_data.selected.type === 'police-department') {
+        window.SCORECARD_MAP.addSeries({
+          animation: false,
+          data: map_data.sheriff,
+          name: 'Police Department',
+          events: {
+            click: function (e) {
+              if (e.point && typeof e.point.className !== 'undefined') {
+                var loc = e.point.className.replace('location-', '');
+                var url = '/?state=' + SCORECARD_STATE + '&type=' + map_data.selected.type + '&location=' + loc;
+                var prettyUrl = '/' + SCORECARD_STATE + '/' + map_data.selected.type + '/' + loc;
+
+                if (loc && leftMouseClicked) {
+                  window.location = (SCORECARD_ENV === 'production') ? prettyUrl : url;
+                  e.preventDefault();
+                  e.stopImmediatePropagation();
+                }
+              }
+            }
+          }
+        })
+
+        window.SCORECARD_MAP.addSeries({
+          animation: false,
+          type: 'mappoint',
+          name: 'Police Department',
+          data: map_data.city[0],
+          marker: {
+            width: 12,
+            height: 12,
+            fillColor: '',
+            symbol: 'url(/assets/img/police-marker-f.svg)'
+          },
+          dataLabels: {
+            formatter: function () {
+              return '';
+            }
+          },
+          events: {
+            click: function (e) {
+              if (e.point && typeof e.point.className !== 'undefined') {
+                var loc = e.point.className.replace('location-', '');
+                var url = '/?state=' + SCORECARD_STATE + '&type=' + map_data.selected.type + '&location=' + loc;
+                var prettyUrl = '/' + SCORECARD_STATE + '/' + map_data.selected.type + '/' + loc;
+
+                if (loc && leftMouseClicked) {
+                  window.location = (SCORECARD_ENV === 'production') ? prettyUrl : url;
+                  e.preventDefault();
+                  e.stopImmediatePropagation();
+                }
+              }
+            }
+          }
+        });
+
+        window.SCORECARD_MAP.addSeries({
+          animation: false,
+          type: 'mappoint',
+          name: 'Police Department',
+          data: map_data.city[1],
+          marker: {
+            width: 12,
+            height: 12,
+            fillColor: '',
+            symbol: 'url(/assets/img/police-marker-d.svg)'
+          },
+          dataLabels: {
+            formatter: function () {
+              return '';
+            }
+          },
+          events: {
+            click: function (e) {
+              if (e.point && typeof e.point.className !== 'undefined') {
+                var loc = e.point.className.replace('location-', '');
+                var url = '/?state=' + SCORECARD_STATE + '&type=' + map_data.selected.type + '&location=' + loc;
+                var prettyUrl = '/' + SCORECARD_STATE + '/' + map_data.selected.type + '/' + loc;
+
+                if (loc && leftMouseClicked) {
+                  window.location = (SCORECARD_ENV === 'production') ? prettyUrl : url;
+                  e.preventDefault();
+                  e.stopImmediatePropagation();
+                }
+              }
+            }
+          }
+        });
+
+        window.SCORECARD_MAP.addSeries({
+          animation: false,
+          type: 'mappoint',
+          name: 'Police Department',
+          data: map_data.city[2],
+          marker: {
+            width: 12,
+            height: 12,
+            fillColor: '',
+            symbol: 'url(/assets/img/police-marker-c.svg)'
+          },
+          dataLabels: {
+            formatter: function () {
+              return '';
+            }
+          },
+          events: {
+            click: function (e) {
+              if (e.point && typeof e.point.className !== 'undefined') {
+                var loc = e.point.className.replace('location-', '');
+                var url = '/?state=' + SCORECARD_STATE + '&type=' + map_data.selected.type + '&location=' + loc;
+                var prettyUrl = '/' + SCORECARD_STATE + '/' + map_data.selected.type + '/' + loc;
+
+                if (loc && leftMouseClicked) {
+                  window.location = (SCORECARD_ENV === 'production') ? prettyUrl : url;
+                  e.preventDefault();
+                  e.stopImmediatePropagation();
+                }
+              }
+            }
+          }
+        });
+
+        window.SCORECARD_MAP.addSeries({
+          animation: false,
+          type: 'mappoint',
+          name: 'Police Department',
+          data: map_data.city[3],
+          marker: {
+            width: 12,
+            height: 12,
+            fillColor: '',
+            symbol: 'url(/assets/img/police-marker-b.svg)'
+          },
+          dataLabels: {
+            formatter: function () {
+              return '';
+            }
+          },
+          events: {
+            click: function (e) {
+              if (e.point && typeof e.point.className !== 'undefined') {
+                var loc = e.point.className.replace('location-', '');
+                var url = '/?state=' + SCORECARD_STATE + '&type=' + map_data.selected.type + '&location=' + loc;
+                var prettyUrl = '/' + SCORECARD_STATE + '/' + map_data.selected.type + '/' + loc;
+
+                if (loc && leftMouseClicked) {
+                  window.location = (SCORECARD_ENV === 'production') ? prettyUrl : url;
+                  e.preventDefault();
+                  e.stopImmediatePropagation();
+                }
+              }
+            }
+          }
+        });
+
+        window.SCORECARD_MAP.addSeries({
+          animation: false,
+          type: 'mappoint',
+          name: 'Police Department',
+          data: map_data.city[4],
+          marker: {
+            width: 12,
+            height: 12,
+            symbol: 'url(/assets/img/police-marker-a.svg)'
+          },
+          dataLabels: {
+            formatter: function () {
+              return '';
+            }
+          },
+          events: {
+            click: function (e) {
+              if (e.point && typeof e.point.className !== 'undefined') {
+                var loc = e.point.className.replace('location-', '');
+                var url = '/?state=' + SCORECARD_STATE + '&type=' + map_data.selected.type + '&location=' + loc;
+                var prettyUrl = '/' + SCORECARD_STATE + '/' + map_data.selected.type + '/' + loc;
+
+                if (loc && leftMouseClicked) {
+                  window.location = (SCORECARD_ENV === 'production') ? prettyUrl : url;
+                  e.preventDefault();
+                  e.stopImmediatePropagation();
+                }
+              }
+            }
+          }
+        });
+
+        window.SCORECARD_MAP.addSeries({
+          id: 'current',
+          type: 'mappoint',
+          name: map_data.selected.name,
+          data: map_data.selected.data,
+          marker: {
+            width: 30,
+            height: 30,
+            symbol: map_data.selected.icon
+          },
+          dataLabels: {
+            style: {
+              fontSize: '24px',
+            },
+            x: 100,
+            y: 100,
+            formatter: function () {
+              return map_data.selected.name;
+            }
+          }
+        }, true);
+
+        var current = window.SCORECARD_MAP.get('current');
+
+        setTimeout(function(){
+          animateMarker(current, 30, 0);
+        }, 250);
+      }
+
+      var type = $stateMap.classList[0];
+      var loc = $stateMap.classList[1];
+      var elm;
+
+      if (loc && type === 'police-department') {
+        elm = document.querySelector('.highcharts-mappoint-series .location-' + loc)
+      } else if (loc && type === 'sheriff') {
+        elm = document.querySelector('.highcharts-map-series .location-' + loc);
+      }
+
+      if (elm) {
+        elm.classList.add('active')
+      }
+    }
+  }
+
+  function numberWithCommas(x) {
+    return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+  }
+
+  function nFormatter(num) {
+    num = parseInt(num);
+
+    if (num === 0) {
+      return '$0';
     }
 
-    var type = document.getElementById('state-map').classList[0];
-    var loc = document.getElementById('state-map').classList[1];
-    var elm;
+    var units = ["k", "M", "B", "T"];
+    var order = Math.floor(Math.log(num) / Math.log(1000));
+    var unitname = units[(order - 1)];
 
-    if (loc && type === 'police-department') {
-      elm = document.querySelector('.highcharts-mappoint-series .location-' + loc)
-    } else if (loc && type === 'sheriff') {
-      elm = document.querySelector('.highcharts-map-series .location-' + loc);
+    // output number remainder + unitname
+    return '$' + parseFloat(num / 1000 ** order).toFixed(2) + unitname;
+  }
+
+  function toggleHistory(show) {
+    var police = myBarHistory.getDatasetMeta(0);
+    var other = myBarHistory.getDatasetMeta(1);
+
+    var policeButton = document.querySelector('.history-key-police');
+    var otherButton = document.querySelector('.history-key-other');
+
+    if (show === 0) {
+      police.hidden = false;
+      other.hidden = true;
+    } else if (show === 1) {
+      police.hidden = true;
+      other.hidden = false;
     }
 
-    if (elm) {
-      elm.classList.add('active')
-    }
+    policeButton.classList.toggle('active');
+    otherButton.classList.toggle('active');
+
+    myBarHistory.update();
   }
 
   // Click Event for More Info
@@ -750,7 +833,11 @@ var SCORECARD = (function () {
 
   return {
     animate: animate,
+    getGrade: getGrade,
     loadMap: loadMap,
-    loadResultsInfo: loadResultsInfo
+    loadResultsInfo: loadResultsInfo,
+    toggleHistory: toggleHistory,
+    nFormatter: nFormatter,
+    numberWithCommas: numberWithCommas
   }
 })();
