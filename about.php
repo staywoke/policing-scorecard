@@ -1,7 +1,7 @@
 <?php
 require('common.php');
-
-$ac = '?ac=' . getHash();
+$isProd = (strpos($_SERVER['SERVER_NAME'], 'policescorecard.org'));
+$ac = '?ac=' . getHash($isProd);
 ?>
 <!doctype html>
 <html lang="en">
