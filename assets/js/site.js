@@ -1,6 +1,7 @@
 var SCORECARD_MAP;
 var SCORECARD = (function () {
   var $stateMapLayer = document.getElementById('state-map-layer');
+  var $usaMapLayer = document.getElementById('usa-map-layer');
   var $menu = document.getElementById('menu');
   var $menuToggle = document.getElementById('mobile-toggle');
   var $modal = document.getElementById('modal-wrapper');
@@ -31,19 +32,19 @@ var SCORECARD = (function () {
   var $usaMapShadow = document.getElementById('usa-map-shadow');
 
   // Handle Mouse Clicks for Map
-  var leftMouseClicked = false;
+  window.leftMouseClicked = false;
 
   // Support Mouse Interaction with Mouse Pointer ( Touch events would not work on this map due to close proximity of markers )
   document.body.onmousedown = function(e) {
     if (!e) { return; }
 
     // Track if we have a left mouse key down
-    leftMouseClicked = (typeof e.buttons === 'undefined') ? e.which === 1 : e.buttons === 1;
+    window.leftMouseClicked = (typeof e.buttons === 'undefined') ? e.which === 1 : e.buttons === 1;
   };
 
   // Clear Mouse Down, but leave it on long enough for Map click event to check it's value
   document.body.onmouseup = function(){ setTimeout(function(){
-    leftMouseClicked = false;
+    window.leftMouseClicked = false;
   }, 100) };
 
   // Debounce Scroll Animations
@@ -145,6 +146,23 @@ var SCORECARD = (function () {
 
       if ($selectedCity) {
         $selectedCity[0].scrollIntoView();
+      }
+    });
+  }
+
+  if ($usaMapLayer) {
+    $usaMapLayer.addEventListener('click', function() {
+      $modalLabel.innerHTML = 'Select a State';
+      $modal.classList.toggle('open');
+      $modalTabs.style.display = 'none';
+      $stateSelect.style.display = 'block';
+
+      if ($citySelect) {
+        $citySelect.style.display = 'none';
+      }
+
+      if ($selectedState) {
+        $selectedState.scrollIntoView();
       }
     });
   }
@@ -516,7 +534,7 @@ var SCORECARD = (function () {
                 var url = '/?state=' + SCORECARD_STATE + '&type=' + map_data.selected.type + '&location=' + loc;
                 var prettyUrl = '/' + SCORECARD_STATE + '/' + map_data.selected.type + '/' + loc;
 
-                if (loc && leftMouseClicked) {
+                if (loc && window.leftMouseClicked) {
                   window.location = (SCORECARD_ENV === 'production') ? prettyUrl : url;
                   e.preventDefault();
                   e.stopImmediatePropagation();
@@ -539,7 +557,7 @@ var SCORECARD = (function () {
                 var url = '/?state=' + SCORECARD_STATE + '&type=' + map_data.selected.type + '&location=' + loc;
                 var prettyUrl = '/' + SCORECARD_STATE + '/' + map_data.selected.type + '/' + loc;
 
-                if (loc && leftMouseClicked) {
+                if (loc && window.leftMouseClicked) {
                   window.location = (SCORECARD_ENV === 'production') ? prettyUrl : url;
                   e.preventDefault();
                   e.stopImmediatePropagation();
@@ -572,7 +590,7 @@ var SCORECARD = (function () {
                 var url = '/?state=' + SCORECARD_STATE + '&type=' + map_data.selected.type + '&location=' + loc;
                 var prettyUrl = '/' + SCORECARD_STATE + '/' + map_data.selected.type + '/' + loc;
 
-                if (loc && leftMouseClicked) {
+                if (loc && window.leftMouseClicked) {
                   window.location = (SCORECARD_ENV === 'production') ? prettyUrl : url;
                   e.preventDefault();
                   e.stopImmediatePropagation();
@@ -605,7 +623,7 @@ var SCORECARD = (function () {
                 var url = '/?state=' + SCORECARD_STATE + '&type=' + map_data.selected.type + '&location=' + loc;
                 var prettyUrl = '/' + SCORECARD_STATE + '/' + map_data.selected.type + '/' + loc;
 
-                if (loc && leftMouseClicked) {
+                if (loc && window.leftMouseClicked) {
                   window.location = (SCORECARD_ENV === 'production') ? prettyUrl : url;
                   e.preventDefault();
                   e.stopImmediatePropagation();
@@ -638,7 +656,7 @@ var SCORECARD = (function () {
                 var url = '/?state=' + SCORECARD_STATE + '&type=' + map_data.selected.type + '&location=' + loc;
                 var prettyUrl = '/' + SCORECARD_STATE + '/' + map_data.selected.type + '/' + loc;
 
-                if (loc && leftMouseClicked) {
+                if (loc && window.leftMouseClicked) {
                   window.location = (SCORECARD_ENV === 'production') ? prettyUrl : url;
                   e.preventDefault();
                   e.stopImmediatePropagation();
@@ -671,7 +689,7 @@ var SCORECARD = (function () {
                 var url = '/?state=' + SCORECARD_STATE + '&type=' + map_data.selected.type + '&location=' + loc;
                 var prettyUrl = '/' + SCORECARD_STATE + '/' + map_data.selected.type + '/' + loc;
 
-                if (loc && leftMouseClicked) {
+                if (loc && window.leftMouseClicked) {
                   window.location = (SCORECARD_ENV === 'production') ? prettyUrl : url;
                   e.preventDefault();
                   e.stopImmediatePropagation();
@@ -703,7 +721,7 @@ var SCORECARD = (function () {
                 var url = '/?state=' + SCORECARD_STATE + '&type=' + map_data.selected.type + '&location=' + loc;
                 var prettyUrl = '/' + SCORECARD_STATE + '/' + map_data.selected.type + '/' + loc;
 
-                if (loc && leftMouseClicked) {
+                if (loc && window.leftMouseClicked) {
                   window.location = (SCORECARD_ENV === 'production') ? prettyUrl : url;
                   e.preventDefault();
                   e.stopImmediatePropagation();

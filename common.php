@@ -505,6 +505,86 @@ function getMapData($state, $type) {
   return ($type === 'police-department') ? json_encode($map_scores, JSON_PRETTY_PRINT) : json_encode($map_data, JSON_PRETTY_PRINT);
 }
 
+function getNationalGrades($states, $type) {
+  $data = array();
+
+  foreach ($states as $abbr => $state) {
+    if ($type === 'police-department' && !empty($state['police-department'])) {
+      foreach ($state['police-department'] as $department) {
+        $data[] = array(
+          'agency_name' => $department['agency_name'] . ', ' . $abbr,
+          'grade_class' => $department['grade_class'],
+          'grade_letter' => $department['grade_letter'],
+          'overall_score' => $department['overall_score'],
+          'url_pretty' => $department['url_pretty'],
+          'url' => $department['url']
+        );
+      }
+    }
+
+    if ($type === 'sheriff' && !empty($state['sheriff'])) {
+      foreach ($state['sheriff'] as $department) {
+        $data[] = array(
+          'agency_name' => $department['agency_name'] . ', ' . $abbr,
+          'grade_class' => $department['grade_class'],
+          'grade_letter' => $department['grade_letter'],
+          'overall_score' => $department['overall_score'],
+          'url_pretty' => $department['url_pretty'],
+          'url' => $department['url']
+        );
+      }
+    }
+  }
+
+  usort($data, function($a, $b) { return $a['overall_score'] < $b['overall_score']; });
+
+  return $data;
+}
+
+function getNationalSummary($states) {
+  $total_arrests = 0;
+  $total_complaints_reported = 0;
+  $total_complaints_sustained = 0;
+  $total_people_killed = 0;
+
+  $total_black_people_killed = 0;
+  $total_black_population = 0;
+  $total_hispanic_people_killed = 0;
+  $total_hispanic_population = 0;
+  $total_white_people_killed = 0;
+  $total_white_population = 0;
+
+  $total_low_level_arrests = 0;
+  $total_violent_crime_arrests = 0;
+
+  foreach ($states as $abbr => $state) {
+    $total_arrests += $state['total_arrests'];
+    $total_complaints_reported += $state['total_complaints_reported'];
+    $total_complaints_sustained += $state['total_complaints_sustained'];
+    $total_people_killed += $state['total_people_killed'];
+
+    $total_black_people_killed += $state['total_black_people_killed'];
+    $total_black_population += $state['total_black_population'];
+    $total_hispanic_people_killed += $state['total_hispanic_people_killed'];
+    $total_hispanic_population += $state['total_hispanic_population'];
+    $total_white_people_killed += $state['total_white_people_killed'];
+    $total_white_population += $state['total_white_population'];
+
+    $total_low_level_arrests += $state['total_low_level_arrests'];
+    $total_violent_crime_arrests += $state['total_violent_crime_arrests'];
+  }
+
+  return array(
+    'total_arrests' => $total_arrests,
+    'total_complaints_reported' => $total_complaints_reported,
+    'total_complaints_sustained' => $total_complaints_sustained,
+    'total_people_killed' => $total_people_killed,
+    'black_deadly_force_disparity_per_population' => (($total_black_people_killed / $total_black_population) / ($total_white_people_killed / $total_white_population)),
+    'hispanic_deadly_force_disparity_per_population' => (($total_hispanic_people_killed / $total_hispanic_population) / ($total_white_people_killed / $total_white_population)),
+    'times_more_misdemeanor_arrests_than_violent_crime' => ($total_low_level_arrests / $total_violent_crime_arrests)
+  );
+}
+
 function getNationalMapData($states, $type) {
   $map_data = array();
   $map_scores = array(
@@ -515,7 +595,7 @@ function getNationalMapData($states, $type) {
     array()
   );
 
-  foreach ($states as $index => $state) {
+  foreach ($states as $abbr => $state) {
     if ($type === 'police-department' && !empty($state['police-department'])) {
       foreach ($state['police-department'] as $department) {
         if (!empty($department['latitude']) && !empty($department['longitude'])) {
@@ -526,6 +606,7 @@ function getNationalMapData($states, $type) {
             'name' => $department['agency_name'],
             'lat' => $department['latitude'],
             'lon' => $department['longitude'],
+            'stateAbbr' => strtolower($abbr),
             'value' => $department['overall_score']
           );
         }
@@ -540,6 +621,7 @@ function getNationalMapData($states, $type) {
             'colorIndex' => getColorIndex($department['overall_score']),
             'name' => $department['agency_name'],
             'hc-key' => $department['district'],
+            'stateAbbr' => strtolower($abbr),
             'value' => $department['overall_score']
           );
         }

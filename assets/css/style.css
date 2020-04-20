@@ -2438,7 +2438,7 @@ body {
   font-weight: 600;
 }
 
-.section.next .step span.completed {
+.section.next .step span.completed, .section.next .step span.in-progress {
   display: inline-block;
   color: white;
   font-size: 12px;
@@ -2450,6 +2450,10 @@ body {
   top: -6px;
   margin-left: 6px;
   font-weight: 500;
+}
+
+.section.next .step span.in-progress {
+  background: #f19b77;
 }
 
 .section.next .step-1 h2 {
@@ -3496,7 +3500,7 @@ p.number-list.n15::after {
   .section.next .step > div {
     padding-top: 20px;
   }
-  .section.next .step span.completed {
+  .section.next .step span.completed, .section.next .step span.in-progress {
     top: -3px;
   }
   .section.next h1.title {

@@ -4,6 +4,8 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.8.0/Chart.js"></script>
 
 <script>
+var SCORECARD_ENV = '<?= $isProd ? 'production' : 'development' ?>';
+
 var map_type = '<?= $type ?>';
 var map_data = <?= getNationalMapData($states, $type) ?>;
 
@@ -16,6 +18,14 @@ window.addEventListener('load', function() {
       margin: 0,
       zoomType: false,
       styleMode: true
+    },
+    loading: {
+      labelStyle: {
+        color: 'black'
+      },
+      style: {
+        backgroundColor: 'white'
+      }
     },
     title: {
       text: '',
@@ -121,10 +131,10 @@ window.addEventListener('load', function() {
         click: function (e) {
           if (e.point && typeof e.point.className !== 'undefined') {
             var loc = e.point.className.replace('location-', '');
-            var url = '/?state=' + SCORECARD_STATE + '&type=' + map_type + '&location=' + loc;
-            var prettyUrl = '/' + SCORECARD_STATE + '/' + map_type + '/' + loc;
+            var url = '/?state=' + e.point.stateAbbr + '&type=' + map_type + '&location=' + loc;
+            var prettyUrl = '/' + e.point.stateAbbr + '/' + map_type + '/' + loc;
 
-            if (loc && leftMouseClicked) {
+            if (loc && window.leftMouseClicked) {
               window.location = (SCORECARD_ENV === 'production') ? prettyUrl : url;
               e.preventDefault();
               e.stopImmediatePropagation();
@@ -154,10 +164,10 @@ window.addEventListener('load', function() {
         click: function (e) {
           if (e.point && typeof e.point.className !== 'undefined') {
             var loc = e.point.className.replace('location-', '');
-            var url = '/?state=' + SCORECARD_STATE + '&type=' + map_type + '&location=' + loc;
-            var prettyUrl = '/' + SCORECARD_STATE + '/' + map_type + '/' + loc;
+            var url = '/?state=' + e.point.stateAbbr + '&type=' + map_type + '&location=' + loc;
+            var prettyUrl = '/' + e.point.stateAbbr + '/' + map_type + '/' + loc;
 
-            if (loc && leftMouseClicked) {
+            if (loc && window.leftMouseClicked) {
               window.location = (SCORECARD_ENV === 'production') ? prettyUrl : url;
               e.preventDefault();
               e.stopImmediatePropagation();
@@ -187,10 +197,10 @@ window.addEventListener('load', function() {
         click: function (e) {
           if (e.point && typeof e.point.className !== 'undefined') {
             var loc = e.point.className.replace('location-', '');
-            var url = '/?state=' + SCORECARD_STATE + '&type=' + map_type + '&location=' + loc;
-            var prettyUrl = '/' + SCORECARD_STATE + '/' + map_type + '/' + loc;
+            var url = '/?state=' + e.point.stateAbbr + '&type=' + map_type + '&location=' + loc;
+            var prettyUrl = '/' + e.point.stateAbbr + '/' + map_type + '/' + loc;
 
-            if (loc && leftMouseClicked) {
+            if (loc && window.leftMouseClicked) {
               window.location = (SCORECARD_ENV === 'production') ? prettyUrl : url;
               e.preventDefault();
               e.stopImmediatePropagation();
@@ -220,10 +230,10 @@ window.addEventListener('load', function() {
         click: function (e) {
           if (e.point && typeof e.point.className !== 'undefined') {
             var loc = e.point.className.replace('location-', '');
-            var url = '/?state=' + SCORECARD_STATE + '&type=' + map_type + '&location=' + loc;
-            var prettyUrl = '/' + SCORECARD_STATE + '/' + map_type + '/' + loc;
+            var url = '/?state=' + e.point.stateAbbr + '&type=' + map_type + '&location=' + loc;
+            var prettyUrl = '/' + e.point.stateAbbr + '/' + map_type + '/' + loc;
 
-            if (loc && leftMouseClicked) {
+            if (loc && window.leftMouseClicked) {
               window.location = (SCORECARD_ENV === 'production') ? prettyUrl : url;
               e.preventDefault();
               e.stopImmediatePropagation();
@@ -252,10 +262,10 @@ window.addEventListener('load', function() {
         click: function (e) {
           if (e.point && typeof e.point.className !== 'undefined') {
             var loc = e.point.className.replace('location-', '');
-            var url = '/?state=' + SCORECARD_STATE + '&type=' + map_type + '&location=' + loc;
-            var prettyUrl = '/' + SCORECARD_STATE + '/' + map_type + '/' + loc;
+            var url = '/?state=' + e.point.stateAbbr + '&type=' + map_type + '&location=' + loc;
+            var prettyUrl = '/' + e.point.stateAbbr + '/' + map_type + '/' + loc;
 
-            if (loc && leftMouseClicked) {
+            if (loc && window.leftMouseClicked) {
               window.location = (SCORECARD_ENV === 'production') ? prettyUrl : url;
               e.preventDefault();
               e.stopImmediatePropagation();
@@ -273,10 +283,10 @@ window.addEventListener('load', function() {
             click: function (e) {
               if (e.point && typeof e.point.className !== 'undefined') {
                 var loc = e.point.className.replace('location-', '');
-                var url = '/?state=' + SCORECARD_STATE + '&type=' + map_type + '&location=' + loc;
-                var prettyUrl = '/' + SCORECARD_STATE + '/' + map_type + '/' + loc;
+                var url = '/?state=' + e.point.stateAbbr + '&type=' + map_type + '&location=' + loc;
+                var prettyUrl = '/' + e.point.stateAbbr + '/' + map_type + '/' + loc;
 
-                if (loc && leftMouseClicked) {
+                if (loc && window.leftMouseClicked) {
                   window.location = (SCORECARD_ENV === 'production') ? prettyUrl : url;
                   e.preventDefault();
                   e.stopImmediatePropagation();

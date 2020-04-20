@@ -2040,7 +2040,7 @@ body {
       font-weight: 600;
     }
 
-    span.completed {
+    span.completed, span.in-progress {
       display: inline-block;
       color: white;
       font-size: 12px;
@@ -2052,6 +2052,10 @@ body {
       top: -6px;
       margin-left: 6px;
       font-weight: 500;
+    }
+
+    span.in-progress {
+      background: #f19b77;
     }
   }
 
@@ -3238,7 +3242,7 @@ p.number-list {
         padding-top: 20px;
       }
 
-      span.completed {
+      span.completed, span.in-progress {
         top: -3px;
       }
     }

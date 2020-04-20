@@ -7,7 +7,7 @@
   </div>
 </div>
 
-<div class="section hero">
+<div class="section hero pad">
   <div class="content">
     <div class="map" id="usa-map-layer">
       <svg style="position: absolute; left: -10000px; top: -10000px;">
