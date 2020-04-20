@@ -1551,7 +1551,8 @@ body {
     display: inline-block;
     text-align: center;
     float: right;
-
+  }
+  .right {
     h1 {
       font-size: 34px;
       font-weight: 400;
@@ -1566,6 +1567,25 @@ body {
       color: $primary-gray;
       font-style: italic;
       margin-bottom: 36px;
+    }
+  }
+  .header-intro {
+    text-align: center;
+
+    h1 {
+      font-size: 28px;
+      font-weight: 400;
+      color: $primary-gray;
+      margin-top: 40px;
+      padding: 18px 0;
+    }
+    h2 {
+      font-family: 'Barlow Condensed', sans-serif;
+      font-size: 28px;
+      font-weight: 500;
+      color: $primary-gray;
+      font-style: italic;
+      margin-bottom: 60px;
     }
   }
   &.sandiego {
@@ -3063,15 +3083,19 @@ p.number-list {
       width: 100% !important;
       display: block;
     }
-    .right {
+    .right, .header-intro {
+      padding: 0 40px;
+
       h1 {
         font-size: $font-large;
         margin-top: 20px;
         padding: 10px 0;
+        line-height: 24px;
       }
       h2 {
         font-size: $font-paragraph;
         margin-bottom: 24px;
+        line-height: 18px;
       }
     }
   }

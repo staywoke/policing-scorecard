@@ -505,6 +505,22 @@ function getMapData($state, $type) {
   return ($type === 'police-department') ? json_encode($map_scores, JSON_PRETTY_PRINT) : json_encode($map_data, JSON_PRETTY_PRINT);
 }
 
+function getNationalTotal($states) {
+  $total = 0;
+
+  foreach ($states as $abbr => $state) {
+    if (!empty($state['police-department'])) {
+      $total += count($state['police-department']);
+    }
+
+    if (!empty($state['sheriff'])) {
+      $total += count($state['sheriff']);
+    }
+  }
+
+  return num($total);
+}
+
 function getNationalGrades($states, $type) {
   $data = array();
 

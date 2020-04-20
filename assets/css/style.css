@@ -1974,6 +1974,27 @@ body {
   margin-bottom: 36px;
 }
 
+.section.hero .header-intro {
+  text-align: center;
+}
+
+.section.hero .header-intro h1 {
+  font-size: 28px;
+  font-weight: 400;
+  color: #464648;
+  margin-top: 40px;
+  padding: 18px 0;
+}
+
+.section.hero .header-intro h2 {
+  font-family: 'Barlow Condensed', sans-serif;
+  font-size: 28px;
+  font-weight: 500;
+  color: #464648;
+  font-style: italic;
+  margin-bottom: 60px;
+}
+
 .section.hero.sandiego {
   background: url(../img/sandiego.jpg) center center no-repeat;
   background-size: cover;
@@ -3364,14 +3385,19 @@ p.number-list.n15::after {
     width: 100% !important;
     display: block;
   }
-  .section.hero .right h1 {
+  .section.hero .right, .section.hero .header-intro {
+    padding: 0 40px;
+  }
+  .section.hero .right h1, .section.hero .header-intro h1 {
     font-size: 18px;
     margin-top: 20px;
     padding: 10px 0;
+    line-height: 24px;
   }
-  .section.hero .right h2 {
+  .section.hero .right h2, .section.hero .header-intro h2 {
     font-size: 16px;
     margin-bottom: 24px;
+    line-height: 18px;
   }
   .section.score .left, .section.score .right {
     width: 49% !important;
