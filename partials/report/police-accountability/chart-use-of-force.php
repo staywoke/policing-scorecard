@@ -4,7 +4,7 @@
   <h3>Use of Force Complaints</h3>
 
   <?php if (output($scorecard['police_accountability']['use_of_force_complaints_reported']) === '0' || output($scorecard['report']['percent_use_of_force_complaints_sustained']) === '0'): ?>
-  <p>0 Complaints Reported | 0% Ruled in Favor of Civilians</p>
+  <p>0 Complaints Reported &nbsp;|&nbsp; 0% Ruled in Favor of Civilians</p>
   <div class="progress-bar-wrapper">
     <div class="progress-bar bright-green" style="width: 0"></div>
   </div>
