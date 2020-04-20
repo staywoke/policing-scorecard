@@ -433,7 +433,12 @@ var SCORECARD = (function () {
           borderWidth: 0,
           margin: 0,
           zoomType: false,
-          styleMode: true
+          styleMode: true,
+          events: {
+            load: function () {
+              document.getElementById('map-loading').style.display = 'none';
+            }
+          }
         },
         title: {
           text: '',

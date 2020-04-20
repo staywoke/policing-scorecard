@@ -17,14 +17,11 @@ window.addEventListener('load', function() {
       borderWidth: 0,
       margin: 0,
       zoomType: false,
-      styleMode: true
-    },
-    loading: {
-      labelStyle: {
-        color: 'black'
-      },
-      style: {
-        backgroundColor: 'white'
+      styleMode: true,
+      events: {
+        load: function () {
+          document.getElementById('map-loading').style.display = 'none';
+        }
       }
     },
     title: {
@@ -276,25 +273,25 @@ window.addEventListener('load', function() {
     });
   } else if (map_type === 'sheriff' && map_data) {
     window.SCORECARD_MAP.addSeries({
-          animation: false,
-          data: map_data,
-          name: 'Sheriff Department',
-          events: {
-            click: function (e) {
-              if (e.point && typeof e.point.className !== 'undefined') {
-                var loc = e.point.className.replace('location-', '');
-                var url = '/?state=' + e.point.stateAbbr + '&type=' + map_type + '&location=' + loc;
-                var prettyUrl = '/' + e.point.stateAbbr + '/' + map_type + '/' + loc;
+      animation: false,
+      data: map_data,
+      name: 'Sheriff Department',
+      events: {
+        click: function (e) {
+          if (e.point && typeof e.point.className !== 'undefined') {
+            var loc = e.point.className.replace('location-', '');
+            var url = '/?state=' + e.point.stateAbbr + '&type=' + map_type + '&location=' + loc;
+            var prettyUrl = '/' + e.point.stateAbbr + '/' + map_type + '/' + loc;
 
-                if (loc && window.leftMouseClicked) {
-                  window.location = (SCORECARD_ENV === 'production') ? prettyUrl : url;
-                  e.preventDefault();
-                  e.stopImmediatePropagation();
-                }
-              }
+            if (loc && window.leftMouseClicked) {
+              window.location = (SCORECARD_ENV === 'production') ? prettyUrl : url;
+              e.preventDefault();
+              e.stopImmediatePropagation();
             }
           }
-        })
+        }
+      }
+    })
   }
 });
 </script>

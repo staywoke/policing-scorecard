@@ -1513,6 +1513,20 @@ body {
   position: relative;
 }
 
+#map-loading {
+  background: rgba(255, 255, 255, 0.85);
+  height: 100%;
+  width: 100%;
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 2;
+  text-align: center;
+  padding-top: 150px;
+  font-size: 24px;
+  color: #464648;
+}
+
 .section.hero {
   .clear {
     height: 0;

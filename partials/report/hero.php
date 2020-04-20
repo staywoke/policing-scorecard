@@ -32,6 +32,9 @@
           </defs>
         </svg>
 
+        <div id="map-loading">
+          <i class="fa fa-spinner fa-spin"></i>&nbsp; Loading Map ...
+        </div>
         <div id="state-map" class="<?= $type ?> <?= $location ?>"></div>
         <div id="state-map-shadow" class="<?= $type ?> <?= $location ?>"></div>
       </div>
