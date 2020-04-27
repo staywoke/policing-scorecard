@@ -4,7 +4,7 @@ require('common.php');
 $state = (!empty($_REQUEST['state'])) ? $_REQUEST['state'] : null;
 $type = (!empty($_REQUEST['type'])) ? $_REQUEST['type'] : null;
 $location = (!empty($_REQUEST['location'])) ? $_REQUEST['location'] : null;
-$isProd = (strpos($_SERVER['SERVER_NAME'], 'policescorecard.org'));
+$isProd = ($_SERVER['SERVER_NAME'] === 'policescorecard.org');
 $ac = '?ac=' . getHash($isProd);
 $page = 'home';
 $states = fetchStates();

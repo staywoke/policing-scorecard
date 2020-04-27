@@ -2,7 +2,7 @@
 require('common.php');
 
 $title = "San Diego Police Scorecard";
-$isProd = (strpos($_SERVER['SERVER_NAME'], 'policescorecard.org'));
+$isProd = ($_SERVER['SERVER_NAME'] === 'policescorecard.org');
 $ac = '?ac=' . getHash($isProd);
 $socialUrl = rawurlencode('https://policescorecard.org');
 $socialText = rawurlencode('Campaign Zero evaluated the policing practices of San Diego Police Department and San Diego Sheriff\'s Department from 2016-2018.');

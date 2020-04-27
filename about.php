@@ -1,6 +1,6 @@
 <?php
 require('common.php');
-$isProd = (strpos($_SERVER['SERVER_NAME'], 'policescorecard.org'));
+$isProd = ($_SERVER['SERVER_NAME'] === 'policescorecard.org');
 $ac = '?ac=' . getHash($isProd);
 ?>
 <!doctype html>
