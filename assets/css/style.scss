@@ -1114,6 +1114,10 @@ body {
     top: -7px;
     right: -14px;
     display: none;
+
+    &.visible {
+      display: unset;
+    }
   }
 
   a.external-link {

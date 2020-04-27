@@ -1516,6 +1516,10 @@ body {
   display: none;
 }
 
+.stat-wrapper a.more-info.visible {
+  display: unset;
+}
+
 .stat-wrapper a.external-link {
   width: 32px;
   height: 32px;

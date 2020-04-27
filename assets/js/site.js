@@ -828,6 +828,8 @@ var SCORECARD = (function () {
 
       if (info && typeof SCORECARD_DATA.policy[info] !== 'undefined' && SCORECARD_DATA.policy[info]) {
         loadMoreInfo(SCORECARD_DATA.policy[info]);
+      } else if (typeof info === 'string') {
+        loadMoreInfo(info);
       }
     });
   });

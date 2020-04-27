@@ -17,40 +17,64 @@
   </p>
 
   <div class="progress-bar-wrapper">
-    <div class="progress-bar animate-bar grouped key-red" data-percent="<?= output(floatval(round((intval($placeholder['jail_death_homicide_willful']) / intval($scorecard['report']['total_jail_deaths_2016_2018'])) * 100)), 0, '%') ?>">
-      <span><?= (intval(round((intval($placeholder['jail_death_homicide_willful']) / intval($scorecard['report']['total_jail_deaths_2016_2018'])) * 100)) > 5) ? output(round((intval($placeholder['jail_death_homicide_willful']) / intval($scorecard['report']['total_jail_deaths_2016_2018'])) * 100), 0, '%') : '' ?></span>
+    <div class="progress-bar animate-bar grouped key-red" data-percent="<?= output(floatval(round((intval($scorecard['jail']['jail_deaths_homicide']) / intval($scorecard['report']['total_jail_deaths_2016_2018'])) * 100)), 0, '%') ?>">
+      <span><?= (intval(round((intval($scorecard['jail']['jail_deaths_homicide']) / intval($scorecard['report']['total_jail_deaths_2016_2018'])) * 100)) > 5) ? output(round((intval($scorecard['jail']['jail_deaths_homicide']) / intval($scorecard['report']['total_jail_deaths_2016_2018'])) * 100), 0, '%') : '' ?></span>
     </div>
-    <div class="progress-bar animate-bar grouped key-orange" data-percent="<?= output(floatval(round((intval($placeholder['jail_death_suicide']) / intval($scorecard['report']['total_jail_deaths_2016_2018'])) * 100)), 0, '%') ?>">
-      <span><?= (intval(round((intval($placeholder['jail_death_suicide']) / intval($scorecard['report']['total_jail_deaths_2016_2018'])) * 100)) > 5) ? output(round((intval($placeholder['jail_death_suicide']) / intval($scorecard['report']['total_jail_deaths_2016_2018'])) * 100), 0, '%') : '' ?></span>
+    <div class="progress-bar animate-bar grouped key-orange" data-percent="<?= output(floatval(round((intval($scorecard['jail']['jail_deaths_suicide']) / intval($scorecard['report']['total_jail_deaths_2016_2018'])) * 100)), 0, '%') ?>">
+    <span><?= (intval(round((intval($scorecard['jail']['jail_deaths_suicide']) / intval($scorecard['report']['total_jail_deaths_2016_2018'])) * 100)) > 5) ? output(round((intval($scorecard['jail']['jail_deaths_suicide']) / intval($scorecard['report']['total_jail_deaths_2016_2018'])) * 100), 0, '%') : '' ?></span>
     </div>
-    <div class="progress-bar animate-bar grouped key-grey" data-percent="<?= output(floatval(round((intval($placeholder['jail_death_pending_investigation']) / intval($scorecard['report']['total_jail_deaths_2016_2018'])) * 100)), 0, '%') ?>">
-      <span><?= (intval(round((intval($placeholder['jail_death_pending_investigation']) / intval($scorecard['report']['total_jail_deaths_2016_2018'])) * 100)) > 5) ? output(round((intval($placeholder['jail_death_pending_investigation']) / intval($scorecard['report']['total_jail_deaths_2016_2018'])) * 100), 0, '%') : '' ?></span>
+    <div class="progress-bar animate-bar grouped key-grey" data-percent="<?= output(floatval(round((intval($scorecard['jail']['jail_deaths_investigating']) / intval($scorecard['report']['total_jail_deaths_2016_2018'])) * 100)), 0, '%') ?>">
+    <span><?= (intval(round((intval($scorecard['jail']['jail_deaths_investigating']) / intval($scorecard['report']['total_jail_deaths_2016_2018'])) * 100)) > 5) ? output(round((intval($scorecard['jail']['jail_deaths_investigating']) / intval($scorecard['report']['total_jail_deaths_2016_2018'])) * 100), 0, '%') : '' ?></span>
     </div>
-    <div class="progress-bar animate-bar grouped key-white" data-percent="<?= output(floatval(round(((intval($placeholder['jail_death_natural']) + intval($placeholder['jail_death_accidental']) + intval($placeholder['jail_death_cannot_be_determined'])) / intval($scorecard['report']['total_jail_deaths_2016_2018'])) * 100)), 0, '%') ?>">
-      <span><?= (intval(round(((intval($placeholder['jail_death_natural']) + intval($placeholder['jail_death_accidental']) + intval($placeholder['jail_death_cannot_be_determined'])) / intval($scorecard['report']['total_jail_deaths_2016_2018'])) * 100)) > 5) ? output(round(((intval($placeholder['jail_death_natural']) + intval($placeholder['jail_death_accidental']) + intval($placeholder['jail_death_cannot_be_determined'])) / intval($scorecard['report']['total_jail_deaths_2016_2018'])) * 100), 0, '%') : '' ?></span>
+    <div class="progress-bar animate-bar grouped key-red" data-percent="<?= output(floatval(round((intval($scorecard['jail']['jail_deaths_other']) / intval($scorecard['report']['total_jail_deaths_2016_2018'])) * 100)), 0, '%') ?>">
+    <span><?= (intval(round((intval($scorecard['jail']['jail_deaths_other']) / intval($scorecard['report']['total_jail_deaths_2016_2018'])) * 100)) > 5) ? output(round((intval($scorecard['jail']['jail_deaths_other']) / intval($scorecard['report']['total_jail_deaths_2016_2018'])) * 100), 0, '%') : '' ?></span>
     </div>
   </div>
 
-  <p class="note">^&nbsp;Higher Rate of Jail Deaths than <?= num($placeholder['percent_jail_deaths_per_1000_jail_population_table'], 0, '%', true) ?> of Depts &nbsp;&nbsp;</p>
+  <p class="note">^&nbsp;Higher Rate of Jail Deaths than <?= num($scorecard['report']['percentile_jail_deaths_per_1k_jail_population'], 0, '%', true) ?> of Depts &nbsp;&nbsp;</p>
 </div>
 <?php endif; ?>
 
-<?php if(isset($placeholder['adult_jail_population'])): ?>
+<?php if(isset($scorecard['jail']['total_jail_population'])): ?>
 <div class="stat-wrapper no-border-mobile">
   <h3>Jail Incarceration rate</h3>
   <p>
-    <?= num(round(intval(str_replace(',', '', $placeholder['adult_jail_population'])))) ?> Avg Daily Jail Population <span class="divider">&nbsp;|&nbsp;</span> <?= output($placeholder['jail_population_per_1k']) ?> per 1k residents
+    <?= num(round(intval(str_replace(',', '', $scorecard['jail']['total_jail_population'])))) ?> Avg Daily Jail Population <span class="divider">&nbsp;|&nbsp;</span> <?= output($scorecard['report']['jail_incarceration_per_1k_population']) ?> per 1k residents
   </p>
-  <?php if(!isset($placeholder['percent_jail_deaths_per_1000_jail_population_table']) || (isset($placeholder['percent_jail_deaths_per_1000_jail_population_table']) && empty($placeholder['percent_jail_deaths_per_1000_jail_population_table']))): ?>
+  <?php if(!isset($scorecard['report']['percentile_jail_deaths_per_1k_jail_population']) || (isset($scorecard['report']['percentile_jail_deaths_per_1k_jail_population']) && empty($scorecard['report']['percentile_jail_deaths_per_1k_jail_population']))): ?>
   <div class="progress-bar-wrapper">
     <div class="progress-bar no-data" style="width: 0"></div>
   </div>
   <p class="note">City Did Not Provide Data</p>
   <?php else: ?>
   <div class="progress-bar-wrapper">
-    <div class="progress-bar animate-bar <?= progressBar(100 - intval($placeholder['percent_jail_deaths_per_1000_jail_population_table']), 'reverse') ?>" data-percent="<?= output(100 - intval($placeholder['percent_jail_deaths_per_1000_jail_population_table']), 0, '%') ?>"></div>
+    <div class="progress-bar animate-bar <?= progressBar(100 - intval($scorecard['report']['percentile_jail_deaths_per_1k_jail_population']), 'reverse') ?>" data-percent="<?= output(100 - intval($scorecard['report']['percentile_jail_deaths_per_1k_jail_population']), 0, '%') ?>"></div>
   </div>
-  <p class="note">^&nbsp; More than <?= num($placeholder['percent_jail_deaths_per_1000_jail_population_table'], 0, '%', true) ?> of Sheriff's Depts&nbsp;&nbsp;</p>
+  <p class="note">^&nbsp; More than <?= num($scorecard['report']['percentile_jail_deaths_per_1k_jail_population'], 0, '%', true) ?> of Sheriff's Depts&nbsp;&nbsp;</p>
+  <?php endif; ?>
+</div>
+<?php endif; ?>
+
+<?php if(isset($scorecard['jail']['unconvicted_jail_population']) && isset($scorecard['jail']['total_jail_population'])): ?>
+<?php
+$unconvicted_jail_population = isset($scorecard['jail']['unconvicted_jail_population']) ? $scorecard['jail']['unconvicted_jail_population'] : 0;
+$total_jail_population = isset($scorecard['jail']['total_jail_population']) ? $scorecard['jail']['total_jail_population'] : 0;
+$percent_without_conviction = ($unconvicted_jail_population / $total_jail_population) * 100;
+?>
+<div class="stat-wrapper">
+  <h3>People in Jail Without Being Convicted</h3>
+  <p>
+    <?= num(round($percent_without_conviction)) ?> % of People in Jail
+  </p>
+  <?php if(!$percent_without_conviction): ?>
+  <div class="progress-bar-wrapper">
+    <div class="progress-bar no-data" style="width: 0"></div>
+  </div>
+  <p class="note">City Did Not Provide Data</p>
+  <?php else: ?>
+  <div class="progress-bar-wrapper">
+    <div class="progress-bar animate-bar <?= progressBar(intval($percent_without_conviction), 'reverse') ?>" data-percent="<?= output(intval($percent_without_conviction), 0, '%') ?>"></div>
+  </div>
   <?php endif; ?>
 </div>
 <?php endif; ?>

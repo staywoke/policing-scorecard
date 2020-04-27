@@ -10,7 +10,7 @@
 <div class="section hero pad">
   <div class="content">
     <div class="header-intro">
-      <h1>We evaluated <?= getNationalTotal($states) ?> of America's largest police agencies.</h1>
+      <h1>We evaluated America's <?= getNationalTotal($states) ?> largest police departments.</h1>
       <h2>Read the <a href="/findings" style="color: #82add7; text-decoration: underline; font-weight: 500;">Findings.</a> See the Grade for Each Department.</h2>
       <div class="buttons">
         <a href="<?= $isProd ? '/us/police-department' : '/?type=police-department' ?>" class="btn <?= $type === 'police-department' ? 'active' : '' ?>">Police Depts</a>
