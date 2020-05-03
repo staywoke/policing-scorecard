@@ -4,7 +4,7 @@
       About This Scorecard
     </h1>
     <p>
-      <strong>This is the first statewide Police Scorecard in the United States.</strong> It was built using data from open source projects, public records requests, national databases and media reports.
+      <strong>This is the first nationwide evaluation of policing in the United States.</strong> It was built using data from state and federal databases, public records requests to local police departments, and media reports.
     </p>
     <p>
       <a href="/about" class="button">methodology</a>

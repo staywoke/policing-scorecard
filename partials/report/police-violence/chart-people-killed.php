@@ -1,7 +1,7 @@
 <?php if (output($scorecard['report']['total_people_killed']) !== '0'): ?>
 <div class="stat-wrapper">
   <a href="javascript:void(0)" data-city="<?= $location ?>" data-more-info="" class="more-info"></a>
-  <h3>People Killed by Police, 2013-2019</h3>
+  <h3>Deadly Force by Armed Status</h3>
 
   <p>
     <?= num($scorecard['report']['percent_used_against_people_who_were_unarmed'], 0, '%') ?> were Unarmed

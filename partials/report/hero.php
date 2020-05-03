@@ -10,7 +10,8 @@
 <div class="section hero">
   <div class="content">
     <div class="right">
-      <h1>We evaluated the police in <?= $stateName ?>.</h1>
+      <h1>We evaluated <?= getStateTotal($states, $stateCode) ?> of <?= $stateName ?>'s largest police departments.</h1>
+
       <h2>Read the <a href="/findings" style="color: #82add7; text-decoration: underline; font-weight: 500;">Findings.</a> See the Grade for Each Department.</h2>
       <div class="buttons">
         <a href="<?= $isProd ? $stateData['police-department'][0]['url_pretty'] : $stateData['police-department'][0]['url'] ?>" class="btn <?= $type === 'police-department' ? 'active' : '' ?>">Police Depts</a>

@@ -3,7 +3,9 @@
     <div class="one-third">
       <h1><strong><?= $scorecard['report']['total_people_killed'] ?></strong> Killings by Police</h1>
 
-      <?php if(num($scorecard['report']['total_people_killed']) === '0'): ?>
+      <?php if($scorecard['report']['total_people_killed'] === 0): ?>
+      <p><?= $scorecard['agency']['name']?> did not kill anyone from 2013-2019</p>
+      <?php elseif($scorecard['report']['total_people_killed'] === 1): ?>
       <p><?= $scorecard['agency']['name']?> was <strong>1 of only <?= ($type === 'police-department') ? '11' : '12' ?> departments</strong> in our analysis that did not use deadly force from 2016-18.</p>
       <?php elseif(!isset($scorecard['report']['black_deadly_force_disparity_per_population']) || !isset($scorecard['report']['hispanic_deadly_force_disparity_per_population'])): ?>
       <p>That's higher than <strong><?= num($scorecard['report']['percentile_killed_by_police'], 0, '%', true) ?></strong> of <?= $stateName ?> police departments.</p>

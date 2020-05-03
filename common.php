@@ -521,6 +521,24 @@ function getNationalTotal($states) {
   return num($total);
 }
 
+function getStateTotal($states, $code) {
+  $total = 0;
+
+  foreach ($states as $abbr => $state) {
+    if ($code === $abbr) {
+      if (!empty($state['police-department'])) {
+        $total += count($state['police-department']);
+      }
+
+      if (!empty($state['sheriff'])) {
+        $total += count($state['sheriff']);
+      }
+    }
+  }
+
+  return num($total);
+}
+
 function getNationalGrades($states, $type) {
   $data = array();
 

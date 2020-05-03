@@ -1,3 +1,4 @@
+<?php if ($scorecard['report']['total_less_lethal_force_estimated'] !== null): ?>
 <div class="stat-wrapper">
   <a href="javascript:void(0)" data-city="<?= $location ?>" data-more-info="" class="more-info"></a>
   <a href="https://docs.google.com/document/d/1FIeprYO7E8_2JjQzrcMNrQqqVt_YdTAoOEqmHia96sI" target="_blank" class="external-link" title="Open in New Window"></a>
@@ -5,9 +6,9 @@
   <h3>Less-Lethal Force</h3>
   <p>Using batons, strangleholds, tasers &amp; other weapons</p>
   <p>
-    <?= num($scorecard['report']['total_less_lethal_force_estimated']) ?> Incidents
+    <?= output($scorecard['report']['total_less_lethal_force_estimated'], 0) ?> Incidents
     <span class="divider">&nbsp;|&nbsp;</span>
-    <?= output($scorecard['report']['less_lethal_per_10k_arrests']) ?> every 10k arrests
+    <?= output($scorecard['report']['less_lethal_per_10k_arrests'], 0) ?> every 10k arrests
     <?php if ($scorecard['report']['less_lethal_force_change']): ?>
     <span class="divider">&nbsp;|&nbsp;</span>
     <?php endif; ?>
@@ -26,3 +27,4 @@
   <p class="note">^&nbsp; Used More Force per Arrest than <?= num($scorecard['report']['percentile_less_lethal_force'], 0, '%', true) ?> of Depts &nbsp;&nbsp;</p>
   <?php endif; ?>
 </div>
+<?php endif; ?>

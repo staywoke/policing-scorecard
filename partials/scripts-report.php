@@ -202,72 +202,69 @@
 </script>
 <?php endif; ?>
 
-<?php if($scorecard['police_violence']['all_deadly_force_incidents']): ?>
 <script>
   window.addEventListener('load', function() {
+    var $deadlyForceChart = document.getElementById("deadly-force-chart");
+
     SCORECARD.loadMap('<?= $stateCode ?>');
-    var chart = new Chart(document.getElementById("deadly-force-chart").getContext('2d'), {
-      type: 'doughnut',
-      options: {
-        cutoutPercentage: 75,
-        animation: {
-          animateRotate: true,
-          animateScale: false
-        },
-        tooltips: {
-          callbacks: {
-            label: function(tooltip, data) {
-              return ' ' + data['labels'][tooltip.index] + ': ' + data['datasets'][tooltip.datasetIndex][
-                tooltip.index
-              ] + '%';
+
+    if ($deadlyForceChart) {
+      var chart = new Chart($deadlyForceChart.getContext('2d'), {
+        type: 'doughnut',
+        options: {
+          cutoutPercentage: 75,
+          animation: {
+            animateRotate: true,
+            animateScale: false
+          },
+          tooltips: {
+            callbacks: {
+              label: function(tooltip, data) {
+                return ' ' + data['labels'][tooltip.index] + ': ' + data['datasets'][tooltip.datasetIndex][
+                  tooltip.index
+                ] + '%';
+              }
+            }
+          },
+          legend: {
+            display: true,
+            labels: {
+              boxWidth: 20
             }
           }
         },
-        legend: {
-          display: true,
-          labels: {
-            boxWidth: 20
-          }
+        data: {
+          labels: [
+            'Unarmed',
+            'Other',
+            'Gun',
+            'Vehicle'
+          ],
+          datasets: [{
+            borderWidth: 0,
+            data: [
+              <?= $scorecard['report']['percent_used_against_people_who_were_unarmed'] ?>,
+              <?= ($scorecard['report']['percent_used_against_people_who_were_not_armed_with_gun'] - $scorecard['report']['percent_used_against_people_who_were_unarmed']) ?>,
+              <?= (100 - floatval($scorecard['report']['percent_used_against_people_who_were_not_armed_with_gun'])) ?>,
+              <?= $scorecard['police_violence']['vehicle_people_killed'] ?>
+            ],
+            backgroundColor: [
+              '#f19975',
+              '#58595b',
+              '#d4d9e4',
+              '#9a9b9f'
+            ],
+            hoverBackgroundColor: [
+              '#f19975',
+              '#58595b',
+              '#d4d9e4',
+              '#9a9b9f'
+            ]
+          }]
         }
-      },
-      data: {
-        labels: [
-          'Unarmed',
-          'Other',
-          'Gun',
-          'Vehicle'
-        ],
-        datasets: [{
-          borderWidth: 0,
-          data: [
-            <?= $scorecard['report']['percent_used_against_people_who_were_unarmed'] ?>,
-            <?= ($scorecard['report']['percent_used_against_people_who_were_not_armed_with_gun'] - $scorecard['report']['percent_used_against_people_who_were_unarmed']) ?>,
-            <?= (100 - floatval($scorecard['report']['percent_used_against_people_who_were_not_armed_with_gun'])) ?>,
-            <?= $scorecard['police_violence']['vehicle_people_killed'] ?>
-          ],
-          backgroundColor: [
-            '#f19975',
-            '#58595b',
-            '#d4d9e4',
-            '#9a9b9f'
-          ],
-          hoverBackgroundColor: [
-            '#f19975',
-            '#58595b',
-            '#d4d9e4',
-            '#9a9b9f'
-          ]
-        }]
-      }
-    });
+      });
+    }
 
     setTimeout(SCORECARD.animate, 250);
   });
 </script>
-<?php else: ?>
-<script>
-  window.onload = function() {
-    SCORECARD.loadMap('<?= $stateCode ?>');
-  };
-</script>
-<?php endif; ?>

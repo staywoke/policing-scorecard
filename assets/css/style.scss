@@ -1108,12 +1108,13 @@ body {
 
   a.more-info {
     background: url(../img/see-more.png) center center no-repeat;
-    width: 32px;
-    height: 32px;
+    width: 20px;
+    height: 20px;
     position: absolute;
-    top: -7px;
-    right: -14px;
+    top: -4px;
+    right: -10px;
     display: none;
+    background-size: cover;
 
     &.visible {
       display: unset;
