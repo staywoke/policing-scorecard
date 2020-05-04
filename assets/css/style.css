@@ -2075,6 +2075,19 @@ body {
   font-weight: 500;
 }
 
+.section.stats .one-third .text {
+  display: block;
+}
+
+.section.stats .one-third .chart {
+  display: block;
+}
+
+.section.stats .one-third .chart div {
+  display: block;
+  margin: 0;
+}
+
 .section.score.animate .left {
   left: -500px;
 }
@@ -3367,6 +3380,23 @@ p.number-list.n15::after {
   .section.stats .one-third p {
     font-size: 14px;
     line-height: 20px;
+  }
+  .section.stats .one-third .text {
+    display: -webkit-inline-box;
+    display: -ms-inline-flexbox;
+    display: inline-flex;
+    width: 60%;
+    vertical-align: top;
+  }
+  .section.stats .one-third .chart {
+    width: 100px;
+    position: relative;
+    float: right;
+    top: -30px;
+  }
+  .section.stats .one-third .chart div {
+    display: block;
+    margin: 0 auto;
   }
   .section.current-state {
     height: 60px;

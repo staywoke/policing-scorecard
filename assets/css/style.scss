@@ -1668,6 +1668,19 @@ body {
         font-weight: 500;
       }
     }
+
+    .text {
+      display: block;
+    }
+
+    .chart {
+      display: block;
+
+      div {
+        display: block;
+        margin: 0;
+      }
+    }
   }
 }
 
@@ -3061,6 +3074,24 @@ p.number-list {
       p {
         font-size: 14px;
         line-height: 20px;
+      }
+
+      .text {
+        display: inline-flex;
+        width: 60%;
+        vertical-align: top;
+      }
+
+      .chart {
+        width: 100px;
+        position: relative;
+        float: right;
+        top: -30px;
+
+        div {
+          display: block;
+          margin: 0 auto;
+        }
       }
     }
   }

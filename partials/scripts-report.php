@@ -204,7 +204,8 @@
 
 <script>
   window.addEventListener('load', function() {
-    var $deadlyForceChart = document.getElementById("deadly-force-chart");
+    var $deadlyForceChart = document.getElementById('deadly-force-chart');
+    var $chartMiniPeopleKilled = document.getElementById('chart-mini-people-killed');
 
     SCORECARD.loadMap('<?= $stateCode ?>');
 
@@ -260,6 +261,84 @@
             ]
           }]
         }
+      });
+    }
+
+    if ($chartMiniPeopleKilled) {
+      Highcharts.chart($chartMiniPeopleKilled, {
+        chart: {
+          type: 'column',
+          backgroundColor: 'transparent',
+          width: document.documentElement.clientWidth > 940 ? 150 : 100,
+          height: document.documentElement.clientWidth > 940 ? 150 : 125,
+          margin: 0,
+          maintainAspectRatio: false,
+          clip: false
+        },
+        responsive: true,
+        legend: {
+          enabled: false
+        },
+        title: {
+          enabled: false,
+          text: ''
+        },
+        tooltip: {
+          enabled: false
+        },
+        xAxis: {
+          gridLineWidth: 0,
+          lineWidth: 0,
+          tickWidth: 0,
+          labels: {
+            enabled: false
+          },
+          title: {
+            text: ''
+          }
+        },
+        yAxis: {
+          gridLineWidth: 0,
+          lineWidth: 0,
+          tickWidth: 0,
+          labels: {
+            enabled: false
+          },
+          title: {
+            text: ''
+          }
+        },
+        plotOptions: {
+          series: {
+            borderWidth: 0,
+            groupPadding: 0,
+            pointPadding: 0.1,
+            animation: false,
+            enableMouseTracking: false,
+            dataLabels: {
+              rotation: -90,
+              color: '#FFFFFF',
+              enabled: true,
+              format: '{point.name}',
+              inside: true,
+              crop: false,
+              overflow: 'allow',
+              align: 'left',
+              style: {
+                fontSize: document.documentElement.clientWidth > 940 ? '10px' : '8px',
+                fontFamily: 'Verdana, sans-serif',
+                textTransform: 'uppercase'
+              }
+            }
+          }
+        },
+        series: [{
+          data: [
+            ['Black', <?= $scorecard['police_violence']['black_people_killed'] ?>],
+            ['Latinx', <?= $scorecard['police_violence']['hispanic_people_killed'] ?>],
+            ['White', <?= $scorecard['police_violence']['white_people_killed'] ?>]
+          ]
+        }]
       });
     }
 
