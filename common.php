@@ -801,9 +801,10 @@ function num($string, $decimal = 0, $suffix = '', $invert = false) {
   }
 
   if ($decimal === 1) {
-    $output = number_format($output, 2);
-    $output = substr($output, 0, -1);
-  } else {
+    $output = round($output, 1);
+  }
+
+  if ($output > 999) {
     $output = number_format($output, $decimal);
   }
 
