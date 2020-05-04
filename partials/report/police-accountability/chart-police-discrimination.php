@@ -1,5 +1,5 @@
 <div class="stat-wrapper">
-  <a href="javascript:void(0)" data-city="<?= $location ?>" data-more-info="" class="more-info"></a>
+  <a href="javascript:void(0)" data-city="<?= $location ?>" data-more-info="" class="more-info" title="More Info ..."></a>
   <h3>Complaints of Police Discrimination</h3>
 
   <?php if (num($scorecard['police_accountability']['discrimination_complaints_reported']) === '0'): ?>

@@ -1,5 +1,5 @@
 <div class="stat-wrapper grouped">
-  <a href="javascript:void(0)" data-city="<?= $location ?>" data-more-info="" class="more-info"></a>
+  <a href="javascript:void(0)" data-city="<?= $location ?>" data-more-info="" class="more-info" title="More Info ..."></a>
   <h3>Percent of total arrests by type</h3>
 
   <p>All Arrests for Low Level Offenses ( <?= num($scorecard['report']['percent_misdemeanor_arrests'], 0, '%') ?> )</p>

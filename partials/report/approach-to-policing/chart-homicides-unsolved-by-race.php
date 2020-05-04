@@ -1,6 +1,6 @@
 <?php if(isset($scorecard['report']['black_murder_unsolved_rate']) || isset($scorecard['report']['hispanic_murder_unsolved_rate']) || isset($scorecard['report']['white_murder_unsolved_rate'])): ?>
 <div class="stat-wrapper grouped">
-  <a href="javascript:void(0)" data-city="<?= $location ?>" data-more-info="" class="more-info"></a>
+  <a href="javascript:void(0)" data-city="<?= $location ?>" data-more-info="" class="more-info" title="More Info ..."></a>
   <h3>Percent of Homicides Unsolved by Race</h3>
 
   <?php if(isset($scorecard['report']['black_murder_unsolved_rate']) && !empty($scorecard['report']['black_murder_unsolved_rate'])): ?>

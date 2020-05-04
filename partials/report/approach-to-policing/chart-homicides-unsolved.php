@@ -1,5 +1,5 @@
 <div class="stat-wrapper no-border-mobile">
-  <a href="javascript:void(0)" data-city="<?= $location ?>" data-more-info="" class="more-info"></a>
+  <a href="javascript:void(0)" data-city="<?= $location ?>" data-more-info="" class="more-info" title="More Info ..."></a>
   <a href="http://www.murderdata.org/p/blog-page.html?m=1" target="_blank" class="external-link" title="Open in New Window"></a>
   <h3>Homicides Unsolved</h3>
 

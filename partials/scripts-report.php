@@ -220,9 +220,7 @@
           tooltips: {
             callbacks: {
               label: function(tooltip, data) {
-                return ' ' + data['labels'][tooltip.index] + ': ' + data['datasets'][tooltip.datasetIndex][
-                  tooltip.index
-                ] + '%';
+                return ' ' + data['labels'][tooltip.index] + ': ' + data['datasets'][tooltip.datasetIndex]['data'][tooltip.index] + '%';
               }
             }
           },

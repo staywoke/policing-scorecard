@@ -10,7 +10,7 @@ $percent_other_transfers = ($other_ice_transfers / $total_ice_transfers) * 100;
 ?>
 <?php if ($total_ice_transfers && $percent_drug_transfers && $percent_drug_transfers && $percent_other_transfers): ?>
 <div class="stat-wrapper">
-  <a href="javascript:void(0)" data-city="<?= $location ?>" data-more-info="" class="more-info"></a>
+  <a href="javascript:void(0)" data-city="<?= $location ?>" data-more-info="" class="more-info" title="More Info ..."></a>
   <h3>People Transferred to ICE in 2018</h3>
 
   <p><?= num($total_ice_transfers) ?> people were transferred to ICE</p>

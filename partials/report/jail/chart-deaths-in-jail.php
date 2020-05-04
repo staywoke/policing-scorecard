@@ -1,6 +1,6 @@
 <?php if(num(round(intval(str_replace(',', '', $scorecard['report']['total_jail_deaths_2016_2018'])))) !== 'N/A'): ?>
 <div class="stat-wrapper">
-  <a href="javascript:void(0)" data-city="<?= $location ?>" data-more-info="" class="more-info"></a>
+  <a href="javascript:void(0)" data-city="<?= $location ?>" data-more-info="" class="more-info" title="More Info ..."></a>
   <h3>Deaths in Jail</h3>
 
   <p>

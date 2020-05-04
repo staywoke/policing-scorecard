@@ -1,6 +1,6 @@
 <?php if ($scorecard['report']['total_less_lethal_force_estimated'] !== null): ?>
 <div class="stat-wrapper">
-  <a href="javascript:void(0)" data-city="<?= $location ?>" data-more-info="" class="more-info"></a>
+  <a href="javascript:void(0)" data-city="<?= $location ?>" data-more-info="" class="more-info" title="More Info ..."></a>
   <a href="https://docs.google.com/document/d/1FIeprYO7E8_2JjQzrcMNrQqqVt_YdTAoOEqmHia96sI" target="_blank" class="external-link" title="Open in New Window"></a>
 
   <h3>Less-Lethal Force</h3>

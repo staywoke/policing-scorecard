@@ -1,6 +1,6 @@
 <?php if ($scorecard['report']['police_shootings_incidents'] && $scorecard['report']['percent_shot_first']): ?>
 <div class="stat-wrapper">
-  <a href="javascript:void(0)" data-city="<?= $location ?>" data-more-info="" class="more-info"></a>
+  <a href="javascript:void(0)" data-city="<?= $location ?>" data-more-info="" class="more-info" title="More Info ..."></a>
   <h3>Police Shootings Where Police Did Not Try Non-Deadly Force Before Shooting</h3>
   <p><?= num($scorecard['report']['percent_shot_first'], 0, '%') ?> of Shootings
     (<?= $scorecard['police_violence']['shot_first'] ?>/<?= $scorecard['report']['police_shootings_incidents'] ?>)

@@ -1,6 +1,6 @@
 <?php if (output($scorecard['report']['total_people_killed']) !== '0'): ?>
 <div class="stat-wrapper">
-  <a href="javascript:void(0)" data-city="<?= $location ?>" data-more-info="" class="more-info"></a>
+  <a href="javascript:void(0)" data-city="<?= $location ?>" data-more-info="" class="more-info" title="More Info ..."></a>
   <h3>Deadly Force by Armed Status</h3>
 
   <p>
