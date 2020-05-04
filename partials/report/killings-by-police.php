@@ -10,7 +10,7 @@
       <?php elseif(!isset($scorecard['report']['black_deadly_force_disparity_per_population']) || !isset($scorecard['report']['hispanic_deadly_force_disparity_per_population'])): ?>
       <p>That's higher than <strong><?= num($scorecard['report']['percentile_killed_by_police'], 0, '%', true) ?></strong> of <?= $stateName ?> police departments.</p>
       <?php else: ?>
-      <p>Based on population, a Black person was <strong><?= $scorecard['report']['black_deadly_force_disparity_per_population'] ?>x as likely</strong> and a Latinx person was <strong><?= $scorecard['report']['hispanic_deadly_force_disparity_per_population'] ?>x as likely</strong> to be killed by police than a White person in <?= $scorecard['agency']['name']?> from 2013-19.</p>
+      <p>Based on population, a Black person was <strong><?= num($scorecard['report']['black_deadly_force_disparity_per_population'], 1, 'x') ?> as likely</strong> and a Latinx person was <strong><?= num($scorecard['report']['hispanic_deadly_force_disparity_per_population'], 1, 'x') ?> as likely</strong> to be killed by police than a White person in <?= $scorecard['agency']['name']?> from 2013-19.</p>
       <?php endif; ?>
     </div>
 
@@ -32,7 +32,7 @@
       <h1><strong><?= num($scorecard['report']['total_arrests']) ?></strong> arrests made</h1>
 
       <?php if ($scorecard['report']['percentile_low_level_arrests_per_1k_population'] <= 75): ?>
-      <p>Police in <?= $scorecard['agency']['name']?> made <strong><?= $scorecard['report']['times_more_misdemeanor_arrests_than_violent_crime'] ?>x as many arrests for low level offenses</strong> as for violent crimes in 2013-2018.</p>
+      <p>Police in <?= $scorecard['agency']['name']?> made <strong><?= num($scorecard['report']['times_more_misdemeanor_arrests_than_violent_crime'], 1, 'x') ?> as many arrests for low level offenses</strong> as for violent crimes in 2013-2018.</p>
       <?php else: ?>
       <p><?= $scorecard['agency']['name']?> had a lower misdemeanor arrest rate than <strong><?= $scorecard['report']['percentile_low_level_arrests_per_1k_population'] ?>%</strong> of departments.</p>
       <?php endif; ?>

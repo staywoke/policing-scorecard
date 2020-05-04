@@ -800,13 +800,18 @@ function num($string, $decimal = 0, $suffix = '', $invert = false) {
     $output = (100 - $output);
   }
 
-  $output = number_format($output, $decimal);
+  if ($decimal === 1) {
+    $output = number_format($output, 2);
+    $output = substr($output, 0, -1);
+  } else {
+    $output = number_format($output, $decimal);
+  }
 
-  if ($output === '0.0') {
+  if ($output === '0.0' || $output === '0.00') {
     $output = '0';
   }
 
-  if (substr($output, -2) === '.0') {
+  if (substr($output, -2) === '.0' || substr($output, -3) === '.00') {
     $output = intval($string);
   }
 
