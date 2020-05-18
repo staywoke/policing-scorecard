@@ -2295,6 +2295,10 @@ body {
 .section.grades table td a {
   text-decoration: none;
   color: #000;
+  max-width: 200px;
+  text-overflow: ellipsis;
+  overflow: hidden;
+  display: block;
 }
 
 .section.grades .button {

@@ -1879,6 +1879,10 @@ body {
       a {
         text-decoration: none;
         color: #000;
+        max-width: 200px;
+        text-overflow: ellipsis;
+        overflow: hidden;
+        display: block;
       }
     }
   }
