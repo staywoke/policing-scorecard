@@ -206,6 +206,7 @@
   window.addEventListener('load', function() {
     var $deadlyForceChart = document.getElementById('deadly-force-chart');
     var $chartMiniPeopleKilled = document.getElementById('chart-mini-people-killed');
+    var $chartMiniComplaintsReported = document.getElementById('chart-mini-complaints-reported');
 
     SCORECARD.loadMap('<?= $stateCode ?>');
 
@@ -340,6 +341,57 @@
           ]
         }]
       });
+    }
+
+    if ($chartMiniComplaintsReported) {
+      new Chart($chartMiniComplaintsReported.getContext('2d'), {
+        type: 'doughnut',
+        chart: {
+          backgroundColor: 'transparent',
+          width: 125,
+          height: 125
+        },
+        responsive: true,
+        legend: {
+          enabled: false
+        },
+        title: {
+          enabled: false,
+          text: ''
+        },
+        tooltip: {
+          enabled: false
+        },
+        options: {
+          cutoutPercentage: 75,
+          animation: {
+            animateRotate: true,
+            animateScale: false
+          },
+          tooltips: {
+            display: false
+          },
+          legend: {
+            display: false
+          }
+        },
+        data: {
+          datasets: [{
+            borderWidth: 0,
+            data: [
+              CHART_MINI_SUSTAINED,
+              CHART_MINI_REPORTED
+            ],
+            backgroundColor: [
+              '#82ADD7',
+              '#58595b'
+            ]
+          }]
+        }
+      });
+
+      var label = (CHART_MINI_SUSTAINED === 0 && CHART_MINI_REPORTED === 0) ? 'ZERO' : CHART_MINI_SUSTAINED + ' in ' + CHART_MINI_REPORTED;
+      document.getElementById('chart-mini-complaints-reported-label').innerHTML = label;
     }
 
     setTimeout(SCORECARD.animate, 250);

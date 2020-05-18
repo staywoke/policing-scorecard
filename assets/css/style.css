@@ -2084,8 +2084,55 @@ body {
 }
 
 .section.stats .one-third .chart div {
+  display: none;
+}
+
+.section.stats .one-third .chart #chart-mini-complaints-reported-label {
+  position: absolute;
+  top: 0;
+  width: 100%;
   display: block;
-  margin: 0;
+  text-align: center;
+  color: #FFF;
+  top: 40px;
+}
+
+.section.stats .one-third .chart .chart-mini-arrests {
+  width: 100px;
+  height: 100px;
+  background: #58595b;
+  position: relative;
+  top: 30px;
+}
+
+.section.stats .one-third .chart .chart-mini-arrests .filler {
+  position: absolute;
+  top: 0;
+  left: 0;
+  background: #82ADD7;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+}
+
+.section.stats .one-third .chart .chart-mini-arrests .filler:before {
+  content: 'Low Level Offenses';
+  display: inline-block;
+  width: 100%;
+  height: 100%;
+  font-size: 12px;
+  color: #FFF;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  text-align: center;
+  text-shadow: 1px 1px 1px black;
 }
 
 .section.score.animate .left {

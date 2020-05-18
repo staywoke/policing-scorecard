@@ -36,7 +36,23 @@
       </div>
 
       <div class="chart">
-        <div id="chart-mini-complaints-reported"></div>
+        <script>
+        <?php if($scorecard['police_accountability']['civilian_complaints_sustained'] === 0): ?>
+        var CHART_MINI_REPORTED = 0;
+        var CHART_MINI_SUSTAINED = 0;
+        <?php elseif($scorecard['police_accountability']['civilian_complaints_sustained'] === 1): ?>
+        var CHART_MINI_REPORTED = <?= num($scorecard['police_accountability']['civilian_complaints_reported']) ?>;
+        var CHART_MINI_SUSTAINED = 1;
+        <?php elseif($scorecard['police_accountability']['civilian_complaints_reported'] / $scorecard['police_accountability']['civilian_complaints_sustained'] <= 3): ?>
+        var CHART_MINI_REPORTED = <?= num($scorecard['report']['complaints_sustained'], 0, '%') ?>;
+        var CHART_MINI_SUSTAINED = <?= 100 - $scorecard['report']['complaints_sustained'] ?>;
+        <?php else: ?>
+        var CHART_MINI_REPORTED = <?= round(intval(str_replace(',', '', $scorecard['police_accountability']['civilian_complaints_reported'])) / intval(str_replace(',', '', $scorecard['police_accountability']['civilian_complaints_sustained']))) ?>;
+        var CHART_MINI_SUSTAINED = 1;
+        <?php endif; ?>
+        </script>
+        <canvas id="chart-mini-complaints-reported" width="125" height="125"></canvas>
+        <span id="chart-mini-complaints-reported-label"></span>
       </div>
     </div>
 
@@ -52,7 +68,9 @@
       </div>
 
       <div class="chart">
-        <div id="chart-mini-arrests"></div>
+        <div class="chart-mini-arrests">
+          <div class="filler" style="width: <?= $scorecard['report']['percentile_low_level_arrests_per_1k_population']?>%; height: <?= $scorecard['report']['percentile_low_level_arrests_per_1k_population'] ?>%"></div>
+        </div>
       </div>
     </div>
   </div>
