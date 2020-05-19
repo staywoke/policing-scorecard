@@ -1674,11 +1674,7 @@ body {
     }
 
     .chart {
-      display: block;
-
-      div {
-        display: none;
-      }
+      display: none;
 
       #chart-mini-complaints-reported-label {
         position: absolute;
@@ -3130,6 +3126,7 @@ p.number-list {
         position: relative;
         float: right;
         top: -30px;
+        display: block;
 
         div {
           display: block;

@@ -2080,10 +2080,6 @@ body {
 }
 
 .section.stats .one-third .chart {
-  display: block;
-}
-
-.section.stats .one-third .chart div {
   display: none;
 }
 
@@ -3444,6 +3440,7 @@ p.number-list.n15::after {
     position: relative;
     float: right;
     top: -30px;
+    display: block;
   }
   .section.stats .one-third .chart div {
     display: block;
