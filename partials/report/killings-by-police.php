@@ -60,16 +60,12 @@
       <h1><strong><?= num($scorecard['report']['total_arrests']) ?></strong> arrests made</h1>
 
       <div class="text">
-        <?php if ($scorecard['report']['percentile_low_level_arrests_per_1k_population'] <= 75): ?>
-        <p>Police in <?= $scorecard['agency']['name']?> made <strong><?= num($scorecard['report']['times_more_misdemeanor_arrests_than_violent_crime'], 1, 'x') ?> as many arrests for low level offenses</strong> as for violent crimes in 2013-2018.</p>
-        <?php else: ?>
-        <p><?= $scorecard['agency']['name']?> had a lower misdemeanor arrest rate than <strong><?= $scorecard['report']['percentile_low_level_arrests_per_1k_population'] ?>%</strong> of departments.</p>
-        <?php endif; ?>
+        <p><?= num($scorecard['report']['percent_misdemeanor_arrests'], 0, '%') ?> of all arrests were for low-level, non-violent offenses.</p>
       </div>
 
       <div class="chart">
         <div class="chart-mini-arrests">
-          <div class="filler" style="width: <?= $scorecard['report']['percentile_low_level_arrests_per_1k_population']?>%; height: <?= $scorecard['report']['percentile_low_level_arrests_per_1k_population'] ?>%"></div>
+          <div class="filler" style="width: <?= $scorecard['report']['percent_misdemeanor_arrests']?>%; height: <?= $scorecard['report']['percent_misdemeanor_arrests'] ?>%"></div>
         </div>
       </div>
     </div>

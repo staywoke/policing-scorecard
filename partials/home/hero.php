@@ -33,7 +33,7 @@
       </svg>
 
       <div id="map-loading">
-        <i class="fa fa-spinner fa-spin"></i>&nbsp; Loading Map ...
+        <i class="fa fa-spinner fa-spin"></i>&nbsp; Loading <?= getNationalTotalByType($states, $type) ?> Departments ...
       </div>
       <div id="usa-map" class="<?= $type ?> <?= $location ?>"></div>
       <div id="usa-map-shadow" class="<?= $type ?> <?= $location ?>"></div>

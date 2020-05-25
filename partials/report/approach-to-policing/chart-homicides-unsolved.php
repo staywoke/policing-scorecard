@@ -4,7 +4,7 @@
   <h3>Homicides Unsolved</h3>
 
   <p>
-    <?= output($scorecard['homicide']['homicides_2013_2018']) ?> Homicides from 2013-18
+    <?= num($scorecard['homicide']['homicides_2013_2018']) ?> Homicides from 2013-18
     <span class="divider">&nbsp;|&nbsp;</span>
     <?= (intval(str_replace(',', '', $scorecard['homicide']['homicides_2013_2018'])) - intval(str_replace(',', '', $scorecard['homicide']['homicides_2013_2018_solved']))) ?> Unsolved
   </p>

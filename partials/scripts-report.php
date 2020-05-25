@@ -335,9 +335,9 @@
         },
         series: [{
           data: [
-            ['Black', <?= $scorecard['police_violence']['black_people_killed'] ?>],
-            ['Latinx', <?= $scorecard['police_violence']['hispanic_people_killed'] ?>],
-            ['White', <?= $scorecard['police_violence']['white_people_killed'] ?>]
+            ['Black', <?= round(($scorecard['police_violence']['black_people_killed'] / $scorecard['agency']['black_population']) * 100, 2) ?>],
+            ['Latinx', <?= round(($scorecard['police_violence']['hispanic_people_killed'] / $scorecard['agency']['hispanic_population']) * 100, 2) ?>],
+            ['White', <?= round(($scorecard['police_violence']['white_people_killed'] / $scorecard['agency']['white_population']) * 100, 2) ?>]
           ]
         }]
       });

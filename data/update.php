@@ -108,6 +108,13 @@ $valid_token = (md5($token) === '5d0f91a00d76444b843046b7c15eb5c2');
 
         <p>Use the button below to pull down the latest CSV file from Google Sheets and import the data into our API.</p>
 
+        <div class="alert alert-danger alert-dismissible" role="alert" style="display: none;">
+          <strong>ERROR:</strong> The import failed to complete.
+          <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+
         <p><button class="btn btn-primary" onclick="return updateData()" data-loading-text="<i class='fa fa-spinner fa-spin '></i> &nbsp;Downloading Data ...">Download Latest Data</button> <div id="loading-text" class="text-info small" style="display: none;">&nbsp;This may take a few minutes</div></p>
 
         <div id="results" style="display: none">
@@ -263,6 +270,12 @@ $valid_token = (md5($token) === '5d0f91a00d76444b843046b7c15eb5c2');
           data: {
             token: '<?= $token ?>'
           },
+          error: function (request, status, error) {
+            $button.button('reset');
+            $loadingText.hide();
+
+            $('.alert').slideDown();
+          },
           success: function (response) {
             if (response && response.data) {
               $.each(response.errors, function(key, row) {
@@ -283,7 +296,7 @@ $valid_token = (md5($token) === '5d0f91a00d76444b843046b7c15eb5c2');
                   $success.append('<li>' + row.location + '</li>');
                 } else {
                   failedTotal++;
-                  $failed.append('<li>' + row.location + ': ' + row.message + '</li>');
+                  $failed.append('<li>' + row.location + ': ' + row.message + '<pre style="display: none">' + row.stack + '</pre></li>');
                 }
               });
 

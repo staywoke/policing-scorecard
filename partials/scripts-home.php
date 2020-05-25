@@ -55,6 +55,7 @@ window.addEventListener('load', function() {
         mapData: map_type === 'police-department' ? Highcharts.maps['countries/us/us-all'] : Highcharts.maps['countries/us/us-all-all'],
       },
       series: {
+        turboThreshold: 0,
         animation: false
       }
     },
@@ -62,7 +63,9 @@ window.addEventListener('load', function() {
       {
         animation: false,
         allAreas: true,
-        showInLegend: true
+        showInLegend: true,
+        joinBy: null,
+        turboThreshold: 0
       }
     ]
   });
@@ -113,9 +116,11 @@ window.addEventListener('load', function() {
       type: 'mappoint',
       name: 'Police Department',
       data: map_data[0],
+      joinBy: null,
+      shadow: false,
       marker: {
-        width: 12,
-        height: 12,
+        width: 8,
+        height: 8,
         fillColor: '',
         symbol: 'url(/assets/img/police-marker-f.svg)'
       },
@@ -146,9 +151,11 @@ window.addEventListener('load', function() {
       type: 'mappoint',
       name: 'Police Department',
       data: map_data[1],
+      joinBy: null,
+      shadow: false,
       marker: {
-        width: 12,
-        height: 12,
+        width: 8,
+        height: 8,
         fillColor: '',
         symbol: 'url(/assets/img/police-marker-d.svg)'
       },
@@ -179,9 +186,11 @@ window.addEventListener('load', function() {
       type: 'mappoint',
       name: 'Police Department',
       data: map_data[2],
+      joinBy: null,
+      shadow: false,
       marker: {
-        width: 12,
-        height: 12,
+        width: 8,
+        height: 8,
         fillColor: '',
         symbol: 'url(/assets/img/police-marker-c.svg)'
       },
@@ -212,9 +221,11 @@ window.addEventListener('load', function() {
       type: 'mappoint',
       name: 'Police Department',
       data: map_data[3],
+      joinBy: null,
+      shadow: false,
       marker: {
-        width: 12,
-        height: 12,
+        width: 8,
+        height: 8,
         fillColor: '',
         symbol: 'url(/assets/img/police-marker-b.svg)'
       },
@@ -245,9 +256,11 @@ window.addEventListener('load', function() {
       type: 'mappoint',
       name: 'Police Department',
       data: map_data[4],
+      joinBy: null,
+      shadow: false,
       marker: {
-        width: 12,
-        height: 12,
+        width: 8,
+        height: 8,
         symbol: 'url(/assets/img/police-marker-a.svg)'
       },
       dataLabels: {

@@ -6,9 +6,9 @@
   <h3>Less-Lethal Force</h3>
   <p>Using batons, strangleholds, tasers &amp; other weapons</p>
   <p>
-    <?= output($scorecard['report']['total_less_lethal_force_estimated'], 0) ?> Incidents
+    <?= num($scorecard['report']['total_less_lethal_force_estimated'], 0) ?> Incidents
     <span class="divider">&nbsp;|&nbsp;</span>
-    <?= output($scorecard['report']['less_lethal_per_10k_arrests'], 0) ?> every 10k arrests
+    <?= num($scorecard['report']['less_lethal_per_10k_arrests'], 0) ?> every 10k arrests
     <?php if ($scorecard['report']['less_lethal_force_change']): ?>
     <span class="divider">&nbsp;|&nbsp;</span>
     <?php endif; ?>

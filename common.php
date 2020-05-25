@@ -487,8 +487,8 @@ function getMapData($state, $type) {
         'className' => 'location-' . $grade['slug'],
         'colorIndex' => getColorIndex($grade['overall_score']),
         'name' => $grade['agency_name'],
-        'lat' => $grade['latitude'],
-        'lon' => $grade['longitude'],
+        'lat' => floatval($grade['latitude']),
+        'lon' => floatval($grade['longitude']),
         'value' => $grade['overall_score']
       );
     } else if ($type === 'sheriff' && !empty($grade['district'])) {
@@ -514,6 +514,23 @@ function getNationalTotal($states) {
     }
 
     if (!empty($state['sheriff'])) {
+      $total += count($state['sheriff']);
+    }
+  }
+
+  return num($total);
+}
+
+
+function getNationalTotalByType($states, $type) {
+  $total = 0;
+
+  foreach ($states as $abbr => $state) {
+    if (!empty($state['police-department']) && $type === 'police-department') {
+      $total += count($state['police-department']);
+    }
+
+    if (!empty($state['sheriff']) && $type === 'sheriff') {
       $total += count($state['sheriff']);
     }
   }
@@ -638,8 +655,8 @@ function getNationalMapData($states, $type) {
             'className' => 'location-' . $department['slug'],
             'colorIndex' => getColorIndex($department['overall_score']),
             'name' => $department['agency_name'],
-            'lat' => $department['latitude'],
-            'lon' => $department['longitude'],
+            'lat' => floatval($department['latitude']),
+            'lon' => floatval($department['longitude']),
             'stateAbbr' => strtolower($abbr),
             'value' => $department['overall_score']
           );
@@ -663,7 +680,7 @@ function getNationalMapData($states, $type) {
     }
   }
 
-  return ($type === 'police-department') ? json_encode($map_scores, JSON_PRETTY_PRINT) : json_encode($map_data, JSON_PRETTY_PRINT);
+  return ($type === 'police-department') ? json_encode($map_scores) : json_encode($map_data);
 }
 
 /**
@@ -800,9 +817,7 @@ function num($string, $decimal = 0, $suffix = '', $invert = false) {
     $output = (100 - $output);
   }
 
-  if ($decimal === 1) {
-    $output = round($output, 1);
-  }
+  $output = round($output, $decimal);
 
   if ($output > 999) {
     $output = number_format($output, $decimal);

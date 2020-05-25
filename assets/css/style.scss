@@ -1878,7 +1878,14 @@ body {
         max-width: 200px;
         text-overflow: ellipsis;
         overflow: hidden;
-        display: block;
+        display: inline-block;
+        vertical-align: middle;
+
+        &.stats-change {
+          overflow: visible;
+          position: relative;
+          top: -3px;
+        }
       }
     }
   }

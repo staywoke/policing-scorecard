@@ -23,13 +23,13 @@ $percent_other_transfers = ($other_ice_transfers / $total_ice_transfers) * 100;
 
   <div class="progress-bar-wrapper">
     <div class="progress-bar animate-bar grouped key-red" data-percent="<?= output(floatval($percent_violent_transfers), 0, '%') ?>">
-      <span><?= (intval($percent_violent_transfers) > 5) ? output(intval($percent_violent_transfers), 0, '%') : '' ?></span>
+      <span><?= (intval($percent_violent_transfers) > 5) ? num(intval($percent_violent_transfers), 0, '%') : '' ?></span>
     </div>
     <div class="progress-bar animate-bar grouped key-orange" data-percent="<?= output(floatval($percent_drug_transfers), 0, '%') ?>">
-      <span><?= (intval($percent_drug_transfers) > 5) ? output(intval($percent_drug_transfers), 0, '%') : '' ?></span>
+      <span><?= (intval($percent_drug_transfers) > 5) ? num(intval($percent_drug_transfers), 0, '%') : '' ?></span>
     </div>
     <div class="progress-bar animate-bar grouped key-black" data-percent="<?= output(floatval($percent_other_transfers), 0, '%') ?>">
-      <span><?= (intval($percent_other_transfers) > 5) ? output(intval($percent_other_transfers), 0, '%') : '' ?></span>
+      <span><?= (intval($percent_other_transfers) > 5) ? num(intval($percent_other_transfers), 0, '%') : '' ?></span>
     </div>
   </div>
 </div>

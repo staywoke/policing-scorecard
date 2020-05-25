@@ -11,7 +11,7 @@
   <p class="note">&nbsp;</p>
   <?php elseif (!isset($scorecard['report']['percent_use_of_force_complaints_sustained']) || (isset($scorecard['report']['percent_use_of_force_complaints_sustained']) && empty($scorecard['report']['percent_use_of_force_complaints_sustained']))): ?>
   <p>
-    <?= output($scorecard['police_accountability']['use_of_force_complaints_reported']) ?> Reported
+    <?= num($scorecard['police_accountability']['use_of_force_complaints_reported']) ?> Reported
     <span class="divider">&nbsp;|&nbsp;</span>
     <?= num($scorecard['report']['percent_use_of_force_complaints_sustained'], 0, '%') ?> Ruled in Favor of Civilians
   </p>
@@ -21,7 +21,7 @@
   <p class="note">City Did Not Provide Data</p>
   <?php else: ?>
   <p>
-    <?= output($scorecard['police_accountability']['use_of_force_complaints_reported']) ?> Reported
+    <?= num($scorecard['police_accountability']['use_of_force_complaints_reported']) ?> Reported
     <span class="divider">&nbsp;|&nbsp;</span>
     <?= num($scorecard['report']['percent_use_of_force_complaints_sustained'], 0, '%') ?> Ruled in Favor of Civilians
   </p>

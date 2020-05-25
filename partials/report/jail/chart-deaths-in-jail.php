@@ -6,7 +6,7 @@
   <p>
     <?= num(round(intval(str_replace(',', '', $scorecard['report']['total_jail_deaths_2016_2018'])))) ?> Deaths
     <span class="divider">&nbsp;|&nbsp;</span>
-    <?= output($scorecard['report']['jail_deaths_per_1k_jail_population']) ?> per 1k Jail Population
+    <?= num($scorecard['report']['jail_deaths_per_1k_jail_population']) ?> per 1k Jail Population
   </p>
 
   <p class="keys">
@@ -39,7 +39,7 @@
 <div class="stat-wrapper no-border-mobile">
   <h3>Jail Incarceration rate</h3>
   <p>
-    <?= num(round(intval(str_replace(',', '', $scorecard['jail']['total_jail_population'])))) ?> Avg Daily Jail Population <span class="divider">&nbsp;|&nbsp;</span> <?= output($scorecard['report']['jail_incarceration_per_1k_population']) ?> per 1k residents
+    <?= num(round(intval(str_replace(',', '', $scorecard['jail']['total_jail_population'])))) ?> Avg Daily Jail Population <span class="divider">&nbsp;|&nbsp;</span> <?= num($scorecard['report']['jail_incarceration_per_1k_population']) ?> per 1k residents
   </p>
   <?php if(!isset($scorecard['report']['percentile_jail_deaths_per_1k_jail_population']) || (isset($scorecard['report']['percentile_jail_deaths_per_1k_jail_population']) && empty($scorecard['report']['percentile_jail_deaths_per_1k_jail_population']))): ?>
   <div class="progress-bar-wrapper">
