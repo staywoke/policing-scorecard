@@ -266,9 +266,15 @@ $valid_token = (md5($token) === '5d0f91a00d76444b843046b7c15eb5c2');
 
         $.ajax({
           type: 'POST',
-          url: '<?= API_BASE ?>update/scorecard?apikey=<?= API_KEY ?>',
+          url: '<?= API_BASE ?>update/scorecard',
           data: {
             token: '<?= $token ?>'
+          },
+          beforeSend: function (jqXHR, settings) {
+            jqXHR.setRequestHeader('API-Key', '<?= API_KEY ?>');
+          },
+          headers: {
+            'API-Key': '<?= API_KEY ?>'
           },
           error: function (request, status, error) {
             $button.button('reset');
