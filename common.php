@@ -680,7 +680,7 @@ function getNationalMapData($states, $type) {
     }
   }
 
-  return ($type === 'police-department') ? json_encode($map_scores) : json_encode($map_data);
+  return ($type === 'police-department') ? json_encode($map_scores, JSON_PRETTY_PRINT) : json_encode($map_data, JSON_PRETTY_PRINT);
 }
 
 /**

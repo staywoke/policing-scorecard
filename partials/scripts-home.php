@@ -17,12 +17,7 @@ window.addEventListener('load', function() {
       borderWidth: 0,
       margin: 0,
       zoomType: false,
-      styleMode: true,
-      events: {
-        load: function () {
-          document.getElementById('map-loading').style.display = 'none';
-        }
-      }
+      styleMode: false
     },
     title: {
       text: '',
@@ -53,17 +48,12 @@ window.addEventListener('load', function() {
         animation: false,
         allAreas: false,
         mapData: map_type === 'police-department' ? Highcharts.maps['countries/us/us-all'] : Highcharts.maps['countries/us/us-all-all'],
-      },
-      series: {
-        turboThreshold: 0,
-        animation: false
       }
     },
     series: [
       {
-        animation: false,
         allAreas: true,
-        showInLegend: true,
+        showInLegend: false,
         joinBy: null,
         turboThreshold: 0
       }
@@ -115,13 +105,14 @@ window.addEventListener('load', function() {
       animation: false,
       type: 'mappoint',
       name: 'Police Department',
-      data: map_data[0],
       joinBy: null,
       shadow: false,
+      turboThreshold: 0,
+      showInLegend: false,
       marker: {
         width: 8,
         height: 8,
-        fillColor: '',
+        fillColor: null,
         symbol: 'url(/assets/img/police-marker-f.svg)'
       },
       dataLabels: {
@@ -150,9 +141,10 @@ window.addEventListener('load', function() {
       animation: false,
       type: 'mappoint',
       name: 'Police Department',
-      data: map_data[1],
       joinBy: null,
       shadow: false,
+      turboThreshold: 0,
+      showInLegend: false,
       marker: {
         width: 8,
         height: 8,
@@ -185,9 +177,10 @@ window.addEventListener('load', function() {
       animation: false,
       type: 'mappoint',
       name: 'Police Department',
-      data: map_data[2],
       joinBy: null,
       shadow: false,
+      turboThreshold: 0,
+      showInLegend: false,
       marker: {
         width: 8,
         height: 8,
@@ -220,9 +213,10 @@ window.addEventListener('load', function() {
       animation: false,
       type: 'mappoint',
       name: 'Police Department',
-      data: map_data[3],
       joinBy: null,
       shadow: false,
+      turboThreshold: 0,
+      showInLegend: false,
       marker: {
         width: 8,
         height: 8,
@@ -255,9 +249,10 @@ window.addEventListener('load', function() {
       animation: false,
       type: 'mappoint',
       name: 'Police Department',
-      data: map_data[4],
       joinBy: null,
       shadow: false,
+      turboThreshold: 0,
+      showInLegend: false,
       marker: {
         width: 8,
         height: 8,
@@ -284,10 +279,20 @@ window.addEventListener('load', function() {
         }
       }
     });
+
+    // Wait to load data until after the rest of the site is done loading to prevent page blocking
+    setTimeout(function() {
+      window.SCORECARD_MAP.series[1].setData(map_data[0]);
+      window.SCORECARD_MAP.series[2].setData(map_data[1]);
+      window.SCORECARD_MAP.series[3].setData(map_data[2]);
+      window.SCORECARD_MAP.series[4].setData(map_data[3]);
+      window.SCORECARD_MAP.series[5].setData(map_data[4]);
+      document.getElementById('map-loading').style.display = 'none';
+    }, 0);
+
   } else if (map_type === 'sheriff' && map_data) {
     window.SCORECARD_MAP.addSeries({
       animation: false,
-      data: map_data,
       name: 'Sheriff Department',
       events: {
         click: function (e) {
@@ -304,7 +309,13 @@ window.addEventListener('load', function() {
           }
         }
       }
-    })
+    });
+
+    // Wait to load data until after the rest of the site is done loading to prevent page blocking
+    setTimeout(function() {
+      window.SCORECARD_MAP.series[1].setData(map_data);
+      document.getElementById('map-loading').style.display = 'none';
+    }, 0);
   }
 });
 </script>
