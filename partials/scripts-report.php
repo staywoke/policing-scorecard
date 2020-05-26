@@ -335,9 +335,9 @@
         },
         series: [{
           data: [
-            ['Black', <?= round(($scorecard['police_violence']['black_people_killed'] / $scorecard['agency']['black_population']) * 100, 2) ?>],
-            ['Latinx', <?= round(($scorecard['police_violence']['hispanic_people_killed'] / $scorecard['agency']['hispanic_population']) * 100, 2) ?>],
-            ['White', <?= round(($scorecard['police_violence']['white_people_killed'] / $scorecard['agency']['white_population']) * 100, 2) ?>]
+            ['Black', <?= (!isset($scorecard['agency']['black_population']) || $scorecard['agency']['black_population'] === 0) ? 0 : round(($scorecard['police_violence']['black_people_killed'] / $scorecard['agency']['black_population']) * 100, 2) ?>],
+            ['Latinx', <?= (!isset($scorecard['agency']['hispanic_population']) || $scorecard['agency']['hispanic_population'] === 0) ? 0 : round(($scorecard['police_violence']['hispanic_people_killed'] / $scorecard['agency']['hispanic_population']) * 100, 2) ?>],
+            ['White', <?= (!isset($scorecard['agency']['white_population']) || $scorecard['agency']['white_population'] === 0) ? 0 : round(($scorecard['police_violence']['white_people_killed'] / $scorecard['agency']['white_population']) * 100, 2) ?>]
           ]
         }]
       });

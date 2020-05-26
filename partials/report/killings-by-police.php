@@ -28,7 +28,7 @@
         <p><strong>0 complaints </strong> were ruled in favor of civilians from 2016-18.</p>
         <?php elseif($scorecard['police_accountability']['civilian_complaints_sustained'] === 1): ?>
         <p>Only <strong>1 in every <?= num($scorecard['police_accountability']['civilian_complaints_reported']) ?> complaints</strong> were ruled in favor of civilians from 2016-18.</p>
-        <?php elseif($scorecard['police_accountability']['civilian_complaints_reported'] / $scorecard['police_accountability']['civilian_complaints_sustained'] <= 3): ?>
+        <?php elseif(!isset($scorecard['report']['complaints_sustained']) || $scorecard['report']['complaints_sustained'] > 0): ?>
         <p><strong><?= num($scorecard['report']['complaints_sustained'], 0, '%') ?></strong> were ruled in favor of civilians from 2016-2018.</p>
         <?php else: ?>
         <p>Only <strong>1 in every <?= round(intval(str_replace(',', '', $scorecard['police_accountability']['civilian_complaints_reported'])) / intval(str_replace(',', '', $scorecard['police_accountability']['civilian_complaints_sustained']))) ?> complaints</strong> were ruled in favor of civilians from 2016-18.</p>
@@ -41,13 +41,13 @@
         var CHART_MINI_REPORTED = 0;
         var CHART_MINI_SUSTAINED = 0;
         <?php elseif($scorecard['police_accountability']['civilian_complaints_sustained'] === 1): ?>
-        var CHART_MINI_REPORTED = <?= num($scorecard['police_accountability']['civilian_complaints_reported']) ?>;
+        var CHART_MINI_REPORTED = <?= $scorecard['police_accountability']['civilian_complaints_reported'] ?>;
         var CHART_MINI_SUSTAINED = 1;
-        <?php elseif($scorecard['police_accountability']['civilian_complaints_reported'] / $scorecard['police_accountability']['civilian_complaints_sustained'] <= 3): ?>
-        var CHART_MINI_REPORTED = <?= num($scorecard['report']['complaints_sustained'], 0, '%') ?>;
+        <?php elseif($scorecard['police_accountability']['civilian_complaints_sustained'] > 0 && $scorecard['police_accountability']['civilian_complaints_reported'] / $scorecard['police_accountability']['civilian_complaints_sustained'] <= 3): ?>
+        var CHART_MINI_REPORTED = <?= $scorecard['report']['complaints_sustained'] ?>;
         var CHART_MINI_SUSTAINED = <?= 100 - $scorecard['report']['complaints_sustained'] ?>;
         <?php else: ?>
-        var CHART_MINI_REPORTED = <?= round(intval(str_replace(',', '', $scorecard['police_accountability']['civilian_complaints_reported'])) / intval(str_replace(',', '', $scorecard['police_accountability']['civilian_complaints_sustained']))) ?>;
+        var CHART_MINI_REPORTED = <?= (!isset($scorecard['police_accountability']['civilian_complaints_sustained']) || $scorecard['police_accountability']['civilian_complaints_sustained'] === 0) ? 0 : round($scorecard['police_accountability']['civilian_complaints_reported'] / $scorecard['police_accountability']['civilian_complaints_sustained']) ?>;
         var CHART_MINI_SUSTAINED = 1;
         <?php endif; ?>
         </script>

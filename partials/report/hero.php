@@ -13,10 +13,12 @@
       <h1>We evaluated <?= getStateTotal($states, $stateCode) ?> of <?= $stateName ?>'s largest police departments.</h1>
 
       <h2>Read the <a href="/findings" style="color: #82add7; text-decoration: underline; font-weight: 500;">Findings.</a> See the Grade for Each Department.</h2>
+      <?php if (isset($stateData['police-department']) && isset($stateData['sheriff']) && count($stateData['police-department']) > 0 && count($stateData['sheriff']) > 0): ?>
       <div class="buttons">
         <a href="<?= $isProd ? $stateData['police-department'][0]['url_pretty'] : $stateData['police-department'][0]['url'] ?>" class="btn <?= $type === 'police-department' ? 'active' : '' ?>">Police Depts</a>
         <a href="<?= $isProd ? $stateData['sheriff'][0]['url_pretty'] : $stateData['sheriff'][0]['url'] ?>" class="btn <?= $type === 'sheriff' ? 'active' : '' ?>">Sheriffs Depts</a>
       </div>
+      <?php endif; ?>
     </div>
     <div class="left">
       <div class="map" id="state-map-layer">
