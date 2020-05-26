@@ -2093,6 +2093,10 @@ body {
   top: 40px;
 }
 
+.section.stats .one-third .chart #chart-mini-complaints-reported-label .national-report {
+  top: 35px;
+}
+
 .section.stats .one-third .chart .chart-mini-arrests {
   width: 100px;
   height: 100px;

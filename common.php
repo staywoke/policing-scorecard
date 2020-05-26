@@ -627,9 +627,16 @@ function getNationalSummary($states) {
 
   return array(
     'total_arrests' => $total_arrests,
+    'total_low_level_arrests' => $total_low_level_arrests,
     'total_complaints_reported' => $total_complaints_reported,
     'total_complaints_sustained' => $total_complaints_sustained,
     'total_people_killed' => $total_people_killed,
+    'total_black_people_killed' => $total_black_people_killed,
+    'total_hispanic_people_killed' => $total_hispanic_people_killed,
+    'total_white_people_killed' => $total_white_people_killed,
+    'total_black_population' => $total_black_population,
+    'total_hispanic_population' => $total_hispanic_population,
+    'total_white_population' => $total_white_population,
     'black_deadly_force_disparity_per_population' => (($total_black_people_killed / $total_black_population) / ($total_white_people_killed / $total_white_population)),
     'hispanic_deadly_force_disparity_per_population' => (($total_hispanic_people_killed / $total_hispanic_population) / ($total_white_people_killed / $total_white_population)),
     'times_more_misdemeanor_arrests_than_violent_crime' => ($total_low_level_arrests / $total_violent_crime_arrests)
