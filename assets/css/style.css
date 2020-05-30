@@ -3120,6 +3120,26 @@ p.number-list.n15::after {
   content: '15';
 }
 
+#static-map {
+  display: none;
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 1;
+}
+
+#static-map.police-department {
+  background: url("../img/maps/nationwide-police-desktop.png") center center no-repeat;
+  background-size: contain;
+}
+
+#static-map.sheriff {
+  background: url("../img/maps/nationwide-sheriff-desktop.png") center center no-repeat;
+  background-size: contain;
+}
+
 #state-map, #usa-map {
   height: 100%;
   width: 100%;
@@ -3213,6 +3233,20 @@ p.number-list.n15::after {
 @media screen and (max-width: 940px) {
   .hide-mobile {
     display: none;
+  }
+  #static-map {
+    height: 300px;
+  }
+  #static-map.police-department {
+    background: url("../img/maps/nationwide-police-mobile.png") center center no-repeat;
+    background-size: contain;
+  }
+  #static-map.sheriff {
+    background: url("../img/maps/nationwide-sheriff-mobile.png") center center no-repeat;
+    background-size: contain;
+  }
+  #map-loading {
+    font-size: 18px;
   }
   #usa-map-layer {
     max-width: 90%;

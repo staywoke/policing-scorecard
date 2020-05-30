@@ -37,6 +37,8 @@
       </div>
       <div id="usa-map" class="<?= $type ?> <?= $location ?>"></div>
       <div id="usa-map-shadow" class="<?= $type ?> <?= $location ?>"></div>
+
+      <div id="static-map" class="<?= $type ?>"></div>
     </div>
   </div>
 </div>

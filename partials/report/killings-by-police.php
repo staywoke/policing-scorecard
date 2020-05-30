@@ -7,7 +7,7 @@
         <?php if($scorecard['report']['total_people_killed'] === 0): ?>
         <p><?= $scorecard['agency']['name']?> <?= ($type === 'police-department') ? 'Police' : 'Sheriff' ?> Department did not kill anyone from 2013-2019</p>
         <?php elseif($scorecard['report']['total_people_killed'] === 1): ?>
-        <p><?= $scorecard['agency']['name']?> was <strong>1 of only <?= ($type === 'police-department') ? '11' : '12' ?> departments</strong> in our analysis that did not use deadly force from 2016-18.</p>
+        <p><?= $scorecard['agency']['name']?> killed 1 person from 2013-19.</p>
         <?php elseif(!isset($scorecard['report']['black_deadly_force_disparity_per_population']) || !isset($scorecard['report']['hispanic_deadly_force_disparity_per_population'])): ?>
         <p>That's higher than <strong><?= num($scorecard['report']['percentile_killed_by_police'], 0, '%', true) ?></strong> of <?= $stateName ?> police departments.</p>
         <?php else: ?>
@@ -23,9 +23,21 @@
     <div class="one-third">
       <h1><strong><?= num($scorecard['police_accountability']['civilian_complaints_reported']) ?></strong> civilian complaints of police misconduct</h1>
 
+      <?php
+      $black_disparity = (!isset($scorecard['agency']['black_population']) || $scorecard['agency']['black_population'] === 0) ? 0 : round(($scorecard['police_violence']['black_people_killed'] / $scorecard['agency']['black_population']) * 100, 2);
+      $hispanic_disparity = (!isset($scorecard['agency']['hispanic_population']) || $scorecard['agency']['hispanic_population'] === 0) ? 0 : round(($scorecard['police_violence']['hispanic_people_killed'] / $scorecard['agency']['hispanic_population']) * 100, 2);
+      $white_disparity = (!isset($scorecard['agency']['white_population']) || $scorecard['agency']['white_population'] === 0) ? 0 : round(($scorecard['police_violence']['white_people_killed'] / $scorecard['agency']['white_population']) * 100, 2);
+      ?>
+
       <div class="text">
         <?php if($scorecard['police_accountability']['civilian_complaints_sustained'] === 0): ?>
-        <p><strong>0 complaints </strong> were ruled in favor of civilians from 2016-18.</p>
+        <p><strong>0 complaints </strong> of misconduct were reported from 2016-18.</p>
+        <?php elseif($black_disparity > 0 && $hispanic_disparity === 0 && $white_disparity === 0): ?>
+        <p><strong>100%</strong> of people killed by <?= $scorecard['agency']['name']?> were Black.</p>
+        <?php elseif($black_disparity === 0 && $hispanic_disparity > 0 && $white_disparity === 0): ?>
+        <p><strong>100%</strong> of people killed by <?= $scorecard['agency']['name']?> were Latinx.</p>
+        <?php elseif($black_disparity === 0 && $hispanic_disparity === 0 && $white_disparity > 0): ?>
+        <p><strong>100%</strong> of people killed by <?= $scorecard['agency']['name']?> were White.</p>
         <?php elseif($scorecard['police_accountability']['civilian_complaints_sustained'] === 1): ?>
         <p>Only <strong>1 in every <?= num($scorecard['police_accountability']['civilian_complaints_reported']) ?> complaints</strong> were ruled in favor of civilians from 2016-18.</p>
         <?php elseif(!isset($scorecard['report']['complaints_sustained']) || $scorecard['report']['complaints_sustained'] > 0): ?>

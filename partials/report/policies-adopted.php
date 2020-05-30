@@ -16,7 +16,7 @@
       $scorecard['policy']['requires_warning_before_shooting'] === false &&
       $scorecard['policy']['restricts_shooting_at_moving_vehicles'] === false &&
       $scorecard['policy']['requires_comprehensive_reporting'] === false &&
-      $scorecard['policy']['requires_exhaust_all_other_means_before_shooting'] === false &&
+      $scorecard['policy']['requires_exhaust_other_means_before_shooting'] === false &&
       $scorecard['policy']['has_use_of_force_continuum'] === false
     ): ?>
     <div class="error">City has not adopted the following policies:</div>
@@ -44,7 +44,7 @@
       <div class="check animate-check <?= $scorecard['policy']['requires_comprehensive_reporting'] === true ? 'checked' : 'unchecked' ?> more-info" data-city="<?= $location ?>" data-more-info="policy_language_requires_comprehensive_reporting">
         Requires Comprehensive Reporting
       </div>
-      <div class="check animate-check <?= $scorecard['policy']['requires_exhaust_all_other_means_before_shooting'] === true ? 'checked' : 'unchecked' ?> more-info" data-city="<?= $location ?>" data-more-info="policy_language_requires_exhaust_all_other_means_before_shooting">
+      <div class="check animate-check <?= $scorecard['policy']['requires_exhaust_other_means_before_shooting'] === true ? 'checked' : 'unchecked' ?> more-info" data-city="<?= $location ?>" data-more-info="policy_language_requires_exhaust_other_means_before_shooting">
         Requires Exhaust Alternatives Before Shooting
       </div>
       <div class="check animate-check <?= $scorecard['policy']['has_use_of_force_continuum'] === true ? 'checked' : 'unchecked' ?> more-info" data-city="<?= $location ?>" data-more-info="policy_language_has_use_of_force_continuum">

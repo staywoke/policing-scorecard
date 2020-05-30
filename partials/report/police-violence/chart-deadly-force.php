@@ -15,7 +15,7 @@
     </p>
     <?php endif; ?>
 
-    <?php if (!isset($scorecard['report']['percentile_killed_by_police']) || (isset($scorecard['report']['percentile_killed_by_police']) && empty($scorecard['report']['percentile_killed_by_police']))): ?>
+    <?php if (!isset($scorecard['report']['total_people_killed']) || (isset($scorecard['report']['killed_by_police_per_10k_arrests']) && empty($scorecard['report']['killed_by_police_per_10k_arrests']))): ?>
     <div class="progress-bar-wrapper">
       <div class="progress-bar no-data" style="width: 0"></div>
     </div>

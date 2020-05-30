@@ -344,6 +344,11 @@
     }
 
     if ($chartMiniComplaintsReported) {
+      // don't render chart if it is empty
+      if (CHART_MINI_REPORTED === 0 || CHART_MINI_SUSTAINED === 0) {
+        return;
+      }
+
       new Chart($chartMiniComplaintsReported.getContext('2d'), {
         type: 'doughnut',
         chart: {
