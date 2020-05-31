@@ -608,6 +608,13 @@ function getNationalSummary($states) {
   $total_low_level_arrests = 0;
   $total_violent_crime_arrests = 0;
 
+  $total_arrests_2013 = 0;
+  $total_arrests_2014 = 0;
+  $total_arrests_2015 = 0;
+  $total_arrests_2016 = 0;
+  $total_arrests_2017 = 0;
+  $total_arrests_2018 = 0;
+
   foreach ($states as $abbr => $state) {
     $total_arrests += $state['total_arrests'];
     $total_complaints_reported += $state['total_complaints_reported'];
@@ -623,6 +630,13 @@ function getNationalSummary($states) {
 
     $total_low_level_arrests += $state['total_low_level_arrests'];
     $total_violent_crime_arrests += $state['total_violent_crime_arrests'];
+
+    $total_arrests_2013 += $state['total_arrests_2013'];
+    $total_arrests_2014 += $state['total_arrests_2014'];
+    $total_arrests_2015 += $state['total_arrests_2015'];
+    $total_arrests_2016 += $state['total_arrests_2016'];
+    $total_arrests_2017 += $state['total_arrests_2017'];
+    $total_arrests_2018 += $state['total_arrests_2018'];
   }
 
   return array(
@@ -637,6 +651,12 @@ function getNationalSummary($states) {
     'total_black_population' => $total_black_population,
     'total_hispanic_population' => $total_hispanic_population,
     'total_white_population' => $total_white_population,
+    'total_arrests_2013' => $total_arrests_2013,
+    'total_arrests_2014' => $total_arrests_2014,
+    'total_arrests_2015' => $total_arrests_2015,
+    'total_arrests_2016' => $total_arrests_2016,
+    'total_arrests_2017' => $total_arrests_2017,
+    'total_arrests_2018' => $total_arrests_2018,
     'black_deadly_force_disparity_per_population' => (($total_black_people_killed / $total_black_population) / ($total_white_people_killed / $total_white_population)),
     'hispanic_deadly_force_disparity_per_population' => (($total_hispanic_people_killed / $total_hispanic_population) / ($total_white_people_killed / $total_white_population)),
     'times_more_misdemeanor_arrests_than_violent_crime' => ($total_low_level_arrests / $total_violent_crime_arrests)

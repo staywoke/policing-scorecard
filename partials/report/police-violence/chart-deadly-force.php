@@ -15,13 +15,15 @@
     </p>
     <?php endif; ?>
 
-    <?php if (!isset($scorecard['report']['total_people_killed']) || (isset($scorecard['report']['killed_by_police_per_10k_arrests']) && empty($scorecard['report']['killed_by_police_per_10k_arrests']))): ?>
+    <?php if (output($scorecard['police_violence']['all_deadly_force_incidents']) === '0' || output($scorecard['report']['total_people_killed']) === '0'): ?>
+    <div class="progress-bar-wrapper">
+      <div class="progress-bar bright-green" style="width: 0"></div>
+    </div>
+    <?php elseif (!isset($scorecard['report']['total_people_killed']) || (isset($scorecard['report']['killed_by_police_per_10k_arrests']) && empty($scorecard['report']['killed_by_police_per_10k_arrests']))): ?>
     <div class="progress-bar-wrapper">
       <div class="progress-bar no-data" style="width: 0"></div>
     </div>
     <p class="note">City Did Not Provide Data</p>
-    <?php elseif (output($scorecard['police_violence']['all_deadly_force_incidents']) === '0'): ?>
-    &nbsp;
     <?php else: ?>
     <div class="progress-bar-wrapper">
       <div class="progress-bar animate-bar <?= progressBar(100 - intval($scorecard['report']['percentile_killed_by_police']), 'reverse') ?>" data-percent="<?= output(100 - intval($scorecard['report']['percentile_killed_by_police']), 0, '%') ?>"></div>

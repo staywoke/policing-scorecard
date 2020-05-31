@@ -41,7 +41,9 @@ $nationalSummary = getNationalSummary($states);
 
       <div class="chart">
         <div class="chart-mini-arrests">
-          <div class="filler" style="width: <?= $nationalSummary['total_low_level_arrests'] / $nationalSummary['total_arrests'] ?>%; height: <?= $nationalSummary['total_low_level_arrests'] / $nationalSummary['total_arrests'] ?>%"></div>
+          <?php
+          $fillPercent = round($nationalSummary['total_low_level_arrests'] / ($nationalSummary['total_arrests_2013'] + $nationalSummary['total_arrests_2014'] + $nationalSummary['total_arrests_2015'] + $nationalSummary['total_arrests_2016'] + $nationalSummary['total_arrests_2017'] + $nationalSummary['total_arrests_2018']), 2) * 100; ?>
+          <div class="filler" style="width: <?= $fillPercent ?>%; height: <?= $fillPercent ?>%"></div>
         </div>
       </div>
     </div>

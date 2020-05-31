@@ -395,8 +395,8 @@
         }
       });
 
-      var label = (CHART_MINI_SUSTAINED === 0 && CHART_MINI_REPORTED === 0) ? 'ZERO' : CHART_MINI_SUSTAINED + ' in ' + CHART_MINI_REPORTED;
-      document.getElementById('chart-mini-complaints-reported-label').innerHTML = label;
+      var label = (CHART_MINI_SUSTAINED === 0 && CHART_MINI_REPORTED === 0) ? '0' : Math.round((CHART_MINI_SUSTAINED / CHART_MINI_REPORTED) * 100);
+      document.getElementById('chart-mini-complaints-reported-label').innerHTML = label + '%';
     }
 
     setTimeout(SCORECARD.animate, 250);
