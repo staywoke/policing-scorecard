@@ -344,11 +344,6 @@
     }
 
     if ($chartMiniComplaintsReported) {
-      // don't render chart if it is empty
-      if (CHART_MINI_REPORTED === 0 || CHART_MINI_SUSTAINED === 0) {
-        return;
-      }
-
       new Chart($chartMiniComplaintsReported.getContext('2d'), {
         type: 'doughnut',
         chart: {
@@ -385,7 +380,7 @@
             borderWidth: 0,
             data: [
               CHART_MINI_SUSTAINED,
-              CHART_MINI_REPORTED
+              (CHART_MINI_REPORTED === 0) ? 1 : CHART_MINI_REPORTED
             ],
             backgroundColor: [
               '#82ADD7',
