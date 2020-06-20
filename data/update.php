@@ -86,6 +86,7 @@ function update_file($file, $name) {
   curl_setopt($ch, CURLOPT_FRESH_CONNECT, true);
   curl_setopt($ch, CURLOPT_SSL_VERIFYHOST, 0);
   curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, 0);
+  curl_setopt($ch, CURLOPT_FOLLOWLOCATION, true);
 
   $result = curl_exec($ch);
   $output = "";
