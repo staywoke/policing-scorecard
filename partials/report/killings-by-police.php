@@ -77,7 +77,13 @@
 
       <div class="chart">
         <div class="chart-mini-arrests">
-          <div class="filler" style="width: <?= $scorecard['report']['percent_misdemeanor_arrests']?>%; height: <?= $scorecard['report']['percent_misdemeanor_arrests'] ?>%"></div>
+        <?php
+          $area = 10000;
+          $fill = $scorecard['report']['percent_misdemeanor_arrests'] / 100;
+          $newArea = $area * $fill;
+          $fillPercent = sqrt($newArea);
+          ?>
+          <div class="filler" style="width: <?= $fillPercent ?>%; height: <?= $fillPercent ?>%"></div>
         </div>
       </div>
     </div>
