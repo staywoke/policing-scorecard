@@ -99,10 +99,4 @@
       ?>
     </div>
   </div>
-
-  <!-- Powered By -->
-  <div class="content bt">
-    This is a project of
-    <a href="https://www.joincampaignzero.org/" class="title" target="_blank">Campaign Zero</a>
-  </div>
 </div>

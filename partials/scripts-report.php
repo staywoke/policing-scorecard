@@ -249,16 +249,16 @@
               <?= $scorecard['police_violence']['vehicle_people_killed'] ?>
             ],
             backgroundColor: [
-              '#f19975',
-              '#58595b',
-              '#d4d9e4',
-              '#9a9b9f'
+              '#dc4646',
+              '#5a6f83',
+              '#f3f4f6',
+              '#aab8c5'
             ],
             hoverBackgroundColor: [
-              '#f19975',
-              '#58595b',
-              '#d4d9e4',
-              '#9a9b9f'
+              '#dc4646',
+              '#5a6f83',
+              '#f3f4f6',
+              '#aab8c5'
             ]
           }]
         }

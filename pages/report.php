@@ -5,7 +5,7 @@ include_once(__DIR__ .'/../partials/report/killings-by-police.php');
 ?>
 
 <!-- Police Violence -->
-<div class="section pad score-details">
+<div class="section bb pad score-details">
   <!-- Section Title -->
   <?php include_once(__DIR__ .'/../partials/report/police-violence/title.php'); ?>
 
@@ -36,9 +36,6 @@ include_once(__DIR__ .'/../partials/report/killings-by-police.php');
   </div>
 </div>
 
-<!-- Policies Adopted -->
-<?php include_once(__DIR__ .'/../partials/report/policies-adopted.php'); ?>
-
 <!-- Police Accountability -->
 <div class="section bb pad accountability">
   <!-- Section Title -->
@@ -66,11 +63,8 @@ include_once(__DIR__ .'/../partials/report/killings-by-police.php');
   </div>
 </div>
 
-<!-- Policies Making It Harder to Hold Police Accountable -->
-<?php include_once(__DIR__ .'/../partials/report/policies-making-it-harder.php'); ?>
-
 <!-- Approach to Policing -->
-<div class="section pad approach">
+<div class="section bb pad approach">
   <!-- Section Title -->
   <?php include_once(__DIR__ .'/../partials/report/approach-to-policing/title.php'); ?>
 

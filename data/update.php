@@ -109,7 +109,7 @@ $valid_token = (md5($token) === '5d0f91a00d76444b843046b7c15eb5c2');
         <p>Use the button below to pull down the latest CSV file from Google Sheets and import the data into our API.</p>
 
         <div class="alert alert-danger alert-dismissible" role="alert" style="display: none;">
-          <strong>ERROR:</strong> The import failed to complete.
+          <strong>ERROR:</strong> <span id="api-error-message">The import failed to complete.</span>
           <button type="button" class="close" data-dismiss="alert" aria-label="Close">
             <span aria-hidden="true">&times;</span>
           </button>
@@ -264,6 +264,9 @@ $valid_token = (md5($token) === '5d0f91a00d76444b843046b7c15eb5c2');
         $button.button('loading');
         $loadingText.show();
 
+        $('#api-error-message').text('The import failed to complete.');
+        $('.alert').slideUp();
+
         $.ajax({
           type: 'POST',
           url: '<?= API_BASE ?>update/scorecard',
@@ -274,7 +277,8 @@ $valid_token = (md5($token) === '5d0f91a00d76444b843046b7c15eb5c2');
             jqXHR.setRequestHeader('API-Key', '<?= API_KEY ?>');
           },
           headers: {
-            'API-Key': '<?= API_KEY ?>'
+            'API-Key': '<?= API_KEY ?>',
+            'Connection': 'keep-alive'
           },
           error: function (request, status, error) {
             $button.button('reset');
@@ -313,6 +317,13 @@ $valid_token = (md5($token) === '5d0f91a00d76444b843046b7c15eb5c2');
               $failedTotal.text(failedTotal.toLocaleString());
 
               $results.slideDown();
+            } else if (response && response.errors) {
+              $button.button('reset');
+              $loadingText.hide();
+
+              $('#api-error-message').text(response.errors[0])
+
+              $('.alert').slideDown();
             }
 
             $button.button('reset');

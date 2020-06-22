@@ -4,10 +4,8 @@
   </h1>
 
   <strong class="grade grade-<?= strtolower(preg_replace('/[^A-Z]/', '', getGrade($scorecard['report']['approach_to_policing_score']))) ?>">
-    <span>Grade: </span><?= getGrade($scorecard['report']['approach_to_policing_score']) ?>
+    <span>Score: </span>
   </strong>
-
-  <span class="divider">&nbsp;|&nbsp;</span>
 
   <?= num($scorecard['report']['approach_to_policing_score'], 0, '%') ?>
 

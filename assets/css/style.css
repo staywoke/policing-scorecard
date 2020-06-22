@@ -1,3 +1,5 @@
+/* New Colors */
+/* Old Colors */
 @font-face {
   font-family: 'statefaceregular';
   src: url("../fonts/StateFace-Regular-webfont.eot");
@@ -350,7 +352,7 @@ body {
 }
 
 #modal-wrapper #results-info-content .button-wrapper .button {
-  background: #8db6dc;
+  background: #5a6f83;
   text-decoration: none;
   color: white;
   padding: 6px 0;
@@ -380,172 +382,172 @@ body {
 
 #modal-wrapper #results-info-content table tr.key.percent-0::before {
   right: 115px;
-  color: #f67f85;
+  color: #dc4646;
 }
 
 #modal-wrapper #results-info-content table tr.key.percent-1::before {
   right: 114px;
-  color: #f67f85;
+  color: #dc4646;
 }
 
 #modal-wrapper #results-info-content table tr.key.percent-2::before {
   right: 113px;
-  color: #f67f85;
+  color: #dc4646;
 }
 
 #modal-wrapper #results-info-content table tr.key.percent-3::before {
   right: 112px;
-  color: #f67f85;
+  color: #dc4646;
 }
 
 #modal-wrapper #results-info-content table tr.key.percent-4::before {
   right: 111px;
-  color: #f67f85;
+  color: #dc4646;
 }
 
 #modal-wrapper #results-info-content table tr.key.percent-5::before {
   right: 110px;
-  color: #f67f85;
+  color: #dc4646;
 }
 
 #modal-wrapper #results-info-content table tr.key.percent-6::before {
   right: 109px;
-  color: #f67f85;
+  color: #dc4646;
 }
 
 #modal-wrapper #results-info-content table tr.key.percent-7::before {
   right: 108px;
-  color: #f67f85;
+  color: #dc4646;
 }
 
 #modal-wrapper #results-info-content table tr.key.percent-8::before {
   right: 107px;
-  color: #f67f85;
+  color: #dc4646;
 }
 
 #modal-wrapper #results-info-content table tr.key.percent-9::before {
   right: 106px;
-  color: #f67f85;
+  color: #dc4646;
 }
 
 #modal-wrapper #results-info-content table tr.key.percent-10::before {
   right: 105px;
-  color: #f67f85;
+  color: #dc4646;
 }
 
 #modal-wrapper #results-info-content table tr.key.percent-11::before {
   right: 104px;
-  color: #f67f85;
+  color: #dc4646;
 }
 
 #modal-wrapper #results-info-content table tr.key.percent-12::before {
   right: 103px;
-  color: #f67f85;
+  color: #dc4646;
 }
 
 #modal-wrapper #results-info-content table tr.key.percent-13::before {
   right: 102px;
-  color: #f67f85;
+  color: #dc4646;
 }
 
 #modal-wrapper #results-info-content table tr.key.percent-14::before {
   right: 101px;
-  color: #f67f85;
+  color: #dc4646;
 }
 
 #modal-wrapper #results-info-content table tr.key.percent-15::before {
   right: 100px;
-  color: #f67f85;
+  color: #dc4646;
 }
 
 #modal-wrapper #results-info-content table tr.key.percent-16::before {
   right: 99px;
-  color: #f67f85;
+  color: #dc4646;
 }
 
 #modal-wrapper #results-info-content table tr.key.percent-17::before {
   right: 98px;
-  color: #f67f85;
+  color: #dc4646;
 }
 
 #modal-wrapper #results-info-content table tr.key.percent-18::before {
   right: 97px;
-  color: #f67f85;
+  color: #dc4646;
 }
 
 #modal-wrapper #results-info-content table tr.key.percent-19::before {
   right: 96px;
-  color: #f67f85;
+  color: #dc4646;
 }
 
 #modal-wrapper #results-info-content table tr.key.percent-20::before {
   right: 95px;
-  color: #f67f85;
+  color: #dc4646;
 }
 
 #modal-wrapper #results-info-content table tr.key.percent-21::before {
   right: 94px;
-  color: #f67f85;
+  color: #dc4646;
 }
 
 #modal-wrapper #results-info-content table tr.key.percent-22::before {
   right: 93px;
-  color: #f67f85;
+  color: #dc4646;
 }
 
 #modal-wrapper #results-info-content table tr.key.percent-23::before {
   right: 92px;
-  color: #f67f85;
+  color: #dc4646;
 }
 
 #modal-wrapper #results-info-content table tr.key.percent-24::before {
   right: 91px;
-  color: #f67f85;
+  color: #dc4646;
 }
 
 #modal-wrapper #results-info-content table tr.key.percent-25::before {
   right: 90px;
-  color: #f67f85;
+  color: #dc4646;
 }
 
 #modal-wrapper #results-info-content table tr.key.percent-26::before {
   right: 89px;
-  color: #f67f85;
+  color: #dc4646;
 }
 
 #modal-wrapper #results-info-content table tr.key.percent-27::before {
   right: 88px;
-  color: #f67f85;
+  color: #dc4646;
 }
 
 #modal-wrapper #results-info-content table tr.key.percent-28::before {
   right: 87px;
-  color: #f67f85;
+  color: #dc4646;
 }
 
 #modal-wrapper #results-info-content table tr.key.percent-29::before {
   right: 86px;
-  color: #f67f85;
+  color: #dc4646;
 }
 
 #modal-wrapper #results-info-content table tr.key.percent-30::before {
   right: 85px;
-  color: #f67f85;
+  color: #dc4646;
 }
 
 #modal-wrapper #results-info-content table tr.key.percent-31::before {
   right: 84px;
-  color: #f67f85;
+  color: #dc4646;
 }
 
 #modal-wrapper #results-info-content table tr.key.percent-32::before {
   right: 83px;
-  color: #f67f85;
+  color: #dc4646;
 }
 
 #modal-wrapper #results-info-content table tr.key.percent-33::before {
   right: 82px;
-  color: #f67f85;
+  color: #dc4646;
 }
 
 #modal-wrapper #results-info-content table tr.key.percent-34::before {
@@ -715,172 +717,172 @@ body {
 
 #modal-wrapper #results-info-content table tr.key.percent-67::before {
   right: 48px;
-  color: #97d89a;
+  color: #7cc381;
 }
 
 #modal-wrapper #results-info-content table tr.key.percent-68::before {
   right: 47px;
-  color: #97d89a;
+  color: #7cc381;
 }
 
 #modal-wrapper #results-info-content table tr.key.percent-69::before {
   right: 46px;
-  color: #97d89a;
+  color: #7cc381;
 }
 
 #modal-wrapper #results-info-content table tr.key.percent-70::before {
   right: 45px;
-  color: #97d89a;
+  color: #7cc381;
 }
 
 #modal-wrapper #results-info-content table tr.key.percent-71::before {
   right: 44px;
-  color: #97d89a;
+  color: #7cc381;
 }
 
 #modal-wrapper #results-info-content table tr.key.percent-72::before {
   right: 43px;
-  color: #97d89a;
+  color: #7cc381;
 }
 
 #modal-wrapper #results-info-content table tr.key.percent-73::before {
   right: 42px;
-  color: #97d89a;
+  color: #7cc381;
 }
 
 #modal-wrapper #results-info-content table tr.key.percent-74::before {
   right: 41px;
-  color: #97d89a;
+  color: #7cc381;
 }
 
 #modal-wrapper #results-info-content table tr.key.percent-75::before {
   right: 40px;
-  color: #97d89a;
+  color: #7cc381;
 }
 
 #modal-wrapper #results-info-content table tr.key.percent-76::before {
   right: 39px;
-  color: #97d89a;
+  color: #7cc381;
 }
 
 #modal-wrapper #results-info-content table tr.key.percent-77::before {
   right: 38px;
-  color: #97d89a;
+  color: #7cc381;
 }
 
 #modal-wrapper #results-info-content table tr.key.percent-78::before {
   right: 37px;
-  color: #97d89a;
+  color: #7cc381;
 }
 
 #modal-wrapper #results-info-content table tr.key.percent-79::before {
   right: 36px;
-  color: #97d89a;
+  color: #7cc381;
 }
 
 #modal-wrapper #results-info-content table tr.key.percent-80::before {
   right: 35px;
-  color: #97d89a;
+  color: #7cc381;
 }
 
 #modal-wrapper #results-info-content table tr.key.percent-81::before {
   right: 34px;
-  color: #97d89a;
+  color: #7cc381;
 }
 
 #modal-wrapper #results-info-content table tr.key.percent-82::before {
   right: 33px;
-  color: #97d89a;
+  color: #7cc381;
 }
 
 #modal-wrapper #results-info-content table tr.key.percent-83::before {
   right: 32px;
-  color: #97d89a;
+  color: #7cc381;
 }
 
 #modal-wrapper #results-info-content table tr.key.percent-84::before {
   right: 31px;
-  color: #97d89a;
+  color: #7cc381;
 }
 
 #modal-wrapper #results-info-content table tr.key.percent-85::before {
   right: 30px;
-  color: #97d89a;
+  color: #7cc381;
 }
 
 #modal-wrapper #results-info-content table tr.key.percent-86::before {
   right: 29px;
-  color: #97d89a;
+  color: #7cc381;
 }
 
 #modal-wrapper #results-info-content table tr.key.percent-87::before {
   right: 28px;
-  color: #97d89a;
+  color: #7cc381;
 }
 
 #modal-wrapper #results-info-content table tr.key.percent-88::before {
   right: 27px;
-  color: #97d89a;
+  color: #7cc381;
 }
 
 #modal-wrapper #results-info-content table tr.key.percent-89::before {
   right: 26px;
-  color: #97d89a;
+  color: #7cc381;
 }
 
 #modal-wrapper #results-info-content table tr.key.percent-90::before {
   right: 25px;
-  color: #97d89a;
+  color: #7cc381;
 }
 
 #modal-wrapper #results-info-content table tr.key.percent-91::before {
   right: 24px;
-  color: #97d89a;
+  color: #7cc381;
 }
 
 #modal-wrapper #results-info-content table tr.key.percent-92::before {
   right: 23px;
-  color: #97d89a;
+  color: #7cc381;
 }
 
 #modal-wrapper #results-info-content table tr.key.percent-93::before {
   right: 22px;
-  color: #97d89a;
+  color: #7cc381;
 }
 
 #modal-wrapper #results-info-content table tr.key.percent-94::before {
   right: 21px;
-  color: #97d89a;
+  color: #7cc381;
 }
 
 #modal-wrapper #results-info-content table tr.key.percent-95::before {
   right: 20px;
-  color: #97d89a;
+  color: #7cc381;
 }
 
 #modal-wrapper #results-info-content table tr.key.percent-96::before {
   right: 19px;
-  color: #97d89a;
+  color: #7cc381;
 }
 
 #modal-wrapper #results-info-content table tr.key.percent-97::before {
   right: 18px;
-  color: #97d89a;
+  color: #7cc381;
 }
 
 #modal-wrapper #results-info-content table tr.key.percent-98::before {
   right: 17px;
-  color: #97d89a;
+  color: #7cc381;
 }
 
 #modal-wrapper #results-info-content table tr.key.percent-99::before {
   right: 16px;
-  color: #97d89a;
+  color: #7cc381;
 }
 
 #modal-wrapper #results-info-content table tr.key.percent-100::before {
   right: 15px;
-  color: #97d89a;
+  color: #7cc381;
 }
 
 #modal-wrapper #results-info-content table tr.incomplete {
@@ -892,7 +894,7 @@ body {
   position: absolute;
   right: 37px;
   margin-top: 6px;
-  color: #f67f85;
+  color: #dc4646;
   font-size: 10px;
   font-weight: 700;
   background: #FFF;
@@ -911,7 +913,7 @@ body {
   position: absolute;
   right: 30px;
   margin-top: 6px;
-  color: #97d89a;
+  color: #7cc381;
   font-size: 10px;
   font-weight: 700;
   background: #FFF;
@@ -963,7 +965,7 @@ body {
 }
 
 #modal-wrapper #results-info-content .keys .key.key-bad {
-  background-color: #f67f85;
+  background-color: #dc4646;
 }
 
 #modal-wrapper #results-info-content .keys .key.key-avg {
@@ -971,7 +973,7 @@ body {
 }
 
 #modal-wrapper #results-info-content .keys .key.key-good {
-  background-color: #97d89a;
+  background-color: #7cc381;
 }
 
 #modal-wrapper #results-info-content strong {
@@ -979,23 +981,23 @@ body {
 }
 
 #modal-wrapper #results-info-content strong.grade-a {
-  color: #97d89a;
+  color: #7cc381;
 }
 
 #modal-wrapper #results-info-content strong.grade-b {
-  color: #c9da98;
+  color: #a9c37c;
 }
 
 #modal-wrapper #results-info-content strong.grade-c {
-  color: #ffdd9a;
+  color: #d5ce71;
 }
 
 #modal-wrapper #results-info-content strong.grade-d {
-  color: #ee9978;
+  color: #dca146;
 }
 
 #modal-wrapper #results-info-content strong.grade-f {
-  color: #f67f85;
+  color: #dc4646;
 }
 
 #modal-wrapper #results-info-content strong.grade span {
@@ -1346,11 +1348,12 @@ body {
 }
 
 .section .content.section-header h1.title {
-  color: #82ADD7;
-  font-size: 24px;
+  color: #7c8894;
+  padding: 50px 0 20px;
+  font-size: 32px;
+  line-height: 32px;
   text-transform: uppercase;
   font-weight: 500;
-  margin: 24px 0 20px 0;
 }
 
 .section .content.section-header strong {
@@ -1360,23 +1363,23 @@ body {
 }
 
 .section .content.section-header strong.grade-a {
-  color: #97d89a;
+  color: #7cc381;
 }
 
 .section .content.section-header strong.grade-b {
-  color: #c9da98;
+  color: #a9c37c;
 }
 
 .section .content.section-header strong.grade-c {
-  color: #ffdd9a;
+  color: #d5ce71;
 }
 
 .section .content.section-header strong.grade-d {
-  color: #ee9978;
+  color: #dca146;
 }
 
 .section .content.section-header strong.grade-f {
-  color: #f67f85;
+  color: #dc4646;
 }
 
 .section .content.section-header strong.grade span {
@@ -1564,7 +1567,7 @@ body {
 }
 
 .stat-wrapper p.good-job {
-  color: #97d89a;
+  color: #7cc381;
   text-align: center;
   padding-top: 10px;
   font-weight: 600;
@@ -1641,7 +1644,7 @@ body {
 }
 
 .stat-wrapper .keys .key.key-red {
-  background-color: #f67f85;
+  background-color: #dc4646;
 }
 
 .stat-wrapper .keys .key.key-orange {
@@ -1708,7 +1711,7 @@ body {
 }
 
 .stat-wrapper .progress-bar-wrapper .progress-bar.key-red {
-  background-color: #f67f85;
+  background-color: #dc4646;
 }
 
 .stat-wrapper .progress-bar-wrapper .progress-bar.key-orange {
@@ -1728,27 +1731,27 @@ body {
 }
 
 .stat-wrapper .progress-bar-wrapper .progress-bar.bright-green {
-  background-color: #97d89a;
+  background-color: #7cc381;
 }
 
 .stat-wrapper .progress-bar-wrapper .progress-bar.green {
-  background-color: #c9da98;
+  background-color: #a9c37c;
 }
 
 .stat-wrapper .progress-bar-wrapper .progress-bar.yellow {
-  background-color: #ffdd9a;
+  background-color: #d5ce71;
 }
 
 .stat-wrapper .progress-bar-wrapper .progress-bar.orange {
-  background-color: #ee9978;
+  background-color: #dca146;
 }
 
 .stat-wrapper .progress-bar-wrapper .progress-bar.red {
-  background-color: #f67f85;
+  background-color: #dc4646;
 }
 
 .stat-wrapper .progress-bar-wrapper .progress-bar.always-bad {
-  background-color: #f67f85;
+  background-color: #dc4646;
 }
 
 .stat-wrapper .progress-bar-wrapper .progress-bar.dark-grey {
@@ -2051,10 +2054,10 @@ body {
 }
 
 .section.stats .one-third h1 {
-  color: #82ADD7;
+  color: #FFF;
   font-family: 'Barlow Condensed', sans-serif;
   text-transform: uppercase;
-  font-weight: 400;
+  font-weight: 300;
   font-size: 24px;
   margin-bottom: 20px;
   line-height: 28px;
@@ -2065,7 +2068,7 @@ body {
 }
 
 .section.stats .one-third p {
-  color: #FFF;
+  color: #DDD;
   font-weight: 300;
   line-height: 28px;
   font-size: 16px;
@@ -2135,6 +2138,26 @@ body {
   text-shadow: 1px 1px 1px black;
 }
 
+.section.score.grade-a {
+  background: #7cc381;
+}
+
+.section.score.grade-b {
+  background: #a9c37c;
+}
+
+.section.score.grade-c {
+  background: #d5ce71;
+}
+
+.section.score.grade-d {
+  background: #dca146;
+}
+
+.section.score.grade-f {
+  background: #dc4646;
+}
+
 .section.score.animate .left {
   left: -500px;
 }
@@ -2158,7 +2181,7 @@ body {
 }
 
 .section.score .left .selected-location a::after {
-  color: #000;
+  color: #FFF;
 }
 
 .section.score .right {
@@ -2177,8 +2200,8 @@ body {
 }
 
 .section.score .right .grade {
-  font-size: 80px;
-  font-weight: 600;
+  font-size: 60px;
+  font-weight: 400;
   font-family: 'Lato', sans-serif;
 }
 
@@ -2259,12 +2282,12 @@ body {
 }
 
 .section.grades h1.title {
-  color: #82ADD7;
-  padding: 50px 0;
-  font-size: 40px;
-  line-height: 54px;
+  color: #7c8894;
+  padding: 50px 0 20px;
+  font-size: 32px;
+  line-height: 32px;
   text-transform: uppercase;
-  font-weight: 300;
+  font-weight: 500;
 }
 
 .section.grades table {
@@ -2302,6 +2325,14 @@ body {
   vertical-align: middle;
 }
 
+.section.grades table td a .percent {
+  display: inline-block;
+  font-weight: 600;
+  font-size: 12px;
+  padding-left: 4px;
+  padding-right: 8px;
+}
+
 .section.grades table td a.stats-change {
   overflow: visible;
   position: relative;
@@ -2311,21 +2342,38 @@ body {
 .section.grades .button {
   margin: 0 auto;
   width: 120px;
-  background: #8db6dc;
+  background: #5a6f83;
   text-decoration: none;
   color: white;
   padding: 10px 0;
   border-radius: 4px;
   text-align: center;
   margin-top: 30px;
+  border: 2px solid #5a6f83;
 }
 
 .section.grades .button.more {
   display: none;
+  background: transparent;
+  color: #5a6f83;
+  padding: 6px 0;
+}
+
+.section.grades .button.more:hover {
+  background: #5a6f83;
+  color: #FFF;
 }
 
 .section.grades .button.less {
   display: block;
+  background: transparent;
+  color: #5a6f83;
+  padding: 6px 0;
+}
+
+.section.grades .button.less:hover {
+  background: #5a6f83;
+  color: #FFF;
 }
 
 .section.grades.short .left, .section.grades.short .right {
@@ -2343,37 +2391,32 @@ body {
 
 .section.grades div.grade {
   height: 20px;
-  width: 75px;
+  width: 20px;
   position: relative;
   top: -3px;
-  color: #FFF;
-  font-size: 11px;
-  line-height: 20px;
+  border-radius: 5px;
+  display: inline-block;
   vertical-align: middle;
-  text-align: center;
-  font-weight: 600;
-  text-shadow: 0 0 12px black;
-  overflow: hidden;
 }
 
 .section.grades div.grade.grade-a {
-  background: #97d89a;
+  background: #7cc381;
 }
 
 .section.grades div.grade.grade-b {
-  background: #c9da98;
+  background: #a9c37c;
 }
 
 .section.grades div.grade.grade-c {
-  background: #ffdd9a;
+  background: #d5ce71;
 }
 
 .section.grades div.grade.grade-d {
-  background: #ee9978;
+  background: #dca146;
 }
 
 .section.grades div.grade.grade-f {
-  background: #f67f85;
+  background: #dc4646;
 }
 
 .section.why {
@@ -2381,10 +2424,10 @@ body {
 }
 
 .section.why h1.title {
-  color: #F19975;
-  padding: 40px 0;
-  font-size: 24px;
-  line-height: 24px;
+  color: #7c8894;
+  padding: 50px 0 20px;
+  font-size: 32px;
+  line-height: 32px;
   text-transform: uppercase;
   font-weight: 500;
 }
@@ -2453,7 +2496,7 @@ body {
 }
 
 .section.why a.button {
-  background: #8db6dc;
+  background: #5a6f83;
   text-decoration: none;
   color: white;
   padding: 0 20px;
@@ -2475,10 +2518,10 @@ body {
 }
 
 .section.next h1.title {
-  color: #F19975;
-  padding: 40px 0;
-  font-size: 24px;
-  line-height: 54px;
+  color: #7c8894;
+  padding: 50px 0 20px;
+  font-size: 32px;
+  line-height: 32px;
   text-transform: uppercase;
   font-weight: 500;
   position: relative;
@@ -2750,53 +2793,53 @@ svg.highcharts-root path.highcharts-point {
 }
 
 .highcharts-map-series path.highcharts-color-1:hover {
-  fill: #f67f85 !important;
-  stroke: #f67f85 !important;
+  fill: #dc4646 !important;
+  stroke: #dc4646 !important;
 }
 
 .highcharts-map-series path.highcharts-color-2:hover {
-  fill: #ee9978 !important;
-  stroke: #ee9978 !important;
+  fill: #dca146 !important;
+  stroke: #dca146 !important;
 }
 
 .highcharts-map-series path.highcharts-color-3:hover {
-  fill: #ffdd9a !important;
-  stroke: #ffdd9a !important;
+  fill: #d5ce71 !important;
+  stroke: #d5ce71 !important;
 }
 
 .highcharts-map-series path.highcharts-color-4:hover {
-  fill: #c9da98 !important;
-  stroke: #c9da98 !important;
+  fill: #a9c37c !important;
+  stroke: #a9c37c !important;
 }
 
 .highcharts-map-series path.highcharts-color-5:hover {
-  fill: #97d89a !important;
-  stroke: #97d89a !important;
+  fill: #7cc381 !important;
+  stroke: #7cc381 !important;
 }
 
 .highcharts-map-series path.highcharts-color-1.active, .highcharts-map-series path.highcharts-color-1.active:hover {
-  fill: #f67f85 !important;
-  stroke: #f67f85 !important;
+  fill: #dc4646 !important;
+  stroke: #dc4646 !important;
 }
 
 .highcharts-map-series path.highcharts-color-2.active, .highcharts-map-series path.highcharts-color-2.active:hover {
-  fill: #ee9978 !important;
-  stroke: #ee9978 !important;
+  fill: #dca146 !important;
+  stroke: #dca146 !important;
 }
 
 .highcharts-map-series path.highcharts-color-3.active, .highcharts-map-series path.highcharts-color-3.active:hover {
-  fill: #ffdd9a !important;
-  stroke: #ffdd9a !important;
+  fill: #d5ce71 !important;
+  stroke: #d5ce71 !important;
 }
 
 .highcharts-map-series path.highcharts-color-4.active, .highcharts-map-series path.highcharts-color-4.active:hover {
-  fill: #c9da98 !important;
-  stroke: #c9da98 !important;
+  fill: #a9c37c !important;
+  stroke: #a9c37c !important;
 }
 
 .highcharts-map-series path.highcharts-color-5.active, .highcharts-map-series path.highcharts-color-5.active:hover {
-  fill: #97d89a !important;
-  stroke: #97d89a !important;
+  fill: #7cc381 !important;
+  stroke: #7cc381 !important;
 }
 
 #state-map.police-department .highcharts-map-series path.highcharts-color-1, #state-map.police-department .highcharts-map-series path.highcharts-color-2, #state-map.police-department .highcharts-map-series path.highcharts-color-3, #state-map.police-department .highcharts-map-series path.highcharts-color-4, #state-map.police-department .highcharts-map-series path.highcharts-color-5 {
@@ -2804,28 +2847,28 @@ svg.highcharts-root path.highcharts-point {
 }
 
 #state-map.police-department .highcharts-map-series path.highcharts-color-1:hover {
-  fill: #f67f85 !important;
-  stroke: #f67f85 !important;
+  fill: #dc4646 !important;
+  stroke: #dc4646 !important;
 }
 
 #state-map.police-department .highcharts-map-series path.highcharts-color-2:hover {
-  fill: #ee9978 !important;
-  stroke: #ee9978 !important;
+  fill: #dca146 !important;
+  stroke: #dca146 !important;
 }
 
 #state-map.police-department .highcharts-map-series path.highcharts-color-3:hover {
-  fill: #ffdd9a !important;
-  stroke: #ffdd9a !important;
+  fill: #d5ce71 !important;
+  stroke: #d5ce71 !important;
 }
 
 #state-map.police-department .highcharts-map-series path.highcharts-color-4:hover {
-  fill: #c9da98 !important;
-  stroke: #c9da98 !important;
+  fill: #a9c37c !important;
+  stroke: #a9c37c !important;
 }
 
 #state-map.police-department .highcharts-map-series path.highcharts-color-5:hover {
-  fill: #97d89a !important;
-  stroke: #97d89a !important;
+  fill: #7cc381 !important;
+  stroke: #7cc381 !important;
 }
 
 .buttons {
@@ -2899,11 +2942,11 @@ svg.highcharts-root path.highcharts-point {
 }
 
 .tooltip.bad {
-  color: #f67f85 !important;
+  color: #dc4646 !important;
 }
 
 .tooltip.bad.reverse {
-  color: #97d89a !important;
+  color: #7cc381 !important;
 }
 
 .tooltip.bad .grade-arrow span {
@@ -2913,11 +2956,11 @@ svg.highcharts-root path.highcharts-point {
 }
 
 .tooltip.good {
-  color: #97d89a !important;
+  color: #7cc381 !important;
 }
 
 .tooltip.good.reverse {
-  color: #f67f85 !important;
+  color: #dc4646 !important;
 }
 
 .tooltip.good .grade-arrow span {
@@ -3019,7 +3062,7 @@ svg.highcharts-root path.highcharts-point {
 }
 
 .tile-chart .tile.color-1 {
-  background-color: #f67f85;
+  background-color: #dc4646;
 }
 
 .tile-chart .tile.color-2 {
@@ -3526,6 +3569,21 @@ p.number-list.n15::after {
     font-size: 16px;
     margin-bottom: 24px;
     line-height: 18px;
+  }
+  .section.score.grade-a {
+    background: #7cc381;
+  }
+  .section.score.grade-b {
+    background: #a9c37c;
+  }
+  .section.score.grade-c {
+    background: #d5ce71;
+  }
+  .section.score.grade-d {
+    background: #dca146;
+  }
+  .section.score.grade-f {
+    background: #dc4646;
   }
   .section.score .left, .section.score .right {
     width: 49% !important;

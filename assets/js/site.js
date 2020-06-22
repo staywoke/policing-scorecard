@@ -322,7 +322,7 @@ var SCORECARD = (function () {
 
       var html = '';
 
-      html += '<div class="modal-header"><div class="results-header"><strong style="position: relative; top: -2px;">' + SCORECARD_DATA.agency.name + ' ' + label + '</strong><br/>Grade:&nbsp; <strong class="grade grade-' + SCORECARD_DATA.report.grade_class + '">' + SCORECARD_DATA.report.grade_letter + '</strong> (' + SCORECARD_DATA.report.overall_score + '%)</div><div class="keys"><span class="key key-bad"></span> WORSE <span class="key key-avg"></span> AVG <span class="key key-good"></span> BETTER</div></div>';
+      html += '<div class="modal-header"><div class="results-header"><strong style="position: relative; top: -2px;">' + SCORECARD_DATA.agency.name + ' ' + label + '</strong><br/>Score: ' + SCORECARD_DATA.report.overall_score + '%</div><div class="keys"><span class="key key-bad"></span> WORSE <span class="key key-avg"></span> AVG <span class="key key-good"></span> BETTER</div></div>';
       html += '<div class="section-header no-border"><div class="label">&nbsp;</div><div class="percentile"><strong>PERCENTILE</strong></div></div>';
 
       html += '<div class="section-header"><div class="label">Police Violence:&nbsp; ' + SCORECARD_DATA.report.police_violence_score + '%</div><div class="percentile">50TH</div></div>';
@@ -459,7 +459,7 @@ var SCORECARD = (function () {
             var city = this.point.name;
             var score = this.point.value;
             var percent = Math.round(parseFloat(score));
-            var newTooltip = this.series.name + '<br /><strong>' + city + '</strong><br />Grade: ' + getGrade(score) + ' ( ' + percent + '% )';
+            var newTooltip = this.series.name + '<br /><strong>' + city + '</strong><br />Score: ' + percent + '%';
 
             return newTooltip;
           }

@@ -8,7 +8,9 @@ var SCORECARD_ENV = '<?= $isProd ? 'production' : 'development' ?>';
 
 var map_type = '<?= $type ?>';
 var map_data = <?= getNationalMapData($states, $type) ?>;
-var isChrome = /Chrome/.test(navigator.userAgent) && /Google Inc/.test(navigator.vendor);
+
+// TODO: Disabling this check for now since recent update drastically reduced number of active locations
+var isChrome = false; // /Chrome/.test(navigator.userAgent) && /Google Inc/.test(navigator.vendor);
 
 // TODO: There is currently a bug in rendering dynamic charts in Chrome Browser
 if (isChrome) {
@@ -52,7 +54,7 @@ window.addEventListener('load', function() {
           var city = this.point.name;
           var score = this.point.value;
           var percent = Math.round(parseFloat(score));
-          var newTooltip = this.series.name + '<br /><strong>' + city + '</strong><br />Grade: ' + SCORECARD.getGrade(score) + ' ( ' + percent + '% )';
+          var newTooltip = this.series.name + '<br /><strong>' + city + '</strong><br />Score: ' + percent + '%';
 
           return newTooltip;
         }
@@ -378,16 +380,16 @@ window.addEventListener('load', function() {
             <?= $scorecard['police_violence']['vehicle_people_killed'] ?>
           ],
           backgroundColor: [
-            '#f19975',
-            '#58595b',
-            '#d4d9e4',
-            '#9a9b9f'
+            '#dc4646',
+            '#5a6f83',
+            '#f3f4f6',
+            '#aab8c5'
           ],
           hoverBackgroundColor: [
-            '#f19975',
-            '#58595b',
-            '#d4d9e4',
-            '#9a9b9f'
+            '#dc4646',
+            '#5a6f83',
+            '#f3f4f6',
+            '#aab8c5'
           ]
         }]
       }

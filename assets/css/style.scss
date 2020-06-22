@@ -1,3 +1,23 @@
+/* New Colors */
+$color-black: #000000;
+$color-md-grayblue: #5a6f83;
+$color-dk-gray: #7c8894;
+$color-lt-gray: #aab8c5;
+$color-ltlt-gray: #f3f4f6;
+$color-white: #ffffff;
+$color-green: #7cc381;
+$color-green-bkgrd: #57a15b;
+$color-lt-green: #a9c37c;
+$color-lt-green-bkgrd: #7c984b;
+$color-yellow: #d5ce71;
+$color-yellow-bkgrd: #9d9636;
+$color-orange: #dca146;
+$color-orange-bkgrd: #c5882a;
+$color-red-orange: #dc6a46;
+$color-red: #dc4646;
+
+/* Old Colors */
+
 $primary-gray: #464648;
 $primary-orange: #F19975;
 $primary-green: #a7cc84;
@@ -5,11 +25,11 @@ $primary-yellow: #D8BD26;
 $primary-blue: #82ADD7;
 $primary-light-gray: #F2F4F6;
 
-$grade-light-green: #97d89a;
-$grade-green: #c9da98;
-$grade-yellow: #ffdd9a;
-$grade-orange: #ee9978;
-$grade-red: #f67f85;
+$grade-light-green: $color-green;
+$grade-green: $color-lt-green;
+$grade-yellow: $color-yellow;
+$grade-orange: $color-orange;
+$grade-red: $color-red;
 
 $text-black: $primary-gray;
 $text-white: #FFFFFF;
@@ -343,7 +363,7 @@ body {
       margin-top: 12px;
 
       .button {
-        background: #8db6dc;
+        background: $color-md-grayblue;
         text-decoration: none;
         color: white;
         padding: 6px 0;
@@ -937,11 +957,12 @@ body {
       }
 
       h1.title {
-        color: $primary-blue;
-        font-size: $font-header-large;
+        color: $color-dk-gray;
+        padding: 50px 0 20px;
+        font-size: 32px;
+        line-height: 32px;
         text-transform: uppercase;
         font-weight: 500;
-        margin: $font-header-large 0 20px 0;
       }
 
       strong {
@@ -1645,10 +1666,10 @@ body {
     padding-bottom: 60px;
 
     h1 {
-      color: $primary-blue;
+      color: #FFF;
       font-family: 'Barlow Condensed', sans-serif;
       text-transform: uppercase;
-      font-weight: 400;
+      font-weight: 300;
       font-size: 24px;
       margin-bottom: 20px;
       line-height: 28px;
@@ -1659,7 +1680,7 @@ body {
     }
 
     p {
-      color: #FFF;
+      color: #DDD;
       font-weight: 300;
       line-height: 28px;
       font-size: $font-paragraph;
@@ -1724,6 +1745,26 @@ body {
 }
 
 .section.score {
+  &.grade-a {
+    background: $grade-light-green;
+  }
+
+  &.grade-b {
+    background: $grade-green;
+  }
+
+  &.grade-c {
+    background: $grade-yellow;
+  }
+
+  &.grade-d {
+    background: $grade-orange;
+  }
+
+  &.grade-f {
+    background: $grade-red;
+  }
+
   &.animate {
     .left {
       left: -500px;
@@ -1744,7 +1785,7 @@ body {
       padding: 0;
 
       &::after {
-        color: #000;
+        color: #FFF;
       }
     }
   }
@@ -1762,12 +1803,9 @@ body {
     transition: right 0.5s;
 
     .grade {
-      font-size: 80px;
-      font-weight: 600;
+      font-size: 60px;
+      font-weight: 400;
       font-family: 'Lato', sans-serif;
-      // position: absolute;
-      // top: -4px;
-      // margin-left: 20px;
     }
   }
 }
@@ -1845,12 +1883,12 @@ body {
   padding-bottom: 60px;
 
   h1.title {
-    color: $primary-blue;
-    padding: 50px 0;
-    font-size: 40px;
-    line-height: 54px;
+    color: $color-dk-gray;
+    padding: 50px 0 20px;
+    font-size: 32px;
+    line-height: 32px;
     text-transform: uppercase;
-    font-weight: 300;
+    font-weight: 500;
   }
 
   table {
@@ -1885,6 +1923,14 @@ body {
         display: inline-block;
         vertical-align: middle;
 
+        .percent {
+          display: inline-block;
+          font-weight: 600;
+          font-size: 12px;
+          padding-left: 4px;
+          padding-right: 8px;
+        }
+
         &.stats-change {
           overflow: visible;
           position: relative;
@@ -1897,19 +1943,36 @@ body {
   .button {
     margin: 0 auto;
     width: 120px;
-    background: #8db6dc;
+    background: $color-md-grayblue;
     text-decoration: none;
     color: white;
     padding: 10px 0;
     border-radius: 4px;
     text-align: center;
     margin-top: 30px;
+    border: 2px solid $color-md-grayblue;
 
     &.more {
       display: none;
+      background: transparent;
+      color: $color-md-grayblue;
+      padding: 6px 0;
+
+      &:hover {
+        background: $color-md-grayblue;
+        color: #FFF;
+      }
     }
     &.less {
       display: block;
+      background: transparent;
+      color: $color-md-grayblue;
+      padding: 6px 0;
+
+      &:hover {
+        background: $color-md-grayblue;
+        color: #FFF;
+      }
     }
   }
 
@@ -1931,17 +1994,12 @@ body {
 
   div.grade {
     height: 20px;
-    width: 75px;
+    width: 20px;
     position: relative;
     top: -3px;
-    color: #FFF;
-    font-size: $font-default;
-    line-height: 20px;
+    border-radius: 5px;
+    display: inline-block;
     vertical-align: middle;
-    text-align: center;
-    font-weight: 600;
-    text-shadow: 0 0 12px rgba(0,0,0,1);
-    overflow: hidden;
 
     &.grade-a {
       background: $grade-light-green;
@@ -1969,10 +2027,10 @@ body {
   padding-bottom: 60px;
 
   h1.title {
-    color: $primary-orange;
-    padding: 40px 0;
-    font-size: $font-header-large;
-    line-height: $font-header-large;
+    color: $color-dk-gray;
+    padding: 50px 0 20px;
+    font-size: 32px;
+    line-height: 32px;
     text-transform: uppercase;
     font-weight: 500;
   }
@@ -2046,7 +2104,7 @@ body {
     text-decoration: none;
 
     &.button {
-      background: #8db6dc;
+      background: $color-md-grayblue;
       text-decoration: none;
       color: white;
       padding: 0 20px;
@@ -2069,10 +2127,10 @@ body {
   padding-bottom: 60px;
 
   h1.title {
-    color: $primary-orange;
-    padding: 40px 0;
-    font-size: $font-header-large;
-    line-height: 54px;
+    color: $color-dk-gray;
+    padding: 50px 0 20px;
+    font-size: 32px;
+    line-height: 32px;
     text-transform: uppercase;
     font-weight: 500;
     position: relative;
@@ -3224,6 +3282,26 @@ p.number-list {
   }
 
   .section.score {
+    &.grade-a {
+      background: $grade-light-green;
+    }
+
+    &.grade-b {
+      background: $grade-green;
+    }
+
+    &.grade-c {
+      background: $grade-yellow;
+    }
+
+    &.grade-d {
+      background: $grade-orange;
+    }
+
+    &.grade-f {
+      background: $grade-red;
+    }
+
     .left, .right {
       width: 49% !important;
       display: inline-block !important;

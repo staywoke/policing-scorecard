@@ -1,25 +1,23 @@
 <div class="section bg-light-gray grades short" id="score-card">
   <div class="content">
     <h1 class="title">
-      2016-2018 <?= $stateName ?><br/>
-      <?= ($type === 'sheriff') ? "Sheriff's" : "Police" ?> Department Grades
+      2016-2018 <?= $stateName ?> <?= ($type === 'sheriff') ? "Sheriff's" : "Police" ?> Department Grades
     </h1>
   </div>
   <div class="content">
     <div class="left">
       <table>
         <tr>
-          <th width="180"><?= $type ?></th>
-          <th width="50">Grade</th>
-          <th>&nbsp;</th>
+          <th width="75%"><?= $type ?></th>
+          <th>Score</th>
         </tr>
       <?php foreach($reportCard as $index => $card): if ($index < (count($reportCard) / 2)): ?>
         <tr>
-          <td width="180"><a href="<?= $isProd ? $card['url_pretty'] : $card['url'] ?>"><?= $index + 1 ?>. <?= $card['agency_name'] ?></a></td>
-          <td width="50"><a href="<?= $isProd ? $card['url_pretty'] : $card['url'] ?>"><?= $card['grade_letter'] ?></a></td>
+          <td width="75%"><a href="<?= $isProd ? $card['url_pretty'] : $card['url'] ?>"><?= $index + 1 ?>. <?= $card['agency_name'] ?></a></td>
           <td>
             <a class="score" href="<?= $isProd ? $card['url_pretty'] : $card['url'] ?>">
-              <div class="grade grade-<?= $card['grade_class'] ?>"><?= $card['overall_score'] ?>%</div>
+              <div class="grade grade-<?= $card['grade_class'] ?>"></div>
+              <span class="percent"><?= $card['overall_score'] ?>%</span>
             </a>
             <?= getChange($card['change_overall_score'], true, 'since \'16-17'); ?>
           </td>
@@ -30,17 +28,16 @@
     <div class="right">
       <table>
         <tr class="hide-mobile">
-          <th width="180"><?= $type ?></th>
-          <th width="50">Grade</th>
-          <th>&nbsp;</th>
+          <th width="75%"><?= $type ?></th>
+          <th>Score</th>
         </tr>
         <?php foreach($reportCard as $index => $card): if ($index >= (count($reportCard) / 2)): ?>
           <tr>
-            <td width="180"><a href="<?= $isProd ? $card['url_pretty'] : $card['url'] ?>"><?= $index + 1 ?>. <?= $card['agency_name'] ?></a></td>
-            <td width="50"><a href="<?= $isProd ? $card['url_pretty'] : $card['url'] ?>"><?= $card['grade_letter'] ?></a></td>
+            <td width="75%"><a href="<?= $isProd ? $card['url_pretty'] : $card['url'] ?>"><?= $index + 1 ?>. <?= $card['agency_name'] ?></a></td>
             <td>
               <a class="score" href="<?= $isProd ? $card['url_pretty'] : $card['url'] ?>">
-                <div class="grade grade-<?= $card['grade_class'] ?>"><?= $card['overall_score'] ?>%</div>
+                <div class="grade grade-<?= $card['grade_class'] ?>"></div>
+                <span class="percent"><?= $card['overall_score'] ?>%</span>
               </a>
               <?= getChange($card['change_overall_score'], true, 'since \'16-17'); ?>
             </td>

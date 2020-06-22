@@ -316,7 +316,7 @@ function generateHistoryChart($scorecard) {
     'datasets' => array(
       array(
         'label' => 'Police Shootings',
-        'backgroundColor' => '#f67f85',
+        'backgroundColor' => '#dc4646',
         'stack' => 'police-violence',
         'hidden' => false,
         'data' => array()
@@ -387,7 +387,7 @@ function generateBarChart($scorecard, $type) {
       $police_budget = $scorecard['police_funding']['police_budget'];
       $output['datasets'][] = array(
         'label' => 'Police',
-        'backgroundColor' => '#f67f85',
+        'backgroundColor' => '#dc4646',
         'borderWidth' => 0,
         'data' => array($police_budget)
       );
@@ -419,7 +419,7 @@ function generateBarChart($scorecard, $type) {
 
       $output['datasets'][] = array(
         'label' => 'Police & Jail',
-        'backgroundColor' => '#f67f85',
+        'backgroundColor' => '#dc4646',
         'borderWidth' => 0,
         'data' => array($police_budget + $jail_budget)
       );
@@ -520,7 +520,6 @@ function getNationalTotal($states) {
 
   return num($total);
 }
-
 
 function getNationalTotalByType($states, $type) {
   $total = 0;
