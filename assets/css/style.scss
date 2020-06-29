@@ -16,6 +16,14 @@ $color-orange-bkgrd: #c5882a;
 $color-red-orange: #dc6a46;
 $color-red: #dc4646;
 
+$grade-a: $color-green-bkgrd;
+$grade-b: $color-lt-green-bkgrd;
+$grade-c: $color-yellow-bkgrd;
+$grade-d: $color-orange-bkgrd;
+$grade-f: $color-red-orange;
+$grade-f-minus: $color-red;
+$grade-incomplete: $color-md-grayblue;
+
 /* Old Colors */
 
 $primary-gray: #464648;
@@ -61,6 +69,10 @@ $font-small: 8px;
 
 /* CSS RESET */
 a,abbr,acronym,address,applet,article,aside,audio,b,big,blockquote,body,canvas,caption,center,cite,code,dd,del,details,dfn,div,dl,dt,em,embed,fieldset,figcaption,figure,footer,form,h1,h2,h3,h4,h5,h6,header,hgroup,html,i,iframe,img,ins,kbd,label,legend,li,mark,menu,nav,object,ol,output,p,pre,q,ruby,s,samp,section,small,span,strike,strong,sub,summary,sup,table,tbody,td,tfoot,th,thead,time,tr,tt,u,ul,var,video{margin:0;padding:0;border:0;font:inherit;vertical-align:baseline}article,aside,details,figcaption,figure,footer,header,hgroup,menu,nav,section{display:block}body{line-height:1}ol,ul{list-style:none}blockquote,q{quotes:none}blockquote:after,blockquote:before,q:after,q:before{content:'';content:none}table{border-collapse:collapse;border-spacing:0}html{box-sizing:border-box;}*,*:before,*:after{box-sizing:inherit;}
+
+html {
+  scroll-behavior: smooth;
+}
 
 /* COMMON ELEMENTS */
 body {
@@ -591,23 +603,31 @@ body {
       font-weight: 700;
 
       &.grade-a {
-        color: $grade-light-green;
+        color: $grade-a;
       }
 
       &.grade-b {
-        color: $grade-green;
+        color: $grade-b;
       }
 
       &.grade-c {
-        color: $grade-yellow;
+        color: $grade-c;
       }
 
       &.grade-d {
-        color: $grade-orange;
+        color: $grade-d;
       }
 
       &.grade-f {
-        color: $grade-red;
+        color: $grade-f;
+      }
+
+      &.grade-f-minus {
+        color: $grade-f;
+      }
+
+      &.grade-incomplete {
+        color: $grade-incomplete;
       }
 
       &.grade span {
@@ -971,23 +991,31 @@ body {
         text-transform: uppercase;
 
         &.grade-a {
-          color: $grade-light-green;
+          color: $grade-a;
         }
 
         &.grade-b {
-          color: $grade-green;
+          color: $grade-b;
         }
 
         &.grade-c {
-          color: $grade-yellow;
+          color: $grade-c;
         }
 
         &.grade-d {
-          color: $grade-orange;
+          color: $grade-d;
         }
 
         &.grade-f {
-          color: $grade-red;
+          color: $grade-f;
+        }
+
+        &.grade-f-minus {
+          color: $grade-f-minus;
+        }
+
+        &.grade-incomplete {
+          color: $grade-incomplete;
         }
 
         &.grade span {
@@ -1392,15 +1420,19 @@ body {
   }
 
   .logo {
-    text-decoration: none;
     position: relative;
     top: 33px;
     left: 25px;
-
-    svg {
-      height: 55px;
-      width: auto;
-    }
+    color: white;
+    text-decoration: none;
+    text-transform: uppercase;
+    font-family: 'Barlow Condensed', sans-serif;
+    font-weight: 300;
+    font-size: 28px;
+    word-break: break-word;
+    width: 150px;
+    display: inline-block;
+    line-height: 0.96;
   }
 
   #mobile-toggle {
@@ -1440,7 +1472,7 @@ body {
   font-size: 14px;
   padding: 20px;
   margin-top: 20px;
-  background: #F2F4F6;
+  background: #FFFFFF;
   border-radius: 10px;
 }
 
@@ -1463,13 +1495,13 @@ body {
 
 #state-selection {
   text-align: center;
-  color: #82ADD7;
+  color: $color-md-grayblue;
   font-weight: 500;
   height: 100px;
   line-height: 100px;
   font-size: 24px;
   text-transform: uppercase;
-  font-style: italic;
+  font-style: normal;
   font-family: 'Barlow Condensed', sans-serif;
   text-decoration: none;
   position: relative;
@@ -1529,12 +1561,35 @@ body {
       transform: rotate(45deg);
     }
   }
+
+  &.long {
+    .selected-location-label {
+      bottom: 16px;
+    }
+
+    a {
+      top: -8px;
+      font-size: 48px;
+    }
+  }
+
+  &.really-long {
+    .selected-location-label {
+      bottom: 16px;
+      left: 0;
+    }
+
+    a {
+      top: -8px;
+      font-size: 28px;
+    }
+  }
 }
 
 #state-map-layer, #usa-map-layer {
   width: 100%;
-  height: 400px;
-  margin: 20px 0;
+  height: 340px;
+  margin: 0;
   display: block;
   position: relative;
 }
@@ -1699,12 +1754,13 @@ body {
 
       #chart-mini-complaints-reported-label {
         position: absolute;
-        top: 0;
         width: 100%;
         display: block;
         text-align: center;
         color: #FFF;
-        top: 40px;
+        top: 37px;
+        font-family: 'Barlow Condensed', sans-serif;
+        font-size: 24px;
 
         .national-report {
           top: 35px;
@@ -1718,26 +1774,24 @@ body {
         position: relative;
         top: 30px;
 
+        &:before {
+          content: 'Low Level Offenses';
+          color: #d8d8d8;
+          text-align: left;
+          text-transform: uppercase;
+          position: relative;
+          top: -40px;
+          line-height: 16px;
+          font-size: 12px;
+          display: block;
+          width: 100px;
+        }
+
         .filler {
           position: absolute;
           top: 0;
           left: 0;
-          background: #82ADD7;
-          display: flex;
-
-          &:before {
-            content: 'Low Level Offenses';
-            display: inline-block;
-            width: 100%;
-            height: 100%;
-            font-size: 12px;
-            color: #FFF;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            text-align: center;
-            text-shadow: 1px 1px 1px rgba(0, 0, 0, 1);
-          }
+          background: #d8d8d8;
         }
       }
     }
@@ -1746,23 +1800,31 @@ body {
 
 .section.score {
   &.grade-a {
-    background: $grade-light-green;
+    background: $grade-a;
   }
 
   &.grade-b {
-    background: $grade-green;
+    background: $grade-b;
   }
 
   &.grade-c {
-    background: $grade-yellow;
+    background: $grade-c;
   }
 
   &.grade-d {
-    background: $grade-orange;
+    background: $grade-d;
   }
 
   &.grade-f {
-    background: $grade-red;
+    background: $grade-f;
+  }
+
+  &.grade-f-minus {
+    background: $grade-f-minus;
+  }
+
+  &.grade-incomplete {
+    background: $grade-incomplete;
   }
 
   &.animate {
@@ -1773,6 +1835,34 @@ body {
       right: -500px;
     }
   }
+
+  .left {
+    width: 69% !important;
+  }
+
+  .right {
+    width: 30% !important;
+  }
+
+  span.incomplete {
+    position: absolute;
+    left: -25px;
+  }
+
+  p.incomplete-data {
+    color: white;
+    font-weight: 300;
+    display: block;
+    padding: 30px 0 40px 0;
+    border-top: 1px solid rgba(255, 255, 255, 0.5);
+    line-height: 18px;
+    font-size: 16px;
+
+    strong {
+      font-weight: 600;
+    }
+  }
+
   .left {
     display: inline-block;
     padding: 30px 0;
@@ -1891,6 +1981,40 @@ body {
     font-weight: 500;
   }
 
+  .add-new-data {
+    border-top: 1px solid #979797;
+    padding-top: 30px;
+    margin: 0 auto;
+    margin-top: 30px;
+    width: calc(100% - 40px);
+
+    .left {
+      padding-left: 10%;
+      width: 70%;
+      padding-right: 0;
+
+      strong {
+        color: black;
+        font-weight: 600;
+      }
+    }
+    .right {
+      text-align: left;
+      width: 29%;
+
+      button {
+        background: #5a6f83;
+        border-radius: 4px;
+        color: white;
+        padding: 10px 20px;
+        text-decoration: none;
+        border: 0;
+        text-transform: uppercase;
+        cursor: pointer;
+      }
+    }
+  }
+
   table {
     width: 100%;
 
@@ -2002,29 +2126,37 @@ body {
     vertical-align: middle;
 
     &.grade-a {
-      background: $grade-light-green;
+      background: $grade-a;
     }
 
     &.grade-b {
-      background: $grade-green;
+      background: $grade-b;
     }
 
     &.grade-c {
-      background: $grade-yellow;
+      background: $grade-c;
     }
 
     &.grade-d {
-      background: $grade-orange;
+      background: $grade-d;
     }
 
     &.grade-f {
-      background: $grade-red;
+      background: $grade-f;
+    }
+
+    &.grade-f-minus {
+      background: $grade-f-minus;
+    }
+
+    &.grade-incomplete {
+      background: $grade-incomplete;
     }
   }
 }
 
 .section.why {
-  padding-bottom: 60px;
+  padding-bottom: 20px;
 
   h1.title {
     color: $color-dk-gray;
@@ -2042,11 +2174,12 @@ body {
   }
 
   .take-action {
-    color: #f19975;
-    font-size: 18px;
-    line-height: 18px;
+    color: $color-dk-gray;
+    font-size: 25px;
+    line-height: 25px;
     text-transform: uppercase;
     font-weight: 500;
+    font-family: 'Barlow Condensed', sans-serif;
   }
 
   ul {
@@ -2107,7 +2240,7 @@ body {
       background: $color-md-grayblue;
       text-decoration: none;
       color: white;
-      padding: 0 20px;
+      padding: 6px 20px;
       border-radius: 4px;
       text-align: center;
       font-weight: 500;
@@ -2141,24 +2274,24 @@ body {
       position: absolute;
       height: 4px;
       bottom: -54px;
-      background: #fedc9e;
-      background: -moz-linear-gradient(left,  #fedc9e 0%, #c9d99b 50%, #99d79c 100%);
-      background: -webkit-linear-gradient(left,  #fedc9e 0%,#c9d99b 50%,#99d79c 100%);
-      background: linear-gradient(to right,  #fedc9e 0%,#c9d99b 50%,#99d79c 100%);
-      filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#fedc9e', endColorstr='#99d79c',GradientType=1 );
+      background: #dc6a46;
+      background: -moz-linear-gradient(left,  #dc6a46 0%, #d5ce71 31%, #7cc381 100%);
+      background: -webkit-linear-gradient(left,  #dc6a46 0%,#d5ce71 31%,#7cc381 100%);
+      background: linear-gradient(to right,  #dc6a46 0%,#d5ce71 31%,#7cc381 100%);
+      filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#dc6a46', endColorstr='#7cc381',GradientType=1 );
     }
 
     &::after {
       content: '';
       position: absolute;
-      width: 14px;
-      height: 14px;
+      width: 20px;
+      height: 20px;
       background: transparent;
-      border-top: 4px solid #99D79C;
-      border-right: 4px solid #99D79C;
+      border-top: 4px solid #7cc381;
+      border-right: 4px solid #7cc381;
       transform: translate3d(0, -50%, 0) rotate(45deg);
       right: 0;
-      bottom: -66px;
+      bottom: -72px;
     }
   }
 
@@ -2202,26 +2335,19 @@ body {
 
     span.completed, span.in-progress {
       display: inline-block;
-      color: white;
-      font-size: 12px;
-      line-height: 12px;
-      padding: 6px;
-      border-radius: 3px;
-      background: #85c789;
+      color: #7c8894;
+      font-size: 20px;
+      line-height: 20px;
       position: relative;
-      top: -6px;
+      top: 0;
       margin-left: 6px;
-      font-weight: 500;
-    }
-
-    span.in-progress {
-      background: #f19b77;
+      font-weight: 600;
     }
   }
 
   .step-1 {
     h2 {
-      color: #FEDC9E;
+      color: $color-dk-gray;
     }
 
     img {
@@ -2231,7 +2357,7 @@ body {
 
   .step-2 {
     h2 {
-      color: #C9D99B;
+      color: $color-dk-gray;
     }
 
     img {
@@ -2241,7 +2367,7 @@ body {
 
   .step-3 {
     h2 {
-      color: #99D79C;
+      color: $color-dk-gray;
     }
 
     img {
@@ -2328,6 +2454,8 @@ body {
   }
 
   .right {
+    text-align: right;
+
     a {
       font-family: 'Barlow Condensed', sans-serif;
       color: #FFF;
@@ -2359,7 +2487,8 @@ body {
     font-weight: 300;
     font-family: 'Barlow Condensed', sans-serif;
     text-transform: uppercase;
-    font-size: $font-large;
+    font-size: 22px;
+    color: white;
 
     a {
       color: #FFF;
@@ -2500,18 +2629,22 @@ svg.highcharts-root {
   height: 40px;
 
   .btn {
-    background: #f7f7f7;
-    border: 1px solid #CCC;
-    padding: 8px 16px;
+
+    background: #FFF;
+    border: 2px solid $color-dk-gray;
+    padding: 4px 12px;
     cursor: pointer;
     text-decoration: none;
-    color: black;
-    font-size: $font-default;
+    color: $color-dk-gray;
+    border-radius: 6px;
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: 14px;
+    font-weight: 500;
+    font-style: normal;
 
     &.active {
-      background: #FFF;
-      border: 1px solid #666;
-      font-weight: 600;
+      background: $color-dk-gray;
+      color: white;
     }
   }
 }
@@ -2898,6 +3031,157 @@ p.number-list {
   text-align: center;
 }
 
+.highcharts-tooltip {
+  &.highcharts-color-1 {
+    path.highcharts-label-box.highcharts-tooltip-box {
+      fill: $color-dk-gray;
+      stroke: rgb(255, 255, 255);
+      stroke-opacity: 0;
+      stroke-width: 0;
+    }
+  }
+
+  &.highcharts-color-2 {
+    path.highcharts-label-box.highcharts-tooltip-box {
+      fill: $color-red;
+      stroke: rgb(255, 255, 255);
+      stroke-opacity: 0;
+      stroke-width: 0;
+    }
+  }
+
+  &.highcharts-color-3 {
+    path.highcharts-label-box.highcharts-tooltip-box {
+      fill: $color-red-orange;
+      stroke: rgb(255, 255, 255);
+      stroke-opacity: 0;
+      stroke-width: 0;
+    }
+  }
+
+  &.highcharts-color-4 {
+    path.highcharts-label-box.highcharts-tooltip-box {
+      fill: $color-orange-bkgrd;
+      stroke: rgb(255, 255, 255);
+      stroke-opacity: 0;
+      stroke-width: 0;
+    }
+  }
+
+  &.highcharts-color-5 {
+    path.highcharts-label-box.highcharts-tooltip-box {
+      fill: $color-yellow-bkgrd;
+      stroke: rgb(255, 255, 255);
+      stroke-opacity: 0;
+      stroke-width: 0;
+    }
+  }
+
+  &.highcharts-color-6 {
+    path.highcharts-label-box.highcharts-tooltip-box {
+      fill: $color-lt-green-bkgrd;
+      stroke: rgb(255, 255, 255);
+      stroke-opacity: 0;
+      stroke-width: 0;
+    }
+  }
+
+  &.highcharts-color-7 {
+    path.highcharts-label-box.highcharts-tooltip-box {
+      fill: $color-green-bkgrd;
+      stroke: rgb(255, 255, 255);
+      stroke-opacity: 0;
+      stroke-width: 0;
+    }
+  }
+}
+
+[role="tablist"] {
+  overflow: visible;
+  background: rgba(170, 184, 197, 0.3);
+  height: 40px;
+  border-radius: 8px 8px 0 0;
+  text-align: center;
+}
+
+[role="tab"] {
+  margin: 0;
+  height: 40px;
+  border-bottom: 4px solid transparent;
+  background: transparent;
+  border: none;
+  width: 33%;
+  text-align: center;
+  font-family: 'Barlow Condensed', sans-serif;
+  font-weight: 500;
+  color: $color-dk-gray;
+  font-size: 20px;
+  line-height: 40px;
+}
+
+[role="tab"]:hover,
+[role="tab"]:focus,
+[role="tab"][aria-selected="true"] {
+  border-bottom: 4px solid rgba(170, 184, 197, 0.75);
+}
+
+[role="tab"][aria-selected="true"] {
+  border-bottom: 4px solid $color-md-grayblue;
+  outline: 0;
+  color: $color-md-grayblue;
+}
+
+[role="tab"][aria-selected="true"]:not(:focus):not(:hover) {
+  border-bottom: 4px solid $color-md-grayblue;
+}
+
+[role="tab"]:hover,
+[role="tab"]:focus,
+[role="tab"]:active {
+  outline: 0;
+  color: black;
+}
+
+[role="tab"]:hover::before,
+[role="tab"]:focus::before {
+  border-bottom: 4px solid $color-md-grayblue;
+}
+
+[role="tabpanel"] {
+  position: relative;
+  z-index: 2;
+  padding: 24px;
+  border-radius: 0 0 8px 8px;
+  background: $color-ltlt-gray;
+  margin-bottom: 14px;
+  width: 100%;
+
+  .left, .right {
+    width: 49%;
+    display: inline-block;
+    vertical-align: top;
+    font-size: 14px;
+  }
+
+  .left {
+    padding-right: 5%;
+  }
+
+  .right {
+    padding-left: 5%;
+  }
+
+  ul, li, p, .number::before, ul.contacts li {
+    font-size: 14px !important;
+    line-height: 20px !important;
+  }
+}
+
+[role="tabpanel"]:focus {
+  box-shadow: 0 0 0.2em hsl(219, 1%, 72%);
+  outline: 0;
+}
+
 /* RESPONSIVE */
 @media screen and (min-width: $bp-max-width) {
   .header {
@@ -2913,6 +3197,28 @@ p.number-list {
 @media screen and (max-width: $bp-max-width) {
   .hide-mobile {
     display: none;
+  }
+
+  [role="tablist"] {
+    text-align: left;
+  }
+
+  [role="tab"] {
+    width: auto;
+    white-space: nowrap;
+    font-size: 16px;
+    padding: 0 16px;
+  }
+
+  [role="tabpanel"] {
+    .left, .right {
+      width: 100%;
+    }
+  }
+
+  #state-map-layer, #usa-map-layer {
+    max-width: 80%;
+    margin: 0 auto;
   }
 
   #static-map {
@@ -3034,11 +3340,15 @@ p.number-list {
     .logo {
       top: 12px;
       left: 14px;
-
-      svg {
-        height: 34px;
-        width: auto;
-      }
+      color: white;
+      text-decoration: none;
+      text-transform: uppercase;
+      font-family: 'Barlow Condensed', sans-serif;
+      font-weight: 400;
+      font-size: 18px;
+      word-break: break-word;
+      width: 100px;
+      display: inline-block;
     }
 
     #mobile-toggle {
@@ -3206,13 +3516,18 @@ p.number-list {
       padding-left: 20px;
       padding-right: 20px;
       padding-bottom: 0;
-      margin-top: 0;
+      margin-top: 30px;
+
+      &:first-child {
+        margin-top: 0;
+      }
 
       h1 {
         font-size: $font-header;
         margin-bottom: 10px;
         line-height: 28px;
         padding-top: 20px;
+        width: 60%;
       }
 
       p {
@@ -3230,8 +3545,17 @@ p.number-list {
         width: 100px;
         position: relative;
         float: right;
-        top: -30px;
         display: block;
+
+        &.chart-1 {
+          top: -20px;
+        }
+        &.chart-2 {
+          top: -60px;
+        }
+        &.chart-3 {
+          top: -20px;
+        }
 
         div {
           display: block;
@@ -3268,79 +3592,139 @@ p.number-list {
       padding: 0 40px;
 
       h1 {
-        font-size: $font-large;
-        margin-top: 20px;
-        padding: 10px 0;
+        font-size: 24px;
+        margin-top: 40px;
         line-height: 24px;
+        font-weight: 400;
       }
       h2 {
-        font-size: $font-paragraph;
+        font-size: 24px;
         margin-bottom: 24px;
-        line-height: 18px;
+        line-height: 28px;
+        font-weight: 400;
+        max-width: 80%;
+        margin: 0 auto;
+        margin-top: 4px;
+        margin-bottom: 30px;
       }
     }
   }
 
   .section.score {
     &.grade-a {
-      background: $grade-light-green;
+      background: $grade-a;
     }
 
     &.grade-b {
-      background: $grade-green;
+      background: $grade-b;
     }
 
     &.grade-c {
-      background: $grade-yellow;
+      background: $grade-c;
     }
 
     &.grade-d {
-      background: $grade-orange;
+      background: $grade-d;
     }
 
     &.grade-f {
-      background: $grade-red;
+      background: $grade-f;
+    }
+
+    &.grade-f-minus {
+      background: $grade-f-minus;
+    }
+
+    &.grade-incomplete {
+      background: $grade-incomplete;
     }
 
     .left, .right {
-      width: 49% !important;
       display: inline-block !important;
       height: 80px;
+    }
+
+    .left {
+      width: 69% !important;
+    }
+
+    .right {
+      width: 30% !important;
+    }
+
+    p.incomplete-data {
+      margin: 0 20px;
     }
 
     .right {
       font-size: $font-large;
 
       .grade {
-        font-size: $font-header-large;
+        font-size: 36px;
+        line-height: 36px;
       }
 
       span {
         position: relative;
-        top: -20px;
+        top: -22px;
+
+        i {
+          font-weight: 300;
+          font-style: normal;
+        }
       }
     }
   }
 
   .selected-location {
-
     .selected-location-label {
       left: 21px;
-      bottom: 20px;
+      bottom: 14px;
       font-size: 14px;
       opacity: 0.65;
       line-height: 14px;
     }
 
     a {
-      font-size: 24px;
+      font-size: 32px;
       padding-bottom: 20px;
-      top: -10px;
+      top: -14px;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      width: 100%;
+      overflow: visible;
+
+      span.incomplete {
+        left: -15px !important;
+      }
 
       &::after {
         font-size: $font-small;
         right: -15px;
         top: 7px;
+      }
+    }
+
+    &.long {
+      .selected-location-label {
+        bottom: 20px;
+      }
+
+      a {
+        font-size: 26px;
+      }
+    }
+
+    &.really-long {
+      .selected-location-label {
+        bottom: 10px;
+      }
+
+      a {
+        top: -16px;
+        font-size: 18px;
+        white-space: normal;
       }
     }
   }
@@ -3381,8 +3765,29 @@ p.number-list {
     }
 
     &.short {
-      .right {
+      .right:not(.add-data) {
         display: none;
+      }
+    }
+
+    .add-new-data {
+      border-top: 1px solid #979797;
+      padding-top: 30px;
+      margin: 0 auto;
+      margin-top: 30px;
+      width: calc(100% - 40px);
+
+      .left, .right {
+        padding: 0;
+        width: 100%;
+      }
+
+      .right {
+        text-align: center;
+      }
+
+      button {
+        margin-top: 30px;
       }
     }
   }
@@ -3405,17 +3810,8 @@ p.number-list {
       line-height: 20px;
     }
 
-    .take-action {
-      font-size: 16px;
-      line-height: 22px;
-      font-weight: 400;
-    }
-
     ul.contacts {
       li {
-        font-size: 16px !important;
-        line-height: 20px !important;
-
         .divider {
           width: 100%;
           display: block;
@@ -3444,11 +3840,11 @@ p.number-list {
         position: absolute;
         height: calc(100% - 65px);
         top: 0;
-        background: #fedc9e;
-        background: -moz-linear-gradient(top,  #fedc9e 0%, #c9d99b 50%, #99d79c 100%);
-        background: -webkit-linear-gradient(top,  #fedc9e 0%,#c9d99b 50%,#99d79c 100%);
-        background: linear-gradient(to bottom,  #fedc9e 0%,#c9d99b 50%,#99d79c 100%);
-        filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#fedc9e', endColorstr='#99d79c',GradientType=0 );
+        background: #dc6a46;
+        background: -moz-linear-gradient(top,  #dc6a46 0%, #d5ce71 31%, #7cc381 100%);
+        background: -webkit-linear-gradient(top,  #dc6a46 0%,#d5ce71 31%,#7cc381 100%);
+        background: linear-gradient(to bottom,  #dc6a46 0%,#d5ce71 31%,#7cc381 100%);
+        filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#dc6a46', endColorstr='#7cc381',GradientType=0 );
         margin-top: 60px;
       }
 
@@ -3458,8 +3854,8 @@ p.number-list {
         width: 14px;
         height: 14px;
         background: transparent;
-        border-top: 4px solid #99D79C;
-        border-right: 4px solid #99D79C;
+        border-top: 4px solid #7cc381;
+        border-right: 4px solid #7cc381;
         transform: translate3d(0, -50%, 0) rotate(130deg);
         left: 15px;
         bottom: -5px;
@@ -3479,10 +3875,6 @@ p.number-list {
 
       & > div {
         padding-top: 20px;
-      }
-
-      span.completed, span.in-progress {
-        top: -3px;
       }
     }
 
@@ -3533,9 +3925,11 @@ p.number-list {
 
     .right {
       padding-top: 14px;
+      text-align: center;
 
       a {
         line-height: 55px;
+        margin-right: 0;
       }
     }
 

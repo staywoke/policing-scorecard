@@ -613,7 +613,6 @@ $ac = '?ac=' . getHash($isProd);
                     <li><a href="findings" class="active">Key Findings</a></li>
                     <li><a href="sandiego">Reports</a></li>
                     <li><a href="https://www.joincampaignzero.org/about/" target="_blank">Planning Team</a></li>
-                    <li><a href="https://www.joincampaignzero.org/" target="_blank">About Campaign Zero</a></li>
                 </ul>
                 </div>
             </div>

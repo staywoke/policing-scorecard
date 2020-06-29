@@ -37,10 +37,6 @@ $valid_token = (md5($token) === '5d0f91a00d76444b843046b7c15eb5c2');
       color: #000;
       text-decoration: underline;
     }
-    a.btn-primary {
-      width: 170px;
-      text-align: left;
-    }
     .card-header {
       border: 1px solid #ddd;
       background: #eee;
@@ -62,6 +58,10 @@ $valid_token = (md5($token) === '5d0f91a00d76444b843046b7c15eb5c2');
     .accordion ul {
       margin-left: 12px;
       padding: 10px 16px;
+    }
+    button.btn {
+      width: 200px;
+      text-align: center;
     }
     #results {
       margin-top: 20px;
@@ -115,7 +115,12 @@ $valid_token = (md5($token) === '5d0f91a00d76444b843046b7c15eb5c2');
           </button>
         </div>
 
-        <p><button class="btn btn-primary" onclick="return updateData()" data-loading-text="<i class='fa fa-spinner fa-spin '></i> &nbsp;Downloading Data ...">Download Latest Data</button> <div id="loading-text" class="text-info small" style="display: none;">&nbsp;This may take a few minutes</div></p>
+        <p>
+          <button class="btn btn-primary" onclick="return updateData(false)" data-loading-text="<i class='fa fa-spinner fa-spin '></i> &nbsp;Importing Changes ...">Import Changes</button>&nbsp;
+          <button class="btn btn-default" onclick="return updateData(true)" data-loading-text="<i class='fa fa-spinner fa-spin '></i> &nbsp;Importing Everything ...">Import Everything</button>
+
+          <div id="loading-text" class="text-info small" style="display: none;">&nbsp;This may take a few minutes</div>
+        </p>
 
         <div id="results" style="display: none">
 
@@ -228,9 +233,13 @@ $valid_token = (md5($token) === '5d0f91a00d76444b843046b7c15eb5c2');
     </div>
 
     <script>
-    function updateData() {
-      if (confirm('This will overwrite the existing data and cannot be undone. Continue ?')) {
-        var $button = $('button.btn-primary');
+    function updateData(cleanImport) {
+      var message = cleanImport ? 'This will overwrite all existing data and cannot be undone. Continue ?' : 'This will import New and Updated Data? Continue ?';
+      var loadingMessage = cleanImport ? 'Importing All Records. This may take a few minutes.' : 'Importing New & Updated Records. This should go pretty quickly.';
+
+      if (confirm(message)) {
+        var $button = cleanImport ? $('button.btn-default') : $('button.btn-primary');
+        var $altButton = cleanImport ? $('button.btn-primary') : $('button.btn-default');
         var $errors = $('#errors ul');
         var $failed = $('#failed ul');
         var $loadingText = $('#loading-text');
@@ -262,26 +271,30 @@ $valid_token = (md5($token) === '5d0f91a00d76444b843046b7c15eb5c2');
         $warningsTotal.text(0);
 
         $button.button('loading');
-        $loadingText.show();
+        $altButton.attr('disabled', true);
+        $loadingText.text(loadingMessage).show();
 
+        // Reset UI
         $('#api-error-message').text('The import failed to complete.');
         $('.alert').slideUp();
+        $('.collapse').collapse('hide');
 
         $.ajax({
           type: 'POST',
           url: '<?= API_BASE ?>update/scorecard',
           data: {
-            token: '<?= $token ?>'
+            token: '<?= $token ?>',
+            cleanImport: cleanImport
           },
           beforeSend: function (jqXHR, settings) {
             jqXHR.setRequestHeader('API-Key', '<?= API_KEY ?>');
           },
           headers: {
-            'API-Key': '<?= API_KEY ?>',
-            'Connection': 'keep-alive'
+            'API-Key': '<?= API_KEY ?>'
           },
           error: function (request, status, error) {
             $button.button('reset');
+            $altButton.removeAttr('disabled');
             $loadingText.hide();
 
             $('.alert').slideDown();
@@ -301,10 +314,10 @@ $valid_token = (md5($token) === '5d0f91a00d76444b843046b7c15eb5c2');
               });
 
               $.each(response.data, function(key, row) {
-                if (row.success) {
+                if (row.success && row.message !== 'Already Up To Date') {
                   successTotal++;
                   $success.append('<li>' + row.location + '</li>');
-                } else {
+                } else if (row.message !== 'Already Up To Date') {
                   failedTotal++;
                   $failed.append('<li>' + row.location + ': ' + row.message + '<pre style="display: none">' + row.stack + '</pre></li>');
                 }
@@ -319,6 +332,7 @@ $valid_token = (md5($token) === '5d0f91a00d76444b843046b7c15eb5c2');
               $results.slideDown();
             } else if (response && response.errors) {
               $button.button('reset');
+              $altButton.removeAttr('disabled');
               $loadingText.hide();
 
               $('#api-error-message').text(response.errors[0])
@@ -327,6 +341,7 @@ $valid_token = (md5($token) === '5d0f91a00d76444b843046b7c15eb5c2');
             }
 
             $button.button('reset');
+            $altButton.removeAttr('disabled');
             $loadingText.hide();
           },
           dataType: 'json'

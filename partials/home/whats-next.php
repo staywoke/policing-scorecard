@@ -5,27 +5,27 @@
     </h1>
 
     <div class="step step-1">
-      <h2>Step 1 <span class="completed">COMPLETED</span></h2>
+      <h2>Step 1: <span class="completed">COMPLETED</span></h2>
 
       <div>
         <img src="/assets/img/next/step1.svg" alt="Step 1" />
 
-        <p><strong>Inform</strong> data-driven interventions in <?= $stateName ?>'s 100 largest cities. Update scores and track progress over time.</p>
+        <p><strong>Inform</strong> Inform data-driven interventions in America’s 100 largest cities. Update scores and track progress over time.</p>
       </div>
     </div>
 
     <div class="step step-2">
-      <h2>Step 2 <span class="completed">COMPLETED</span></h2>
+      <h2>Step 2: <span class="completed">COMPLETED</span></h2>
 
       <div>
         <img src="/assets/img/next/step2.svg" alt="Step 2" />
 
-        <p><strong>Expand</strong> to every major law enforcement agency in CA and include additional indicators such as police budgets and jail incarceration.</p>
+        <p><strong>Expand</strong> to every major law enforcement agency in America and include additional indicators such as police budgets and jail incarceration.</p>
       </div>
     </div>
 
     <div class="step step-3">
-      <h2>Step 3 <span class="in-progress">IN PROGRESS</span></h2>
+      <h2>Step 3: <span class="in-progress">IN PROGRESS</span></h2>
 
       <div>
         <img src="/assets/img/next/step3.svg" alt="Step 3" />

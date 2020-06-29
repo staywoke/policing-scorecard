@@ -13,7 +13,6 @@
     </div>
     <div class="right">
       <a href="https://staywoke.typeform.com/to/jBvCkB" class="get-involved" target="_blank">Get Involved</a>
-      <a href="https://paypal.me/campaignzero" class="donate" target="_blank">Donate</a>
     </div>
   </div>
 
@@ -98,5 +97,9 @@
         }
       ?>
     </div>
+  </div>
+
+  <div class="content bt">
+    Nationwide Police Scorecard
   </div>
 </div>

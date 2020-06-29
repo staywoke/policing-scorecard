@@ -15,7 +15,7 @@
         <?php endif; ?>
       </div>
 
-      <div class="chart">
+      <div class="chart chart-1">
         <div id="chart-mini-people-killed"></div>
       </div>
     </div>
@@ -47,7 +47,7 @@
         <?php endif; ?>
       </div>
 
-      <div class="chart">
+      <div class="chart chart-2">
         <script>
         <?php if($scorecard['police_accountability']['civilian_complaints_sustained'] === 0): ?>
         var CHART_MINI_REPORTED = 0;
@@ -75,15 +75,9 @@
         <p><?= num($scorecard['report']['percent_misdemeanor_arrests'], 0, '%') ?> of all arrests were for low-level, non-violent offenses.</p>
       </div>
 
-      <div class="chart">
+      <div class="chart chart-3">
         <div class="chart-mini-arrests">
-        <?php
-          $area = 10000;
-          $fill = $scorecard['report']['percent_misdemeanor_arrests'] / 100;
-          $newArea = $area * $fill;
-          $fillPercent = sqrt($newArea);
-          ?>
-          <div class="filler" style="width: <?= $fillPercent ?>%; height: <?= $fillPercent ?>%"></div>
+          <div class="filler" style="width: <?= $scorecard['report']['percent_misdemeanor_arrests']  ?>%; height: 100%"></div>
         </div>
       </div>
     </div>

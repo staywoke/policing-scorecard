@@ -9,8 +9,7 @@ var SCORECARD_ENV = '<?= $isProd ? 'production' : 'development' ?>';
 var map_type = '<?= $type ?>';
 var map_data = <?= getNationalMapData($states, $type) ?>;
 
-// TODO: Disabling this check for now since recent update drastically reduced number of active locations
-var isChrome = false; // /Chrome/.test(navigator.userAgent) && /Google Inc/.test(navigator.vendor);
+var isChrome = /Chrome/.test(navigator.userAgent) && /Google Inc/.test(navigator.vendor);
 
 // TODO: There is currently a bug in rendering dynamic charts in Chrome Browser
 if (isChrome) {
@@ -33,7 +32,8 @@ window.addEventListener('load', function() {
         borderWidth: 0,
         margin: 0,
         zoomType: false,
-        styleMode: false
+        styleMode: false,
+        turboThreshold: 0
       },
       title: {
         text: '',
@@ -49,12 +49,17 @@ window.addEventListener('load', function() {
       },
       tooltip: {
         followPointer: false,
-        borderColor: '#444444',
         formatter: function () {
           var city = this.point.name;
-          var score = this.point.value;
-          var percent = Math.round(parseFloat(score));
-          var newTooltip = this.series.name + '<br /><strong>' + city + '</strong><br />Score: ' + percent + '%';
+          var percent = Math.round(parseFloat(this.point.value));
+          var incompleteIndicator = (this.point.colorIndex === 1) ? '<span style="color: rgba(255, 255, 255, 0.5); font-size: 24px; margin: 0; padding: 0; font-weight: 300;"> *</span><br>' : '<br>';
+          var incompleteMessage = (this.point.colorIndex === 1) ? '<p style="color: rgba(0, 0, 0, 0); font-size: 5px; margin: 0; padding: 0;">.</p><br><p style="color: rgba(255, 255, 255, 0.5); font-size: 10px; display: block; margin: 0; padding: 0; text-transform: uppercase;">* Incomplete Data</p>' : '';
+
+          var title = '<span style="color: rgba(255, 255, 255, 0.75); font-family: \'Barlow Condensed\', sans-serif; text-transform: uppercase; display: block; margin: 0; padding: 0; ">' + this.series.name + '</span><br>';
+          var department = '<strong style="color: #FFF; font-weight: 600; font-size: 24px; line-height: 24px; font-family: \'Barlow Condensed\', sans-serif; text-transform: uppercase; margin: 0; padding: 0; ">' + city + '</strong>';
+          var score = '<span style="color: #FFF; font-family: \'Barlow Condensed\', sans-serif; text-transform: uppercase; font-size: 28px; line-height: 28px; font-weight: 300; margin-top: 4px;  display: block; margin: 0; padding: 0; ">' + percent + '%</span><br>';
+
+          var newTooltip = title + department + incompleteIndicator + score + incompleteMessage;
 
           return newTooltip;
         }
@@ -117,19 +122,23 @@ window.addEventListener('load', function() {
     });
 
     if (map_type === 'police-department' && map_data) {
+      var MARKER_RADIUS = 3;
+
+      // INCOMPLETE GRADE
       window.SCORECARD_MAP.addSeries({
+        id: 'grade-incomplete',
         animation: false,
         type: 'mappoint',
         name: 'Police Department',
+        // data: map_data[0],
         joinBy: null,
         shadow: false,
         turboThreshold: 0,
         showInLegend: false,
         marker: {
-          width: 8,
-          height: 8,
-          fillColor: null,
-          symbol: 'url(/assets/img/police-marker-f.svg)'
+          radius: MARKER_RADIUS,
+          symbol: 'circle',
+          fillColor: '#7c8894'
         },
         dataLabels: {
           formatter: function () {
@@ -140,8 +149,8 @@ window.addEventListener('load', function() {
           click: function (e) {
             if (e.point && typeof e.point.className !== 'undefined') {
               var loc = e.point.className.replace('location-', '');
-              var url = '/?state=' + e.point.stateAbbr + '&type=' + map_type + '&location=' + loc;
-              var prettyUrl = '/' + e.point.stateAbbr + '/' + map_type + '/' + loc;
+              var url = '/?state=' +  e.point.stateAbbr + '&type=' + map_type + '&location=' + loc;
+              var prettyUrl = '/' +  e.point.stateAbbr + '/' + map_type + '/' + loc;
 
               if (loc && window.leftMouseClicked) {
                 window.location = (SCORECARD_ENV === 'production') ? prettyUrl : url;
@@ -153,19 +162,21 @@ window.addEventListener('load', function() {
         }
       });
 
+      // A GRADE
       window.SCORECARD_MAP.addSeries({
+        id: 'grade-a',
         animation: false,
         type: 'mappoint',
         name: 'Police Department',
+        // data: map_data[6],
         joinBy: null,
         shadow: false,
         turboThreshold: 0,
         showInLegend: false,
         marker: {
-          width: 8,
-          height: 8,
-          fillColor: '',
-          symbol: 'url(/assets/img/police-marker-d.svg)'
+          radius: MARKER_RADIUS,
+          symbol: 'circle',
+          fillColor: '#57a15b'
         },
         dataLabels: {
           formatter: function () {
@@ -176,8 +187,8 @@ window.addEventListener('load', function() {
           click: function (e) {
             if (e.point && typeof e.point.className !== 'undefined') {
               var loc = e.point.className.replace('location-', '');
-              var url = '/?state=' + e.point.stateAbbr + '&type=' + map_type + '&location=' + loc;
-              var prettyUrl = '/' + e.point.stateAbbr + '/' + map_type + '/' + loc;
+              var url = '/?state=' +  e.point.stateAbbr + '&type=' + map_type + '&location=' + loc;
+              var prettyUrl = '/' +  e.point.stateAbbr + '/' + map_type + '/' + loc;
 
               if (loc && window.leftMouseClicked) {
                 window.location = (SCORECARD_ENV === 'production') ? prettyUrl : url;
@@ -189,19 +200,21 @@ window.addEventListener('load', function() {
         }
       });
 
+      // B GRADE
       window.SCORECARD_MAP.addSeries({
+        id: 'grade-b',
         animation: false,
         type: 'mappoint',
         name: 'Police Department',
+        // data: map_data[5],
         joinBy: null,
         shadow: false,
         turboThreshold: 0,
         showInLegend: false,
         marker: {
-          width: 8,
-          height: 8,
-          fillColor: '',
-          symbol: 'url(/assets/img/police-marker-c.svg)'
+          radius: MARKER_RADIUS,
+          symbol: 'circle',
+          fillColor: '#7c984b'
         },
         dataLabels: {
           formatter: function () {
@@ -212,8 +225,8 @@ window.addEventListener('load', function() {
           click: function (e) {
             if (e.point && typeof e.point.className !== 'undefined') {
               var loc = e.point.className.replace('location-', '');
-              var url = '/?state=' + e.point.stateAbbr + '&type=' + map_type + '&location=' + loc;
-              var prettyUrl = '/' + e.point.stateAbbr + '/' + map_type + '/' + loc;
+              var url = '/?state=' +  e.point.stateAbbr + '&type=' + map_type + '&location=' + loc;
+              var prettyUrl = '/' +  e.point.stateAbbr + '/' + map_type + '/' + loc;
 
               if (loc && window.leftMouseClicked) {
                 window.location = (SCORECARD_ENV === 'production') ? prettyUrl : url;
@@ -225,19 +238,21 @@ window.addEventListener('load', function() {
         }
       });
 
+      // C GRADE
       window.SCORECARD_MAP.addSeries({
+        id: 'grade-c',
         animation: false,
         type: 'mappoint',
         name: 'Police Department',
+        // data: map_data[4],
         joinBy: null,
         shadow: false,
         turboThreshold: 0,
         showInLegend: false,
         marker: {
-          width: 8,
-          height: 8,
-          fillColor: '',
-          symbol: 'url(/assets/img/police-marker-b.svg)'
+          radius: MARKER_RADIUS,
+          symbol: 'circle',
+          fillColor: '#9d9636'
         },
         dataLabels: {
           formatter: function () {
@@ -248,8 +263,8 @@ window.addEventListener('load', function() {
           click: function (e) {
             if (e.point && typeof e.point.className !== 'undefined') {
               var loc = e.point.className.replace('location-', '');
-              var url = '/?state=' + e.point.stateAbbr + '&type=' + map_type + '&location=' + loc;
-              var prettyUrl = '/' + e.point.stateAbbr + '/' + map_type + '/' + loc;
+              var url = '/?state=' +  e.point.stateAbbr + '&type=' + map_type + '&location=' + loc;
+              var prettyUrl = '/' +  e.point.stateAbbr + '/' + map_type + '/' + loc;
 
               if (loc && window.leftMouseClicked) {
                 window.location = (SCORECARD_ENV === 'production') ? prettyUrl : url;
@@ -261,18 +276,21 @@ window.addEventListener('load', function() {
         }
       });
 
+      // D GRADE
       window.SCORECARD_MAP.addSeries({
+        id: 'grade-d',
         animation: false,
         type: 'mappoint',
         name: 'Police Department',
+        // data: map_data[3],
         joinBy: null,
         shadow: false,
         turboThreshold: 0,
         showInLegend: false,
         marker: {
-          width: 8,
-          height: 8,
-          symbol: 'url(/assets/img/police-marker-a.svg)'
+          radius: MARKER_RADIUS,
+          symbol: 'circle',
+          fillColor: '#c5882a'
         },
         dataLabels: {
           formatter: function () {
@@ -283,8 +301,84 @@ window.addEventListener('load', function() {
           click: function (e) {
             if (e.point && typeof e.point.className !== 'undefined') {
               var loc = e.point.className.replace('location-', '');
-              var url = '/?state=' + e.point.stateAbbr + '&type=' + map_type + '&location=' + loc;
-              var prettyUrl = '/' + e.point.stateAbbr + '/' + map_type + '/' + loc;
+              var url = '/?state=' +  e.point.stateAbbr + '&type=' + map_type + '&location=' + loc;
+              var prettyUrl = '/' +  e.point.stateAbbr + '/' + map_type + '/' + loc;
+
+              if (loc && window.leftMouseClicked) {
+                window.location = (SCORECARD_ENV === 'production') ? prettyUrl : url;
+                e.preventDefault();
+                e.stopImmediatePropagation();
+              }
+            }
+          }
+        }
+      });
+
+      // F GRADE
+      window.SCORECARD_MAP.addSeries({
+        id: 'grade-f',
+        animation: false,
+        type: 'mappoint',
+        name: 'Police Department',
+        // data: map_data[2],
+        joinBy: null,
+        shadow: false,
+        turboThreshold: 0,
+        showInLegend: false,
+        marker: {
+          radius: MARKER_RADIUS,
+          symbol: 'circle',
+          fillColor: '#dc6a46'
+        },
+        dataLabels: {
+          formatter: function () {
+            return '';
+          }
+        },
+        events: {
+          click: function (e) {
+            if (e.point && typeof e.point.className !== 'undefined') {
+              var loc = e.point.className.replace('location-', '');
+              var url = '/?state=' +  e.point.stateAbbr + '&type=' + map_type + '&location=' + loc;
+              var prettyUrl = '/' +  e.point.stateAbbr + '/' + map_type + '/' + loc;
+
+              if (loc && window.leftMouseClicked) {
+                window.location = (SCORECARD_ENV === 'production') ? prettyUrl : url;
+                e.preventDefault();
+                e.stopImmediatePropagation();
+              }
+            }
+          }
+        }
+      });
+
+      // F MINUS GRADE
+      window.SCORECARD_MAP.addSeries({
+        id: 'grade-f-minus',
+        animation: false,
+        type: 'mappoint',
+        name: 'Police Department',
+        // data: map_data[1],
+        joinBy: null,
+        shadow: false,
+        turboThreshold: 0,
+        showInLegend: false,
+        marker: {
+          radius: MARKER_RADIUS,
+          symbol: 'circle',
+          fillColor: '#dc4646'
+        },
+        dataLabels: {
+          formatter: function () {
+            return '';
+          }
+        },
+        events: {
+          click: function (e) {
+            if (e.point && typeof e.point.className !== 'undefined') {
+              var loc = e.point.className.replace('location-', '');
+              var url = '/?state=' +  e.point.stateAbbr + '&type=' + map_type + '&location=' + loc;
+              var prettyUrl = '/' +  e.point.stateAbbr + '/' + map_type + '/' + loc;
 
               if (loc && window.leftMouseClicked) {
                 window.location = (SCORECARD_ENV === 'production') ? prettyUrl : url;
@@ -298,11 +392,13 @@ window.addEventListener('load', function() {
 
       // Wait to load data until after the rest of the site is done loading to prevent page blocking
       setTimeout(function() {
-        window.SCORECARD_MAP.series[1].setData(map_data[0]);
-        window.SCORECARD_MAP.series[2].setData(map_data[1]);
-        window.SCORECARD_MAP.series[3].setData(map_data[2]);
-        window.SCORECARD_MAP.series[4].setData(map_data[3]);
-        window.SCORECARD_MAP.series[5].setData(map_data[4]);
+        window.SCORECARD_MAP.series[1].setData(map_data[0]); // Incomplete
+        window.SCORECARD_MAP.series[2].setData(map_data[6]); // Grade A
+        window.SCORECARD_MAP.series[3].setData(map_data[5]); // Grade B
+        window.SCORECARD_MAP.series[4].setData(map_data[4]); // Grade C
+        window.SCORECARD_MAP.series[5].setData(map_data[3]); // Grade D
+        window.SCORECARD_MAP.series[6].setData(map_data[2]); // Grade F
+        window.SCORECARD_MAP.series[7].setData(map_data[1]); // Grade F MINUS
         document.getElementById('map-loading').style.display = 'none';
       }, 0);
 
@@ -401,8 +497,8 @@ window.addEventListener('load', function() {
       chart: {
         type: 'column',
         backgroundColor: 'transparent',
-        width: document.documentElement.clientWidth > 940 ? 150 : 100,
-        height: document.documentElement.clientWidth > 940 ? 150 : 125,
+        width: 100,
+        height: 100,
         margin: 0,
         maintainAspectRatio: false,
         clip: false
@@ -447,17 +543,20 @@ window.addEventListener('load', function() {
           pointPadding: 0.1,
           animation: false,
           enableMouseTracking: false,
+          color: '#FFFFFF',
           dataLabels: {
             rotation: -90,
-            color: '#FFFFFF',
+            color: '#d8d8d8',
             enabled: true,
             format: '{point.name}',
-            inside: true,
-            crop: false,
-            overflow: 'allow',
             align: 'left',
+            y: -8,
+            shadow: false,
+            useHTML: true,
+            overflow: 'allow',
+            crop: false,
             style: {
-              fontSize: document.documentElement.clientWidth > 940 ? '10px' : '8px',
+              fontSize: document.documentElement.clientWidth > 940 ? '12px' : '10px',
               fontFamily: 'Verdana, sans-serif',
               textTransform: 'uppercase'
             }
@@ -514,14 +613,14 @@ window.addEventListener('load', function() {
             CHART_MINI_REPORTED
           ],
           backgroundColor: [
-            '#82ADD7',
+            '#d8d8d8',
             '#58595b'
           ]
         }]
       }
     });
 
-    var label = (CHART_MINI_SUSTAINED === 0 && CHART_MINI_REPORTED === 0) ? '0' : Math.round((CHART_MINI_SUSTAINED / CHART_MINI_REPORTED) * 100);
+    var label = ((CHART_MINI_SUSTAINED === 0 && CHART_MINI_REPORTED === 0) || CHART_MINI_REPORTED === 0) ? '0' : Math.round((CHART_MINI_SUSTAINED / CHART_MINI_REPORTED) * 100);
     document.getElementById('chart-mini-complaints-reported-label').innerHTML = label + '%';
   }
 

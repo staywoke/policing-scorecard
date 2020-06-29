@@ -270,8 +270,8 @@
         chart: {
           type: 'column',
           backgroundColor: 'transparent',
-          width: document.documentElement.clientWidth > 940 ? 150 : 100,
-          height: document.documentElement.clientWidth > 940 ? 150 : 125,
+          width: 100,
+          height: 100,
           margin: 0,
           maintainAspectRatio: false,
           clip: false
@@ -316,17 +316,20 @@
             pointPadding: 0.1,
             animation: false,
             enableMouseTracking: false,
+            color: '#FFFFFF',
             dataLabels: {
               rotation: -90,
-              color: '#FFFFFF',
+              color: '#d8d8d8',
               enabled: true,
               format: '{point.name}',
-              inside: true,
-              crop: false,
-              overflow: 'allow',
               align: 'left',
+              y: -8,
+              shadow: false,
+              useHTML: true,
+              overflow: 'allow',
+              crop: false,
               style: {
-                fontSize: document.documentElement.clientWidth > 940 ? '10px' : '8px',
+                fontSize: document.documentElement.clientWidth > 940 ? '12px' : '10px',
                 fontFamily: 'Verdana, sans-serif',
                 textTransform: 'uppercase'
               }
@@ -383,14 +386,14 @@
               (CHART_MINI_REPORTED === 0) ? 1 : CHART_MINI_REPORTED
             ],
             backgroundColor: [
-              '#82ADD7',
+              '#d8d8d8',
               '#58595b'
             ]
           }]
         }
       });
 
-      var label = (CHART_MINI_SUSTAINED === 0 && CHART_MINI_REPORTED === 0) ? '0' : Math.round((CHART_MINI_SUSTAINED / CHART_MINI_REPORTED) * 100);
+      var label = ((CHART_MINI_SUSTAINED === 0 && CHART_MINI_REPORTED === 0) || CHART_MINI_REPORTED === 0) ? '0' : Math.round((CHART_MINI_SUSTAINED / CHART_MINI_REPORTED) * 100);
       document.getElementById('chart-mini-complaints-reported-label').innerHTML = label + '%';
     }
 

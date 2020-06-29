@@ -4,7 +4,7 @@
       About This Scorecard
     </h1>
     <p>
-      <strong>This is the first nationwide evaluation of policing in the United States.</strong> It was built using data from state and federal databases, public records requests to local police departments, and media reports.
+      <strong>This is the first nationwide evaluation of policing in the United States.</strong> It was built using data from state and federal databases, public records requests to local police departments, and media reports. While police data is never perfect, and there are many issues that still need to be tracked, the Police Scorecard is designed to provide insight into many important issues in policing.
     </p>
     <p>
       <a href="/about" class="button">methodology</a>
@@ -12,36 +12,51 @@
     </p>
     <p>&nbsp;</p>
     <p>
-      <strong>Use this Scorecard to identify issues within police departments that require the most urgent interventions and hold officials accountable for implementing solutions.</strong> For example, cities with higher rates of misdemeanor arrests could benefit most from solutions that create alternatives to policing and arrest for these offenses. In cities where police make fewer arrests overall but use more force when making arrests, communities could benefit significantly from policies designed to <a href="http://useofforceproject.org/" target="_blank">limit police use force</a>. And cities where complaints of police misconduct are rarely ruled in favor of civilians could benefit from creating an oversight structure to independently investigate these complaints.
+      <strong>Use this Scorecard to identify issues within police departments that require the most urgent interventions and hold officials accountable for implementing solutions.</strong> For example, cities with higher rates of misdemeanor arrests could benefit most from solutions that create alternatives to policing and arrest for these offenses. In cities where police make fewer arrests overall but use more force when making arrests, communities could benefit significantly from policies designed to hold police accountable for this behavior. And cities where complaints of police misconduct are rarely ruled in favor of civilians could benefit from creating an oversight structure to independently investigate these complaints.
     </p>
     <p>&nbsp;</p>
-    <p class="take-action">Here's how to start pushing for change:</p>
+    <p class="take-action">Here's how to start pushing for change</p>
   </div>
   <div class="content">
     <p>&nbsp;</p>
   </div>
   <div class="content">
-    <div class="left number number-1">
-      <ul>
-        <li>
-          <?php if ($type === 'sheriff'): ?>
-          <strong>Contact Your County Sheriff</strong>, share your scorecard with them and urge them to enact policies to address the issues you've identified:
-          <?php else: ?>
-          <strong>Contact your Mayor and Police Chief</strong>, share your scorecard with them and urge them to enact policies to address the issues you've identified:
-          <?php endif; ?>
-
-          <div class="advocacy-tip">
-            <strong>Advocacy Tip:</strong>&nbsp; New deadly force laws go into effect in January - requiring departments to adopt more restrictive deadly force policies. Tell your <?= ($type === 'sheriff') ? 'Sheriff' : 'Mayor and Police Chief' ?> to adopt a policy that explicitly requires police to exhaust all available alternatives prior to using deadly force.&nbsp; <a href="http://useofforceproject.org/s/Use-of-Force-Study.pdf" target="_blank"><strong>Research</strong></a> shows this policy saves lives.
-          </div>
-        </li>
-      </ul>
-    </div>
-    <div class="right number number-2">
-      <ul>
-        <li><strong>Find your US Senator and US Representative</strong> using the Campaign Zero Advocacy Tool and urge them to support the <strong>PEACE Act</strong>, which would require police departments to adopt policies requiring de-escalation and alternatives to deadly force, a change that would reduce police shootings nationwide.
-          <br />
-        <a href="https://www.joincampaignzero.org/advocacy" class="button" target="_blank">Campaign Zero Advocacy Tool</a></li>
-      </ul>
+    <div class="tabs">
+      <div role="tablist" class="tab-buttons" aria-label="Push for Change">
+        <button role="tab" aria-selected="true" aria-controls="advocacy-tab" id="advocacy">Advocacy</button>
+        <button role="tab" aria-selected="false" aria-controls="research-tab" id="research" tabindex="-1">Research</button>
+        <button role="tab" aria-selected="false" aria-controls="data-visualization-tab" id="data-visualization" tabindex="-1">Data Visualization</button>
+      </div>
+      <div tabindex="0" role="tabpanel" id="advocacy-tab" aria-labelledby="advocacy">
+        <div class="left number number-1">
+          <ul>
+            <li>
+              <?php if ($type === 'sheriff'): ?>
+              <strong>Contact Your County Sheriff</strong>, share this scorecard with them and urge them to enact policies to address the issues you've identified.
+              <?php else: ?>
+              <strong>Contact your Mayor and Police Chief</strong>, share this scorecard with them and urge them to enact policies to address the issues you've identified.
+              <?php endif; ?>
+            </li>
+          </ul>
+        </div>
+        <div class="right number number-2">
+          <ul>
+            <li>
+              <strong>Find your US Senator and US Representative</strong> using our Advocacy Tool and urge them to support the <strong>Justice in Policing Act</strong> to end qualified immunity, demilitarize police, and ban chokeholds and no-knock warrants.
+              <br />
+              <a href="https://www.joincampaignzero.org/advocacy" class="button" target="_blank">Advocacy Tool</a>
+            </li>
+          </ul>
+        </div>
+      </div>
+      <div tabindex="0" role="tabpanel" id="research-tab" aria-labelledby="research" hidden="">
+        <p>Join a team of researchers, students, data scientists, activists and organizers working to collect, analyze and use data for justice and accountability.</p>
+        <p><a href="https://staywoke.typeform.com/to/jBvCkB" class="button" target="_blank">Join</a></p>
+      </div>
+      <div tabindex="0" role="tabpanel" id="data-visualization-tab" aria-labelledby="data-visualization" hidden="">
+        <p>Create data visualizations and content that raises awareness about solutions to the issues identified by the data.</p>
+        <p><a href="https://staywoke.typeform.com/to/jBvCkB" class="button" target="_blank">Join</a></p>
+      </div>
     </div>
   </div>
   <div class="content">
