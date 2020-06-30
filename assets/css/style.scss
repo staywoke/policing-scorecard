@@ -661,15 +661,73 @@ body {
   width: 100%;
 }
 
+.score-divider-full {
+  width: 100%;
+  height: 40px;
+  position: absolute;
+
+  &::before {
+    content: '';
+    width: 50%;
+    height: 40px;
+    display: block;
+    position: absolute;
+    right: 0;
+    top: 0;
+  }
+
+  &.grade-a {
+    &::before {
+      background-color: $grade-a;
+    }
+  }
+
+  &.grade-b {
+    &::before {
+      background-color: $grade-b;
+    }
+  }
+
+  &.grade-c {
+    &::before {
+      background-color: $grade-c;
+    }
+  }
+
+  &.grade-d {
+    &::before {
+      background-color: $grade-d;
+    }
+  }
+
+  &.grade-f {
+    &::before {
+      background-color: $grade-f;
+    }
+  }
+
+  &.grade-f-minus {
+    &::before {
+      background-color: $grade-f-minus;
+    }
+  }
+
+  &.grade-incomplete {
+    &::before {
+      background-color: $grade-incomplete;
+    }
+  }
+}
+
 /* SECTION */
 .section {
   &.bb {
-    border-bottom: 8px solid rgba(0, 0, 0, 0.05);
+    border-bottom: 1px solid $color-md-grayblue;
   }
 
   &.pad {
     padding-bottom: 80px;
-    padding-top: 20px;
+    padding-top: 0;
   }
 
   sup {
@@ -940,7 +998,7 @@ body {
 
     a.results-info {
       font-size: $font-default;
-      background: #454548;
+      background: $color-md-grayblue;
       width: 20px;
       height: 20px;
       display: inline-block;
@@ -953,6 +1011,9 @@ body {
       text-decoration: none;
       position: relative;
       top: -2px;
+      text-transform: lowercase;
+      font-weight: 500;
+      font-family: serif;
 
       &:hover {
         background-color: $primary-blue;
@@ -965,63 +1026,6 @@ body {
       color: #f67f85;
       text-align: center;
       padding-bottom: 18px;
-    }
-
-    &.section-header {
-      font-size: $font-header;
-
-      .tooltip {
-        position: relative !important;
-        margin-left: 4px !important;
-        top: 0 !important;
-      }
-
-      h1.title {
-        color: $color-dk-gray;
-        padding: 50px 0 20px;
-        font-size: 32px;
-        line-height: 32px;
-        text-transform: uppercase;
-        font-weight: 500;
-      }
-
-      strong {
-        font-family: 'Barlow Condensed', sans-serif;
-        font-weight: 900;
-        text-transform: uppercase;
-
-        &.grade-a {
-          color: $grade-a;
-        }
-
-        &.grade-b {
-          color: $grade-b;
-        }
-
-        &.grade-c {
-          color: $grade-c;
-        }
-
-        &.grade-d {
-          color: $grade-d;
-        }
-
-        &.grade-f {
-          color: $grade-f;
-        }
-
-        &.grade-f-minus {
-          color: $grade-f-minus;
-        }
-
-        &.grade-incomplete {
-          color: $grade-incomplete;
-        }
-
-        &.grade span {
-          color: $primary-gray !important;
-        }
-      }
     }
 
     & > div.left {
@@ -1630,24 +1634,28 @@ body {
   .right {
     width: 69% !important;
     display: inline-block;
-    text-align: center;
+    text-align: left;
     float: right;
   }
   .right {
     h1 {
-      font-size: 34px;
-      font-weight: 400;
       color: $primary-gray;
-      margin-top: 80px;
-      padding: 18px 0;
+      font-size: 24px;
+      font-weight: 400;
+      color: #464648;
+      margin-top: 70px;
+      padding-right: 25%;
+      line-height: 32px;
+      margin-bottom: 16px;
     }
     h2 {
       font-family: 'Barlow Condensed', sans-serif;
-      font-size: 34px;
+      font-size: 24px;
       font-weight: 500;
       color: $primary-gray;
       font-style: italic;
       margin-bottom: 36px;
+      padding-right: 50%;
     }
   }
   .header-intro {
@@ -3192,6 +3200,159 @@ p.number-list {
   .hide-desktop {
     display: none;
   }
+
+  /* WOO DESKTOP */
+  &.section-header {
+    font-size: $font-header;
+    position: relative;
+
+    .tooltip {
+      position: relative !important;
+      margin-left: 4px !important;
+      top: 0 !important;
+    }
+
+    .results-info {
+      position: absolute !important;
+      right: 20px !important;
+      top: 12px !important;
+    }
+
+    h1.title {
+      background: white;
+      color: $color-md-grayblue;
+      display: inline-block;
+      font-size: 32px;
+      font-weight: 500;
+      height: 40px;
+      line-height: 40px;
+      padding-right: 60px;
+      position: absolute;
+      text-transform: uppercase;
+      vertical-align: bottom;
+      z-index: 10;
+
+      &::after {
+        content: '';
+        width: 28px;
+        height: 28px;
+        background-color: white;
+        transform: rotate(45deg);
+        position: absolute;
+        z-index: 0;
+        top: 6px;
+        right: -14px;
+      }
+    }
+
+    .score-divider {
+      font-family: 'Barlow Condensed', sans-serif;
+      text-transform: uppercase;
+      color: white;
+      height: 40px;
+      width: 100%;
+      margin: 0 auto;
+      line-height: 40px;
+      vertical-align: top;
+      position: relative;
+      z-index: 2;
+      text-align: right;
+
+      &::after {
+        content: '';
+        width: 100%;
+        height: 40px;
+        position: absolute;
+        z-index: 0;
+        top: 0;
+        left: 0;
+      }
+
+      .section-label {
+        opacity: 0.7;
+        font-size: 16px;
+        line-height: 40px;
+        vertical-align: top;
+        padding-right: 8px;
+        z-index: 30;
+        position: relative;
+      }
+
+      .section-score {
+        font-size: 20px;
+        line-height: 40px;
+        vertical-align: top;
+        z-index: 30;
+        position: relative;
+      }
+
+      .stats-change.tooltip, .grade-arrow span, .grade-arrow small {
+        color: #FFF !important;
+      }
+
+      .stats-change.tooltip {
+        top: -2px !important;
+        z-index: 30;
+        position: relative;
+      }
+
+      &.grade-a {
+        background-color: $grade-a;
+
+        &::after {
+          background-color: $grade-a;
+        }
+      }
+
+      &.grade-b {
+        background-color: $grade-b;
+
+        &::after {
+          background-color: $grade-b;
+        }
+      }
+
+      &.grade-c {
+        background-color: $grade-c;
+
+        &::after {
+          background-color: $grade-c;
+        }
+      }
+
+      &.grade-d {
+        background-color: $grade-d;
+
+        &::after {
+          background-color: $grade-d;
+        }
+      }
+
+      &.grade-f {
+        background-color: $grade-f;
+
+        &::after {
+          background-color: $grade-f;
+        }
+      }
+
+      &.grade-f-minus {
+        background-color: $grade-f-minus;
+
+        &::after {
+          background-color: $grade-f-minus;
+        }
+      }
+
+      &.grade-incomplete {
+        background-color: $grade-incomplete;
+
+        &::after {
+          background-color: $grade-incomplete;
+        }
+      }
+    }
+  }
 }
 
 @media screen and (max-width: $bp-max-width) {
@@ -3213,6 +3374,11 @@ p.number-list {
   [role="tabpanel"] {
     .left, .right {
       width: 100%;
+      padding: 0;
+    }
+
+    .number ul {
+      margin-left: 20px !important;
     }
   }
 
@@ -3400,6 +3566,9 @@ p.number-list {
       }
     }
   }
+  .score-divider-full {
+    display: none;
+  }
   .section {
     &.pad {
       padding-bottom: 20px;
@@ -3420,15 +3589,149 @@ p.number-list {
     .content {
       overflow: hidden;
 
+      /* WOO MOBILE */
       &.section-header {
-        padding-left: 20px;
-        padding-right: 20px;
-        font-size: $font-large;
+        font-size: $font-header;
+        position: relative;
+        text-align: center;
+
+        .tooltip {
+          position: relative !important;
+          margin-left: 4px !important;
+          top: 0 !important;
+        }
+
+        .divider-line {
+          height: 1px;
+          width: calc(100% - 40px);
+          margin: 0 auto;
+          background-color: $color-md-grayblue;
+        }
+
+        .results-info {
+          position: absolute;
+          right: 20px;
+          top: 28px;
+        }
 
         h1.title {
-          font-size: 24px;
+          color: $color-md-grayblue;
+          padding: 20px 0 20px;
+          font-size: 32px;
+          line-height: 32px;
+          text-transform: uppercase;
           font-weight: 500;
-          margin: 20px 0 10px 0;
+        }
+
+        .score-divider {
+          font-family: 'Barlow Condensed', sans-serif;
+          text-transform: uppercase;
+          color: white;
+          height: 40px;
+          width: calc(100% - 80px);
+          margin: 0 auto;
+          line-height: 40px;
+          vertical-align: top;
+          position: relative;
+          z-index: 2;
+
+
+          &::before, &::after {
+            content: '';
+            width: 28px;
+            height: 28px;
+            background-color: #DDD;
+            transform: rotate(45deg);
+            position: absolute;
+            z-index: 0;
+            top: 6px;
+          }
+
+          &::before {
+            left: -14px;
+          }
+
+          &::after {
+            right: -14px;
+          }
+
+          .section-label {
+            opacity: 0.7;
+            font-size: 16px;
+            line-height: 40px;
+            vertical-align: top;
+            padding-right: 8px;
+          }
+
+          .section-score {
+            font-size: 20px;
+            line-height: 40px;
+            vertical-align: top;
+          }
+
+          .stats-change.tooltip, .grade-arrow span, .grade-arrow small {
+            color: #FFF !important;
+          }
+
+          .stats-change.tooltip {
+            top: -2px !important;
+          }
+
+          &.grade-a {
+            background-color: $grade-a;
+
+            &::before, &::after {
+              background-color: $grade-a;
+            }
+          }
+
+          &.grade-b {
+            background-color: $grade-b;
+
+            &::before, &::after {
+              background-color: $grade-b;
+            }
+          }
+
+          &.grade-c {
+            background-color: $grade-c;
+
+            &::before, &::after {
+              background-color: $grade-c;
+            }
+          }
+
+          &.grade-d {
+            background-color: $grade-d;
+
+            &::before, &::after {
+              background-color: $grade-d;
+            }
+          }
+
+          &.grade-f {
+            background-color: $grade-f;
+
+            &::before, &::after {
+              background-color: $grade-f;
+            }
+          }
+
+          &.grade-f-minus {
+            background-color: $grade-f-minus;
+
+            &::before, &::after {
+              background-color: $grade-f-minus;
+            }
+          }
+
+          &.grade-incomplete {
+            background-color: $grade-incomplete;
+
+            &::before, &::after {
+              background-color: $grade-incomplete;
+            }
+          }
         }
       }
 
@@ -3590,12 +3893,15 @@ p.number-list {
     }
     .right, .header-intro {
       padding: 0 40px;
+      text-align: center;
 
       h1 {
         font-size: 24px;
-        margin-top: 40px;
+        margin-top: 50px;
         line-height: 24px;
         font-weight: 400;
+        padding: 0;
+        text-align: center;
       }
       h2 {
         font-size: 24px;
@@ -3606,6 +3912,8 @@ p.number-list {
         margin: 0 auto;
         margin-top: 4px;
         margin-bottom: 30px;
+        padding: 0;
+        text-align: center;
       }
     }
   }
