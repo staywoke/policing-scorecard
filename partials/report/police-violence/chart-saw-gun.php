@@ -8,12 +8,14 @@
   <div class="progress-bar-wrapper">
     <div class="progress-bar no-data" style="width: 0"></div>
   </div>
-  <p class="note">&nbsp;</p>
   <?php else: ?>
   <div class="progress-bar-wrapper">
     <div class="progress-bar animate-bar <?= (intval($scorecard['report']['percent_police_misperceive_the_person_to_have_gun']) === 0) ? 'bright-green' : 'always-bad' ?>" data-percent="<?= output(intval($scorecard['report']['percent_police_misperceive_the_person_to_have_gun']), 0, '%') ?>"></div>
   </div>
-  <p class="note">&nbsp;</p>
+  <?php endif; ?>
+
+  <?php if (strtolower($state) === 'ca'): ?>
+  <p class="source-link-wrapper">Source: <a href="https://openjustice.doj.ca.gov/data" class="source-link" target="_blank">CA Department of Justice</a></p>
   <?php endif; ?>
 </div>
 <?php endif; ?>

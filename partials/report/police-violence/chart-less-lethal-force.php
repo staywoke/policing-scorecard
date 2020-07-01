@@ -26,5 +26,7 @@
   </div>
   <p class="note">^&nbsp; Used More Force per Arrest than <?= num($scorecard['report']['percentile_less_lethal_force'], 0, '%', true) ?> of Depts &nbsp;&nbsp;</p>
   <?php endif; ?>
+
+  <p class="source-link-wrapper">Source: <a href="https://docs.google.com/document/d/1u3mLH5vt2kd2lBa5s2LwXIhwoJLzJup4Y-K86iVDUHI/edit?usp=sharing" class="source-link" target="_blank">Police Department</a></p>
 </div>
 <?php endif; ?>

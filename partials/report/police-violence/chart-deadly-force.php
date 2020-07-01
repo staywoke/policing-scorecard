@@ -30,4 +30,6 @@
     </div>
     <p class="note">^&nbsp; Used More Deadly Force per Arrest than <?= num($scorecard['report']['percentile_killed_by_police'], 0, '%', true) ?> of Depts &nbsp;&nbsp;</p>
     <?php endif; ?>
+
+    <p class="source-link-wrapper">Source: <a href="https://mappingpoliceviolence.org" class="source-link" target="_blank">Mapping Police Violence</a></p>
 </div>

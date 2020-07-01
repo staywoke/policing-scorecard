@@ -70,4 +70,10 @@
   </div>
 
   <p class="note" style="margin-top: 0">^&nbsp; More Racial Bias in Arrests and Deadly Force than <?= num((1 - intval($scorecard['report']['percentile_overall_disparity_index'])), 0, '%', true) ?> of Depts &nbsp;&nbsp;</p>
+
+  <p class="source-link-wrapper">
+    Source:
+    <a href="https://crime-data-explorer.fr.cloud.gov/explorer/national/united-states/arrest" class="source-link" target="_blank">Uniform Crime Report</a>,
+    <a href="https://mappingpoliceviolence.org" class="source-link" target="_blank">Mapping Police Violence</a>
+  </p>
 </div>

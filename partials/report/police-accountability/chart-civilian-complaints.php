@@ -7,7 +7,7 @@
   <p>0 Complaints Reported</p>
   <?php else: ?>
   <p>
-    <?= num($scorecard['police_accountability']['civilian_complaints_reported']) ?> Reported
+    <?= num($scorecard['police_accountability']['civilian_complaints_reported']) ?> from <?= $scorecard['police_accountability']['years_of_complaints_data'] ?>
     <span class="divider">&nbsp;|&nbsp;</span>
     <?= num($scorecard['report']['complaints_sustained'], 0, '%') ?> Ruled in Favor of Civilians
   </p>

@@ -24,7 +24,7 @@
       data: arrestsData,
       options: {
         maintainAspectRatio: false,
-        responsive: true,
+        responsive: document.documentElement.clientWidth > 940 ? false : true,
         legend: {
           display: false,
         },
@@ -92,7 +92,7 @@
           duration: 0,
         },
         maintainAspectRatio: false,
-        responsive: false,
+        responsive: document.documentElement.clientWidth > 940 ? false : true,
         legend: {
           display: false,
         },
@@ -166,7 +166,7 @@
             }
           },
         },
-        responsive: true,
+        responsive: document.documentElement.clientWidth > 940 ? false : true,
         legend: {
           display: false,
         },
@@ -276,7 +276,7 @@
           maintainAspectRatio: false,
           clip: false
         },
-        responsive: true,
+        responsive: document.documentElement.clientWidth > 940 ? false : true,
         legend: {
           enabled: false
         },
@@ -354,7 +354,7 @@
           width: 125,
           height: 125
         },
-        responsive: true,
+        responsive: document.documentElement.clientWidth > 940 ? false : true,
         legend: {
           enabled: false
         },

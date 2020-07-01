@@ -1,6 +1,8 @@
-<div class="score-divider-full grade-<?= strtolower(preg_replace('/[^A-Z]/', '', getGrade($scorecard['report']['police_accountability_score']))) ?>"></div>
+<div class="score-divider-full hide-mobile grade-<?= strtolower(preg_replace('/[^A-Z]/', '', getGrade($scorecard['report']['police_accountability_score']))) ?>"></div>
 
 <div class="content section-header">
+  <div class="divider-line hide-desktop"></div>
+
   <h1 class="title">
     Police Accountability
 
@@ -12,4 +14,8 @@
     <span class="section-score"><?= num($scorecard['report']['police_accountability_score'], 0, '%') ?></span>
     <?= getChange($scorecard['report']['change_police_accountability_score'], true, 'since \'16-17'); ?>
   </div>
+
+  <?php if (!empty($scorecard['police_accountability']['civilian_complaints_source_link']) && !empty($scorecard['police_accountability']['civilian_complaints_source'])): ?>
+  <p class="source-link-wrapper">Source: <a href="<?= $scorecard['police_accountability']['civilian_complaints_source_link'] ?>" class="source-link" target="_blank"><?= $scorecard['police_accountability']['civilian_complaints_source'] ?></a></p>
+  <?php endif; ?>
 </div>

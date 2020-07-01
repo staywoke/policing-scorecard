@@ -1,6 +1,8 @@
-<div class="score-divider-full grade-<?= strtolower(preg_replace('/[^A-Z]/', '', getGrade($scorecard['report']['police_violence_score']))) ?>"></div>
+<div class="score-divider-full hide-mobile grade-<?= strtolower(preg_replace('/[^A-Z]/', '', getGrade($scorecard['report']['police_violence_score']))) ?>"></div>
 
 <div class="content section-header">
+  <div class="divider-line hide-desktop"></div>
+
   <h1 class="title">
     Police violence
 

@@ -1,7 +1,9 @@
-<div class="score-divider-full grade-<?= strtolower(preg_replace('/[^A-Z]/', '', getGrade($scorecard['report']['police_violence_score']))) ?>"></div>
-<div class="score-divider-full grade-<?= strtolower(preg_replace('/[^A-Z]/', '', getGrade($scorecard['report']['approach_to_policing_score']))) ?>"></div>
+<div class="score-divider-full hide-mobile grade-<?= strtolower(preg_replace('/[^A-Z]/', '', getGrade($scorecard['report']['police_violence_score']))) ?>"></div>
+<div class="section score-divider-full hide-mobile grade-<?= strtolower(preg_replace('/[^A-Z]/', '', getGrade($scorecard['report']['approach_to_policing_score']))) ?>"></div>
 
 <div class="content section-header">
+  <div class="divider-line hide-desktop"></div>
+
   <h1 class="title">
     Approach to Policing
 
@@ -13,4 +15,6 @@
     <span class="section-score"><?= num($scorecard['report']['approach_to_policing_score'], 0, '%') ?></span>
     <?= getChange($scorecard['report']['change_approach_to_policing_score'], true); ?>
   </div>
+
+  <p class="source-link-wrapper">Source: <a href="https://crime-data-explorer.fr.cloud.gov/explorer/national/united-states/arrest" class="source-link" target="_blank">Uniform Crime Report</a></p>
 </div>

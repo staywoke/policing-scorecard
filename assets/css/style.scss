@@ -1533,7 +1533,6 @@ body {
     font-family: 'Barlow Condensed', sans-serif;
     font-size: 20px;
     font-weight: 500;
-    left: 3px;
     letter-spacing: 1.5px;
     line-height: 20px;
     opacity: 0.5;
@@ -1578,14 +1577,35 @@ body {
   }
 
   &.really-long {
+    max-width: 320px;
+
     .selected-location-label {
       bottom: 16px;
-      left: 0;
     }
 
     a {
       top: -8px;
       font-size: 28px;
+    }
+  }
+}
+
+.source-link-wrapper {
+  text-align: right;
+  font-style: italic;
+  font-size: 13px !important;
+  color: $color-md-grayblue;
+  font-weight: 600;
+  margin-top: 10px !important;
+
+  a {
+    color: $color-md-grayblue;
+    font-weight: 600;
+    margin-left: 2px;
+
+    &:hover, &:focus {
+      color: black;
+      text-decoration: underline;
     }
   }
 }
@@ -1613,6 +1633,17 @@ body {
 }
 
 .section.hero {
+  .buttons {
+    text-align: center;
+
+    .btn {
+      margin: 4px;
+
+      &:first-child {
+        margin-left: 4px;
+      }
+    }
+  }
   .clear {
     height: 0;
     width: 100%;
@@ -2634,10 +2665,14 @@ svg.highcharts-root {
 }
 
 .buttons {
-  height: 40px;
+  text-align: left;
+  margin-top: 18px;
+  display: block;
+  height: 30px;
+  margin-bottom: 10px;
 
   .btn {
-
+    margin: 4px;
     background: #FFF;
     border: 2px solid $color-dk-gray;
     padding: 4px 12px;
@@ -2653,6 +2688,10 @@ svg.highcharts-root {
     &.active {
       background: $color-dk-gray;
       color: white;
+    }
+
+    &:first-child {
+      margin-left: 0;
     }
   }
 }
@@ -3190,7 +3229,7 @@ p.number-list {
   outline: 0;
 }
 
-/* RESPONSIVE */
+/* RESPONSIVE DESKTOP */
 @media screen and (min-width: $bp-max-width) {
   .header {
     .logo {
@@ -3205,6 +3244,15 @@ p.number-list {
   &.section-header {
     font-size: $font-header;
     position: relative;
+
+    .source-link-wrapper {
+      text-align: right;
+      margin-top: 12px !important;
+
+      a {
+        text-decoration: none;
+      }
+    }
 
     .tooltip {
       position: relative !important;
@@ -3355,6 +3403,7 @@ p.number-list {
   }
 }
 
+/* RESPONSIVE MOBILE */
 @media screen and (max-width: $bp-max-width) {
   .hide-mobile {
     display: none;
@@ -3566,9 +3615,6 @@ p.number-list {
       }
     }
   }
-  .score-divider-full {
-    display: none;
-  }
   .section {
     &.pad {
       padding-bottom: 20px;
@@ -3594,6 +3640,15 @@ p.number-list {
         font-size: $font-header;
         position: relative;
         text-align: center;
+
+        .source-link-wrapper {
+          text-align: center;
+          margin-top: 12px !important;
+
+          a {
+            text-decoration: none;
+          }
+        }
 
         .tooltip {
           position: relative !important;
@@ -3766,6 +3821,8 @@ p.number-list {
             }
           }
         }
+
+        text-align: left;
       }
 
       .good-job {
@@ -4000,7 +4057,6 @@ p.number-list {
       white-space: nowrap;
       overflow: hidden;
       text-overflow: ellipsis;
-      width: 100%;
       overflow: visible;
 
       span.incomplete {
@@ -4009,7 +4065,7 @@ p.number-list {
 
       &::after {
         font-size: $font-small;
-        right: -15px;
+        right: -20px;
         top: 7px;
       }
     }

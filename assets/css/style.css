@@ -1896,7 +1896,6 @@ body {
   font-family: 'Barlow Condensed', sans-serif;
   font-size: 20px;
   font-weight: 500;
-  left: 3px;
   letter-spacing: 1.5px;
   line-height: 20px;
   opacity: 0.5;
@@ -1939,14 +1938,37 @@ body {
   font-size: 48px;
 }
 
+.selected-location.really-long {
+  max-width: 320px;
+}
+
 .selected-location.really-long .selected-location-label {
   bottom: 16px;
-  left: 0;
 }
 
 .selected-location.really-long a {
   top: -8px;
   font-size: 28px;
+}
+
+.source-link-wrapper {
+  text-align: right;
+  font-style: italic;
+  font-size: 13px !important;
+  color: #5a6f83;
+  font-weight: 600;
+  margin-top: 10px !important;
+}
+
+.source-link-wrapper a {
+  color: #5a6f83;
+  font-weight: 600;
+  margin-left: 2px;
+}
+
+.source-link-wrapper a:hover, .source-link-wrapper a:focus {
+  color: black;
+  text-decoration: underline;
 }
 
 #state-map-layer, #usa-map-layer {
@@ -1969,6 +1991,18 @@ body {
   padding-top: 150px;
   font-size: 24px;
   color: #464648;
+}
+
+.section.hero .buttons {
+  text-align: center;
+}
+
+.section.hero .buttons .btn {
+  margin: 4px;
+}
+
+.section.hero .buttons .btn:first-child {
+  margin-left: 4px;
 }
 
 .section.hero .clear {
@@ -2977,10 +3011,15 @@ svg.highcharts-root path.highcharts-point {
 }
 
 .buttons {
-  height: 40px;
+  text-align: left;
+  margin-top: 18px;
+  display: block;
+  height: 30px;
+  margin-bottom: 10px;
 }
 
 .buttons .btn {
+  margin: 4px;
   background: #FFF;
   border: 2px solid #7c8894;
   padding: 4px 12px;
@@ -2997,6 +3036,10 @@ svg.highcharts-root path.highcharts-point {
 .buttons .btn.active {
   background: #7c8894;
   color: white;
+}
+
+.buttons .btn:first-child {
+  margin-left: 0;
 }
 
 .stats-change {
@@ -3507,7 +3550,7 @@ p.number-list.n15::after {
   outline: 0;
 }
 
-/* RESPONSIVE */
+/* RESPONSIVE DESKTOP */
 @media screen and (min-width: 940px) {
   .header .logo {
     left: 0;
@@ -3519,6 +3562,13 @@ p.number-list.n15::after {
   .section-header {
     font-size: 22px;
     position: relative;
+  }
+  .section-header .source-link-wrapper {
+    text-align: right;
+    margin-top: 12px !important;
+  }
+  .section-header .source-link-wrapper a {
+    text-decoration: none;
   }
   .section-header .tooltip {
     position: relative !important;
@@ -3646,6 +3696,7 @@ p.number-list.n15::after {
   }
 }
 
+/* RESPONSIVE MOBILE */
 @media screen and (max-width: 940px) {
   .hide-mobile {
     display: none;
@@ -3815,9 +3866,6 @@ p.number-list.n15::after {
   .header #menu li a:hover {
     color: #82ADD7;
   }
-  .score-divider-full {
-    display: none;
-  }
   .section.pad {
     padding-bottom: 20px;
     padding-top: 20px;
@@ -3838,6 +3886,13 @@ p.number-list.n15::after {
     font-size: 22px;
     position: relative;
     text-align: center;
+  }
+  .section .content.section-header .source-link-wrapper {
+    text-align: center;
+    margin-top: 12px !important;
+  }
+  .section .content.section-header .source-link-wrapper a {
+    text-decoration: none;
   }
   .section .content.section-header .tooltip {
     position: relative !important;
@@ -3951,6 +4006,9 @@ p.number-list.n15::after {
   }
   .section .content.section-header .score-divider.grade-incomplete::before, .section .content.section-header .score-divider.grade-incomplete::after {
     background-color: #5a6f83;
+  }
+  .section .content .stat-wrapper {
+    text-align: left;
   }
   .section .content .stat-wrapper.no-border-mobile {
     border-bottom: 0;
@@ -4165,7 +4223,6 @@ p.number-list.n15::after {
     white-space: nowrap;
     overflow: hidden;
     text-overflow: ellipsis;
-    width: 100%;
     overflow: visible;
   }
   .selected-location a span.incomplete {
@@ -4173,7 +4230,7 @@ p.number-list.n15::after {
   }
   .selected-location a::after {
     font-size: 8px;
-    right: -15px;
+    right: -20px;
     top: 7px;
   }
   .selected-location.long .selected-location-label {
