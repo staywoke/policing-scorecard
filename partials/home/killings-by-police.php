@@ -36,7 +36,7 @@ $nationalSummary = getNationalSummary($states);
       <h1><strong><?= num($nationalSummary['total_arrests']) ?></strong> arrests made</h1>
 
       <div class="text">
-        <p>Police in the USA made <strong><?= num($nationalSummary['times_more_misdemeanor_arrests_than_violent_crime'], 1, 'x') ?> as many arrests for low level offenses</strong> as for violent crimes in 2013-2018.</p>
+        <p>Police in America made <strong><?= num($nationalSummary['times_more_misdemeanor_arrests_than_violent_crime'], 1, 'x') ?> as many arrests for low level offenses</strong> as for violent crimes in 2013-2018.</p>
       </div>
 
       <div class="chart chart-3">
