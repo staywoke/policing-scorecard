@@ -88,7 +88,7 @@ include_once(__DIR__ .'/../partials/report/killings-by-police.php');
 </div>
 
 <!-- Approach to Policing -->
-<div class="section bb pad approach">
+<div class="section pad approach">
   <!-- Section Title -->
   <?php include_once(__DIR__ .'/../partials/report/approach-to-policing/title.php'); ?>
 
@@ -110,9 +110,6 @@ include_once(__DIR__ .'/../partials/report/killings-by-police.php');
 
       <!-- Percent of Homicides Unsolved by Race -->
       <?php include_once(__DIR__ .'/../partials/report/approach-to-policing/chart-homicides-unsolved-by-race.php'); ?>
-
-      <!-- Police Funding in 2018 -->
-      <?php include_once(__DIR__ .'/../partials/report/approach-to-policing/chart-police-funding.php'); ?>
     </div>
   </div>
 </div>

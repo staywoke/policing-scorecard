@@ -414,7 +414,7 @@ var SCORECARD = (function () {
           animation: false,
           backgroundColor: 'transparent',
           borderWidth: 0,
-          margin: 0,
+          margin: 5,
           zoomType: false,
           styleMode: true,
           events: {
@@ -497,7 +497,7 @@ var SCORECARD = (function () {
           animation: false,
           backgroundColor: 'transparent',
           borderWidth: 0,
-          margin: 0,
+          margin: 5,
           zoomType: false,
           styleMode: true
         },

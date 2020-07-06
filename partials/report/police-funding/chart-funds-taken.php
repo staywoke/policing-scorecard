@@ -12,7 +12,7 @@
     $scorecard['police_funding']['fines_forfeitures_2017'] +
     $scorecard['police_funding']['fines_forfeitures_2018'] +
     $scorecard['police_funding']['fines_forfeitures_2019']
-  ), 2) ?></p>
+  ), 2) ?> from 2010-17</p>
 
   <p>
     <canvas id="bar-chart-funds-taken"></canvas>

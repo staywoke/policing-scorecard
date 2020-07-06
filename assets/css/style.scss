@@ -1634,13 +1634,14 @@ body {
 
 .section.hero {
   .buttons {
-    text-align: center;
+    text-align: left;
+    margin-top: 20px;
 
     .btn {
-      margin: 4px;
+      margin: 2px;
 
       &:first-child {
-        margin-left: 4px;
+        margin-left: 0;
       }
     }
   }
@@ -2349,23 +2350,24 @@ body {
       display: inline-block;
       float: left;
       width: 70px;
-      shape-margin: 20px;
+      shape-margin: 10px;
       margin-right: 20px;
-      margin-bottom: 20px;
+      margin-bottom: 10px;
+      max-height: 56px;
     }
 
     p {
-      font-size: $font-large;
-      line-height: 24px;
+      font-size: 14px;
+      line-height: 22px;
       color: #464648;
     }
 
     h2 {
       font-family: 'Barlow Condensed', sans-serif;
-      font-size: 32px;
+      font-size: 20px;
       line-height: 36px;
       text-transform: uppercase;
-      font-weight: 300;
+      font-weight: 500;
     }
 
     strong {
@@ -2379,7 +2381,7 @@ body {
       line-height: 20px;
       position: relative;
       top: 0;
-      margin-left: 6px;
+      margin-left: 2px;
       font-weight: 600;
     }
   }
@@ -3442,8 +3444,10 @@ svg.highcharts-root .current-marker image {
   }
 
   #state-map-layer, #usa-map-layer {
-    max-width: 80%;
+    max-width: 75%;
     margin: 0 auto;
+    height: 260px;
+    overflow: visible;
   }
 
   #static-map {
@@ -3982,6 +3986,10 @@ svg.highcharts-root .current-marker image {
         padding: 0;
         text-align: center;
       }
+    }
+    .buttons {
+      text-align: center;
+      margin-top: 10px;
     }
   }
 

@@ -697,6 +697,47 @@ function getGrade($score) {
 }
 
 /**
+ * Return Percent Score to Letter Grade Class
+ *
+ * @param string $score Percent Score
+ *
+ * @return string
+ */
+function getGradeClass($score) {
+  $score = intval($score);
+
+  if ($score <= 29) {
+    return 'f-minus';
+  } else if ($score <= 59 && $score >= 30) {
+    return 'f';
+  } elseif ($score <= 62 && $score >= 60) {
+    return 'd';
+  } elseif ($score <= 66 && $score >= 63) {
+    return 'd';
+  } elseif ($score <= 69 && $score >= 67) {
+    return 'd';
+  } elseif ($score <= 72 && $score >= 70) {
+    return 'c';
+  } elseif ($score <= 76 && $score >= 73) {
+    return 'c';
+  } elseif ($score <= 79 && $score >= 77) {
+    return 'c';
+  } elseif ($score <= 82 && $score >= 80) {
+    return 'b';
+  } elseif ($score <= 86 && $score >= 83) {
+    return 'b';
+  } elseif ($score <= 89 && $score >= 87) {
+    return 'b';
+  } elseif ($score <= 92 && $score >= 90) {
+    return 'a';
+  } elseif ($score <= 97 && $score >= 93) {
+    return 'a';
+  } elseif ($score >= 98) {
+    return 'a';
+  }
+}
+
+/**
  * Get National Grades
  *
  * @param string $states

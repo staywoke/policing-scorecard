@@ -10,8 +10,8 @@
 <div class="section hero">
   <div class="content">
     <div class="right">
-      <h1>We obtained data on <?= getStateTotal($states, $stateCode) ?> <?= $stateName ?> <?= $type === 'sheriff' ? 'sheriff' : 'police' ?> departments.</h1>
-      <p>&nbsp;</p>
+      <h1>We obtained data on <?= getStateTotal($states, $stateCode) ?> <?= $stateName ?> <?= $type === 'sheriff' ? 'sheriff\'s' : 'police' ?> departments.</h1>
+
       <?php if (isset($stateData['police-department']) && isset($stateData['sheriff']) && count($stateData['police-department']) > 0 && count($stateData['sheriff']) > 0): ?>
       <div class="buttons">
         <a href="<?= $isProd ? $stateData['police-department'][0]['url_pretty'] : $stateData['police-department'][0]['url'] ?>" class="btn <?= $type === 'police-department' ? 'active' : '' ?>">Police Depts</a>

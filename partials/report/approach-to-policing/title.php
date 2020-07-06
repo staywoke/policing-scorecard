@@ -1,5 +1,5 @@
-<div class="score-divider-full hide-mobile grade-<?= strtolower(preg_replace('/[^A-Z]/', '', getGrade($scorecard['report']['police_violence_score']))) ?>"></div>
-<div class="section score-divider-full hide-mobile grade-<?= strtolower(preg_replace('/[^A-Z]/', '', getGrade($scorecard['report']['approach_to_policing_score']))) ?>"></div>
+<div class="score-divider-full hide-mobile grade-<?= getGradeClass($scorecard['report']['police_violence_score']) ?>"></div>
+<div class="section score-divider-full hide-mobile grade-<?= getGradeClass($scorecard['report']['approach_to_policing_score']) ?>"></div>
 
 <div class="content section-header">
   <div class="divider-line hide-desktop"></div>
@@ -10,7 +10,7 @@
     <a href="javascript:void(0)" class="results-info" data-city="<?= $location ?>" data-result-info="approach">i</a>
   </h1>
 
-  <div class="score-divider grade grade-<?= strtolower(preg_replace('/[^A-Z]/', '', getGrade($scorecard['report']['approach_to_policing_score']))) ?>">
+  <div class="score-divider grade grade-<?= getGradeClass($scorecard['report']['approach_to_policing_score']) ?>">
     <span class="section-label">Section Score:</span>
     <span class="section-score"><?= num($scorecard['report']['approach_to_policing_score'], 0, '%') ?></span>
     <?= getChange($scorecard['report']['change_approach_to_policing_score'], true); ?>

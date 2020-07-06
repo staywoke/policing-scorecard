@@ -1994,15 +1994,16 @@ body {
 }
 
 .section.hero .buttons {
-  text-align: center;
+  text-align: left;
+  margin-top: 20px;
 }
 
 .section.hero .buttons .btn {
-  margin: 4px;
+  margin: 2px;
 }
 
 .section.hero .buttons .btn:first-child {
-  margin-left: 4px;
+  margin-left: 0;
 }
 
 .section.hero .clear {
@@ -2710,23 +2711,24 @@ body {
   display: inline-block;
   float: left;
   width: 70px;
-  shape-margin: 20px;
+  shape-margin: 10px;
   margin-right: 20px;
-  margin-bottom: 20px;
+  margin-bottom: 10px;
+  max-height: 56px;
 }
 
 .section.next .step p {
-  font-size: 18px;
-  line-height: 24px;
+  font-size: 14px;
+  line-height: 22px;
   color: #464648;
 }
 
 .section.next .step h2 {
   font-family: 'Barlow Condensed', sans-serif;
-  font-size: 32px;
+  font-size: 20px;
   line-height: 36px;
   text-transform: uppercase;
-  font-weight: 300;
+  font-weight: 500;
 }
 
 .section.next .step strong {
@@ -2740,7 +2742,7 @@ body {
   line-height: 20px;
   position: relative;
   top: 0;
-  margin-left: 6px;
+  margin-left: 2px;
   font-weight: 600;
 }
 
@@ -3728,8 +3730,10 @@ svg.highcharts-root .current-marker image {
     margin-left: 20px !important;
   }
   #state-map-layer, #usa-map-layer {
-    max-width: 80%;
+    max-width: 75%;
     margin: 0 auto;
+    height: 260px;
+    overflow: visible;
   }
   #static-map {
     height: 300px;
@@ -4169,6 +4173,10 @@ svg.highcharts-root .current-marker image {
     margin-bottom: 30px;
     padding: 0;
     text-align: center;
+  }
+  .section.hero .buttons {
+    text-align: center;
+    margin-top: 10px;
   }
   .section.score.grade-a {
     background: #57a15b;

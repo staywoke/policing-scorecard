@@ -370,7 +370,6 @@
         }
       },
       colors: [
-        '#5a6f83',
         '#dc4646',
         '#c5882a',
         '#7c8894'
@@ -423,32 +422,6 @@
         }
       },
       series: [{
-        name: 'All',
-        lineColor: '#5a6f83',
-        tooltip: {
-          style: {
-            border: 'none',
-            background: '#5a6f83',
-            color: 'white'
-          }
-        },
-        marker: {
-          symbol: 'circle'
-        },
-        data: [
-          <?= $scorecard['police_funding']['total_budget_2010'] ?>,
-          <?= $scorecard['police_funding']['total_budget_2011'] ?>,
-          <?= $scorecard['police_funding']['total_budget_2012'] ?>,
-          <?= $scorecard['police_funding']['total_budget_2013'] ?>,
-          <?= $scorecard['police_funding']['total_budget_2014'] ?>,
-          <?= $scorecard['police_funding']['total_budget_2015'] ?>,
-          <?= $scorecard['police_funding']['total_budget_2016'] ?>,
-          <?= $scorecard['police_funding']['total_budget_2017'] ?>,
-          <?= $scorecard['police_funding']['total_budget_2018'] ?>,
-          <?= $scorecard['police_funding']['total_budget_2019'] ?>,
-          <?= $scorecard['police_funding']['total_budget_2020'] ?>,
-        ]
-      }, {
         name: 'Police',
         lineColor: '#dc4646',
         marker: {
