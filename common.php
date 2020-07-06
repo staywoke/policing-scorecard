@@ -331,6 +331,138 @@ function generateBarChart($scorecard, $type) {
 }
 
 /**
+ * Generate Bar Chart Funds Taken
+ *
+ * @param object $scorecard
+ *
+ * @return string
+ */
+function generateBarChartFundsTaken($scorecard) {
+  $output = array(
+    'labels' => array(),
+    'datasets' => array(
+      array(
+        'label' => 'Funds Taken',
+        'backgroundColor' => '#dc4646',
+        'stack' => 'funds-taken',
+        'data' => array()
+      )
+    )
+  );
+
+  if (isset($scorecard['police_funding']['fines_forfeitures_2010'])) {
+    $output['labels'][] = '2010';
+    $output['datasets'][0]['data'][] = $scorecard['police_funding']['fines_forfeitures_2010'];
+  }
+
+  if (isset($scorecard['police_funding']['fines_forfeitures_2011'])) {
+    $output['labels'][] = '2011';
+    $output['datasets'][0]['data'][] = $scorecard['police_funding']['fines_forfeitures_2011'];
+  }
+
+  if (isset($scorecard['police_funding']['fines_forfeitures_2012'])) {
+    $output['labels'][] = '2012';
+    $output['datasets'][0]['data'][] = $scorecard['police_funding']['fines_forfeitures_2012'];
+  }
+
+  if (isset($scorecard['police_funding']['fines_forfeitures_2013'])) {
+    $output['labels'][] = '2013';
+    $output['datasets'][0]['data'][] = $scorecard['police_funding']['fines_forfeitures_2013'];
+  }
+
+  if (isset($scorecard['police_funding']['fines_forfeitures_2014'])) {
+    $output['labels'][] = '2014';
+    $output['datasets'][0]['data'][] = $scorecard['police_funding']['fines_forfeitures_2014'];
+  }
+
+  if (isset($scorecard['police_funding']['fines_forfeitures_2015'])) {
+    $output['labels'][] = '2015';
+    $output['datasets'][0]['data'][] = $scorecard['police_funding']['fines_forfeitures_2015'];
+  }
+
+  if (isset($scorecard['police_funding']['fines_forfeitures_2016'])) {
+    $output['labels'][] = '2016';
+    $output['datasets'][0]['data'][] = $scorecard['police_funding']['fines_forfeitures_2016'];
+  }
+
+  if (isset($scorecard['police_funding']['fines_forfeitures_2017'])) {
+    $output['labels'][] = '2017';
+    $output['datasets'][0]['data'][] = $scorecard['police_funding']['fines_forfeitures_2017'];
+  }
+
+  if (isset($scorecard['police_funding']['fines_forfeitures_2018'])) {
+    $output['labels'][] = '2018';
+    $output['datasets'][0]['data'][] = $scorecard['police_funding']['fines_forfeitures_2018'];
+  }
+
+  if (isset($scorecard['police_funding']['fines_forfeitures_2019'])) {
+    $output['labels'][] = '2019';
+    $output['datasets'][0]['data'][] = $scorecard['police_funding']['fines_forfeitures_2019'];
+  }
+
+  return json_encode($output, JSON_PRETTY_PRINT);
+}
+
+/**
+ * Generate Bar Chart Officers
+ *
+ * @param object $scorecard
+ *
+ * @return string
+ */
+function generateBarChartOfficers($scorecard) {
+  $output = array(
+    'labels' => array(),
+    'datasets' => array(
+      array(
+        'label' => 'Officers',
+        'backgroundColor' => '#dc4646',
+        'stack' => 'officers',
+        'data' => array()
+      )
+    )
+  );
+
+  if (isset($scorecard['police_funding']['total_officers_2013'])) {
+    $output['labels'][] = '2013';
+    $output['datasets'][0]['data'][] = $scorecard['police_funding']['total_officers_2013'];
+  }
+
+  if (isset($scorecard['police_funding']['total_officers_2014'])) {
+    $output['labels'][] = '2014';
+    $output['datasets'][0]['data'][] = $scorecard['police_funding']['total_officers_2014'];
+  }
+
+  if (isset($scorecard['police_funding']['total_officers_2015'])) {
+    $output['labels'][] = '2015';
+    $output['datasets'][0]['data'][] = $scorecard['police_funding']['total_officers_2015'];
+  }
+
+  if (isset($scorecard['police_funding']['total_officers_2016'])) {
+    $output['labels'][] = '2016';
+    $output['datasets'][0]['data'][] = $scorecard['police_funding']['total_officers_2016'];
+  }
+
+  if (isset($scorecard['police_funding']['total_officers_2017'])) {
+    $output['labels'][] = '2017';
+    $output['datasets'][0]['data'][] = $scorecard['police_funding']['total_officers_2017'];
+  }
+
+  if (isset($scorecard['police_funding']['total_officers_2018'])) {
+    $output['labels'][] = '2018';
+    $output['datasets'][0]['data'][] = $scorecard['police_funding']['total_officers_2018'];
+  }
+
+  if (isset($scorecard['police_funding']['total_officers_2019'])) {
+    $output['labels'][] = '2019';
+    $output['datasets'][0]['data'][] = $scorecard['police_funding']['total_officers_2019'];
+  }
+
+  return json_encode($output, JSON_PRETTY_PRINT);
+}
+
+
+/**
  * Generate Bar Chart Header
  *
  * @param object $scorecard
@@ -443,6 +575,10 @@ function generateHistoryChart($scorecard) {
   }
 
   return json_encode($output, JSON_PRETTY_PRINT);
+}
+
+function generateLessLethalChart() {
+
 }
 
 /**

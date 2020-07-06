@@ -2562,7 +2562,7 @@ svg.highcharts-root {
 }
 
 .highcharts-mappoint-series {
-  &.highcharts-series-7 {
+  &.highcharts-series-8 {
     image {
       filter: url(#drop-shadow)
     }
@@ -2577,7 +2577,8 @@ svg.highcharts-root {
   &.highcharts-color-2,
   &.highcharts-color-3,
   &.highcharts-color-4,
-  &.highcharts-color-5 {
+  &.highcharts-color-5,
+  &.highcharts-color-6 {
     fill: #dddee0;
     stroke: transparent;
   }
@@ -2995,6 +2996,7 @@ p.number-list {
   top: 0;
   left: 0;
   z-index: 1;
+  overflow: visible !important;
 
   &.police-department {
     svg.highcharts-root path.highcharts-point {
@@ -3227,6 +3229,14 @@ p.number-list {
 [role="tabpanel"]:focus {
   box-shadow: 0 0 0.2em hsl(219, 1%, 72%);
   outline: 0;
+}
+
+svg.highcharts-root .current-marker image {
+  animation: 1.25s ease-in-out 0s 3 pulse;
+}
+
+#chart-police-funding {
+  margin-top: 20px;
 }
 
 /* RESPONSIVE DESKTOP */
@@ -4304,7 +4314,19 @@ p.number-list {
 }
 
 @keyframes pulse {
-  from { transform: scale(1); }
-  50% { transform: scale(0.5); }
-  to { transform: scale(1); }
+  from {
+    width: 30px;
+    height: 30px;
+    transform: translate3d(-15px, -15px, 0);
+  }
+  50% {
+    width: 42px;
+    height: 42px;
+    transform: translate3d(-21px, -21px, 0);
+  }
+  to {
+    width: 30px;
+    height: 30px;
+    transform: translate3d(-15px, -15px, 0);
+  }
 }

@@ -12,7 +12,7 @@
 <script src="/assets/js/plugins.js<?= trim($ac) ?>"></script>
 <script src="/assets/js/maps/us-<?= strtolower($stateCode) ?>-all.js"></script>
 <script src="/assets/js/site.js<?= trim($ac) ?>"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.8.0/Chart.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.3/Chart.js"></script>
 
 <?php if (isset($scorecard['arrests']['arrests_2016']) && isset($scorecard['arrests']['arrests_2017']) && isset($scorecard['arrests']['arrests_2018'])): ?>
 <script>
@@ -83,7 +83,7 @@
 <script>
   window.addEventListener('load', function() {
     var ctx = document.getElementById('bar-chart-history').getContext('2d');
-    var historyChartData = <?= generateHistoryChart($scorecard, $type); ?> ;
+    var historyChartData = <?= generateHistoryChart($scorecard); ?> ;
     window.myBarHistory = new Chart(ctx, {
       type: 'bar',
       data: historyChartData,
@@ -123,6 +123,142 @@
               maxTicksLimit: 2,
               callback: function(value, index, values) {
                 return (value === 0) ? '' : Math.round(value);
+              }
+            }
+          }]
+        }
+      }
+    });
+  });
+
+</script>
+<?php endif; ?>
+
+<?php if(isset($scorecard['police_funding']['fines_forfeitures_2010']) && isset($scorecard['police_funding']['fines_forfeitures_2011']) && isset($scorecard['police_funding']['fines_forfeitures_2012'])): ?>
+<script>
+  window.addEventListener('load', function() {
+    var ctxFundsTaken = document.getElementById('bar-chart-funds-taken').getContext('2d');
+    var chartFundsTakenData = <?= generateBarChartFundsTaken($scorecard); ?> ;
+    window.chartFundsTaken = new Chart(ctxFundsTaken, {
+      type: 'bar',
+      data: chartFundsTakenData,
+      options: {
+        animation: {
+          duration: 0,
+        },
+        maintainAspectRatio: false,
+        responsive: document.documentElement.clientWidth > 940 ? false : true,
+        legend: {
+          display: false,
+        },
+        title: {
+          display: false,
+        },
+        tooltips: {
+          mode: 'index',
+          intersect: false,
+          callbacks: {
+            label: function(tooltipItem, data) {
+              var label = (data.datasets[tooltipItem.datasetIndex].label) ? ' ' + data.datasets[tooltipItem.datasetIndex].label : '';
+
+              if (label) {
+                label += ': ';
+              }
+
+              label += SCORECARD.nFormatter(tooltipItem.yLabel);
+
+              return label;
+            }
+          },
+        },
+        scales: {
+          xAxes: [{
+            minBarLength: 5,
+            maxBarThickness: 20,
+            stacked: true,
+            gridLines: {
+              color: "rgba(0, 0, 0, 0)",
+            }
+          }],
+          yAxes: [{
+            minBarLength: 5,
+            stacked: true,
+            gridLines: {
+              color: "rgba(0, 0, 0, 0)",
+            },
+            ticks: {
+              beginAtZero: true,
+              maxTicksLimit: 2,
+              callback: function(value, index, values) {
+                return (value === 0) ? '' : SCORECARD.nFormatter(value);
+              }
+            }
+          }]
+        }
+      }
+    });
+  });
+
+</script>
+<?php endif; ?>
+
+<?php if(isset($scorecard['police_funding']['total_officers_2013']) && isset($scorecard['police_funding']['total_officers_2014']) && isset($scorecard['police_funding']['total_officers_2015'])): ?>
+<script>
+  window.addEventListener('load', function() {
+    var ctxOfficers = document.getElementById('bar-chart-officers-per-population').getContext('2d');
+    var chartOfficersData = <?= generateBarChartOfficers($scorecard); ?> ;
+    window.chartFundsTaken = new Chart(ctxOfficers, {
+      type: 'bar',
+      data: chartOfficersData,
+      options: {
+        animation: {
+          duration: 0,
+        },
+        maintainAspectRatio: false,
+        responsive: document.documentElement.clientWidth > 940 ? false : true,
+        legend: {
+          display: false,
+        },
+        title: {
+          display: false,
+        },
+        tooltips: {
+          mode: 'index',
+          intersect: false,
+          callbacks: {
+            label: function(tooltipItem, data) {
+              var label = (data.datasets[tooltipItem.datasetIndex].label) ? ' ' + data.datasets[tooltipItem.datasetIndex].label : '';
+
+              if (label) {
+                label += ': ';
+              }
+
+              label += SCORECARD.numberWithCommas(tooltipItem.yLabel);
+
+              return label;
+            }
+          },
+        },
+        scales: {
+          xAxes: [{
+            minBarLength: 5,
+            maxBarThickness: 20,
+            stacked: true,
+            gridLines: {
+              color: "rgba(0, 0, 0, 0)",
+            }
+          }],
+          yAxes: [{
+            minBarLength: 5,
+            stacked: true,
+            gridLines: {
+              color: "rgba(0, 0, 0, 0)",
+            },
+            ticks: {
+              beginAtZero: true,
+              maxTicksLimit: 2,
+              callback: function(value, index, values) {
+                return (value === 0) ? '' : SCORECARD.numberWithCommas(value);
               }
             }
           }]
@@ -199,6 +335,179 @@
     });
   });
 
+</script>
+<?php endif; ?>
+
+<?php if(isset($scorecard['police_funding']['total_budget_2010']) && isset($scorecard['police_funding']['housing_budget_2010']) && isset($scorecard['police_funding']['health_budget_2010']) && isset($scorecard['police_funding']['police_budget_2010'])): ?>
+<script>
+  window.addEventListener('load', function() {
+    Highcharts.chart(document.getElementById('chart-police-funding'), {
+      chart: {
+        type: 'area',
+        height: 300
+      },
+      legend: {
+        align: 'center',
+        verticalAlign: 'top',
+        layout: 'horizontal',
+        width: '100%',
+        margin: 30,
+        padding: 0
+      },
+      title: {
+        enabled: false,
+        text: ''
+      },
+      yAxis: {
+        labels: {
+          enabled: true,
+          formatter: function () {
+            return (this.value === 0) ? '' : SCORECARD.nFormatter(this.value);
+          }
+        },
+        title: {
+          text: ''
+        }
+      },
+      colors: [
+        '#5a6f83',
+        '#dc4646',
+        '#c5882a',
+        '#7c8894'
+      ],
+      tooltip: {
+        className: 'police-funding',
+        followPointer: false,
+        shared: true,
+        borderWidth: 0,
+        backgroundColor: 'rgba(0, 0, 0, 0.9)',
+        borderRadius: 8,
+        padding: 16,
+        shadow: false,
+        style: {
+          color: '#FFF',
+          padding: 8
+        },
+        pointFormatter: function() {
+          return '<span style="color:' + this.color + '; font-size: 16px; vertical-align: middle;">●</span> ' + this.series.name + ': <b>$' + this.y.toLocaleString() + '</b><br/>';
+        }
+      },
+      xAxis: {
+        categories: [
+          '2010',
+          '2011',
+          '2012',
+          '2013',
+          '2014',
+          '2015',
+          '2016',
+          '2017',
+          '2018',
+          '2019',
+          '2020',
+        ],
+        title: {
+          enabled: false
+        }
+      },
+      plotOptions: {
+        area: {
+          stacking: 'normal',
+          lineWidth: 2,
+          marker: {
+            lineWidth: 0
+          }
+        },
+        series: {
+          fillOpacity: 0.1
+        }
+      },
+      series: [{
+        name: 'All',
+        lineColor: '#5a6f83',
+        tooltip: {
+          style: {
+            border: 'none',
+            background: '#5a6f83',
+            color: 'white'
+          }
+        },
+        marker: {
+          symbol: 'circle'
+        },
+        data: [
+          <?= $scorecard['police_funding']['total_budget_2010'] ?>,
+          <?= $scorecard['police_funding']['total_budget_2011'] ?>,
+          <?= $scorecard['police_funding']['total_budget_2012'] ?>,
+          <?= $scorecard['police_funding']['total_budget_2013'] ?>,
+          <?= $scorecard['police_funding']['total_budget_2014'] ?>,
+          <?= $scorecard['police_funding']['total_budget_2015'] ?>,
+          <?= $scorecard['police_funding']['total_budget_2016'] ?>,
+          <?= $scorecard['police_funding']['total_budget_2017'] ?>,
+          <?= $scorecard['police_funding']['total_budget_2018'] ?>,
+          <?= $scorecard['police_funding']['total_budget_2019'] ?>,
+          <?= $scorecard['police_funding']['total_budget_2020'] ?>,
+        ]
+      }, {
+        name: 'Police',
+        lineColor: '#dc4646',
+        marker: {
+          symbol: 'circle'
+        },
+        data: [
+          <?= $scorecard['police_funding']['police_budget_2010'] ?>,
+          <?= $scorecard['police_funding']['police_budget_2011'] ?>,
+          <?= $scorecard['police_funding']['police_budget_2012'] ?>,
+          <?= $scorecard['police_funding']['police_budget_2013'] ?>,
+          <?= $scorecard['police_funding']['police_budget_2014'] ?>,
+          <?= $scorecard['police_funding']['police_budget_2015'] ?>,
+          <?= $scorecard['police_funding']['police_budget_2016'] ?>,
+          <?= $scorecard['police_funding']['police_budget_2017'] ?>,
+          <?= $scorecard['police_funding']['police_budget_2018'] ?>,
+          <?= $scorecard['police_funding']['police_budget_2019'] ?>,
+          <?= $scorecard['police_funding']['police_budget_2020'] ?>,
+        ]
+      }, {
+        name: 'Housing',
+        lineColor: '#c5882a',
+        marker: {
+          symbol: 'circle'
+        },
+        data: [
+          <?= $scorecard['police_funding']['housing_budget_2010'] ?>,
+          <?= $scorecard['police_funding']['housing_budget_2011'] ?>,
+          <?= $scorecard['police_funding']['housing_budget_2012'] ?>,
+          <?= $scorecard['police_funding']['housing_budget_2013'] ?>,
+          <?= $scorecard['police_funding']['housing_budget_2014'] ?>,
+          <?= $scorecard['police_funding']['housing_budget_2015'] ?>,
+          <?= $scorecard['police_funding']['housing_budget_2016'] ?>,
+          <?= $scorecard['police_funding']['housing_budget_2017'] ?>,
+          <?= $scorecard['police_funding']['housing_budget_2018'] ?>,
+          <?= $scorecard['police_funding']['housing_budget_2019'] ?>,
+          <?= $scorecard['police_funding']['housing_budget_2020'] ?>,
+        ]
+      }, {
+        name: 'Health',
+        lineColor: '#7c8894',
+        marker: {
+          symbol: 'circle'
+        },
+        data: [
+          <?= $scorecard['police_funding']['health_budget_2010'] ?>,
+          <?= $scorecard['police_funding']['health_budget_2011'] ?>,
+          <?= $scorecard['police_funding']['health_budget_2012'] ?>,
+          <?= $scorecard['police_funding']['health_budget_2013'] ?>,
+          <?= $scorecard['police_funding']['health_budget_2014'] ?>,
+          <?= $scorecard['police_funding']['health_budget_2015'] ?>,
+          <?= $scorecard['police_funding']['health_budget_2016'] ?>,
+          <?= $scorecard['police_funding']['health_budget_2017'] ?>,
+          <?= $scorecard['police_funding']['health_budget_2018'] ?>,
+          <?= $scorecard['police_funding']['health_budget_2019'] ?>,
+          <?= $scorecard['police_funding']['health_budget_2020'] ?>,
+        ]
+      }]
+    });
+  });
 </script>
 <?php endif; ?>
 

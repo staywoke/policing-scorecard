@@ -28,8 +28,6 @@ var SCORECARD = (function () {
   var $showSheriff = document.getElementById('show-sheriff');
   var $stateMap = document.getElementById('state-map');
   var $stateMapShadow = document.getElementById('state-map-shadow');
-  var $usaMap = document.getElementById('usa-map');
-  var $usaMapShadow = document.getElementById('usa-map-shadow');
 
   // Handle Mouse Clicks for Map
   window.leftMouseClicked = false;
@@ -320,12 +318,25 @@ var SCORECARD = (function () {
       var class_i = (SCORECARD_DATA.report.percentile_jail_incarceration_per_1k_population) ? 'key percent-' + SCORECARD_DATA.report.percentile_jail_incarceration_per_1k_population : 'incomplete';
       var class_j = (SCORECARD_DATA.report.percentile_jail_deaths_per_1k_jail_population) ? 'key percent-' + SCORECARD_DATA.report.percentile_jail_deaths_per_1k_jail_population : 'incomplete';
 
+      var class_k = (SCORECARD_DATA.police_funding.percentile_police_spending_ratio) ? 'key percent-' + SCORECARD_DATA.police_funding.percentile_police_spending_ratio : 'incomplete';
+      var class_l = (SCORECARD_DATA.police_funding.percentile_misconduct_settlements_per_population) ? 'key percent-' + SCORECARD_DATA.police_funding.percentile_misconduct_settlements_per_population : 'incomplete';
+      var class_m = (SCORECARD_DATA.police_funding.percentile_fines_forfeitures_per_resident) ? 'key percent-' + SCORECARD_DATA.police_funding.percentile_fines_forfeitures_per_resident : 'incomplete';
+      var class_n = (SCORECARD_DATA.police_funding.percentile_officers_per_population) ? 'key percent-' + SCORECARD_DATA.police_funding.percentile_officers_per_population : 'incomplete';
+
       var html = '';
 
       html += '<div class="modal-header"><div class="results-header"><strong style="position: relative; top: -2px;">' + SCORECARD_DATA.agency.name + ' ' + label + '</strong><br/>Score: ' + SCORECARD_DATA.report.overall_score + '%</div><div class="keys"><span class="key key-bad"></span> WORSE <span class="key key-avg"></span> AVG <span class="key key-good"></span> BETTER</div></div>';
       html += '<div class="section-header no-border"><div class="label">&nbsp;</div><div class="percentile"><strong>PERCENTILE</strong></div></div>';
 
-      html += '<div class="section-header"><div class="label">Police Violence:&nbsp; ' + SCORECARD_DATA.report.police_violence_score + '%</div><div class="percentile">50TH</div></div>';
+      html += '<div class="section-header"><div class="label">Police Funding:&nbsp; ' + SCORECARD_DATA.report.police_funding_score + '%</div><div class="percentile">50TH</div></div>';
+      html += '<table>';
+      html += '<tr class="' + class_k + '"><td width="160px">Police Budget per Capita</td><td width="25px">&nbsp;</td><td width="25px" class="divider">&nbsp;</td><td width="25px">&nbsp;</td><td width="25px">&nbsp;</td></tr>';
+      html += '<tr class="' + class_l + '"><td width="160px">Misconduct Settlements</td><td>&nbsp;</td><td class="divider">&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td></tr>';
+      html += '<tr class="' + class_m + '"><td width="160px">Fines/Forfeitures</td><td>&nbsp;</td><td class="divider">&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td></tr>';
+      html += '<tr class="' + class_n + '"><td width="160px">Officers per Capita</td><td>&nbsp;</td><td class="divider">&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td></tr>';
+      html += '</table>';
+
+      html += '<div class="section-header"><div class="label">Police Violence:&nbsp; ' + SCORECARD_DATA.report.police_violence_score + '%</div><div class="percentile">&nbsp;</div></div>';
       html += '<table>';
       html += '<tr class="' + class_a + '"><td width="160px">Less-Lethal Force per Arrest</td><td width="25px">&nbsp;</td><td width="25px" class="divider">&nbsp;</td><td width="25px">&nbsp;</td><td width="25px">&nbsp;</td></tr>';
       html += '<tr class="' + class_b + '"><td width="160px">Deadly Force per Arrest</td><td>&nbsp;</td><td class="divider">&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td></tr>';
@@ -351,7 +362,7 @@ var SCORECARD = (function () {
 
       html += '</table>';
 
-      html += '<div class="summary"><strong>Average from All 3 Sections:&nbsp; ' + SCORECARD_DATA.report.overall_score + '%</strong></div>';
+      html += '<div class="summary"><strong>Average from All 4 Sections:&nbsp; ' + SCORECARD_DATA.report.overall_score + '%</strong></div>';
       html += '<div class="button-wrapper"><a href="/about" class="button" target="_blank">Read Our Methodology</a></div>';
 
       $citySelect.style.display = 'none';
@@ -361,34 +372,6 @@ var SCORECARD = (function () {
       $modal.classList.toggle('open');
       $modal.classList.add('large');
     }
-  }
-
-  function animateMarker(current, size, step) {
-    var maxSize = 44;
-    var minSize = 30;
-    var newStep = step;
-    var stepSize = 1;
-    var direction = (step === 0 || step === 2 || step === 4) ? 'up' : 'down';
-
-    if (direction === 'up' && size === maxSize) {
-      direction = 'down';
-      newStep++;
-    } else if (direction === 'down' && size === minSize) {
-      direction = 'up';
-      newStep++;
-    }
-
-    if (newStep === 6) {
-      return;
-    }
-
-    var newSize = (direction === 'up') ? (size + stepSize) : (size - stepSize)
-
-    current.update({ marker: { width: newSize, height: newSize }});
-
-    window.requestAnimationFrame(function () {
-      animateMarker(current, newSize, newStep);
-    });
   }
 
   function getGrade(score) {
@@ -454,6 +437,7 @@ var SCORECARD = (function () {
         },
         tooltip: {
           followPointer: false,
+          shared: false,
           formatter: function () {
             var city = this.point.name;
             var percent = Math.round(parseFloat(this.point.value));
@@ -476,8 +460,26 @@ var SCORECARD = (function () {
             mapData: Highcharts.maps['countries/us/us-' + abbr.toLowerCase() + '-all'],
           },
           series: {
+            stickyTracking: false,
             animation: false,
-            clip: false
+            clip: false,
+            states: {
+              hover: {
+                halo: {
+                  size: 12,
+                  attributes: {
+                    zIndex: 500,
+                    opacity: 1,
+                    fill: 'transparent',
+                    'stroke-width': 2,
+                    stroke: '#000000'
+                  }
+                }
+              },
+              inactive: {
+                opacity: 1
+              }
+            }
           }
         },
         series: [
@@ -556,7 +558,7 @@ var SCORECARD = (function () {
       }
 
       if (map_data && map_data.city && map_data.selected && map_data.selected.type === 'police-department') {
-        var MARKER_RADIUS = 4;
+        var MARKER_RADIUS = 8;
 
         window.SCORECARD_MAP.addSeries({
           animation: false,
@@ -586,44 +588,11 @@ var SCORECARD = (function () {
           type: 'mappoint',
           name: 'Police Department',
           data: map_data.city[0],
+          zIndex: 2,
           marker: {
-            radius: MARKER_RADIUS,
-            symbol: 'circle',
-            fillColor: '#7c8894'
-          },
-          dataLabels: {
-            formatter: function () {
-              return '';
-            }
-          },
-          events: {
-            click: function (e) {
-              if (e.point && typeof e.point.className !== 'undefined') {
-                var loc = e.point.className.replace('location-', '');
-                var url = '/?state=' + SCORECARD_STATE + '&type=' + map_data.selected.type + '&location=' + loc;
-                var prettyUrl = '/' + SCORECARD_STATE + '/' + map_data.selected.type + '/' + loc;
-
-                if (loc && window.leftMouseClicked) {
-                  window.location = (SCORECARD_ENV === 'production') ? prettyUrl : url;
-                  e.preventDefault();
-                  e.stopImmediatePropagation();
-                }
-              }
-            }
-          }
-        });
-
-        // A GRADE
-        window.SCORECARD_MAP.addSeries({
-          id: 'grade-a',
-          animation: false,
-          type: 'mappoint',
-          name: 'Police Department',
-          data: map_data.city[6],
-          marker: {
-            radius: MARKER_RADIUS,
-            symbol: 'circle',
-            fillColor: '#57a15b'
+            width: MARKER_RADIUS,
+            height: MARKER_RADIUS,
+            symbol: 'url(assets/img/police-marker-incomplete.svg)'
           },
           dataLabels: {
             formatter: function () {
@@ -654,10 +623,11 @@ var SCORECARD = (function () {
           type: 'mappoint',
           name: 'Police Department',
           data: map_data.city[5],
+          zIndex: 3,
           marker: {
-            radius: MARKER_RADIUS,
-            symbol: 'circle',
-            fillColor: '#7c984b'
+            width: MARKER_RADIUS,
+            height: MARKER_RADIUS,
+            symbol: 'url(assets/img/police-marker-b.svg)'
           },
           dataLabels: {
             formatter: function () {
@@ -688,10 +658,11 @@ var SCORECARD = (function () {
           type: 'mappoint',
           name: 'Police Department',
           data: map_data.city[4],
+          zIndex: 4,
           marker: {
-            radius: MARKER_RADIUS,
-            symbol: 'circle',
-            fillColor: '#9d9636'
+            width: MARKER_RADIUS,
+            height: MARKER_RADIUS,
+            symbol: 'url(assets/img/police-marker-c.svg)'
           },
           dataLabels: {
             formatter: function () {
@@ -722,10 +693,11 @@ var SCORECARD = (function () {
           type: 'mappoint',
           name: 'Police Department',
           data: map_data.city[3],
+          zIndex: 5,
           marker: {
-            radius: MARKER_RADIUS,
-            symbol: 'circle',
-            fillColor: '#c5882a'
+            width: MARKER_RADIUS,
+            height: MARKER_RADIUS,
+            symbol: 'url(assets/img/police-marker-d.svg)'
           },
           dataLabels: {
             formatter: function () {
@@ -756,10 +728,11 @@ var SCORECARD = (function () {
           type: 'mappoint',
           name: 'Police Department',
           data: map_data.city[2],
+          zIndex: 6,
           marker: {
-            radius: MARKER_RADIUS,
-            symbol: 'circle',
-            fillColor: '#dc6a46'
+            width: MARKER_RADIUS,
+            height: MARKER_RADIUS,
+            symbol: 'url(assets/img/police-marker-f.svg)'
           },
           dataLabels: {
             formatter: function () {
@@ -790,10 +763,46 @@ var SCORECARD = (function () {
           type: 'mappoint',
           name: 'Police Department',
           data: map_data.city[1],
+          zIndex: 7,
           marker: {
-            radius: MARKER_RADIUS,
-            symbol: 'circle',
-            fillColor: '#dc4646'
+            width: MARKER_RADIUS,
+            height: MARKER_RADIUS,
+            symbol: 'url(assets/img/police-marker-f-minus.svg)'
+          },
+          dataLabels: {
+            formatter: function () {
+              return '';
+            }
+          },
+          events: {
+            click: function (e) {
+              if (e.point && typeof e.point.className !== 'undefined') {
+                var loc = e.point.className.replace('location-', '');
+                var url = '/?state=' + SCORECARD_STATE + '&type=' + map_data.selected.type + '&location=' + loc;
+                var prettyUrl = '/' + SCORECARD_STATE + '/' + map_data.selected.type + '/' + loc;
+
+                if (loc && window.leftMouseClicked) {
+                  window.location = (SCORECARD_ENV === 'production') ? prettyUrl : url;
+                  e.preventDefault();
+                  e.stopImmediatePropagation();
+                }
+              }
+            }
+          }
+        });
+
+        // A GRADE
+        window.SCORECARD_MAP.addSeries({
+          id: 'grade-a',
+          animation: false,
+          type: 'mappoint',
+          name: 'Police Department',
+          data: map_data.city[6],
+          zIndex: 8,
+          marker: {
+            width: MARKER_RADIUS,
+            height: MARKER_RADIUS,
+            symbol: 'url(assets/img/police-marker-a.svg)'
           },
           dataLabels: {
             formatter: function () {
@@ -823,28 +832,14 @@ var SCORECARD = (function () {
           type: 'mappoint',
           name: map_data.selected.name,
           data: map_data.selected.data,
+          zIndex: 9,
+          className: 'current-marker',
           marker: {
             width: 30,
             height: 30,
             symbol: map_data.selected.icon
-          },
-          dataLabels: {
-            style: {
-              fontSize: '24px',
-            },
-            x: 100,
-            y: 100,
-            formatter: function () {
-              return map_data.selected.name;
-            }
           }
         });
-
-        var current = window.SCORECARD_MAP.get('current');
-
-        setTimeout(function(){
-          animateMarker(current, 30, 0);
-        }, 250);
       }
 
       var type = $stateMap.classList[0];
@@ -879,7 +874,19 @@ var SCORECARD = (function () {
     var unitname = units[(order - 1)];
 
     // output number remainder + unitname
-    return '$' + parseFloat(num / 1000 ** order).toFixed(2) + unitname;
+    var val = parseFloat(num / 1000 ** order).toFixed(2)
+    val = val.replace('.00', '')
+    val = val.replace('.10', '.1')
+    val = val.replace('.20', '.2')
+    val = val.replace('.30', '.3')
+    val = val.replace('.40', '.4')
+    val = val.replace('.50', '.5')
+    val = val.replace('.60', '.6')
+    val = val.replace('.70', '.7')
+    val = val.replace('.80', '.8')
+    val = val.replace('.90', '.9')
+
+    return '$' + val + unitname;
   }
 
   function toggleHistory(show) {

@@ -49,6 +49,7 @@ window.addEventListener('load', function() {
       },
       tooltip: {
         followPointer: false,
+        shared: false,
         formatter: function () {
           var city = this.point.name;
           var percent = Math.round(parseFloat(this.point.value));
@@ -69,6 +70,26 @@ window.addEventListener('load', function() {
           animation: false,
           allAreas: false,
           mapData: map_type === 'police-department' ? Highcharts.maps['countries/us/us-all'] : Highcharts.maps['countries/us/us-all-all'],
+        },
+        series: {
+          stickyTracking: false,
+          animation: false,
+          clip: false,
+          states: {
+            hover: {
+              halo: {
+                size: 9,
+                attributes: {
+                  fill: 'transparent',
+                  'stroke-width': 2,
+                  stroke: '#000000'
+                }
+              }
+            },
+            inactive: {
+              opacity: 1
+            }
+          }
         }
       },
       series: [
@@ -122,7 +143,7 @@ window.addEventListener('load', function() {
     });
 
     if (map_type === 'police-department' && map_data) {
-      var MARKER_RADIUS = 3;
+      var MARKER_RADIUS = 8;
 
       // INCOMPLETE GRADE
       window.SCORECARD_MAP.addSeries({
@@ -136,9 +157,9 @@ window.addEventListener('load', function() {
         turboThreshold: 0,
         showInLegend: false,
         marker: {
-          radius: MARKER_RADIUS,
-          symbol: 'circle',
-          fillColor: '#7c8894'
+          width: MARKER_RADIUS,
+          height: MARKER_RADIUS,
+          symbol: 'url(assets/img/police-marker-incomplete.svg)'
         },
         dataLabels: {
           formatter: function () {
@@ -174,9 +195,9 @@ window.addEventListener('load', function() {
         turboThreshold: 0,
         showInLegend: false,
         marker: {
-          radius: MARKER_RADIUS,
-          symbol: 'circle',
-          fillColor: '#57a15b'
+          width: MARKER_RADIUS,
+          height: MARKER_RADIUS,
+          symbol: 'url(assets/img/police-marker-a.svg)'
         },
         dataLabels: {
           formatter: function () {
@@ -212,9 +233,9 @@ window.addEventListener('load', function() {
         turboThreshold: 0,
         showInLegend: false,
         marker: {
-          radius: MARKER_RADIUS,
-          symbol: 'circle',
-          fillColor: '#7c984b'
+          width: MARKER_RADIUS,
+          height: MARKER_RADIUS,
+          symbol: 'url(assets/img/police-marker-b.svg)'
         },
         dataLabels: {
           formatter: function () {
@@ -250,9 +271,9 @@ window.addEventListener('load', function() {
         turboThreshold: 0,
         showInLegend: false,
         marker: {
-          radius: MARKER_RADIUS,
-          symbol: 'circle',
-          fillColor: '#9d9636'
+          width: MARKER_RADIUS,
+          height: MARKER_RADIUS,
+          symbol: 'url(assets/img/police-marker-c.svg)'
         },
         dataLabels: {
           formatter: function () {
@@ -288,9 +309,9 @@ window.addEventListener('load', function() {
         turboThreshold: 0,
         showInLegend: false,
         marker: {
-          radius: MARKER_RADIUS,
-          symbol: 'circle',
-          fillColor: '#c5882a'
+          width: MARKER_RADIUS,
+          height: MARKER_RADIUS,
+          symbol: 'url(assets/img/police-marker-d.svg)'
         },
         dataLabels: {
           formatter: function () {
@@ -326,9 +347,9 @@ window.addEventListener('load', function() {
         turboThreshold: 0,
         showInLegend: false,
         marker: {
-          radius: MARKER_RADIUS,
-          symbol: 'circle',
-          fillColor: '#dc6a46'
+          width: MARKER_RADIUS,
+          height: MARKER_RADIUS,
+          symbol: 'url(assets/img/police-marker-f.svg)'
         },
         dataLabels: {
           formatter: function () {
@@ -364,9 +385,9 @@ window.addEventListener('load', function() {
         turboThreshold: 0,
         showInLegend: false,
         marker: {
-          radius: MARKER_RADIUS,
-          symbol: 'circle',
-          fillColor: '#dc4646'
+          width: MARKER_RADIUS,
+          height: MARKER_RADIUS,
+          symbol: 'url(assets/img/police-marker-f-minus.svg)'
         },
         dataLabels: {
           formatter: function () {
@@ -393,12 +414,12 @@ window.addEventListener('load', function() {
       // Wait to load data until after the rest of the site is done loading to prevent page blocking
       setTimeout(function() {
         window.SCORECARD_MAP.series[1].setData(map_data[0]); // Incomplete
-        window.SCORECARD_MAP.series[2].setData(map_data[6]); // Grade A
         window.SCORECARD_MAP.series[3].setData(map_data[5]); // Grade B
         window.SCORECARD_MAP.series[4].setData(map_data[4]); // Grade C
         window.SCORECARD_MAP.series[5].setData(map_data[3]); // Grade D
         window.SCORECARD_MAP.series[6].setData(map_data[2]); // Grade F
         window.SCORECARD_MAP.series[7].setData(map_data[1]); // Grade F MINUS
+        window.SCORECARD_MAP.series[2].setData(map_data[6]); // Grade A
         document.getElementById('map-loading').style.display = 'none';
       }, 0);
 

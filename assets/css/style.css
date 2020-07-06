@@ -2915,7 +2915,7 @@ svg.highcharts-root path.highcharts-point {
   display: none !important;
 }
 
-.highcharts-mappoint-series.highcharts-series-7 image {
+.highcharts-mappoint-series.highcharts-series-8 image {
   -webkit-filter: url(#drop-shadow);
           filter: url(#drop-shadow);
 }
@@ -2926,7 +2926,7 @@ svg.highcharts-root path.highcharts-point {
   transition: fill 0.25s;
 }
 
-.highcharts-map-series path.highcharts-color-1, .highcharts-map-series path.highcharts-color-2, .highcharts-map-series path.highcharts-color-3, .highcharts-map-series path.highcharts-color-4, .highcharts-map-series path.highcharts-color-5 {
+.highcharts-map-series path.highcharts-color-1, .highcharts-map-series path.highcharts-color-2, .highcharts-map-series path.highcharts-color-3, .highcharts-map-series path.highcharts-color-4, .highcharts-map-series path.highcharts-color-5, .highcharts-map-series path.highcharts-color-6 {
   fill: #dddee0;
   stroke: transparent;
 }
@@ -3341,6 +3341,7 @@ p.number-list.n15::after {
   top: 0;
   left: 0;
   z-index: 1;
+  overflow: visible !important;
 }
 
 #state-map.police-department svg.highcharts-root path.highcharts-point, #usa-map.police-department svg.highcharts-root path.highcharts-point {
@@ -3548,6 +3549,15 @@ p.number-list.n15::after {
   -webkit-box-shadow: 0 0 0.2em #b7b7b8;
           box-shadow: 0 0 0.2em #b7b7b8;
   outline: 0;
+}
+
+svg.highcharts-root .current-marker image {
+  -webkit-animation: 1.25s ease-in-out 0s 3 pulse;
+          animation: 1.25s ease-in-out 0s 3 pulse;
+}
+
+#chart-police-funding {
+  margin-top: 20px;
 }
 
 /* RESPONSIVE DESKTOP */
@@ -4411,31 +4421,43 @@ p.number-list.n15::after {
 
 @-webkit-keyframes pulse {
   from {
-    -webkit-transform: scale(1);
-            transform: scale(1);
+    width: 30px;
+    height: 30px;
+    -webkit-transform: translate3d(-15px, -15px, 0);
+            transform: translate3d(-15px, -15px, 0);
   }
   50% {
-    -webkit-transform: scale(0.5);
-            transform: scale(0.5);
+    width: 42px;
+    height: 42px;
+    -webkit-transform: translate3d(-21px, -21px, 0);
+            transform: translate3d(-21px, -21px, 0);
   }
   to {
-    -webkit-transform: scale(1);
-            transform: scale(1);
+    width: 30px;
+    height: 30px;
+    -webkit-transform: translate3d(-15px, -15px, 0);
+            transform: translate3d(-15px, -15px, 0);
   }
 }
 
 @keyframes pulse {
   from {
-    -webkit-transform: scale(1);
-            transform: scale(1);
+    width: 30px;
+    height: 30px;
+    -webkit-transform: translate3d(-15px, -15px, 0);
+            transform: translate3d(-15px, -15px, 0);
   }
   50% {
-    -webkit-transform: scale(0.5);
-            transform: scale(0.5);
+    width: 42px;
+    height: 42px;
+    -webkit-transform: translate3d(-21px, -21px, 0);
+            transform: translate3d(-21px, -21px, 0);
   }
   to {
-    -webkit-transform: scale(1);
-            transform: scale(1);
+    width: 30px;
+    height: 30px;
+    -webkit-transform: translate3d(-15px, -15px, 0);
+            transform: translate3d(-15px, -15px, 0);
   }
 }
 /*# sourceMappingURL=style.css.map */

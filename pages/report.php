@@ -4,6 +4,30 @@ include_once(__DIR__ .'/../partials/report/location-selection.php');
 include_once(__DIR__ .'/../partials/report/killings-by-police.php');
 ?>
 
+<!-- Police Funding -->
+<div class="section bb pad funding">
+  <!-- Section Title -->
+  <?php include_once(__DIR__ .'/../partials/report/police-funding/title.php'); ?>
+
+  <div class="content">
+    <div class="left">
+      <!-- Police Funding -->
+      <?php include_once(__DIR__ .'/../partials/report/police-funding/chart-police-funding.php'); ?>
+
+      <!-- Funds Spent -->
+      <?php include_once(__DIR__ .'/../partials/report/police-funding/chart-funds-spent.php'); ?>
+    </div>
+
+    <div class="right">
+      <!-- Funds Taken from Communities -->
+      <?php include_once(__DIR__ .'/../partials/report/police-funding/chart-funds-taken.php'); ?>
+
+      <!-- Officers Per Population -->
+      <?php include_once(__DIR__ .'/../partials/report/police-funding/chart-officers-per-population.php'); ?>
+    </div>
+  </div>
+</div>
+
 <!-- Police Violence -->
 <div class="section bb pad score-details">
   <!-- Section Title -->
