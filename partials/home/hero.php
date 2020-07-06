@@ -7,7 +7,7 @@
   </div>
 </div>
 
-<div class="section hero pad">
+<div class="section hero home pad">
   <div class="content">
     <div class="header-intro">
       <h1>We evaluated America's <?= getNationalTotal($states) ?> largest police departments.</h1>

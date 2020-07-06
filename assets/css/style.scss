@@ -3252,6 +3252,18 @@ svg.highcharts-root .current-marker image {
     display: none;
   }
 
+  .section.hero.report {
+    .buttons {
+      text-align: left;
+    }
+  }
+
+  .section.hero.home {
+    .buttons {
+      text-align: center;
+    }
+  }
+
   /* WOO DESKTOP */
   &.section-header {
     font-size: $font-header;
@@ -3419,6 +3431,18 @@ svg.highcharts-root .current-marker image {
 @media screen and (max-width: $bp-max-width) {
   .hide-mobile {
     display: none;
+  }
+
+  .section.hero.report {
+    .buttons {
+      text-align: center;
+    }
+  }
+
+  .section.hero.home {
+    .buttons {
+      text-align: center;
+    }
   }
 
   [role="tablist"] {

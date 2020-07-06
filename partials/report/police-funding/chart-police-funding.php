@@ -1,4 +1,4 @@
-<?php if (isset($scorecard['police_funding']['total_budget_2010']) && isset($scorecard['police_funding']['housing_budget_2010']) && isset($scorecard['police_funding']['health_budget_2010']) && isset($scorecard['police_funding']['police_budget_2010']) && isset($scorecard['police_funding']['total_budget']) && isset($scorecard['report']['police_spending_per_resident']) && isset($scorecard['police_funding']['percentile_police_spending_ratio'])): ?>
+<?php if (isset($scorecard['police_funding']['police_budget_2017'])): ?>
 <div class="stat-wrapper">
   <h3>Police Funding By Year</h3>
   <p>

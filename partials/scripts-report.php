@@ -338,7 +338,7 @@
 </script>
 <?php endif; ?>
 
-<?php if(isset($scorecard['police_funding']['total_budget_2010']) && isset($scorecard['police_funding']['housing_budget_2010']) && isset($scorecard['police_funding']['health_budget_2010']) && isset($scorecard['police_funding']['police_budget_2010'])): ?>
+<?php if(isset($scorecard['police_funding']['police_budget_2017'])): ?>
 <script>
   window.addEventListener('load', function() {
     Highcharts.chart(document.getElementById('chart-police-funding'), {

@@ -3570,6 +3570,12 @@ svg.highcharts-root .current-marker image {
   .hide-desktop {
     display: none;
   }
+  .section.hero.report .buttons {
+    text-align: left;
+  }
+  .section.hero.home .buttons {
+    text-align: center;
+  }
   /* WOO DESKTOP */
   .section-header {
     font-size: 22px;
@@ -3712,6 +3718,12 @@ svg.highcharts-root .current-marker image {
 @media screen and (max-width: 940px) {
   .hide-mobile {
     display: none;
+  }
+  .section.hero.report .buttons {
+    text-align: center;
+  }
+  .section.hero.home .buttons {
+    text-align: center;
   }
   [role="tablist"] {
     text-align: left;

@@ -7,7 +7,7 @@
   </div>
 </div>
 
-<div class="section hero">
+<div class="section hero report">
   <div class="content">
     <div class="right">
       <h1>We obtained data on <?= getStateTotal($states, $stateCode) ?> <?= $stateName ?> <?= $type === 'sheriff' ? 'sheriff\'s' : 'police' ?> departments.</h1>
