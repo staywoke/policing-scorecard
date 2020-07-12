@@ -77,11 +77,22 @@ html {
 /* COMMON ELEMENTS */
 body {
   font-family: 'Lato', sans-serif;
+  font-size: 14px;
+  color: $primary-gray;
+}
+
+p {
+  line-height: 1.57;
 }
 
 * {
   -webkit-tap-highlight-color: rgba(0,0,0,0);
   -webkit-tap-highlight-color: transparent;
+}
+
+p.partial-data {
+  font-size: 13px;
+  line-height: 1.62;
 }
 
 .state-symbol {
@@ -1792,6 +1803,10 @@ body {
     .chart {
       display: none;
 
+      #chart-mini-people-killed {
+        overflow: visible !important;
+      }
+
       #chart-mini-complaints-reported-label {
         position: absolute;
         width: 100%;
@@ -2106,23 +2121,30 @@ body {
 
   .button {
     margin: 0 auto;
-    width: 120px;
-    background: $color-md-grayblue;
+    width: 100px;
+    background: $color-dk-gray;
     text-decoration: none;
     color: white;
-    padding: 10px 0;
+    padding: 7px 0;
     border-radius: 4px;
     text-align: center;
     margin-top: 30px;
-    border: 2px solid $color-md-grayblue;
+    border: 2px solid $color-dk-gray;
+    font-size: 14px;
+    line-height: 14px;
+
+    &:hover, &:focus, &:active {
+      background: $color-md-grayblue;
+      border: 2px solid $color-md-grayblue;
+      color: #FFF;
+    }
 
     &.more {
       display: none;
       background: transparent;
-      color: $color-md-grayblue;
-      padding: 6px 0;
+      color: $color-dk-gray;
 
-      &:hover {
+      &:hover, &:focus, &:active {
         background: $color-md-grayblue;
         color: #FFF;
       }
@@ -2130,10 +2152,9 @@ body {
     &.less {
       display: block;
       background: transparent;
-      color: $color-md-grayblue;
-      padding: 6px 0;
+      color: $color-dk-gray;
 
-      &:hover {
+      &:hover, &:focus, &:active {
         background: $color-md-grayblue;
         color: #FFF;
       }
@@ -2205,12 +2226,6 @@ body {
     line-height: 32px;
     text-transform: uppercase;
     font-weight: 500;
-  }
-
-  p, ul, li {
-    font-size: $font-large;
-    line-height: 24px;
-    color: $primary-gray;
   }
 
   .take-action {
@@ -3656,7 +3671,7 @@ svg.highcharts-root .current-marker image {
   .section {
     &.pad {
       padding-bottom: 20px;
-      padding-top: 20px;
+      padding-top: 60px;
     }
     &.bb {
       border-bottom: 0;
@@ -4211,11 +4226,6 @@ svg.highcharts-root .current-marker image {
       padding-bottom: 20px;
     }
 
-    p, ul, li {
-      font-size: 16px;
-      line-height: 20px;
-    }
-
     ul.contacts {
       li {
         .divider {
@@ -4234,11 +4244,6 @@ svg.highcharts-root .current-marker image {
       padding-left: 20px;
       padding-right: 20px;
       position: relative;
-
-      p {
-        font-size: 16px;
-        line-height: 20px;
-      }
 
       &::before {
         content: '';

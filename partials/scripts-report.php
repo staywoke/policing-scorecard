@@ -340,6 +340,7 @@
 
 <?php if(isset($scorecard['police_funding']['police_budget_2017'])): ?>
 <script>
+  var policeFundingChart = <?= getPoliceFundingChart($scorecard['police_funding']); ?>;
   window.addEventListener('load', function() {
     Highcharts.chart(document.getElementById('chart-police-funding'), {
       chart: {
@@ -392,19 +393,7 @@
         }
       },
       xAxis: {
-        categories: [
-          '2010',
-          '2011',
-          '2012',
-          '2013',
-          '2014',
-          '2015',
-          '2016',
-          '2017',
-          '2018',
-          '2019',
-          '2020',
-        ],
+        categories: policeFundingChart.labels,
         title: {
           enabled: false
         }
@@ -427,57 +416,21 @@
         marker: {
           symbol: 'circle'
         },
-        data: [
-          <?= $scorecard['police_funding']['police_budget_2010'] ?>,
-          <?= $scorecard['police_funding']['police_budget_2011'] ?>,
-          <?= $scorecard['police_funding']['police_budget_2012'] ?>,
-          <?= $scorecard['police_funding']['police_budget_2013'] ?>,
-          <?= $scorecard['police_funding']['police_budget_2014'] ?>,
-          <?= $scorecard['police_funding']['police_budget_2015'] ?>,
-          <?= $scorecard['police_funding']['police_budget_2016'] ?>,
-          <?= $scorecard['police_funding']['police_budget_2017'] ?>,
-          <?= $scorecard['police_funding']['police_budget_2018'] ?>,
-          <?= $scorecard['police_funding']['police_budget_2019'] ?>,
-          <?= $scorecard['police_funding']['police_budget_2020'] ?>,
-        ]
+        data: policeFundingChart.police
       }, {
         name: 'Housing',
         lineColor: '#c5882a',
         marker: {
           symbol: 'circle'
         },
-        data: [
-          <?= $scorecard['police_funding']['housing_budget_2010'] ?>,
-          <?= $scorecard['police_funding']['housing_budget_2011'] ?>,
-          <?= $scorecard['police_funding']['housing_budget_2012'] ?>,
-          <?= $scorecard['police_funding']['housing_budget_2013'] ?>,
-          <?= $scorecard['police_funding']['housing_budget_2014'] ?>,
-          <?= $scorecard['police_funding']['housing_budget_2015'] ?>,
-          <?= $scorecard['police_funding']['housing_budget_2016'] ?>,
-          <?= $scorecard['police_funding']['housing_budget_2017'] ?>,
-          <?= $scorecard['police_funding']['housing_budget_2018'] ?>,
-          <?= $scorecard['police_funding']['housing_budget_2019'] ?>,
-          <?= $scorecard['police_funding']['housing_budget_2020'] ?>,
-        ]
+        data: policeFundingChart.housing
       }, {
         name: 'Health',
         lineColor: '#7c8894',
         marker: {
           symbol: 'circle'
         },
-        data: [
-          <?= $scorecard['police_funding']['health_budget_2010'] ?>,
-          <?= $scorecard['police_funding']['health_budget_2011'] ?>,
-          <?= $scorecard['police_funding']['health_budget_2012'] ?>,
-          <?= $scorecard['police_funding']['health_budget_2013'] ?>,
-          <?= $scorecard['police_funding']['health_budget_2014'] ?>,
-          <?= $scorecard['police_funding']['health_budget_2015'] ?>,
-          <?= $scorecard['police_funding']['health_budget_2016'] ?>,
-          <?= $scorecard['police_funding']['health_budget_2017'] ?>,
-          <?= $scorecard['police_funding']['health_budget_2018'] ?>,
-          <?= $scorecard['police_funding']['health_budget_2019'] ?>,
-          <?= $scorecard['police_funding']['health_budget_2020'] ?>,
-        ]
+        data: policeFundingChart.health
       }]
     });
   });
@@ -607,22 +560,21 @@
               align: 'left',
               y: -8,
               shadow: false,
-              useHTML: true,
-              overflow: 'allow',
               crop: false,
               style: {
                 fontSize: document.documentElement.clientWidth > 940 ? '12px' : '10px',
                 fontFamily: 'Verdana, sans-serif',
-                textTransform: 'uppercase'
+                textTransform: 'uppercase',
+                opacity: '1 !important'
               }
             }
           }
         },
         series: [{
           data: [
-            ['Black', <?= (!isset($scorecard['agency']['black_population']) || $scorecard['agency']['black_population'] === 0) ? 0 : round(($scorecard['police_violence']['black_people_killed'] / $scorecard['agency']['black_population']) * 100, 2) ?>],
-            ['Latinx', <?= (!isset($scorecard['agency']['hispanic_population']) || $scorecard['agency']['hispanic_population'] === 0) ? 0 : round(($scorecard['police_violence']['hispanic_people_killed'] / $scorecard['agency']['hispanic_population']) * 100, 2) ?>],
-            ['White', <?= (!isset($scorecard['agency']['white_population']) || $scorecard['agency']['white_population'] === 0) ? 0 : round(($scorecard['police_violence']['white_people_killed'] / $scorecard['agency']['white_population']) * 100, 2) ?>]
+            ['Black', <?= (!isset($scorecard['agency']['black_population']) || $scorecard['agency']['black_population'] === 0) ? 0.1 : round(0.1 + ($scorecard['police_violence']['black_people_killed'] / $scorecard['agency']['black_population']) * 100, 2) ?>],
+            ['Latinx', <?= (!isset($scorecard['agency']['hispanic_population']) || $scorecard['agency']['hispanic_population'] === 0) ? 0.1 : round(0.1 + ($scorecard['police_violence']['hispanic_people_killed'] / $scorecard['agency']['hispanic_population']) * 100, 2) ?>],
+            ['White', <?= (!isset($scorecard['agency']['white_population']) || $scorecard['agency']['white_population'] === 0) ? 0.1 : round(0.1 + ($scorecard['police_violence']['white_people_killed'] / $scorecard['agency']['white_population']) * 100, 2) ?>]
           ]
         }]
       });

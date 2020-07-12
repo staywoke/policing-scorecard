@@ -2,7 +2,7 @@
 <div class="stat-wrapper">
   <h3>Police Funding By Year</h3>
   <p>
-    <?= nFormatter($scorecard['police_funding']['total_budget'], 2) ?>
+    <?= nFormatter($scorecard['police_funding']['police_budget_2017'], 2) ?>
     <span class="divider">&nbsp;|&nbsp;</span>
     <?= nFormatter($scorecard['report']['police_spending_per_resident'], 2) ?> per Resident
   </p>

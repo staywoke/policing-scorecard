@@ -31,7 +31,7 @@
 
       <div class="text">
         <?php if($scorecard['police_accountability']['civilian_complaints_sustained'] === 0): ?>
-        <p><strong>0 complaints </strong> of misconduct were reported from 2016-18.</p>
+        <p><strong>0 complaints </strong> of misconduct were reported from <?= $scorecard['police_accountability']['years_of_complaints_data'] ?>.</p>
         <?php elseif($black_disparity > 0 && $hispanic_disparity === 0 && $white_disparity === 0): ?>
         <p><strong>100%</strong> of people killed by <?= $scorecard['agency']['name']?> were Black.</p>
         <?php elseif($black_disparity === 0 && $hispanic_disparity > 0 && $white_disparity === 0): ?>
@@ -39,9 +39,9 @@
         <?php elseif($black_disparity === 0 && $hispanic_disparity === 0 && $white_disparity > 0): ?>
         <p><strong>100%</strong> of people killed by <?= $scorecard['agency']['name']?> were White.</p>
         <?php elseif($scorecard['police_accountability']['civilian_complaints_sustained'] === 1): ?>
-        <p>Only <strong>1 in every <?= num($scorecard['police_accountability']['civilian_complaints_reported']) ?> complaints</strong> were ruled in favor of civilians from 2016-18.</p>
+        <p>Only <strong>1 in every <?= num($scorecard['police_accountability']['civilian_complaints_reported']) ?> complaints</strong> were ruled in favor of civilians from <?= $scorecard['police_accountability']['years_of_complaints_data'] ?>.</p>
         <?php elseif(!isset($scorecard['report']['complaints_sustained']) || $scorecard['report']['complaints_sustained'] > 0): ?>
-        <p><strong><?= num($scorecard['report']['complaints_sustained'], 0, '%') ?></strong> were ruled in favor of civilians from 2016-2018.</p>
+        <p><strong><?= num($scorecard['report']['complaints_sustained'], 0, '%') ?></strong> were ruled in favor of civilians from <?= $scorecard['police_accountability']['years_of_complaints_data'] ?>.</p>
         <?php else: ?>
         <p>Only <strong>1 in every <?= round(intval(str_replace(',', '', $scorecard['police_accountability']['civilian_complaints_reported'])) / intval(str_replace(',', '', $scorecard['police_accountability']['civilian_complaints_sustained']))) ?> complaints</strong> were ruled in favor of civilians from 2016-18.</p>
         <?php endif; ?>
@@ -49,19 +49,8 @@
 
       <div class="chart chart-2">
         <script>
-        <?php if($scorecard['police_accountability']['civilian_complaints_sustained'] === 0): ?>
-        var CHART_MINI_REPORTED = 0;
-        var CHART_MINI_SUSTAINED = 0;
-        <?php elseif($scorecard['police_accountability']['civilian_complaints_sustained'] === 1): ?>
         var CHART_MINI_REPORTED = <?= $scorecard['police_accountability']['civilian_complaints_reported'] ?>;
-        var CHART_MINI_SUSTAINED = 1;
-        <?php elseif($scorecard['police_accountability']['civilian_complaints_sustained'] > 0 && $scorecard['police_accountability']['civilian_complaints_reported'] / $scorecard['police_accountability']['civilian_complaints_sustained'] <= 3): ?>
-        var CHART_MINI_REPORTED = <?= $scorecard['report']['complaints_sustained'] ?>;
-        var CHART_MINI_SUSTAINED = <?= 100 - $scorecard['report']['complaints_sustained'] ?>;
-        <?php else: ?>
-        var CHART_MINI_REPORTED = <?= (!isset($scorecard['police_accountability']['civilian_complaints_sustained']) || $scorecard['police_accountability']['civilian_complaints_sustained'] === 0) ? 0 : round($scorecard['police_accountability']['civilian_complaints_reported'] / $scorecard['police_accountability']['civilian_complaints_sustained']) ?>;
-        var CHART_MINI_SUSTAINED = 1;
-        <?php endif; ?>
+        var CHART_MINI_SUSTAINED = <?= $scorecard['police_accountability']['civilian_complaints_sustained'] ?>;
         </script>
         <canvas id="chart-mini-complaints-reported" width="125" height="125"></canvas>
         <span id="chart-mini-complaints-reported-label"></span>

@@ -891,23 +891,12 @@ function getMapLocation($type, $scorecard, $location) {
  */
 function getNationalGrades($states, $type) {
   $data = array();
-  $incomplete = array();
 
   foreach ($states as $abbr => $state) {
     if ($type === 'police-department' && !empty($state['police-department'])) {
       foreach ($state['police-department'] as $department) {
         if ($department['complete']) {
           $data[] = array(
-            'agency_name' => $department['agency_name'] . ', ' . $abbr,
-            'complete' => $department['complete'],
-            'grade_class' => $department['grade_class'],
-            'grade_letter' => $department['grade_letter'],
-            'overall_score' => $department['overall_score'],
-            'url_pretty' => $department['url_pretty'],
-            'url' => $department['url']
-          );
-        } else {
-          $incomplete[] = array(
             'agency_name' => $department['agency_name'] . ', ' . $abbr,
             'complete' => $department['complete'],
             'grade_class' => $department['grade_class'],
@@ -932,25 +921,14 @@ function getNationalGrades($states, $type) {
             'url_pretty' => $department['url_pretty'],
             'url' => $department['url']
           );
-        } else {
-          $incomplete[] = array(
-            'agency_name' => $department['agency_name'] . ', ' . $abbr,
-            'complete' => $department['complete'],
-            'grade_class' => $department['grade_class'],
-            'grade_letter' => $department['grade_letter'],
-            'overall_score' => $department['overall_score'],
-            'url_pretty' => $department['url_pretty'],
-            'url' => $department['url']
-          );
         }
       }
     }
   }
 
   usort($data, function($a, $b) { return $a['overall_score'] > $b['overall_score']; });
-  usort($incomplete, function($a, $b) { return $a['overall_score'] > $b['overall_score']; });
 
-  return array_merge($data, $incomplete);
+  return $data;
 }
 
 /**
@@ -976,7 +954,7 @@ function getNationalMapData($states, $type) {
   foreach ($states as $abbr => $state) {
     if ($type === 'police-department' && !empty($state['police-department'])) {
       foreach ($state['police-department'] as $department) {
-        if (!empty($department['latitude']) && !empty($department['longitude'])) {
+        if (!empty($department['latitude']) && !empty($department['longitude']) && $department['complete']) {
           $index = getColorIndex($department['overall_score'], $department['complete']);
           $map_scores[$index-1][] = array(
             'className' => 'location-' . $department['slug'],
@@ -993,7 +971,7 @@ function getNationalMapData($states, $type) {
 
     if ($type === 'sheriff' && !empty($state['sheriff'])) {
       foreach ($state['sheriff'] as $department) {
-        if (!empty($department['district'])) {
+        if (!empty($department['district']) && $department['complete']) {
           $map_data[] = array(
             'className' => 'location-' . $department['slug'],
             'colorIndex' => getColorIndex($department['overall_score'], $department['complete']),
@@ -1109,6 +1087,104 @@ function getNationalTotal($states) {
   }
 
   return num($total);
+}
+
+/**
+ * Get Police Funding Chart
+ *
+ * @param object $funding
+ *
+ * @return object
+ */
+function getPoliceFundingChart($funding) {
+  $labels = array();
+  $police = array();
+  $housing = array();
+  $health = array();
+
+  if ($funding['police_budget_2010'] && $funding['housing_budget_2010'] && $funding['health_budget_2010']) {
+    $labels[] = '2010';
+    $police[] = intval($funding['police_budget_2010']);
+    $housing[] = intval($funding['housing_budget_2010']);
+    $health[] = intval($funding['health_budget_2010']);
+  }
+
+  if ($funding['police_budget_2011'] && $funding['housing_budget_2011'] && $funding['health_budget_2011']) {
+    $labels[] = '2011';
+    $police[] = intval($funding['police_budget_2011']);
+    $housing[] = intval($funding['housing_budget_2011']);
+    $health[] = intval($funding['health_budget_2011']);
+  }
+
+  if ($funding['police_budget_2012'] && $funding['housing_budget_2012'] && $funding['health_budget_2012']) {
+    $labels[] = '2012';
+    $police[] = intval($funding['police_budget_2012']);
+    $housing[] = intval($funding['housing_budget_2012']);
+    $health[] = intval($funding['health_budget_2012']);
+  }
+
+  if ($funding['police_budget_2013'] && $funding['housing_budget_2013'] && $funding['health_budget_2013']) {
+    $labels[] = '2013';
+    $police[] = intval($funding['police_budget_2013']);
+    $housing[] = intval($funding['housing_budget_2013']);
+    $health[] = intval($funding['health_budget_2013']);
+  }
+
+  if ($funding['police_budget_2014'] && $funding['housing_budget_2014'] && $funding['health_budget_2014']) {
+    $labels[] = '2014';
+    $police[] = intval($funding['police_budget_2014']);
+    $housing[] = intval($funding['housing_budget_2014']);
+    $health[] = intval($funding['health_budget_2014']);
+  }
+
+  if ($funding['police_budget_2015'] && $funding['housing_budget_2015'] && $funding['health_budget_2015']) {
+    $labels[] = '2015';
+    $police[] = intval($funding['police_budget_2015']);
+    $housing[] = intval($funding['housing_budget_2015']);
+    $health[] = intval($funding['health_budget_2015']);
+  }
+
+  if ($funding['police_budget_2016'] && $funding['housing_budget_2016'] && $funding['health_budget_2016']) {
+    $labels[] = '2016';
+    $police[] = intval($funding['police_budget_2016']);
+    $housing[] = intval($funding['housing_budget_2016']);
+    $health[] = intval($funding['health_budget_2016']);
+  }
+
+  if ($funding['police_budget_2017'] && $funding['housing_budget_2017'] && $funding['health_budget_2017']) {
+    $labels[] = '2017';
+    $police[] = intval($funding['police_budget_2017']);
+    $housing[] = intval($funding['housing_budget_2017']);
+    $health[] = intval($funding['health_budget_2017']);
+  }
+
+  if ($funding['police_budget_2018'] && $funding['housing_budget_2018'] && $funding['health_budget_2018']) {
+    $labels[] = '2018';
+    $police[] = intval($funding['police_budget_2018']);
+    $housing[] = intval($funding['housing_budget_2018']);
+    $health[] = intval($funding['health_budget_2018']);
+  }
+
+  if ($funding['police_budget_2019'] && $funding['housing_budget_2019'] && $funding['health_budget_2019']) {
+    $labels[] = '2019';
+    $police[] = intval($funding['police_budget_2019']);
+    $housing[] = intval($funding['housing_budget_2019']);
+    $health[] = intval($funding['health_budget_2019']);
+  }
+
+  if ($funding['police_budget_2020'] && $funding['housing_budget_2020'] && $funding['health_budget_2020']) {
+    $labels[] = '2020';
+    $police[] = intval($funding['police_budget_2020']);
+    $housing[] = intval($funding['housing_budget_2020']);
+    $health[] = intval($funding['health_budget_2020']);
+  }
+
+  return json_encode(array(
+    'labels' => $labels,
+    'police' => $police,
+    'housing' => $housing,
+    'health' => $health
+  ), JSON_PRETTY_PRINT);
 }
 
 /**
