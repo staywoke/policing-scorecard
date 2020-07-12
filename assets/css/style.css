@@ -1553,6 +1553,7 @@ p.partial-data {
   top: 0;
   right: -10px;
   cursor: pointer;
+  display: none;
 }
 
 .stat-wrapper a.external-link::after {
