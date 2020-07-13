@@ -399,13 +399,6 @@
         }
       },
       plotOptions: {
-        area: {
-          stacking: 'normal',
-          lineWidth: 2,
-          marker: {
-            lineWidth: 0
-          }
-        },
         series: {
           fillOpacity: 0.1
         }
