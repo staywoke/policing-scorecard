@@ -372,8 +372,8 @@
       },
       colors: [
         '#dc4646',
-        '#c5882a',
-        '#7c8894'
+        '#7c8894',
+        '#c5882a'
       ],
       tooltip: {
         className: 'police-funding',
@@ -410,28 +410,32 @@
           fillOpacity: 0.1
         }
       },
-      series: [{
-        name: 'Police',
-        lineColor: '#dc4646',
-        marker: {
-          symbol: 'circle'
+      series: [
+        {
+          name: 'Police',
+          lineColor: '#dc4646',
+          marker: {
+            symbol: 'circle'
+          },
+          data: policeFundingChart.police
         },
-        data: policeFundingChart.police
-      }, {
-        name: 'Housing',
-        lineColor: '#c5882a',
-        marker: {
-          symbol: 'circle'
+        {
+          name: 'Health',
+          lineColor: '#7c8894',
+          marker: {
+            symbol: 'circle'
+          },
+          data: policeFundingChart.health
         },
-        data: policeFundingChart.housing
-      }, {
-        name: 'Health',
-        lineColor: '#7c8894',
-        marker: {
-          symbol: 'circle'
-        },
-        data: policeFundingChart.health
-      }]
+        {
+          name: 'Housing',
+          lineColor: '#c5882a',
+          marker: {
+            symbol: 'circle'
+          },
+          data: policeFundingChart.housing
+        }
+      ]
     });
   });
 </script>

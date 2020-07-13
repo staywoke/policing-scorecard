@@ -1150,7 +1150,7 @@ p.partial-data {
 .section.jail {
   background: #464648;
   color: #fff;
-  padding-bottom: 40px;
+  padding: 20px 0 40px 0;
 }
 
 .section.jail p.note, .section.jail .progress-bar.grouped span {
@@ -3592,7 +3592,6 @@ svg.highcharts-root .current-marker image {
   .section.hero.home .buttons {
     text-align: center;
   }
-  /* WOO DESKTOP */
   .section-header {
     font-size: 22px;
     position: relative;
@@ -3737,6 +3736,9 @@ svg.highcharts-root .current-marker image {
   }
   .section.hero.report .buttons {
     text-align: center;
+  }
+  .section.hero.home.pad {
+    padding-top: 0;
   }
   .section.hero.home .buttons {
     text-align: center;
@@ -4419,7 +4421,7 @@ svg.highcharts-root .current-marker image {
     position: relative;
   }
   .section.jail {
-    padding-bottom: 50px;
+    padding: 20px 0 40px 0;
   }
   .canvas-wrapper .canvas-label span {
     font-size: 20px !important;

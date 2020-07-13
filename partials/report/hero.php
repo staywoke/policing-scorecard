@@ -10,7 +10,7 @@
 <div class="section hero report">
   <div class="content">
     <div class="right">
-      <h1>We obtained data on <?= getStateTotal($states, $stateCode) ?> <?= $stateName ?> <?= $type === 'sheriff' ? 'sheriff\'s' : 'police' ?> departments.</h1>
+      <h1>We obtained data on <?= $type === 'sheriff' ? num(count($stateData['sheriff'])) : num(count($stateData['police-department'])) ?> <?= $stateName ?> <?= $type === 'sheriff' ? 'sheriff\'s' : 'police' ?> departments.</h1>
 
       <?php if (isset($stateData['police-department']) && isset($stateData['sheriff']) && count($stateData['police-department']) > 0 && count($stateData['sheriff']) > 0): ?>
       <div class="buttons">

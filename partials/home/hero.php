@@ -10,7 +10,8 @@
 <div class="section hero home pad">
   <div class="content">
     <div class="header-intro">
-      <h1>We obtained data on America's <?= getNationalTotal($states) ?> largest police departments.</h1>
+      <h1>We obtained data on America's <?= getNationalTotalByType($states, $type) ?> <?= $type === 'sheriff' ? 'sheriff\'s' : 'police' ?> departments.</h1>
+
       <h2>Read the <a href="/findings" style="color: #5a6f83; text-decoration: underline; font-weight: 400;">Findings.</a> See the Data for Each Department.</h2>
 
       <div class="buttons">

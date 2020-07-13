@@ -40,7 +40,9 @@
         <p><strong>100%</strong> of people killed by <?= $scorecard['agency']['name']?> were White.</p>
         <?php elseif($scorecard['police_accountability']['civilian_complaints_sustained'] === 1): ?>
         <p>Only <strong>1 in every <?= num($scorecard['police_accountability']['civilian_complaints_reported']) ?> complaints</strong> were ruled in favor of civilians from <?= $scorecard['police_accountability']['years_of_complaints_data'] ?>.</p>
-        <?php elseif(!isset($scorecard['report']['complaints_sustained']) || $scorecard['report']['complaints_sustained'] > 0): ?>
+        <?php elseif(!$scorecard['report']['complaints_sustained'] || $scorecard['report']['complaints_sustained'] === 0): ?>
+        <p>No civilian complaints data obtained for this agency.</p>
+        <?php elseif($scorecard['report']['complaints_sustained'] > 0): ?>
         <p><strong><?= num($scorecard['report']['complaints_sustained'], 0, '%') ?></strong> were ruled in favor of civilians from <?= $scorecard['police_accountability']['years_of_complaints_data'] ?>.</p>
         <?php else: ?>
         <p>Only <strong>1 in every <?= round(intval(str_replace(',', '', $scorecard['police_accountability']['civilian_complaints_reported'])) / intval(str_replace(',', '', $scorecard['police_accountability']['civilian_complaints_sustained']))) ?> complaints</strong> were ruled in favor of civilians from 2016-18.</p>

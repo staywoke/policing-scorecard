@@ -574,6 +574,13 @@ function generateHistoryChart($scorecard) {
     $output['datasets'][1]['data'][] = $scorecard['police_violence']['less_lethal_force_2018'];
   }
 
+  if (isset($scorecard['police_violence']['less_lethal_force_2019']) || isset($scorecard['police_violence']['police_shootings_2019'])) {
+    $output['labels'][] = '2019';
+
+    $output['datasets'][0]['data'][] = $scorecard['police_violence']['police_shootings_2019'];
+    $output['datasets'][1]['data'][] = $scorecard['police_violence']['less_lethal_force_2019'];
+  }
+
   return json_encode($output, JSON_PRETTY_PRINT);
 }
 

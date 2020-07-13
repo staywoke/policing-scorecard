@@ -114,7 +114,7 @@ include_once(__DIR__ .'/../partials/report/killings-by-police.php');
   </div>
 </div>
 
-<?php if($type === 'sheriff' && num(round(intval(str_replace(',', '', $scorecard['report']['total_jail_deaths_2016_2018'])))) !== 'N/A'): ?>
+<?php if($type === 'sheriff' && $scorecard['jail']['avg_daily_jail_population']): ?>
 <!-- Jail -->
 <div class="section pad jail">
   <div class="content">

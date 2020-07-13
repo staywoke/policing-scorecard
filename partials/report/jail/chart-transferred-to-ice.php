@@ -4,9 +4,9 @@ $other_ice_transfers = isset($scorecard['jail']['other_ice_transfers']) ? $score
 $violent_ice_transfers = isset($scorecard['jail']['violent_ice_transfers']) ? $scorecard['jail']['violent_ice_transfers'] : 0;
 
 $total_ice_transfers = ($drug_ice_transfers + $other_ice_transfers + $violent_ice_transfers);
-$percent_drug_transfers = ($drug_ice_transfers / $total_ice_transfers) * 100;
-$percent_violent_transfers = ($violent_ice_transfers / $total_ice_transfers) * 100;
-$percent_other_transfers = ($other_ice_transfers / $total_ice_transfers) * 100;
+$percent_drug_transfers = ($total_ice_transfers > 0) ? ($drug_ice_transfers / $total_ice_transfers) * 100 : 0;
+$percent_violent_transfers = ($total_ice_transfers > 0) ? ($violent_ice_transfers / $total_ice_transfers) * 100 : 0;
+$percent_other_transfers = ($total_ice_transfers > 0) ? ($other_ice_transfers / $total_ice_transfers) * 100 : 0;
 ?>
 <?php if ($total_ice_transfers && $percent_drug_transfers && $percent_drug_transfers && $percent_other_transfers): ?>
 <div class="stat-wrapper">

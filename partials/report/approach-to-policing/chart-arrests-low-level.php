@@ -7,7 +7,7 @@
     Arrests <span class="divider">&nbsp;|&nbsp;</span> <?= num($scorecard['report']['low_level_arrests_per_1k_population']) ?> per 1k residents
   </p>
 
-  <?php if(!isset($scorecard['report']['percentile_low_level_arrests_per_1k_population']) || (isset($scorecard['report']['percentile_low_level_arrests_per_1k_population']) && empty($scorecard['report']['percentile_low_level_arrests_per_1k_population']))): ?>
+  <?php if(!isset($scorecard['report']['percentile_low_level_arrests_per_1k_population'])): ?>
   <div class="progress-bar-wrapper">
     <div class="progress-bar no-data" style="width: 0"></div>
   </div>

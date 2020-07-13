@@ -14,11 +14,11 @@
       <span class="divider">&nbsp;|&nbsp;</span>
       <?= num($scorecard['report']['percent_criminal_complaints_sustained'], 0, '%') ?> Ruled in Favor of Civilians
     </p>
-    <?php if(num($scorecard['police_accountability']['criminal_complaints_reported']) !== '0' && (!isset($scorecard['report']['percent_criminal_complaints_sustained']) || (isset($scorecard['report']['percent_criminal_complaints_sustained']) && empty($scorecard['report']['percent_criminal_complaints_sustained'])))): ?>
+    <?php if(!isset($scorecard['report']['percent_criminal_complaints_sustained'])): ?>
     <div class="progress-bar-wrapper">
       <div class="progress-bar no-data" style="width: 0"></div>
     </div>
-    <p class="note">City Did Not Provide Data</p>
+    <p class="note">City Did Not Provide Data <?= $scorecard['report']['percent_criminal_complaints_sustained'] ?></p>
     <?php else: ?>
     <div class="progress-bar-wrapper">
       <div class="progress-bar animate-bar <?= progressBar(intval($scorecard['report']['percent_criminal_complaints_sustained'])) ?>" data-percent="<?= output(intval($scorecard['report']['percent_criminal_complaints_sustained']), 0, '%') ?>"></div>
