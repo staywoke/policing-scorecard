@@ -2087,6 +2087,10 @@ p.partial-data {
   margin-bottom: 60px;
 }
 
+.section.hero .header-intro.home h1 {
+  margin-bottom: 20px;
+}
+
 .section.hero.sandiego {
   background: url(../img/sandiego.jpg) center center no-repeat;
   background-size: cover;
@@ -3333,7 +3337,6 @@ p.number-list.n15::after {
 }
 
 #static-map {
-  display: none;
   width: 100%;
   height: 100%;
   position: absolute;

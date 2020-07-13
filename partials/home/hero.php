@@ -9,7 +9,7 @@
 
 <div class="section hero home pad">
   <div class="content">
-    <div class="header-intro">
+    <div class="header-intro home">
       <h1>We obtained data on America's <?= getNationalTotalByType($states, $type) ?> <?= $type === 'sheriff' ? 'sheriff\'s' : 'police' ?> departments.</h1>
 
       <h2>Read the <a href="/findings" style="color: #5a6f83; text-decoration: underline; font-weight: 400;">Findings.</a> See the Data for Each Department.</h2>
@@ -33,12 +33,6 @@
           </filter>
         </defs>
       </svg>
-
-      <div id="map-loading">
-        <i class="fa fa-spinner fa-spin"></i>&nbsp; Loading <?= getNationalTotalByType($states, $type) ?> Departments ...
-      </div>
-      <div id="usa-map" class="<?= $type ?> <?= $location ?>"></div>
-      <div id="usa-map-shadow" class="<?= $type ?> <?= $location ?>"></div>
 
       <div id="static-map" class="<?= $type ?>"></div>
     </div>
