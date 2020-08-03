@@ -556,6 +556,25 @@ p.partial-data {
             margin-top: 12px;
           }
         }
+
+        &.none-reported {
+          background: repeating-linear-gradient(-55deg, #FFF, #FFF 2px, rgba(0, 0, 0, 0.1) 2px, rgba(0, 0, 0, 0.1) 4px);
+
+          &::before {
+            content: 'NONE REPORTED';
+            position: absolute;
+            right: 30px;
+            margin-top: 6px;
+            color: $grade-light-green;
+            font-size: $font-medium;;
+            font-weight: 700;
+            background: #FFF;
+          }
+
+          &.double::before {
+            margin-top: 12px;
+          }
+        }
       }
 
       td {

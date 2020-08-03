@@ -938,6 +938,25 @@ p.partial-data {
   margin-top: 12px;
 }
 
+#modal-wrapper #results-info-content table tr.none-reported {
+  background: repeating-linear-gradient(-55deg, #FFF, #FFF 2px, rgba(0, 0, 0, 0.1) 2px, rgba(0, 0, 0, 0.1) 4px);
+}
+
+#modal-wrapper #results-info-content table tr.none-reported::before {
+  content: 'NONE REPORTED';
+  position: absolute;
+  right: 30px;
+  margin-top: 6px;
+  color: #7cc381;
+  font-size: 10px;
+  font-weight: 700;
+  background: #FFF;
+}
+
+#modal-wrapper #results-info-content table tr.none-reported.double::before {
+  margin-top: 12px;
+}
+
 #modal-wrapper #results-info-content table td {
   border-right: 1px solid #EFEFEF;
   border-top: 1px solid #EFEFEF;

@@ -12,8 +12,8 @@
 
   <div id="chart-police-funding"></div>
 
-  <?php if (!empty($scorecard['police_funding']['budget_source_link'])): ?>
-  <p class="source-link-wrapper">Source: <a href="<?= $scorecard['police_funding']['budget_source_link'] ?>" class="source-link" target="_blank">US Census Bureau</a></p>
+  <?php if (!empty($scorecard['police_funding']['budget_source_link']) && !empty($scorecard['police_funding']['budget_source_name'])): ?>
+  <p class="source-link-wrapper">Source: <a href="<?= $scorecard['police_funding']['budget_source_link'] ?>" class="source-link" target="_blank"><?= $scorecard['police_funding']['budget_source_name'] ?></a></p>
   <?php endif; ?>
 </div>
 <?php endif; ?>

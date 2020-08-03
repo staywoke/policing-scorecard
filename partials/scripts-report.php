@@ -338,101 +338,101 @@
 </script>
 <?php endif; ?>
 
-<?php if(isset($scorecard['police_funding']['police_budget_2017'])): ?>
 <script>
   var policeFundingChart = <?= getPoliceFundingChart($scorecard['police_funding']); ?>;
   window.addEventListener('load', function() {
-    Highcharts.chart(document.getElementById('chart-police-funding'), {
-      chart: {
-        type: 'area',
-        height: 300
-      },
-      legend: {
-        align: 'center',
-        verticalAlign: 'top',
-        layout: 'horizontal',
-        width: '100%',
-        margin: 30,
-        padding: 0
-      },
-      title: {
-        enabled: false,
-        text: ''
-      },
-      yAxis: {
-        labels: {
-          enabled: true,
-          formatter: function () {
-            return (this.value === 0) ? '' : SCORECARD.nFormatter(this.value);
+    if (policeFundingChart && typeof policeFundingChart.labels === 'undefined' && policeFundingChart.labels.length > 0) {
+      Highcharts.chart(document.getElementById('chart-police-funding'), {
+        chart: {
+          type: 'area',
+          height: 300
+        },
+        legend: {
+          align: 'center',
+          verticalAlign: 'top',
+          layout: 'horizontal',
+          width: '100%',
+          margin: 30,
+          padding: 0
+        },
+        title: {
+          enabled: false,
+          text: ''
+        },
+        yAxis: {
+          labels: {
+            enabled: true,
+            formatter: function () {
+              return (this.value === 0) ? '' : SCORECARD.nFormatter(this.value);
+            }
+          },
+          title: {
+            text: ''
           }
         },
-        title: {
-          text: ''
-        }
-      },
-      colors: [
-        '#dc4646',
-        '#7c8894',
-        '#c5882a'
-      ],
-      tooltip: {
-        className: 'police-funding',
-        followPointer: false,
-        shared: true,
-        borderWidth: 0,
-        backgroundColor: 'rgba(0, 0, 0, 0.9)',
-        borderRadius: 8,
-        padding: 16,
-        shadow: false,
-        style: {
-          color: '#FFF',
-          padding: 8
-        },
-        pointFormatter: function() {
-          return '<span style="color:' + this.color + '; font-size: 16px; vertical-align: middle;">●</span> ' + this.series.name + ': <b>$' + this.y.toLocaleString() + '</b><br/>';
-        }
-      },
-      xAxis: {
-        categories: policeFundingChart.labels,
-        title: {
-          enabled: false
-        }
-      },
-      plotOptions: {
-        series: {
-          fillOpacity: 0.1
-        }
-      },
-      series: [
-        {
-          name: 'Police',
-          lineColor: '#dc4646',
-          marker: {
-            symbol: 'circle'
+        colors: [
+          '#dc4646',
+          '#7c8894',
+          '#c5882a'
+        ],
+        tooltip: {
+          className: 'police-funding',
+          followPointer: false,
+          shared: true,
+          borderWidth: 0,
+          backgroundColor: 'rgba(0, 0, 0, 0.9)',
+          borderRadius: 8,
+          padding: 16,
+          shadow: false,
+          style: {
+            color: '#FFF',
+            padding: 8
           },
-          data: policeFundingChart.police
+          pointFormatter: function() {
+            return '<span style="color:' + this.color + '; font-size: 16px; vertical-align: middle;">●</span> ' + this.series.name + ': <b>$' + this.y.toLocaleString() + '</b><br/>';
+          }
         },
-        {
-          name: 'Health',
-          lineColor: '#7c8894',
-          marker: {
-            symbol: 'circle'
-          },
-          data: policeFundingChart.health
+        xAxis: {
+          categories: policeFundingChart.labels,
+          title: {
+            enabled: false
+          }
         },
-        {
-          name: 'Housing',
-          lineColor: '#c5882a',
-          marker: {
-            symbol: 'circle'
+        plotOptions: {
+          series: {
+            fillOpacity: 0.1
+          }
+        },
+        series: [
+          {
+            name: 'Police',
+            lineColor: '#dc4646',
+            marker: {
+              symbol: 'circle'
+            },
+            data: policeFundingChart.police
           },
-          data: policeFundingChart.housing
-        }
-      ]
-    });
+          {
+            name: 'Health',
+            lineColor: '#7c8894',
+            marker: {
+              symbol: 'circle'
+            },
+            data: policeFundingChart.health
+          },
+          {
+            name: 'Housing',
+            lineColor: '#c5882a',
+            marker: {
+              symbol: 'circle'
+            },
+            data: policeFundingChart.housing
+          }
+        ]
+      });
+    }
   });
 </script>
-<?php endif; ?>
 
 <script>
   window.addEventListener('load', function() {

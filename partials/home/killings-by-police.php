@@ -24,8 +24,8 @@ $nationalSummary = getNationalSummary($states);
 
       <div class="chart chart-2">
         <script>
-        var CHART_MINI_REPORTED = <?= $nationalSummary['total_complaints_reported'] ?>;
-        var CHART_MINI_SUSTAINED = <?= $nationalSummary['total_complaints_sustained'] ?>;
+        var CHART_MINI_REPORTED = <?= $nationalSummary['total_complaints_reported'] ? $nationalSummary['total_complaints_reported'] : 0 ?>;
+        var CHART_MINI_SUSTAINED = <?= $nationalSummary['total_complaints_sustained'] ? $nationalSummary['total_complaints_sustained'] : 0 ?>;
         </script>
         <canvas id="chart-mini-complaints-reported" width="125" height="125"></canvas>
         <span id="chart-mini-complaints-reported-label" class="national-report"></span>

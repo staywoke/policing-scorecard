@@ -34,3 +34,27 @@ $percent_other_transfers = ($total_ice_transfers > 0) ? ($other_ice_transfers / 
   </div>
 </div>
 <?php endif; ?>
+
+<?php if(isset($scorecard['jail']['unconvicted_jail_population']) && isset($scorecard['jail']['total_jail_population'])): ?>
+<?php
+$unconvicted_jail_population = isset($scorecard['jail']['unconvicted_jail_population']) ? $scorecard['jail']['unconvicted_jail_population'] : 0;
+$total_jail_population = isset($scorecard['jail']['total_jail_population']) ? $scorecard['jail']['total_jail_population'] : 0;
+$percent_without_conviction = ($unconvicted_jail_population / $total_jail_population) * 100;
+?>
+<div class="stat-wrapper">
+  <h3>People in Jail Without Being Convicted</h3>
+  <p>
+    <?= num(round($percent_without_conviction)) ?> % of People in Jail
+  </p>
+  <?php if(!$percent_without_conviction): ?>
+  <div class="progress-bar-wrapper">
+    <div class="progress-bar no-data" style="width: 0"></div>
+  </div>
+  <p class="note">City Did Not Provide Data</p>
+  <?php else: ?>
+  <div class="progress-bar-wrapper">
+    <div class="progress-bar animate-bar <?= progressBar(intval($percent_without_conviction), 'reverse') ?>" data-percent="<?= output(intval($percent_without_conviction), 0, '%') ?>"></div>
+  </div>
+  <?php endif; ?>
+</div>
+<?php endif; ?>

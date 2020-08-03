@@ -307,28 +307,36 @@ var SCORECARD = (function () {
     var label = (window.location.search.indexOf('sheriff') !== -1) ? 'Sheriff\'s Department' : 'Police Department';
 
     if (SCORECARD_DATA) {
-      var class_a = (SCORECARD_DATA.report.percentile_less_lethal_force) ? 'key percent-' + SCORECARD_DATA.report.percentile_less_lethal_force : 'incomplete';
-      var class_b = (SCORECARD_DATA.report.percentile_killed_by_police) ? 'key percent-' + SCORECARD_DATA.report.percentile_killed_by_police : 'incomplete';
-      var class_c = (SCORECARD_DATA.report.percentile_unarmed_killed_by_police) ? 'key percent-' + SCORECARD_DATA.report.percentile_unarmed_killed_by_police : 'incomplete';
-      var class_d = (SCORECARD_DATA.report.percentile_overall_disparity_index) ? 'key percent-' + SCORECARD_DATA.report.percentile_overall_disparity_index : 'incomplete';
-      var class_e = (SCORECARD_DATA.report.percentile_complaints_sustained) ? 'key percent-' + SCORECARD_DATA.report.percentile_complaints_sustained : 'no-complaints';
-      var class_f = (SCORECARD_DATA.report.percent_criminal_complaints_sustained) ? 'key percent-' + SCORECARD_DATA.report.percent_criminal_complaints_sustained : 'no-complaints';
-      var class_g = (SCORECARD_DATA.report.percentile_low_level_arrests_per_1k_population) ? 'key percent-' + SCORECARD_DATA.report.percentile_low_level_arrests_per_1k_population : 'incomplete';
-      var class_h = (SCORECARD_DATA.report.percent_murders_solved) ? 'key percent-' + SCORECARD_DATA.report.percent_murders_solved : 'incomplete';
-      var class_i = (SCORECARD_DATA.report.percentile_jail_incarceration_per_1k_population) ? 'key percent-' + SCORECARD_DATA.report.percentile_jail_incarceration_per_1k_population : 'incomplete';
-      var class_j = (SCORECARD_DATA.report.percentile_jail_deaths_per_1k_jail_population) ? 'key percent-' + SCORECARD_DATA.report.percentile_jail_deaths_per_1k_jail_population : 'incomplete';
+      var class_a = (typeof SCORECARD_DATA.report.percentile_less_lethal_force === 'number') ? 'key percent-' + SCORECARD_DATA.report.percentile_less_lethal_force : 'incomplete';
+      var class_b = (typeof SCORECARD_DATA.report.percentile_killed_by_police === 'number') ? 'key percent-' + SCORECARD_DATA.report.percentile_killed_by_police : 'incomplete';
+      var class_c = (typeof SCORECARD_DATA.report.percentile_unarmed_killed_by_police === 'number') ? 'key percent-' + SCORECARD_DATA.report.percentile_unarmed_killed_by_police : 'incomplete';
+      var class_d = (typeof SCORECARD_DATA.report.percentile_overall_disparity_index === 'number') ? 'key percent-' + SCORECARD_DATA.report.percentile_overall_disparity_index : 'incomplete';
+      var class_e = (typeof SCORECARD_DATA.report.percentile_complaints_sustained === 'number') ? 'key percent-' + SCORECARD_DATA.report.percentile_complaints_sustained : 'no-complaints';
+      var class_f = (typeof SCORECARD_DATA.report.percent_criminal_complaints_sustained === 'number') ? 'key percent-' + SCORECARD_DATA.report.percent_criminal_complaints_sustained : 'no-complaints';
+      var class_g = (typeof SCORECARD_DATA.report.percentile_low_level_arrests_per_1k_population === 'number') ? 'key percent-' + SCORECARD_DATA.report.percentile_low_level_arrests_per_1k_population : 'incomplete';
+      var class_h = (typeof SCORECARD_DATA.report.percent_murders_solved === 'number') ? 'key percent-' + SCORECARD_DATA.report.percent_murders_solved : 'incomplete';
+      var class_i = (typeof SCORECARD_DATA.report.percentile_jail_incarceration_per_1k_population === 'number') ? 'key percent-' + SCORECARD_DATA.report.percentile_jail_incarceration_per_1k_population : 'incomplete';
+      var class_j = (typeof SCORECARD_DATA.report.percentile_jail_deaths_per_1k_jail_population === 'number') ? 'key percent-' + SCORECARD_DATA.report.percentile_jail_deaths_per_1k_jail_population : 'incomplete';
 
-      var class_k = (SCORECARD_DATA.police_funding.percentile_police_spending_ratio) ? 'key percent-' + SCORECARD_DATA.police_funding.percentile_police_spending_ratio : 'incomplete';
-      var class_l = (SCORECARD_DATA.police_funding.percentile_misconduct_settlements_per_population) ? 'key percent-' + SCORECARD_DATA.police_funding.percentile_misconduct_settlements_per_population : 'incomplete';
-      var class_m = (SCORECARD_DATA.police_funding.percentile_fines_forfeitures_per_resident) ? 'key percent-' + SCORECARD_DATA.police_funding.percentile_fines_forfeitures_per_resident : 'incomplete';
-      var class_n = (SCORECARD_DATA.police_funding.percentile_officers_per_population) ? 'key percent-' + SCORECARD_DATA.police_funding.percentile_officers_per_population : 'incomplete';
+      var class_k = (typeof SCORECARD_DATA.police_funding.percentile_police_spending_ratio === 'number') ? 'key percent-' + SCORECARD_DATA.police_funding.percentile_police_spending_ratio : 'incomplete';
+      var class_l = (typeof SCORECARD_DATA.police_funding.percentile_misconduct_settlements_per_population === 'number') ? 'key percent-' + SCORECARD_DATA.police_funding.percentile_misconduct_settlements_per_population : 'incomplete';
+      var class_m = (typeof SCORECARD_DATA.police_funding.percentile_fines_forfeitures_per_resident === 'number') ? 'key percent-' + SCORECARD_DATA.police_funding.percentile_fines_forfeitures_per_resident : 'incomplete';
+      var class_n = (typeof SCORECARD_DATA.police_funding.percentile_officers_per_population === 'number') ? 'key percent-' + SCORECARD_DATA.police_funding.percentile_officers_per_population : 'incomplete';
+
+      if (SCORECARD_DATA.report.percentile_killed_by_police === 0) {
+        class_b = 'none-reported';
+      }
+
+      if (SCORECARD_DATA.report.percentile_unarmed_killed_by_police === 0) {
+        class_c = 'none-reported';
+      }
 
       var html = '';
 
       html += '<div class="modal-header"><div class="results-header"><strong style="position: relative; top: -2px;">' + SCORECARD_DATA.agency.name + ' ' + label + '</strong><br/>Score: ' + SCORECARD_DATA.report.overall_score + '%</div><div class="keys"><span class="key key-bad"></span> WORSE <span class="key key-avg"></span> AVG <span class="key key-good"></span> BETTER</div></div>';
       html += '<div class="section-header no-border"><div class="label">&nbsp;</div><div class="percentile"><strong>PERCENTILE</strong></div></div>';
 
-      html += '<div class="section-header"><div class="label">Police Funding:&nbsp; ' + SCORECARD_DATA.report.police_funding_score + '%</div><div class="percentile">50TH</div></div>';
+      html += '<div class="section-header"><div class="label">Police Funding:&nbsp; ' + (SCORECARD_DATA.report.police_funding_score ? SCORECARD_DATA.report.police_funding_score : 0) + '%</div><div class="percentile">50TH</div></div>';
       html += '<table>';
       html += '<tr class="' + class_k + '"><td width="160px">Police Budget per Capita</td><td width="25px">&nbsp;</td><td width="25px" class="divider">&nbsp;</td><td width="25px">&nbsp;</td><td width="25px">&nbsp;</td></tr>';
       html += '<tr class="' + class_l + '"><td width="160px">Misconduct Settlements</td><td>&nbsp;</td><td class="divider">&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td></tr>';
@@ -336,7 +344,7 @@ var SCORECARD = (function () {
       html += '<tr class="' + class_n + '"><td width="160px">Officers per Capita</td><td>&nbsp;</td><td class="divider">&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td></tr>';
       html += '</table>';
 
-      html += '<div class="section-header"><div class="label">Police Violence:&nbsp; ' + SCORECARD_DATA.report.police_violence_score + '%</div><div class="percentile">&nbsp;</div></div>';
+      html += '<div class="section-header"><div class="label">Police Violence:&nbsp; ' + (SCORECARD_DATA.report.police_violence_score ? SCORECARD_DATA.report.police_violence_score : 0) + '%</div><div class="percentile">&nbsp;</div></div>';
       html += '<table>';
       html += '<tr class="' + class_a + '"><td width="160px">Less-Lethal Force per Arrest</td><td width="25px">&nbsp;</td><td width="25px" class="divider">&nbsp;</td><td width="25px">&nbsp;</td><td width="25px">&nbsp;</td></tr>';
       html += '<tr class="' + class_b + '"><td width="160px">Deadly Force per Arrest</td><td>&nbsp;</td><td class="divider">&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td></tr>';
@@ -344,13 +352,13 @@ var SCORECARD = (function () {
       html += '<tr class="double ' + class_d + '"><td width="160px">Racial Disparities in Arrests and Deadly Force</td><td>&nbsp;</td><td class="divider">&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td></tr>';
       html += '</table>';
 
-      html += '<div class="section-header"><div class="label">Police Accountability:&nbsp; ' + SCORECARD_DATA.report.police_accountability_score + '%</div><div class="percentile">&nbsp;</div></div>';
+      html += '<div class="section-header"><div class="label">Police Accountability:&nbsp; ' + (SCORECARD_DATA.report.police_accountability_score ? SCORECARD_DATA.report.police_accountability_score : 0) + '%</div><div class="percentile">&nbsp;</div></div>';
       html += '<table>';
       html += '<tr class="' + class_e + '"><td width="160px">Complaints Sustained</td><td width="25px">&nbsp;</td><td width="25px" class="divider">&nbsp;</td><td width="25px">&nbsp;</td><td width="25px">&nbsp;</td></tr>';
-      html += '<tr class="double ' + class_f + '"><td width="160px">Criminal Allegations Sustained</td><td width="25px">&nbsp;</td><td width="25px" class="divider">&nbsp;</td><td width="25px">&nbsp;</td><td width="25px">&nbsp;</td></tr>';
+      html += '<tr class="' + class_f + '"><td width="160px">Criminal Allegations Sustained</td><td width="25px">&nbsp;</td><td width="25px" class="divider">&nbsp;</td><td width="25px">&nbsp;</td><td width="25px">&nbsp;</td></tr>';
       html += '</table>';
 
-      html += '<div class="section-header"><div class="label">Approach to Policing:&nbsp; ' + SCORECARD_DATA.report.approach_to_policing_score + '%</div><div class="percentile">&nbsp;</div></div>';
+      html += '<div class="section-header"><div class="label">Approach to Policing:&nbsp; ' + (SCORECARD_DATA.report.approach_to_policing_score ? SCORECARD_DATA.report.approach_to_policing_score : 0) + '%</div><div class="percentile">&nbsp;</div></div>';
       html += '<table>';
       html += '<tr class="double ' + class_g + '"><td width="160px">Over-Policing (Misdemeanor Arrest Rate)</td><td width="25px">&nbsp;</td><td width="25px" class="divider">&nbsp;</td><td width="25px">&nbsp;</td><td width="25px">&nbsp;</td></tr>';
       html += '<tr class="' + class_h + '"><td width="160px">Homicides Solved</td><td width="25px">&nbsp;</td><td width="25px" class="divider">&nbsp;</td><td width="25px">&nbsp;</td><td width="25px">&nbsp;</td></tr>';
