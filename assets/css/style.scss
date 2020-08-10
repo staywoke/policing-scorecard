@@ -333,358 +333,6 @@ p.partial-data {
     background: rgba(0, 0, 0, 0.9);
     display: block;
   }
-
-  #results-info-content {
-    font-weight: 300;
-
-    .modal-header {
-      height: 40px;
-    }
-
-    .percentile-header {
-      height: 30px;
-    }
-
-    .section-header {
-      height: 20px;
-      font-size: $font-default;
-      font-weight: 700;
-      border-bottom: 2px solid #000;
-      margin-top: 20px;
-
-      &:nth-child(2), &:nth-child(3) {
-        margin-top: 0;
-      }
-
-      &.no-border {
-        border-bottom: none;
-      }
-
-      .label {
-        width: 61%;
-        display: inline-block;
-        white-space: nowrap;
-      }
-
-      .percentile {
-        width: 39%;
-        display: inline-block;
-        text-align: center;
-      }
-
-      strong {
-        display: block;
-        width: 100%;
-        text-align: center;
-        font-weight: 700;
-        font-size: $font-default;
-      }
-    }
-
-    .button-wrapper {
-      text-align: center;
-      margin-top: 12px;
-
-      .button {
-        background: $color-md-grayblue;
-        text-decoration: none;
-        color: white;
-        padding: 6px 0;
-        border-radius: 4px;
-        text-align: center;
-        font-weight: 500;
-        display: block;
-        text-transform: uppercase;
-        font-size: $font-default;
-      }
-    }
-
-    table {
-      font-size: $font-default;
-      font-weight: 400;
-
-      tr {
-        &.key {
-          &::before {
-            content: '\002B24';
-            position: absolute;
-            margin-top: 6px;
-            font-size: $font-small;
-          }
-
-          &.double::before {
-            margin-top: 12px;
-          }
-
-          &.percent-0::before { right: 115px; color: $grade-red; }
-          &.percent-1::before { right: 114px; color: $grade-red; }
-          &.percent-2::before { right: 113px; color: $grade-red; }
-          &.percent-3::before { right: 112px; color: $grade-red; }
-          &.percent-4::before { right: 111px; color: $grade-red; }
-          &.percent-5::before { right: 110px; color: $grade-red; }
-          &.percent-6::before { right: 109px; color: $grade-red; }
-          &.percent-7::before { right: 108px; color: $grade-red; }
-          &.percent-8::before { right: 107px; color: $grade-red; }
-          &.percent-9::before { right: 106px; color: $grade-red; }
-          &.percent-10::before { right: 105px; color: $grade-red; }
-          &.percent-11::before { right: 104px; color: $grade-red; }
-          &.percent-12::before { right: 103px; color: $grade-red; }
-          &.percent-13::before { right: 102px; color: $grade-red; }
-          &.percent-14::before { right: 101px; color: $grade-red; }
-          &.percent-15::before { right: 100px; color: $grade-red; }
-          &.percent-16::before { right: 99px; color: $grade-red; }
-          &.percent-17::before { right: 98px; color: $grade-red; }
-          &.percent-18::before { right: 97px; color: $grade-red; }
-          &.percent-19::before { right: 96px; color: $grade-red; }
-          &.percent-20::before { right: 95px; color: $grade-red; }
-          &.percent-21::before { right: 94px; color: $grade-red; }
-          &.percent-22::before { right: 93px; color: $grade-red; }
-          &.percent-23::before { right: 92px; color: $grade-red; }
-          &.percent-24::before { right: 91px; color: $grade-red; }
-          &.percent-25::before { right: 90px; color: $grade-red; }
-          &.percent-26::before { right: 89px; color: $grade-red; }
-          &.percent-27::before { right: 88px; color: $grade-red; }
-          &.percent-28::before { right: 87px; color: $grade-red; }
-          &.percent-29::before { right: 86px; color: $grade-red; }
-          &.percent-30::before { right: 85px; color: $grade-red; }
-          &.percent-31::before { right: 84px; color: $grade-red; }
-          &.percent-32::before { right: 83px; color: $grade-red; }
-          &.percent-33::before { right: 82px; color: $grade-red; }
-          &.percent-34::before { right: 81px; color: #AAA; }
-          &.percent-35::before { right: 80px; color: #AAA; }
-          &.percent-36::before { right: 79px; color: #AAA; }
-          &.percent-37::before { right: 78px; color: #AAA; }
-          &.percent-38::before { right: 77px; color: #AAA; }
-          &.percent-39::before { right: 76px; color: #AAA; }
-          &.percent-40::before { right: 75px; color: #AAA; }
-          &.percent-41::before { right: 74px; color: #AAA; }
-          &.percent-42::before { right: 73px; color: #AAA; }
-          &.percent-43::before { right: 72px; color: #AAA; }
-          &.percent-44::before { right: 71px; color: #AAA; }
-          &.percent-45::before { right: 70px; color: #AAA; }
-          &.percent-46::before { right: 69px; color: #AAA; }
-          &.percent-47::before { right: 68px; color: #AAA; }
-          &.percent-48::before { right: 67px; color: #AAA; }
-          &.percent-49::before { right: 66px; color: #AAA; }
-          &.percent-50::before { right: 65px; color: #AAA; }
-          &.percent-51::before { right: 64px; color: #AAA; }
-          &.percent-52::before { right: 63px; color: #AAA; }
-          &.percent-53::before { right: 62px; color: #AAA; }
-          &.percent-54::before { right: 61px; color: #AAA; }
-          &.percent-55::before { right: 60px; color: #AAA; }
-          &.percent-56::before { right: 59px; color: #AAA; }
-          &.percent-57::before { right: 58px; color: #AAA; }
-          &.percent-58::before { right: 57px; color: #AAA; }
-          &.percent-59::before { right: 56px; color: #AAA; }
-          &.percent-60::before { right: 55px; color: #AAA; }
-          &.percent-61::before { right: 54px; color: #AAA; }
-          &.percent-62::before { right: 53px; color: #AAA; }
-          &.percent-63::before { right: 52px; color: #AAA; }
-          &.percent-64::before { right: 51px; color: #AAA; }
-          &.percent-65::before { right: 50px; color: #AAA; }
-          &.percent-66::before { right: 49px; color: #AAA; }
-          &.percent-67::before { right: 48px; color: $grade-light-green; }
-          &.percent-68::before { right: 47px; color: $grade-light-green; }
-          &.percent-69::before { right: 46px; color: $grade-light-green; }
-          &.percent-70::before { right: 45px; color: $grade-light-green; }
-          &.percent-71::before { right: 44px; color: $grade-light-green; }
-          &.percent-72::before { right: 43px; color: $grade-light-green; }
-          &.percent-73::before { right: 42px; color: $grade-light-green; }
-          &.percent-74::before { right: 41px; color: $grade-light-green; }
-          &.percent-75::before { right: 40px; color: $grade-light-green; }
-          &.percent-76::before { right: 39px; color: $grade-light-green; }
-          &.percent-77::before { right: 38px; color: $grade-light-green; }
-          &.percent-78::before { right: 37px; color: $grade-light-green; }
-          &.percent-79::before { right: 36px; color: $grade-light-green; }
-          &.percent-80::before { right: 35px; color: $grade-light-green; }
-          &.percent-81::before { right: 34px; color: $grade-light-green; }
-          &.percent-82::before { right: 33px; color: $grade-light-green; }
-          &.percent-83::before { right: 32px; color: $grade-light-green; }
-          &.percent-84::before { right: 31px; color: $grade-light-green; }
-          &.percent-85::before { right: 30px; color: $grade-light-green; }
-          &.percent-86::before { right: 29px; color: $grade-light-green; }
-          &.percent-87::before { right: 28px; color: $grade-light-green; }
-          &.percent-88::before { right: 27px; color: $grade-light-green; }
-          &.percent-89::before { right: 26px; color: $grade-light-green; }
-          &.percent-90::before { right: 25px; color: $grade-light-green; }
-          &.percent-91::before { right: 24px; color: $grade-light-green; }
-          &.percent-92::before { right: 23px; color: $grade-light-green; }
-          &.percent-93::before { right: 22px; color: $grade-light-green; }
-          &.percent-94::before { right: 21px; color: $grade-light-green; }
-          &.percent-95::before { right: 20px; color: $grade-light-green; }
-          &.percent-96::before { right: 19px; color: $grade-light-green; }
-          &.percent-97::before { right: 18px; color: $grade-light-green; }
-          &.percent-98::before { right: 17px; color: $grade-light-green; }
-          &.percent-99::before { right: 16px; color: $grade-light-green; }
-          &.percent-100::before { right: 15px; color: $grade-light-green; }
-        }
-
-        &.incomplete {
-          background: repeating-linear-gradient(-55deg, #FFF, #FFF 2px, rgba(0, 0, 0, 0.1) 2px, rgba(0, 0, 0, 0.1) 4px);
-
-          &::before {
-            content: 'INCOMPLETE';
-            position: absolute;
-            right: 37px;
-            margin-top: 6px;
-            color: $grade-red;
-            font-size: $font-medium;;
-            font-weight: 700;
-            background: #FFF;
-          }
-
-          &.double::before {
-            margin-top: 12px;
-          }
-        }
-
-        &.no-complaints {
-          background: repeating-linear-gradient(-55deg, #FFF, #FFF 2px, rgba(0, 0, 0, 0.1) 2px, rgba(0, 0, 0, 0.1) 4px);
-
-          &::before {
-            content: 'NO COMPLAINTS';
-            position: absolute;
-            right: 30px;
-            margin-top: 6px;
-            color: $grade-light-green;
-            font-size: $font-medium;;
-            font-weight: 700;
-            background: #FFF;
-          }
-
-          &.double::before {
-            margin-top: 12px;
-          }
-        }
-
-        &.none-reported {
-          background: repeating-linear-gradient(-55deg, #FFF, #FFF 2px, rgba(0, 0, 0, 0.1) 2px, rgba(0, 0, 0, 0.1) 4px);
-
-          &::before {
-            content: 'NONE REPORTED';
-            position: absolute;
-            right: 30px;
-            margin-top: 6px;
-            color: $grade-light-green;
-            font-size: $font-medium;;
-            font-weight: 700;
-            background: #FFF;
-          }
-
-          &.double::before {
-            margin-top: 12px;
-          }
-        }
-      }
-
-      td {
-        border-right: 1px solid $border-color;
-        border-top: 1px solid $border-color;
-        padding: 4px 0;
-
-        &.divider {
-          border-right: 1px solid #000;
-        }
-      }
-    }
-
-    .summary {
-      text-align: left;
-      margin-top: 12px;
-    }
-
-    .results-header {
-      display: inline-block;
-      font-weight: 400;
-      width: 48%;
-      white-space: nowrap;
-      overflow: visible;
-    }
-
-    .keys {
-      display: inline-block;
-      font-size: $font-small;;
-      font-weight: 400;
-      width: 52%;
-      text-align: right;
-      white-space: nowrap;
-
-      .key {
-        width: 8px;
-        height: 8px;
-        border-radius: 50%;
-        display: inline-block;
-        margin: 0 2px;
-        white-space: nowrap;
-
-        &.key-bad {
-          background-color: $grade-red;
-        }
-        &.key-avg {
-          background-color: #AAA;
-        }
-        &.key-good {
-          background-color: $grade-light-green;
-        }
-      }
-    }
-
-    strong {
-      font-weight: 700;
-
-      &.grade-a {
-        color: $grade-a;
-      }
-
-      &.grade-b {
-        color: $grade-b;
-      }
-
-      &.grade-c {
-        color: $grade-c;
-      }
-
-      &.grade-d {
-        color: $grade-d;
-      }
-
-      &.grade-f {
-        color: $grade-f;
-      }
-
-      &.grade-f-minus {
-        color: $grade-f;
-      }
-
-      &.grade-incomplete {
-        color: $grade-incomplete;
-      }
-
-      &.grade span {
-        color: $primary-gray !important;
-      }
-    }
-
-    p {
-      margin-top: 20px;
-      line-height: 18px;
-
-      &:first-child {
-        margin-top: 0;
-      }
-
-      &.score {
-        font-size: $font-large;
-        line-height: 24px;
-      }
-
-      &.instructions {
-        font-size: $font-large;
-        line-height: 24px;
-        color: $text-blue;
-      }
-    }
-  }
 }
 
 .wrapper {
@@ -1405,19 +1053,19 @@ p.partial-data {
       }
 
       &.bright-green {
-        background-color: $grade-light-green;
+        background-color: $grade-red;
       }
 
       &.green {
-        background-color: $grade-green;
+        background-color: $grade-red;
       }
 
       &.yellow {
-        background-color: $grade-yellow;
+        background-color: $grade-red;
       }
 
       &.orange {
-        background-color: $grade-orange;
+        background-color: $grade-red;
       }
 
       &.red {
@@ -1429,7 +1077,7 @@ p.partial-data {
       }
 
       &.dark-grey {
-        background-color: #888;
+        background-color: $grade-red;
       }
     }
   }
@@ -1788,14 +1436,345 @@ p.partial-data {
   }
 }
 
+.section.at-a-glance {
+  color: #FFF;
+  padding: 44px 0 20px 0;
+
+  .group-header {
+    h1 {
+      font-family: 'Barlow Condensed', sans-serif;
+      font-size: 24px;
+      font-weight: 400;
+      text-transform: uppercase;
+      margin-bottom: 14px;
+    }
+
+    h2 {
+      font-family: 'Barlow Condensed', sans-serif;
+      font-size: 18px;
+      font-weight: 400;
+      text-transform: uppercase;
+      margin-bottom: 14px;
+
+      strong {
+        font-weight: 600;
+      }
+    }
+
+    p {
+      font-size: 11px;
+      margin-bottom: 14px;
+    }
+  }
+
+  .section-header {
+    font-size: 16px;
+    font-family: 'Barlow Condensed', sans-serif;
+    font-weight: bold;
+    padding: 6px 0;
+    text-transform: uppercase;
+  }
+
+  .table-header-labels {
+    border-bottom: 1px solid rgba(255, 255, 255, .5);
+    position: relative;
+    height: 40px;
+
+    &.empty {
+      height: 30px;
+    }
+
+    div {
+      font-family: 'Barlow Condensed', sans-serif;
+      color: #FFF;
+      position: absolute;
+      text-transform: uppercase;
+      vertical-align: bottom;
+      display: inline-block;
+      height: 40px;
+      font-size: 14px;
+    }
+
+    div.worse {
+      right: 120px;
+      text-align: left;
+      width: 40px;
+      padding-top: 20px;
+    }
+
+    div.middle {
+      right: 48px;
+      text-align: center;
+      width: 64px;
+      padding-top: 6px;
+    }
+
+    div.better {
+      right: 0;
+      text-align: right;
+      padding-top: 20px;
+      width: 40px;
+    }
+  }
+
+  table {
+    border: 1px solid rgba(255, 255, 255, .1);
+    border-left: 0;
+    border-bottom: 0;
+    width: 100%;
+    position: relative;
+
+    tr {
+      border-bottom: 1px solid rgba(255, 255, 255, .1);
+      position: relative;
+      font-size: 14px;
+      color: #BBB;
+      vertical-align: middle;
+
+      &.double {
+        line-height: 18px;
+      }
+
+      td {
+        vertical-align: middle;
+      }
+
+      td.table-cell {
+        width: 40px;
+        height: 40px;
+        border-left: 1px solid rgba(255, 255, 255, .1);
+
+        &.divider {
+          border-right: 1px solid rgba(255, 255, 255, .5);
+        }
+      }
+
+      &.double {
+        td.table-cell {
+          height: 50px;
+        }
+      }
+
+      &.key {
+        &::before {
+          content: '';
+          position: absolute;
+          font-size: $font-small;
+          width: 30px;
+          height: 30px;
+          border-radius: 50%;
+          line-height: 30px;
+          text-align: center;
+          display: block;
+          font-size: 14px;
+          font-weight: bold;
+          margin-top: 4px;
+        }
+
+        &.double::before {
+          margin-top: 8px;
+        }
+
+        &.percent-0::before { content: '0'; right: calc(130px - (130px * 0)); color: #FFF; background-color: #b02424; }
+        &.percent-1::before { content: '1'; right: calc(130px - (130px * 0.01)); color: #FFF; background-color: #b02424; }
+        &.percent-2::before { content: '2'; right: calc(130px - (130px * 0.02)); color: #FFF; background-color: #b02424; }
+        &.percent-3::before { content: '3'; right: calc(130px - (130px * 0.03)); color: #FFF; background-color: #b02424; }
+        &.percent-4::before { content: '4'; right: calc(130px - (130px * 0.04)); color: #FFF; background-color: #b02424; }
+        &.percent-5::before { content: '5'; right: calc(130px - (130px * 0.05)); color: #FFF; background-color: #b02424; }
+        &.percent-6::before { content: '6'; right: calc(130px - (130px * 0.06)); color: #FFF; background-color: #b02424; }
+        &.percent-7::before { content: '7'; right: calc(130px - (130px * 0.07)); color: #FFF; background-color: #b02424; }
+        &.percent-8::before { content: '8'; right: calc(130px - (130px * 0.08)); color: #FFF; background-color: #b02424; }
+        &.percent-9::before { content: '9'; right: calc(130px - (130px * 0.09)); color: #FFF; background-color: #b02424; }
+        &.percent-10::before { content: '10'; right: calc(130px - (130px * 0.10)); color: #FFF; background-color: #b02424; }
+        &.percent-11::before { content: '11'; right: calc(130px - (130px * 0.11)); color: #FFF; background-color: #b02424; }
+        &.percent-12::before { content: '12'; right: calc(130px - (130px * 0.12)); color: #FFF; background-color: #b02424; }
+        &.percent-13::before { content: '13'; right: calc(130px - (130px * 0.13)); color: #FFF; background-color: #b02424; }
+        &.percent-14::before { content: '14'; right: calc(130px - (130px * 0.14)); color: #FFF; background-color: #b02424; }
+        &.percent-15::before { content: '15'; right: calc(130px - (130px * 0.15)); color: #FFF; background-color: #b02424; }
+        &.percent-16::before { content: '16'; right: calc(130px - (130px * 0.16)); color: #FFF; background-color: #b02424; }
+        &.percent-17::before { content: '17'; right: calc(130px - (130px * 0.17)); color: #FFF; background-color: #b02424; }
+        &.percent-18::before { content: '18'; right: calc(130px - (130px * 0.18)); color: #FFF; background-color: #b02424; }
+        &.percent-19::before { content: '19'; right: calc(130px - (130px * 0.19)); color: #FFF; background-color: #b02424; }
+        &.percent-20::before { content: '20'; right: calc(130px - (130px * 0.20)); color: #FFF; background-color: #b02424; }
+        &.percent-21::before { content: '21'; right: calc(130px - (130px * 0.21)); color: #FFF; background-color: #b02424; }
+        &.percent-22::before { content: '22'; right: calc(130px - (130px * 0.22)); color: #FFF; background-color: #b02424; }
+        &.percent-23::before { content: '23'; right: calc(130px - (130px * 0.23)); color: #FFF; background-color: #b02424; }
+        &.percent-24::before { content: '24'; right: calc(130px - (130px * 0.24)); color: #FFF; background-color: #b02424; }
+        &.percent-25::before { content: '25'; right: calc(130px - (130px * 0.25)); color: #FFF; background-color: #b02424; }
+        &.percent-26::before { content: '26'; right: calc(130px - (130px * 0.26)); color: #FFF; background-color: #b02424; }
+        &.percent-27::before { content: '27'; right: calc(130px - (130px * 0.27)); color: #FFF; background-color: #b02424; }
+        &.percent-28::before { content: '28'; right: calc(130px - (130px * 0.28)); color: #FFF; background-color: #b02424; }
+        &.percent-29::before { content: '29'; right: calc(130px - (130px * 0.29)); color: #FFF; background-color: #b02424; }
+        &.percent-30::before { content: '30'; right: calc(130px - (130px * 0.30)); color: #FFF; background-color: #b02424; }
+        &.percent-31::before { content: '31'; right: calc(130px - (130px * 0.31)); color: #FFF; background-color: #b02424; }
+        &.percent-32::before { content: '32'; right: calc(130px - (130px * 0.32)); color: #FFF; background-color: #b02424; }
+        &.percent-33::before { content: '33'; right: calc(130px - (130px * 0.33)); color: #FFF; background-color: #b02424; }
+        &.percent-34::before { content: '34'; right: calc(130px - (130px * 0.34)); color: #464648; background-color: #d8d8d8; }
+        &.percent-35::before { content: '35'; right: calc(130px - (130px * 0.35)); color: #464648; background-color: #d8d8d8; }
+        &.percent-36::before { content: '36'; right: calc(130px - (130px * 0.36)); color: #464648; background-color: #d8d8d8; }
+        &.percent-37::before { content: '37'; right: calc(130px - (130px * 0.37)); color: #464648; background-color: #d8d8d8; }
+        &.percent-38::before { content: '38'; right: calc(130px - (130px * 0.38)); color: #464648; background-color: #d8d8d8; }
+        &.percent-39::before { content: '39'; right: calc(130px - (130px * 0.39)); color: #464648; background-color: #d8d8d8; }
+        &.percent-40::before { content: '40'; right: calc(130px - (130px * 0.40)); color: #464648; background-color: #d8d8d8; }
+        &.percent-41::before { content: '41'; right: calc(130px - (130px * 0.41)); color: #464648; background-color: #d8d8d8; }
+        &.percent-42::before { content: '42'; right: calc(130px - (130px * 0.42)); color: #464648; background-color: #d8d8d8; }
+        &.percent-43::before { content: '43'; right: calc(130px - (130px * 0.43)); color: #464648; background-color: #d8d8d8; }
+        &.percent-44::before { content: '44'; right: calc(130px - (130px * 0.44)); color: #464648; background-color: #d8d8d8; }
+        &.percent-45::before { content: '45'; right: calc(130px - (130px * 0.45)); color: #464648; background-color: #d8d8d8; }
+        &.percent-46::before { content: '46'; right: calc(130px - (130px * 0.46)); color: #464648; background-color: #d8d8d8; }
+        &.percent-47::before { content: '47'; right: calc(130px - (130px * 0.47)); color: #464648; background-color: #d8d8d8; }
+        &.percent-48::before { content: '48'; right: calc(130px - (130px * 0.48)); color: #464648; background-color: #d8d8d8; }
+        &.percent-49::before { content: '49'; right: calc(130px - (130px * 0.49)); color: #464648; background-color: #d8d8d8; }
+        &.percent-50::before { content: '50'; right: calc(130px - (130px * 0.50)); color: #464648; background-color: #d8d8d8; }
+        &.percent-51::before { content: '51'; right: calc(130px - (130px * 0.51)); color: #464648; background-color: #d8d8d8; }
+        &.percent-52::before { content: '52'; right: calc(130px - (130px * 0.52)); color: #464648; background-color: #d8d8d8; }
+        &.percent-53::before { content: '53'; right: calc(130px - (130px * 0.53)); color: #464648; background-color: #d8d8d8; }
+        &.percent-54::before { content: '54'; right: calc(130px - (130px * 0.54)); color: #464648; background-color: #d8d8d8; }
+        &.percent-55::before { content: '55'; right: calc(130px - (130px * 0.55)); color: #464648; background-color: #d8d8d8; }
+        &.percent-56::before { content: '56'; right: calc(130px - (130px * 0.56)); color: #464648; background-color: #d8d8d8; }
+        &.percent-57::before { content: '57'; right: calc(130px - (130px * 0.57)); color: #464648; background-color: #d8d8d8; }
+        &.percent-58::before { content: '58'; right: calc(130px - (130px * 0.58)); color: #464648; background-color: #d8d8d8; }
+        &.percent-59::before { content: '59'; right: calc(130px - (130px * 0.59)); color: #464648; background-color: #d8d8d8; }
+        &.percent-60::before { content: '60'; right: calc(130px - (130px * 0.60)); color: #464648; background-color: #d8d8d8; }
+        &.percent-61::before { content: '61'; right: calc(130px - (130px * 0.61)); color: #464648; background-color: #d8d8d8; }
+        &.percent-62::before { content: '62'; right: calc(130px - (130px * 0.62)); color: #464648; background-color: #d8d8d8; }
+        &.percent-63::before { content: '63'; right: calc(130px - (130px * 0.63)); color: #464648; background-color: #d8d8d8; }
+        &.percent-64::before { content: '64'; right: calc(130px - (130px * 0.64)); color: #464648; background-color: #d8d8d8; }
+        &.percent-65::before { content: '65'; right: calc(130px - (130px * 0.65)); color: #464648; background-color: #d8d8d8; }
+        &.percent-66::before { content: '66'; right: calc(130px - (130px * 0.66)); color: #464648; background-color: #d8d8d8; }
+        &.percent-67::before { content: '67'; right: calc(130px - (130px * 0.67)); color: #464648; background-color: #f3f4f6; }
+        &.percent-68::before { content: '68'; right: calc(130px - (130px * 0.68)); color: #464648; background-color: #f3f4f6; }
+        &.percent-69::before { content: '69'; right: calc(130px - (130px * 0.69)); color: #464648; background-color: #f3f4f6; }
+        &.percent-70::before { content: '70'; right: calc(130px - (130px * 0.70)); color: #464648; background-color: #f3f4f6; }
+        &.percent-71::before { content: '71'; right: calc(130px - (130px * 0.71)); color: #464648; background-color: #f3f4f6; }
+        &.percent-72::before { content: '72'; right: calc(130px - (130px * 0.72)); color: #464648; background-color: #f3f4f6; }
+        &.percent-73::before { content: '73'; right: calc(130px - (130px * 0.73)); color: #464648; background-color: #f3f4f6; }
+        &.percent-74::before { content: '74'; right: calc(130px - (130px * 0.74)); color: #464648; background-color: #f3f4f6; }
+        &.percent-75::before { content: '75'; right: calc(130px - (130px * 0.75)); color: #464648; background-color: #f3f4f6; }
+        &.percent-76::before { content: '76'; right: calc(130px - (130px * 0.76)); color: #464648; background-color: #f3f4f6; }
+        &.percent-77::before { content: '77'; right: calc(130px - (130px * 0.77)); color: #464648; background-color: #f3f4f6; }
+        &.percent-78::before { content: '78'; right: calc(130px - (130px * 0.78)); color: #464648; background-color: #f3f4f6; }
+        &.percent-79::before { content: '79'; right: calc(130px - (130px * 0.79)); color: #464648; background-color: #f3f4f6; }
+        &.percent-80::before { content: '80'; right: calc(130px - (130px * 0.80)); color: #464648; background-color: #f3f4f6; }
+        &.percent-81::before { content: '81'; right: calc(130px - (130px * 0.81)); color: #464648; background-color: #f3f4f6; }
+        &.percent-82::before { content: '82'; right: calc(130px - (130px * 0.82)); color: #464648; background-color: #f3f4f6; }
+        &.percent-83::before { content: '83'; right: calc(130px - (130px * 0.83)); color: #464648; background-color: #f3f4f6; }
+        &.percent-84::before { content: '84'; right: calc(130px - (130px * 0.84)); color: #464648; background-color: #f3f4f6; }
+        &.percent-85::before { content: '85'; right: calc(130px - (130px * 0.85)); color: #464648; background-color: #f3f4f6; }
+        &.percent-86::before { content: '86'; right: calc(130px - (130px * 0.86)); color: #464648; background-color: #f3f4f6; }
+        &.percent-87::before { content: '87'; right: calc(130px - (130px * 0.87)); color: #464648; background-color: #f3f4f6; }
+        &.percent-88::before { content: '88'; right: calc(130px - (130px * 0.88)); color: #464648; background-color: #f3f4f6; }
+        &.percent-89::before { content: '89'; right: calc(130px - (130px * 0.89)); color: #464648; background-color: #f3f4f6; }
+        &.percent-90::before { content: '90'; right: calc(130px - (130px * 0.90)); color: #464648; background-color: #f3f4f6; }
+        &.percent-91::before { content: '91'; right: calc(130px - (130px * 0.91)); color: #464648; background-color: #f3f4f6; }
+        &.percent-92::before { content: '92'; right: calc(130px - (130px * 0.92)); color: #464648; background-color: #f3f4f6; }
+        &.percent-93::before { content: '93'; right: calc(130px - (130px * 0.93)); color: #464648; background-color: #f3f4f6; }
+        &.percent-94::before { content: '94'; right: calc(130px - (130px * 0.94)); color: #464648; background-color: #f3f4f6; }
+        &.percent-95::before { content: '95'; right: calc(130px - (130px * 0.95)); color: #464648; background-color: #f3f4f6; }
+        &.percent-96::before { content: '96'; right: calc(130px - (130px * 0.96)); color: #464648; background-color: #f3f4f6; }
+        &.percent-97::before { content: '97'; right: calc(130px - (130px * 0.97)); color: #464648; background-color: #f3f4f6; }
+        &.percent-98::before { content: '98'; right: calc(130px - (130px * 0.98)); color: #464648; background-color: #f3f4f6; }
+        &.percent-99::before { content: '99'; right: calc(130px - (130px * 0.99)); color: #464648; background-color: #f3f4f6; }
+        &.percent-100::before { content: '100'; right: calc(130px - (130px * 1)); color: #464648; background-color: #f3f4f6; }
+      }
+
+      &.incomplete {
+        .table-label {
+          background-color: #454548;
+        }
+
+        &::before {
+          content: 'INCOMPLETE';
+          position: absolute;
+          right: 36px;
+          margin-top: 6px;
+          color: $grade-red;
+          font-size: 12px;
+          font-weight: 700;
+          background: #FFF;
+          padding: 6px;
+          background: #454548;
+        }
+
+        &.double::before {
+          margin-top: 12px;
+        }
+      }
+
+      &.no-complaints {
+        .table-label {
+          background-color: #454548;
+        }
+
+        &::before {
+          content: 'NONE REPORTED';
+          position: absolute;
+          right: 26px;
+          margin-top: 8px;
+          color: white;
+          font-size: 12px;
+          font-weight: 700;
+          background: #FFF;
+          padding: 6px;
+          background: #454548;
+        }
+
+        &.double::before {
+          margin-top: 12px;
+        }
+      }
+
+      &.none-reported {
+        .table-label {
+          background-color: #454548;
+        }
+
+        &::before {
+          content: 'NONE REPORTED';
+          position: absolute;
+          right: 25px;
+          margin-top: 6px;
+          color: white;
+          font-size: 12px;
+          font-weight: 700;
+          background: #FFF;
+          padding: 6px;
+          background: #454548;
+        }
+
+        &.double::before {
+          margin-top: 12px;
+        }
+      }
+    }
+  }
+}
+
 .section.stats {
+  .section-header {
+    height: 80px;
+  }
+  h1.title {
+    background: transparent;
+    color: white;
+    height: 80px;
+    line-height: 80px;
+
+    &::after {
+      display: none;
+    }
+  }
+
   .one-third {
     width: 33%;
     display: inline-block;
     vertical-align: top;
-    margin-top: 50px;
     padding-right: 60px;
     padding-bottom: 60px;
+
+    &.home-page {
+      margin-top: 50px;
+    }
 
     h1 {
       color: #FFF;
@@ -1977,6 +1956,24 @@ p.partial-data {
       font-size: 60px;
       font-weight: 400;
       font-family: 'Lato', sans-serif;
+      position: relative;
+      top: -10px;
+    }
+
+    .score-label {
+      color: white;
+      display: inline-block;
+      font-family: 'Barlow Condensed', sans-serif;
+      font-size: 20px;
+      font-weight: 500;
+      letter-spacing: 1.5px;
+      line-height: 20px;
+      opacity: 0.5;
+      position: absolute;
+      text-decoration: none;
+      text-transform: uppercase;
+      bottom: 24px;
+      right: 0;
     }
   }
 }
@@ -2433,7 +2430,7 @@ p.partial-data {
     }
 
     img {
-      shape-outside: url(../img/next/step1.svg);
+      shape-outside: url(../img/next/step-1.svg);
     }
   }
 
@@ -2443,7 +2440,7 @@ p.partial-data {
     }
 
     img {
-      shape-outside: url(../img/next/step2.svg);
+      shape-outside: url(../img/next/step-2.svg);
     }
   }
 
@@ -2453,7 +2450,7 @@ p.partial-data {
     }
 
     img {
-      shape-outside: url(../img/next/step3.svg);
+      shape-outside: url(../img/next/step-3.svg);
     }
   }
 }
@@ -2521,17 +2518,16 @@ p.partial-data {
     display: inline-block;
     width: 30px;
     height: 30px;
-    background: #cacaca;
-    border-radius: 50%;
-    margin-right: 8px;
-    transition: background-color 0.25s;
+    margin-right: 20px;
     text-align: center;
     line-height: 30px;
-    color: $primary-gray;
+    color: #CCC;
     margin-top: 8px;
+    font-size: 30px;
+    transition: color 0.25s;
 
     &:hover {
-      background: #FFF;
+      color: #FFF;
     }
   }
 
@@ -2551,7 +2547,7 @@ p.partial-data {
       padding-left: 52px;
 
       &.get-involved {
-        background: url(../img/hand.png) left center no-repeat;
+        background: url(../img/get-involved.svg) left center no-repeat;
       }
 
       &.donate {
@@ -3472,6 +3468,27 @@ svg.highcharts-root .current-marker image {
     display: none;
   }
 
+  .section.at-a-glance {
+    .group-header {
+      padding-left: 20px;
+      padding-right: 20px;
+
+      p {
+        font-size: 9px;
+      }
+    }
+
+    .right {
+      .table-header-labels {
+        height: 30px;
+
+        div {
+          display: none;
+        }
+      }
+    }
+  }
+
   .section.hero.report {
     .buttons {
       text-align: center;
@@ -3756,6 +3773,10 @@ svg.highcharts-root .current-marker image {
           line-height: 32px;
           text-transform: uppercase;
           font-weight: 500;
+
+          &.large-title {
+            font-size: 24px;
+          }
         }
 
         .score-divider {
@@ -3950,6 +3971,17 @@ svg.highcharts-root .current-marker image {
   .section.stats {
     padding: 20px 0 40px 0;
 
+    .section-header {
+      height: 40px;
+      padding: 0 20px;
+      text-align: left;
+
+      h1.title {
+        color: white;
+        padding: unset;
+      }
+    }
+
     .one-third {
       width: 100%;
       display: block;
@@ -4108,11 +4140,6 @@ svg.highcharts-root .current-marker image {
     .right {
       font-size: $font-large;
 
-      .grade {
-        font-size: 36px;
-        line-height: 36px;
-      }
-
       span {
         position: relative;
         top: -22px;
@@ -4121,6 +4148,20 @@ svg.highcharts-root .current-marker image {
           font-weight: 300;
           font-style: normal;
         }
+      }
+
+      .score-label {
+        right: 16px;
+        top: 50px;
+        font-size: 14px;
+        opacity: 0.65;
+        line-height: 14px;
+      }
+
+      .grade {
+        font-size: 36px;
+        line-height: 36px;
+        top: -30px;
       }
     }
   }
@@ -4356,9 +4397,7 @@ svg.highcharts-root .current-marker image {
     padding: 0;
 
     .left {
-      background: rgba(255, 255, 255, 0.15);
-      text-align: center;
-      height: 45px;
+      display: none !important;
     }
 
     .right {

@@ -8,9 +8,9 @@
       <h2>Step 1: <span class="completed">COMPLETED</span></h2>
 
       <div>
-        <img src="/assets/img/next/step1.svg" alt="Step 1" />
+        <img src="/assets/img/next/step-1.svg" alt="Step 1" />
 
-        <p><strong>Inform</strong> Inform data-driven interventions in America’s 100 largest cities. Update scores and track progress over time.</p>
+        <p><strong>Obtain</strong> data on 100 California cities. Refine methodology in response to feedback from communities, researchers and local officials.</p>
       </div>
     </div>
 
@@ -18,7 +18,7 @@
       <h2>Step 2: <span class="completed">COMPLETED</span></h2>
 
       <div>
-        <img src="/assets/img/next/step2.svg" alt="Step 2" />
+        <img src="/assets/img/next/step-2.svg" alt="Step 2" />
 
         <p><strong>Expand</strong> to every major law enforcement agency in America and include additional indicators such as police budgets and jail incarceration.</p>
       </div>
@@ -28,9 +28,9 @@
       <h2>Step 3: <span class="in-progress">IN PROGRESS</span></h2>
 
       <div>
-        <img src="/assets/img/next/step3.svg" alt="Step 3" />
+        <img src="/assets/img/next/step-3.svg" alt="Step 3" />
 
-        <p><strong>Work towards a national</strong> police scorecard as more data are made available by federal, state, and local agencies. Create the foundation for a National Policing Intervention System to improve policing outcomes nationwide.</p>
+        <p><strong>Inform</strong> data-driven solutions nationwide. Update as new federal, state and local data are collected. Track progress and hold cities accountable to results.</p>
       </div>
     </div>
   </div>

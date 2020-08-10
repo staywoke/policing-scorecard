@@ -4,7 +4,7 @@
       About This Scorecard
     </h1>
     <p>
-      <strong>This is the first nationwide evaluation of policing in the United States.</strong> It was built using data from state and federal databases, public records requests to local police departments, and media reports. While police data is never perfect, and there are many issues that still need to be tracked, the Police Scorecard is designed to provide insight into many important issues in policing.
+      <strong>This is the first nationwide evaluation of policing in the United States.</strong> It was built using data from state and federal databases, public records requests to local police departments, and media reports. While police data is never perfect, and there are additional indicators that still need to be tracked, the Police Scorecard is designed to provide insight into many important issues in policing.
     </p>
     <p>
       <a href="/about" class="button">methodology</a>
@@ -12,7 +12,7 @@
     </p>
     <p>&nbsp;</p>
     <p>
-      <strong>Use this Scorecard to identify issues within police departments that require the most urgent interventions and hold officials accountable for implementing solutions.</strong> For example, cities with higher rates of misdemeanor arrests could benefit most from solutions that create alternatives to policing and arrest for these offenses. In cities where police make fewer arrests overall but use more force when making arrests, communities could benefit significantly from policies designed to hold police accountable for this behavior. And cities where complaints of police misconduct are rarely ruled in favor of civilians could benefit from creating an oversight structure to independently investigate these complaints.
+      <strong>Use this Scorecard to identify issues within police departments that require the most urgent interventions and hold officials accountable for implementing solutions.</strong> For example, cities with higher rates of arrests for low level offenses could benefit most from solutions that create alternatives to policing and arrest for these offenses. In cities where police make fewer arrests overall but use more force when making arrests, communities could benefit significantly from policies designed to hold police accountable for this behavior. And cities where complaints of police misconduct are rarely ruled in favor of civilians could benefit from repealing provisions in local police union contracts and state "Police Bill of Rights" laws that obstruct, delay and/or disqualify many investigations into police misconduct.
     </p>
     <p>&nbsp;</p>
     <p class="take-action">Here's how to start pushing for change</p>
@@ -42,7 +42,7 @@
         <div class="right number number-2">
           <ul>
             <li>
-              <strong>Find your US Senator and US Representative</strong> using our Advocacy Tool and urge them to support the <strong>Justice in Policing Act</strong> to end qualified immunity, demilitarize police, and ban chokeholds and no-knock warrants.
+              <strong>Find your US Senator and US Representative</strong> using our Advocacy Tool and urge them to support the <strong>BREATHE Act</strong> to shift funding from policing and prisons to community-based alternatives that do not cause harm.
               <br />
               <a href="https://www.joincampaignzero.org/advocacy" class="button" target="_blank">Advocacy Tool</a>
             </li>

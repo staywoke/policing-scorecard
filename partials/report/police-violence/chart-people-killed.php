@@ -4,21 +4,33 @@
   <h3>Deadly Force by Armed Status</h3>
 
   <p>
-    <?= num($scorecard['report']['percent_used_against_people_who_were_unarmed'], 0, '%') ?> were Unarmed
+    <?= num($scorecard['report']['percent_used_against_people_who_were_unarmed'], 0, '%') ?> Unarmed
     <span class="divider">&nbsp;|&nbsp;</span>
-    <?= 100 - intval(num($scorecard['report']['percent_used_against_people_who_were_not_armed_with_gun'], 0)) ?>% had a Gun
+    <?= 100 - intval(num($scorecard['report']['percent_used_against_people_who_were_not_armed_with_gun'], 0)) ?>% Did Not Allegedly Have a Gun
   </p>
 
-  <?php if (num($scorecard['report']['total_people_killed'], 0) !== '0'): ?>
-  <div class="canvas-wrapper">
-    <div class="canvas-label">
-      <?= num($scorecard['report']['total_people_killed'], 0) ?><br>
-      <span><?= grammar('people', num($scorecard['report']['total_people_killed'], 0)) ?> Killed by Police</span>
-    </div>
-    <canvas id="deadly-force-chart" width="310" height="350" style="margin: 10px auto 20px auto;"></canvas>
+  <div class="keys" style="padding: 10px 0;">
+    <span class="key key-red"></span> Unarmed
+    <span class="key key-orange"></span> Other
+    <span class="key key-black"></span> Alleged Gun
+    <span class="key key-grey"></span> Vehicle
   </div>
-  <?php else: ?>
-  <p>&nbsp;</p>
-  <?php endif; ?>
+
+  <div class="progress-bar-wrapper">
+    <div class="progress-bar animate-bar grouped key-red" data-percent="<?= output(floatval($scorecard['report']['percent_used_against_people_who_were_unarmed']), 0, '%') ?>">
+      <span><?= (intval($scorecard['report']['percent_used_against_people_who_were_unarmed']) > 5) ? num(intval($scorecard['report']['percent_used_against_people_who_were_unarmed']), 0, '%') : '' ?></span>
+    </div>
+    <div class="progress-bar animate-bar grouped key-orange" data-percent="<?= output(floatval(($scorecard['report']['percent_used_against_people_who_were_not_armed_with_gun'] - $scorecard['report']['percent_used_against_people_who_were_unarmed'])), 0, '%') ?>">
+      <span><?= (intval(($scorecard['report']['percent_used_against_people_who_were_not_armed_with_gun'] - $scorecard['report']['percent_used_against_people_who_were_unarmed'])) > 5) ? num(intval(($scorecard['report']['percent_used_against_people_who_were_not_armed_with_gun'] - $scorecard['report']['percent_used_against_people_who_were_unarmed'])), 0, '%') : '' ?></span>
+    </div>
+    <div class="progress-bar animate-bar grouped key-black" data-percent="<?= output(floatval((100 - floatval($scorecard['report']['percent_used_against_people_who_were_not_armed_with_gun']))), 0, '%') ?>">
+      <span><?= (intval((100 - floatval($scorecard['report']['percent_used_against_people_who_were_not_armed_with_gun']))) > 5) ? num(intval((100 - floatval($scorecard['report']['percent_used_against_people_who_were_not_armed_with_gun']))), 0, '%') : '' ?></span>
+    </div>
+    <div class="progress-bar animate-bar grouped key-grey" data-percent="<?= output(floatval($scorecard['police_violence']['vehicle_people_killed']), 0, '%') ?>">
+      <span><?= (intval($scorecard['police_violence']['vehicle_people_killed']) > 5) ? num(intval($scorecard['police_violence']['vehicle_people_killed']), 0, '%') : '' ?></span>
+    </div>
+  </div>
+
+  <p class="note">^&nbsp; More Unarmed People Killed per Arrest than <?= num($scorecard['report']['percentile_unarmed_killed_by_police'], 0, '%', true) ?> of Depts &nbsp;&nbsp;</p>
 </div>
 <?php endif; ?>

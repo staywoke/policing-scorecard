@@ -6,8 +6,9 @@
         <a href="javascript:void(0);" id="score-location" title="Select Other Departments in <?= $stateName ?>"><?= ($scorecard['agency']['complete']) ? '' : '<span class="incomplete">*</span>' ?><?= $scorecard['agency']['name'] ?></a>
       </div>
     </div>
-    <div class="right v-center view-score" onclick="SCORECARD.loadResultsInfo('<?= $location ?>')">
+    <div class="right v-center view-score" onclick="SCORECARD.loadResultsInfo()">
       <span class="grade"><?= $scorecard['report']['overall_score'] ?><i>%</i></span>
+      <span class="score-label">SCORE</span>
     </div>
   </div>
   <?php if ($scorecard['agency']['complete'] === false): ?>

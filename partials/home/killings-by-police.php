@@ -3,7 +3,7 @@ $nationalSummary = getNationalSummary($states);
 ?>
 <div class="section bg-gray stats">
   <div class="content">
-    <div class="one-third">
+    <div class="one-third home-page">
       <h1><strong><?= $nationalSummary['total_people_killed'] ?></strong> Killings by Police</h1>
 
       <div class="text">
@@ -15,7 +15,7 @@ $nationalSummary = getNationalSummary($states);
       </div>
     </div>
 
-    <div class="one-third">
+    <div class="one-third home-page">
       <h1><strong><?= num($nationalSummary['total_complaints_reported']) ?></strong> civilian complaints of police misconduct</h1>
 
       <div class="text">
@@ -32,7 +32,7 @@ $nationalSummary = getNationalSummary($states);
       </div>
     </div>
 
-    <div class="one-third">
+    <div class="one-third home-page">
       <h1><strong><?= num($nationalSummary['total_arrests']) ?></strong> arrests made</h1>
 
       <div class="text">

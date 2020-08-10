@@ -313,759 +313,6 @@ p.partial-data {
   display: block;
 }
 
-#modal-wrapper #results-info-content {
-  font-weight: 300;
-}
-
-#modal-wrapper #results-info-content .modal-header {
-  height: 40px;
-}
-
-#modal-wrapper #results-info-content .percentile-header {
-  height: 30px;
-}
-
-#modal-wrapper #results-info-content .section-header {
-  height: 20px;
-  font-size: 11px;
-  font-weight: 700;
-  border-bottom: 2px solid #000;
-  margin-top: 20px;
-}
-
-#modal-wrapper #results-info-content .section-header:nth-child(2), #modal-wrapper #results-info-content .section-header:nth-child(3) {
-  margin-top: 0;
-}
-
-#modal-wrapper #results-info-content .section-header.no-border {
-  border-bottom: none;
-}
-
-#modal-wrapper #results-info-content .section-header .label {
-  width: 61%;
-  display: inline-block;
-  white-space: nowrap;
-}
-
-#modal-wrapper #results-info-content .section-header .percentile {
-  width: 39%;
-  display: inline-block;
-  text-align: center;
-}
-
-#modal-wrapper #results-info-content .section-header strong {
-  display: block;
-  width: 100%;
-  text-align: center;
-  font-weight: 700;
-  font-size: 11px;
-}
-
-#modal-wrapper #results-info-content .button-wrapper {
-  text-align: center;
-  margin-top: 12px;
-}
-
-#modal-wrapper #results-info-content .button-wrapper .button {
-  background: #5a6f83;
-  text-decoration: none;
-  color: white;
-  padding: 6px 0;
-  border-radius: 4px;
-  text-align: center;
-  font-weight: 500;
-  display: block;
-  text-transform: uppercase;
-  font-size: 11px;
-}
-
-#modal-wrapper #results-info-content table {
-  font-size: 11px;
-  font-weight: 400;
-}
-
-#modal-wrapper #results-info-content table tr.key::before {
-  content: '\002B24';
-  position: absolute;
-  margin-top: 6px;
-  font-size: 8px;
-}
-
-#modal-wrapper #results-info-content table tr.key.double::before {
-  margin-top: 12px;
-}
-
-#modal-wrapper #results-info-content table tr.key.percent-0::before {
-  right: 115px;
-  color: #dc4646;
-}
-
-#modal-wrapper #results-info-content table tr.key.percent-1::before {
-  right: 114px;
-  color: #dc4646;
-}
-
-#modal-wrapper #results-info-content table tr.key.percent-2::before {
-  right: 113px;
-  color: #dc4646;
-}
-
-#modal-wrapper #results-info-content table tr.key.percent-3::before {
-  right: 112px;
-  color: #dc4646;
-}
-
-#modal-wrapper #results-info-content table tr.key.percent-4::before {
-  right: 111px;
-  color: #dc4646;
-}
-
-#modal-wrapper #results-info-content table tr.key.percent-5::before {
-  right: 110px;
-  color: #dc4646;
-}
-
-#modal-wrapper #results-info-content table tr.key.percent-6::before {
-  right: 109px;
-  color: #dc4646;
-}
-
-#modal-wrapper #results-info-content table tr.key.percent-7::before {
-  right: 108px;
-  color: #dc4646;
-}
-
-#modal-wrapper #results-info-content table tr.key.percent-8::before {
-  right: 107px;
-  color: #dc4646;
-}
-
-#modal-wrapper #results-info-content table tr.key.percent-9::before {
-  right: 106px;
-  color: #dc4646;
-}
-
-#modal-wrapper #results-info-content table tr.key.percent-10::before {
-  right: 105px;
-  color: #dc4646;
-}
-
-#modal-wrapper #results-info-content table tr.key.percent-11::before {
-  right: 104px;
-  color: #dc4646;
-}
-
-#modal-wrapper #results-info-content table tr.key.percent-12::before {
-  right: 103px;
-  color: #dc4646;
-}
-
-#modal-wrapper #results-info-content table tr.key.percent-13::before {
-  right: 102px;
-  color: #dc4646;
-}
-
-#modal-wrapper #results-info-content table tr.key.percent-14::before {
-  right: 101px;
-  color: #dc4646;
-}
-
-#modal-wrapper #results-info-content table tr.key.percent-15::before {
-  right: 100px;
-  color: #dc4646;
-}
-
-#modal-wrapper #results-info-content table tr.key.percent-16::before {
-  right: 99px;
-  color: #dc4646;
-}
-
-#modal-wrapper #results-info-content table tr.key.percent-17::before {
-  right: 98px;
-  color: #dc4646;
-}
-
-#modal-wrapper #results-info-content table tr.key.percent-18::before {
-  right: 97px;
-  color: #dc4646;
-}
-
-#modal-wrapper #results-info-content table tr.key.percent-19::before {
-  right: 96px;
-  color: #dc4646;
-}
-
-#modal-wrapper #results-info-content table tr.key.percent-20::before {
-  right: 95px;
-  color: #dc4646;
-}
-
-#modal-wrapper #results-info-content table tr.key.percent-21::before {
-  right: 94px;
-  color: #dc4646;
-}
-
-#modal-wrapper #results-info-content table tr.key.percent-22::before {
-  right: 93px;
-  color: #dc4646;
-}
-
-#modal-wrapper #results-info-content table tr.key.percent-23::before {
-  right: 92px;
-  color: #dc4646;
-}
-
-#modal-wrapper #results-info-content table tr.key.percent-24::before {
-  right: 91px;
-  color: #dc4646;
-}
-
-#modal-wrapper #results-info-content table tr.key.percent-25::before {
-  right: 90px;
-  color: #dc4646;
-}
-
-#modal-wrapper #results-info-content table tr.key.percent-26::before {
-  right: 89px;
-  color: #dc4646;
-}
-
-#modal-wrapper #results-info-content table tr.key.percent-27::before {
-  right: 88px;
-  color: #dc4646;
-}
-
-#modal-wrapper #results-info-content table tr.key.percent-28::before {
-  right: 87px;
-  color: #dc4646;
-}
-
-#modal-wrapper #results-info-content table tr.key.percent-29::before {
-  right: 86px;
-  color: #dc4646;
-}
-
-#modal-wrapper #results-info-content table tr.key.percent-30::before {
-  right: 85px;
-  color: #dc4646;
-}
-
-#modal-wrapper #results-info-content table tr.key.percent-31::before {
-  right: 84px;
-  color: #dc4646;
-}
-
-#modal-wrapper #results-info-content table tr.key.percent-32::before {
-  right: 83px;
-  color: #dc4646;
-}
-
-#modal-wrapper #results-info-content table tr.key.percent-33::before {
-  right: 82px;
-  color: #dc4646;
-}
-
-#modal-wrapper #results-info-content table tr.key.percent-34::before {
-  right: 81px;
-  color: #AAA;
-}
-
-#modal-wrapper #results-info-content table tr.key.percent-35::before {
-  right: 80px;
-  color: #AAA;
-}
-
-#modal-wrapper #results-info-content table tr.key.percent-36::before {
-  right: 79px;
-  color: #AAA;
-}
-
-#modal-wrapper #results-info-content table tr.key.percent-37::before {
-  right: 78px;
-  color: #AAA;
-}
-
-#modal-wrapper #results-info-content table tr.key.percent-38::before {
-  right: 77px;
-  color: #AAA;
-}
-
-#modal-wrapper #results-info-content table tr.key.percent-39::before {
-  right: 76px;
-  color: #AAA;
-}
-
-#modal-wrapper #results-info-content table tr.key.percent-40::before {
-  right: 75px;
-  color: #AAA;
-}
-
-#modal-wrapper #results-info-content table tr.key.percent-41::before {
-  right: 74px;
-  color: #AAA;
-}
-
-#modal-wrapper #results-info-content table tr.key.percent-42::before {
-  right: 73px;
-  color: #AAA;
-}
-
-#modal-wrapper #results-info-content table tr.key.percent-43::before {
-  right: 72px;
-  color: #AAA;
-}
-
-#modal-wrapper #results-info-content table tr.key.percent-44::before {
-  right: 71px;
-  color: #AAA;
-}
-
-#modal-wrapper #results-info-content table tr.key.percent-45::before {
-  right: 70px;
-  color: #AAA;
-}
-
-#modal-wrapper #results-info-content table tr.key.percent-46::before {
-  right: 69px;
-  color: #AAA;
-}
-
-#modal-wrapper #results-info-content table tr.key.percent-47::before {
-  right: 68px;
-  color: #AAA;
-}
-
-#modal-wrapper #results-info-content table tr.key.percent-48::before {
-  right: 67px;
-  color: #AAA;
-}
-
-#modal-wrapper #results-info-content table tr.key.percent-49::before {
-  right: 66px;
-  color: #AAA;
-}
-
-#modal-wrapper #results-info-content table tr.key.percent-50::before {
-  right: 65px;
-  color: #AAA;
-}
-
-#modal-wrapper #results-info-content table tr.key.percent-51::before {
-  right: 64px;
-  color: #AAA;
-}
-
-#modal-wrapper #results-info-content table tr.key.percent-52::before {
-  right: 63px;
-  color: #AAA;
-}
-
-#modal-wrapper #results-info-content table tr.key.percent-53::before {
-  right: 62px;
-  color: #AAA;
-}
-
-#modal-wrapper #results-info-content table tr.key.percent-54::before {
-  right: 61px;
-  color: #AAA;
-}
-
-#modal-wrapper #results-info-content table tr.key.percent-55::before {
-  right: 60px;
-  color: #AAA;
-}
-
-#modal-wrapper #results-info-content table tr.key.percent-56::before {
-  right: 59px;
-  color: #AAA;
-}
-
-#modal-wrapper #results-info-content table tr.key.percent-57::before {
-  right: 58px;
-  color: #AAA;
-}
-
-#modal-wrapper #results-info-content table tr.key.percent-58::before {
-  right: 57px;
-  color: #AAA;
-}
-
-#modal-wrapper #results-info-content table tr.key.percent-59::before {
-  right: 56px;
-  color: #AAA;
-}
-
-#modal-wrapper #results-info-content table tr.key.percent-60::before {
-  right: 55px;
-  color: #AAA;
-}
-
-#modal-wrapper #results-info-content table tr.key.percent-61::before {
-  right: 54px;
-  color: #AAA;
-}
-
-#modal-wrapper #results-info-content table tr.key.percent-62::before {
-  right: 53px;
-  color: #AAA;
-}
-
-#modal-wrapper #results-info-content table tr.key.percent-63::before {
-  right: 52px;
-  color: #AAA;
-}
-
-#modal-wrapper #results-info-content table tr.key.percent-64::before {
-  right: 51px;
-  color: #AAA;
-}
-
-#modal-wrapper #results-info-content table tr.key.percent-65::before {
-  right: 50px;
-  color: #AAA;
-}
-
-#modal-wrapper #results-info-content table tr.key.percent-66::before {
-  right: 49px;
-  color: #AAA;
-}
-
-#modal-wrapper #results-info-content table tr.key.percent-67::before {
-  right: 48px;
-  color: #7cc381;
-}
-
-#modal-wrapper #results-info-content table tr.key.percent-68::before {
-  right: 47px;
-  color: #7cc381;
-}
-
-#modal-wrapper #results-info-content table tr.key.percent-69::before {
-  right: 46px;
-  color: #7cc381;
-}
-
-#modal-wrapper #results-info-content table tr.key.percent-70::before {
-  right: 45px;
-  color: #7cc381;
-}
-
-#modal-wrapper #results-info-content table tr.key.percent-71::before {
-  right: 44px;
-  color: #7cc381;
-}
-
-#modal-wrapper #results-info-content table tr.key.percent-72::before {
-  right: 43px;
-  color: #7cc381;
-}
-
-#modal-wrapper #results-info-content table tr.key.percent-73::before {
-  right: 42px;
-  color: #7cc381;
-}
-
-#modal-wrapper #results-info-content table tr.key.percent-74::before {
-  right: 41px;
-  color: #7cc381;
-}
-
-#modal-wrapper #results-info-content table tr.key.percent-75::before {
-  right: 40px;
-  color: #7cc381;
-}
-
-#modal-wrapper #results-info-content table tr.key.percent-76::before {
-  right: 39px;
-  color: #7cc381;
-}
-
-#modal-wrapper #results-info-content table tr.key.percent-77::before {
-  right: 38px;
-  color: #7cc381;
-}
-
-#modal-wrapper #results-info-content table tr.key.percent-78::before {
-  right: 37px;
-  color: #7cc381;
-}
-
-#modal-wrapper #results-info-content table tr.key.percent-79::before {
-  right: 36px;
-  color: #7cc381;
-}
-
-#modal-wrapper #results-info-content table tr.key.percent-80::before {
-  right: 35px;
-  color: #7cc381;
-}
-
-#modal-wrapper #results-info-content table tr.key.percent-81::before {
-  right: 34px;
-  color: #7cc381;
-}
-
-#modal-wrapper #results-info-content table tr.key.percent-82::before {
-  right: 33px;
-  color: #7cc381;
-}
-
-#modal-wrapper #results-info-content table tr.key.percent-83::before {
-  right: 32px;
-  color: #7cc381;
-}
-
-#modal-wrapper #results-info-content table tr.key.percent-84::before {
-  right: 31px;
-  color: #7cc381;
-}
-
-#modal-wrapper #results-info-content table tr.key.percent-85::before {
-  right: 30px;
-  color: #7cc381;
-}
-
-#modal-wrapper #results-info-content table tr.key.percent-86::before {
-  right: 29px;
-  color: #7cc381;
-}
-
-#modal-wrapper #results-info-content table tr.key.percent-87::before {
-  right: 28px;
-  color: #7cc381;
-}
-
-#modal-wrapper #results-info-content table tr.key.percent-88::before {
-  right: 27px;
-  color: #7cc381;
-}
-
-#modal-wrapper #results-info-content table tr.key.percent-89::before {
-  right: 26px;
-  color: #7cc381;
-}
-
-#modal-wrapper #results-info-content table tr.key.percent-90::before {
-  right: 25px;
-  color: #7cc381;
-}
-
-#modal-wrapper #results-info-content table tr.key.percent-91::before {
-  right: 24px;
-  color: #7cc381;
-}
-
-#modal-wrapper #results-info-content table tr.key.percent-92::before {
-  right: 23px;
-  color: #7cc381;
-}
-
-#modal-wrapper #results-info-content table tr.key.percent-93::before {
-  right: 22px;
-  color: #7cc381;
-}
-
-#modal-wrapper #results-info-content table tr.key.percent-94::before {
-  right: 21px;
-  color: #7cc381;
-}
-
-#modal-wrapper #results-info-content table tr.key.percent-95::before {
-  right: 20px;
-  color: #7cc381;
-}
-
-#modal-wrapper #results-info-content table tr.key.percent-96::before {
-  right: 19px;
-  color: #7cc381;
-}
-
-#modal-wrapper #results-info-content table tr.key.percent-97::before {
-  right: 18px;
-  color: #7cc381;
-}
-
-#modal-wrapper #results-info-content table tr.key.percent-98::before {
-  right: 17px;
-  color: #7cc381;
-}
-
-#modal-wrapper #results-info-content table tr.key.percent-99::before {
-  right: 16px;
-  color: #7cc381;
-}
-
-#modal-wrapper #results-info-content table tr.key.percent-100::before {
-  right: 15px;
-  color: #7cc381;
-}
-
-#modal-wrapper #results-info-content table tr.incomplete {
-  background: repeating-linear-gradient(-55deg, #FFF, #FFF 2px, rgba(0, 0, 0, 0.1) 2px, rgba(0, 0, 0, 0.1) 4px);
-}
-
-#modal-wrapper #results-info-content table tr.incomplete::before {
-  content: 'INCOMPLETE';
-  position: absolute;
-  right: 37px;
-  margin-top: 6px;
-  color: #dc4646;
-  font-size: 10px;
-  font-weight: 700;
-  background: #FFF;
-}
-
-#modal-wrapper #results-info-content table tr.incomplete.double::before {
-  margin-top: 12px;
-}
-
-#modal-wrapper #results-info-content table tr.no-complaints {
-  background: repeating-linear-gradient(-55deg, #FFF, #FFF 2px, rgba(0, 0, 0, 0.1) 2px, rgba(0, 0, 0, 0.1) 4px);
-}
-
-#modal-wrapper #results-info-content table tr.no-complaints::before {
-  content: 'NO COMPLAINTS';
-  position: absolute;
-  right: 30px;
-  margin-top: 6px;
-  color: #7cc381;
-  font-size: 10px;
-  font-weight: 700;
-  background: #FFF;
-}
-
-#modal-wrapper #results-info-content table tr.no-complaints.double::before {
-  margin-top: 12px;
-}
-
-#modal-wrapper #results-info-content table tr.none-reported {
-  background: repeating-linear-gradient(-55deg, #FFF, #FFF 2px, rgba(0, 0, 0, 0.1) 2px, rgba(0, 0, 0, 0.1) 4px);
-}
-
-#modal-wrapper #results-info-content table tr.none-reported::before {
-  content: 'NONE REPORTED';
-  position: absolute;
-  right: 30px;
-  margin-top: 6px;
-  color: #7cc381;
-  font-size: 10px;
-  font-weight: 700;
-  background: #FFF;
-}
-
-#modal-wrapper #results-info-content table tr.none-reported.double::before {
-  margin-top: 12px;
-}
-
-#modal-wrapper #results-info-content table td {
-  border-right: 1px solid #EFEFEF;
-  border-top: 1px solid #EFEFEF;
-  padding: 4px 0;
-}
-
-#modal-wrapper #results-info-content table td.divider {
-  border-right: 1px solid #000;
-}
-
-#modal-wrapper #results-info-content .summary {
-  text-align: left;
-  margin-top: 12px;
-}
-
-#modal-wrapper #results-info-content .results-header {
-  display: inline-block;
-  font-weight: 400;
-  width: 48%;
-  white-space: nowrap;
-  overflow: visible;
-}
-
-#modal-wrapper #results-info-content .keys {
-  display: inline-block;
-  font-size: 8px;
-  font-weight: 400;
-  width: 52%;
-  text-align: right;
-  white-space: nowrap;
-}
-
-#modal-wrapper #results-info-content .keys .key {
-  width: 8px;
-  height: 8px;
-  border-radius: 50%;
-  display: inline-block;
-  margin: 0 2px;
-  white-space: nowrap;
-}
-
-#modal-wrapper #results-info-content .keys .key.key-bad {
-  background-color: #dc4646;
-}
-
-#modal-wrapper #results-info-content .keys .key.key-avg {
-  background-color: #AAA;
-}
-
-#modal-wrapper #results-info-content .keys .key.key-good {
-  background-color: #7cc381;
-}
-
-#modal-wrapper #results-info-content strong {
-  font-weight: 700;
-}
-
-#modal-wrapper #results-info-content strong.grade-a {
-  color: #57a15b;
-}
-
-#modal-wrapper #results-info-content strong.grade-b {
-  color: #7c984b;
-}
-
-#modal-wrapper #results-info-content strong.grade-c {
-  color: #9d9636;
-}
-
-#modal-wrapper #results-info-content strong.grade-d {
-  color: #c5882a;
-}
-
-#modal-wrapper #results-info-content strong.grade-f {
-  color: #dc6a46;
-}
-
-#modal-wrapper #results-info-content strong.grade-f-minus {
-  color: #dc6a46;
-}
-
-#modal-wrapper #results-info-content strong.grade-incomplete {
-  color: #5a6f83;
-}
-
-#modal-wrapper #results-info-content strong.grade span {
-  color: #464648 !important;
-}
-
-#modal-wrapper #results-info-content p {
-  margin-top: 20px;
-  line-height: 18px;
-}
-
-#modal-wrapper #results-info-content p:first-child {
-  margin-top: 0;
-}
-
-#modal-wrapper #results-info-content p.score {
-  font-size: 18px;
-  line-height: 24px;
-}
-
-#modal-wrapper #results-info-content p.instructions {
-  font-size: 18px;
-  line-height: 24px;
-  color: #82ADD7;
-}
-
 .wrapper {
   width: 100%;
 }
@@ -1772,19 +1019,19 @@ p.partial-data {
 }
 
 .stat-wrapper .progress-bar-wrapper .progress-bar.bright-green {
-  background-color: #7cc381;
+  background-color: #dc4646;
 }
 
 .stat-wrapper .progress-bar-wrapper .progress-bar.green {
-  background-color: #a9c37c;
+  background-color: #dc4646;
 }
 
 .stat-wrapper .progress-bar-wrapper .progress-bar.yellow {
-  background-color: #d5ce71;
+  background-color: #dc4646;
 }
 
 .stat-wrapper .progress-bar-wrapper .progress-bar.orange {
-  background-color: #dca146;
+  background-color: #dc4646;
 }
 
 .stat-wrapper .progress-bar-wrapper .progress-bar.red {
@@ -1796,7 +1043,7 @@ p.partial-data {
 }
 
 .stat-wrapper .progress-bar-wrapper .progress-bar.dark-grey {
-  background-color: #888;
+  background-color: #dc4646;
 }
 
 .stat-wrapper.grouped h3 {
@@ -2151,13 +1398,938 @@ p.partial-data {
   font-style: italic;
 }
 
+.section.at-a-glance {
+  color: #FFF;
+  padding: 44px 0 20px 0;
+}
+
+.section.at-a-glance .group-header h1 {
+  font-family: 'Barlow Condensed', sans-serif;
+  font-size: 24px;
+  font-weight: 400;
+  text-transform: uppercase;
+  margin-bottom: 14px;
+}
+
+.section.at-a-glance .group-header h2 {
+  font-family: 'Barlow Condensed', sans-serif;
+  font-size: 18px;
+  font-weight: 400;
+  text-transform: uppercase;
+  margin-bottom: 14px;
+}
+
+.section.at-a-glance .group-header h2 strong {
+  font-weight: 600;
+}
+
+.section.at-a-glance .group-header p {
+  font-size: 11px;
+  margin-bottom: 14px;
+}
+
+.section.at-a-glance .section-header {
+  font-size: 16px;
+  font-family: 'Barlow Condensed', sans-serif;
+  font-weight: bold;
+  padding: 6px 0;
+  text-transform: uppercase;
+}
+
+.section.at-a-glance .table-header-labels {
+  border-bottom: 1px solid rgba(255, 255, 255, 0.5);
+  position: relative;
+  height: 40px;
+}
+
+.section.at-a-glance .table-header-labels.empty {
+  height: 30px;
+}
+
+.section.at-a-glance .table-header-labels div {
+  font-family: 'Barlow Condensed', sans-serif;
+  color: #FFF;
+  position: absolute;
+  text-transform: uppercase;
+  vertical-align: bottom;
+  display: inline-block;
+  height: 40px;
+  font-size: 14px;
+}
+
+.section.at-a-glance .table-header-labels div.worse {
+  right: 120px;
+  text-align: left;
+  width: 40px;
+  padding-top: 20px;
+}
+
+.section.at-a-glance .table-header-labels div.middle {
+  right: 48px;
+  text-align: center;
+  width: 64px;
+  padding-top: 6px;
+}
+
+.section.at-a-glance .table-header-labels div.better {
+  right: 0;
+  text-align: right;
+  padding-top: 20px;
+  width: 40px;
+}
+
+.section.at-a-glance table {
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-left: 0;
+  border-bottom: 0;
+  width: 100%;
+  position: relative;
+}
+
+.section.at-a-glance table tr {
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+  position: relative;
+  font-size: 14px;
+  color: #BBB;
+  vertical-align: middle;
+}
+
+.section.at-a-glance table tr.double {
+  line-height: 18px;
+}
+
+.section.at-a-glance table tr td {
+  vertical-align: middle;
+}
+
+.section.at-a-glance table tr td.table-cell {
+  width: 40px;
+  height: 40px;
+  border-left: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.section.at-a-glance table tr td.table-cell.divider {
+  border-right: 1px solid rgba(255, 255, 255, 0.5);
+}
+
+.section.at-a-glance table tr.double td.table-cell {
+  height: 50px;
+}
+
+.section.at-a-glance table tr.key::before {
+  content: '';
+  position: absolute;
+  font-size: 8px;
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  line-height: 30px;
+  text-align: center;
+  display: block;
+  font-size: 14px;
+  font-weight: bold;
+  margin-top: 4px;
+}
+
+.section.at-a-glance table tr.key.double::before {
+  margin-top: 8px;
+}
+
+.section.at-a-glance table tr.key.percent-0::before {
+  content: '0';
+  right: calc(130px - (130px * 0));
+  color: #FFF;
+  background-color: #b02424;
+}
+
+.section.at-a-glance table tr.key.percent-1::before {
+  content: '1';
+  right: calc(130px - (130px * 0.01));
+  color: #FFF;
+  background-color: #b02424;
+}
+
+.section.at-a-glance table tr.key.percent-2::before {
+  content: '2';
+  right: calc(130px - (130px * 0.02));
+  color: #FFF;
+  background-color: #b02424;
+}
+
+.section.at-a-glance table tr.key.percent-3::before {
+  content: '3';
+  right: calc(130px - (130px * 0.03));
+  color: #FFF;
+  background-color: #b02424;
+}
+
+.section.at-a-glance table tr.key.percent-4::before {
+  content: '4';
+  right: calc(130px - (130px * 0.04));
+  color: #FFF;
+  background-color: #b02424;
+}
+
+.section.at-a-glance table tr.key.percent-5::before {
+  content: '5';
+  right: calc(130px - (130px * 0.05));
+  color: #FFF;
+  background-color: #b02424;
+}
+
+.section.at-a-glance table tr.key.percent-6::before {
+  content: '6';
+  right: calc(130px - (130px * 0.06));
+  color: #FFF;
+  background-color: #b02424;
+}
+
+.section.at-a-glance table tr.key.percent-7::before {
+  content: '7';
+  right: calc(130px - (130px * 0.07));
+  color: #FFF;
+  background-color: #b02424;
+}
+
+.section.at-a-glance table tr.key.percent-8::before {
+  content: '8';
+  right: calc(130px - (130px * 0.08));
+  color: #FFF;
+  background-color: #b02424;
+}
+
+.section.at-a-glance table tr.key.percent-9::before {
+  content: '9';
+  right: calc(130px - (130px * 0.09));
+  color: #FFF;
+  background-color: #b02424;
+}
+
+.section.at-a-glance table tr.key.percent-10::before {
+  content: '10';
+  right: calc(130px - (130px * 0.10));
+  color: #FFF;
+  background-color: #b02424;
+}
+
+.section.at-a-glance table tr.key.percent-11::before {
+  content: '11';
+  right: calc(130px - (130px * 0.11));
+  color: #FFF;
+  background-color: #b02424;
+}
+
+.section.at-a-glance table tr.key.percent-12::before {
+  content: '12';
+  right: calc(130px - (130px * 0.12));
+  color: #FFF;
+  background-color: #b02424;
+}
+
+.section.at-a-glance table tr.key.percent-13::before {
+  content: '13';
+  right: calc(130px - (130px * 0.13));
+  color: #FFF;
+  background-color: #b02424;
+}
+
+.section.at-a-glance table tr.key.percent-14::before {
+  content: '14';
+  right: calc(130px - (130px * 0.14));
+  color: #FFF;
+  background-color: #b02424;
+}
+
+.section.at-a-glance table tr.key.percent-15::before {
+  content: '15';
+  right: calc(130px - (130px * 0.15));
+  color: #FFF;
+  background-color: #b02424;
+}
+
+.section.at-a-glance table tr.key.percent-16::before {
+  content: '16';
+  right: calc(130px - (130px * 0.16));
+  color: #FFF;
+  background-color: #b02424;
+}
+
+.section.at-a-glance table tr.key.percent-17::before {
+  content: '17';
+  right: calc(130px - (130px * 0.17));
+  color: #FFF;
+  background-color: #b02424;
+}
+
+.section.at-a-glance table tr.key.percent-18::before {
+  content: '18';
+  right: calc(130px - (130px * 0.18));
+  color: #FFF;
+  background-color: #b02424;
+}
+
+.section.at-a-glance table tr.key.percent-19::before {
+  content: '19';
+  right: calc(130px - (130px * 0.19));
+  color: #FFF;
+  background-color: #b02424;
+}
+
+.section.at-a-glance table tr.key.percent-20::before {
+  content: '20';
+  right: calc(130px - (130px * 0.20));
+  color: #FFF;
+  background-color: #b02424;
+}
+
+.section.at-a-glance table tr.key.percent-21::before {
+  content: '21';
+  right: calc(130px - (130px * 0.21));
+  color: #FFF;
+  background-color: #b02424;
+}
+
+.section.at-a-glance table tr.key.percent-22::before {
+  content: '22';
+  right: calc(130px - (130px * 0.22));
+  color: #FFF;
+  background-color: #b02424;
+}
+
+.section.at-a-glance table tr.key.percent-23::before {
+  content: '23';
+  right: calc(130px - (130px * 0.23));
+  color: #FFF;
+  background-color: #b02424;
+}
+
+.section.at-a-glance table tr.key.percent-24::before {
+  content: '24';
+  right: calc(130px - (130px * 0.24));
+  color: #FFF;
+  background-color: #b02424;
+}
+
+.section.at-a-glance table tr.key.percent-25::before {
+  content: '25';
+  right: calc(130px - (130px * 0.25));
+  color: #FFF;
+  background-color: #b02424;
+}
+
+.section.at-a-glance table tr.key.percent-26::before {
+  content: '26';
+  right: calc(130px - (130px * 0.26));
+  color: #FFF;
+  background-color: #b02424;
+}
+
+.section.at-a-glance table tr.key.percent-27::before {
+  content: '27';
+  right: calc(130px - (130px * 0.27));
+  color: #FFF;
+  background-color: #b02424;
+}
+
+.section.at-a-glance table tr.key.percent-28::before {
+  content: '28';
+  right: calc(130px - (130px * 0.28));
+  color: #FFF;
+  background-color: #b02424;
+}
+
+.section.at-a-glance table tr.key.percent-29::before {
+  content: '29';
+  right: calc(130px - (130px * 0.29));
+  color: #FFF;
+  background-color: #b02424;
+}
+
+.section.at-a-glance table tr.key.percent-30::before {
+  content: '30';
+  right: calc(130px - (130px * 0.30));
+  color: #FFF;
+  background-color: #b02424;
+}
+
+.section.at-a-glance table tr.key.percent-31::before {
+  content: '31';
+  right: calc(130px - (130px * 0.31));
+  color: #FFF;
+  background-color: #b02424;
+}
+
+.section.at-a-glance table tr.key.percent-32::before {
+  content: '32';
+  right: calc(130px - (130px * 0.32));
+  color: #FFF;
+  background-color: #b02424;
+}
+
+.section.at-a-glance table tr.key.percent-33::before {
+  content: '33';
+  right: calc(130px - (130px * 0.33));
+  color: #FFF;
+  background-color: #b02424;
+}
+
+.section.at-a-glance table tr.key.percent-34::before {
+  content: '34';
+  right: calc(130px - (130px * 0.34));
+  color: #464648;
+  background-color: #d8d8d8;
+}
+
+.section.at-a-glance table tr.key.percent-35::before {
+  content: '35';
+  right: calc(130px - (130px * 0.35));
+  color: #464648;
+  background-color: #d8d8d8;
+}
+
+.section.at-a-glance table tr.key.percent-36::before {
+  content: '36';
+  right: calc(130px - (130px * 0.36));
+  color: #464648;
+  background-color: #d8d8d8;
+}
+
+.section.at-a-glance table tr.key.percent-37::before {
+  content: '37';
+  right: calc(130px - (130px * 0.37));
+  color: #464648;
+  background-color: #d8d8d8;
+}
+
+.section.at-a-glance table tr.key.percent-38::before {
+  content: '38';
+  right: calc(130px - (130px * 0.38));
+  color: #464648;
+  background-color: #d8d8d8;
+}
+
+.section.at-a-glance table tr.key.percent-39::before {
+  content: '39';
+  right: calc(130px - (130px * 0.39));
+  color: #464648;
+  background-color: #d8d8d8;
+}
+
+.section.at-a-glance table tr.key.percent-40::before {
+  content: '40';
+  right: calc(130px - (130px * 0.40));
+  color: #464648;
+  background-color: #d8d8d8;
+}
+
+.section.at-a-glance table tr.key.percent-41::before {
+  content: '41';
+  right: calc(130px - (130px * 0.41));
+  color: #464648;
+  background-color: #d8d8d8;
+}
+
+.section.at-a-glance table tr.key.percent-42::before {
+  content: '42';
+  right: calc(130px - (130px * 0.42));
+  color: #464648;
+  background-color: #d8d8d8;
+}
+
+.section.at-a-glance table tr.key.percent-43::before {
+  content: '43';
+  right: calc(130px - (130px * 0.43));
+  color: #464648;
+  background-color: #d8d8d8;
+}
+
+.section.at-a-glance table tr.key.percent-44::before {
+  content: '44';
+  right: calc(130px - (130px * 0.44));
+  color: #464648;
+  background-color: #d8d8d8;
+}
+
+.section.at-a-glance table tr.key.percent-45::before {
+  content: '45';
+  right: calc(130px - (130px * 0.45));
+  color: #464648;
+  background-color: #d8d8d8;
+}
+
+.section.at-a-glance table tr.key.percent-46::before {
+  content: '46';
+  right: calc(130px - (130px * 0.46));
+  color: #464648;
+  background-color: #d8d8d8;
+}
+
+.section.at-a-glance table tr.key.percent-47::before {
+  content: '47';
+  right: calc(130px - (130px * 0.47));
+  color: #464648;
+  background-color: #d8d8d8;
+}
+
+.section.at-a-glance table tr.key.percent-48::before {
+  content: '48';
+  right: calc(130px - (130px * 0.48));
+  color: #464648;
+  background-color: #d8d8d8;
+}
+
+.section.at-a-glance table tr.key.percent-49::before {
+  content: '49';
+  right: calc(130px - (130px * 0.49));
+  color: #464648;
+  background-color: #d8d8d8;
+}
+
+.section.at-a-glance table tr.key.percent-50::before {
+  content: '50';
+  right: calc(130px - (130px * 0.50));
+  color: #464648;
+  background-color: #d8d8d8;
+}
+
+.section.at-a-glance table tr.key.percent-51::before {
+  content: '51';
+  right: calc(130px - (130px * 0.51));
+  color: #464648;
+  background-color: #d8d8d8;
+}
+
+.section.at-a-glance table tr.key.percent-52::before {
+  content: '52';
+  right: calc(130px - (130px * 0.52));
+  color: #464648;
+  background-color: #d8d8d8;
+}
+
+.section.at-a-glance table tr.key.percent-53::before {
+  content: '53';
+  right: calc(130px - (130px * 0.53));
+  color: #464648;
+  background-color: #d8d8d8;
+}
+
+.section.at-a-glance table tr.key.percent-54::before {
+  content: '54';
+  right: calc(130px - (130px * 0.54));
+  color: #464648;
+  background-color: #d8d8d8;
+}
+
+.section.at-a-glance table tr.key.percent-55::before {
+  content: '55';
+  right: calc(130px - (130px * 0.55));
+  color: #464648;
+  background-color: #d8d8d8;
+}
+
+.section.at-a-glance table tr.key.percent-56::before {
+  content: '56';
+  right: calc(130px - (130px * 0.56));
+  color: #464648;
+  background-color: #d8d8d8;
+}
+
+.section.at-a-glance table tr.key.percent-57::before {
+  content: '57';
+  right: calc(130px - (130px * 0.57));
+  color: #464648;
+  background-color: #d8d8d8;
+}
+
+.section.at-a-glance table tr.key.percent-58::before {
+  content: '58';
+  right: calc(130px - (130px * 0.58));
+  color: #464648;
+  background-color: #d8d8d8;
+}
+
+.section.at-a-glance table tr.key.percent-59::before {
+  content: '59';
+  right: calc(130px - (130px * 0.59));
+  color: #464648;
+  background-color: #d8d8d8;
+}
+
+.section.at-a-glance table tr.key.percent-60::before {
+  content: '60';
+  right: calc(130px - (130px * 0.60));
+  color: #464648;
+  background-color: #d8d8d8;
+}
+
+.section.at-a-glance table tr.key.percent-61::before {
+  content: '61';
+  right: calc(130px - (130px * 0.61));
+  color: #464648;
+  background-color: #d8d8d8;
+}
+
+.section.at-a-glance table tr.key.percent-62::before {
+  content: '62';
+  right: calc(130px - (130px * 0.62));
+  color: #464648;
+  background-color: #d8d8d8;
+}
+
+.section.at-a-glance table tr.key.percent-63::before {
+  content: '63';
+  right: calc(130px - (130px * 0.63));
+  color: #464648;
+  background-color: #d8d8d8;
+}
+
+.section.at-a-glance table tr.key.percent-64::before {
+  content: '64';
+  right: calc(130px - (130px * 0.64));
+  color: #464648;
+  background-color: #d8d8d8;
+}
+
+.section.at-a-glance table tr.key.percent-65::before {
+  content: '65';
+  right: calc(130px - (130px * 0.65));
+  color: #464648;
+  background-color: #d8d8d8;
+}
+
+.section.at-a-glance table tr.key.percent-66::before {
+  content: '66';
+  right: calc(130px - (130px * 0.66));
+  color: #464648;
+  background-color: #d8d8d8;
+}
+
+.section.at-a-glance table tr.key.percent-67::before {
+  content: '67';
+  right: calc(130px - (130px * 0.67));
+  color: #464648;
+  background-color: #f3f4f6;
+}
+
+.section.at-a-glance table tr.key.percent-68::before {
+  content: '68';
+  right: calc(130px - (130px * 0.68));
+  color: #464648;
+  background-color: #f3f4f6;
+}
+
+.section.at-a-glance table tr.key.percent-69::before {
+  content: '69';
+  right: calc(130px - (130px * 0.69));
+  color: #464648;
+  background-color: #f3f4f6;
+}
+
+.section.at-a-glance table tr.key.percent-70::before {
+  content: '70';
+  right: calc(130px - (130px * 0.70));
+  color: #464648;
+  background-color: #f3f4f6;
+}
+
+.section.at-a-glance table tr.key.percent-71::before {
+  content: '71';
+  right: calc(130px - (130px * 0.71));
+  color: #464648;
+  background-color: #f3f4f6;
+}
+
+.section.at-a-glance table tr.key.percent-72::before {
+  content: '72';
+  right: calc(130px - (130px * 0.72));
+  color: #464648;
+  background-color: #f3f4f6;
+}
+
+.section.at-a-glance table tr.key.percent-73::before {
+  content: '73';
+  right: calc(130px - (130px * 0.73));
+  color: #464648;
+  background-color: #f3f4f6;
+}
+
+.section.at-a-glance table tr.key.percent-74::before {
+  content: '74';
+  right: calc(130px - (130px * 0.74));
+  color: #464648;
+  background-color: #f3f4f6;
+}
+
+.section.at-a-glance table tr.key.percent-75::before {
+  content: '75';
+  right: calc(130px - (130px * 0.75));
+  color: #464648;
+  background-color: #f3f4f6;
+}
+
+.section.at-a-glance table tr.key.percent-76::before {
+  content: '76';
+  right: calc(130px - (130px * 0.76));
+  color: #464648;
+  background-color: #f3f4f6;
+}
+
+.section.at-a-glance table tr.key.percent-77::before {
+  content: '77';
+  right: calc(130px - (130px * 0.77));
+  color: #464648;
+  background-color: #f3f4f6;
+}
+
+.section.at-a-glance table tr.key.percent-78::before {
+  content: '78';
+  right: calc(130px - (130px * 0.78));
+  color: #464648;
+  background-color: #f3f4f6;
+}
+
+.section.at-a-glance table tr.key.percent-79::before {
+  content: '79';
+  right: calc(130px - (130px * 0.79));
+  color: #464648;
+  background-color: #f3f4f6;
+}
+
+.section.at-a-glance table tr.key.percent-80::before {
+  content: '80';
+  right: calc(130px - (130px * 0.80));
+  color: #464648;
+  background-color: #f3f4f6;
+}
+
+.section.at-a-glance table tr.key.percent-81::before {
+  content: '81';
+  right: calc(130px - (130px * 0.81));
+  color: #464648;
+  background-color: #f3f4f6;
+}
+
+.section.at-a-glance table tr.key.percent-82::before {
+  content: '82';
+  right: calc(130px - (130px * 0.82));
+  color: #464648;
+  background-color: #f3f4f6;
+}
+
+.section.at-a-glance table tr.key.percent-83::before {
+  content: '83';
+  right: calc(130px - (130px * 0.83));
+  color: #464648;
+  background-color: #f3f4f6;
+}
+
+.section.at-a-glance table tr.key.percent-84::before {
+  content: '84';
+  right: calc(130px - (130px * 0.84));
+  color: #464648;
+  background-color: #f3f4f6;
+}
+
+.section.at-a-glance table tr.key.percent-85::before {
+  content: '85';
+  right: calc(130px - (130px * 0.85));
+  color: #464648;
+  background-color: #f3f4f6;
+}
+
+.section.at-a-glance table tr.key.percent-86::before {
+  content: '86';
+  right: calc(130px - (130px * 0.86));
+  color: #464648;
+  background-color: #f3f4f6;
+}
+
+.section.at-a-glance table tr.key.percent-87::before {
+  content: '87';
+  right: calc(130px - (130px * 0.87));
+  color: #464648;
+  background-color: #f3f4f6;
+}
+
+.section.at-a-glance table tr.key.percent-88::before {
+  content: '88';
+  right: calc(130px - (130px * 0.88));
+  color: #464648;
+  background-color: #f3f4f6;
+}
+
+.section.at-a-glance table tr.key.percent-89::before {
+  content: '89';
+  right: calc(130px - (130px * 0.89));
+  color: #464648;
+  background-color: #f3f4f6;
+}
+
+.section.at-a-glance table tr.key.percent-90::before {
+  content: '90';
+  right: calc(130px - (130px * 0.90));
+  color: #464648;
+  background-color: #f3f4f6;
+}
+
+.section.at-a-glance table tr.key.percent-91::before {
+  content: '91';
+  right: calc(130px - (130px * 0.91));
+  color: #464648;
+  background-color: #f3f4f6;
+}
+
+.section.at-a-glance table tr.key.percent-92::before {
+  content: '92';
+  right: calc(130px - (130px * 0.92));
+  color: #464648;
+  background-color: #f3f4f6;
+}
+
+.section.at-a-glance table tr.key.percent-93::before {
+  content: '93';
+  right: calc(130px - (130px * 0.93));
+  color: #464648;
+  background-color: #f3f4f6;
+}
+
+.section.at-a-glance table tr.key.percent-94::before {
+  content: '94';
+  right: calc(130px - (130px * 0.94));
+  color: #464648;
+  background-color: #f3f4f6;
+}
+
+.section.at-a-glance table tr.key.percent-95::before {
+  content: '95';
+  right: calc(130px - (130px * 0.95));
+  color: #464648;
+  background-color: #f3f4f6;
+}
+
+.section.at-a-glance table tr.key.percent-96::before {
+  content: '96';
+  right: calc(130px - (130px * 0.96));
+  color: #464648;
+  background-color: #f3f4f6;
+}
+
+.section.at-a-glance table tr.key.percent-97::before {
+  content: '97';
+  right: calc(130px - (130px * 0.97));
+  color: #464648;
+  background-color: #f3f4f6;
+}
+
+.section.at-a-glance table tr.key.percent-98::before {
+  content: '98';
+  right: calc(130px - (130px * 0.98));
+  color: #464648;
+  background-color: #f3f4f6;
+}
+
+.section.at-a-glance table tr.key.percent-99::before {
+  content: '99';
+  right: calc(130px - (130px * 0.99));
+  color: #464648;
+  background-color: #f3f4f6;
+}
+
+.section.at-a-glance table tr.key.percent-100::before {
+  content: '100';
+  right: calc(130px - (130px * 1));
+  color: #464648;
+  background-color: #f3f4f6;
+}
+
+.section.at-a-glance table tr.incomplete .table-label {
+  background-color: #454548;
+}
+
+.section.at-a-glance table tr.incomplete::before {
+  content: 'INCOMPLETE';
+  position: absolute;
+  right: 36px;
+  margin-top: 6px;
+  color: #dc4646;
+  font-size: 12px;
+  font-weight: 700;
+  background: #FFF;
+  padding: 6px;
+  background: #454548;
+}
+
+.section.at-a-glance table tr.incomplete.double::before {
+  margin-top: 12px;
+}
+
+.section.at-a-glance table tr.no-complaints .table-label {
+  background-color: #454548;
+}
+
+.section.at-a-glance table tr.no-complaints::before {
+  content: 'NONE REPORTED';
+  position: absolute;
+  right: 26px;
+  margin-top: 8px;
+  color: white;
+  font-size: 12px;
+  font-weight: 700;
+  background: #FFF;
+  padding: 6px;
+  background: #454548;
+}
+
+.section.at-a-glance table tr.no-complaints.double::before {
+  margin-top: 12px;
+}
+
+.section.at-a-glance table tr.none-reported .table-label {
+  background-color: #454548;
+}
+
+.section.at-a-glance table tr.none-reported::before {
+  content: 'NONE REPORTED';
+  position: absolute;
+  right: 25px;
+  margin-top: 6px;
+  color: white;
+  font-size: 12px;
+  font-weight: 700;
+  background: #FFF;
+  padding: 6px;
+  background: #454548;
+}
+
+.section.at-a-glance table tr.none-reported.double::before {
+  margin-top: 12px;
+}
+
+.section.stats .section-header {
+  height: 80px;
+}
+
+.section.stats h1.title {
+  background: transparent;
+  color: white;
+  height: 80px;
+  line-height: 80px;
+}
+
+.section.stats h1.title::after {
+  display: none;
+}
+
 .section.stats .one-third {
   width: 33%;
   display: inline-block;
   vertical-align: top;
-  margin-top: 50px;
   padding-right: 60px;
   padding-bottom: 60px;
+}
+
+.section.stats .one-third.home-page {
+  margin-top: 50px;
 }
 
 .section.stats .one-third h1 {
@@ -2340,6 +2512,24 @@ p.partial-data {
   font-size: 60px;
   font-weight: 400;
   font-family: 'Lato', sans-serif;
+  position: relative;
+  top: -10px;
+}
+
+.section.score .right .score-label {
+  color: white;
+  display: inline-block;
+  font-family: 'Barlow Condensed', sans-serif;
+  font-size: 20px;
+  font-weight: 500;
+  letter-spacing: 1.5px;
+  line-height: 20px;
+  opacity: 0.5;
+  position: absolute;
+  text-decoration: none;
+  text-transform: uppercase;
+  bottom: 24px;
+  right: 0;
 }
 
 .section.checklist {
@@ -2790,7 +2980,7 @@ p.partial-data {
 }
 
 .section.next .step-1 img {
-  shape-outside: url(../img/next/step1.svg);
+  shape-outside: url(../img/next/step-1.svg);
 }
 
 .section.next .step-2 h2 {
@@ -2798,7 +2988,7 @@ p.partial-data {
 }
 
 .section.next .step-2 img {
-  shape-outside: url(../img/next/step2.svg);
+  shape-outside: url(../img/next/step-2.svg);
 }
 
 .section.next .step-3 h2 {
@@ -2806,7 +2996,7 @@ p.partial-data {
 }
 
 .section.next .step-3 img {
-  shape-outside: url(../img/next/step3.svg);
+  shape-outside: url(../img/next/step-3.svg);
 }
 
 .section.about {
@@ -2873,19 +3063,18 @@ p.partial-data {
   display: inline-block;
   width: 30px;
   height: 30px;
-  background: #cacaca;
-  border-radius: 50%;
-  margin-right: 8px;
-  -webkit-transition: background-color 0.25s;
-  transition: background-color 0.25s;
+  margin-right: 20px;
   text-align: center;
   line-height: 30px;
-  color: #464648;
+  color: #CCC;
   margin-top: 8px;
+  font-size: 30px;
+  -webkit-transition: color 0.25s;
+  transition: color 0.25s;
 }
 
 .section.footer a.social:hover {
-  background: #FFF;
+  color: #FFF;
 }
 
 .section.footer .right {
@@ -2906,7 +3095,7 @@ p.partial-data {
 }
 
 .section.footer .right a.get-involved {
-  background: url(../img/hand.png) left center no-repeat;
+  background: url(../img/get-involved.svg) left center no-repeat;
 }
 
 .section.footer .right a.donate {
@@ -3756,6 +3945,19 @@ svg.highcharts-root .current-marker image {
   .hide-mobile {
     display: none;
   }
+  .section.at-a-glance .group-header {
+    padding-left: 20px;
+    padding-right: 20px;
+  }
+  .section.at-a-glance .group-header p {
+    font-size: 9px;
+  }
+  .section.at-a-glance .right .table-header-labels {
+    height: 30px;
+  }
+  .section.at-a-glance .right .table-header-labels div {
+    display: none;
+  }
   .section.hero.report .buttons {
     text-align: center;
   }
@@ -3984,6 +4186,9 @@ svg.highcharts-root .current-marker image {
     text-transform: uppercase;
     font-weight: 500;
   }
+  .section .content.section-header h1.title.large-title {
+    font-size: 24px;
+  }
   .section .content.section-header .score-divider {
     font-family: 'Barlow Condensed', sans-serif;
     text-transform: uppercase;
@@ -4132,6 +4337,15 @@ svg.highcharts-root .current-marker image {
   .section.stats {
     padding: 20px 0 40px 0;
   }
+  .section.stats .section-header {
+    height: 40px;
+    padding: 0 20px;
+    text-align: left;
+  }
+  .section.stats .section-header h1.title {
+    color: white;
+    padding: unset;
+  }
   .section.stats .one-third {
     width: 100%;
     display: block;
@@ -4267,10 +4481,6 @@ svg.highcharts-root .current-marker image {
   .section.score .right {
     font-size: 18px;
   }
-  .section.score .right .grade {
-    font-size: 36px;
-    line-height: 36px;
-  }
   .section.score .right span {
     position: relative;
     top: -22px;
@@ -4278,6 +4488,18 @@ svg.highcharts-root .current-marker image {
   .section.score .right span i {
     font-weight: 300;
     font-style: normal;
+  }
+  .section.score .right .score-label {
+    right: 16px;
+    top: 50px;
+    font-size: 14px;
+    opacity: 0.65;
+    line-height: 14px;
+  }
+  .section.score .right .grade {
+    font-size: 36px;
+    line-height: 36px;
+    top: -30px;
   }
   .selected-location .selected-location-label {
     left: 21px;
@@ -4454,9 +4676,7 @@ svg.highcharts-root .current-marker image {
     padding: 0;
   }
   .section.footer .left {
-    background: rgba(255, 255, 255, 0.15);
-    text-align: center;
-    height: 45px;
+    display: none !important;
   }
   .section.footer .right {
     padding-top: 14px;

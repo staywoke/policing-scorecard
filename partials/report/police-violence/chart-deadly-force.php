@@ -9,7 +9,7 @@
     <p class="good-job">Did Not Report Using Deadly Force in 2016-18</p>
     <?php else: ?>
     <p>
-      <?= num($scorecard['report']['total_people_killed']) ?> Deaths from 2013-19
+      <?= num($scorecard['report']['total_people_killed']) ?> Killings by Police from 2013-19
       <span class="divider">&nbsp;|&nbsp;</span>
       <?= num($scorecard['report']['killed_by_police_per_10k_arrests']) ?> every 10k arrests
     </p>
@@ -28,7 +28,7 @@
     <div class="progress-bar-wrapper">
       <div class="progress-bar animate-bar <?= progressBar(100 - intval($scorecard['report']['percentile_killed_by_police']), 'reverse') ?>" data-percent="<?= output(100 - intval($scorecard['report']['percentile_killed_by_police']), 0, '%') ?>"></div>
     </div>
-    <p class="note">^&nbsp; Used More Deadly Force per Arrest than <?= num($scorecard['report']['percentile_killed_by_police'], 0, '%', true) ?> of Depts &nbsp;&nbsp;</p>
+    <p class="note">^&nbsp; More Killings by Police per Arrest than <?= num($scorecard['report']['percentile_killed_by_police'], 0, '%', true) ?> of Depts &nbsp;&nbsp;</p>
     <?php endif; ?>
 
     <p class="source-link-wrapper">Source: <a href="https://mappingpoliceviolence.org" class="source-link" target="_blank">Mapping Police Violence</a></p>

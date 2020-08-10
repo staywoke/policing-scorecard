@@ -209,7 +209,7 @@ $ac = '?ac=' . getHash($isProd);
           <p class="c2"><span class="c7">How We Calculated Agency Scores and Grades:</span></p>
 
           <p>
-            The scores or “grades” attributed to police agencies in our analysis should be interpreted as relative scores, showing how each agency compares to other agencies within the state across three areas of policing: police violence, police accountability, and an evaluation of each agency’s approach to policing (for example, the extent to which an agency focuses on arresting people for low-level offenses or solving serious crimes).
+            The scores or “grades” attributed to police agencies in our analysis should be interpreted as relative scores, showing how each agency compares to other agencies within the state across three areas of policing: police violence, police accountability, and an evaluation of each agency’s approach to law enforcement (for example, the extent to which an agency focuses on arresting people for low-level offenses or solving serious crimes).
           </p>
 
           <p class="c2"><span class="c7">Here are the factors that were used to calculate each agency's score:</span></p>
@@ -267,7 +267,7 @@ $ac = '?ac=' . getHash($isProd);
           <p class="c2"><span class="c7">Approach to Police Score</span></p>
 
           <p>
-            The approach to policing score evaluates the extent to which police departments focus on arresting people for low-level offenses or focusing on solving serious crimes. The score accounts for the proportion of the most serious crimes - homicide - that an agency solves as well as how each agency compares in terms of its approach to the lowest level offenses, measured by misdemeanor arrest rates per population. Misdemeanor arrest rates per population have been cited in <a href="https://chicagounbound.uchicago.edu/cgi/viewcontent.cgi?article%3D2473%26context%3Djournal_articles&sa=D&ust=1553928833129000" target="_blank">previous research</a> as an effective measure of whether a department has adopted a “ broken windows” or “zero tolerance” policing approach; an approach that has not been proven to improve public safety but that instead often exposes communities, especially marginalized communities, to increased policing, arrest and incarceration (for additional reading, see <a href="https://harvardpress.typepad.com/hup_publicity/2013/03/chicago-broken-windows-bernard-harcourt.html&sa=D&ust=1553928833129000" target="_blank">here</a>, <a href="https://www.researchgate.net/publication/263234452_Studying_New_York_City's_Crime_Decline_Methodological_Issues&sa=D&ust=1553928833130000" target="_blank">here</a> and <a href="https://www.nature.com/articles/s41562-017-0211-5&sa=D&ust=1553928833130000" target="_blank">here</a>). The following formula was used to calculate this score:
+            The approach to law enforcement score evaluates the extent to which police departments focus on arresting people for low-level offenses or focusing on solving serious crimes. The score accounts for the proportion of the most serious crimes - homicide - that an agency solves as well as how each agency compares in terms of its approach to the lowest level offenses, measured by misdemeanor arrest rates per population. Misdemeanor arrest rates per population have been cited in <a href="https://chicagounbound.uchicago.edu/cgi/viewcontent.cgi?article%3D2473%26context%3Djournal_articles&sa=D&ust=1553928833129000" target="_blank">previous research</a> as an effective measure of whether a department has adopted a “ broken windows” or “zero tolerance” policing approach; an approach that has not been proven to improve public safety but that instead often exposes communities, especially marginalized communities, to increased policing, arrest and incarceration (for additional reading, see <a href="https://harvardpress.typepad.com/hup_publicity/2013/03/chicago-broken-windows-bernard-harcourt.html&sa=D&ust=1553928833129000" target="_blank">here</a>, <a href="https://www.researchgate.net/publication/263234452_Studying_New_York_City's_Crime_Decline_Methodological_Issues&sa=D&ust=1553928833130000" target="_blank">here</a> and <a href="https://www.nature.com/articles/s41562-017-0211-5&sa=D&ust=1553928833130000" target="_blank">here</a>). The following formula was used to calculate this score:
           </p>
 
           <p class="c16 two">
@@ -319,7 +319,7 @@ $ac = '?ac=' . getHash($isProd);
           </p>
 
           <p>
-            The first two of these indicators were included in each Sheriff’s Department’s initial Approach to Policing Score as such:
+            The first two of these indicators were included in each Sheriff’s Department’s initial Approach to Law Enforcement Score as such:
           </p>
 
           <p class="c16 four">

@@ -62,7 +62,7 @@ foreach ($deptGrades as $key => $value) {
 
   <div class="content add-new-data">
     <div class="left">
-      <p class="partial-data"><strong>*</strong> An asterisk indicates this city does not have enough data to be included in our rankings. <strong>Want to help add this city to the list?</strong></p>
+      <p class="partial-data"><strong>*</strong> An asterisk indicates this location did not publish enough data to evaluate. <strong>Click below to add data to the Scorecard.</strong></p>
     </div>
     <div class="right add-data">
       <button class="btn btn-primary" onclick="document.getElementById('research').click();document.querySelector('.take-action').scrollIntoView({ behavior: 'smooth' }); return false;">Add New Data</button>

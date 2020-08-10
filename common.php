@@ -209,7 +209,7 @@ function generateArrestChart($scorecard) {
     'datasets' => array(
       array(
         'label' => 'Arrests',
-        'backgroundColor' => '#58595b',
+        'backgroundColor' => '#dc4646',
         'stack' => 'arrests',
         'data' => array()
       )
@@ -524,7 +524,7 @@ function generateHistoryChart($scorecard) {
       ),
       array(
         'label' => 'Other Police Weapons',
-        'backgroundColor' => '#58595b',
+        'backgroundColor' => '#dc4646',
         'stack' => 'police-violence',
         'hidden' => true,
         'data' => array()

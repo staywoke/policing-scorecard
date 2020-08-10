@@ -1,4 +1,10 @@
 <div class="section bg-gray stats">
+  <div class="content section-header">
+    <h1 class="title">
+      Key Findings
+    </h1>
+  </div>
+
   <div class="content">
     <div class="one-third">
       <h1><strong><?= $scorecard['report']['total_people_killed'] ?></strong> Killings by Police</h1>

@@ -1,6 +1,7 @@
 <?php
 include_once(__DIR__ .'/../partials/report/hero.php');
 include_once(__DIR__ .'/../partials/report/location-selection.php');
+include_once(__DIR__ .'/../partials/report/at-a-glance.php');
 include_once(__DIR__ .'/../partials/report/killings-by-police.php');
 ?>
 
@@ -87,7 +88,7 @@ include_once(__DIR__ .'/../partials/report/killings-by-police.php');
   </div>
 </div>
 
-<!-- Approach to Policing -->
+<!-- Approach to Law Enforcement -->
 <div class="section pad approach">
   <!-- Section Title -->
   <?php include_once(__DIR__ .'/../partials/report/approach-to-policing/title.php'); ?>

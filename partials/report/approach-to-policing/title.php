@@ -4,8 +4,8 @@
 <div class="content section-header">
   <div class="divider-line hide-desktop"></div>
 
-  <h1 class="title">
-    Approach to Policing
+  <h1 class="title large-title">
+    Approach to Law Enforcement
 
     <a href="javascript:void(0)" class="results-info" data-city="<?= $location ?>" data-result-info="approach">i</a>
   </h1>

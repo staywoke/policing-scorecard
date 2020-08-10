@@ -1,13 +1,13 @@
 <div class="section bg-gray footer">
   <div class="content">
     <div class="left">
-      <a href="https://www.facebook.com/sharer/sharer.php?u=<?= $socialUrl ?>&t=<?= $socialText ?>" class="social">
-        <i class="fa fa-facebook-f"></i>
+      <a href="https://www.facebook.com/sharer/sharer.php?u=<?= $socialUrl ?>&t=<?= $socialText ?>" title="Share via Facebook" class="social">
+        <i class="fa fa-facebook"></i>
       </a>
-      <a href="https://twitter.com/intent/tweet?source=<?= $socialUrl ?>&text=<?= $socialText ?>" class="social">
+      <a href="https://twitter.com/intent/tweet?source=<?= $socialUrl ?>&text=<?= $socialText ?>" title="Share via Twitter" class="social">
         <i class="fa fa-twitter"></i>
       </a>
-      <a href="mailto:?subject=<?= $socialSubject ?>&body=<?= $socialText ?>" class="social">
+      <a href="mailto:?subject=<?= $socialSubject ?>&body=<?= $socialText ?>" title="Share via Email" class="social">
         <i class="fa fa-envelope"></i>
       </a>
     </div>
