@@ -2609,7 +2609,7 @@ p.partial-data {
 }
 
 .section.grades h1.title {
-  color: #7c8894;
+  color: #5a6f83;
   padding: 50px 0 20px;
   font-size: 32px;
   line-height: 32px;
@@ -2704,14 +2704,14 @@ p.partial-data {
 .section.grades .button {
   margin: 0 auto;
   width: 100px;
-  background: #7c8894;
+  background: #5a6f83;
   text-decoration: none;
   color: white;
   padding: 7px 0;
   border-radius: 4px;
   text-align: center;
   margin-top: 30px;
-  border: 2px solid #7c8894;
+  border: 2px solid #5a6f83;
   font-size: 14px;
   line-height: 14px;
 }
@@ -2725,7 +2725,7 @@ p.partial-data {
 .section.grades .button.more {
   display: none;
   background: transparent;
-  color: #7c8894;
+  color: #5a6f83;
 }
 
 .section.grades .button.more:hover, .section.grades .button.more:focus, .section.grades .button.more:active {
@@ -2736,7 +2736,7 @@ p.partial-data {
 .section.grades .button.less {
   display: block;
   background: transparent;
-  color: #7c8894;
+  color: #5a6f83;
 }
 
 .section.grades .button.less:hover, .section.grades .button.less:focus, .section.grades .button.less:active {
@@ -2800,7 +2800,7 @@ p.partial-data {
 }
 
 .section.why h1.title {
-  color: #7c8894;
+  color: #5a6f83;
   padding: 50px 0 20px;
   font-size: 32px;
   line-height: 32px;
@@ -2809,7 +2809,7 @@ p.partial-data {
 }
 
 .section.why .take-action {
-  color: #7c8894;
+  color: #5a6f83;
   font-size: 25px;
   line-height: 25px;
   text-transform: uppercase;
@@ -2889,7 +2889,7 @@ p.partial-data {
 }
 
 .section.next h1.title {
-  color: #7c8894;
+  color: #5a6f83;
   padding: 50px 0 20px;
   font-size: 32px;
   line-height: 32px;
@@ -2966,7 +2966,7 @@ p.partial-data {
 
 .section.next .step span.completed, .section.next .step span.in-progress {
   display: inline-block;
-  color: #7c8894;
+  color: #5a6f83;
   font-size: 20px;
   line-height: 20px;
   position: relative;
@@ -2976,7 +2976,7 @@ p.partial-data {
 }
 
 .section.next .step-1 h2 {
-  color: #7c8894;
+  color: #5a6f83;
 }
 
 .section.next .step-1 img {
@@ -2984,7 +2984,7 @@ p.partial-data {
 }
 
 .section.next .step-2 h2 {
-  color: #7c8894;
+  color: #5a6f83;
 }
 
 .section.next .step-2 img {
@@ -2992,7 +2992,7 @@ p.partial-data {
 }
 
 .section.next .step-3 h2 {
-  color: #7c8894;
+  color: #5a6f83;
 }
 
 .section.next .step-3 img {
@@ -3251,11 +3251,11 @@ svg.highcharts-root path.highcharts-point {
 .buttons .btn {
   margin: 4px;
   background: #FFF;
-  border: 2px solid #7c8894;
+  border: 2px solid #5a6f83;
   padding: 4px 12px;
   cursor: pointer;
   text-decoration: none;
-  color: #7c8894;
+  color: #5a6f83;
   border-radius: 6px;
   font-family: 'Barlow Condensed', sans-serif;
   font-size: 14px;
@@ -3264,7 +3264,7 @@ svg.highcharts-root path.highcharts-point {
 }
 
 .buttons .btn.active {
-  background: #7c8894;
+  background: #5a6f83;
   color: white;
 }
 
@@ -3645,7 +3645,7 @@ p.number-list.n15::after {
 }
 
 .highcharts-tooltip.highcharts-color-1 path.highcharts-label-box.highcharts-tooltip-box {
-  fill: #7c8894;
+  fill: #5a6f83;
   stroke: white;
   stroke-opacity: 0;
   stroke-width: 0;
@@ -3711,7 +3711,7 @@ p.number-list.n15::after {
   text-align: center;
   font-family: 'Barlow Condensed', sans-serif;
   font-weight: 500;
-  color: #7c8894;
+  color: #5a6f83;
   font-size: 20px;
   line-height: 40px;
 }
