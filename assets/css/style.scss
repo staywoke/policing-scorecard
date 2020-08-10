@@ -1684,7 +1684,7 @@ p.partial-data {
         }
 
         &::before {
-          content: 'INCOMPLETE';
+          content: 'NONE REPORTED';
           position: absolute;
           right: 36px;
           margin-top: 6px;

@@ -15,24 +15,6 @@ $class_m = (is_numeric($scorecard['police_funding']['percentile_fines_forfeiture
 $class_n = (is_numeric($scorecard['police_funding']['percentile_officers_per_population'])) ? 'key percent-' . $scorecard['police_funding']['percentile_officers_per_population'] : 'incomplete';
 $class_o = (is_numeric($scorecard['report']['percent_use_of_force_complaints_sustained'])) ? 'key percent-' . $scorecard['report']['percent_use_of_force_complaints_sustained'] : 'incomplete';
 $class_p = (is_numeric($scorecard['report']['percent_discrimination_complaints_sustained'])) ? 'key percent-' . $scorecard['report']['percent_discrimination_complaints_sustained'] : 'incomplete';
-
-// Set to None Reported if Zero
-if ($scorecard['report']['percentile_less_lethal_force'] === 0) { $class_a = 'none-reported'; }
-if ($scorecard['report']['percentile_killed_by_police'] === 0) { $class_b = 'none-reported'; }
-if ($scorecard['report']['percentile_unarmed_killed_by_police'] === 0) { $class_c = 'none-reported'; }
-if ($scorecard['report']['percentile_overall_disparity_index'] === 0) { $class_d = 'none-reported'; }
-if ($scorecard['report']['percentile_complaints_sustained'] === 0) { $class_e = 'none-reported'; }
-if ($scorecard['report']['percent_criminal_complaints_sustained'] === 0) { $class_f = 'none-reported'; }
-if ($scorecard['report']['percentile_low_level_arrests_per_1k_population'] === 0) { $class_g = 'none-reported'; }
-if ($scorecard['report']['percent_murders_solved'] === 0) { $class_h = 'none-reported'; }
-if ($scorecard['report']['percentile_jail_incarceration_per_1k_population'] === 0) { $class_i = 'none-reported'; }
-if ($scorecard['report']['percentile_jail_deaths_per_1k_jail_population'] === 0) { $class_j = 'none-reported'; }
-if ($scorecard['police_funding']['percentile_police_spending_ratio'] === 0) { $class_k = 'none-reported'; }
-if ($scorecard['police_funding']['percentile_misconduct_settlements_per_population'] === 0) { $class_l = 'none-reported'; }
-if ($scorecard['police_funding']['percentile_fines_forfeitures_per_resident'] === 0) { $class_m = 'none-reported'; }
-if ($scorecard['police_funding']['percentile_officers_per_population'] === 0) { $class_n = 'none-reported'; }
-if ($scorecard['report']['percent_use_of_force_complaints_sustained'] === 0) { $class_o = 'none-reported'; }
-if ($scorecard['report']['percent_discrimination_complaints_sustained'] === 0) { $class_p = 'none-reported'; }
 ?>
 <a name="scorecard-at-a-glance"></a>
 <div class="section bg-gray at-a-glance">
@@ -42,7 +24,7 @@ if ($scorecard['report']['percent_discrimination_complaints_sustained'] === 0) {
     </h1>
 
     <h2 class="subtitle">
-      Average for 4 Sections: <strong><?= $scorecard['report']['overall_score'] ?>%</string>
+      Average for 4 Sections: <strong><?= $scorecard['report']['overall_score'] ?>%</strong>
     </h2>
 
     <p>

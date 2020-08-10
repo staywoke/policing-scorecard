@@ -2247,7 +2247,7 @@ p.partial-data {
 }
 
 .section.at-a-glance table tr.incomplete::before {
-  content: 'INCOMPLETE';
+  content: 'NONE REPORTED';
   position: absolute;
   right: 36px;
   margin-top: 6px;
