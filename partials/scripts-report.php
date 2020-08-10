@@ -341,7 +341,8 @@
 <script>
   var policeFundingChart = <?= getPoliceFundingChart($scorecard['police_funding']); ?>;
   window.addEventListener('load', function() {
-    if (policeFundingChart && typeof policeFundingChart.labels === 'undefined' && policeFundingChart.labels.length > 0) {
+    if (policeFundingChart && typeof policeFundingChart.labels !== 'undefined' && policeFundingChart.labels.length > 0) {
+      console.log('JELLO?');
       Highcharts.chart(document.getElementById('chart-police-funding'), {
         chart: {
           type: 'area',
