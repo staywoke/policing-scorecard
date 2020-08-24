@@ -1,5 +1,9 @@
-CA Policing Scorecard
+DEV NOTE:
 ===
+> This project was a rough prototype.  We are working on a new [Nationwide Version](https://github.com/campaignzero/police-scorecard) of this project.  This repo will not be mantained, and will deleted on the Nationwide project goes live.
+
+CA Policing Scorecard
+---
 
 Police Scorecard for the the top 100 cities in State of California.
 
