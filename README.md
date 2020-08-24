@@ -1,6 +1,6 @@
 DEV NOTE:
 ===
-> This project was a rough prototype.  We are working on a new [Nationwide Version](https://github.com/campaignzero/police-scorecard) of this project.  This repo will not be mantained, and will deleted on the Nationwide project goes live.
+> This project was a rough prototype.  We are working on a new [Nationwide Version](https://github.com/campaignzero/police-scorecard) of this project.  This repo will not be mantained, and will be deleted once the Nationwide project goes live.
 
 CA Policing Scorecard
 ---
